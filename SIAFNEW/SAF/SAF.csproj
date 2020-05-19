@@ -106,7 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Acceso2.aspx" />
     <Content Include="Acceso.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
@@ -269,13 +268,6 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Acceso2.aspx.cs">
-      <DependentUpon>Acceso2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Acceso2.aspx.designer.cs">
-      <DependentUpon>Acceso2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Acceso.aspx.cs">
       <DependentUpon>Acceso.aspx</DependentUpon>

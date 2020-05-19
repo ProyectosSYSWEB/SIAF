@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,8 +12,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
-using RestSharp;
-using Newtonsoft.Json.Linq;
 
 namespace Ejemplo
 {
@@ -28,19 +26,20 @@ namespace Ejemplo
         CN_Comun CNSesison = new CN_Comun();
         CN_Comun CNComun = new CN_Comun();
         List<Comun> Listsistema = new List<Comun>();
-        
+
         protected string Token = null;
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            try
+            {
                 if (!IsPostBack)
                 {
 
                     Token = Convert.ToString(Request.QueryString["Token"]);
 
-                    //if (!IsPostBack)
-                    //{
+                    if (!IsPostBack)
+                    {
                         if (Token != null)
                         {
 
@@ -69,46 +68,35 @@ namespace Ejemplo
                         }
                         else
                         {
-                         
+
                             if ((Request.QueryString["Usuario"] != null) && (Request.QueryString["Ejercicio"] != null))
                             {
                                 txtUsario.Text = Request.QueryString["Usuario"];
                             }
                         }
-                    //}
+                    }
                 }
-           
-        }     
-    protected void btnLogin2_Click(object sender, EventArgs e)
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Verificador = string.Empty;
             try
             {
-                bool Valido=ValidarUsuario(txtUsario.Text.ToUpper(), ref Verificador);
-                if (Valido==true)
+                ValidarUsuario();
+                if (Usuario.Nombre != "")
                 {
-                    Usuario.CUsuario = txtUsario.Text.ToUpper();
-                    CNUsuario.Verificar_Correo_UNACH(ref Usuario, ref Verificador);
-                    if (Verificador == "0")
+                    IniciarSesion();
+                    string siteMap = "ArchivosMenu/Web" + SesionUsu.Usu_Nombre + ".sitemap";
+                    string fullPath = Path.Combine(Server.MapPath("~"), siteMap);
+                    if (File.Exists(fullPath))
                     {
-                        //Verificador = string.Empty;
-                        if (Usuario.Status == "S")
-                        {
-
-                            Response.Redirect("Default.aspx", false);
-                        }
-                        else
-                        {
-                            Guid Token = Guid.NewGuid();
-                            Verificador = String.Empty;
-                            Usuario.Token = Convert.ToString(Token);
-                            Usuario.CUsuario = SesionUsu.Usu_Nombre;
-                            CNUsuario.Inserta_Token(ref Usuario, ref Verificador);
-                            Response.Redirect("https://sysweb.unach.mx/actualiza_correo/frmactualiza_datos.aspx?token=" + Token + "&sistema=15830", true);
-                        }
+                        File.Delete(fullPath);
                     }
 
-    
                 }
                 else
                 {
@@ -122,14 +110,14 @@ namespace Ejemplo
             catch (Exception ex)
             {
                 lblError.Visible = true;
-                lblError.Text ="Error de Usuario o Contraseña." + ex.Message;
+                lblError.Text = "Error de Usuario o Contraseña ";
             }
         }
         public void IniciarSesion()
         {
             try
             {
-                
+
                 SesionUsu.CUsuario = Usuario.CUsuario;
                 SesionUsu.Usu_Nombre = Usuario.CUsuario;
                 SesionUsu.Usu_Ejercicio = ddlEjercicio.SelectedValue;
@@ -150,7 +138,7 @@ namespace Ejemplo
             try
             {
 
-                string strHostName = string.Empty;             
+                string strHostName = string.Empty;
                 // Getting Ip address of local machine…
                 // First get the host name of local machine.
                 strHostName = Dns.GetHostName();
@@ -160,8 +148,8 @@ namespace Ejemplo
                 ObjSesion = new Sesion();
                 ObjSesion.ip = hostIPs[1].ToString();
                 ObjSesion.mac_address = hostIPs[0].ToString();
-                ObjSesion.Usu_Nombre = Usuario.CUsuario;                
-                ObjSesion.id_sistema = "15830";
+                ObjSesion.Usu_Nombre = Usuario.CUsuario;
+                ObjSesion.id_sistema = "15361";
                 CNSesison.insertar_datos_sesion(ref ObjSesion, ref Verificador);
             }
             catch (Exception ex)
@@ -170,75 +158,27 @@ namespace Ejemplo
             }
         }
 
-       public bool ValidarUsuario(string Nombre, ref string Verificador)
+        public void ValidarUsuario()
         {
             try
             {
-                Usuario.Correo_UNACH = txtUsario.Text.ToUpper();
+                Usuario.CUsuario = txtUsario.Text.ToUpper();
                 Usuario.Password = txtPassword.Text.ToUpper();
-                //CNUsuario.ValidarUsuario(ref Usuario, ref Verificador);
-                CNUsuario.ObtenerUsuario(ref Usuario, ref Verificador);
-                if (Verificador == "0")
-                {
-
-                    SesionUsu.CUsuario = Usuario.CUsuario;
-                    SesionUsu.Usu_Nombre = Usuario.CUsuario;
-                    SesionUsu.Nombre_Completo = Nombre;
-                    SesionUsu.Usu_Ejercicio = ddlEjercicio.SelectedValue;
-                    SesionUsu.Usu_TipoUsu = Usuario.TipoUsu;
-                    SesionUsu.Correo_UNACH = txtUsario.Text;
-                    Session["Usuario"] = SesionUsu;
-                    return true;
-                }
-                else
-                    return false;
+                CNUsuario.ValidarUsuario(ref Usuario, ref Verificador);
             }
             catch (Exception ex)
             {
-                Verificador = ex.Message;
-                return false;
+                lblError.Text = ex.Message + ".-ValidarUsuario";
             }
         }
 
-       
 
-     
+
+
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            var client = new RestClient("http://ldapm.unach.mx/authldap.php");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Username", "ldapru");
-            request.AddHeader("Password", "01#lDhyr983wry");
-            request.AddHeader("Authorization", "Basic bGRhcHJ1OjAxI2xEaHlyOTgzd3J5");
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.AddParameter("ldapuser", txtUsario.Text);
-            request.AddParameter("ldappasswd", txtPassword.Text);
-            IRestResponse response = client.Execute(request);
-            //lblError.Text = response.Content;
-            var jObject = JObject.Parse(response.Content);
-
-            //Extracting Node element using Getvalue method
-            string Autorizado = jObject.GetValue("valido").ToString();
-            string Nombre = jObject.GetValue("gecos").ToString();
-
-
-            if (Autorizado == "0")
-            {
-                bool Valido = ValidarUsuario(Nombre, ref Verificador);
-                if (Valido == true)               
-                    Response.Redirect("Default.aspx", false);
-                else
-                    lblError.Text = Verificador;
-            }
-            else
-                lblError.Text = "No fue posible realizar la autenticación, correo o contraseña no validos.";
         }
     }
 }
