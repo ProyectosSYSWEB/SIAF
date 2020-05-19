@@ -1,0 +1,36 @@
+﻿@media only screen and (max-width: 991px) {
+    .imgUnach {
+        display: none
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .barraMenu {
+        position: absolute;
+        background-color: #003d5f;
+        left: 0%;
+        height: 20px;
+
+    }
+
+    .ubicacion {
+        position: absolute;
+        left: 0%;
+    }
+    .ubicacion2 {
+        position: absolute;
+        left: 92%;
+    }
+
+    .estiloLetras {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+
+    .piePagina {
+        position: absolute;
+        left: 0px;
+        bottom: -160px;
+        width: auto;
+        height: auto;
+    }
+}

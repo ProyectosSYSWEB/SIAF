@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0CD64266-9068-4FD3-A60E-B9F8147A8DCC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaNegocio</RootNamespace>
+    <AssemblyName>CapaNegocio</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CN_Adquisiciones.cs" />
+    <Compile Include="CN_Baja.cs" />
+    <Compile Include="CN_Basicos.cs" />
+    <Compile Include="CN_Bien.cs" />
+    <Compile Include="CN_Bienes.cs" />
+    <Compile Include="CN_Centros_Contables.cs" />
+    <Compile Include="CN_Centros_Trabajo.cs" />
+    <Compile Include="CN_Comun.cs" />
+    <Compile Include="CN_Configuracion_forms.cs" />
+    <Compile Include="CN_Cuentas_Bancarias.cs" />
+    <Compile Include="CN_Cuentas_contables.cs" />
+    <Compile Include="CN_Cuentas_Mayor.cs" />
+    <Compile Include="CN_Informativa.cs" />
+    <Compile Include="CN_Ministracion.cs" />
+    <Compile Include="CN_Mnu.cs" />
+    <Compile Include="CN_Poliza.cs" />
+    <Compile Include="CN_Poliza_CFDI.cs" />
+    <Compile Include="CN_Poliza_Conciliacion.cs" />
+    <Compile Include="CN_Poliza_Det.cs" />
+    <Compile Include="CN_Presupuesto.cs" />
+    <Compile Include="CN_Pres_Documento.cs" />
+    <Compile Include="CN_Pres_Documento_Det.cs" />
+    <Compile Include="CN_Pres_Reportes.cs" />
+    <Compile Include="CN_Titulares.cs" />
+    <Compile Include="CN_Transferencia.cs" />
+    <Compile Include="CN_Transferencia_Det.cs" />
+    <Compile Include="CN_Usuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{D97C9DE3-F518-4646-A178-7DF378CE1716}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
+      <Project>{59DCA125-1AD0-4D2B-9F60-7E3B761265D4}</Project>
+      <Name>CapaEntidad</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

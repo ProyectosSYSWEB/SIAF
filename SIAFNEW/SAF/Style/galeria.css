@@ -1,0 +1,394 @@
+/*body
+{
+	margin: 0px;
+	font-family: Ebrima, Arial;
+	font-size: 10pt;
+	background-image: url( '../images/patron_cuerpo.jpg' );
+}
+
+a
+{
+	color: inherit;
+	text-decoration: none;
+}
+*/
+.contenedor_g
+{
+	width: 940px;
+	margin: auto;
+}
+
+/*
+header
+{
+	color: #e9e6dd;
+	width: 100%;
+	height: 40px;
+	background-image: url( '../images/patron_header.jpg' );
+}
+
+header img
+{
+	float: left;
+	margin-top: 7px;
+}
+
+header .mensaje
+{
+	float: right;
+	margin-top: 11px;
+	margin-right: 30px;
+}
+
+header .botones
+{
+	float: right;
+	margin-top: 8px;
+	margin-right: 30px;
+}
+
+header #acceso
+{
+	float: left;
+	margin: 0px 15px 0px 15px;
+}
+
+header #registro
+{
+	float: left;
+	text-align: center;
+	background-color: rgba(90, 89, 82, 0.3);
+	border-radius: 12px;
+	border-style: none;
+	box-shadow: 1px 1px 5px #383630 inset;
+	padding: 5px;
+	cursor: pointer;
+	color: #e9e6dd;
+	width: 85px;
+}
+
+header #ingresar
+{
+	float: left;
+	text-align: center;
+	background-color: rgba(176, 176, 176, 0.2);
+	border-radius: 12px;
+	border-style: none;
+	box-shadow: 1px 1px 5px #5E594E;
+	padding: 5px;
+	cursor: pointer;
+	color: #e9e6dd;
+	width: 85px;
+}
+
+footer
+{
+	color: #F7FFF1;
+	text-align: center;
+	display:block;
+	width: 100%;
+	height: 50px;
+	background-image: url( '../images/patron_menu.jpg' );
+}
+
+footer > span
+{
+	display: block;
+	text-shadow: -1px -1px 1px #808080;
+	padding-top: 15px;
+}
+*/
+*/
+.borde_arriba
+{
+	height: 8px;
+	background-image: url( '../images/relieve.png' );
+	background-repeat: repeat-x;
+}
+
+.borde_abajo
+{
+	height: 4px;
+	background-image: url( '../images/relieve2.jpg' );
+	background-repeat: repeat-x;
+}
+
+.borde_footer
+{
+	clear: both;
+	height: 30px;
+	width: 100%;
+	background-image: url( '../images/pasto.png' );
+	background-repeat: repeat-x;
+}
+/*
+.menu
+{
+	color: #e9fed7;
+	height: 166px;
+	font-size: 12pt;
+	background-image: url( '../images/patron_menu.jpg' );
+	background-repeat: repeat-x;
+}
+
+.menu .contenedor
+{
+	padding-top: 26px;
+}
+
+.menu img
+{
+	float: left;
+}
+
+.menu img:first-child
+{
+	margin-right: 50px;
+}
+
+.menu img:last-child
+{
+	margin-right: 50px;
+	float: right;
+}
+
+.menu .opciones
+{
+	float: left;
+	margin-top: 30px;
+}
+
+.menu .nav
+{
+	list-style: none;
+}
+
+.menu .nav > li
+{
+	float:left;
+	text-align: center;
+	width: 110px;
+}
+
+.menu .nav > li:last-child
+{
+	margin-left:10px;
+}
+
+.menu .nav > li > a
+{
+	border-radius: 35px;
+	padding: 3px 20px 3px 20px;
+}
+
+.menu  .nav > li > a:hover
+{
+	box-shadow: 1px 1px 3px #55673B inset;
+	background-color: #829663;
+}
+
+.menu .opciones .nav li:hover > ul
+{
+	display: block;
+}
+
+
+.menu .opciones .nav ul
+{
+	padding: 5px 0px 5px 0px;
+	color: #7f7f75;
+	display: none;
+	list-style: none;
+	position: absolute;
+	background-color: #dbdac6;	
+	border: 1px solid #989b88;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px #989b88;
+	font-size: 10pt;
+	width: inherit;
+}
+
+.menu .opciones .nav ul li
+{
+	padding: 5px 15px 5px 15px;
+	text-align: left;
+}
+
+.menu .opciones .nav ul li a:hover
+{
+	color: #67675f;
+}
+
+.menu .opciones .nav ul li:first-child a:after {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #dbdac6;
+}
+*/
+.cuerpo
+{
+	min-height: 260px;
+}
+
+.cuerpo .contenedor_g
+{
+	padding-top: 20px;
+}
+
+/*
+.menu_busqueda
+{
+	width: 100%;
+	height: 30px;
+	color: #969E81;
+	font-size: 9pt;
+	margin-bottom: 20px;
+}
+
+.menu_busqueda .menup
+{
+	color: #8c9578;
+	font-weight: bold;
+}
+
+.menu_busqueda > img
+{
+	margin: 0px 10px 0px 10px;
+}
+
+.menu_busqueda form
+{
+	float: right;
+}
+
+.menu_busqueda input[type='text']
+{
+	color: #76796B;
+	width: 235px;
+	height: 18px;
+	border: 1px solid #acb298;
+	border-radius: 10px;
+	padding-left: 15px;
+	padding-top: 3px;
+	background-image: linear-gradient( #ebece4, #f1f5e6 );
+	box-shadow: 1px 1px 1px #C1C5B2 inset;
+}
+
+.menu_busqueda input[type='image']
+{
+	position: relative;
+	left: -30px;
+	top: 3px;
+}
+
+.menu_busqueda ::-webkit-input-placeholder { font-size: 8pt; color: #b6b8ad }
+.menu_busqueda ::-moz-placeholder { font-size: 9pt; color: #b6b8ad } /* firefox 19+ */
+.menu_busqueda :-ms-input-placeholder { font-size: 9pt; color: #b6b8ad } /* ie */
+
+.menu_izquierda
+{
+	font-family: Book Antiqua, Ebrima, Arial;
+	float: left;
+	color: #686964;
+	width: 240px;
+	min-height: 350px;
+	border: 1px solid #c8cdb6;
+	border-radius: 7px;
+	background-color: white;
+	margin-right: 25px;
+}
+
+.menu_izquierda .logo_menu
+{
+	background-image: url( '../images/menu_izq.png' );
+	background-repeat: no-repeat;
+	width: 174px;
+	height: 47px;
+	position: relative;
+	top: -4px;
+	left: 37px;
+	color: rgba( 255, 255, 255, 0.85 );
+	padding-top: 10px;
+	text-shadow: -1px -1px 2px #C70A27;
+	text-align: center;
+	font-size: 14pt;
+}
+
+.menu_izquierda a:hover
+{
+	color: #CB0E30;
+}
+
+.menu_izquierda li
+{
+	font-family: Ebrima, Arial;
+	padding-bottom: 22px;
+}
+
+.principal
+{
+	float: left;
+	width: calc( 100% - 50px );
+	border: 1px solid #c8cdb6;
+	border-radius: 7px;
+	background-color: white;
+	padding: 10px;
+}
+
+
+/* Libreria Kwicks */
+
+.kwicks {
+	list-style-type: none;
+	width: 100%;
+	height: 320px;
+	padding: 0px;
+	margin: 0px;
+}
+.kwicks > li {
+	height: inherit;
+	width: 150px;
+	margin-left: 5px;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+}
+
+.kwicks > li > img
+{
+	float: left;
+}
+
+.kwicks > li > .descripcion
+{
+	float: left;
+	background-color: rgba( 255, 255, 255, 0.8 );
+	min-width: 210px;
+	width: 100%;
+	padding: 20px 0px 20px 20px;
+	margin-top: -57px;
+	white-space: nowrap;
+}
+
+.kwicks .panel:first-child { box-shadow: none; }
+
+.kwicks .panel { box-shadow: -6px 0px 8px rgba(58, 58, 58, 0.8); }
+
+/* Aqui termina libreria Kwicks */
+
+.kwicks > li > .contenido {
+	float: left;
+	background-color: rgba( 255, 255, 255, 0.8 );
+	min-width: 210px;
+	width: 100%;
+	padding: 20px 0px 20px 20px;
+	margin-top: -57px;
+	white-space: nowrap;
+}
