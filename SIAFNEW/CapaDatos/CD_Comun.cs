@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Data.OracleClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using CapaEntidad;
 using System.Web.UI.WebControls;

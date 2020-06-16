@@ -110,7 +110,7 @@ namespace Ejemplo
             catch (Exception ex)
             {
                 lblError.Visible = true;
-                lblError.Text = "Error de Usuario o Contraseña ";
+                lblError.Text = "Error de Usuario o Contraseña "+ex.Message;
             }
         }
         public void IniciarSesion()

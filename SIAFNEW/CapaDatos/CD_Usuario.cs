@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Data.OracleClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Globalization;
 using CapaEntidad;
 #region Hecho por
@@ -20,7 +20,7 @@ namespace CapaDatos
             {
                 OracleDataReader dr = null;
                 string[] Parametros = { "p_usuario", "p_password", "p_sistema" };
-                string[] Valores = { Usuario.CUsuario, Usuario.Password,"15830"};
+                string[] Valores = { Usuario.CUsuario, Usuario.Password, "15830" };
 
                 CD_Datos CDDatos = new CD_Datos();
                 OracleCommand Cmm = CDDatos.GenerarOracleCommandCursor("PKG_CONTRATOS.Verifica_Usuario", ref dr, Parametros, Valores);
