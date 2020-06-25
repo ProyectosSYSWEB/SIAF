@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SAF.SiteMaster" %>
-<%@ Register Assembly="BusyBoxDotNet" Namespace="BusyBoxDotNet" TagPrefix="busyboxdotnet" %>
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml">
 <head runat="server">

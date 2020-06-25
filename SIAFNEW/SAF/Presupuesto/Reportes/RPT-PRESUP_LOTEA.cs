@@ -122,7 +122,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_2P_Dependencia {
+        public CrystalDecisions.Shared.IParameterField Parameter_1p_dependencia {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -130,7 +130,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_1p_dependencia {
+        public CrystalDecisions.Shared.IParameterField Parameter_2p_fecha_inicial {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -138,7 +138,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_2p_fecha_inicial {
+        public CrystalDecisions.Shared.IParameterField Parameter_3p_fecha_final {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -146,7 +146,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_3p_fecha_final {
+        public CrystalDecisions.Shared.IParameterField Parameter_4p_tipo {
             get {
                 return this.DataDefinition.ParameterFields[3];
             }
@@ -154,17 +154,9 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_4p_tipo {
-            get {
-                return this.DataDefinition.ParameterFields[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.Shared.IParameterField Parameter_6p_status {
             get {
-                return this.DataDefinition.ParameterFields[5];
+                return this.DataDefinition.ParameterFields[4];
             }
         }
     }
