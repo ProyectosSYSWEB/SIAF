@@ -12,7 +12,6 @@
 
     <title>Sistema | Sysweb</title>
 
-
      <!--Datos para el calendario-->        
     <script src="../../Scripts/Calendario/Validacion.js" type="text/javascript"></script>
     <script src="../../Scripts/Calendario/prototype.js?1195078948" type="text/javascript"></script>
