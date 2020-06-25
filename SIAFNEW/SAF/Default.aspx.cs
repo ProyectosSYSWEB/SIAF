@@ -37,27 +37,11 @@ namespace SAF
             SesionUsu = (Sesion)Session["Usuario"];
             if (!IsPostBack)
             {
-                busca_informativa();
-                Inicializar();
+                busca_informativa();               
                 MenuArbol();
             }
-            //else
-            //    MenuArbol();
         }
-        private void Inicializar()
-        {
-            //MenuArbol();
-            //MonitorConsultaGrid(grvAvances1, 1);
-            //MonitorConsultaGrid(grvAvances2, 2);
-            //MonitorConsultaGrid(grvAvances3, 3);
-            //MonitorConsultaGrid(grvAvances4, 4);
-            //MonitorConsultaGrid(grvAvances5, 5);
-            //MonitorConsultaGrid(grvAvances6, 6);
-            //MultiView1.ActiveViewIndex = 1;
-            //ConsultaChart();
-            // MultiView1.ActiveViewIndex = 0;
-            //ConsultaGrid();
-        }
+        
         private void busca_informativa()
         {
             try
@@ -66,7 +50,6 @@ namespace SAF
                 Objinformativa.usuario = SesionUsu.Usu_Nombre;
                 Objinformativa.ejercicio = SesionUsu.Usu_Ejercicio;
                 CNInformativa.Consultar_Observaciones(ref Objinformativa, ref Verificador);
-
                 if (Verificador == "0")
                 {
                     if (Objinformativa.observaciones.Length > 1)
@@ -84,7 +67,6 @@ namespace SAF
             {
                 lblMensaje.Text = ex.Message;
             }
-
         }
         private void MenuArbol()
         {
@@ -93,7 +75,7 @@ namespace SAF
             {
                 mnu.NombreMenu = "MenuTop";
                 mnu.UsuarioNombre = SesionUsu.Usu_Nombre;
-                mnu.Grupo = 15830;
+                mnu.Grupo = 1;
                 string siteMap = "ArchivosMenu/Web" + SesionUsu.Usu_Nombre + ".sitemap";
                 string fullPath = Path.Combine(Server.MapPath("~"), siteMap);
                 if (!File.Exists(fullPath))
@@ -122,6 +104,11 @@ namespace SAF
         protected void btnSi_Click(object sender, EventArgs e)
         {
             ModalPopupExtender.Hide();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

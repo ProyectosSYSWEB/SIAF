@@ -124,8 +124,3 @@ function ver_Adecuaciones(Reporte, centro_contable) {
     window.open('Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=' + Reporte + '&centro_contable=' + centro_contable, 'toolbar=no', 'location=no', 'menubar=no');
     return false;
 }
-function Veranexo_tabular_Exel(Reporte, Ejercicio, centro_contable, cuenta_mayor, mes_inicial, mes_final, nivel) {
-    //alert(Ejercicio);
-    window.open('../Reportes/VisualizadorCrystal.aspx?Tipo=' + Reporte + '&Ejercicio=' + Ejercicio + '&centro_contable=' + centro_contable + '&cuenta_mayor=' + cuenta_mayor + '&mes_inicial=' + mes_inicial + '&mes_final=' + mes_final + '&nivel=' + nivel, 'toolbar=no', 'location=no', 'menubar=no');
-    return false;
-}

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,7 +26,7 @@ namespace Ejemplo
         CN_Comun CNSesison = new CN_Comun();
         CN_Comun CNComun = new CN_Comun();
         List<Comun> Listsistema = new List<Comun>();
-
+        
         protected string Token = null;
         #endregion
         protected void Page_Load(object sender, EventArgs e)
@@ -68,7 +68,8 @@ namespace Ejemplo
                         }
                         else
                         {
-
+                            CNComun.LlenaCombo("pkg_contratos.Obt_Combo_sistemas", ref ddlSistemas, ref Listsistema);
+                            
                             if ((Request.QueryString["Usuario"] != null) && (Request.QueryString["Ejercicio"] != null))
                             {
                                 txtUsario.Text = Request.QueryString["Usuario"];
@@ -81,15 +82,15 @@ namespace Ejemplo
             {
                 lblError.Text = ex.Message;
             }
-        }
-        protected void btnLogin_Click(object sender, EventArgs e)
+        }     
+    protected void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
                 ValidarUsuario();
                 if (Usuario.Nombre != "")
                 {
-                    IniciarSesion();
+                    IniciarSesion();                   
                     string siteMap = "ArchivosMenu/Web" + SesionUsu.Usu_Nombre + ".sitemap";
                     string fullPath = Path.Combine(Server.MapPath("~"), siteMap);
                     if (File.Exists(fullPath))
@@ -110,14 +111,14 @@ namespace Ejemplo
             catch (Exception ex)
             {
                 lblError.Visible = true;
-                lblError.Text = "Error de Usuario o Contraseña "+ex.Message;
+                lblError.Text = "Error de Usuario o Contraseña ";
             }
         }
         public void IniciarSesion()
         {
             try
             {
-
+                
                 SesionUsu.CUsuario = Usuario.CUsuario;
                 SesionUsu.Usu_Nombre = Usuario.CUsuario;
                 SesionUsu.Usu_Ejercicio = ddlEjercicio.SelectedValue;
@@ -138,7 +139,7 @@ namespace Ejemplo
             try
             {
 
-                string strHostName = string.Empty;
+                string strHostName = string.Empty;             
                 // Getting Ip address of local machine…
                 // First get the host name of local machine.
                 strHostName = Dns.GetHostName();
@@ -148,8 +149,8 @@ namespace Ejemplo
                 ObjSesion = new Sesion();
                 ObjSesion.ip = hostIPs[1].ToString();
                 ObjSesion.mac_address = hostIPs[0].ToString();
-                ObjSesion.Usu_Nombre = Usuario.CUsuario;
-                ObjSesion.id_sistema = "15361";
+                ObjSesion.Usu_Nombre = Usuario.CUsuario;                
+                ObjSesion.id_sistema = "1";
                 CNSesison.insertar_datos_sesion(ref ObjSesion, ref Verificador);
             }
             catch (Exception ex)
@@ -158,7 +159,7 @@ namespace Ejemplo
             }
         }
 
-        public void ValidarUsuario()
+       public void ValidarUsuario()
         {
             try
             {
@@ -168,13 +169,28 @@ namespace Ejemplo
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message + ".-ValidarUsuario";
+                throw new Exception(ex.Message + ".-ValidarUsuario");
             }
         }
 
+        protected void btnIr_Click(object sender, EventArgs e)
+        {
+            if (ddlSistemas.SelectedValue != "X" )
+            {
+                Response.Redirect(ddlSistemas.SelectedValue, true);
+            }
+            else
+            {
+                btnLogin_Click(null, null);
+            }
+            
 
+        }
 
+        protected void ddlSistemas_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
