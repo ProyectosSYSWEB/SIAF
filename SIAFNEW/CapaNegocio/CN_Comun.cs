@@ -127,6 +127,32 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1,  string valor1, string USERBD)
+        {
+            try
+            {
+                List<Comun> Lista = new List<Comun>();
+                CD_Comun CDComun = new CD_Comun();
+                CDComun.LlenaCombo(SP, ref Lista, parametro1,  valor1, USERBD);
+                DDL.Items.Clear();
+                if (Lista.Count > 0)
+                {
+                    DDL.DataSource = Lista;
+                    DDL.DataValueField = "IdStr";
+                    DDL.DataTextField = "Descripcion";
+                    DDL.DataBind();
+
+                }
+                else
+                {
+                    DDL.Items.Add("La opción no contiene datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1, string parametro2, string parametro3, string valor1, string valor2, string valor3)
         {
             try
@@ -134,6 +160,58 @@ namespace CapaNegocio
                 List<Comun> Lista = new List<Comun>();
                 CD_Comun CDComun = new CD_Comun();
                 CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2, parametro3, valor1, valor2, valor3);
+                DDL.Items.Clear();
+                if (Lista.Count > 0)
+                {
+                    DDL.DataSource = Lista;
+                    DDL.DataValueField = "IdStr";
+                    DDL.DataTextField = "Descripcion";
+                    DDL.DataBind();
+
+                }
+                else
+                {
+                    DDL.Items.Add("La opción no contiene datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1, string parametro2,  string valor1, string valor2, string valor3)
+        {
+            try
+            {
+                List<Comun> Lista = new List<Comun>();
+                CD_Comun CDComun = new CD_Comun();
+                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2,  valor1, valor2, valor3);
+                DDL.Items.Clear();
+                if (Lista.Count > 0)
+                {
+                    DDL.DataSource = Lista;
+                    DDL.DataValueField = "IdStr";
+                    DDL.DataTextField = "Descripcion";
+                    DDL.DataBind();
+
+                }
+                else
+                {
+                    DDL.Items.Add("La opción no contiene datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1, string parametro2, string parametro3, string valor1, string valor2, string valor3, string valor4)
+        {
+            try
+            {
+                List<Comun> Lista = new List<Comun>();
+                CD_Comun CDComun = new CD_Comun();
+                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2, parametro3, valor1, valor2, valor3, valor4);
                 DDL.Items.Clear();
                 if (Lista.Count > 0)
                 {
@@ -347,62 +425,6 @@ namespace CapaNegocio
                 List<Comun> Lista = new List<Comun>();
                 CD_Comun CDComun = new CD_Comun();
                 CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2, parametro3, parametro4, valor1, valor2, valor3, valor4);
-                DDL.Items.Clear();
-                if (Lista.Count > 0)
-                {
-                    Etiquetas = Lista;
-                    DDL.DataSource = Lista;
-                    DDL.DataValueField = "IdStr";
-                    DDL.DataTextField = "Descripcion";
-
-                    DDL.DataBind();
-                }
-                else
-                {
-                    DDL.Items.Add("La opción no contiene datos");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1, string parametro2, string parametro3, string parametro4, string parametro5, string valor1, string valor2, string valor3, string valor4, string valor5, ref List<Comun> Etiquetas)
-        {
-            try
-            {
-                List<Comun> Lista = new List<Comun>();
-                CD_Comun CDComun = new CD_Comun();
-                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2, parametro3, parametro4,parametro5, valor1, valor2, valor3, valor4,valor5);
-                DDL.Items.Clear();
-                if (Lista.Count > 0)
-                {
-                    Etiquetas = Lista;
-                    DDL.DataSource = Lista;
-                    DDL.DataValueField = "IdStr";
-                    DDL.DataTextField = "Descripcion";
-
-                    DDL.DataBind();
-                }
-                else
-                {
-                    DDL.Items.Add("La opción no contiene datos");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public void LlenaCombo(string SP, ref ListBox DDL, string parametro1,  string valor1,  ref List<Comun> Etiquetas)
-        {
-            try
-            {
-                List<Comun> Lista = new List<Comun>();
-                CD_Comun CDComun = new CD_Comun();
-                CDComun.LlenaCombo(SP, ref Lista, parametro1,  valor1);
                 DDL.Items.Clear();
                 if (Lista.Count > 0)
                 {
@@ -725,21 +747,18 @@ namespace CapaNegocio
         }
         public void Limpiador_controles(Control control)
         {            
-                var textbox = control as TextBox;
-                if (textbox != null)
-                {
-                    textbox.Text = string.Empty;                    
-                }
-                //var dropDownList = control as DropDownList;
-                //if (dropDownList != null)
-                //{
-                //    dropDownList.SelectedIndex = 0;
-                //}
+            var ddl = control as DropDownList;
+            var textbox = control as TextBox;
 
-                foreach (Control childControl in control.Controls)
-                {
-                    Limpiador_controles(childControl);
-                }                       
+            if (textbox != null)
+            {
+
+                textbox.Text = "0";
+            }
+            foreach (Control childControl in control.Controls)
+            {
+                Limpiador_controles(childControl);
+            }
         }
         public void Inhabilitar_controles(Control control)
         {
@@ -747,20 +766,9 @@ namespace CapaNegocio
             var ddl = control as DropDownList;
             
             if (textbox != null)
-            {
-                
+            {   
                 textbox.Enabled =false;
-            }
-            else if (ddl != null)
-            {
-                ddl.Enabled=false;
-            }
-            //var dropDownList = control as DropDownList;
-            //if (dropDownList != null)
-            //{
-            //    dropDownList.SelectedIndex = 0;
-            //}
-
+            }                     
             foreach (Control childControl in control.Controls)
             {
                 Inhabilitar_controles(childControl);
@@ -773,19 +781,8 @@ namespace CapaNegocio
 
             if (textbox != null)
             {
-
-                textbox.Enabled = true;
-            }
-            else if (ddl != null)
-            {
-                ddl.Enabled = true;
-            }
-            //var dropDownList = control as DropDownList;
-            //if (dropDownList != null)
-            //{
-            //    dropDownList.SelectedIndex = 0;
-            //}
-
+                textbox.Enabled = true ;
+            }           
             foreach (Control childControl in control.Controls)
             {
                 Habilitar_controles(childControl);
@@ -803,12 +800,12 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public void Monitor_Patrimonio(string Centro_Contable, ref List<Comun> List)
+        public void Monitor_Patrimonio(string Usuario, string Sistema, string Centro_Contable, ref List<Comun> List)
         {
             try
             {
                 CD_Comun CDMonitor = new CD_Comun();
-                CDMonitor.Monitor_Patrimonio(Centro_Contable, ref List);
+                CDMonitor.Monitor_Patrimonio(Usuario, Sistema, Centro_Contable, ref List);
             }
             catch (Exception ex)
             {
@@ -913,14 +910,5 @@ namespace CapaNegocio
         //    }
 
         //}
-        public void VerificaTextoMensajeError(ref string Mensaje)
-        {
-            Mensaje = Mensaje.Replace("\r", "");
-            Mensaje = Mensaje.Replace("\n", "");
-            Mensaje = Mensaje.Replace("'", "");
-            if (Mensaje.Length >= 50)
-                Mensaje.Substring(0, 45);
-
-        }
     }
 }

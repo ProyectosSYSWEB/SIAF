@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Oracle.ManagedDataAccess.Client;
+using System.Data.OracleClient;
 using System.Data;
 using CapaEntidad;
 

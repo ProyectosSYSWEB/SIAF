@@ -19,8 +19,8 @@ namespace SAF.Adquisiciones.Form
         Sesion SesionUsu = new Sesion();
         CN_Comun CNComun = new CN_Comun();
         string USERBD = "ADQUISICIONES";
-        CN_Adquisiciones CNadquisiciones = new CN_Adquisiciones();
-        Adquisicion objadquisiciones = new Adquisicion();
+        //CN_Adquisiciones CNadquisiciones = new CN_Adquisiciones();
+        //Adquisicion objadquisiciones = new Adquisicion();
         private static List<Comun> ListConceptos = new List<Comun>();
 
         #endregion     
@@ -64,7 +64,7 @@ namespace SAF.Adquisiciones.Form
                 DataTable dt = new DataTable();
 
                 GridCodigo.DataSource = dt;
-                GridCodigo.DataSource = GetList();
+                //GridCodigo.DataSource = GetList();
                 GridCodigo.DataBind();
 
             }
@@ -73,28 +73,28 @@ namespace SAF.Adquisiciones.Form
 
             }
         }
-        private List<Adquisicion> GetList()
-        {
-            try
-            {
-                List<Adquisicion> List = new List<Adquisicion>();
+        //private List<Adquisicion> GetList()
+        //{
+        //    try
+        //    {
+        //        List<Adquisicion> List = new List<Adquisicion>();
 
-                objadquisiciones.Dependencia  = DDLDependencia.SelectedValue   ;
-                objadquisiciones.Funcion_programa  = DDLPrograma.SelectedValue ;
-                objadquisiciones.Subprograma = DDLSubPrograma.SelectedValue;
-                objadquisiciones.Proyecto = DDLProyecto.SelectedValue;
-                objadquisiciones.Partida = DDLPartida.SelectedValue;
-                objadquisiciones.Fuente = DDLFuente.SelectedValue;
+        //        objadquisiciones.Dependencia  = DDLDependencia.SelectedValue   ;
+        //        objadquisiciones.Funcion_programa  = DDLPrograma.SelectedValue ;
+        //        objadquisiciones.Subprograma = DDLSubPrograma.SelectedValue;
+        //        objadquisiciones.Proyecto = DDLProyecto.SelectedValue;
+        //        objadquisiciones.Partida = DDLPartida.SelectedValue;
+        //        objadquisiciones.Fuente = DDLFuente.SelectedValue;
 
-                CNadquisiciones.Grid_codigo(ref objadquisiciones, ref   List);
+        //        CNadquisiciones.Grid_codigo(ref objadquisiciones, ref   List);
 
-                return List;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        //        return List;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
         protected void GridCodigo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 

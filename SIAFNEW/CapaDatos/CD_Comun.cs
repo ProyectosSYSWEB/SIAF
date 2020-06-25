@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Oracle.ManagedDataAccess.Client;
+using System.Data.OracleClient;
 using System.Data;
 using CapaEntidad;
 using System.Web.UI.WebControls;
@@ -263,15 +263,6 @@ namespace CapaDatos
                         Comun.EtiquetaCuatro = Convert.ToString(dr.GetValue(4));
                         Comun.EtiquetaCinco = Convert.ToString(dr.GetValue(5));
                     }
-                    else if (dr.FieldCount == 7)
-                    {
-
-                        Comun.EtiquetaDos = Convert.ToString(dr.GetValue(2));
-                        Comun.EtiquetaTres = Convert.ToString(dr.GetValue(3));
-                        Comun.EtiquetaCuatro = Convert.ToString(dr.GetValue(4));
-                        Comun.EtiquetaCinco = Convert.ToString(dr.GetValue(5));
-                        Comun.EtiquetaSeis = Convert.ToString(dr.GetValue(6));
-                    }
                     list.Add(Comun);
                 }
                 dr.Close();
@@ -440,15 +431,6 @@ namespace CapaDatos
                         Comun.EtiquetaCuatro = Convert.ToString(dr.GetValue(4));
                         Comun.EtiquetaCinco = Convert.ToString(dr.GetValue(5));
                     }
-                    else if (dr.FieldCount == 7)
-                    {
-
-                        Comun.EtiquetaDos = Convert.ToString(dr.GetValue(2));
-                        Comun.EtiquetaTres = Convert.ToString(dr.GetValue(3));
-                        Comun.EtiquetaCuatro = Convert.ToString(dr.GetValue(4));
-                        Comun.EtiquetaCinco = Convert.ToString(dr.GetValue(5));
-                        Comun.EtiquetaSeis = Convert.ToString(dr.GetValue(6));
-                    }
                     list.Add(Comun);
                 }
                 dr.Close();
@@ -474,6 +456,59 @@ namespace CapaDatos
 
                 string[] Parametros = { parametro1, parametro2 };
                 object[] Valores = { Valor1, Valor2 };
+
+                Cmm = CDDatos.GenerarOracleCommandCursor(SP, ref dr, Parametros, Valores);
+
+                Comun Comun = default(Comun);
+                while (dr.Read())
+                {
+                    Comun = new Comun();
+                    Comun.IdStr = Convert.ToString(dr.GetValue(0));
+                    Comun.Descripcion = Convert.ToString(dr.GetValue(1));
+                    if (dr.FieldCount == 3)
+                    {
+
+                        Comun.EtiquetaDos = Convert.ToString(dr.GetValue(2));
+
+                    }
+                    else if (dr.FieldCount == 4)
+                    {
+
+                        Comun.EtiquetaDos = Convert.ToString(dr.GetValue(2));
+                        Comun.EtiquetaTres = Convert.ToString(dr.GetValue(3));
+                    }
+                    else if (dr.FieldCount == 5)
+                    {
+
+                        Comun.EtiquetaDos = Convert.ToString(dr.GetValue(2));
+                        Comun.EtiquetaTres = Convert.ToString(dr.GetValue(3));
+                        Comun.EtiquetaCuatro = Convert.ToString(dr.GetValue(4));
+                    }
+                    list.Add(Comun);
+                }
+                dr.Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmm);
+            }
+        }
+        public void LlenaCombo(string SP, ref List<Comun> list, string parametro1, string parametro2, string parametro3, string Valor1, string Valor2, string valor3, string USERBD)
+        {
+            CD_Datos CDDatos = new CD_Datos(USERBD);
+            OracleCommand Cmm = null;
+            try
+            {
+                OracleDataReader dr = null;
+
+
+                string[] Parametros = { parametro1, parametro2, parametro3 };
+                object[] Valores = { Valor1, Valor2, valor3 };
 
                 Cmm = CDDatos.GenerarOracleCommandCursor(SP, ref dr, Parametros, Valores);
 
@@ -618,60 +653,7 @@ namespace CapaDatos
             {
                 CDDatos.LimpiarOracleCommand(ref Cmm);
             }
-        }        
-        public void LlenaCombo(string SP, ref List<Comun> list, string parametro1, string parametro2, string parametro3, string Valor1, string Valor2, string valor3, string USERBD)
-        {
-            CD_Datos CDDatos = new CD_Datos(USERBD);
-            OracleCommand Cmm = null;
-            try
-            {
-                OracleDataReader dr = null;
-
-
-                string[] Parametros = { parametro1, parametro2, parametro3 };
-                object[] Valores = { Valor1, Valor2, valor3 };
-
-                Cmm = CDDatos.GenerarOracleCommandCursor(SP, ref dr, Parametros, Valores);
-
-                Comun Comun = default(Comun);
-                while (dr.Read())
-                {
-                    Comun = new Comun();
-                    Comun.IdStr = Convert.ToString(dr.GetValue(0));
-                    Comun.Descripcion = Convert.ToString(dr.GetValue(1));
-                    if (dr.FieldCount == 3)
-                    {
-
-                        Comun.EtiquetaDos = Convert.ToString(dr.GetValue(2));
-
-                    }
-                    else if (dr.FieldCount == 4)
-                    {
-
-                        Comun.EtiquetaDos = Convert.ToString(dr.GetValue(2));
-                        Comun.EtiquetaTres = Convert.ToString(dr.GetValue(3));
-                    }
-                    else if (dr.FieldCount == 5)
-                    {
-
-                        Comun.EtiquetaDos = Convert.ToString(dr.GetValue(2));
-                        Comun.EtiquetaTres = Convert.ToString(dr.GetValue(3));
-                        Comun.EtiquetaCuatro = Convert.ToString(dr.GetValue(4));
-                    }
-                    list.Add(Comun);
-                }
-                dr.Close();
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                CDDatos.LimpiarOracleCommand(ref Cmm);
-            }
-        }
+        }                
         public void LlenaCombo(string SP, ref List<Comun> list, string parametro1, string parametro2, string parametro3, string parametro4, string Valor1, string Valor2, string valor3, string valor4, string USERBD)
         {
             CD_Datos CDDatos = new CD_Datos(USERBD);
@@ -807,7 +789,7 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-        public void Monitor_Patrimonio(string Centro_Contable, ref List<Comun> List)
+        public void Monitor_Patrimonio(string Usuario, string Sistema, string Centro_Contable, ref List<Comun> List)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand cmm = null;
@@ -815,8 +797,8 @@ namespace CapaDatos
             {
                 OracleDataReader dr = null;
 
-                String[] Parametros = { "p_centro_contable" };
-                String[] Valores = { Centro_Contable };
+                String[] Parametros = { "p_usuario", "p_id_sistema", "p_centro_contable" };
+                String[] Valores = { Usuario, Sistema, Centro_Contable };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("pkg_patrimonio.Obt_Grid_Monitor_Patrimonio", ref dr, Parametros, Valores);
                 while (dr.Read())

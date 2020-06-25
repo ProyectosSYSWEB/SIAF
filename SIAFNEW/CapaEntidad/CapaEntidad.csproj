@@ -40,31 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adquisicion.cs" />
-    <Compile Include="Baja.cs" />
     <Compile Include="Basicos.cs" />
-    <Compile Include="Bien.cs" />
-    <Compile Include="Bienes.cs" />
-    <Compile Include="Centros_Contables.cs" />
-    <Compile Include="Centros_Trabajo.cs" />
-    <Compile Include="Ministracion.cs" />
-    <Compile Include="Poliza_Conciliacion.cs" />
-    <Compile Include="Configuracion_forms.cs" />
-    <Compile Include="Cuentas_Bancarias.cs" />
     <Compile Include="cuentas_contables.cs" />
-    <Compile Include="Cuentas_Mayor.cs" />
     <Compile Include="Mnu.cs" />
-    <Compile Include="Poliza.cs" />
-    <Compile Include="Poliza_CFDI.cs" />
-    <Compile Include="Poliza_Detalle.cs" />
     <Compile Include="Presupues.cs" />
+    <Compile Include="Pres_Costeo.cs" />
     <Compile Include="Pres_Documento.cs" />
     <Compile Include="Pres_Documento_Detalle.cs" />
+    <Compile Include="Pres_Nomina.cs" />
+    <Compile Include="Pres_Plantilla.cs" />
     <Compile Include="Pres_Reportes.cs" />
     <Compile Include="Sesion.cs" />
-    <Compile Include="Titulares.cs" />
-    <Compile Include="Transferencia.cs" />
-    <Compile Include="Transferencia_Detalle.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Comun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -58,6 +58,15 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.Label lblDependencia0;
         
         /// <summary>
+        /// Control UpdatePanel126.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel126;
+        
+        /// <summary>
         /// Control ddlDependencia.
         /// </summary>
         /// <remarks>
@@ -65,15 +74,6 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDependencia;
-        
-        /// <summary>
-        /// Control UpdatePanel101.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel101;
         
         /// <summary>
         /// Control UpdatePanel102.
@@ -283,13 +283,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.ImageButton imgBttnPDF_Lotes;
         
         /// <summary>
-        /// Control imgBttnExcel.
+        /// Control imgBttnXLS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBttnExcel;
+        protected global::System.Web.UI.WebControls.ImageButton imgBttnXLS;
         
         /// <summary>
         /// Control View2.
@@ -785,6 +785,42 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updProDepen;
+        
+        /// <summary>
+        /// Control lblCodigoProg0.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodigoProg0;
+        
+        /// <summary>
+        /// Control ddl_capitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_capitulo;
+        
+        /// <summary>
+        /// Control lblCodigoProg1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodigoProg1;
+        
+        /// <summary>
+        /// Control ddl_fuente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_fuente;
         
         /// <summary>
         /// Control lblCodigoProg.

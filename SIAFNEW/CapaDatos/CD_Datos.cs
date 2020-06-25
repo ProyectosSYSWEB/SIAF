@@ -1,11 +1,9 @@
-﻿using Oracle.ManagedDataAccess.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Globalization;
 using System.Data;
-using System.Linq;
-using System.Web;
-
-
+using System.Data.OracleClient;
 #region Hecho por
 //Nombre:      Lisseth Gtz. Gómez
 //Correo:      lis_go82@hotmail.com
@@ -19,25 +17,25 @@ namespace CapaDatos
         #region Variable
 
         private OracleConnection Cnn;
-        private OracleTransaction trans = null;
+        private OracleTransaction trans;
         OracleCommand functionReturnValue = default(OracleCommand);
-        OracleCommand cmd = default(OracleCommand);
-
         #endregion
         #region Constructor
         public CD_Datos()
         {
-            string conexion = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=148.222.11.4)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=SAF1)));User Id=secadmin;Password=DSIA2014;Enlist=false;Pooling=true";
-            this.Cnn = new OracleConnection(conexion);
+            string StrConexion = "Data Source=dsia;User ID=SAF; Password=DSIA2014; Unicode=True";
+            this.Cnn = new OracleConnection(StrConexion);
+            
         }
-        public CD_Datos(string userBD)
+        public CD_Datos(string userBD) 
         {
             string StrConexion = string.Empty;
             if (userBD == "ADQUISICIONES") StrConexion = "Data Source=dsia;User ID=adquisiciones; Password=UNACH09; Unicode=True";
-            else if (userBD == "siga") StrConexion = "Data Source=dsia;User ID=siga09; Password=m3f1st0; Unicode=True";
+            else if (userBD=="siga") StrConexion = "Data Source=dsia;User ID=siga09; Password=m3f1st0; Unicode=True";
+            else if (userBD == "DPP") StrConexion = "Data Source=dsia;User ID=DPP; Password=ORACLE2018; Unicode=True";
             else
                 StrConexion = "Data Source=dsia;User ID=SAF; Password=dsia2014; Unicode=True";
-
+            
             this.Cnn = new OracleConnection(StrConexion);
         }
         #endregion
@@ -68,7 +66,7 @@ namespace CapaDatos
 
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
@@ -89,14 +87,12 @@ namespace CapaDatos
 
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
-                if (trans == null)
-                {
-                    Cnn.Open();
-                }
+                if (trans == null) Cnn.Open();
+
                 OracleDataAdapter da = new OracleDataAdapter(functionReturnValue);
                 dt = new DataTable(tableName);
                 da.Fill(dt);
@@ -113,7 +109,7 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
@@ -121,9 +117,7 @@ namespace CapaDatos
 
                 if (Parametros != null)
                     for (int i = 0; i <= Parametros.Length - 1; i++)
-                        cmd.Parameters.Add(Parametros[i], OracleDbType.Varchar2).Value = Valores[i];
-
-
+                        functionReturnValue.Parameters.AddWithValue(Parametros[i], Valores[i]);
                 OracleDataAdapter da = new OracleDataAdapter(functionReturnValue);
                 dt = new DataTable(tableName);
                 da.Fill(dt);
@@ -140,15 +134,15 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
-                cmd.CommandType = CommandType.StoredProcedure;
+                functionReturnValue = new OracleCommand(SP, Cnn);
+                functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
                 if (trans == null) Cnn.Open();
 
                 if (Parametros != null)
                     for (int i = 0; i <= Parametros.Length - 1; i++)
-                        cmd.Parameters.Add(Parametros[i], OracleDbType.Varchar2).Value = Valores[i];
+                        functionReturnValue.Parameters.AddWithValue(Parametros[i], Valores[i]);
                 dr = functionReturnValue.ExecuteReader(CommandBehavior.CloseConnection);
             }
             catch (Exception ex)
@@ -163,13 +157,13 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
                 if (trans == null) Cnn.Open();
 
-                functionReturnValue.Parameters.Add("p_registros", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                functionReturnValue.Parameters.Add("p_registros", OracleType.Cursor).Direction = ParameterDirection.Output;
                 dr = functionReturnValue.ExecuteReader();
             }
             catch (Exception ex)
@@ -181,23 +175,19 @@ namespace CapaDatos
         }
         public OracleCommand GenerarOracleCommandCursor(string SP, ref OracleDataReader dr, string[] Parametros, object[] Valores)
         {
-            string nombre = SP;
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                if (trans != null) cmd.Transaction = trans;
-                if (trans == null)
-                {
-                    Cnn.Open();
-                }
+                functionReturnValue = new OracleCommand(SP, Cnn);
+                functionReturnValue.CommandType = CommandType.StoredProcedure;
+
+                if (trans != null) functionReturnValue.Transaction = trans;
+                if (trans == null) Cnn.Open();
+
                 if (Parametros != null)
                     for (int i = 0; i <= Parametros.Length - 1; i++)
-                        cmd.Parameters.Add(Parametros[i], OracleDbType.Varchar2).Value = Valores[i];
-
-                cmd.Parameters.Add("p_registros", OracleDbType.RefCursor).Direction = System.Data.ParameterDirection.Output;
-                dr = cmd.ExecuteReader();
-                return cmd;
+                        functionReturnValue.Parameters.Add(Parametros[i], OracleType.VarChar).Value = Valores[i];
+                functionReturnValue.Parameters.Add("p_registros", OracleType.Cursor).Direction = ParameterDirection.Output;
+                dr = functionReturnValue.ExecuteReader();
             }
             catch (Exception ex)
             {
@@ -210,7 +200,7 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
@@ -219,14 +209,14 @@ namespace CapaDatos
                 if (Parametros != null)
                     for (int i = 0; i <= Parametros.Length - 1; i++)
                     {
-                        functionReturnValue.Parameters.Add(Parametros[i], OracleDbType.Varchar2).Value = Valores[i];
+                        functionReturnValue.Parameters.Add(Parametros[i], OracleType.VarChar).Value = Valores[i];
                     }
                 for (int i = 0; i < ParametrosOut.Length; i++)
                 {
-                    functionReturnValue.Parameters.Add(ParametrosOut[i], OracleDbType.Varchar2, 1024).Direction = ParameterDirection.Output;
+                    functionReturnValue.Parameters.Add(ParametrosOut[i], OracleType.VarChar, 1024).Direction = ParameterDirection.Output;
                 }
 
-                functionReturnValue.Parameters.Add("p_registros", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                functionReturnValue.Parameters.Add("p_registros", OracleType.Cursor).Direction = ParameterDirection.Output;
                 dr = functionReturnValue.ExecuteReader();
             }
             catch (Exception ex)
@@ -243,7 +233,7 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
@@ -263,7 +253,7 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
@@ -271,7 +261,7 @@ namespace CapaDatos
 
                 if (Parametros != null)
                     for (int i = 0; i <= Parametros.Length - 1; i++)
-                        cmd.Parameters.Add(Parametros[i], OracleDbType.Varchar2).Value = Valores[i];
+                        functionReturnValue.Parameters.AddWithValue(Parametros[i], Valores[i]);
                 object res = functionReturnValue.ExecuteScalar();
                 verificador = Convert.ToString(res);
             }
@@ -286,7 +276,7 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
@@ -294,7 +284,7 @@ namespace CapaDatos
 
                 if (Parametros != null)
                     for (int i = 0; i <= Parametros.Length - 1; i++)
-                        cmd.Parameters.Add(Parametros[i], OracleDbType.Varchar2).Value = Valores[i];
+                        functionReturnValue.Parameters.AddWithValue(Parametros[i], Valores[i]);
                 resultado = functionReturnValue.ExecuteScalar();
 
             }
@@ -323,28 +313,24 @@ namespace CapaDatos
                 //string tipo = valor.GetType().Name;
                 if (valor == "Int32")
                 {
-                    cmd.Parameters.Add(ParametrosIn[i], OracleDbType.Int32).Value = Valores[i];
-                }
-                else if (valor == "Double")
-                {
-                    cmd.Parameters.Add(ParametrosIn[i], OracleDbType.Double).Value = Valores[i];
+                    cmd.Parameters.Add(ParametrosIn[i], OracleType.Number).Value = Valores[i];
                 }
                 else if (valor == "Byte[]")
                 {
                     //blob = (byte[])Valores[i];
                     byte[] blob_img = (byte[])Valores[i];
-                    cmd.Parameters.Add(ParametrosIn[i], OracleDbType.Blob).Value = blob_img;
+                    cmd.Parameters.Add(ParametrosIn[i], OracleType.Blob).Value = blob_img;
                 }
                 else
                 {
-                    cmd.Parameters.Add(ParametrosIn[i], OracleDbType.Varchar2).Value = Valores[i];
+                    cmd.Parameters.Add(ParametrosIn[i], OracleType.VarChar).Value = Valores[i];
                 }
 
             }
 
             for (int i = 0; i < ParametrosOut.Length; i++)
             {
-                cmd.Parameters.Add(ParametrosOut[i], OracleDbType.Varchar2, 1024).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(ParametrosOut[i], OracleType.VarChar, 1024).Direction = ParameterDirection.Output;
             }
 
 
@@ -353,7 +339,7 @@ namespace CapaDatos
                 if (trans != null) cmd.Transaction = trans;
                 if (trans == null) Cnn.Open();
                 cmd.ExecuteNonQuery();
-                Verificador = cmd.Parameters["P_Bandera"].Value.ToString();
+                Verificador = cmd.Parameters["p_Bandera"].Value.ToString();
                 return cmd;
             }
 
@@ -373,12 +359,12 @@ namespace CapaDatos
 
             for (int i = 0; i < ParametrosIn.Length; i++)
             {
-                cmd.Parameters.Add(ParametrosIn[i], OracleDbType.Varchar2).Value = Valores[i];
+                cmd.Parameters.Add(ParametrosIn[i], OracleType.VarChar).Value = Valores[i];
             }
 
             for (int i = 0; i < ParametrosOut.Length; i++)
             {
-                cmd.Parameters.Add(ParametrosOut[i], OracleDbType.Varchar2, 1024).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(ParametrosOut[i], OracleType.VarChar, 1024).Direction = ParameterDirection.Output;
             }
 
 
@@ -403,7 +389,7 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
@@ -411,7 +397,7 @@ namespace CapaDatos
 
                 if (Parametros != null)
                     for (int i = 0; i <= Parametros.Length - 1; i++)
-                        cmd.Parameters.Add(Parametros[i], OracleDbType.Varchar2).Value = Valores[i];
+                        functionReturnValue.Parameters.AddWithValue(Parametros[i], Valores[i]);
                 functionReturnValue.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -428,7 +414,7 @@ namespace CapaDatos
         {
             try
             {
-                cmd = new OracleCommand(SP, Cnn);
+                functionReturnValue = new OracleCommand(SP, Cnn);
                 functionReturnValue.CommandType = CommandType.StoredProcedure;
 
                 if (trans != null) functionReturnValue.Transaction = trans;
@@ -436,8 +422,8 @@ namespace CapaDatos
 
                 if (Parametros != null)
                     for (int i = 0; i <= Parametros.Length - 1; i++)
-                        functionReturnValue.Parameters.Add(Parametros[i], OracleDbType.Varchar2).Value = Valores[i];
-                functionReturnValue.Parameters.Add("p_registros", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                        functionReturnValue.Parameters.Add(Parametros[i], OracleType.VarChar).Value = Valores[i];
+                functionReturnValue.Parameters.Add("p_registros", OracleType.Cursor).Direction = ParameterDirection.Output;
                 da.SelectCommand.ExecuteNonQuery();
 
             }

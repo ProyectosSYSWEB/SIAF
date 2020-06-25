@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Oracle.ManagedDataAccess.Client;
+using System.Data.OracleClient;
 using System.Linq;
 using System.Text;
 using CapaEntidad;

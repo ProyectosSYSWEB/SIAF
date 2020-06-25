@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E1C74038-8BD0-4C5A-AF64-185EB99D5819}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SAF</RootNamespace>
+    <AssemblyName>SAF</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=15.1.4.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.15.1.4.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BusyBoxDotNet, Version=0.2.1.1366, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Lis\Programas\BusyBoxDotNet-0.2.1-bin\BusyBoxDotNet-0.2.1-bin\BusyBoxDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SubgurimSiteMap">
+      <HintPath>..\..\..\..\..\Downloads\SiteMapGenerator_v1.1\Release 1.1 For Net 4.0\SubgurimSiteMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Acceso.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx" />
+    <Content Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx" />
+    <Content Include="Adquisiciones\Form\FRMSeguimiento.aspx" />
+    <Content Include="Adquisiciones\Form\FRMTablainformativa.aspx" />
+    <Content Include="Adquisiciones\Form\FRMEditar_solicitud.aspx" />
+    <Content Include="Configuracion\frmConfiguracionForms.aspx" />
+    <Content Include="Inicio.html" />
+    <Content Include="Default.aspx" />
+    <Content Include="Default2.aspx" />
+    <Content Include="images\FreeGreatPicture.com-50235-tablet-pc-operating-figures.jpg" />
+    <Content Include="images\Suspendido.PNG" />
+    <Content Include="mapaChiapas.aspx" />
+    <Content Include="Adquisiciones\images\add_16.png" />
+    <Content Include="Adquisiciones\images\ajax-loader.gif" />
+    <Content Include="Adquisiciones\images\back_menu.gif" />
+    <Content Include="Adquisiciones\images\bg_navder.jpg" />
+    <Content Include="Adquisiciones\images\bg_navgene.jpg" />
+    <Content Include="Adquisiciones\images\bg_navgene_P.jpg" />
+    <Content Include="Adquisiciones\images\bg_navizq.gif" />
+    <Content Include="Adquisiciones\images\bg_navizq.jpg" />
+    <Content Include="Adquisiciones\images\bg_navizq_on.jpg" />
+    <Content Include="Adquisiciones\images\blanco.gif" />
+    <Content Include="Adquisiciones\images\Calendar_scheduleHS.png" />
+    <Content Include="Adquisiciones\images\cerrar.gif" />
+    <Content Include="Adquisiciones\images\collapse_blue.png" />
+    <Content Include="Adquisiciones\images\collapse_blue_.jpg" />
+    <Content Include="Adquisiciones\images\delete.png" />
+    <Content Include="Adquisiciones\images\desplegar.gif" />
+    <Content Include="Adquisiciones\images\encabezado.png" />
+    <Content Include="Adquisiciones\images\encabezado17.png" />
+    <Content Include="Adquisiciones\images\expand_blue.png" />
+    <Content Include="Adquisiciones\images\expand_blue_.jpg" />
+    <Content Include="Adquisiciones\images\fondo.png" />
+    <Content Include="Adquisiciones\images\mail_replylist.png" />
+    <Content Include="Adquisiciones\images\shareit.gif" />
+    <Content Include="Global.asax" />
+    <Content Include="images\1.png" />
+    <Content Include="images\404 error.png" />
+    <Content Include="images\404error.png" />
+    <Content Include="images\acceso.png" />
+    <Content Include="images\Activo.PNG" />
+    <Content Include="images\ajax_loader_gray_512.gif" />
+    <Content Include="images\Baja.PNG" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bg2.jpg" />
+    <Content Include="images\bg3.jpg" />
+    <Content Include="images\blurred.jpg" />
+    <Content Include="images\busqueda.png" />
+    <Content Include="images\calendario.gif" />
+    <Content Include="images\cuadro.tif" />
+    <Content Include="images\date-bg1.gif" />
+    <Content Include="images\date-bg2.gif" />
+    <Content Include="images\date-bg3.gif" />
+    <Content Include="images\date-bg4.gif" />
+    <Content Include="images\encabezado.PNG" />
+    <Content Include="images\encabezado2.PNG" />
+    <Content Include="images\encabezado3.PNG" />
+    <Content Include="images\excel.jpg" />
+    <Content Include="images\excel2.jpg" />
+    <Content Include="images\facebook.png" />
+    <Content Include="images\flecha.png" />
+    <Content Include="images\fondo.jpg" />
+    <Content Include="images\fondo.png" />
+    <Content Include="images\image-1.jpg" />
+    <Content Include="images\image-2.jpg" />
+    <Content Include="images\image-4.jpg" />
+    <Content Include="images\invertir-grande.png" />
+    <Content Include="images\loading_map.gif" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="images\logo1.png" />
+    <Content Include="images\logo2.png" />
+    <Content Include="images\logo_unach.PNG" />
+    <Content Include="images\menu_izq.png" />
+    <Content Include="images\Movie12.gif" />
+    <Content Include="images\Naturaleza.jpg" />
+    <Content Include="images\noise.png" />
+    <Content Include="images\paisaje.png" />
+    <Content Include="images\pasto.png" />
+    <Content Include="images\patron_cuerpo.jpg" />
+    <Content Include="images\patron_header.jpg" />
+    <Content Include="images\patron_menu.jpg" />
+    <Content Include="images\pdf.jpg" />
+    <Content Include="images\ps1.jpg" />
+    <Content Include="images\ps2.jpg" />
+    <Content Include="images\ps3.jpg" />
+    <Content Include="images\ps4.jpg" />
+    <Content Include="images\ps5.jpg" />
+    <Content Include="images\qqqqqqqqq.jpg" />
+    <Content Include="images\relieve.png" />
+    <Content Include="images\relieve2.jpg" />
+    <Content Include="images\Search.png" />
+    <Content Include="images\search_icon.png" />
+    <Content Include="images\semaforo_a - copia.PNG" />
+    <Content Include="images\semaforo_a.PNG" />
+    <Content Include="images\semaforo_r - copia.PNG" />
+    <Content Include="images\semaforo_r.PNG" />
+    <Content Include="images\semaforo_v - copia.PNG" />
+    <Content Include="images\semaforo_v.PNG" />
+    <Content Include="images\Simbolo_Msg.png" />
+    <Content Include="images\skype.png" />
+    <Content Include="images\slide1.jpg" />
+    <Content Include="images\slide2.jpg" />
+    <Content Include="images\slide3.jpg" />
+    <Content Include="images\slide4.jpg" />
+    <Content Include="images\slide5.jpg" />
+    <Content Include="images\slide6.jpg" />
+    <Content Include="images\sy-loader.gif" />
+    <Content Include="images\tab1.png" />
+    <Content Include="images\unachita.jpg" />
+    <Content Include="images\wood_pattern.jpg" />
+    <Content Include="Informacion.htm" />
+    <Content Include="Presupuesto\Form\frmPresupuesto.aspx" />
+    <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
+    <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
+    <Content Include="Scripts\Calendario\calendar_date_select.js" />
+    <Content Include="Scripts\Calendario\format_spanish.js" />
+    <Content Include="Scripts\Calendario\Validacion.js" />
+    <Content Include="Scripts\images\calback.jpg" />
+    <Content Include="Scripts\images\close.gif" />
+    <Content Include="Scripts\images\drop1.gif" />
+    <Content Include="Scripts\images\drop2.gif" />
+    <Content Include="Scripts\images\left1.gif" />
+    <Content Include="Scripts\images\left2.gif" />
+    <Content Include="Scripts\images\right1.gif" />
+    <Content Include="Scripts\images\right2.gif" />
+    <Content Include="Scripts\jquery\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jsGeneral.js" />
+    <Content Include="Scripts\JSreportes.js" />
+    <Content Include="Scripts\JSreportes2.js" />
+    <Content Include="Scripts\JSreportes_pat.js" />
+    <Content Include="Scripts\modernizr.custom.63321.js" />
+    <Content Include="Style\autocompletar.css" />
+    <Content Include="Style\demo.css" />
+    <Content Include="Style\font-awesome.css" />
+    <Content Include="Style\jquery.alerts.css" />
+    <Content Include="Style\jquery.ui.all.css" />
+    <Content Include="Style\plain.css" />
+    <Content Include="Style\Site.css" />
+    <Content Include="Style\style.css" />
+    <Content Include="Style\Tab.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Acceso.aspx.cs">
+      <DependentUpon>Acceso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Acceso.aspx.designer.cs">
+      <DependentUpon>Acceso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx.cs">
+      <DependentUpon>FRMAyuda_Busqueda_Codigo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx.designer.cs">
+      <DependentUpon>FRMAyuda_Busqueda_Codigo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx.cs">
+      <DependentUpon>FRMCatsolicitudesAdmin_midifi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx.designer.cs">
+      <DependentUpon>FRMCatsolicitudesAdmin_midifi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMSeguimiento.aspx.cs">
+      <DependentUpon>FRMSeguimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMSeguimiento.aspx.designer.cs">
+      <DependentUpon>FRMSeguimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMTablainformativa.aspx.cs">
+      <DependentUpon>FRMTablainformativa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMTablainformativa.aspx.designer.cs">
+      <DependentUpon>FRMTablainformativa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMEditar_solicitud.aspx.cs">
+      <DependentUpon>FRMEditar_solicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMEditar_solicitud.aspx.designer.cs">
+      <DependentUpon>FRMEditar_solicitud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Configuracion\frmConfiguracionForms.aspx.cs">
+      <DependentUpon>frmConfiguracionForms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuracion\frmConfiguracionForms.aspx.designer.cs">
+      <DependentUpon>frmConfiguracionForms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default2.aspx.cs">
+      <DependentUpon>Default2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default2.aspx.designer.cs">
+      <DependentUpon>Default2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mapaChiapas.aspx.cs">
+      <DependentUpon>mapaChiapas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mapaChiapas.aspx.designer.cs">
+      <DependentUpon>mapaChiapas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmPresupuesto.aspx.cs">
+      <DependentUpon>frmPresupuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmPresupuesto.aspx.designer.cs">
+      <DependentUpon>frmPresupuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.cs">
+      <DependentUpon>FRMDocumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.designer.cs">
+      <DependentUpon>FRMDocumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\frmReportes.aspx.cs">
+      <DependentUpon>frmReportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\frmReportes.aspx.designer.cs">
+      <DependentUpon>frmReportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\rpt-0011.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt-001.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\rpt-0021.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt-002.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\rpt-0031.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt-003.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Aumento1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Aumento.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Autorizado1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Autorizado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Comprometido1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Comprometido.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Disminucion1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Disminucion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Ejercido1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Ejercido.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Ministrado1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Ministrado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Modificado1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Modificado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Xejercer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Xejercer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-Xministrar1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-Xministrar.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Ingresos\Form\" />
+    <Folder Include="Ingresos\Reportes\" />
+    <Folder Include="Scripts\select2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
+      <Project>{59DCA125-1AD0-4D2B-9F60-7E3B761265D4}</Project>
+      <Name>CapaEntidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{0CD64266-9068-4FD3-A60E-B9F8147A8DCC}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\.DS_Store" />
+    <None Include="images\arrows.svg" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\gava78546.pubxml" />
+    <None Include="Properties\PublishProfiles\Perfil1.pubxml" />
+    <Content Include="Scripts\jquery\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Presupuesto\Reportes\rpt-001.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt-0011.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\rpt-002.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt-0021.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\rpt-003.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt-0031.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Aumento.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Aumento1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Autorizado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Autorizado1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Comprometido.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Comprometido1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Disminucion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Disminucion1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Ejercido.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Ejercido1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Ministrado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Ministrado1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Modificado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Modificado1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Xejercer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Xejercer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-Xministrar.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-Xministrar1.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17024</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:17025/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
