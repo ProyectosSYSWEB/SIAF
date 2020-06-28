@@ -14,8 +14,27 @@ namespace CapaEntidad
         public string _Tipo;
         public string _Capitulo;
         public string _Ejercicio;
+        private string _Proyecto;
+        private string _DependenciaF;
+        private string _Subprograma;
 
-        
+
+        public string SubPrograma
+        {
+            get { return _Subprograma; }
+            set { _Subprograma = value; }
+        }
+        public string DependenciaF
+        {
+            get { return _DependenciaF; }
+            set { _DependenciaF = value; }
+        }
+
+        public string Proyecto
+        {
+            get { return _Proyecto; }
+            set { _Proyecto = value; }
+        }
         public string Capitulo
         {
             get { return _Capitulo; }
