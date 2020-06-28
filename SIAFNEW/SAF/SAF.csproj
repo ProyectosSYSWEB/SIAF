@@ -225,6 +225,7 @@
     <Content Include="Presupuesto\Form\frmPresupuesto.aspx" />
     <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
     <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
+    <Content Include="Presupuesto\Reportes\VisualizadorCrystal.aspx" />
     <Content Include="Scripts\Calendario\calendar_date_select.js" />
     <Content Include="Scripts\Calendario\format_spanish.js" />
     <Content Include="Scripts\Calendario\Validacion.js" />
@@ -624,6 +625,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RPT-Xministrar.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\VisualizadorCrystal.aspx.cs">
+      <DependentUpon>VisualizadorCrystal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
