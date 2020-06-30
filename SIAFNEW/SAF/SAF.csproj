@@ -78,6 +78,33 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="AdjuntosTemp\00000-PAPE761214IU4-FACTURA-89.XML" />
+    <Content Include="AdjuntosTemp\11101-11101-C-147.XML" />
+    <Content Include="AdjuntosTemp\11101-11101-COMP6406297LAFF2045.XML" />
+    <Content Include="AdjuntosTemp\11101-11101-FACTURA MAPEO DE CONCEPTOS SAT - 48_UAC_D450175B-D970-4FA5-AF38-6E469DBDA808.XML" />
+    <Content Include="AdjuntosTemp\11101-C-146.XML" />
+    <Content Include="AdjuntosTemp\11101-C-147.XML" />
+    <Content Include="AdjuntosTemp\11101-COMP6406297LAFF2045.XML" />
+    <Content Include="AdjuntosTemp\11101-FACTURA DATAPAC DP-156 JUNIO 2018 COMP6406297LAFF1836.XML" />
+    <Content Include="AdjuntosTemp\11101-FACTURA MAPEO DE CONCEPTOS SAT - 48_UAC_D450175B-D970-4FA5-AF38-6E469DBDA808.XML" />
+    <Content Include="AdjuntosTemp\11201-C-147.XML" />
+    <Content Include="AdjuntosTemp\11201-PAPE761214IU4-FACTURA-89.XML" />
+    <Content Include="AdjuntosTemp\11201-UAC1.XML" />
+    <Content Include="AdjuntosTemp\11201-UAC750417LE8_19209210_FAOMXMMS_2596592_1.XML" />
+    <Content Include="AdjuntosTemp\11301-FACTURA_FNPE_31368930_MAR_FRI.XML" />
+    <Content Include="AdjuntosTemp\21501-VPT100305V95_FACTURA_19362_0FFF4AF0-52A5-4CC4-85A7-0FB4ED131237.XML" />
+    <Content Include="AdjuntosTemp\75101-AAA10374-2BA1-4537-99F9-F547AE983E3B.XML" />
+    <Content Include="Adjuntos\11101-11101-11101-C-147.XML" />
+    <Content Include="Adjuntos\11101-11101-C-146.XML" />
+    <Content Include="Adjuntos\11101-C-146.XML" />
+    <Content Include="Adjuntos\11101-COMP6406297LAFF2045.XML" />
+    <Content Include="Adjuntos\11101-FACTURA DATAPAC DP-156 JUNIO 2018 COMP6406297LAFF1836.XML" />
+    <Content Include="Adjuntos\11201-UAC1.XML" />
+    <Content Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx" />
+    <Content Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx" />
+    <Content Include="Adquisiciones\Form\FRMEditar_solicitud.aspx" />
+    <Content Include="Adquisiciones\Form\FRMSeguimiento.aspx" />
+    <Content Include="Adquisiciones\Form\FRMTablainformativa.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="images\atras.png" />
@@ -266,6 +293,40 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx.cs">
+      <DependentUpon>FRMAyuda_Busqueda_Codigo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx.designer.cs">
+      <DependentUpon>FRMAyuda_Busqueda_Codigo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx.cs">
+      <DependentUpon>FRMCatsolicitudesAdmin_midifi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx.designer.cs">
+      <DependentUpon>FRMCatsolicitudesAdmin_midifi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMEditar_solicitud.aspx.cs">
+      <DependentUpon>FRMEditar_solicitud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMEditar_solicitud.aspx.designer.cs">
+      <DependentUpon>FRMEditar_solicitud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMSeguimiento.aspx.cs">
+      <DependentUpon>FRMSeguimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMSeguimiento.aspx.designer.cs">
+      <DependentUpon>FRMSeguimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMTablainformativa.aspx.cs">
+      <DependentUpon>FRMTablainformativa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisiciones\Form\FRMTablainformativa.aspx.designer.cs">
+      <DependentUpon>FRMTablainformativa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -780,8 +841,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Ingresos\Form\" />
-    <Folder Include="Ingresos\Reportes\" />
     <Folder Include="Scripts\select2\" />
   </ItemGroup>
   <ItemGroup>
@@ -799,6 +858,29 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Adjuntos\11101-11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
+    <Content Include="Adjuntos\11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
+    <Content Include="Adjuntos\EDO_CTA_2019-72103-RECIBO CRISTINA NIETO VASCONCELOS.PDF" />
+    <Content Include="Adjuntos\EDO_CTA_2019-72103-RECIBO ENITH GUADALUPE HERNANDEZ LOPEZ.PDF" />
+    <Content Include="Adjuntos\EDO_CTA_2019-72103-RECIBO LEIDY ANAI MARTINEZ RODRIGUEZ.PDF" />
+    <Content Include="Adjuntos\EDO_CTA_2020-42901-RECIBO CRISTINA NIETO VASCONCELOS.PDF" />
+    <Content Include="Adjuntos\EDO_CTA_2020-42901-RECIBO ENITH GUADALUPE HERNANDEZ LOPEZ.PDF" />
+    <Content Include="Adjuntos\EDO_CTA_2020-42901-RECIBO LEIDY ANAI MARTINEZ RODRIGUEZ.PDF" />
+    <Content Include="AdjuntosTemp\11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
+    <Content Include="AdjuntosTemp\11301-FACTURA_FNPE_31368930_MAR_FRI.PDF" />
+    <Content Include="AdjuntosTemp\EDO_CTA_2019-72103-RECIBO CRISTINA NIETO VASCONCELOS.PDF" />
+    <Content Include="AdjuntosTemp\EDO_CTA_2019-72103-RECIBO ENITH GUADALUPE HERNANDEZ LOPEZ.PDF" />
+    <Content Include="AdjuntosTemp\EDO_CTA_2019-72103-RECIBO LEIDY ANAI MARTINEZ RODRIGUEZ.PDF" />
+    <Content Include="AdjuntosTemp\EDO_CTA_2020-42901-11101-11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
+    <Content Include="AdjuntosTemp\EDO_CTA_2020-42901-11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
+    <Content Include="AdjuntosTemp\EDO_CTA_2020-42901-ESTADOCUENTA.PDF" />
+    <Content Include="ArchivosMenu\WebDPP712.sitemap" />
+    <Content Include="ArchivosMenu\WebDPP71201.sitemap" />
+    <Content Include="ArchivosMenu\WebDPPADALILIA.sitemap" />
+    <Content Include="ArchivosMenu\WebDPPHORTENCIA.sitemap" />
+    <Content Include="ArchivosMenu\WebLISSETH.sitemap" />
+    <Content Include="ArchivosMenu\WebRUBICEL_6.sitemap" />
+    <Content Include="ArchivosMenu\WebVICTOR726.sitemap" />
     <None Include="bootstrap-3.3.2-dist\css\bootstrap-theme.css.map" />
     <None Include="bootstrap-3.3.2-dist\css\bootstrap.css.map" />
     <None Include="bootstrap-3.3.2-dist\fonts\glyphicons-halflings-regular.eot" />
