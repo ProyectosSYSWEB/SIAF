@@ -50,7 +50,6 @@
     <Compile Include="CD_Bienes.cs" />
     <Compile Include="CD_Centros_Contables.cs" />
     <Compile Include="CD_Centros_Trabajo.cs" />
-    <Compile Include="CD_Comun.cs" />
     <Compile Include="CD_Configuracion_forms.cs" />
     <Compile Include="CD_Cuentas_Bancarias.cs" />
     <Compile Include="CD_Cuentas_contables.cs" />

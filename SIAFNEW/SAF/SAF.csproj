@@ -224,7 +224,6 @@
     <Content Include="Informacion.htm" />
     <Content Include="Presupuesto\Form\frmPresupuesto.aspx" />
     <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
-    <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
     <Content Include="Presupuesto\Reportes\VisualizadorCrystal.aspx" />
     <Content Include="Scripts\Calendario\calendar_date_select.js" />
     <Content Include="Scripts\Calendario\format_spanish.js" />
@@ -384,13 +383,6 @@
     </Compile>
     <Compile Include="Presupuesto\Form\FRMDocumento.aspx.designer.cs">
       <DependentUpon>FRMDocumento.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\frmReportes.aspx.cs">
-      <DependentUpon>frmReportes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\frmReportes.aspx.designer.cs">
-      <DependentUpon>frmReportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Reportes\rpt-0011.cs">
       <AutoGen>True</AutoGen>
