@@ -806,7 +806,7 @@
                                     &nbsp;</td>
                                 <td align="center">
                                     <asp:HyperLink ID="HyperLink1" runat="server" 
-                                        NavigateUrl="https://sysweb.unach.mx/saf/Contabilidad/Formatos/FORMATO_APERTURA_DE_CUENTAS_2015.docx">Apertura de Cuentas</asp:HyperLink>
+                                        NavigateUrl="http://sysweb.unach.mx/saf/Contabilidad/Formatos/FORMATO_APERTURA_DE_CUENTAS_2015.docx">Apertura de Cuentas</asp:HyperLink>
                                 </td>
                             </tr>
                             <tr align="center">

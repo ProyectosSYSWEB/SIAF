@@ -673,7 +673,7 @@
     font-size: 13px;
 }
 
-/* Placeholder style (from https://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
+/* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
 
 .form-4 input::-webkit-input-placeholder {
     color: rgba(37,21,26,0.5);
@@ -831,7 +831,7 @@
     outline: none;
 }
 
-/* Placeholder style (from https://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
+/* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
 
 .form-5 input::-webkit-input-placeholder {
     color: #fff;

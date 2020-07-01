@@ -22,7 +22,7 @@
      </div>
     <table class="tabla_contenido">
         <tr>
-            <td>
+            <td>kkkkk
                 <asp:MultiView ID="MultiView1" runat="server">
                     <asp:View ID="View1" runat="server">
                         <asp:UpdatePanel ID="UpdatePanel101" runat="server">
@@ -256,34 +256,6 @@
                                         <td>
                                             <asp:Label ID="Label12" runat="server" Text="Estatus"></asp:Label>
                                         </td>
-                                        <td colspan="3">
-                                            <asp:GridView ID="grdFuente" runat="server" AutoGenerateColumns="False" Width="100%" CssClass="mGrid" EmptyDataText="No se encontró ningún registro.">
-                                                <Columns>
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:CheckBox ID="chkfuente" runat="server" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" Width="10px" />
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField DataField="FUENTE" HeaderText="FUENTE" />
-                                                    <asp:BoundField DataField="DESCRIPCION" HeaderText="FUENTE DE FINANCIAMIENTO" />
-                                                </Columns>
-                                                <FooterStyle CssClass="enc" />
-                                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
-                                                    <SelectedRowStyle CssClass="sel" />
-                                                    <HeaderStyle CssClass="enc" />                                                
-                                                    <AlternatingRowStyle CssClass="alt" /> 
-                                            </asp:GridView>
-                                             <asp:Button ID="btnChkFuentes_v1" runat="server"  OnClick="btnChkFuentes_v1_Click"
-                                                        Text="Marcar todos" Width="15%"  CssClass="btn" CausesValidation="False" />
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                        <td colspan="4">
-                                           </td>
-                                        
-                                    </tr>
-                                    <tr>
                                         <td>
                                             <asp:DropDownList ID="DDL_Status" runat="server" Width="200px">
                                                 <asp:ListItem Value="T">Todos</asp:ListItem>

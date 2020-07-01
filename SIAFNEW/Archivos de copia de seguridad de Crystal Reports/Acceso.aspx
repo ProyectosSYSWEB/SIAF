@@ -86,7 +86,7 @@
 
                             <div class="cuadro_login centro">
 
-                                <asp:Label ID="Label1" runat="server" Text="Iniciar Sesión" CssClass="gris_20px"> </asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text="Iniciar Sesión Lisseth" CssClass="gris_20px"> </asp:Label>
                                 <br/><br/>
                                 <asp:TextBox ID="txtUsario" placeholder="Usuario" runat="server" Width="95%" CssClass="textbox2"></asp:TextBox><br/><br/>
                                 <asp:TextBox ID="txtPassword" TextMode="Password" placeholder="Contraseña" runat="server" Width="95%" CssClass="textbox2"></asp:TextBox><br/><br/>
