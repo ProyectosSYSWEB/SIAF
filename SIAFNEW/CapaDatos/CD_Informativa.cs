@@ -11,7 +11,7 @@ namespace CapaDatos
     {
         public void Consultar_Observaciones(ref cuentas_contables Objinformativa, ref string Verificador)
         {
-            CD_Datos CDDatos = new CD_Datos();
+            CD_Datos CDDatos = new CD_Datos("DPP");
             OracleCommand Cmd = null;
             try
             {
@@ -19,7 +19,7 @@ namespace CapaDatos
                 object[] Valores = { Objinformativa.ejercicio, Objinformativa.usuario };
                 string[] ParametrosOut = { "p_observaciones", "p_bandera" };
 
-                Cmd = CDDatos.GenerarOracleCommand("SEL_SAF_INFO_OBSERVACIONES", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("SEL_DPP_INFORMATIVA", ref Verificador, ParametrosIn, Valores, ParametrosOut);
                 if (Verificador == "0")
                 {
                     Objinformativa = new cuentas_contables();

@@ -30,40 +30,28 @@ namespace SAF
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
-            //SesionUsu = (Sesion)Session["Usuario"]; 
-            Inicializar();
-           
-            if (!IsPostBack)
-            {
-                SesionUsu.Modifica_Ejercicio = false;
-                CNComun.LlenaCombo("pkg_contratos.Obt_Combo_sistemas", ref ddlSistemas, "p_usuario", SesionUsu.Usu_Nombre, ref Listsistema);
-                ddlUsu_Ejercicio.SelectedValue = SesionUsu.Usu_Ejercicio;
-
+            SesionUsu = (Sesion)Session["Usuario"];
+            
+            //if (!IsPostBack)
+            //{
+                //BusyBoxButton1.Attributes.Add("onClick", BusyBox1.ShowFunctionCall);
+                Inicializar();
+            //}
                 
+            
 
-            }
-
-            if (SesionUsu.Modifica_Ejercicio == true)
-            {
-                ddlUsu_Ejercicio.SelectedValue = SesionUsu.Usu_Ejercicio;
-                SesionUsu.Modifica_Ejercicio = false;
-            }
-
-
-
-        }
+        }        
         #region <Funciones y Sub>
         private void Inicializar()
         {
             try
             {
                 SesionUsu = (Sesion)Session["Usuario"];                
-                lblUsuario.Text = SesionUsu.Nombre_Completo;
-                //ddlUsu_Ejercicio.SelectedValue = SesionUsu.Usu_Ejercicio;                
+                lblUsuario.Text = SesionUsu.Usu_Nombre;
+                ddlUsu_Ejercicio.SelectedValue = SesionUsu.Usu_Ejercicio;                
                 mnu.NombreMenu = "MenuTop";
                 mnu.UsuarioNombre = SesionUsu.Usu_Nombre;
-                bttnCorreoUnach.Text = " "+SesionUsu.Correo_UNACH;
-                mnu.Grupo = 15830;
+                mnu.Grupo = 1;
 
                 string siteMap = "ArchivosMenu/Web" + SesionUsu.Usu_Nombre + ".sitemap";
                 string fullPath = Path.Combine(Server.MapPath("~"), siteMap);
@@ -83,7 +71,8 @@ namespace SAF
                 SiteMapPath1.Provider = testXmlProvider;
                 MenuTop.DataSource = smd;
                 MenuTop.DataBind();                
-               
+                CNComun.LlenaCombo("pkg_contratos.Obt_Combo_sistemas", ref ddlSistemas, "p_usuario", SesionUsu.Usu_Nombre, ref Listsistema);
+
 
             }
             catch (Exception ex)
@@ -136,31 +125,7 @@ namespace SAF
 
         protected void BusyBoxButton1_Click1(object sender, EventArgs e)
         {
-            //SesionUsu.Usu_Ejercicio = ddlUsu_Ejercicio.SelectedValue;
-        }
-
-        protected void BusyBoxButton1_Click(object sender, EventArgs e)
-        {
             SesionUsu.Usu_Ejercicio = ddlUsu_Ejercicio.SelectedValue;
-            SesionUsu.Modifica_Ejercicio = true;
-            string currentPage = Request.UrlReferrer.ToString(); //this.Page.Request.AppRelativeCurrentExecutionFilePath;
-            Response.Redirect(currentPage);
-
-            //string AbsUrlAnterior = Request.UrlReferrer.AbsolutePath;
-            //string AbsUrlActual = Request.Url.AbsolutePath;
-            //string fullPath = string.Empty;
-
-            //if (AbsUrlAnterior == AbsUrlActual)
-            //{
-            //    fullPath = Request.UrlReferrer.ToString();
-            //    Response.Redirect(fullPath);
-            //}
-
-        }
-
-        protected void bttnCerrarSesion_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

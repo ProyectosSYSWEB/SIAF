@@ -41,33 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CN_Adquisiciones.cs" />
-    <Compile Include="CN_Baja.cs" />
     <Compile Include="CN_Basicos.cs" />
-    <Compile Include="CN_Bien.cs" />
-    <Compile Include="CN_Bienes.cs" />
-    <Compile Include="CN_Centros_Contables.cs" />
-    <Compile Include="CN_Centros_Trabajo.cs" />
     <Compile Include="CN_Comun.cs" />
-    <Compile Include="CN_Configuracion_forms.cs" />
-    <Compile Include="CN_Cuentas_Bancarias.cs" />
+    <Compile Include="CN_Costeo.cs" />
     <Compile Include="CN_Cuentas_contables.cs" />
-    <Compile Include="CN_Cuentas_Mayor.cs" />
     <Compile Include="CN_Informativa.cs" />
-    <Compile Include="CN_Ministracion.cs" />
     <Compile Include="CN_Mnu.cs" />
-    <Compile Include="CN_Poliza.cs" />
-    <Compile Include="CN_Poliza_CFDI.cs" />
-    <Compile Include="CN_Poliza_Conciliacion.cs" />
-    <Compile Include="CN_Poliza_Det.cs" />
     <Compile Include="CN_Presupuesto.cs" />
     <Compile Include="CN_Pres_Documento.cs" />
     <Compile Include="CN_Pres_Documento_Det.cs" />
+    <Compile Include="CN_Pres_Plantilla.cs" />
     <Compile Include="CN_Pres_Reportes.cs" />
-    <Compile Include="CN_Titulares.cs" />
-    <Compile Include="CN_Transferencia.cs" />
-    <Compile Include="CN_Transferencia_Det.cs" />
     <Compile Include="CN_Usuario.cs" />
+    <Compile Include="CN_Pres_Nomina.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +68,9 @@
       <Project>{59DCA125-1AD0-4D2B-9F60-7E3B761265D4}</Project>
       <Name>CapaEntidad</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

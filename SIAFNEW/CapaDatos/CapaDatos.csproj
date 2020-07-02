@@ -42,33 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Banco.cs" />
-    <Compile Include="CD_Adquisiciones.cs" />
-    <Compile Include="CD_Baja.cs" />
     <Compile Include="CD_Basicos.cs" />
-    <Compile Include="CD_Bien.cs" />
-    <Compile Include="CD_Bienes.cs" />
-    <Compile Include="CD_Centros_Contables.cs" />
-    <Compile Include="CD_Centros_Trabajo.cs" />
-    <Compile Include="CD_Configuracion_forms.cs" />
-    <Compile Include="CD_Cuentas_Bancarias.cs" />
+    <Compile Include="CD_Comun.cs" />
+    <Compile Include="CD_Costeo.cs" />
     <Compile Include="CD_Cuentas_contables.cs" />
-    <Compile Include="CD_Cuentas_Mayor.cs" />
     <Compile Include="CD_Datos.cs" />
     <Compile Include="CD_Informativa.cs" />
-    <Compile Include="CD_Ministracion.cs" />
     <Compile Include="CD_Mnu.cs" />
-    <Compile Include="CD_Poliza.cs" />
-    <Compile Include="CD_Poliza_CFDI.cs" />
-    <Compile Include="CD_Poliza_Conciliacion.cs" />
-    <Compile Include="CD_Poliza_Det.cs" />
     <Compile Include="CD_Presupuesto.cs" />
     <Compile Include="CD_Pres_Documento.cs" />
     <Compile Include="CD_Pres_Documento_Det.cs" />
+    <Compile Include="CD_Pres_Nomina.cs" />
+    <Compile Include="CD_Pres_Plantilla.cs" />
     <Compile Include="CD_Pres_Reportes.cs" />
-    <Compile Include="CD_Titulares.cs" />
-    <Compile Include="CD_Transferencia.cs" />
-    <Compile Include="CD_Transferencia_Det.cs" />
     <Compile Include="CD_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

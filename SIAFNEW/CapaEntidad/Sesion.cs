@@ -21,10 +21,11 @@ namespace CapaEntidad
         private string _ip;
         private string _mac_address;
         private string _id_sistema;
-        private bool _Modifica_Ejercicio;
-        private string _Status;
+        private string _Plantilla;
+        private string _Cerrada;
         private string _Correo_UNACH;
         private string _Nombre_Completo;
+
 
         public string Nombre_Completo
         {
@@ -36,11 +37,16 @@ namespace CapaEntidad
             get { return _Correo_UNACH; }
             set { _Correo_UNACH = value; }
         }
-
-        public string Status
+        public string Cerrada
         {
-            get { return _Status; }
-            set { _Status = value; }
+            get { return _Cerrada; }
+            set { _Cerrada = value; }
+        }
+
+        public string Plantilla
+        {
+            get { return _Plantilla; }
+            set { _Plantilla = value; }
         }
 
         public string id_sistema
@@ -58,11 +64,13 @@ namespace CapaEntidad
             get { return _ip; }
             set { _ip = value; }
         }
+
         public int Row
         {
             get { return _Row; }
             set { _Row = value; }
         }
+
         public int Columna //Columna
         {
             get { return _Columna; }
@@ -113,12 +121,6 @@ namespace CapaEntidad
             get { return _Usu_Rep.Trim(); }
             set { _Usu_Rep = value.Trim(); }
         }
-        public bool Modifica_Ejercicio
-        {
-            get { return _Modifica_Ejercicio; }
-            set { _Modifica_Ejercicio = value; }
-        }
-
 
     }
 }

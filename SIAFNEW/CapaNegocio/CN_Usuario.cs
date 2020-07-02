@@ -15,20 +15,6 @@ namespace CapaNegocio
             CD_Usuario.ValidarUsuario(ref Usuario, ref Verificador);
         }
 
-        public void ObtenerUsuario(ref CapaEntidad.Usuario Usuario, ref string Verificador)
-        {
-            try
-            {
-                CapaDatos.CD_Usuario CD_Usuario = new CapaDatos.CD_Usuario();
-                CD_Usuario.ObtenerUsuario(ref Usuario, ref Verificador);
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
-        }
-
         public void ValidarToken(ref CapaEntidad.Usuario Usuario, ref string Verificador)
         {
             try
@@ -43,6 +29,7 @@ namespace CapaNegocio
             }
         }
 
+
         public void Inserta_Token(ref Usuario objBasicos, ref string Verificador)
         {
             try
@@ -55,7 +42,6 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
         public void Verificar_Correo_UNACH(ref Usuario objUsuario, ref string Verificador)
         {
             try
@@ -69,8 +55,21 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void ObtenerUsuario(ref CapaEntidad.Usuario Usuario, ref string Verificador)
+        {
+            try
+            {
+                CapaDatos.CD_Usuario CD_Usuario = new CapaDatos.CD_Usuario();
+                CD_Usuario.ObtenerUsuario(ref Usuario, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
 
 
 
+            }
+        }
     }
 }

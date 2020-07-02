@@ -18,8 +18,8 @@ namespace SAF.Adquisiciones.Form
         Usuario Usuario = new Usuario();
         Sesion SesionUsu = new Sesion();
         CN_Comun CNComun = new CN_Comun();
-        CN_Adquisiciones CNadquisiciones = new CN_Adquisiciones();
-        Adquisicion objadquisiciones = new Adquisicion();
+        //CN_Adquisiciones CNadquisiciones = new CN_Adquisiciones();
+        //Adquisicion objadquisiciones = new Adquisicion();
 
 
         private static List<Comun> ListConceptos = new List<Comun>();
@@ -47,44 +47,44 @@ namespace SAF.Adquisiciones.Form
         }
      protected void inicializar()
      {
-         CargarGrid();
+         //CargarGrid();
 
 
 
      }
-     private void CargarGrid()
-     {
-         try
-         {
-             DataTable dt = new DataTable();
+     //private void CargarGrid()
+     //{
+     //    try
+     //    {
+     //        DataTable dt = new DataTable();
 
-             GrdTablaInformativa.DataSource = dt;
-             GrdTablaInformativa.DataSource = GetList();
-             GrdTablaInformativa.DataBind();
+     //        GrdTablaInformativa.DataSource = dt;
+     //        GrdTablaInformativa.DataSource = GetList();
+     //        GrdTablaInformativa.DataBind();
 
-         }
-         catch (Exception ex)
-         {
+     //    }
+     //    catch (Exception ex)
+     //    {
              
-         }
-     }
-     private List<Adquisicion> GetList()
-     {
-         try
-         {
-             List<Adquisicion> List = new List<Adquisicion>();
+     //    }
+     //}
+     //private List<Adquisicion> GetList()
+     //{
+     //    try
+     //    {
+     //        List<Adquisicion> List = new List<Adquisicion>();
 
-             objadquisiciones.ejercicio = SesionUsu.Usu_Ejercicio;
-             objadquisiciones.Usu_nombre  = SesionUsu.Usu_Nombre;
-             CNadquisiciones.Tabla_Informativa(ref objadquisiciones, ref   List);
+     //        objadquisiciones.ejercicio = SesionUsu.Usu_Ejercicio;
+     //        objadquisiciones.Usu_nombre  = SesionUsu.Usu_Nombre;
+     //        CNadquisiciones.Tabla_Informativa(ref objadquisiciones, ref   List);
 
-             return List;
-         }
-         catch (Exception ex)
-         {
-             throw new Exception(ex.Message);
-         }
-     }
+     //        return List;
+     //    }
+     //    catch (Exception ex)
+     //    {
+     //        throw new Exception(ex.Message);
+     //    }
+     //}
 
      protected void GridTablaInformativa_PageIndexChanging(object sender, GridViewPageEventArgs e)
      {

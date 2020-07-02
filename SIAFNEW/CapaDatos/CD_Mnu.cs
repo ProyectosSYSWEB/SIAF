@@ -243,13 +243,13 @@ namespace CapaDatos
                     objXMLTW.WriteStartElement("siteMapNode");
                     objXMLTW.WriteAttributeString("title", "PASSWORD");
                     objXMLTW.WriteAttributeString("description", "PASSWORD");
-                    objXMLTW.WriteAttributeString("url", "https://www.sysweb.unach.mx/administrator/");
+                    objXMLTW.WriteAttributeString("url", "http://www.sysweb.unach.mx/administrator/");
                     objXMLTW.WriteEndElement();
 
                     objXMLTW.WriteStartElement("siteMapNode");
                     objXMLTW.WriteAttributeString("title", "AYUDA");
                     objXMLTW.WriteAttributeString("description", "AYUDA");
-                    objXMLTW.WriteAttributeString("url", "https://sysweb.unach.mx/saf/Manual_Usuario.pdf");
+                    objXMLTW.WriteAttributeString("url", "http://sysweb.unach.mx/saf/Manual_Usuario.pdf");
                     objXMLTW.WriteEndElement();
 
                     objXMLTW.WriteStartElement("siteMapNode");

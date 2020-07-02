@@ -95,7 +95,7 @@ namespace SAF.Presupuesto
             txtfolio.Visible = false;
             txtfolio.Text = string.Empty;
             ddlStatusEnc_SelectedIndexChanged(null, null);
-
+         
             /*Controles Detalle*/
             DateTime fecha = Convert.ToDateTime(txtfechaDocumento.Text);
             string MesFecha = fecha.ToString("MM");
@@ -132,7 +132,9 @@ namespace SAF.Presupuesto
                     ocultar();
                     break;
                 case "C":
-                    txtdocumento.Text = "Cedula";        
+                    txtdocumento.Text = "Cedula";
+                    ddlTipoEnc.Enabled = false;
+                    ddlTipoEnc.SelectedValue = "CC";      
                     lbldoc_simultaneo.Visible = true;
                     rbtdoc_simultaneo.Visible = true;
                     lblFechaFin.Visible = true;
@@ -379,19 +381,7 @@ namespace SAF.Presupuesto
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
 
-        protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
-        {
-            SesionUsu.Editar = 0;
-            MultiView1.ActiveViewIndex = 1;
-            TabContainer1.ActiveTabIndex = 0;
-            //TabContainer1.Tabs[1].Enabled = false;
-            //valTipo.ValidationGroup = "Nuevo";
-            //valFecha.ValidationGroup = "Nuevo";
-            //valFolio.ValidationGroup = "Nuevo";
-            //valConcepto.ValidationGroup = "Nuevo";
-            Session["DocDet"] = null;
-            LimpiarControles();
-        }
+       
         private void CargarGrid(ref GridView grid, int idGrid)
         {
             lblError.Text = string.Empty;
@@ -545,24 +535,7 @@ namespace SAF.Presupuesto
                 lblError.Text = ex.Message;
             }
         }
-
-        protected void ddlDependencia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (SesionUsu.Usu_Rep == "M" || SesionUsu.Usu_Rep == "C")
-            {
-                string MesAbierto = ListDependencia[ddlDependencia.SelectedIndex].EtiquetaCuatro.PadLeft(2, '0');
-
-                DateTime fechaIni = Convert.ToDateTime("01/" + MesAbierto + "/" + SesionUsu.Usu_Ejercicio);
-                DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
-                CalendarExtenderIni.StartDate = fechaIni;
-                CalendarExtenderIni.EndDate = fechaFin;
-                CalendarExtenderFin.StartDate = fechaIni;
-                CalendarExtenderFin.EndDate = fechaFin;
-                if(SesionUsu.Usu_Rep == "C")
-                    CNComun.LlenaCombo("PKG_CONTABILIDAD.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco0, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
-            }
-        }
-
+       
         protected void ddlTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -587,12 +560,13 @@ namespace SAF.Presupuesto
 
 
         protected void btnCancelar_Click(object sender, EventArgs e)
-        {         
+        {
             //lblMesIni.Visible = true;
             //lblMesFin.Visible = true;
             //ddlMesFin.Visible = true;
             //ddlMesIni.Visible = true;
             //ddlTipo.Enabled = true;
+            ddlTipoEnc.Enabled = true;
             ddlStatus.Enabled = true;
             MultiView1.ActiveViewIndex = 0;
         }
@@ -646,6 +620,7 @@ namespace SAF.Presupuesto
                         else
                         {
                             SesionUsu.Editar = -1;
+                            ddlTipoEnc.Enabled = true;
                             MultiView1.ActiveViewIndex = 0;
                             ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
                             CargarGrid(ref grdDocumentos, 0);
@@ -792,10 +767,6 @@ namespace SAF.Presupuesto
 
         }
 
-        protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
-        {
-
-        }
 
         protected void grdDocumentos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -820,8 +791,9 @@ namespace SAF.Presupuesto
             {
                 ValidacionTipoDet();
                 ListPartida.Clear();
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ref ListPartida);
-                LstCodigoProg_SelectedIndexChanged(null, null);
+                CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddl_fuente, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia","p_capitulo","p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue,ddl_capitulo.SelectedValue, ddl_fuente.SelectedValue, ref ListPartida);
+                disponible();
             }
             catch (Exception ex)
             {
@@ -853,6 +825,7 @@ namespace SAF.Presupuesto
         {
             lblFormatoDisponible.Text = string.Format("{0:c}", "0");
             lblDisponible.Text = "0"; //string.Empty;
+            disponible();
             //txtImporteDestino.Text = string.Empty;
             //string s = ddlCodigoProg.SelectedValue;
             //try
@@ -886,17 +859,29 @@ namespace SAF.Presupuesto
 
         protected void btnDisponible_Click(object sender, EventArgs e)
         {
-            objDocumentoDet.Id_Codigo_Prog =Convert.ToInt32(ddlCodigoProg.SelectedValue);
+            disponible();
+        }
+        private void disponible()
+        {
+            try
+            { 
+            objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
             CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
             if (Verificador == "0")
             {
                 lblDisponible.Text = Convert.ToString(objDocumentoDet.Importe_disponible);
-                lblFormatoDisponible.Text =string.Format("{0:c}",Convert.ToDouble(objDocumentoDet.Importe_disponible));
+                lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocumentoDet.Importe_disponible));
+            }
+            }
 
+            catch (Exception ex)
+            {
+                lblError.Text = "No tiene código programático";
+                lblDisponible.Text  = "0";
 
             }
         }
-
+        
         protected void grdDetalles_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -974,22 +959,25 @@ namespace SAF.Presupuesto
 
         protected void imgBttnPDF_Click(object sender, ImageClickEventArgs e)
         {
-
+            string ruta1 = string.Empty;
+            ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-DOCUMENTOS&SuperTipo=" + SesionUsu.Usu_Rep + "&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
+            string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
-
+        
         protected void imgBttnPDF_Lotes_Click(object sender, ImageClickEventArgs e)
         {
             string ruta1 = string.Empty;
             switch (SesionUsu.Usu_Rep)
             {
                 case "M":
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-lote1&SuperTipo=" + SesionUsu.Usu_Rep + "&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + "&MesFin=" + ddlMesFin.SelectedValue;
+                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteM&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
                     break;
                 case "C":
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-lote2&SuperTipo=" + SesionUsu.Usu_Rep + "&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + "&MesFin=" + ddlMesFin.SelectedValue;
+                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteC&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
                     break;
                 case "A":
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-lote3&SuperTipo=" + SesionUsu.Usu_Rep + "&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + "&MesFin=" + ddlMesFin.SelectedValue;
+                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteA&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
                     break;
             }
 
@@ -1032,7 +1020,9 @@ namespace SAF.Presupuesto
                     List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
                     ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
                     var filteredCodigosProg = from c in ListDocDet
-                                              where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue //txtSearch.Text
+                                              where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue 
+                                              && Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
+                                              
                                               select c;
 
                     content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
@@ -1103,6 +1093,79 @@ namespace SAF.Presupuesto
                 if (Page.IsValid==false)
                     TabContainer1.ActiveTabIndex = 0;
             }
+        }
+
+        protected void BTNbuscar_Click1(object sender, ImageClickEventArgs e)
+        {
+             try
+            {
+                CargarGrid(ref grdDocumentos , 0);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void btnNuevo_Click1(object sender, ImageClickEventArgs e)
+        {
+            SesionUsu.Editar = 0;
+            MultiView1.ActiveViewIndex = 1;
+            TabContainer1.ActiveTabIndex = 0;            
+            Session["DocDet"] = null;
+            LimpiarControles();
+        }
+
+        protected void ddlDependencia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (SesionUsu.Usu_Rep == "M" || SesionUsu.Usu_Rep == "C")
+                {
+                    string MesAbierto = ListDependencia[ddlDependencia.SelectedIndex].EtiquetaCuatro.PadLeft(2, '0');
+
+                    DateTime fechaIni = Convert.ToDateTime("01/" + MesAbierto + "/" + SesionUsu.Usu_Ejercicio);
+                    DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
+                    CalendarExtenderIni.StartDate = fechaIni;
+                    CalendarExtenderIni.EndDate = fechaFin;
+                    CalendarExtenderFin.StartDate = fechaIni;
+                    CalendarExtenderFin.EndDate = fechaFin;
+                    if (SesionUsu.Usu_Rep == "C")
+                        CNComun.LlenaCombo("PKG_CONTABILIDAD.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco0, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }            
+        }
+
+        protected void ddl_capitulo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            { 
+                ddlDepen_SelectedIndexChanged(null, null);
+                disponible();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+}
+
+        protected void ddl_fuente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDepen_SelectedIndexChanged(null, null);
+            disponible();
+        }
+
+        protected void imgBttnXLS_Click1(object sender, ImageClickEventArgs e)
+        {
+            string ruta1 = string.Empty;
+            ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-DOCUMENTOS_XLS&SuperTipo=" + SesionUsu.Usu_Rep + "&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
+            string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
     }
 }

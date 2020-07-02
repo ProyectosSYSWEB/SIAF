@@ -13,6 +13,7 @@ namespace CapaEntidad
         private string _CUsuario;
         private string _Dependencia;
         private string _Token;
+        private int _CUcontador;
         private string _Status;
         private string _Correo_UNACH;
 
@@ -26,6 +27,12 @@ namespace CapaEntidad
         {
             get { return _Status; }
             set { _Status = value; }
+        }
+
+        public int CUcontador
+        {
+            get { return _CUcontador; }
+            set { _CUcontador = value; }
         }
 
         public string Token

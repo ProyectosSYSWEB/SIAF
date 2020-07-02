@@ -25,12 +25,14 @@ namespace CapaDatos
         {
             string StrConexion = "Data Source=dsia;User ID=SAF; Password=DSIA2014; Unicode=True";
             this.Cnn = new OracleConnection(StrConexion);
+            
         }
-        public CD_Datos(string userBD)
+        public CD_Datos(string userBD) 
         {
             string StrConexion = string.Empty;
             if (userBD == "ADQUISICIONES") StrConexion = "Data Source=dsia;User ID=adquisiciones; Password=UNACH09; Unicode=True";
             else if (userBD=="siga") StrConexion = "Data Source=dsia;User ID=siga09; Password=m3f1st0; Unicode=True";
+            else if (userBD == "DPP") StrConexion = "Data Source=dsia;User ID=DPP; Password=ORACLE2018; Unicode=True";
             else
                 StrConexion = "Data Source=dsia;User ID=SAF; Password=dsia2014; Unicode=True";
             
@@ -313,10 +315,6 @@ namespace CapaDatos
                 {
                     cmd.Parameters.Add(ParametrosIn[i], OracleType.Number).Value = Valores[i];
                 }
-                else if (valor == "Double")
-                {
-                    cmd.Parameters.Add(ParametrosIn[i], OracleType.Number).Value = Valores[i];
-                }
                 else if (valor == "Byte[]")
                 {
                     //blob = (byte[])Valores[i];
@@ -341,7 +339,7 @@ namespace CapaDatos
                 if (trans != null) cmd.Transaction = trans;
                 if (trans == null) Cnn.Open();
                 cmd.ExecuteNonQuery();
-                Verificador = cmd.Parameters["P_Bandera"].Value.ToString();
+                Verificador = cmd.Parameters["p_Bandera"].Value.ToString();
                 return cmd;
             }
 
