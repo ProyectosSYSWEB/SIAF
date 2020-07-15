@@ -72,7 +72,7 @@ function refreshPage() { location.reload(true); }
                 <a href="https://sysweb.unach.mx/"><asp:Image ID="Image1" ImageUrl="https://sysweb.unach.mx/resources/imagenes/logo_sysweb_b.png" runat="server" /></a>
             </div></td>
                                 <td  style="width:50%" class="centro">
-                                    <asp:Label ID="Label2" runat="server" Text="Sistema de Programaciòn y Presupuesto" CssClass="titulo_sistema"></asp:Label><br />
+                                    <asp:Label ID="Label2" runat="server" Text="Sistema de Programación y Presupuesto" CssClass="titulo_sistema"></asp:Label><br />
                                     <asp:Label ID="Label3" runat="server" Text="SYSPP" CssClass="subtitulo_sistema"></asp:Label>
                                 </td>
                                 <td style="width:25%">
@@ -131,15 +131,12 @@ function refreshPage() { location.reload(true); }
                                             <asp:Label ID="lblEjercicioEtiqueta" runat="server" Text="EJERCICIO:" Width="68px"></asp:Label>
                                             <asp:DropDownList ID="ddlUsu_Ejercicio" runat="server" 
                                                 CssClass="fondo_label_login">
+                                                <asp:ListItem>2020</asp:ListItem>
+                                                <asp:ListItem>2019</asp:ListItem>
                                                 <asp:ListItem>2018</asp:ListItem>
                                                 <asp:ListItem>2017</asp:ListItem>
                                                 <asp:ListItem>2016</asp:ListItem>
                                                 <asp:ListItem>2015</asp:ListItem>
-                                                <asp:ListItem>2014</asp:ListItem>
-                                                <asp:ListItem>2013</asp:ListItem>
-                                                <asp:ListItem>2012</asp:ListItem>
-                                                <asp:ListItem>2011</asp:ListItem>
-                                                <asp:ListItem>2010</asp:ListItem>
                                             </asp:DropDownList>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
