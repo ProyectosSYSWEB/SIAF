@@ -67,13 +67,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.UpdatePanel UpdatePanel126;
         
         /// <summary>
-        /// Control DDLCentroContable.
+        /// Control ddlCentroContable.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLCentroContable;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCentroContable;
         
         /// <summary>
         /// Control UpdatePanel102.
@@ -922,13 +922,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.Label lblCodigoProg0;
         
         /// <summary>
-        /// Control DDLCapitulo.
+        /// Control ddlCapitulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLCapitulo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCapitulo;
         
         /// <summary>
         /// Control lblCodigoProg1.
@@ -940,13 +940,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.Label lblCodigoProg1;
         
         /// <summary>
-        /// Control DDLFuente_F.
+        /// Control ddlFuente_F.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLFuente_F;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFuente_F;
         
         /// <summary>
         /// Control lblCodigoProg.

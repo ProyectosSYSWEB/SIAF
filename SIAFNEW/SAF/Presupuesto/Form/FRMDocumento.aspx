@@ -94,7 +94,7 @@
                             <td colspan="5">
                                 <asp:UpdatePanel ID="UpdatePanel126" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DDLCentroContable" runat="server" AutoPostBack="True"  Width="100%" OnSelectedIndexChanged="DDLCentroContable_SelectedIndexChanged">
+                                        <asp:DropDownList ID="ddlCentroContable" runat="server" AutoPostBack="True"  Width="100%" OnSelectedIndexChanged="DDLCentroContable_SelectedIndexChanged">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
@@ -125,7 +125,7 @@
                                                                             <asp:Label ID="lblTipo0" runat="server" Text="Tipo"></asp:Label>
                                                                         </td>
                                                                         <td class="col1">
-                                                                            <asp:DropDownList ID="ddlTipo" runat="server" OnSelectedIndexChanged="ddlTipo_SelectedIndexChanged" Width="150px">
+                                                                            <asp:DropDownList ID="ddlTipo" runat="server"  Width="150px">
                                                                             </asp:DropDownList>
                                                                         </td>
                                                                         <td class="col1">&nbsp;</td>                                                                        
@@ -305,7 +305,7 @@
                                                                                                 <asp:DropDownList ID="ddlTipoEnc" runat="server" OnSelectedIndexChanged="ddlTipoEnc_SelectedIndexChanged" Width="150px" AutoPostBack="True">
                                                                                                 </asp:DropDownList>
                                                                                                 <br />
-                                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlTipoEnc" ErrorMessage="*Tipo Requerido" InitialValue="0" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
+                                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlTipoEnc" ErrorMessage="*Tipo requerido" InitialValue="0" ValidationGroup="GpoCodProg"></asp:RequiredFieldValidator>
                                                                                             </td>                                                                                            
                                                                                             <td class="col1" valign="top">&nbsp;</td>
                                                                                             <td class="col1" valign="top" align="right">
@@ -578,7 +578,7 @@
 
                                                                                                                 </td>
                                                                                                                 <td colspan="5" valign="top">
-                                                                                                                    <asp:DropDownList ID="DDLCapitulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCapitulo_SelectedIndexChanged" Width="350px"></asp:DropDownList>
+                                                                                                                    <asp:DropDownList ID="ddlCapitulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCapitulo_SelectedIndexChanged" Width="350px"></asp:DropDownList>
 
 
                                                                                                                 </td>
@@ -590,7 +590,7 @@
 
                                                                                                                 </td>
                                                                                                                 <td colspan="5" valign="top">
-                                                                                                                    <asp:DropDownList ID="DDLFuente_F" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_F_SelectedIndexChanged" Width="100%"></asp:DropDownList>
+                                                                                                                    <asp:DropDownList ID="ddlFuente_F" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_F_SelectedIndexChanged" Width="100%"></asp:DropDownList>
 
 
                                                                                                                 </td>
@@ -935,7 +935,7 @@
                                                                                                             <tr>
                                                                                                                 <td colspan="6">
                                                                                                                     <asp:UpdatePanel ID="updPnlDetalles" runat="server"><ContentTemplate>
-                                                                                                                            <asp:GridView ID="grdDetalles" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se han agregado Códigos Programáticos." OnRowCancelingEdit="grdDetalles_RowCancelingEdit" OnRowDeleting="grdDetalles_RowDeleting" OnRowEditing="grdDetalles_RowEditing" OnRowUpdating="EditaRegistro" OnSelectedIndexChanged="grdDetalles_SelectedIndexChanged" Width="100%">
+                                                                                                                            <asp:GridView ID="grdDetalles" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se han agregado Códigos Programáticos." OnRowCancelingEdit="grdDetalles_RowCancelingEdit" OnRowDeleting="grdDetalles_RowDeleting" OnRowEditing="grdDetalles_RowEditing" OnRowUpdating="EditaRegistro" Width="100%">
                                                                                                                                 <AlternatingRowStyle CssClass="alt" />
                                                                                                                                 <Columns>
                                                                                                                                     <asp:TemplateField HeaderText="# Movto">
