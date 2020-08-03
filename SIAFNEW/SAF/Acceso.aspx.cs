@@ -105,7 +105,7 @@ namespace SAF.Contabilidad
                             Usuario.Token = Convert.ToString(Token);
                             Usuario.CUsuario = SesionUsu.Usu_Nombre;
                             CNUsuario.Inserta_Token(ref Usuario, ref Verificador);
-                            Response.Redirect("https://sysweb.unach.mx/actualiza_correo/frmactualiza_datos.aspx?token=" + Token + "&sistema=15830", true);
+                            Response.Redirect("https://sysweb.unach.mx/actualiza_correo/frmactualiza_datos.aspx?token=" + Token + "&sistema=1", true);
                         }
                     }
 

@@ -578,14 +578,14 @@ namespace SAF.Presupuesto.Reportes
                         reporte_XLS();
                         break;
                     case "RP-PRESUP_SP01":
-                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_SP01.rpt";
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_ER01.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, MesIni.Substring(0,2)); report.SetParameterValue(3, MesFin.Substring(0, 2));
                         report.SetParameterValue(4, MesIni.Substring(2, 2)); report.SetParameterValue(5, MesFin.Substring(2, 2)); report.SetParameterValue(6, Capitulo); report.SetParameterValue(7, Fuente); report.SetParameterValue(8, Meses);
                         reporte_PDF();
                         break;
                     case "RP-PRESUP_SP02":
-                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_SP02.rpt";
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_ER02.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, MesIni.Substring(0, 2)); report.SetParameterValue(3, MesFin.Substring(0, 2));
                         report.SetParameterValue(4, MesIni.Substring(2, 2)); report.SetParameterValue(5, MesFin.Substring(2, 2)); report.SetParameterValue(6, Capitulo); report.SetParameterValue(7, Fuente); report.SetParameterValue(8, Meses);
@@ -593,42 +593,42 @@ namespace SAF.Presupuesto.Reportes
                         break;
 
                     case "RP-PRESUP_SP04":
-                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_SP04.rpt";
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_ER04.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, MesIni.Substring(0, 2)); report.SetParameterValue(3, MesFin.Substring(0, 2));
                         report.SetParameterValue(4, MesIni.Substring(2, 2)); report.SetParameterValue(5, MesFin.Substring(2, 2)); report.SetParameterValue(6, Capitulo); report.SetParameterValue(7, Fuente); report.SetParameterValue(8, Meses);
                         reporte_PDF();
                         break;
                     case "RP-PRESUP_SP05":
-                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_SP05.rpt";
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_ER05.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, MesIni.Substring(0, 2)); report.SetParameterValue(3, MesFin.Substring(0, 2));
                         report.SetParameterValue(4, MesIni.Substring(2, 2)); report.SetParameterValue(5, MesFin.Substring(2, 2)); report.SetParameterValue(6, Capitulo); report.SetParameterValue(7, Fuente); report.SetParameterValue(8, Meses);
                         reporte_PDF();
                         break;
                     case "RP-PRESUP_SP01_XLS":
-                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_SP01.rpt";
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_ER01.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, MesIni.Substring(0, 2)); report.SetParameterValue(3, MesFin.Substring(0, 2));
                         report.SetParameterValue(4, MesIni.Substring(2, 2)); report.SetParameterValue(5, MesFin.Substring(2, 2)); report.SetParameterValue(6, Capitulo); report.SetParameterValue(7, Fuente); report.SetParameterValue(8, Meses);
                         reporte_XLS();
                         break;
                     case "RP-PRESUP_SP02_XLS":
-                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_SP02.rpt";
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_ER02.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, MesIni.Substring(0, 2)); report.SetParameterValue(3, MesFin.Substring(0, 2));
                         report.SetParameterValue(4, MesIni.Substring(2, 2)); report.SetParameterValue(5, MesFin.Substring(2, 2)); report.SetParameterValue(6, Capitulo); report.SetParameterValue(7, Fuente); report.SetParameterValue(8, Meses);
                         reporte_XLS();
                         break;
                     case "RP-PRESUP_SP04_XLS":
-                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_SP04.rpt";
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_ER04.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, MesIni.Substring(0, 2)); report.SetParameterValue(3, MesFin.Substring(0, 2));
                         report.SetParameterValue(4, MesIni.Substring(2, 2)); report.SetParameterValue(5, MesFin.Substring(2, 2)); report.SetParameterValue(6, Capitulo); report.SetParameterValue(7, Fuente); report.SetParameterValue(8, Meses);
                         reporte_XLS();
                         break;
                     case "RP-PRESUP_SP05_XLS":
-                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_SP05.rpt";
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_ER05.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, MesIni.Substring(0, 2)); report.SetParameterValue(3, MesFin.Substring(0, 2));
                         report.SetParameterValue(4, MesIni.Substring(2, 2)); report.SetParameterValue(5, MesFin.Substring(2, 2)); report.SetParameterValue(6, Capitulo); report.SetParameterValue(7, Fuente); report.SetParameterValue(8, Meses);
