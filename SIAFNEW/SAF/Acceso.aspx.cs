@@ -96,7 +96,7 @@ namespace SAF.Contabilidad
                         if (Usuario.Status == "S")
                         {
 
-                            Response.Redirect("Default.aspx", false);
+                            Response.Redirect("Inicio.aspx", false);
                         }
                         else
                         {
@@ -138,7 +138,7 @@ namespace SAF.Contabilidad
                 Session["Usuario"] = SesionUsu;
                 Session.Timeout = 120;
                 GUARDAR_SESION();
-                Response.Redirect("Default.aspx", false);
+                Response.Redirect("Inicio.aspx", false);
             }
             catch (Exception ex)
             {
@@ -236,7 +236,7 @@ namespace SAF.Contabilidad
                 {
                     bool Valido = ValidarUsuario(txtUsario.Text, ref Verificador);
                     if (Valido == true)
-                        Response.Redirect("Default.aspx", false);
+                        Response.Redirect("Inicio.aspx", false);
                     else
                         lblError.Text = Verificador;
                 }

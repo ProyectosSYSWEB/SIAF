@@ -33,6 +33,8 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+
         public void LlenarTree(ref TreeView Arbol, Presupues objPresupuesto, List<Presupues> List)
         {
             try
@@ -45,5 +47,32 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void LlenarTree2(ref TreeView Arbol, Mnu objPresupuesto, List<Mnu> List)
+        {
+            try
+            {
+                CD_Mnu CDMnu = new CD_Mnu();
+                CDMnu.LlenarTree2(ref Arbol, objPresupuesto, List);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void LlenarTreeDef(Mnu mnu, ref List<Mnu> list)
+        {
+            try
+            {
+                //List<Mnu> list = new List<Mnu>();
+                CD_Mnu CDMnu = new CD_Mnu();
+                CDMnu.LlenarTreeDef(mnu, list);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }
