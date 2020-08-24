@@ -221,15 +221,18 @@
     <Content Include="images\unachita.jpg" />
     <Content Include="images\wood_pattern.jpg" />
     <Content Include="Informacion.htm" />
+    <Content Include="Presupuesto\Form\frmAdecuacion.aspx" />
+    <Content Include="Presupuesto\Form\frmCedula.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogos.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
     <Content Include="Presupuesto\Form\FRMcrea_Plantilla.aspx" />
+    <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
     <Content Include="Presupuesto\Form\FRMInterinos.aspx" />
+    <Content Include="Presupuesto\Form\frmMinistracion.aspx" />
     <Content Include="Presupuesto\Form\FRMMonitor.aspx" />
     <Content Include="Presupuesto\Form\FRMPlantilla.aspx" />
     <Content Include="Presupuesto\Form\frmPresupuesto.aspx" />
-    <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
     <Content Include="Presupuesto\Form\FRMHis_Nomina.aspx" />
     <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
     <Content Include="Presupuesto\Reportes\VisualizadorCrystal.aspx" />
@@ -377,12 +380,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Presupuesto\Form\frmCatalogos.aspx.cs">
-      <DependentUpon>frmCatalogos.aspx</DependentUpon>
+    <Compile Include="Presupuesto\Form\frmAdecuacion.aspx.cs">
+      <DependentUpon>frmAdecuacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presupuesto\Form\frmCatalogos.aspx.designer.cs">
-      <DependentUpon>frmCatalogos.aspx</DependentUpon>
+    <Compile Include="Presupuesto\Form\frmAdecuacion.aspx.designer.cs">
+      <DependentUpon>frmAdecuacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCedula.aspx.cs">
+      <DependentUpon>frmCedula.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCedula.aspx.designer.cs">
+      <DependentUpon>frmCedula.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMCierre_Dependencia.aspx.cs">
       <DependentUpon>FRMCierre_Dependencia.aspx</DependentUpon>
@@ -405,12 +415,26 @@
     <Compile Include="Presupuesto\Form\FRMcrea_Plantilla.aspx.designer.cs">
       <DependentUpon>FRMcrea_Plantilla.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.cs">
+      <DependentUpon>FRMDocumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.designer.cs">
+      <DependentUpon>FRMDocumento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\FRMInterinos.aspx.cs">
       <DependentUpon>FRMInterinos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMInterinos.aspx.designer.cs">
       <DependentUpon>FRMInterinos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmMinistracion.aspx.cs">
+      <DependentUpon>frmMinistracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmMinistracion.aspx.designer.cs">
+      <DependentUpon>frmMinistracion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMMonitor.aspx.cs">
       <DependentUpon>FRMMonitor.aspx</DependentUpon>
@@ -432,13 +456,6 @@
     </Compile>
     <Compile Include="Presupuesto\Form\frmPresupuesto.aspx.designer.cs">
       <DependentUpon>frmPresupuesto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.cs">
-      <DependentUpon>FRMDocumento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.designer.cs">
-      <DependentUpon>FRMDocumento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMHis_Nomina.aspx.cs">
       <DependentUpon>FRMHis_Nomina.aspx</DependentUpon>

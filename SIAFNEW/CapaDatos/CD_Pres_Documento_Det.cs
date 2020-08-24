@@ -49,8 +49,16 @@ namespace CapaDatos
             try
             {
                 CDDatos.StartTrans();
-                String[] Parametros = { "P_ID_CODIGO_PROG" };
-                object[] Valores = { objDocDet.Id_Codigo_Prog };
+                String[] Parametros = { "P_ID_CODIGO_PROG",
+                                        "P_CODIGO_PROG",
+                                        "P_SUPERTIPO",
+                                        "P_MES"
+                                       };
+                object[] Valores = { objDocDet.Id_Codigo_Prog,
+                                    objDocDet.Desc_Codigo_Prog,
+                                    objDocDet.Tipo,
+                                    objDocDet.Mes_inicial
+                                    };
                 String[] ParametrosOut = { "P_DISPONIBLE", "P_BANDERA" };
                 Cmd = CDDatos.GenerarOracleCommand("OBT_DISPONIBLE_CODIGO_PROG", ref Verificador, Parametros, Valores, ParametrosOut);
                 objDocDet.Importe_disponible = Convert.ToDouble(Cmd.Parameters["P_DISPONIBLE"].Value);

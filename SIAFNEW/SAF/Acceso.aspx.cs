@@ -162,7 +162,7 @@ namespace SAF.Contabilidad
                 ObjSesion.ip = hostIPs[1].ToString();
                 ObjSesion.mac_address = hostIPs[0].ToString();
                 ObjSesion.Usu_Nombre = Usuario.CUsuario;
-                ObjSesion.id_sistema = "15830";
+                ObjSesion.id_sistema = "1";
                 CNSesison.insertar_datos_sesion(ref ObjSesion, ref Verificador);
             }
             catch (Exception ex)

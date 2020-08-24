@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FRMDocumento.aspx.cs" Inherits="SAF.Presupuesto.FRMDocumento"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmAdecuacion.aspx.cs" Inherits="SAF.Presupuesto.frmAdecuacion"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
         <script src="../../Scripts/jquery/jquery-3.1.1.min.js"></script>
     <script src="../../Scripts/select2/js/select2.min.js"></script>
