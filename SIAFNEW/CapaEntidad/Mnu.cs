@@ -48,7 +48,18 @@ namespace CapaEntidad
             get { return _Nivel; }
             set { _Nivel = value; }
         }
-
+        private string _Navigate_Url;
+        public string Navigate_Url
+        {
+            get { return _Navigate_Url; }
+            set { _Navigate_Url = value; }
+        }
+        private int _Id_Padre;
+        public int Id_Padre
+        {
+            get { return _Id_Padre; }
+            set { _Id_Padre = value; }
+        }
         private string _NombreMenu;
         public string NombreMenu
         {
@@ -76,5 +87,6 @@ namespace CapaEntidad
             get { return _Ejercicio; }
             set { _Ejercicio = value; }
         }
+
     }
 }

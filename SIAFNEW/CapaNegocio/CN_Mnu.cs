@@ -34,7 +34,6 @@ namespace CapaNegocio
             }
         }
 
-
         public void LlenarTree(ref TreeView Arbol, Presupues objPresupuesto, List<Presupues> List)
         {
             try
@@ -67,6 +66,18 @@ namespace CapaNegocio
                 //List<Mnu> list = new List<Mnu>();
                 CD_Mnu CDMnu = new CD_Mnu();
                 CDMnu.LlenarTreeDef(mnu, list);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void LlenarTree(ref TreeView Arbol, Mnu objMenu, ref List<Mnu> List)
+        {
+            try
+            {
+                CD_Mnu CDMnu = new CD_Mnu();
+                CDMnu.LlenarTree(ref Arbol, objMenu, ref List);
             }
             catch (Exception ex)
             {

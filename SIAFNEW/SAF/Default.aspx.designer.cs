@@ -33,6 +33,33 @@ namespace SAF
         protected global::System.Web.UI.WebControls.Label lbltitulo_form;
 
         /// <summary>
+        /// Control divEspecificaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEspecificaciones;
+
+        /// <summary>
+        /// Control lblEncEspecificaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEncEspecificaciones;
+
+        /// <summary>
+        /// Control lblEspecificaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEspecificaciones;
+
+        /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
