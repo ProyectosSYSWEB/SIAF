@@ -55,6 +55,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Lis\Programas\BusyBoxDotNet-0.2.1-bin\BusyBoxDotNet-0.2.1-bin\BusyBoxDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -120,13 +121,14 @@
     <Content Include="Adquisiciones\Form\FRMEditar_solicitud.aspx" />
     <Content Include="Adquisiciones\Form\FRMSeguimiento.aspx" />
     <Content Include="Adquisiciones\Form\FRMTablainformativa.aspx" />
-    <Content Include="Default.aspx" />
+    <Content Include="Inicio.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="images\atras.png" />
     <Content Include="images\FreeGreatPicture.com-50235-tablet-pc-operating-figures.jpg" />
     <Content Include="images\GRAFICA.png" />
     <Content Include="images\siguiente.png" />
     <Content Include="images\Suspendido.PNG" />
+    <Content Include="Default.aspx" />
     <Content Include="mapaChiapas.aspx" />
     <Content Include="bootstrap-3.3.2-dist\css\bootstrap-theme.css" />
     <Content Include="bootstrap-3.3.2-dist\css\bootstrap-theme.min.css" />
@@ -219,6 +221,7 @@
     <Content Include="images\unachita.jpg" />
     <Content Include="images\wood_pattern.jpg" />
     <Content Include="Informacion.htm" />
+    <Content Include="Presupuesto\Form\frmCatalogos.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
     <Content Include="Presupuesto\Form\FRMcrea_Plantilla.aspx" />
@@ -343,12 +346,12 @@
     <Compile Include="Adquisiciones\Form\FRMTablainformativa.aspx.designer.cs">
       <DependentUpon>FRMTablainformativa.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default2.aspx.cs">
       <DependentUpon>Default2.aspx</DependentUpon>
@@ -356,6 +359,13 @@
     </Compile>
     <Compile Include="Default2.aspx.designer.cs">
       <DependentUpon>Default2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="mapaChiapas.aspx.cs">
       <DependentUpon>mapaChiapas.aspx</DependentUpon>
@@ -366,6 +376,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogos.aspx.cs">
+      <DependentUpon>frmCatalogos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogos.aspx.designer.cs">
+      <DependentUpon>frmCatalogos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMCierre_Dependencia.aspx.cs">
       <DependentUpon>FRMCierre_Dependencia.aspx</DependentUpon>
@@ -436,396 +453,6 @@
     </Compile>
     <Compile Include="Presupuesto\Reportes\frmReportes.aspx.designer.cs">
       <DependentUpon>frmReportes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-005.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-005.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-004.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-004.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-006.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-006.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-007.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-007.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-0070.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-0070.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-007ASIG.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-007ASIG.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-008-A.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-008-A.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-008.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-008.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\rpt-0011.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rpt-001.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\rpt-0021.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rpt-002.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\rpt-0031.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rpt-003.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-008-CAL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-008-CAL.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-008G.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-008G.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-009-1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-009-1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-009-2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-009-2.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-009.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-009.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-010.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-010.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-011.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-011.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-012-GRAF.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-012-GRAF.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-013.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-013.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-014.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-014.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-01401.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-01401.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-014-COORDINADOR.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-014-COORDINADOR.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-015.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-015.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-015CATEGORIA.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-015CATEGORIA.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-015A.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-015A.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-014OFIC_CENTRAL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-014OFIC_CENTRAL.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-015P.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-015P.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-016.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-016.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-017.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-017.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-017P.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-017P.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-018.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-018.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-018P.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-018P.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-019.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-019.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-019P.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-019P.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-020.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-020.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CAPITULO.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_COMPARATIVO_CAPITULO.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CUENTA.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_COMPARATIVO_CUENTA.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_GRID_DOCS.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_GRID_DOCS.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_LOTEA.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_LOTEA.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_LOTEC.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_LOTEC.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_LOTEM.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_LOTEM.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP002.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP002.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP003.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP003.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP004.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP004.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005AD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP005AD.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005AR.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP005AR.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005MD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP005MD.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005MR.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP005MR.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008AD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP008AD.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008AR.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP008AR.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008MD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP008MD.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008MR.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP008MR.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP009A.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP009A.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP009B.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP009B.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP017A.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP017A.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP017M.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP017M.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP019A.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP019A.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP021A.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP021A.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_SP01.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_SP01.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_SP02.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_SP02.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_SP04.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_SP04.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_SP05.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_SP05.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-Xejercer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-016.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-016P.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-016P.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Presupuesto\Reportes\VisualizadorCrystal.aspx.cs">
       <DependentUpon>VisualizadorCrystal.aspx</DependentUpon>
@@ -900,264 +527,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-005.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-005.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-004.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-004.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-006.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-006.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-007.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-007.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-0070.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-0070.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-007ASIG.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-007ASIG.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-008-A.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-008-A.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-008.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-008.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\rpt-001.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rpt-0011.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\rpt-002.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rpt-0021.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\rpt-003.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rpt-0031.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-008-CAL.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-008-CAL.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-008G.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-008G.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-009-1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-009-1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-009-2.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-009-2.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-010.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-010.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-011.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-011.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-012-GRAF.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-012-GRAF.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-013.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-013.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-014.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-014.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-01401.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-01401.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-014-COORDINADOR.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-014-COORDINADOR.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-015.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-015.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-015CATEGORIA.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-015CATEGORIA.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-015A.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-015A.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-014OFIC_CENTRAL.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-014OFIC_CENTRAL.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-015P.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-015P.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-016.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-016.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-016P.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-016P.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-017.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-017.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-017P.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-017P.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-018.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-018.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-018P.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-018P.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-019.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-019.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-019P.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-019P.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-020.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-020.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CAPITULO.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_COMPARATIVO_CAPITULO.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CUENTA.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_COMPARATIVO_CUENTA.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_GRID_DOCS.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_GRID_DOCS.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_LOTEA.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_LOTEA.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_LOTEC.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_LOTEC.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_LOTEM.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_LOTEM.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP002.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP002.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP003.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP003.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP004.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP004.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005AD.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP005AD.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005AR.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP005AR.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005MD.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP005MD.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005MR.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP005MR.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008AD.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP008AD.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008AR.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP008AR.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008MD.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP008MD.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008MR.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP008MR.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP009A.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP009A.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP009B.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP009B.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP017A.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP017A.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP017M.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP017M.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP019A.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP019A.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP021A.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP021A.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_SP01.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_SP01.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_SP02.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_SP02.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_SP04.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_SP04.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_SP05.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_SP05.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-009.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-009.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

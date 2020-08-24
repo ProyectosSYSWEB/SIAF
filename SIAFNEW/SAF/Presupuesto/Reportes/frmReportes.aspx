@@ -22,7 +22,7 @@
      </div>
     <table class="tabla_contenido">
         <tr>
-            <td>kkkkk
+            <td>
                 <asp:MultiView ID="MultiView1" runat="server">
                     <asp:View ID="View1" runat="server">
                         <asp:UpdatePanel ID="UpdatePanel101" runat="server">
@@ -1369,11 +1369,11 @@
                                         </td>
                                         <td colspan="3">
                                             <asp:DropDownList ID="DDLReporte_v13" runat="server" Width="50%">
-                                                <asp:ListItem Value="SP01">SP01 - Por dependencia, capítulo y partida</asp:ListItem>
-                                                <asp:ListItem Value="SP02">SP02 - Por dependencia y capítulo</asp:ListItem>
-                                                <asp:ListItem Value="SP03">SP03 - Por clasificación administrativa</asp:ListItem>
-                                                <asp:ListItem Value="SP04">SP04 - Por capítulo y subcapítulo</asp:ListItem>
-                                                <asp:ListItem Value="SP05">SP05 - Por fuente de financiamiento</asp:ListItem>
+                                                <asp:ListItem Value="SP01">ER01 - Por dependencia, capítulo y partida</asp:ListItem>
+                                                <asp:ListItem Value="SP02">ER02 - Por dependencia y capítulo</asp:ListItem>
+                                                <asp:ListItem Value="SP03">ER03 - Por clasificación administrativa</asp:ListItem>
+                                                <asp:ListItem Value="SP04">ER04 - Por capítulo y subcapítulo</asp:ListItem>
+                                                <asp:ListItem Value="SP05">ER05 - Por fuente de financiamiento</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>

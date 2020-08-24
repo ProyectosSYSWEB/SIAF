@@ -4,9 +4,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <table style="width:100%;">
             <tr>
-                <td align="right">
+                <td align="left">
                     <asp:Label ID="Label1" runat="server" Font-Names="Times New Roman" 
-                        Font-Size="X-Large" ForeColor="#B7A46C" Text="UNIVERSIDAD AUTÓNOMA DE CHIAPAS"></asp:Label>
+                        Font-Size="X-Large" ForeColor="#B7A46C" Text="CATÀLOGOS"></asp:Label>
 &nbsp;&nbsp; </td>
                 
             </tr>
@@ -337,11 +337,13 @@
                                     </table>
                                     </asp:View>
                                     <asp:View ID="View2" runat="server">
-                                        <table style="width:100%;" width="100%">
+                                        <table style="width:100%;">
                                             <tr>
-                                                <td style="width: 66%">                                                                                                                                                            
+                                                <td>
+    <iframe id="frmCapitulos" src="https://sysweb.unach.mx/presupuesto_mvc/Presupuesto/Capitulos" style="width: 100%; height: 1200px" frameborder="NO" name="frmPosgrado"></iframe>
+                                                                                                                                                           
                                                     <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" 
-                                                        Width="100%">
+                                                        Width="100%" Visible="false">
                                                         <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="TabPanel1">
                                                             <HeaderTemplate>
                                                                 CONTABILIDAD

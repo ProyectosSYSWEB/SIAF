@@ -31,11 +31,11 @@ namespace SAF
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
-            
+            bttnCorreoUnach.Text = SesionUsu.Correo_UNACH;
             //if (!IsPostBack)
             //{
-                //BusyBoxButton1.Attributes.Add("onClick", BusyBox1.ShowFunctionCall);
-                Inicializar();
+            //BusyBoxButton1.Attributes.Add("onClick", BusyBox1.ShowFunctionCall);
+            Inicializar();
             //}
                 
             
@@ -126,6 +126,11 @@ namespace SAF
         protected void BusyBoxButton1_Click1(object sender, EventArgs e)
         {
             SesionUsu.Usu_Ejercicio = ddlUsu_Ejercicio.SelectedValue;
+        }
+
+        protected void linkBttnInicio_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Inicio.aspx");
         }
     }
 }

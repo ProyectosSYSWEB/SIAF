@@ -41,7 +41,7 @@
                 <div class="col-md-4">
                     <%--                    <h1><small style="color: #FFFFFF">Recaudación de Pagos </small></h1>--%>
                     <h5 class="logo text-center" style="color: #FFFFFF">Sistema Integral de Administración y Finanzas</h5>
-                    <h1 class="logo text-center" style="color: #FFFFFF">SIAF</h1>
+                    <h1 class="logo text-center" style="color: #FFFFFF">SIAF-Presupuesto</h1>
                 </div>
                 <div class="col-md-4">
                     <img src="https://sysweb.unach.mx/resources/imagenes/unach.jpg" class="img-fluid d-none d-sm-none d-md-block" alt="Responsive image" style="cursor: pointer" />
