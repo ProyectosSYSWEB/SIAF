@@ -217,8 +217,8 @@
     <Content Include="images\wood_pattern.jpg" />
     <Content Include="Informacion.htm" />
     <Content Include="Presupuesto\Form\frmAdecuacion.aspx" />
-    <Content Include="Presupuesto\Form\frmCedula.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogos.aspx" />
+    <Content Include="Presupuesto\Form\frmCedula.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
     <Content Include="Presupuesto\Form\FRMcrea_Plantilla.aspx" />
@@ -348,6 +348,13 @@
     </Compile>
     <Compile Include="Presupuesto\Form\frmAdecuacion.aspx.designer.cs">
       <DependentUpon>frmAdecuacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogos.aspx.cs">
+      <DependentUpon>frmCatalogos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogos.aspx.designer.cs">
+      <DependentUpon>frmCatalogos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\frmCedula.aspx.cs">
       <DependentUpon>frmCedula.aspx</DependentUpon>
