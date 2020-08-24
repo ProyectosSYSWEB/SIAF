@@ -222,6 +222,7 @@
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
     <Content Include="Presupuesto\Form\FRMcrea_Plantilla.aspx" />
+    <Content Include="Presupuesto\Form\frmDashboard.aspx" />
     <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
     <Content Include="Presupuesto\Form\FRMInterinos.aspx" />
     <Content Include="Presupuesto\Form\frmMinistracion.aspx" />
@@ -375,6 +376,13 @@
     </Compile>
     <Compile Include="Presupuesto\Form\FRMcrea_Plantilla.aspx.designer.cs">
       <DependentUpon>FRMcrea_Plantilla.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmDashboard.aspx.cs">
+      <DependentUpon>frmDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmDashboard.aspx.designer.cs">
+      <DependentUpon>frmDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMDocumento.aspx.cs">
       <DependentUpon>FRMDocumento.aspx</DependentUpon>
