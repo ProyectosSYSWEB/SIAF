@@ -127,9 +127,8 @@
                         <div class="row">
                             <div class="col">
                                 <div id="divMsjUsuDep" class="alert alert-warning" role="alert">
-                                    <strong>El acceso al sistema es con la cta. y la contraseña del correo unach,</strong> &nbsp; si no actualizaste tu información dar click en el siguiente enlace.
-                                    <button id="bttnModalActualizar" type="button" class="btn btn-link">Actualizar datos</button>
-                                    <br />
+                                    <strong>El acceso al sistema es con la cta. y la contraseña del correo unach.<br />
+                                    </strong>
                                     <a href="https://ldapauthmaster.unach.mx/pssform_resetaccount.php" target="_blank">¿Olvidó  la contraseña del correo institucional?</a>
 
                                 </div>
@@ -148,10 +147,10 @@
                         <div class="col-md-6 mb-md-0 mb-3">
                             <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
                             <p>
-                                <i class="fas fa-home mr-3"></i>2da. Poniente Sur No. 108, Edificio Maciel, 3er. Piso Tuxtla Gutiérrez, Chiapas.
+                                <i class="fas fa-home mr-3"></i>2da. Poniente Sur No. 108, Edificio Maciel, 2do. Piso Tuxtla Gutiérrez, Chiapas.
                             </p>
-                            <p><i class="fas fa-envelope mr-3"></i>depfin@unach.mx, sysweb@unach.mx</p>
-                            <p><i class="fas fa-phone mr-3"></i>(961) 61 7 80 00, extensiones: 5108 Y 5501</p>
+                            <p>dpp@unach.mx</p>
+                            <p><i class="fas fa-phone mr-3"></i>(961) 61 7 80 00</p>
                         </div>
                         <div class="col-md-6 mb-md-0 mb-3">
                             <div class="text-xl-center">

@@ -127,5 +127,10 @@ namespace SAF
         {
             SesionUsu.Usu_Ejercicio = ddlUsu_Ejercicio.SelectedValue;
         }
+
+        protected void linkBttnInicio_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Inicio.aspx");
+        }
     }
 }

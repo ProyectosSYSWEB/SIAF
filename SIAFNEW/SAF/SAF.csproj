@@ -121,9 +121,6 @@
     <Content Include="Adquisiciones\Form\FRMEditar_solicitud.aspx" />
     <Content Include="Adquisiciones\Form\FRMSeguimiento.aspx" />
     <Content Include="Adquisiciones\Form\FRMTablainformativa.aspx" />
-    <Content Include="DefaultCatalogos - Copia.aspx" />
-    <Content Include="DefaultReportes.aspx" />
-    <Content Include="DefaultMovtos.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="images\atras.png" />
@@ -348,27 +345,6 @@
     </Compile>
     <Compile Include="Adquisiciones\Form\FRMTablainformativa.aspx.designer.cs">
       <DependentUpon>FRMTablainformativa.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DefaultCatalogos - Copia.aspx.cs">
-      <DependentUpon>DefaultCatalogos - Copia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DefaultCatalogos - Copia.aspx.designer.cs">
-      <DependentUpon>DefaultCatalogos - Copia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DefaultReportes.aspx.cs">
-      <DependentUpon>DefaultReportes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DefaultReportes.aspx.designer.cs">
-      <DependentUpon>DefaultReportes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DefaultMovtos.aspx.cs">
-      <DependentUpon>DefaultMovtos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DefaultMovtos.aspx.designer.cs">
-      <DependentUpon>DefaultMovtos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

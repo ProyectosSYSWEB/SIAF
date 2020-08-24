@@ -6,59 +6,61 @@
             width: 150px;
             height: 140px;
         }
-
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    
+
 
     <div class="row">
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">
-                        <img src="images/presupuesto.png" class="auto-style2" />Movimientos</h5>
-        <p class="card-text">Registro y seguimiento a la asignación, ministración y ejercicio de los recursos.</p>
-        <a href="DefaultMovtos.aspx" class="btn btn-warning btn-rounded">Continuar</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"> 
-            <img src="images/pres6.png" class="auto-style2" />
-            Reportes
-
-        </h5>
-        <p class="card-text">Presupuestos por fuente de financiamiento, mensual, acumulado, por proyecto.
-            <br />
-        </p>
-        <a href="DefaultReportes.aspx" class="btn btn-warning btn-rounded">Continuar</a>
-      </div>
-    </div>
-  </div>
         <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">
-                      <img src="images/pres7.png" class="auto-style2" />Dashboard</h5>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <img src="images/presupuesto.png" class="auto-style2" />Movimientos</h5>
+                    <p class="card-text">Registro y seguimiento del gasto realizado de acuerdo con el presupuesto de egresos asignado, registro de la conciliación bancaria.</p>
+                    <a href="DefaultMovtos.aspx" class="btn btn-warning btn-rounded">Continuar</a>
+                </div>
+            </div>
+        </div>
 
-        <p class="card-text">Avance de gastos por centro contable.</p>
-          <br />
-        <a href="DefaultReportes.aspx" class="btn btn-warning btn-rounded" >Continuar</a>
-      </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <img src="images/pres6.png" class="auto-style2" />
+                        Reportes
+
+                    </h5>
+                    <p class="card-text">
+                        Presupuestos por fuente de financiamiento, mensual, acumulado, por proyecto.
+            <br />
+                    </p>
+                    <a href="DefaultReportes.aspx" class="btn btn-warning btn-rounded">Continuar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <img src="images/pres7.png" class="auto-style2" />Dashboard</h5>
+
+                    <p class="card-text">Avance de gastos por centro contable.</p>
+                    <br />
+                    <a href="DefaultReportes.aspx" class="btn btn-warning btn-rounded">Continuar</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
     <br />
 
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="alert alert-warning" ><i class="fa fa-clock-o" aria-hidden="true"></i>
-Recuerda que faltan 26 dias para cerrar el centro contable.</div>
+                <div class="alert alert-warning">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    Recuerda que faltan 26 dias para cerrar el centro contable.
+                </div>
             </div>
         </div>
     </div>

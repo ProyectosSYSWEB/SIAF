@@ -31,11 +31,40 @@ namespace SAF
             SesionUsu = (Sesion)Session["Usuario"];
             if (!IsPostBack)
             {
+                //busca_informativa();
                 Inicializar();
-                MenuArbol();
+                if (Request.QueryString["mnu"] != null)
+                {
+                    SesionUsu.Usu_Rep = Request.QueryString["mnu"];
+                    Mnu objMenu = new Mnu();
+                    objMenu.UsuarioNombre = SesionUsu.Usu_Nombre;
+                    objMenu.Grupo = 1;
+                    objMenu.Padre = SesionUsu.Usu_Rep;
+                    List<Mnu> List = new List<Mnu>();
+                    CNMnu.LlenarTree(ref trvMenu, objMenu, ref List);
+                    trvMenu.ExpandAll();
+                    //imgTipoMenu.ImageUrl = "~/images/"+ SesionUsu.Usu_Rep + ".png";
+                    if (SesionUsu.Usu_Rep == "REP")
+                    {
+                        divEspecificaciones.Visible = true;
+                        lblEncEspecificaciones.Text = "Reportes";
+                        lblEspecificaciones.Text = "Para que puedas usar adecuadamente los reportes, necesitas tener habilitadas las ventanas emergentes.";
+                    }
+                    else if(SesionUsu.Usu_Rep == "MOV")
+                    {
+                        divEspecificaciones.Visible = true;
+                        lblEncEspecificaciones.Text = "Movimientos";
+                        lblEspecificaciones.Text = "Registro y seguimiento del gasto realizado de acuerdo con el presupuesto de egresos asignado, registro de la conciliación bancaria.";
+                    }
+                    else
+                        divEspecificaciones.Visible = false;
+                }
+
+                else
+                {
+                    MenuArbol();
+                }
             }
-            //else
-            //    MenuArbol();
         }
         private void Inicializar()
         {
