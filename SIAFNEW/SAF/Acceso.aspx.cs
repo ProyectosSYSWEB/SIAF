@@ -175,6 +175,7 @@ namespace SAF.Contabilidad
         {
             try
             {
+                //pruebas
                 Usuario.Correo_UNACH = txtUsario.Text.ToUpper();
                 Usuario.Password = txtPassword.Text.ToUpper();
                 //CNUsuario.ValidarUsuario(ref Usuario, ref Verificador);
