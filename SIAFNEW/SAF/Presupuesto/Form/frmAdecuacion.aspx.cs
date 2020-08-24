@@ -10,7 +10,7 @@ using CapaNegocio;
 
 namespace SAF.Presupuesto
 {
-    public partial class FRMDocumento : System.Web.UI.Page
+    public partial class frmAdecuacion : System.Web.UI.Page
     {
 
         #region <Variables>

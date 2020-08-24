@@ -132,11 +132,6 @@ function refreshPage() { location.reload(true); }
                                             <asp:DropDownList ID="ddlUsu_Ejercicio" runat="server" 
                                                 CssClass="fondo_label_login">
                                                 <asp:ListItem>2020</asp:ListItem>
-                                                <asp:ListItem>2019</asp:ListItem>
-                                                <asp:ListItem>2018</asp:ListItem>
-                                                <asp:ListItem>2017</asp:ListItem>
-                                                <asp:ListItem>2016</asp:ListItem>
-                                                <asp:ListItem>2015</asp:ListItem>
                                             </asp:DropDownList>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>

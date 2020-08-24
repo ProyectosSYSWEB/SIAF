@@ -116,11 +116,6 @@
     <Content Include="Adjuntos\11101-COMP6406297LAFF2045.XML" />
     <Content Include="Adjuntos\11101-FACTURA DATAPAC DP-156 JUNIO 2018 COMP6406297LAFF1836.XML" />
     <Content Include="Adjuntos\11201-UAC1.XML" />
-    <Content Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx" />
-    <Content Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx" />
-    <Content Include="Adquisiciones\Form\FRMEditar_solicitud.aspx" />
-    <Content Include="Adquisiciones\Form\FRMSeguimiento.aspx" />
-    <Content Include="Adquisiciones\Form\FRMTablainformativa.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="images\atras.png" />
@@ -220,14 +215,17 @@
     <Content Include="images\unachita.jpg" />
     <Content Include="images\wood_pattern.jpg" />
     <Content Include="Informacion.htm" />
+    <Content Include="Presupuesto\Form\frmAdecuacion.aspx" />
+    <Content Include="Presupuesto\Form\frmCedula.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
     <Content Include="Presupuesto\Form\FRMcrea_Plantilla.aspx" />
+    <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
     <Content Include="Presupuesto\Form\FRMInterinos.aspx" />
+    <Content Include="Presupuesto\Form\frmMinistracion.aspx" />
     <Content Include="Presupuesto\Form\FRMMonitor.aspx" />
     <Content Include="Presupuesto\Form\FRMPlantilla.aspx" />
     <Content Include="Presupuesto\Form\frmPresupuesto.aspx" />
-    <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
     <Content Include="Presupuesto\Form\FRMHis_Nomina.aspx" />
     <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
     <Content Include="Presupuesto\Reportes\VisualizadorCrystal.aspx" />
@@ -310,40 +308,6 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx.cs">
-      <DependentUpon>FRMAyuda_Busqueda_Codigo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMAyuda_Busqueda_Codigo.aspx.designer.cs">
-      <DependentUpon>FRMAyuda_Busqueda_Codigo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx.cs">
-      <DependentUpon>FRMCatsolicitudesAdmin_midifi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMCatsolicitudesAdmin_midifi.aspx.designer.cs">
-      <DependentUpon>FRMCatsolicitudesAdmin_midifi.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMEditar_solicitud.aspx.cs">
-      <DependentUpon>FRMEditar_solicitud.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMEditar_solicitud.aspx.designer.cs">
-      <DependentUpon>FRMEditar_solicitud.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMSeguimiento.aspx.cs">
-      <DependentUpon>FRMSeguimiento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMSeguimiento.aspx.designer.cs">
-      <DependentUpon>FRMSeguimiento.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMTablainformativa.aspx.cs">
-      <DependentUpon>FRMTablainformativa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Adquisiciones\Form\FRMTablainformativa.aspx.designer.cs">
-      <DependentUpon>FRMTablainformativa.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -368,6 +332,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmAdecuacion.aspx.cs">
+      <DependentUpon>frmAdecuacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmAdecuacion.aspx.designer.cs">
+      <DependentUpon>frmAdecuacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCedula.aspx.cs">
+      <DependentUpon>frmCedula.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCedula.aspx.designer.cs">
+      <DependentUpon>frmCedula.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\FRMCierre_Dependencia.aspx.cs">
       <DependentUpon>FRMCierre_Dependencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -389,12 +367,26 @@
     <Compile Include="Presupuesto\Form\FRMcrea_Plantilla.aspx.designer.cs">
       <DependentUpon>FRMcrea_Plantilla.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.cs">
+      <DependentUpon>FRMDocumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.designer.cs">
+      <DependentUpon>FRMDocumento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\FRMInterinos.aspx.cs">
       <DependentUpon>FRMInterinos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMInterinos.aspx.designer.cs">
       <DependentUpon>FRMInterinos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmMinistracion.aspx.cs">
+      <DependentUpon>frmMinistracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmMinistracion.aspx.designer.cs">
+      <DependentUpon>frmMinistracion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMMonitor.aspx.cs">
       <DependentUpon>FRMMonitor.aspx</DependentUpon>
@@ -416,13 +408,6 @@
     </Compile>
     <Compile Include="Presupuesto\Form\frmPresupuesto.aspx.designer.cs">
       <DependentUpon>frmPresupuesto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.cs">
-      <DependentUpon>FRMDocumento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Form\FRMDocumento.aspx.designer.cs">
-      <DependentUpon>FRMDocumento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMHis_Nomina.aspx.cs">
       <DependentUpon>FRMHis_Nomina.aspx</DependentUpon>
