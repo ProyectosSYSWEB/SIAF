@@ -54,16 +54,7 @@
     </div>
     <br />
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <div class="alert alert-warning">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    Recuerda que faltan 26 dias para cerrar el centro contable.
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <asp:HiddenField ID="HiddenField1" runat="server" />
 
     <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender" runat="server" TargetControlID="HiddenField1" PopupControlID="Panel3" BackgroundCssClass="modalBackground_Proy">

@@ -63,6 +63,8 @@ namespace SAF
                 else
                 {
                     MenuArbol();
+                    divEspecificaciones.Visible = false;
+
                 }
             }
         }
