@@ -5,8 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <link href="../../Scripts/select2/css/select2.min.css" type="text/css" rel="stylesheet" />
 
-    <style type="text/css">
-              
+    <style type="text/css">              
         .auto-style4 {
             width: 188px;
         }
