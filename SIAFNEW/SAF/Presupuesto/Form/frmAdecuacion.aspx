@@ -81,7 +81,7 @@
             <table class="tabla_contenido">
                 <tr>
                     <td valign="top">
-                        <asp:Label ID="txtdocumento" runat="server" Font-Bold="True" Font-Size="15pt" Text="Label"></asp:Label>                        
+                        <asp:Label ID="txtDocumento" runat="server" Font-Bold="True" Font-Size="15pt" Text="Adecuación"></asp:Label>                        
                     </td>
                 </tr>
                 <tr>
@@ -302,14 +302,12 @@
                                                                                                 <asp:Label ID="lblTipoEnc" runat="server" Text="Tipo"></asp:Label>
                                                                                             </td>
                                                                                             <td valign="top" class="col1">
-                                                                                                <asp:DropDownList ID="ddlTipoEnc" runat="server" OnSelectedIndexChanged="ddlTipoEnc_SelectedIndexChanged" Width="150px" AutoPostBack="True">
+                                                                                                <asp:DropDownList ID="ddlTipoEnc" runat="server"  Width="150px" OnSelectedIndexChanged="ddlTipoEnc_SelectedIndexChanged" AutoPostBack="True" >
                                                                                                 </asp:DropDownList>
-                                                                                                <br />
-                                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlTipoEnc" ErrorMessage="*Tipo requerido" InitialValue="0" ValidationGroup="GpoCodProg"></asp:RequiredFieldValidator>
                                                                                             </td>                                                                                            
                                                                                             <td class="col1" valign="top">&nbsp;</td>
                                                                                             <td class="col1" valign="top" align="right">
-                                                                                                <asp:Label ID="lblStatusEncLey" runat="server" Text="Status"></asp:Label>
+                                                                                                <asp:Label ID="lblStatusEncLey" runat="server" Text="Estatus"></asp:Label>
                                                                                             </td>
                                                                                             <td class="col1" valign="top">
                                                                                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
@@ -320,7 +318,7 @@
                                                                                                 </asp:UpdatePanel>
                                                                                                 <asp:Label ID="lblStatusEnc" runat="server" Font-Bold="True" Font-Size="20px"></asp:Label>
                                                                                                 <br />
-                                                                                                <asp:RequiredFieldValidator ID="validadorStatus" runat="server" ControlToValidate="ddlStatusEnc" ErrorMessage="*Status Requerido" InitialValue="X" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
+                                                                                                <asp:RequiredFieldValidator ID="validadorStatus" runat="server" ControlToValidate="ddlStatusEnc" ErrorMessage="*Estatus requerido" InitialValue="X" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                             </td>
                                                                                             </tr>
                                                                                         </table>
@@ -328,7 +326,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
-                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
+                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
                                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                                 <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Datos Grales.">
                                                                                                     <HeaderTemplate>
@@ -349,59 +347,17 @@
                                                                                                                             <asp:TextBox ID="txtfechaDocumento" runat="server" CssClass="box" Enabled="False" Width="95px"></asp:TextBox>
                                                                                                                             <ajaxToolkit:CalendarExtender ID="CalendarExtenderIni" runat="server" PopupButtonID="imgCalendarioIni" TargetControlID="txtfechaDocumento" />
                                                                                                                             <asp:ImageButton ID="imgCalendarioIni" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/calendario.gif" />
-                                                                                                                            <asp:RequiredFieldValidator ID="valFecha" runat="server" ControlToValidate="txtfechaDocumento" ErrorMessage="*Fecha Requerida" InitialValue="T" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
+                                                                                                                            <asp:RequiredFieldValidator ID="valFecha" runat="server" ControlToValidate="txtfechaDocumento" ErrorMessage="*Fecha requerida" InitialValue="T" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                         <td>&#160;</td>
-                                                                                                                        <td class="auto-style75">&#160;<asp:Label ID="lblFechaFin" runat="server" Text="Fecha final" Visible="False"></asp:Label>
+                                                                                                                        <td class="auto-style75">
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:TextBox ID="txtFechaFin" runat="server" CssClass="box" Visible="False" Width="95px"></asp:TextBox>
-                                                                                                                            <ajaxToolkit:CalendarExtender ID="CalendarExtenderFin" runat="server" PopupButtonID="imgCalendarioFin" TargetControlID="txtFechaFin" />
-                                                                                                                            &#160;<asp:ImageButton ID="imgCalendarioFin" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/calendario.gif" Visible="False" />
+                                                                                                                            
                                                                                                                         </td>
                                                                                                                     </tr>
-                                                                                                                    <tr>
-                                                                                                                         <td class="auto-style75">
-                                                                                                                            <asp:Label ID="lblevento" runat="server" Text="Evento"></asp:Label>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <asp:DropDownList ID="ddlevento" runat="server" Width="250px">
-                                                                                                                            </asp:DropDownList>
-                                                                                                                        </td>
-                                                                                                                        <td></td>
-                                                                                                                        <td></td>
-                                                                                                                        <td></td>
-                                                                                                                        </tr>
-                                                                                                                        <tr>
-                                                                                                                        <td>
-                                                                                                                            <asp:Label ID="lblCedula" runat="server" Text="Cédula"></asp:Label>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <asp:TextBox ID="txtCedula" runat="server" Width="95px"></asp:TextBox>
-                                                                                                                        </td>
-                                                                                                                            <td></td>
-                                                                                                                        <td>
-                                                                                                                            <asp:Label ID="lblPoliza" runat="server" Text="Póliza"></asp:Label>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server" Width="95px"></asp:TextBox>
-                                                                                                                        </td>
-                                                                                                                    </tr>
-                                                                                                                    <tr>
-                                                                                                                        <td class="auto-style63" valign="top">
-                                                                                                                            <asp:Label ID="lblcuenta" runat="server" Text="Cuenta de banco" Visible="False"></asp:Label>
-                                                                                                                        </td>
-                                                                                                                        <td colspan="4" valign="top">
-                                                                                                                            <asp:UpdatePanel ID="UpdatePanel5" runat="server">
-                                                                                                                                <ContentTemplate>
-                                                                                                                                    <asp:DropDownList ID="DDLCta_Banco0" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCta_Banco0_SelectedIndexChanged" Visible="False" Width="100%">
-                                                                                                                                    </asp:DropDownList>
-                                                                                                                                    <br />
-                                                                                                                                    <asp:TextBox ID="txtcuenta" runat="server" Visible="False" Width="100%"></asp:TextBox>
-                                                                                                                                </ContentTemplate>
-                                                                                                                            </asp:UpdatePanel>
-                                                                                                                        </td>
-                                                                                                                    </tr>
+                                                                                                                   
+                                                                                                                    
                                                                                                                     <tr>
                                                                                                                         <td class="auto-style63">
                                                                                                                             <asp:Label ID="lblfolio" runat="server" Text="Folio" Visible="False"></asp:Label>
@@ -424,55 +380,7 @@
                                                                                                                             </asp:UpdatePanel>
                                                                                                                         </td>
                                                                                                                     </tr>
-                                                                                                                    
-                                                                                                                    <tr>
-                                                                                                                        <td class="auto-style63">
-                                                                                                                            <asp:Label ID="lblNumero_Cheque" runat="server" Text="Número cheque"></asp:Label>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <asp:TextBox ID="txtNumero_Cheque" runat="server" Width="95px"></asp:TextBox>
-                                                                                                                        </td>
-                                                                                                                        <td></td>
-                                                                                                                        <td>
-                                                                                                                            <asp:Label ID="lblImporteOperacion" runat="server" Text="Importe operación"></asp:Label>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <asp:UpdatePanel ID="UpdPnlImporteOperacion" runat="server">
-                                                                                                                        <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteOperacion" runat="server" Width="95px" AutoPostBack="True" onkeyup="mascara(this,'O');" OnTextChanged="txtImporteOperacion_TextChanged">0</asp:TextBox>
-                                                                                                                            </ContentTemplate>
-                                                                                                                                </asp:UpdatePanel>
-                                                                                                                            <asp:RegularExpressionValidator ID="REVImporteOperacion" runat="server" ControlToValidate="txtImporteOperacion" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="Guardar">*Formato numérico</asp:RegularExpressionValidator>
-                                                                                                                        </td>
-                                                                                                                       
-                                                                                                                    </tr>
-                                                                                                                    <tr>
-                                                                                                                        <td>
-                                                                                                                            <asp:Label ID="lblImporteCheque" runat="server" Text="Importe cheque"></asp:Label>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <asp:UpdatePanel ID="UpdPnlImporteCheque" runat="server">
-                                                                                                                        <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteCheque" runat="server" Width="95px" AutoPostBack="True" onkeyup="mascara(this,'O');" OnTextChanged="txtImporteCheque_TextChanged">0</asp:TextBox>
-                                                                                                                        </ContentTemplate>
-                                                                                                                            </asp:UpdatePanel>
-                                                                                                                            <asp:RegularExpressionValidator ID="REVImporteCheque" runat="server" ControlToValidate="txtImporteCheque" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="Guardar">*Formato numérico</asp:RegularExpressionValidator>
-                                                                                                                        </td>
-                                                                                                                        <td>
 
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <asp:Label ID="lblImporteISR" runat="server" Text="Importe ISR"></asp:Label>
-                                                                                                                        </td>
-                                                                                                                        <td>
-                                                                                                                            <asp:UpdatePanel ID="UpdPnlImporteISR" runat="server">
-                                                                                                                        <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteISR" runat="server" Width="95px" AutoPostBack="True" onkeyup="mascara(this,'O');" OnTextChanged="txtImporteISR_TextChanged">0</asp:TextBox>
-                                                                                                                        </ContentTemplate>
-                                                                                                                                </asp:UpdatePanel>
-                                                                                                                            <asp:RegularExpressionValidator ID="REVImporteISR" runat="server" ControlToValidate="txtImporteISR" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="Guardar">*Formato numérico</asp:RegularExpressionValidator>
-                                                                                                                            </td>
-                                                                                                                    </tr>
                                                                                                                     <tr>
                                                                                                                         <td class="auto-style73" valign="top">
                                                                                                                             <asp:Label ID="lblConcepto" runat="server" Text="Concepto"></asp:Label>
@@ -480,7 +388,7 @@
                                                                                                                         <td colspan="4" valign="top" class="auto-style74">
                                                                                                                             <asp:TextBox ID="txtConcepto" runat="server" Height="80px" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                                                                                                             <br />
-                                                                                                                            <asp:RequiredFieldValidator ID="valConcepto" runat="server" ControlToValidate="txtConcepto" ErrorMessage="*Concepto Requerido" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
+                                                                                                                            <asp:RequiredFieldValidator ID="valConcepto" runat="server" ControlToValidate="txtConcepto" ErrorMessage="*Concepto requerido" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                     <tr>
@@ -644,43 +552,8 @@
                                                                                                                 <td class="auto-style9" valign="top">
                                                                                                                     &#160;</td>
                                                                                                             </tr>
-                                                                                                            <tr>
-                                                                                                                <td>
-                                                                                                                    <asp:Label ID="lblPartida" runat="server" Text="Descrip. partida"></asp:Label>
-
-
-                                                                                                                </td>
-                                                                                                                <td colspan="2">
-                                                                                                                    <asp:TextBox ID="txtDesPartida" runat="server" Width="100%" Enabled="False"></asp:TextBox>
-
-
-                                                                                                                </td>
-                                                                                                                <td></td>
-                                                                                                                <td></td>
-                                                                                                                <td></td>
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td class="auto-style72" valign="top">
-                                                                                                                    <asp:Label ID="lblCta_Banco" runat="server" Text="Cuenta de Banco" Visible="False"></asp:Label>
-
-
-                                                                                                                </td>
-                                                                                                                <td colspan="2" valign="top">
-                                                                                                                    <asp:UpdatePanel ID="UpdatePanel121" runat="server"><ContentTemplate>
-                                                                                                                            <asp:DropDownList ID="DDLCta_Banco" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCta_Banco_SelectedIndexChanged" Visible="False" Width="100%">
-                                                                                                                            </asp:DropDownList>
-                                                                                                                            <br />
-                                                                                                                            <asp:TextBox ID="txtCta_Banco" runat="server" Visible="False" Width="100%"></asp:TextBox>
-                                                                                                                        
-</ContentTemplate>
-</asp:UpdatePanel>
-
-
-                                                                                                                </td>
-                                                                                                                <td class="auto-style4" valign="top">&#160;</td>
-                                                                                                                <td class="auto-style21" valign="top">&#160;</td>
-                                                                                                                <td class="auto-style9" valign="top">&#160;</td>
-                                                                                                            </tr>
+                                                                                                            
+                                                                                                            
                                                                                                             <tr>
                                                                                                                 <td class="auto-style72" valign="top">
                                                                                                                     <asp:UpdatePanel ID="UpdatePanel114" runat="server"><ContentTemplate>
@@ -761,54 +634,7 @@
                                                                                                                 </td>
                                                                                                                 <td class="auto-style9" valign="top">&#160;</td>
                                                                                                             </tr>
-                                                                                                            <tr>
-                                                                                                                <td>
-                                                                                                                    <asp:Label ID="lblReferencia" runat="server" Text="Doc. referencia"></asp:Label>
-
-
-                                                                                                                </td>
-                                                                                                                <td>
-                                                                                                                    <asp:TextBox ID="txtReferencia" runat="server" Width="100px"></asp:TextBox>
-
-
-                                                                                                                </td>
-                                                                                                                <td>
-                                                                                                                    <asp:Label ID="lblTipoBeneficiario" runat="server" Text="Tipo beneficiario"></asp:Label>
-
-
-                                                                                                                </td>
-                                                                                                                <td colspan="2">
-                                                                                                                    <asp:DropDownList ID="DDLTipoBeneficiario" runat="server" Width="100%"></asp:DropDownList>
-
-                                                                                                                </td>
-                                                                                                                
-                                                                                                                <td>
-                                                                                                                    
-
-
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>
-                                                                                                                    <asp:Label ID="lblClaveBeneficiario" runat="server" Text="Clave beneficiario"></asp:Label>
-                                                                                                                </td>
-                                                                                                                
-                                                                                                                <td>
-                                                                                                                    <asp:DropDownList ID="DDLClaveBeneficiario" runat="server" Width="100px">
-                                                                                                                    </asp:DropDownList>
-                                                                                                                </td>
-                                                                                                                </td>
-                                                                                                                <td>
-                                                                                                                    <asp:Label ID="lblBeneficiario" runat="server" Text="Nombre beneficiario"></asp:Label>
-
-
-                                                                                                                </td>
-                                                                                                                <td colspan="2">
-                                                                                                                    <asp:TextBox ID="txtBeneficiario" runat="server" Width="100%"></asp:TextBox>
-
-
-                                                                                                                </td>
-                                                                                                            </tr>
+                                                                                                           
                                                                                                             <tr>
                                                                                                                 <td class="auto-style72" valign="top">
                                                                                                                     <asp:UpdatePanel ID="UpdatePanel115" runat="server"><ContentTemplate>
@@ -935,7 +761,7 @@
                                                                                                             <tr>
                                                                                                                 <td colspan="6">
                                                                                                                     <asp:UpdatePanel ID="updPnlDetalles" runat="server"><ContentTemplate>
-                                                                                                                            <asp:GridView ID="grdDetalles" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se han agregado Códigos Programáticos." OnRowCancelingEdit="grdDetalles_RowCancelingEdit" OnRowDeleting="grdDetalles_RowDeleting" OnRowEditing="grdDetalles_RowEditing" OnRowUpdating="EditaRegistro" Width="100%">
+                                                                                                                            <asp:GridView ID="grdDetalles" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se han agregado Códigos Programáticos."  OnRowDeleting="grdDetalles_RowDeleting"   Width="100%">
                                                                                                                                 <AlternatingRowStyle CssClass="alt" />
                                                                                                                                 <Columns>
                                                                                                                                     <asp:TemplateField HeaderText="# Movto">
@@ -978,7 +804,6 @@
                                                                                                                                     <HeaderStyle HorizontalAlign="Right" />
                                                                                                                                     <ItemStyle HorizontalAlign="Right" />
                                                                                                                                     </asp:BoundField>
-                                                                                                                                    <asp:CommandField ShowEditButton="True" />
                                                                                                                                     <asp:CommandField ShowDeleteButton="True" />
                                                                                                                                 </Columns>
                                                                                                                                 <FooterStyle CssClass="enc" />
