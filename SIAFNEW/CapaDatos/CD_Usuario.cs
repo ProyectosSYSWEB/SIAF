@@ -131,17 +131,15 @@ namespace CapaDatos
             try
             {
                 string[] ParametrosIn = { "P_CORREO", "P_ID_SISTEMA" };
-                object[] Valores = { ObjUsuario.Correo_UNACH, 1 };
+                object[] Valores = { ObjUsuario.Correo_UNACH, 15939 };
                 string[] ParametrosOut = { "P_USUARIO", "P_TIPO_USU", "P_BANDERA" };
 
-                Cmd = CDDatos.GenerarOracleCommand("VAL_USUARIO_SISTEMA", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("VAL_USUARIO_PRESUPUESTO", ref Verificador, ParametrosIn, Valores, ParametrosOut);
                 if (Verificador == "0")
                 {
                     ObjUsuario = new Usuario();
                     ObjUsuario.TipoUsu = Convert.ToString(Cmd.Parameters["P_TIPO_USU"].Value);
-
                     ObjUsuario.CUsuario = Convert.ToString(Cmd.Parameters["P_USUARIO"].Value);
-
                 }
             }
             catch (Exception ex)

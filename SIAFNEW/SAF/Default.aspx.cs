@@ -38,7 +38,7 @@ namespace SAF
                     SesionUsu.Usu_Rep = Request.QueryString["mnu"];
                     Mnu objMenu = new Mnu();
                     objMenu.UsuarioNombre = SesionUsu.Usu_Nombre;
-                    objMenu.Grupo = 1;
+                    objMenu.Grupo = 15939;
                     objMenu.Padre = SesionUsu.Usu_Rep;
                     List<Mnu> List = new List<Mnu>();
                     CNMnu.LlenarTree(ref trvMenu, objMenu, ref List);
