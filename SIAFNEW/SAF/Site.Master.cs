@@ -51,7 +51,7 @@ namespace SAF
                 ddlUsu_Ejercicio.SelectedValue = SesionUsu.Usu_Ejercicio;                
                 mnu.NombreMenu = "MenuTop";
                 mnu.UsuarioNombre = SesionUsu.Usu_Nombre;
-                mnu.Grupo = 1;
+                mnu.Grupo = 15939;
 
                 string siteMap = "ArchivosMenu/Web" + SesionUsu.Usu_Nombre + ".sitemap";
                 string fullPath = Path.Combine(Server.MapPath("~"), siteMap);

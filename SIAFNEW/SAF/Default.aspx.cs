@@ -75,7 +75,7 @@ namespace SAF
             {
                 mnu.NombreMenu = "MenuTop";
                 mnu.UsuarioNombre = SesionUsu.Usu_Nombre;
-                mnu.Grupo = 1;
+                mnu.Grupo = 15939;
                 string siteMap = "ArchivosMenu/Web" + SesionUsu.Usu_Nombre + ".sitemap";
                 string fullPath = Path.Combine(Server.MapPath("~"), siteMap);
                 if (!File.Exists(fullPath))

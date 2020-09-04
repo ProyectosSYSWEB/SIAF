@@ -134,7 +134,7 @@ namespace CapaDatos
                 object[] Valores = { ObjUsuario.Correo_UNACH, 1 };
                 string[] ParametrosOut = { "P_USUARIO", "P_TIPO_USU", "P_BANDERA" };
 
-                Cmd = CDDatos.GenerarOracleCommand("VAL_USUARIO_SISTEMA", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("VAL_USUARIO_PRESUPUESTO", ref Verificador, ParametrosIn, Valores, ParametrosOut);
                 if (Verificador == "0")
                 {
                     ObjUsuario = new Usuario();

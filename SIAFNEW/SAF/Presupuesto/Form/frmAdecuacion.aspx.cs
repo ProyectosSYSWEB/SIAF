@@ -38,7 +38,6 @@ namespace SAF.Presupuesto
             SesionUsu = (Sesion)Session["Usuario"];
             if (!IsPostBack)
             {
-                //SesionUsu.Editar = -1;
                 inicializar();              
             }
             
@@ -49,7 +48,6 @@ namespace SAF.Presupuesto
         private void inicializar()
         {
             lblError.Text = string.Empty;
-            string Permisos = Request.QueryString["P_REP"];
             try
             {
                 SesionUsu.Usu_Rep = "A";
@@ -64,10 +62,7 @@ namespace SAF.Presupuesto
                 ValidacionTipoEnc();
                 grdDocumentos.DataSource = null;
                 grdDocumentos.DataBind();
-                if (Permisos == "D8P1P1-01")
-                    btnNuevo.Visible=false;
-                else
-                    btnNuevo.Visible = true;
+                
             }
             catch (Exception ex)
             {
@@ -160,7 +155,7 @@ namespace SAF.Presupuesto
                 DDLCentroContable_SelectedIndexChanged(null, null);
                 ddlDepen_SelectedIndexChanged(null, null);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "ADMINISTRADOR", "A");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);
                 
@@ -317,7 +312,7 @@ namespace SAF.Presupuesto
         private void CargarGrid(ref GridView grid, int idGrid)
         {
             lblError.Text = string.Empty;
-            string Permisos = Request.QueryString["P_REP"];
+            
             grid.DataSource = null;
             grid.DataBind();
             try
@@ -327,7 +322,7 @@ namespace SAF.Presupuesto
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();                
                 
-                if (Permisos == "D8P1P1-01")
+                if (SesionUsu.Usu_TipoUsu == "A")
                     Celdas = new Int32[] { 0, 10 };
                 else
                     Celdas = new Int32[] { 0, 0 };
@@ -536,14 +531,31 @@ namespace SAF.Presupuesto
             lblStatusEnc.Text = string.Empty;
             validadorStatus.ValidationGroup = "Guardar";
             string Status = string.Empty;
-            string Permisos = Request.QueryString["P_REP"];
+            
             string strEstatus = string.Empty;
             try
             {
+                bool Editable = false;
                 objDocumento.Id =Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                 strEstatus = grdDocumentos.SelectedRow.Cells[5].Text;
-                if ((Permisos== "D8P1P1-01" && strEstatus== "Tr&#225;mite") || (Permisos == "DAC-DES"))//(Permisos != "D8P1P1-01" && strEstatus == "Inicial"))
-                    CNDocumentos.ConsultarDocumentoSel(ref objDocumento, ref Verificador);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                    Editable = true;
+                else
+                {
+                    if (SesionUsu.Usu_TipoUsu == "A")
+                    {
+                        if (strEstatus == "Tr&#225;mite")
+                            Editable = true;
+                    }
+                    else
+                    {
+                        if (strEstatus != "Autorizado")
+                            Editable = true;
+                    }
+                }
+                 
+                    if(Editable)
+                        CNDocumentos.ConsultarDocumentoSel(ref objDocumento, ref Verificador);
                 if (Verificador == "0")
                 {
                     ddlDepen.SelectedValue = ddlCentroContable.SelectedValue;
@@ -554,16 +566,9 @@ namespace SAF.Presupuesto
 
                     /*Inicializa controles para editar*/
                     SesionUsu.Editar = 1;
-                    if (Permisos == "D8P1P1-01")
-                    {
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "ANALISTA", "A");
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
                         ddlCentroContable.Enabled = true;
-                    }
-                    else
-                    {
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "ADMINISTRADOR", "A");
-                        ddlCentroContable.Enabled = false;
-                    }
+                   
                     ddlStatusEnc.Enabled = true;
                     ddlTipoEnc.Enabled = false;
                     
@@ -634,15 +639,12 @@ namespace SAF.Presupuesto
         }
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            string Permisos = Request.QueryString["P_REP"];
+            
             ddlCentroContable.Enabled = true;
             ddlTipoEnc.Enabled = true;
             ddlStatus.Enabled = true;
             MultiView1.ActiveViewIndex = 0;
-            if (Permisos == "D8P1P1-01")
-                btnNuevo.Visible = false;
-            else
-                btnNuevo.Visible = true;
+            
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -813,7 +815,7 @@ namespace SAF.Presupuesto
             lblErrorDet.Text = string.Empty;
             lblMsjCP.Text = string.Empty;
             bool ImportePermitido = false;
-            string Permisos = Request.QueryString["P_REP"];
+            
 
             if (ddlTipoEnc.SelectedValue != "AA" && Convert.ToDouble(lblDisponible.Text) == 0) // && Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
                 lblMsjCP.Text = lblMsjCP.Text + "*No hay saldo disponible.";
@@ -821,7 +823,7 @@ namespace SAF.Presupuesto
                 lblMsjCP.Text = lblMsjCP.Text + "*El importe debe ser menor o igual al disponible.";
             else if (ddlTipoEnc.SelectedValue == "AA")
                 {
-                if (Permisos == "D8P1P1-01" && Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
+                if (SesionUsu.Usu_TipoUsu!="N" && Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
                     lblMsjCP.Text = lblMsjCP.Text + "*El importe debe ser menor al disponible.";
                 else
                     ImportePermitido = true;
