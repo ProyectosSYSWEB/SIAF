@@ -130,7 +130,7 @@
                                                                             <asp:Label ID="lblStatus0" runat="server" Text="Estatus"></asp:Label>
                                                                         </td>
                                                                         <td class="col1">
-                                                                            <asp:DropDownList ID="ddlStatus" runat="server" Width="200px">
+                                                                            <asp:DropDownList ID="ddlStatus" runat="server" Width="150px">
                                                                             </asp:DropDownList>
                                                                         </td>
                                                                     </tr>
@@ -159,7 +159,7 @@
                                                                             <asp:Label ID="lblMesFin" runat="server" Text="Mes final"></asp:Label>
                                                                         </td>
                                                                         <td class="col1">
-                                                                            <asp:DropDownList ID="ddlMesFin" runat="server" Width="200px">
+                                                                            <asp:DropDownList ID="ddlMesFin" runat="server" Width="150px">
                                                                                 <asp:ListItem Value="01">Enero</asp:ListItem>
                                                                                 <asp:ListItem Value="02">Febrero</asp:ListItem>
                                                                                 <asp:ListItem Value="03">Marzo</asp:ListItem>

@@ -105,7 +105,7 @@ namespace SAF.Contabilidad
                             Usuario.Token = Convert.ToString(Token);
                             Usuario.CUsuario = SesionUsu.Usu_Nombre;
                             CNUsuario.Inserta_Token(ref Usuario, ref Verificador);
-                            Response.Redirect("https://sysweb.unach.mx/actualiza_correo/frmactualiza_datos.aspx?token=" + Token + "&sistema=1", true);
+                            Response.Redirect("https://sysweb.unach.mx/actualiza_correo/frmactualiza_datos.aspx?token=" + Token + "&sistema=15939", true);
                         }
                     }
 
@@ -162,7 +162,7 @@ namespace SAF.Contabilidad
                 ObjSesion.ip = hostIPs[1].ToString();
                 ObjSesion.mac_address = hostIPs[0].ToString();
                 ObjSesion.Usu_Nombre = Usuario.CUsuario;
-                ObjSesion.id_sistema = "1";
+                ObjSesion.id_sistema = "15939";
                 CNSesison.insertar_datos_sesion(ref ObjSesion, ref Verificador);
             }
             catch (Exception ex)

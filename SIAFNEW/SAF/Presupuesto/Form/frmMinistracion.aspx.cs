@@ -51,11 +51,7 @@ namespace SAF.Presupuesto
             try
             {
                 SesionUsu.Usu_Rep = "M";
-                string Permisos= Request.QueryString["P_REP"];
-                if (Permisos == "D8P1P1-01")
-                    btnNuevo.Visible = true; 
-                else
-                    btnNuevo.Visible = false;
+                
 
                 Celdas = new Int32[] { 0, 8, 9 };
                 MultiView1.ActiveViewIndex = 0;
@@ -217,16 +213,16 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
-                string Permisos = Request.QueryString["P_REP"];
-                if (Permisos=="D8P1P1-01")
-                    Celdas = new Int32[] { 0,0,0 };
-                else
-                    Celdas = new Int32[] { 0,8,9 };
+                
+                //if (Permisos=="D8P1P1-01")
+                //    Celdas = new Int32[] { 0,0,0 };
+                //else
+                //    Celdas = new Int32[] { 0,8,9 };
 
-                if (grid.Rows.Count > 0)
-                {
-                    CNComun.HideColumns(grid , Celdas);
-                }
+                //if (grid.Rows.Count > 0)
+                //{
+                //    CNComun.HideColumns(grid , Celdas);
+                //}
             }
             catch (Exception ex)
             {

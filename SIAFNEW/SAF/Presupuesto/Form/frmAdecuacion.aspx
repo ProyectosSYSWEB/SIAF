@@ -132,7 +132,7 @@
                                                                             <asp:Label ID="lblStatus0" runat="server" Text="Estatus"></asp:Label>
                                                                         </td>
                                                                         <td class="col1">
-                                                                            <asp:DropDownList ID="ddlStatus" runat="server" Width="200px">
+                                                                            <asp:DropDownList ID="ddlStatus" runat="server" Width="150px">
                                                                             </asp:DropDownList>
                                                                         </td>
                                                                     </tr>
@@ -161,7 +161,7 @@
                                                                             <asp:Label ID="lblMesFin" runat="server" Text="Mes Final"></asp:Label>
                                                                         </td>
                                                                         <td class="col1">
-                                                                            <asp:DropDownList ID="ddlMesFin" runat="server" Width="200px">
+                                                                            <asp:DropDownList ID="ddlMesFin" runat="server" Width="150px">
                                                                                 <asp:ListItem Value="01">Enero</asp:ListItem>
                                                                                 <asp:ListItem Value="02">Febrero</asp:ListItem>
                                                                                 <asp:ListItem Value="03">Marzo</asp:ListItem>
@@ -565,7 +565,7 @@
                                                                                                                 </td>
                                                                                                                 <td class="auto-style70" valign="top">
                                                                                                                     <asp:UpdatePanel ID="updPnlMesIniDet" runat="server"><ContentTemplate>
-                                                                                                                            <asp:DropDownList ID="ddlMesInicialDet" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMesInicialDet_SelectedIndexChanged" Width="100px">
+                                                                                                                            <asp:DropDownList ID="ddlMesInicialDet" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMesInicialDet_SelectedIndexChanged" Width="150px">
                                                                                                                                 <asp:ListItem Value="01">Enero</asp:ListItem>
                                                                                                                                 <asp:ListItem Value="02">Febrero</asp:ListItem>
                                                                                                                                 <asp:ListItem Value="03">Marzo</asp:ListItem>
@@ -604,7 +604,7 @@
                                                                                                                 </td>
                                                                                                                 <td class="auto-style21" valign="top">
                                                                                                                     <asp:UpdatePanel ID="updPnlMesFinalDet" runat="server"><ContentTemplate>
-                                                                                                                            <asp:DropDownList ID="ddlMesFinalDet" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMesFinalDet_SelectedIndexChanged" Visible="False" Width="100px">
+                                                                                                                            <asp:DropDownList ID="ddlMesFinalDet" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMesFinalDet_SelectedIndexChanged" Visible="False" Width="150px">
                                                                                                                                 <asp:ListItem Value="01">Enero</asp:ListItem>
                                                                                                                                 <asp:ListItem Value="02">Febrero</asp:ListItem>
                                                                                                                                 <asp:ListItem Value="03">Marzo</asp:ListItem>

@@ -38,7 +38,6 @@ namespace SAF.Presupuesto
             SesionUsu = (Sesion)Session["Usuario"];
             if (!IsPostBack)
             {
-                //SesionUsu.Editar = -1;
                 inicializar();              
             }
             else
@@ -53,12 +52,7 @@ namespace SAF.Presupuesto
             try
             {
                 SesionUsu.Usu_Rep = "C";
-                string Permisos = Request.QueryString["P_REP"];
-                if (Permisos == "D8P1P1-01")
-                    btnNuevo.Visible = false;
-                else
-                    btnNuevo.Visible = true;
-                
+                               
                 MultiView1.ActiveViewIndex = 0;
                 TabContainer1.ActiveTabIndex = 0;
                 DateTime fechaIni = Convert.ToDateTime("01/01/" + SesionUsu.Usu_Ejercicio);
@@ -278,15 +272,15 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
-                string Permisos = Request.QueryString["P_REP"];
-                if (Permisos == "D8P1P1-01")
-                    Celdas = new Int32[] { 0,8,9,10};
-                else
-                    Celdas = new Int32[] { 0,0,8,8 };
-                if (grid.Rows.Count > 0)
-                {
-                    CNComun.HideColumns(grid , Celdas);
-                }
+                
+                //if (Permisos == "D8P1P1-01")
+                //    Celdas = new Int32[] { 0,8,9,10};
+                //else
+                //    Celdas = new Int32[] { 0,0,8,8 };
+                //if (grid.Rows.Count > 0)
+                //{
+                //    CNComun.HideColumns(grid , Celdas);
+                //}
             }
             catch (Exception ex)
             {
