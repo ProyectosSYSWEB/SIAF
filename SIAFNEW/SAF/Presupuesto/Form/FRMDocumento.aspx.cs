@@ -1156,7 +1156,7 @@ namespace SAF.Presupuesto
 
         protected void ddl_fuente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlDepen_SelectedIndexChanged(null, null);
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddl_capitulo.SelectedValue, ddl_fuente.SelectedValue, ref ListPartida);
             disponible();
         }
 
