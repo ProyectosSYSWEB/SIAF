@@ -89,6 +89,7 @@ namespace SAF.Presupuesto
             lblfolio.Visible = false;
             txtfolio.Visible = false;
             txtfolio.Text = string.Empty;
+            ddlTipoEnc.Enabled = true;
             ddlStatusEnc_SelectedIndexChanged(null, null);
          
             /*Controles Detalle*/
@@ -99,6 +100,7 @@ namespace SAF.Presupuesto
             //ddlDepen.SelectedValue = ddlDependencia.SelectedValue;
             //ddlDepen_SelectedIndexChanged(null, null);
             validadorStatus.ValidationGroup = "Guardar";
+            ddlFuente_F.Enabled = true;
             ddlStatusEnc.Enabled = true;
             lblDisponible.Text = "0";
             lblDisponible.Text = "0";
@@ -178,10 +180,13 @@ namespace SAF.Presupuesto
         }
         private void ValidacionTipoDet()
         {
-           
+
+            lblMesInicialDet.Text = "Mes inicial";
+            lblMesFinalDet.Visible = true;
+            ddlMesFinalDet.Visible = true;
             lblLeyTotal_Destino.Visible = true;
             lblFormatoTotal_Destino.Visible = true;
-          
+            
             lblLeyTotal_Origen.Text = "TOTAL ORIGEN";
             
           
@@ -232,9 +237,11 @@ namespace SAF.Presupuesto
                 }
                 else if (ddlTipoEnc.SelectedValue == "AC" || ddlTipoEnc.SelectedValue == "AP")
                 {
+                    lblMesInicialDet.Text = "Mes";
+                    lblMesFinalDet.Visible = false;
+                    ddlMesFinalDet.Visible = false;
 
-                   
-                        rbtOrigen_Destino.Enabled = true;
+                    rbtOrigen_Destino.Enabled = true;
                     
                 }
             
@@ -439,23 +446,26 @@ namespace SAF.Presupuesto
             lblError.Text = string.Empty;
             lblDisponible.Text = "0";
             Verificador = string.Empty;
-            lblFormatoDisponible.Text = string.Format("{0:c}", "0");
+            
             
             try
             {
-                
+                if (rbtOrigen_Destino.SelectedValue == "O")
+                {
                     objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
                     objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
-                    objDocumentoDet.SuperTipo="A";
-                    objDocumentoDet.Mes_inicial = 0;
-                
+                    objDocumentoDet.SuperTipo = "A";
+                    objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+
                     CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                     if (Verificador == "0")
                     {
                         lblDisponible.Text = Convert.ToString(objDocumentoDet.Importe_disponible);
                         lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocumentoDet.Importe_disponible));
                     }
-                
+                }
+                else
+                    lblFormatoDisponible.Text = string.Format("{0:c}", "0");
             }
 
             catch (Exception ex)
@@ -787,10 +797,32 @@ namespace SAF.Presupuesto
         
         protected void ddlMesInicialDet_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblMsjCP.Text = string.Empty;
             ddlMesFinalDet.SelectedValue = ddlMesInicialDet.SelectedValue;
             if (txtImporteOrigen.Text != string.Empty)
                 txtImporteDestino_TextChanged(null, null);
-
+            if (ddlTipoEnc.SelectedValue == "AC" || ddlTipoEnc.SelectedValue == "AP")
+            {
+                int MesActual = System.DateTime.Now.Month;
+                int MesSeleccionado = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                bool MesPermitido = false;
+                if (ddlTipoEnc.SelectedValue == "AP")
+                {
+                    if (MesSeleccionado <= MesActual)
+                        MesPermitido = true;
+                    else
+                        lblMsjCP.Text = "En un traspaso no se puede elegir un mes posterior al mes actual."; 
+                }
+                else if (ddlTipoEnc.SelectedValue == "AC")
+                {
+                    if (MesSeleccionado >= MesActual)
+                        MesPermitido = true;
+                    else
+                        lblMsjCP.Text = "En una recalendarización no se puede elegir un mes anterior al mes actual.";
+                }
+                if(MesPermitido)
+                    disponible();
+            }
         }
         protected void grdDocumentos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -833,27 +865,59 @@ namespace SAF.Presupuesto
             lblErrorDet.Text = string.Empty;
             lblMsjCP.Text = string.Empty;
             bool ImportePermitido = false;
+            //bool MesPermitido = false;
 
             if (Convert.ToDouble(txtImporteOrigen.Text)>0)
             {
-                switch (ddlTipoEnc.SelectedValue)
+                if (rbtOrigen_Destino.SelectedValue == "O")
                 {
-                    case "AA":
-                        if (SesionUsu.Usu_TipoUsu != "N" && Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
-                            lblMsjCP.Text = "*El importe debe ser menor al disponible.";
-                        else
-                            ImportePermitido = true;
-                        break;
-                    case "AR":
-                        if (Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
-                            lblMsjCP.Text = "*El importe debe ser menor al disponible.";
-                        else
-                            ImportePermitido = true;
-                        break;
+                    if (Convert.ToDouble(txtImporteOrigen.Text) <= Convert.ToDouble(lblDisponible.Text))
+                         ImportePermitido = true;
+                    else
+                        lblMsjCP.Text = "*El importe debe ser menor al disponible.";
                 }
+                else
+                    ImportePermitido = true;
+                //switch (ddlTipoEnc.SelectedValue)
+                //{
+                //    case "AA":
+                //        if (SesionUsu.Usu_TipoUsu != "N" && Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
+                //            lblMsjCP.Text = "*El importe debe ser menor al disponible.";
+                //        else
+                //            ImportePermitido = true;
+                //        break;
+                //    case "AR":
+                //        if (Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
+                //            lblMsjCP.Text = "*El importe debe ser menor al disponible.";
+                //        else
+                //            ImportePermitido = true;
+                //        break;
+                //    default:
+
+                //        if (Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
+                //            lblMsjCP.Text = "*El importe debe ser menor al disponible.";
+                //        else
+                //            ImportePermitido = true;
+                //        break;
+                //}
             }
 
-            if (ImportePermitido)
+            //int MesActual = System.DateTime.Now.Month;
+            //int MesSeleccionado = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+            //if (ddlTipoEnc.SelectedValue == "AP")
+            //{
+            //    if (MesSeleccionado < MesActual)
+            //        MesPermitido = true;
+            //}
+            //else if (ddlTipoEnc.SelectedValue == "AC")
+            //{
+            //    if (MesSeleccionado > MesActual)
+            //        MesPermitido = true;
+            //}
+
+            //else
+            //    MesPermitido = true;
+            if (ImportePermitido )//&& MesPermitido)
             {
                 var content = new List<Pres_Documento_Detalle>();
                 if (Session["DocDet"] != null)
@@ -872,7 +936,7 @@ namespace SAF.Presupuesto
                 if (content.Count == 0)
                 {
                     objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                    objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text;
+                    objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0,34);
                     objDocumentoDet.Ur_clave = ddlDepen.SelectedValue;
                     objDocumentoDet.Tipo = (SesionUsu.Usu_Rep != "C")? rbtOrigen_Destino.SelectedValue : ddlTipoEnc.SelectedValue.Substring(1);
                     objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
@@ -910,7 +974,8 @@ namespace SAF.Presupuesto
                 else
                     lblMsjCP.Text = "El mes ya se encuentra asignado.";
             }
-
+            else
+                lblMsjCP.Text = "El importe no está permitido.";
         }
         
         protected void rbtOrigen_Destino_SelectedIndexChanged(object sender, EventArgs e)
