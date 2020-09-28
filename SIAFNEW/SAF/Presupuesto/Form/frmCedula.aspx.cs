@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CapaEntidad;
 using CapaNegocio;
+using System.Web.UI.DataVisualization.Charting;
 
 namespace SAF.Presupuesto
 {
@@ -145,8 +146,8 @@ namespace SAF.Presupuesto
                 DDLCentroContable_SelectedIndexChanged(null, null);
                 ddlDepen_SelectedIndexChanged(null, null);
                 CNComun.LlenaCombo("PKG_CONTABILIDAD.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatus, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "C");
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "C");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);
                 
@@ -506,7 +507,7 @@ namespace SAF.Presupuesto
 
                     /*Inicializa controles para editar*/
                     SesionUsu.Editar = 1;
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "C");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
                     //lblMesIni.Visible = false;
                     //lblMesFin.Visible = false;
                     //ddlMesFin.Visible = false;
@@ -559,10 +560,19 @@ namespace SAF.Presupuesto
                     Session["DocDet"] = ListDocDet;
                     CargarGridDetalle(ListDocDet);
                     SesionUsu.Editar = 1;
-
-
+                    
                     MultiView1.ActiveViewIndex = 1;
                     TabContainer1.ActiveTabIndex = 0;
+                    if (ddlTipo.SelectedValue != "CC")
+                    {
+                        CNComun.Inhabilitar_controles(UpdatePanel1);
+                        btnGuardar.Enabled = false;
+                    }
+                    else
+                    {
+                        CNComun.Habilitar_controles(UpdatePanel1);
+                        btnGuardar.Enabled = true ;
+                    }
                 }
             }
             catch (Exception ex)
@@ -570,6 +580,7 @@ namespace SAF.Presupuesto
                 lblError.Text = ex.Message;
             }
         }
+        
         protected void ddlStatusEnc_SelectedIndexChanged(object sender, EventArgs e)
         {
             StatusEnc(ddlStatusEnc.SelectedValue);
@@ -589,6 +600,8 @@ namespace SAF.Presupuesto
             //ddlMesFin.Visible = true;
             //ddlMesIni.Visible = true;
             //ddlTipo.Enabled = true;
+            CNComun.Habilitar_controles(UpdatePanel1);
+            btnGuardar.Enabled = true;
             ddlCentroContable.Enabled = true;
             ddlTipoEnc.Enabled = true;
             ddlStatus.Enabled = true;
@@ -604,6 +617,8 @@ namespace SAF.Presupuesto
             {
                 if (grdDetalles.Rows.Count > 0)
                 {
+                    if (txtImporteOperacion.Text ==txtImporteISR.Text + txtImporteCheque.Text )
+                    {                   
                     if (rbtdoc_simultaneo.SelectedValue == "S" && SesionUsu.Usu_Rep == "C" && SesionUsu.Editar == 0)
                     {
                         for (int i = 0; i < 4; i++)
@@ -623,16 +638,29 @@ namespace SAF.Presupuesto
                                         i = 4;
                                     break;
                                 case 2:
-                                    objDocumento.Tipo = "CE";
-                                    guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                    if (VerificadorInserta != "0")
-                                        i = 4;
+                                    if (ddlevento.SelectedValue != "09")
+                                    {
+                                        if (ddlevento.SelectedValue != "10")
+                                        {
+                                            objDocumento.Tipo = "CE";
+                                        guarda_encabezado(ref VerificadorInserta, ref Folio);
+                                        if (VerificadorInserta != "0")
+                                            i = 4;
+                                        }
+                                    }
+                                    
                                     break;
                                 case 3:
-                                    objDocumento.Tipo = "CP";
-                                    guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                    if (VerificadorInserta != "0")
+                                    if (ddlevento.SelectedValue != "09")
+                                    {
+                                        if (ddlevento.SelectedValue != "10")
+                                        {
+                                            objDocumento.Tipo = "CP";
+                                        guarda_encabezado(ref VerificadorInserta, ref Folio);
+                                         if (VerificadorInserta != "0")
                                         i = 4;
+                                        }
+                                    }
                                     break;
                             }
                         }
@@ -676,10 +704,15 @@ namespace SAF.Presupuesto
                                 ddlCentroContable.Enabled = true;
                             }
                     }
+                    }
+                    else
+                    {
+                        lblErrorDet.Text = "El importe de operacion es incorrecto.";
+                    }
                 }
                 else
                 {
-                    lblErrorDet.Text = "No se han agregado códigos programáticos.";
+                    lblErrorDet.Text = "No se han agregado códigos programáticos.";                   
                 } 
             }
             catch (Exception ex)
@@ -1022,5 +1055,24 @@ namespace SAF.Presupuesto
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
         #endregion
+
+        protected void ddlevento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlevento.SelectedValue != "06")
+            {
+                lblImporteISR.Visible = false;
+                txtImporteISR.Visible = false;
+            }
+            else
+            {
+                lblImporteISR.Visible = true;
+                txtImporteISR.Visible = true;
+            }
+            }
+
+        protected void DDLTipoBeneficiario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
