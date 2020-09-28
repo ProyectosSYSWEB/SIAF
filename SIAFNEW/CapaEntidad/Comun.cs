@@ -14,7 +14,6 @@ namespace CapaEntidad
         private string _EtiquetaCuatro;
         private string _EtiquetaCinco;
         private string _EtiquetaSeis;
-        private string _Contador_Visitas;
         private string _Etiqueta;
 
         public string Etiqueta

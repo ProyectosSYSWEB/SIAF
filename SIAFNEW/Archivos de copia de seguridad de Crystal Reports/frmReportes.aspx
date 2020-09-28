@@ -939,10 +939,10 @@
                     <asp:View ID="View10" runat="server">
                 <table style="width: 100%;">
                     <tr>
-                        <td style ="width:25%">
+                        <td style ="width:20%">
                            
                         </td>
-                        <td colspan="2">
+                        <td colspan="3">
                            
                         </td>
                        
@@ -1037,7 +1037,7 @@
                                         <td style="width:20%">
                                             <asp:Label ID="Label31" runat="server" Text="Dependencia inicial"></asp:Label>
                                         </td>
-                                        <td colspan="3">
+                                        <td colspan="2">
                                             <asp:DropDownList ID="DDLDependenciaInicial_v11" runat="server"  Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DDLDependenciaInicial_v11_SelectedIndexChanged" >
                                             </asp:DropDownList>
                                         </td>
@@ -1046,7 +1046,7 @@
                                         <td style="width:20%">
                                             <asp:Label ID="Label41" runat="server" Text="Dependencia final"></asp:Label>
                                         </td>
-                                        <td colspan="3">
+                                        <td colspan="2">
                                             <asp:DropDownList ID="DDLDependenciaFinal_v11" runat="server" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DDLDependenciaFinal_v11_SelectedIndexChanged1" >
                                             </asp:DropDownList>
                                         </td>
@@ -1062,7 +1062,7 @@
                                         <td>
                                             <asp:Label ID="Label38" runat="server" Text="Reporte"></asp:Label>
                                         </td>
-                                        <td colspan="3">
+                                        <td colspan="2">
                                             <asp:DropDownList ID="DDLReporte_v11" runat="server" Width="100%">
                                                  <asp:ListItem Value="RP009A">RP009A - Por fuente de financiamiento, dependencia, proyecto y capítulo</asp:ListItem>
                                                 <asp:ListItem Value="RP009B">RP009B - Por dependencia, fuente de financiamiento, proyecto y capítulo</asp:ListItem>
@@ -1070,13 +1070,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4"></td>
+                                        <td colspan="3"></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             
                                         </td>
-                                        <td colspan="3">
+                                        <td colspan="2">
                                             <asp:GridView ID="grdCapitulo_v11" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." Width="50%">
                                                 <Columns>
                                                     <asp:TemplateField>
@@ -1105,7 +1105,7 @@
                                     </tr>
                                     
                                     <tr>
-                                        <td colspan="4">
+                                        <td colspan="3">
                                            </td>
                                         
                                     </tr>
@@ -1113,7 +1113,7 @@
                                         <td>
                                             
                                         </td>
-                                        <td colspan="3">
+                                        <td colspan="2">
                                             <asp:GridView ID="grdFuente_v11" runat="server" AutoGenerateColumns="False" Width="100%" CssClass="mGrid" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:TemplateField>
@@ -1136,12 +1136,12 @@
                                         </td>
                                     </tr>
                                      <tr>
-                                        <td colspan="4">
+                                        <td colspan="3">
                                            </td>
                                         
                                     </tr>
                                     <tr>
-                                        <td colspan="4"></td>
+                                        <td colspan="3"></td>
                                     </tr>
                                     <tr>
                                         <td class="cuadro_botones" colspan="4">
@@ -1163,9 +1163,10 @@
                         </asp:UpdatePanel>
                     </asp:View>
                      <asp:View ID="View12" runat="server">
+
                 <table style="width: 100%;">
                     <tr>
-                        <td style ="width:25%">
+                        <td style ="width:20%">
                            
                         </td>
                         <td colspan="2">
@@ -1255,6 +1256,345 @@
                     </tr>
                 </table>
             </asp:View>
+                     <asp:View ID="View13" runat="server">
+                        <asp:UpdatePanel ID="UpdatePanel13" runat="server">
+                            <ContentTemplate>
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="width:20%">
+                                            <asp:Label ID="Label43" runat="server" Text="Dependencia"></asp:Label>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:DropDownList ID="DDLDependencia_v13" runat="server"  Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DDLDependencia_v13_SelectedIndexChanged" >
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label47" runat="server" Text="Modificado"></asp:Label>
+                                        </td>
+                                        <td style="width:20%">
+                                            <asp:DropDownList ID="DDLMesIni_Modificado" runat="server" Width="60%">
+                                               <asp:ListItem Value="01">Enero</asp:ListItem>
+                                                <asp:ListItem Value="02">Febrero</asp:ListItem>
+                                                                <asp:ListItem Value="03">Marzo</asp:ListItem>
+                                                                <asp:ListItem Value="04">Abril</asp:ListItem>
+                                                                <asp:ListItem Value="05">Mayo</asp:ListItem>
+                                                                <asp:ListItem Value="06">Junio</asp:ListItem>
+                                                                <asp:ListItem Value="07">Julio</asp:ListItem>
+                                                                <asp:ListItem Value="08">Agosto</asp:ListItem>
+                                                                <asp:ListItem Value="09">Septiembre</asp:ListItem>
+                                                                <asp:ListItem Value="10">Octubre</asp:ListItem>
+                                                                <asp:ListItem Value="11">Noviembre</asp:ListItem>
+                                                                <asp:ListItem Value="12">Diciembre</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                       
+                                        <td style="width:20%">
+                                            <asp:DropDownList ID="DDLMesFin_Modificado" runat="server" Width="60%">
+                                                <asp:ListItem Value="01">Enero</asp:ListItem>
+                                                                <asp:ListItem Value="02">Febrero</asp:ListItem>
+                                                                <asp:ListItem Value="03">Marzo</asp:ListItem>
+                                                                <asp:ListItem Value="04">Abril</asp:ListItem>
+                                                                <asp:ListItem Value="05">Mayo</asp:ListItem>
+                                                                <asp:ListItem Value="06">Junio</asp:ListItem>
+                                                                <asp:ListItem Value="07">Julio</asp:ListItem>
+                                                                <asp:ListItem Value="08">Agosto</asp:ListItem>
+                                                                <asp:ListItem Value="09">Septiembre</asp:ListItem>
+                                                                <asp:ListItem Value="10">Octubre</asp:ListItem>
+                                                                <asp:ListItem Value="11">Noviembre</asp:ListItem>
+                                                                <asp:ListItem Value="12">Diciembre</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                         <td style="width:40%">
+                                             &nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label49" runat="server" Text="Ejercido"></asp:Label>
+                                        </td>
+                                        <td style="width:20%">
+                                            <asp:DropDownList ID="DDLMesIni_Ejercido" runat="server" Width="60%">
+                                               <asp:ListItem Value="01">Enero</asp:ListItem>
+                                                <asp:ListItem Value="02">Febrero</asp:ListItem>
+                                                                <asp:ListItem Value="03">Marzo</asp:ListItem>
+                                                                <asp:ListItem Value="04">Abril</asp:ListItem>
+                                                                <asp:ListItem Value="05">Mayo</asp:ListItem>
+                                                                <asp:ListItem Value="06">Junio</asp:ListItem>
+                                                                <asp:ListItem Value="07">Julio</asp:ListItem>
+                                                                <asp:ListItem Value="08">Agosto</asp:ListItem>
+                                                                <asp:ListItem Value="09">Septiembre</asp:ListItem>
+                                                                <asp:ListItem Value="10">Octubre</asp:ListItem>
+                                                                <asp:ListItem Value="11">Noviembre</asp:ListItem>
+                                                                <asp:ListItem Value="12">Diciembre</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                       
+                                        <td style="width:20%">
+                                            <asp:DropDownList ID="DDLMesFin_Ejercido" runat="server" Width="60%">
+                                                <asp:ListItem Value="01">Enero</asp:ListItem>
+                                                                <asp:ListItem Value="02">Febrero</asp:ListItem>
+                                                                <asp:ListItem Value="03">Marzo</asp:ListItem>
+                                                                <asp:ListItem Value="04">Abril</asp:ListItem>
+                                                                <asp:ListItem Value="05">Mayo</asp:ListItem>
+                                                                <asp:ListItem Value="06">Junio</asp:ListItem>
+                                                                <asp:ListItem Value="07">Julio</asp:ListItem>
+                                                                <asp:ListItem Value="08">Agosto</asp:ListItem>
+                                                                <asp:ListItem Value="09">Septiembre</asp:ListItem>
+                                                                <asp:ListItem Value="10">Octubre</asp:ListItem>
+                                                                <asp:ListItem Value="11">Noviembre</asp:ListItem>
+                                                                <asp:ListItem Value="12">Diciembre</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                         <td style="width:40%">
+                                             &nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label44" runat="server" Text="Fecha de entrega"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtFechaEntrega" runat="server" 
+                                CssClass="box"  Width="95px"></asp:TextBox>
+                           <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" 
+                                                TargetControlID="txtFechaEntrega" DaysModeTitleFormat="dd MMMM, yyyy" 
+                                                Format="dd/MMMM/yyyy" PopupButtonID="imgFE" 
+                                                TodaysDateFormat="dd MMMM, yyyy"></ajaxToolkit:CalendarExtender>
+                            <asp:Image ID="imgFE" runat="server" ImageUrl="https://sysweb.unach.mx/resources/imagenes/calendario.gif" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label45" runat="server" Text="Reporte"></asp:Label>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:DropDownList ID="DDLReporte_v13" runat="server" Width="50%">
+                                                <asp:ListItem Value="SP01">ER01 - Por dependencia, capítulo y partida</asp:ListItem>
+                                                <asp:ListItem Value="SP02">ER02 - Por dependencia y capítulo</asp:ListItem>
+                                                <asp:ListItem Value="SP03">ER03 - Por clasificación administrativa</asp:ListItem>
+                                                <asp:ListItem Value="SP04">ER04 - Por capítulo y subcapítulo</asp:ListItem>
+                                                <asp:ListItem Value="SP05">ER05 - Por fuente de financiamiento</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:GridView ID="grdCapitulo_v13" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." Width="50%">
+                                                <Columns>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:UpdatePanel ID="UpdatePanel105" runat="server">
+                                                                <ContentTemplate>
+                                                                    <asp:CheckBox ID="chkCapitulo_v13" runat="server" />
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" Width="10px" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="id" HeaderText="ID" />
+                                                    <asp:BoundField DataField="capitulo" HeaderText="CAPITULO" />
+                                                </Columns>
+                                                <FooterStyle CssClass="enc" />
+                                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                    <SelectedRowStyle CssClass="sel" />
+                                                    <HeaderStyle CssClass="enc" />                                                
+                                                    <AlternatingRowStyle CssClass="alt" /> 
+                                            </asp:GridView>
+                                             <asp:Button ID="btnChkCapitulos_v13" runat="server"  OnClick="btnChkCapitulos_v13_Click"
+                                                        Text="Marcar todos" Width="15%"  CssClass="btn" CausesValidation="False" />
+                                        </td>
+                                       
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="4">
+                                           </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:GridView ID="grdFuentes_v13" runat="server" AutoGenerateColumns="False" Width="100%" CssClass="mGrid" EmptyDataText="No se encontró ningún registro.">
+                                                <Columns>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:CheckBox ID="chkFuente_v13" runat="server" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" Width="10px" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="FUENTE" HeaderText="FUENTE" />
+                                                    <asp:BoundField DataField="DESCRIPCION" HeaderText="FUENTE DE FINANCIAMIENTO" />
+                                                </Columns>
+                                                <FooterStyle CssClass="enc" />
+                                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                    <SelectedRowStyle CssClass="sel" />
+                                                    <HeaderStyle CssClass="enc" />                                                
+                                                    <AlternatingRowStyle CssClass="alt" /> 
+                                            </asp:GridView>
+                                             <asp:Button ID="btnChkFuentes_v13" runat="server"  OnClick="btnChkFuentes_v13_Click"
+                                                        Text="Marcar todos" Width="15%"  CssClass="btn" CausesValidation="False" />
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td colspan="4">
+                                           </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuadro_botones" colspan="4">
+                                            <asp:UpdatePanel ID="UpdatePanel14" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:ImageButton ID="imgBtnPDF_v13" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" onclick="imgBttnPdf_v13" title="Reporte PDF" />
+                                                    <asp:ImageButton ID="imgBtnXLS_v13" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/excel.png" onclick="imgBttnExcel_v13" title="Reporte Excel" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td colspan="3">&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </asp:View>
+                    <asp:View ID="View14" runat="server">
+                        <asp:UpdatePanel ID="UpdatePanel16" runat="server">
+                            <ContentTemplate>
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="width:20%">
+                                            <asp:Label ID="Label46" runat="server" Text="Dependencia"></asp:Label>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:DropDownList ID="DDLDependencia_v14" runat="server" Width="100%"  AutoPostBack="True" OnSelectedIndexChanged="DDLDependencia_v14_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                          <td style="width:20%">
+                                            <asp:Label ID="Label50" runat="server" Text="Tipo"></asp:Label>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:DropDownList ID="DDLTipo_v14" runat="server" Width="25%">
+                                                <asp:ListItem Value="AUMENTO">Aumento</asp:ListItem>
+                                                <asp:ListItem Value="AUTORIZADO">Autorizado</asp:ListItem>
+                                                <asp:ListItem Value="MODIFICADO">Modificado</asp:ListItem>
+                                                <asp:ListItem Value="DISMINUCION">Disminución</asp:ListItem>
+                                                <asp:ListItem Value="COMPROMETIDO">Comprometido</asp:ListItem>
+                                                <asp:ListItem Value="XMINISTRAR">Por ministrar</asp:ListItem>
+                                                <asp:ListItem Value="MINISTRADO">Ministrado</asp:ListItem>
+                                                <asp:ListItem Value="EJERCIDO">Ejercido</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:GridView ID="grdCapitulos_v14" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." Width="50%">
+                                                <Columns>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:UpdatePanel ID="UpdatePanel105" runat="server">
+                                                                <ContentTemplate>
+                                                                    <asp:CheckBox ID="chkCapitulo_v14" runat="server" />
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" Width="10px" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="id" HeaderText="ID" />
+                                                    <asp:BoundField DataField="capitulo" HeaderText="CAPITULO" />
+                                                </Columns>
+                                                <FooterStyle CssClass="enc" />
+                                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                    <SelectedRowStyle CssClass="sel" />
+                                                    <HeaderStyle CssClass="enc" />                                                
+                                                    <AlternatingRowStyle CssClass="alt" /> 
+                                            </asp:GridView>
+                                             <asp:Button ID="btnChkCapitulos_v14" runat="server"  OnClick="btnChkCapitulos_v14_Click"
+                                                        Text="Marcar todos" Width="15%"  CssClass="btn" CausesValidation="False" />
+                                        </td>
+                                       
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="4">
+                                           </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:GridView ID="grdSubprogramas_v14" runat="server" AutoGenerateColumns="False" Width="100%" CssClass="mGrid" EmptyDataText="No se encontró ningún registro.">
+                                                <Columns>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:CheckBox ID="chkSubprograma_v14" runat="server" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" Width="10px" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="ID" HeaderText="" />
+                                                    <asp:BoundField DataField="SUBPROGRAMA" HeaderText="SUBPROGRAMA" />
+                                                </Columns>
+                                                <FooterStyle CssClass="enc" />
+                                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                    <SelectedRowStyle CssClass="sel" />
+                                                    <HeaderStyle CssClass="enc" />                                                
+                                                    <AlternatingRowStyle CssClass="alt" /> 
+                                            </asp:GridView>
+                                             <asp:Button ID="btnChkSubprogramas_v14" runat="server"  OnClick="btnChkSubprogramas_v14_Click"
+                                                        Text="Marcar todos" Width="15%"  CssClass="btn" CausesValidation="False" />
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td colspan="4">
+                                           </td>
+                                        
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cuadro_botones" colspan="4">
+                                            <asp:UpdatePanel ID="UpdatePanel17" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:ImageButton ID="imgbtnPDF_v14" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" onclick="imgBttnPdf_v14" title="Reporte PDF" />
+                                                    <asp:ImageButton ID="imgbtnXLS_v14" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/excel.png" onclick="imgBttnExcel_v14" title="Reporte Excel" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td colspan="3">&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </asp:View>
                 </asp:MultiView>                
             </td>
         </tr>
