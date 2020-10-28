@@ -520,15 +520,6 @@
                                                                                                             <tr>
                                                                                                                 <td class="auto-style72" valign="top">&#160;</td>
                                                                                                                 <td class="auto-style70" valign="top">
-                                                                                                                    <asp:UpdatePanel ID="updPnlBtnDisponible" runat="server"><ContentTemplate>
-                                                                                                                            <asp:Button ID="btnDisponible" runat="server" CausesValidation="False" CssClass="btn" OnClick="btnDisponible_Click" Text="Verificar Disponible" />
-                                                                                                                        
-</ContentTemplate>
-</asp:UpdatePanel>
-
-
-                                                                                                                    <asp:UpdateProgress ID="updProBtnDisponible" runat="server" AssociatedUpdatePanelID="updPnlBtnDisponible"><progresstemplate>
-                                                                                                                            <asp:Image ID="imgBtnDisponible" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
                                                                                                                         
 </progresstemplate>
 </asp:UpdateProgress>
