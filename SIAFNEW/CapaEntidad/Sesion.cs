@@ -25,7 +25,6 @@ namespace CapaEntidad
         private string _Cerrada;
         private string _Correo_UNACH;
         private string _Nombre_Completo;
-        private bool _Modifica_Ejercicio;
 
 
         public string Nombre_Completo
@@ -92,12 +91,6 @@ namespace CapaEntidad
             get { return _Usu_Ejercicio.Trim(); }
             set { _Usu_Ejercicio = value.Trim(); }
         }
-        public bool Modifica_Ejercicio
-        {
-            get { return _Modifica_Ejercicio; }
-            set { _Modifica_Ejercicio = value; }
-        }
-
         public string Usu_Dependencia
         {
             get { return _Usu_Dependencia.Trim(); }

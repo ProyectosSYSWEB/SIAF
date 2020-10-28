@@ -41,7 +41,7 @@
                 <div class="col-md-4">
                     <%--                    <h1><small style="color: #FFFFFF">Recaudación de Pagos </small></h1>--%>
                     <h5 class="logo text-center" style="color: #FFFFFF">Sistema Integral de Administración y Finanzas</h5>
-                    <h3 class="logo text-center" style="color: #FFFFFF">SIAF-Presupuesto</h3>
+                    <h1 class="logo text-center" style="color: #FFFFFF">SIAF-Presupuesto</h1>
                 </div>
                 <div class="col-md-4">
                     <img src="https://sysweb.unach.mx/resources/imagenes/unach.jpg" class="img-fluid d-none d-sm-none d-md-block" alt="Responsive image" style="cursor: pointer" />
@@ -127,8 +127,9 @@
                         <div class="row">
                             <div class="col">
                                 <div id="divMsjUsuDep" class="alert alert-warning" role="alert">
-                                    <strong>El acceso al sistema es con la cta. y la contraseña del correo unach.<br />
-                                    </strong>
+                                    <strong>El acceso al sistema es con la cta. y la contraseña del correo unach,</strong> &nbsp; si no actualizaste tu información dar click en el siguiente enlace.
+                                    <button id="bttnModalActualizar" type="button" class="btn btn-link">Actualizar datos</button>
+                                    <br />
                                     <a href="https://ldapauthmaster.unach.mx/pssform_resetaccount.php" target="_blank">¿Olvidó  la contraseña del correo institucional?</a>
 
                                 </div>
@@ -147,10 +148,10 @@
                         <div class="col-md-6 mb-md-0 mb-3">
                             <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
                             <p>
-                                <i class="fas fa-home mr-3"></i>2da. Poniente Sur No. 108, Edificio Maciel, 2do. Piso Tuxtla Gutiérrez, Chiapas.
+                                <i class="fas fa-home mr-3"></i>2da. Poniente Sur No. 108, Edificio Maciel, 3er. Piso Tuxtla Gutiérrez, Chiapas.
                             </p>
-                            <p>dpp@unach.mx</p>
-                            <p><i class="fas fa-phone mr-3"></i>(961) 61 7 80 00</p>
+                            <p><i class="fas fa-envelope mr-3"></i>depfin@unach.mx, sysweb@unach.mx</p>
+                            <p><i class="fas fa-phone mr-3"></i>(961) 61 7 80 00, extensiones: 5108 Y 5501</p>
                         </div>
                         <div class="col-md-6 mb-md-0 mb-3">
                             <div class="text-xl-center">

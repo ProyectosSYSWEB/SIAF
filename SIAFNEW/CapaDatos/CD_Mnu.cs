@@ -350,11 +350,11 @@ namespace CapaDatos
                     objXMLTW.WriteAttributeString("url", "https://ldapauthmaster.unach.mx/pssform_resetaccount.php");
                     objXMLTW.WriteEndElement();
 
-                    //objXMLTW.WriteStartElement("siteMapNode");
-                    //objXMLTW.WriteAttributeString("title", "AYUDA");
-                    //objXMLTW.WriteAttributeString("description", "AYUDA");
-                    //objXMLTW.WriteAttributeString("url", "http://sysweb.unach.mx/saf/Manual_Usuario.pdf");
-                    //objXMLTW.WriteEndElement();
+                    objXMLTW.WriteStartElement("siteMapNode");
+                    objXMLTW.WriteAttributeString("title", "AYUDA");
+                    objXMLTW.WriteAttributeString("description", "AYUDA");
+                    objXMLTW.WriteAttributeString("url", "http://sysweb.unach.mx/saf/Manual_Usuario.pdf");
+                    objXMLTW.WriteEndElement();
 
                     objXMLTW.WriteStartElement("siteMapNode");
                     objXMLTW.WriteAttributeString("title", "SALIR");

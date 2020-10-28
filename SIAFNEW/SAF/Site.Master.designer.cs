@@ -105,13 +105,13 @@ namespace SAF
         protected global::System.Web.UI.WebControls.Button bttnCerrarSesion;
 
         /// <summary>
-        /// Control UpdatePanel10.
+        /// Control ddlSistemas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel10;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSistemas;
 
         /// <summary>
         /// Control ddlUsu_Ejercicio.
