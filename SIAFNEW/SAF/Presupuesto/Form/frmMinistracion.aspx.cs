@@ -84,7 +84,7 @@ namespace SAF.Presupuesto
             txtCancelacion.Text = string.Empty;
             ddlTipoEnc.SelectedIndex = 0;
             ddlStatusEnc.Visible = true;
-            ddlStatusEnc.SelectedValue = "I";
+            //ddlStatusEnc.SelectedValue = "I";
             lblStatusEnc.Visible = false;
             lblMsjCP.Text = string.Empty;
             ddlStatusEnc_SelectedIndexChanged(null, null);
@@ -119,8 +119,10 @@ namespace SAF.Presupuesto
                 DDLCentroContable_SelectedIndexChanged(null, null);
                 ddlDepen_SelectedIndexChanged(null, null);
                 CNComun.LlenaCombo("PKG_CONTABILIDAD.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatus, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
+                //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatus, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
+                //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);
                 ddlTipoEnc.Items.RemoveAt(0);
@@ -324,11 +326,22 @@ namespace SAF.Presupuesto
             lblDisponible.Text = string.Empty;
             try
             {
+                //objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
+                //objDocumentoDet.Desc_Codigo_Prog =ddlCodigoProg.SelectedItem.ToString();
+                //    objDocumentoDet.Tipo ="M";
+                //    objDocumentoDet.Mes_inicial =Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
+
+                //CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
+                //if (Verificador == "0")
+                //{
+                //    lblDisponible.Text = Convert.ToString(objDocumentoDet.Importe_disponible);
+                //    lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocumentoDet.Importe_disponible));
+                //}
                 objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                objDocumentoDet.Desc_Codigo_Prog =ddlCodigoProg.SelectedItem.ToString();
-                    objDocumentoDet.Tipo ="M";
-                    objDocumentoDet.Mes_inicial =Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
-               
+                objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
+                objDocumentoDet.SuperTipo = "M";
+                objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+
                 CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                 if (Verificador == "0")
                 {
@@ -427,7 +440,8 @@ namespace SAF.Presupuesto
 
                     /*Inicializa controles para editar*/
                     SesionUsu.Editar = 1;
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
+                    //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
                     //lblMesIni.Visible = false;
                     //lblMesFin.Visible = false;
                     //ddlMesFin.Visible = false;
