@@ -147,49 +147,20 @@
 
 
                     </div>
-                    <%--<div  class="btn-group dropdown my-2 my-lg-9" style="left: 0px; top: 0px">
-                        <asp:UpdatePanel ID="UpdatePanel10" runat="server">
-                            <ContentTemplate>
-                                <asp:DropDownList ID="ddlUsu_Ejercicio" runat="server"
-                                    CssClass="fondo_label_login">
-                                    <asp:ListItem>2020</asp:ListItem>
-                                    <asp:ListItem>2019</asp:ListItem>
-                                    <asp:ListItem>2018</asp:ListItem>
-                                    <asp:ListItem>2017</asp:ListItem>
-                                    <asp:ListItem>2016</asp:ListItem>
-                                    <asp:ListItem>2015</asp:ListItem>
-                                    <asp:ListItem>2014</asp:ListItem>
-                                    <asp:ListItem>2013</asp:ListItem>
-                                    <asp:ListItem>2012</asp:ListItem>
-                                    <asp:ListItem>2011</asp:ListItem>
-                                    <asp:ListItem>2010</asp:ListItem>
-                                </asp:DropDownList>
-                                <%--<asp:Button ID="BusyBoxButton1" runat="server" Text="Cambiar" OnClick="BusyBoxButton1_Click" CssClass="btn4" />--%>
-                </ContentTemplate>
-                        </asp:UpdatePanel>
             </div>
 
 
             <div class="cuadro_usuario">
-
-                <asp:DropDownList ID="ddlSistemas" runat="server" CssClass="f11px" Width="140px" Visible="False">
-                </asp:DropDownList>
-                <asp:DropDownList ID="ddlUsu_Ejercicio" runat="server"
-                    CssClass="fondo_label_login">
-                    <asp:ListItem>2020</asp:ListItem>
-                    <asp:ListItem>2019</asp:ListItem>
-                    <asp:ListItem>2018</asp:ListItem>
-                    <asp:ListItem>2017</asp:ListItem>
-                    <asp:ListItem>2016</asp:ListItem>
-                    <asp:ListItem>2015</asp:ListItem>
-                    <asp:ListItem>2014</asp:ListItem>
-                    <asp:ListItem>2013</asp:ListItem>
-                    <asp:ListItem>2012</asp:ListItem>
-                    <asp:ListItem>2011</asp:ListItem>
-                    <asp:ListItem>2010</asp:ListItem>
-                </asp:DropDownList>
-                <asp:Button ID="btnIr" runat="server" Text="Cambiar" CssClass="btn4" OnClick="btnIr_Click" />
-
+                <asp:UpdatePanel ID="UpdatePanel10" runat="server">
+                    <ContentTemplate>
+                        <asp:DropDownList ID="ddlUsu_Ejercicio" runat="server"
+                            CssClass="fondo_label_login">
+                            <asp:ListItem>2020</asp:ListItem>
+                            <asp:ListItem>2019</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:Button ID="btnIr" runat="server" Text="Cambiar" CssClass="btn4" OnClick="btnIr_Click" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
 
 
             </div>

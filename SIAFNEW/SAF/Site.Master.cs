@@ -32,13 +32,24 @@ namespace SAF
         {
             SesionUsu = (Sesion)Session["Usuario"];
             bttnCorreoUnach.Text = SesionUsu.Correo_UNACH;
-            //if (!IsPostBack)
-            //{
-            //BusyBoxButton1.Attributes.Add("onClick", BusyBox1.ShowFunctionCall);
             Inicializar();
-            //}
-                
-            
+            if (!IsPostBack)
+            {
+                SesionUsu.Modifica_Ejercicio = false;
+                //CNComun.LlenaCombo("pkg_contratos.Obt_Combo_sistemas", ref ddlSistemas, "p_usuario", SesionUsu.Usu_Nombre, ref Listsistema);
+                ddlUsu_Ejercicio.SelectedValue = SesionUsu.Usu_Ejercicio;
+
+
+
+            }
+
+            if (SesionUsu.Modifica_Ejercicio == true)
+            {
+                ddlUsu_Ejercicio.SelectedValue = SesionUsu.Usu_Ejercicio;
+                SesionUsu.Modifica_Ejercicio = false;
+            }
+
+
 
         }        
         #region <Funciones y Sub>
@@ -71,7 +82,7 @@ namespace SAF
                 SiteMapPath1.Provider = testXmlProvider;
                 MenuTop.DataSource = smd;
                 MenuTop.DataBind();                
-                CNComun.LlenaCombo("pkg_contratos.Obt_Combo_sistemas", ref ddlSistemas, "p_usuario", SesionUsu.Usu_Nombre, ref Listsistema);
+                //CNComun.LlenaCombo("pkg_contratos.Obt_Combo_sistemas", ref ddlSistemas, "p_usuario", SesionUsu.Usu_Nombre, ref Listsistema);
 
 
             }
@@ -90,36 +101,37 @@ namespace SAF
 
         protected void btnIr_Click(object sender, EventArgs e)
         {
-            if (ddlSistemas.SelectedValue != "X")
-            {
-                GenerarToken("btnIr");
-            }
-        }
-
-        protected void lnkMiCuenta_Click(object sender, EventArgs e)
-        {
-            GenerarToken("lnkMiCuenta");
+            SesionUsu.Usu_Ejercicio = ddlUsu_Ejercicio.SelectedValue;
+            SesionUsu.Modifica_Ejercicio = true;
+            string currentPage = Request.UrlReferrer.ToString(); //this.Page.Request.AppRelativeCurrentExecutionFilePath;
+            Response.Redirect(currentPage);
 
         }
 
-        private void GenerarToken(string solicitud)
-        {
-            Guid Token = Guid.NewGuid();
-            Verificador = String.Empty;
-            ObjUsuario = new Usuario();
+        //protected void lnkMiCuenta_Click(object sender, EventArgs e)
+        //{
+        //    GenerarToken("lnkMiCuenta");
+
+        //}
+
+        //private void GenerarToken(string solicitud)
+        //{
+        //    Guid Token = Guid.NewGuid();
+        //    Verificador = String.Empty;
+        //    ObjUsuario = new Usuario();
 
 
-            ObjUsuario.Token = Convert.ToString(Token);
-            ObjUsuario.CUsuario = SesionUsu.CUsuario;
+        //    ObjUsuario.Token = Convert.ToString(Token);
+        //    ObjUsuario.CUsuario = SesionUsu.CUsuario;
 
-            CNUsuario.Inserta_Token(ref ObjUsuario, ref Verificador);
+        //    CNUsuario.Inserta_Token(ref ObjUsuario, ref Verificador);
 
-            switch (solicitud)
-            {
-                case "btnIr": Response.Redirect(ddlSistemas.SelectedValue + "?token=" + Token, true); break;
-                case "lnkMiCuenta": Response.Redirect("http://sysweb.unach.mx/administrator?token=" + Token, true); break;
-            }
-        }
+        //    switch (solicitud)
+        //    {
+        //        case "btnIr": Response.Redirect(ddlSistemas.SelectedValue + "?token=" + Token, true); break;
+        //        case "lnkMiCuenta": Response.Redirect("http://sysweb.unach.mx/administrator?token=" + Token, true); break;
+        //    }
+        //}
 
 
 
