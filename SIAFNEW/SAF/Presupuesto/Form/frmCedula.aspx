@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCedula.aspx.cs" Inherits="SAF.Presupuesto.frmCedula"%>
+﻿                        <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCedula.aspx.cs" Inherits="SAF.Presupuesto.frmCedula"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
         <script src="../../Scripts/jquery/jquery-3.1.1.min.js"></script>
@@ -66,7 +66,7 @@
             }
         }
 
-       </script>  
+    </script>  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
     <div class="mensaje"> 
@@ -421,7 +421,7 @@
                                                                                                                         <td>
                                                                                                                             <asp:UpdatePanel ID="UpdPnlImporteOperacion" runat="server">
                                                                                                                         <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteOperacion" runat="server" Width="95px" AutoPostBack="True" onkeyup="mascara(this,'O');" OnTextChanged="txtImporteOperacion_TextChanged">0</asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtImporteOperacion" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteOperacion_TextChanged">0</asp:TextBox>
                                                                                                                             </ContentTemplate>
                                                                                                                                 </asp:UpdatePanel>
                                                                                                                             <asp:RegularExpressionValidator ID="REVImporteOperacion" runat="server" ControlToValidate="txtImporteOperacion" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="Guardar">*Formato numérico</asp:RegularExpressionValidator>
@@ -435,7 +435,7 @@
                                                                                                                         <td>
                                                                                                                             <asp:UpdatePanel ID="UpdPnlImporteCheque" runat="server">
                                                                                                                         <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteCheque" runat="server" Width="95px" AutoPostBack="True" onkeyup="mascara(this,'O');" OnTextChanged="txtImporteCheque_TextChanged">0</asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtImporteCheque" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteCheque_TextChanged">0</asp:TextBox>
                                                                                                                         </ContentTemplate>
                                                                                                                             </asp:UpdatePanel>
                                                                                                                             <asp:RegularExpressionValidator ID="REVImporteCheque" runat="server" ControlToValidate="txtImporteCheque" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="Guardar">*Formato numérico</asp:RegularExpressionValidator>
@@ -447,7 +447,7 @@
                                                                                                                         <td>
                                                                                                                             <asp:UpdatePanel ID="UpdPnlImporteISR" runat="server">
                                                                                                                         <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteISR" runat="server" Width="95px" AutoPostBack="True" onkeyup="mascara(this,'O');" OnTextChanged="txtImporteISR_TextChanged" Visible="False">0</asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtImporteISR" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteISR_TextChanged" Visible="False">0</asp:TextBox>
                                                                                                                         </ContentTemplate>
                                                                                                                                 </asp:UpdatePanel>
                                                                                                                             <asp:RegularExpressionValidator ID="REVImporteISR" runat="server" ControlToValidate="txtImporteISR" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="Guardar">*Formato numérico</asp:RegularExpressionValidator>
@@ -778,7 +778,7 @@
                                                                                                                 </td>
                                                                                                                 <td class="auto-style70" valign="top">
                                                                                                                     <asp:UpdatePanel ID="updPnlImpOrigen" runat="server"><ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteOrigen" runat="server" AutoPostBack="True" onkeyup="mascara(this,'O');" OnTextChanged="txtImporteOrigen_TextChanged" Width="100px">0</asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtImporteOrigen" runat="server" AutoPostBack="True"  OnTextChanged="txtImporteOrigen_TextChanged" Width="100px">0</asp:TextBox>
                                                                                                                         
 </ContentTemplate>
 </asp:UpdatePanel>

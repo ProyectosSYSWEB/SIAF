@@ -127,13 +127,13 @@ namespace CapaDatos
                                         "P_DESCRIPCION", "P_MOTIVO_RECHAZO", "P_MOTIVO_AUTORIZACION", "P_CUENTA", "P_NUMERO_CHEQUE", "P_CEDULA_COMPROMETIDO", "P_CEDULA_DEVENGADO",
                                         "P_CEDULA_EJERCIDO", "P_CEDULA_PAGADO", "P_POLIZA_COMPROMETIDO","P_POLIZA_DEVENGADO", "P_POLIZA_EJERCIDO", "P_POLIZA_PAGADO", "P_CLAVE_CUENTA", "P_CLAVE_EVENTO",
                                         "P_KEY_DOCUMENTO", "P_KEY_POLIZA", "P_KEY_POLIZA_811", "P_EJERCICIO", "P_REGULARIZA", "P_FECHA_FINAL", "P_GENERACION_SIMULTANEA",
-                                        "P_USUARIO","P_CONTABILIZAR" };
+                                        "P_USUARIO","P_CONTABILIZAR", "P_ISR" };
                 object[] Valores =    { objdocumento.CentroContable, objdocumento.Dependencia,objdocumento.SuperTipo,objdocumento.Tipo ,objdocumento.Fecha,
                                         objdocumento.MesAnio,objdocumento.TipoCaptura,objdocumento.Status,objdocumento.Descripcion,objdocumento.MotivoRechazo,objdocumento.MotivoAutorizacion,
                                         objdocumento.Cuenta,objdocumento.NumeroCheque,objdocumento.CedulaComprometido,objdocumento.CedulaDevengado,objdocumento.CedulaEjercido,
                                         objdocumento.CedulaPagado,objdocumento.PolizaComprometida, objdocumento.PolizaDevengado,objdocumento.PolizaEjercido,objdocumento.PolizaPagado,objdocumento.ClaveCuenta,
                                         objdocumento.ClaveEvento,objdocumento.KeyDocumento,objdocumento.KeyPoliza, objdocumento.KeyPoliza811, objdocumento.Ejercicios , objdocumento.Regulariza,
-                                        objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar };
+                                        objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar, objdocumento.ISR };
                 String[] ParametrosOut = { "P_ID", "P_FOLIO", "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRESUP_DOCUMENTOS", ref Verificador, Parametros, Valores, ParametrosOut);
@@ -177,7 +177,8 @@ namespace CapaDatos
                                         "P_FECHA_FINAL",
                                         "P_GENERACION_SIMULTANEA",
                                         "P_USUARIO",
-                                        "P_CONTABILIZAR" };
+                                        "P_CONTABILIZAR",
+                                        "P_ISR"};
                 object[] Valores =    {  objdocumento.Id,
                                         objdocumento.CentroContable,
                                         objdocumento.Dependencia,
@@ -197,7 +198,8 @@ namespace CapaDatos
                                         objdocumento.Fecha_Final,
                                         objdocumento.GeneracionSimultanea,
                                         objdocumento.Usuario,
-                                        objdocumento.Contabilizar };
+                                        objdocumento.Contabilizar,
+                                        objdocumento .ISR};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_DOCUMENTOS", ref Verificador, Parametros, Valores, ParametrosOut);               

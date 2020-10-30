@@ -84,7 +84,7 @@ namespace SAF.Presupuesto
             txtCancelacion.Text = string.Empty;
             ddlTipoEnc.SelectedValue = "AA";
             
-            ddlStatusEnc.SelectedValue = "I";
+            //ddlStatusEnc.SelectedValue = "I";
             lblMsjCP.Text = string.Empty;
             lblfolio.Visible = false;
             txtfolio.Visible = false;
@@ -808,14 +808,12 @@ namespace SAF.Presupuesto
 
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
-        }
-       
+        }       
         protected void btnAgregarDet_Click(object sender, EventArgs e)
         {
             lblErrorDet.Text = string.Empty;
             lblMsjCP.Text = string.Empty;
-            bool ImportePermitido = false;
-            
+            bool ImportePermitido = false;           
 
             if (ddlTipoEnc.SelectedValue != "AA" && Convert.ToDouble(lblDisponible.Text) == 0) // && Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
                 lblMsjCP.Text = lblMsjCP.Text + "*No hay saldo disponible.";

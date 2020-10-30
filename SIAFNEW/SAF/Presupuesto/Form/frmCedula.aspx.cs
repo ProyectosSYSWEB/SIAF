@@ -74,9 +74,7 @@ namespace SAF.Presupuesto
 
         }
         private void LimpiarControles()
-        {
-
-           
+        {          
             txtfechaDocumento.Text = System.DateTime.Now.ToString("dd/MM/yyyy");
             txtCedula.Text = string.Empty;
             txtcuenta.Text = string.Empty;
@@ -149,8 +147,7 @@ namespace SAF.Presupuesto
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);
-                
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);                
                 //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep);
                 ddlTipoEnc.Items.RemoveAt(0);
                 ddlTipoEnc.Items.Insert(0, new ListItem("--ELEGIR TIPO--", "0"));
@@ -164,7 +161,6 @@ namespace SAF.Presupuesto
             {
                 lblError.Text = ex.Message;
             }
-
         }
         private void ValidacionTipoEnc()
         {
@@ -320,6 +316,7 @@ namespace SAF.Presupuesto
                 objDocumento.CedulaPagado = "";
                 objDocumento.CedulaComprometido = txtCedula.Text;// si es simultaneo folio y si no segun el tipo y los demas null
             }
+            objDocumento.ISR = txtImporteISR.Text;
             objDocumento.KeyPoliza811 = "";
             objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
             objDocumento.Regulariza = "N"; //rbtmovimiento.SelectedValue;
@@ -397,7 +394,9 @@ namespace SAF.Presupuesto
             try
             {
                 objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                objDocumentoDet.Tipo = "C";
+                objDocumentoDet.SuperTipo = "C";
+                objDocumentoDet.Tipo = string.Empty;
+                objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                 CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                 if (Verificador == "0")
                 {
@@ -821,25 +820,52 @@ namespace SAF.Presupuesto
         }
         protected void txtImporteOrigen_TextChanged(object sender, EventArgs e)
         {
+            try
+            { 
             if (txtImporteOrigen.Text == string.Empty)
                 txtImporteOrigen.Text = "0";
-
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
             //Valida_Origen_Destino();
         }
         protected void txtImporteISR_TextChanged(object sender, EventArgs e)
         {
+            try
+            { 
             if (txtImporteISR.Text == string.Empty)
                 txtImporteISR.Text = "0";
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
         }
         protected void txtImporteCheque_TextChanged(object sender, EventArgs e)
         {
+            try
+            { 
             if (txtImporteCheque.Text == string.Empty)
                 txtImporteCheque.Text = "0";
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
         }
         protected void txtImporteOperacion_TextChanged(object sender, EventArgs e)
         {
-            if (txtImporteOperacion.Text == string.Empty)
-                txtImporteOperacion.Text = "0";
+            try
+            {
+                if (txtImporteOperacion.Text == string.Empty)
+                    txtImporteOperacion.Text = "0";
+            }            
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
         }
         protected void ddlFecha_Ini_SelectedIndexChanged(object sender, EventArgs e)
         {

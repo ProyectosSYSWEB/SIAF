@@ -646,7 +646,7 @@
                                                                                                                 </td>
                                                                                                                 <td class="auto-style70" valign="top">
                                                                                                                     <asp:UpdatePanel ID="updPnlImpOrigen" runat="server"><ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteOrigen" runat="server" AutoPostBack="True" onkeyup="mascara(this,'O');" OnTextChanged="txtImporteOrigen_TextChanged" Width="100px">0</asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtImporteOrigen" runat="server" AutoPostBack="True" OnTextChanged="txtImporteOrigen_TextChanged" Width="100px">0</asp:TextBox>
                                                                                                                         
 </ContentTemplate>
 </asp:UpdatePanel>

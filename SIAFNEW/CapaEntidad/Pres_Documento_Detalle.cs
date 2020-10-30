@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CapaEntidad
 {
-    public class Pres_Documento_Detalle
+    public class Pres_Documento_Detalle:Pres_Documento
     {
 
         public int _Id_Documento;
