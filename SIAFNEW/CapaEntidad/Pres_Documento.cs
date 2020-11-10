@@ -49,13 +49,14 @@ namespace CapaEntidad
         private string _Contabilizar;
         private string _PolizaDevengado;
         private string _ISR;
+       
         private bool _Opcion_Eliminar;
         private bool _Opcion_Eliminar2;
         private bool _Opcion_Modificar;
         private bool _Opcion_Modificar2;
         private bool _Opcion_Copiar;
         private bool _Opcion_Copiar2;
-
+       
         public string ISR
         {
             get { return _ISR; }
