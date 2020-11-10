@@ -627,15 +627,6 @@ namespace SAF.Presupuesto
         protected global::System.Web.UI.WebControls.TextBox txtImporteOperacion;
 
         /// <summary>
-        /// Control REVImporteOperacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator REVImporteOperacion;
-
-        /// <summary>
         /// Control lblImporteCheque.
         /// </summary>
         /// <remarks>
@@ -996,6 +987,15 @@ namespace SAF.Presupuesto
         protected global::System.Web.UI.UpdateProgress updPrgMesFinalDet;
 
         /// <summary>
+        /// Control penel_detalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel penel_detalle;
+
+        /// <summary>
         /// Control lblCodigoProg.
         /// </summary>
         /// <remarks>
@@ -1012,33 +1012,6 @@ namespace SAF.Presupuesto
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCodigoProg;
-
-        /// <summary>
-        /// Control updPnlBtnDisponible.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPnlBtnDisponible;
-
-        /// <summary>
-        /// Control btnDisponible.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDisponible;
-
-        /// <summary>
-        /// Control updProBtnDisponible.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProBtnDisponible;
 
         /// <summary>
         /// Control lblLeyDisponible.
@@ -1140,13 +1113,13 @@ namespace SAF.Presupuesto
         protected global::System.Web.UI.WebControls.Label lblClaveBeneficiario;
 
         /// <summary>
-        /// Control DDLClaveBeneficiario.
+        /// Control txt_clave_beneficiario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLClaveBeneficiario;
+        protected global::System.Web.UI.WebControls.TextBox txt_clave_beneficiario;
 
         /// <summary>
         /// Control lblBeneficiario.

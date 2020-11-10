@@ -37,6 +37,10 @@
         .auto-style34 {
             height: 66px;
         }
+        .auto-style35 {
+            text-align: center;
+            height: 26px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -57,19 +61,19 @@
                     <td>
                         <table class="auto-style5">
                             <tr>
-                                <td class="auto-style18">DEPENDENCIA:</td>
+                                <td class="auto-style18">DEPENDENCIA</td>
                                 <td class="auto-style19">
                                     <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                         <ContentTemplate>
                                             <asp:DropDownList ID="DDLDependencia" runat="server" AutoPostBack="True" CssClass="auto-style17" OnSelectedIndexChanged="DDLDependencia_SelectedIndexChanged" Width="80%">
                                             </asp:DropDownList>
-                                            <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Mober DPCIA" CssClass="btn" Visible="False" />
+                                            <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Mover DPCIA" CssClass="btn" Visible="False" />
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="auto-style4">SEMESTRE:</td>
+                                <td class="auto-style4">SEMESTRE</td>
                                 <td>
                                     <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                                         <ContentTemplate>
@@ -86,7 +90,7 @@
                                     <ContentTemplate>
                                         <table class="auto-style5">
                                             <tr>
-                                                <td class="auto-style18">BUSCAR :</td>
+                                                <td class="auto-style18">BUSCAR </td>
                                                 <td class="auto-style15" colspan="2">
                                                     <asp:TextBox ID="TXTBuscar" runat="server" Width="406px" CssClass="textbuscar"></asp:TextBox>
                                                 </td>
@@ -134,7 +138,7 @@
                                                                 <ItemTemplate>
                                                                     <asp:UpdatePanel ID="UpdatePanel103" runat="server">
                                                                         <ContentTemplate>
-                                                                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" ForeColor="#006600">PosPlantilla</asp:LinkButton>
+                                                                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" ForeColor="#006600">PostPlantilla</asp:LinkButton>
                                                                         </ContentTemplate>
                                                                     </asp:UpdatePanel>
                                                                 </ItemTemplate>
@@ -193,14 +197,14 @@
                                             </tr>
                                             <tr>
                                                 <td style="width: 15%">
-                                                    <asp:Label ID="Label13" runat="server" Text="Nombre:"></asp:Label>
+                                                    <asp:Label ID="Label13" runat="server" Text="Nombre"></asp:Label>
                                                 </td>
                                                 <td style="width: 50%">
                                                     <asp:TextBox ID="txtNombre" runat="server" Width="80%" ValidationGroup="Guardar"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtNombre" ErrorMessage="Requerido" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td style="width: 15%">
-                                                    <asp:Label ID="Label14" runat="server" Text="Plaza:"></asp:Label>
+                                                    <asp:Label ID="Label14" runat="server" Text="Plaza"></asp:Label>
                                                 </td>
                                                 <td style="width: 20%">
                                                     <asp:TextBox ID="txtPlaza" runat="server" Width="100px"></asp:TextBox>
@@ -209,7 +213,7 @@
                                             <tr>
                                                 <td>
 
-                                                    <asp:Label ID="Label17" runat="server" Text="Fecha Ingreso:"></asp:Label>
+                                                    <asp:Label ID="Label17" runat="server" Text="Fecha Ingreso"></asp:Label>
 
                                                 </td>
                                                 <td>&nbsp;<asp:TextBox ID="txtfecha_ingreso" runat="server" CssClass="box" Width="75px" onkeyup="javascript:this.value='';"></asp:TextBox>
@@ -218,7 +222,7 @@
 
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="Label47" runat="server" Text="RFC:"></asp:Label>
+                                                    <asp:Label ID="Label47" runat="server" Text="RFC"></asp:Label>
                                                 </td>
                                                 <td>
                                                     <asp:UpdatePanel ID="UpdatePanel119" runat="server">
@@ -231,7 +235,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="Label45" runat="server" Text="Fecha inicio:"></asp:Label>
+                                                    <asp:Label ID="Label45" runat="server" Text="Fecha inicio"></asp:Label>
                                                 </td>
                                                 <td>
                                                     <asp:TextBox ID="txtfecha_ini" runat="server" CssClass="box" onkeyup="javascript:this.value='';" Width="75px" ValidationGroup="Guardar"></asp:TextBox>
@@ -240,7 +244,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtfecha_ini" ErrorMessage="Requerido" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="Label46" runat="server" Text="Fecha Fin:"></asp:Label>
+                                                    <asp:Label ID="Label46" runat="server" Text="Fecha Fin"></asp:Label>
                                                 </td>
                                                 <td>
                                                     <asp:TextBox ID="txtfecha_fin" runat="server" CssClass="box" onkeyup="javascript:this.value='';" Width="75px" ValidationGroup="Guardar"></asp:TextBox>
@@ -285,7 +289,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Categoría:</td>
+                                                                <td>Categoría</td>
                                                                 <td colspan="3">
                                                                     <asp:DropDownList ID="txtCategoria" runat="server" Width="100%">
                                                                     </asp:DropDownList>
@@ -293,7 +297,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label8" runat="server" Text="Carga academica:"></asp:Label>
+                                                                    <asp:Label ID="Label8" runat="server" Text="Frente a grupo"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtCarga" type="number" step="any" runat="server" Width="107px">0</asp:TextBox>
@@ -302,19 +306,19 @@
                                                                 <td>&nbsp;</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="centro" colspan="4"><strong>
+                                                                <td class="auto-style35" colspan="4"><strong>
                                                                     <asp:Label ID="Label12" runat="server" Text="Tipo de plaza"></asp:Label>
                                                                 </strong></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label20" runat="server" Text="Interino:"></asp:Label>
+                                                                    <asp:Label ID="Label20" runat="server" Text="Interino"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtInt" runat="server" type="number" step="any" Width="107px">0</asp:TextBox>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:Label ID="Label27" runat="server" Text="Temporal:"></asp:Label>
+                                                                    <asp:Label ID="Label27" runat="server" Text="Temporal"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtTem" runat="server" type="number" step="any" Width="107px">0</asp:TextBox>
@@ -322,13 +326,13 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label26" runat="server" Text="Determinado:"></asp:Label>
+                                                                    <asp:Label ID="Label26" runat="server" Text="Determinado"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtDet" runat="server" type="number" step="any" Width="107px">0</asp:TextBox>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:Label ID="Label28" runat="server" Text="Definitivo:"></asp:Label>
+                                                                    <asp:Label ID="Label28" runat="server" Text="Definitivo"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtDef" runat="server" type="number" step="any" Width="107px">0</asp:TextBox>
@@ -349,7 +353,7 @@
                                                                                             <asp:GridView ID="GRDOtr" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" OnSelectedIndexChanged="GRDOtr_SelectedIndexChanged">
                                                                                                 <Columns>
                                                                                                     <asp:BoundField DataField="ID" HeaderText="ID" />
-                                                                                                    <asp:BoundField DataField="DESCRIPCION" HeaderText="CARGA ACADEMICA" />
+                                                                                                    <asp:BoundField DataField="DESCRIPCION" HeaderText="CARGA ACADÉMICA" />
                                                                                                     <asp:BoundField DataField="cantidad" HeaderText="cantidad" />
                                                                                                     <asp:TemplateField>
                                                                                                         <ItemTemplate>
@@ -384,7 +388,7 @@
                                                                     <asp:GridView ID="GRDOtr2" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%">
                                                                         <Columns>
                                                                             <asp:BoundField DataField="ID" HeaderText="ID" />
-                                                                            <asp:BoundField DataField="DESCRIPCION" HeaderText="DESCARGA ACADEMICA" />
+                                                                            <asp:BoundField DataField="DESCRIPCION" HeaderText="DESCARGA ACADÉMICA" />
                                                                             <asp:BoundField DataField="cantidad" HeaderText="cantidad" />
                                                                             <asp:TemplateField>
                                                                                 <ItemTemplate>
@@ -454,7 +458,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2">
-                                                                    <asp:Label ID="Label31" runat="server" Text="Movimiento:"></asp:Label>
+                                                                    <asp:Label ID="Label31" runat="server" Text="Movimiento"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtFec_mov" runat="server">0</asp:TextBox>
@@ -465,7 +469,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2">
-                                                                    <asp:Label ID="Label32" runat="server" Text="Oficio:"></asp:Label>
+                                                                    <asp:Label ID="Label32" runat="server" Text="Oficio"></asp:Label>
                                                                 </td>
                                                                 <td colspan="2">
                                                                     <asp:TextBox ID="txtOficio" runat="server">0</asp:TextBox>
@@ -484,7 +488,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td style="width: 25%">
-                                                                    <asp:Label ID="Label2" runat="server" Text="Estatus:"></asp:Label>
+                                                                    <asp:Label ID="Label2" runat="server" Text="Estatus"></asp:Label>
                                                                 </td>
                                                                 <td style="width: 25%">
                                                                     <asp:DropDownList ID="DDLEstatus01" runat="server" Enabled="False" Width="100%">
@@ -506,7 +510,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Categoría:</td>
+                                                                <td>Categoría</td>
                                                                 <td colspan="3">
                                                                     <asp:DropDownList ID="txtCategoria01" runat="server" Width="100%">
                                                                     </asp:DropDownList>
@@ -514,7 +518,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label3" runat="server" Text="Carga academica:"></asp:Label>
+                                                                    <asp:Label ID="Label3" runat="server" Text="Frente a frupo"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtCarga01" type="number" step="any" runat="server" Width="107px">0</asp:TextBox>
@@ -529,13 +533,13 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label11" runat="server" Text="Interino:"></asp:Label>
+                                                                    <asp:Label ID="Label11" runat="server" Text="Interino"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtInt01" runat="server" type="number" step="any" Width="107px">0</asp:TextBox>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:Label ID="Label33" runat="server" Text="Temporal:"></asp:Label>
+                                                                    <asp:Label ID="Label33" runat="server" Text="Temporal"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtTem01" runat="server" type="number" step="any" Width="107px">0</asp:TextBox>
@@ -543,13 +547,13 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <asp:Label ID="Label16" runat="server" Text="Determinado:"></asp:Label>
+                                                                    <asp:Label ID="Label16" runat="server" Text="Determinado"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtDet01" runat="server" type="number" step="any" Width="107px">0</asp:TextBox>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:Label ID="Label35" runat="server" Text="Definitivo:"></asp:Label>
+                                                                    <asp:Label ID="Label35" runat="server" Text="Definitivo"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtDef01" runat="server" type="number" step="any" Width="107px">0</asp:TextBox>
@@ -570,7 +574,7 @@
                                                                                             <asp:GridView ID="GRDOtr01" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" OnSelectedIndexChanged="GRDOtr01_SelectedIndexChanged">
                                                                                                 <Columns>
                                                                                                     <asp:BoundField DataField="ID" HeaderText="ID" />
-                                                                                                    <asp:BoundField DataField="DESCRIPCION" HeaderText="CARGA ACADEMICA" />
+                                                                                                    <asp:BoundField DataField="DESCRIPCION" HeaderText="CARGA ACADÉMICA" />
                                                                                                     <asp:BoundField DataField="cantidad" HeaderText="cantidad" />
                                                                                                     <asp:TemplateField>
                                                                                                         <ItemTemplate>
@@ -601,7 +605,7 @@
                                                                                     <asp:GridView ID="GRDOtr02" runat="server" AutoGenerateColumns="False" CssClass="mGrid" OnSelectedIndexChanged="GRDOtr01_SelectedIndexChanged" Width="100%">
                                                                                         <Columns>
                                                                                             <asp:BoundField DataField="ID" HeaderText="ID" />
-                                                                                            <asp:BoundField DataField="DESCRIPCION" HeaderText="DESCARGA ACADEMICA" />
+                                                                                            <asp:BoundField DataField="DESCRIPCION" HeaderText="DESCARGAACADÉMICA" />
                                                                                             <asp:BoundField DataField="cantidad" HeaderText="cantidad" />
                                                                                             <asp:TemplateField>
                                                                                                 <ItemTemplate>
@@ -654,7 +658,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td colspan="2">
-                                                                                    <asp:Label ID="Label38" runat="server" Text="Codigo Prográmatico:"></asp:Label>
+                                                                                    <asp:Label ID="Label38" runat="server" Text="Codigo Prográmatico"></asp:Label>
                                                                                     <asp:TextBox ID="txtCodigo01" runat="server" Width="250px">0</asp:TextBox>
                                                                                 </td>
                                                                             </tr>
@@ -664,7 +668,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2">
-                                                                    <asp:Label ID="Label39" runat="server" Text="Observaciones:"></asp:Label>
+                                                                    <asp:Label ID="Label39" runat="server" Text="Observaciones"></asp:Label>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -674,7 +678,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="2">
-                                                                    <asp:Label ID="Label40" runat="server" Text="Movimiento:"></asp:Label>
+                                                                    <asp:Label ID="Label40" runat="server" Text="Movimiento"></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:TextBox ID="txtFec_mov01" runat="server">0</asp:TextBox>
@@ -683,10 +687,10 @@
                                                                     <asp:Button ID="btnMovimiento0" runat="server" CssClass="btn" OnClick="btnMovimiento_Click" Text="Movimientos" ValidationGroup="Guardar" />
                                                                 </td>
                                                                 <tr>
-                                                                    <td colspan="2">
-                                                                        <asp:Label ID="Label41" runat="server" Text="Oficio:"></asp:Label>
+                                                                    <td colspan="2" class="auto-style19">
+                                                                        <asp:Label ID="Label41" runat="server" Text="Oficio"></asp:Label>
                                                                     </td>
-                                                                    <td colspan="2">
+                                                                    <td colspan="2" class="auto-style19">
                                                                         <asp:TextBox ID="txtOficio01" runat="server">0</asp:TextBox>
                                                                     </td>
                                                                 </tr>
@@ -779,7 +783,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="Label43" runat="server" Text="Concepto:"></asp:Label>
+                                                    <asp:Label ID="Label43" runat="server" Text="Concepto"></asp:Label>
                                                 </td>
                                                 <td>
                                                     <asp:DropDownList ID="ddlOtr" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlOtr_SelectedIndexChanged" Width="100%">
@@ -788,7 +792,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="Label44" runat="server" Text="Horas:"></asp:Label>
+                                                    <asp:Label ID="Label44" runat="server" Text="Horas"></asp:Label>
                                                 </td>
                                                 <td>
                                                     <asp:TextBox ID="txtCantidad" runat="server" step="any" type="number" Width="59px"></asp:TextBox>
@@ -796,7 +800,7 @@
                                             </tr>                                           
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="Label49" runat="server" Text="Ligar a Un Docente:" Visible="False"></asp:Label>
+                                                    <asp:Label ID="Label49" runat="server" Text="Ligar a Un Docente" Visible="False"></asp:Label>
                                                 </td>
                                                 <td>
                                                     <asp:UpdatePanel ID="UpdatePanel124" runat="server">
@@ -817,7 +821,7 @@
                                                                 <table style="width:100%;">
                                                                     <tr>
                                                                         <td style="width:20%;">
-                                                                            <asp:Label ID="Label50" runat="server" Text="Dependencia:"></asp:Label>
+                                                                            <asp:Label ID="Label50" runat="server" Text="Dependencia"></asp:Label>
                                                                         </td>
                                                                         <td colspan="2">
                                                                             <asp:DropDownList ID="DDLDependencia0" runat="server" AutoPostBack="True" CssClass="auto-style17"  Width="80%">
@@ -826,7 +830,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td style="width:20%;">
-                                                                            <asp:Label ID="Label48" runat="server" Text="Buscar:"></asp:Label>
+                                                                            <asp:Label ID="Label48" runat="server" Text="Buscar"></asp:Label>
                                                                         </td>
                                                                         <td colspan="2">
                                                                             <asp:UpdatePanel ID="UpdatePanel122" runat="server">
