@@ -32,11 +32,7 @@ namespace SAF
         {
             SesionUsu = (Sesion)Session["Usuario"];
             bttnCorreoUnach.Text = SesionUsu.Correo_UNACH;
-            //if (!IsPostBack)
-            //{
-            //BusyBoxButton1.Attributes.Add("onClick", BusyBox1.ShowFunctionCall);
             Inicializar();
-            //}
                 
             
 

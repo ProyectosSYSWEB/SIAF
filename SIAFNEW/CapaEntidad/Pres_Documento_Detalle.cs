@@ -43,12 +43,6 @@ namespace CapaEntidad
             set { _Ur_clave = value; }
         }
 
-        public string _Tipo;
-        public string Tipo
-        {
-            get { return _Tipo; }
-            set { _Tipo = value; }
-        }
 
         public double _Importe_origen;
         public double Importe_origen
@@ -98,13 +92,6 @@ namespace CapaEntidad
         {
             get { return _Cuenta_banco; }
             set { _Cuenta_banco = value; }
-        }
-
-        public string _Concepto;
-        public string Concepto
-        {
-            get { return _Concepto; }
-            set { _Concepto = value; }
         }
 
         public string _Referencia;

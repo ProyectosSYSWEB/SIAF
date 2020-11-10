@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using CrystalDecisions.CrystalReports.Engine;
+﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-using CrystalDecisions.Web;
-using CrystalDecisions.ReportSource;
-using SAF.Presupuesto.Reportes;
+using System;
+
 
 namespace SAF.Presupuesto.Reportes
 {    public partial class VisualizadorCrystal : System.Web.UI.Page

@@ -724,33 +724,6 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.DropDownList ddlCodigoProg;
         
         /// <summary>
-        /// Control updPnlBtnDisponible.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPnlBtnDisponible;
-        
-        /// <summary>
-        /// Control btnDisponible.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDisponible;
-        
-        /// <summary>
-        /// Control updProBtnDisponible.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProBtnDisponible;
-        
-        /// <summary>
         /// Control lblLeyDisponible.
         /// </summary>
         /// <remarks>
