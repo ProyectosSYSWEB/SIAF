@@ -43,8 +43,6 @@ namespace SAF.Presupuesto
             }
             else
                 ScriptManager.RegisterStartupScript(this, GetType(), "PRUEBA", "Autocomplete();", true);
-
-
         }
         #region <Funciones y Sub>
         private void inicializar()
@@ -179,9 +177,7 @@ namespace SAF.Presupuesto
             }
         }
         private void ValidacionTipoEnc()
-        {
-           
-                   
+        {             
                     ddlTipoEnc.Enabled = false;
                     ddlTipoEnc.SelectedValue = "CC";
 
@@ -189,9 +185,6 @@ namespace SAF.Presupuesto
                     DDLCuenta_Banco.Visible = true;
                     DDLCuenta_Banco_SelectedIndexChanged(null, null);
                     txtcuenta.Visible = false;
-                   
-     
-
         }
         private void ValidacionTipoDet()
         {
@@ -205,8 +198,6 @@ namespace SAF.Presupuesto
                 lblMesInicialDet.Visible = false;
                 ddlMesInicialDet.Visible = false;
                 lblLeyTotal_Origen.Text = "TOTAL";
-               
-            
         }
         private void StatusEnc(string Status)
         {
@@ -227,7 +218,6 @@ namespace SAF.Presupuesto
                 txtAutorizacion.Visible = true;
                 lblCancelacion.Visible = true;
                 txtCancelacion.Visible = true;
-
             }
 
         }
@@ -341,7 +331,6 @@ namespace SAF.Presupuesto
             objDocumento.Fecha_Final = "";
             objDocumento.GeneracionSimultanea = rbtdoc_simultaneo.SelectedValue;
             objDocumento.Usuario = SesionUsu.Usu_Nombre;
-
             objDocumento.PolizaComprometida = "";
             objDocumento.PolizaDevengado = "";
             objDocumento.PolizaEjercido = "";
@@ -581,14 +570,18 @@ namespace SAF.Presupuesto
                     CNDocDet.DocumentoDetConsultaGrid(ref objDocumentoDet, ref ListDocDet);
                     if (ddlevento.SelectedValue != "06")
                     {
-
+                       
                     }
                     else
                     {
                         txt_clave_beneficiario.Text = objDocumentoDet.Beneficiario_clave;
                         txtBeneficiario.Text = objDocumentoDet.Beneficiario_nombre;
                         txtReferencia.Text = objDocumentoDet.Referencia;
-                        txtDesPartida.Text = objDocumentoDet.Desc_Partida;
+                        txtDesPartida.Text = objDocumentoDet.Desc_Partida; 
+                        ddlDepen.SelectedValue = objDocumentoDet.Desc_Codigo_Prog.Substring(8,5);
+                        ddlCapitulo.SelectedValue= objDocumentoDet.Desc_Codigo_Prog.Substring(19, 1)+"000";
+                        ddlFuente_F.SelectedValue= objDocumentoDet.Desc_Codigo_Prog.Substring(25, 5);
+                       
                     }
                     
                     DataTable dt = new DataTable();
@@ -658,7 +651,7 @@ namespace SAF.Presupuesto
                 {          
                     if (ddlevento.SelectedValue=="06")
                     {
-                        if (txtImporteOperacion.Text == txtImporteISR.Text + txtImporteCheque.Text)
+                        if (Convert.ToInt32( txtImporteOrigen.Text) ==Convert.ToInt32( txtImporteISR.Text) + Convert.ToInt32( txtImporteCheque.Text))
                         {
                             honorarios = 1;
                         }

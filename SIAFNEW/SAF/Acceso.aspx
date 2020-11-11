@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Acceso.aspx.cs" Inherits="SAF.Contabilidad.Acceso" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
+<%--MODIF RUBICEL 111120--%>
 <!DOCTYPE html>
 
 <html xmlns="https://www.w3.org/1999/xhtml">
