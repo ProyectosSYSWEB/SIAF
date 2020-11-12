@@ -26,7 +26,7 @@ namespace CapaDatos
                 for (int i = 0; i < DDet.Count; i++)
                 {
                     String[] Parametros = { "P_ID_DOCUMENTO", "P_ID_CODIGO_PROGRAMATICO", "P_CONSECUTIVO", "P_UR_CLAVE", "P_TIPO", "P_IMPORTE_ORIGEN", "P_IMPORTE_DESTINO", "P_IMPORTE_MENSUAL", "P_MES_INICIAL", "P_MES_FINAL", "P_CUENTA_BANCO", "P_CONCEPTO", "P_REFERENCIA", "P_BENEFICIARIO_TIPO", "P_BENEFICIARIO_NOMBRE", "P_BENEFICIARIO_CLAVE" };
-                    object[] Valores = { IdDoc, DDet[i].Id_Codigo_Prog, i + 1, DDet[i].Ur_clave, DDet[i].Tipo, DDet[i].Importe_origen, DDet[i].Importe_destino, DDet[i].Importe_mensual, DDet[i].Mes_inicial, DDet[i].Mes_final, DDet[i].Cuenta_banco, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty  };
+                    object[] Valores = { IdDoc, DDet[i].Id_Codigo_Prog, i + 1, DDet[i].Ur_clave, DDet[i].Tipo, DDet[i].Importe_origen, DDet[i].Importe_destino, DDet[i].Importe_mensual, DDet[i].Mes_inicial, DDet[i].Mes_final, DDet[i].Cuenta_banco, string.Empty, string.Empty, DDet[i].Beneficiario_tipo, DDet[i].Beneficiario_nombre, DDet[i].Beneficiario_clave};
                     String[] ParametrosOut = { "P_BANDERA" };
                     Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRESUP_DOCUMENTOS_DET", ref Verificador, Parametros, Valores, ParametrosOut);
                 }
@@ -100,6 +100,13 @@ namespace CapaDatos
                     objDocDet.Importe_destino = Convert.ToDouble(dr.GetValue(5));
                     objDocDet.Importe_mensual = Convert.ToDouble(dr.GetValue(6));
                     objDocDet.Desc_Partida = Convert.ToString(dr.GetValue(16));
+
+                    objDocDet.Concepto = Convert.ToString(dr.GetValue(10));
+                    objDocDet.Referencia = Convert.ToString(dr.GetValue(11));
+                    objDocDet.Beneficiario_tipo = Convert.ToString(dr.GetValue(12));
+                    objDocDet.Beneficiario_nombre = Convert.ToString(dr.GetValue(13));
+                    objDocDet.Beneficiario_clave = Convert.ToString(dr.GetValue(14));
+
                     List.Add(objDocDet);
                 }
                 dr.Close();

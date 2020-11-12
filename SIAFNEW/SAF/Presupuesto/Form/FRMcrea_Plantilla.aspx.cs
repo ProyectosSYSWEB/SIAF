@@ -84,7 +84,7 @@ namespace SAF.Presupuesto.Form
                 {
                     // ModalPopupExtender.Show();  
                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'La apertura de la plantilla se realizo con exito');", true);
-                    CargarGrid(ref GRDEmpledo, 0);
+                    CargarGrid(ref GRDEmpledo, 0);                    
                     MultiView1.ActiveViewIndex = 1;
                 }
                 else

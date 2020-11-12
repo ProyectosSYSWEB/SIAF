@@ -4,8 +4,7 @@ using System;
 
 
 namespace SAF.Presupuesto.Reportes
-{
-    public partial class VisualizadorCrystal : System.Web.UI.Page
+{    public partial class VisualizadorCrystal : System.Web.UI.Page
     {
 
         private ReportDocument report = new ReportDocument();
