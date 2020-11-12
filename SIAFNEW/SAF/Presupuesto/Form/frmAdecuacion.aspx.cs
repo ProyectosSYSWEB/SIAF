@@ -691,7 +691,7 @@ namespace SAF.Presupuesto
                             lblErrorDet.Text = VerificadorInserta;
                         else
                         {
-                            SesionUsu.Editar = -1;
+                            SesionUsu.Editar = 0;
                             MultiView1.ActiveViewIndex = 0;
                             ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
                             CargarGrid(ref grdDocumentos, 0);
