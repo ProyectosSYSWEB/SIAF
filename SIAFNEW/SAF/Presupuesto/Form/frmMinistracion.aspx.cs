@@ -126,7 +126,7 @@ namespace SAF.Presupuesto
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);
                 ddlTipoEnc.Items.RemoveAt(0);
-                ddlTipoEnc.Items.Insert(0, new ListItem("--ELEGIR TIPO--", "0"));
+                //ddlTipoEnc.Items.Insert(0, new ListItem("--ELEGIR TIPO--", "0"));
                 if(DDLCta_Banco.Items.Count>=1)
                     DDLCta_Banco.Items.RemoveAt(0);
                 
@@ -215,16 +215,16 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
-                
-                //if (Permisos=="D8P1P1-01")
-                //    Celdas = new Int32[] { 0,0,0 };
-                //else
-                //    Celdas = new Int32[] { 0,8,9 };
 
-                //if (grid.Rows.Count > 0)
-                //{
-                //    CNComun.HideColumns(grid , Celdas);
-                //}
+                if (SesionUsu.Usu_TipoUsu != "N")
+                    Celdas = new Int32[] { 0, 0, 0 };
+                else
+                    Celdas = new Int32[] { 0, 8, 9 };
+
+                if (grid.Rows.Count > 0)
+                {
+                    CNComun.HideColumns(grid, Celdas);
+                }
             }
             catch (Exception ex)
             {
@@ -763,12 +763,18 @@ namespace SAF.Presupuesto
         }
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
-            SesionUsu.Editar = 0;
-            MultiView1.ActiveViewIndex = 1;
-            TabContainer1.ActiveTabIndex = 0;            
-            Session["DocDet"] = null;
-            ddlCentroContable.Enabled = false;
-            LimpiarControles();
+            lblError.Text = string.Empty;
+            if (SesionUsu.Usu_TipoUsu=="A" || SesionUsu.Usu_TipoUsu == "SA")
+            { 
+                SesionUsu.Editar = 0;
+                MultiView1.ActiveViewIndex = 1;
+                TabContainer1.ActiveTabIndex = 0;
+                Session["DocDet"] = null;
+                ddlCentroContable.Enabled = false;
+                LimpiarControles();
+            }
+            else
+                lblError.Text = "No tiene los permisos necesarios para crear este tipo de documento.";
         }
         protected void DDLCentroContable_SelectedIndexChanged(object sender, EventArgs e)
         {
