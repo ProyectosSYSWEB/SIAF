@@ -386,6 +386,8 @@ namespace SAF.Presupuesto
             objDocumento.ClaveEvento = "00";
             objDocumento.KeyDocumento = "";
             objDocumento.KeyPoliza = "";
+            objDocumento.ISR = "0";
+           
 
             if (SesionUsu.Editar == 0)
             {
@@ -691,7 +693,7 @@ namespace SAF.Presupuesto
                             lblErrorDet.Text = VerificadorInserta;
                         else
                         {
-                            SesionUsu.Editar = -1;
+                            SesionUsu.Editar = 0;
                             MultiView1.ActiveViewIndex = 0;
                             ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
                             CargarGrid(ref grdDocumentos, 0);
@@ -950,6 +952,9 @@ namespace SAF.Presupuesto
                         objDocumentoDet.Importe_mensual = Math.Round(Convert.ToDouble((Convert.ToDecimal(txtImporteOrigen.Text)) / tot),2);
                     objDocumentoDet.Importe_origen = objDocumentoDet.Importe_mensual * tot;
                     objDocumentoDet.Importe_destino = 0;
+                    objDocumentoDet.Beneficiario_tipo =string.Empty;
+                    objDocumentoDet.Beneficiario_nombre = string.Empty;
+                    objDocumentoDet.Beneficiario_clave = string.Empty;
                     if (rbtOrigen_Destino.SelectedValue == "D")
                     {
                         objDocumentoDet.Importe_origen = 0;
