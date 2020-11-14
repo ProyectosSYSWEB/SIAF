@@ -446,6 +446,7 @@
   <ItemGroup>
     <Folder Include="AdjuntosTemp\" />
     <Folder Include="Adjuntos\" />
+    <Folder Include="ArchivosMenu\" />
     <Folder Include="Scripts\select2\" />
   </ItemGroup>
   <ItemGroup>
@@ -463,13 +464,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ArchivosMenu\WebDPP712.sitemap" />
-    <Content Include="ArchivosMenu\WebDPP71201.sitemap" />
-    <Content Include="ArchivosMenu\WebDPPADALILIA.sitemap" />
-    <Content Include="ArchivosMenu\WebDPPHORTENCIA.sitemap" />
-    <Content Include="ArchivosMenu\WebLISSETH.sitemap" />
-    <Content Include="ArchivosMenu\WebRUBICEL_6.sitemap" />
-    <Content Include="ArchivosMenu\WebVICTOR726.sitemap" />
     <None Include="bootstrap-3.3.2-dist\css\bootstrap-theme.css.map" />
     <None Include="bootstrap-3.3.2-dist\css\bootstrap.css.map" />
     <None Include="bootstrap-3.3.2-dist\fonts\glyphicons-halflings-regular.eot" />
