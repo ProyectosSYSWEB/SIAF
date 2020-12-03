@@ -118,6 +118,44 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void ConsultarCedulasAdicionales(ref Pres_Documento objDocumento, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+
+
+                string[] ParametrosIn = { "P_ID" };
+                object[] Valores = { Convert.ToInt32(objDocumento.Id)
+            };
+                string[] ParametrosOut = {  "P_DEVENGADO",
+                                            "P_EJERCIDO",
+                                            "P_PAGADO",
+                                            "P_BANDERA"
+
+                };
+
+                Cmd = CDDatos.GenerarOracleCommand("SEL_SAF_PRESUP_CEDULAS_EXTRAS", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objDocumento = new Pres_Documento();
+                    objDocumento.CedulaDevengado = Convert.ToString(Cmd.Parameters["P_DEVENGADO"].Value);
+                    objDocumento.CedulaEjercido = Convert.ToString(Cmd.Parameters["P_EJERCIDO"].Value);
+                    objDocumento.CedulaPagado = Convert.ToString(Cmd.Parameters["P_PAGADO"].Value);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
         public void InsertaDocumentoEncabezado(ref Pres_Documento objdocumento, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -203,7 +241,68 @@ namespace CapaDatos
                                         objdocumento .ISR};
                 String[] ParametrosOut = { "p_Bandera" };
 
-                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_DOCUMENTOS", ref Verificador, Parametros, Valores, ParametrosOut);               
+                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_DOCUMENTOS", ref Verificador, Parametros, Valores, ParametrosOut);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EditarCedulaEncabezado(Pres_Documento objdocumento, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID",
+                                        "P_CENTRO_CONTABLE",
+                                        "P_DEPENDENCIA",
+                                        "P_FOLIO",
+                                        "P_TIPO",
+                                        "P_FECHA",
+                                        "P_MES_ANIO",
+                                        "P_STATUS",
+                                        "P_DESCRIPCION",
+                                        "P_MOTIVO_RECHAZO",
+                                        "P_MOTIVO_AUTORIZACION",
+                                        "P_CUENTA",
+                                        "P_NUMERO_CHEQUE",
+                                        "P_CLAVE_CUENTA",
+                                        "P_CLAVE_EVENTO",
+                                        "P_REGULARIZA",
+                                        "P_FECHA_FINAL",
+                                        "P_GENERACION_SIMULTANEA",
+                                        "P_USUARIO",
+                                        "P_CONTABILIZAR",
+                                        "P_ISR"};
+                object[] Valores =    {  objdocumento.Id,
+                                        objdocumento.CentroContable,
+                                        objdocumento.Dependencia,
+                                        objdocumento.Folio,
+                                        objdocumento.Tipo ,
+                                        objdocumento.Fecha,
+                                        objdocumento.MesAnio,
+                                        objdocumento.Status,
+                                        objdocumento.Descripcion,
+                                        objdocumento.MotivoRechazo,
+                                        objdocumento.MotivoAutorizacion,
+                                        objdocumento.Cuenta,
+                                        objdocumento.NumeroCheque,
+                                        objdocumento.ClaveCuenta,
+                                        objdocumento.ClaveEvento,
+                                        objdocumento.Regulariza,
+                                        objdocumento.Fecha_Final,
+                                        objdocumento.GeneracionSimultanea,
+                                        objdocumento.Usuario,
+                                        objdocumento.Contabilizar,
+                                        objdocumento .ISR};
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_CEDULAS", ref Verificador, Parametros, Valores, ParametrosOut);               
             }
             catch (Exception ex)
             {
