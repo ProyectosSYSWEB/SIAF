@@ -420,7 +420,7 @@ namespace SAF.Presupuesto
                 objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
                 objDocumentoDet.SuperTipo = "C";
                 objDocumentoDet.Tipo = string.Empty;
-                objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                objDocumentoDet.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
                 CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                 if (Verificador == "0")
                 {

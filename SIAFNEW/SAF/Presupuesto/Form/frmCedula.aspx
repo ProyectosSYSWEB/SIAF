@@ -65,6 +65,34 @@
                 document.getElementById("ctl00_MainContent_TabContainer1_TabPanel2_txtImporteDestino").value = Valor;
             }
         }
+         function MascaraNumPoliza(e,txtfechaDocumento) {
+            var Valor = e.value;
+            var Valor2 = e.value;
+
+            document.getElementById(e.id).value = "";
+            if (txtfechaDocumento == "1") {
+                var Mes = document.getElementById('ctl00_MainContent_txtfechaDocumento').value;
+            }
+            else {
+                var Mes = document.getElementById('ctl00_MainContent_txtfechaDocumento_Copia').value;
+            }
+            Mes = Mes.substr(3, 2);
+
+            if (Valor.length > 2) {
+                Valor = Valor.substr(2);
+            }
+            else {
+                Valor = "";
+            }
+            var NumPoliza = Mes + Valor;
+            if (NumPoliza.length <= 7) {
+                document.getElementById(e.id).value = NumPoliza;
+            }
+            else {
+                document.getElementById(e.id).value = Valor2.substr(0, 7);
+            }
+
+        }
 
     </script>  
 </asp:Content>
@@ -356,7 +384,7 @@
                                                                                                                             <asp:Label ID="lblPoliza" runat="server" Text="Póliza"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server" Width="95px"></asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server"  Width="95px" MaxLength="7"></asp:TextBox>
                                                                                                                         </td>
                                                                                                                         </tr>
                                                                                                                         
@@ -410,9 +438,9 @@
                                                                                                                             <asp:Label ID="lblfechaDocumento" runat="server" Text="Fecha"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:TextBox ID="txtfechaDocumento" runat="server" CssClass="box" Enabled="False" Width="95px"></asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtfechaDocumento" runat="server" CssClass="box" Enabled="false" Width="95px"></asp:TextBox>
                                                                                                                             <ajaxToolkit:CalendarExtender ID="CalendarExtenderIni" runat="server" PopupButtonID="imgCalendarioIni" TargetControlID="txtfechaDocumento" />
-                                                                                                                            <asp:ImageButton ID="imgCalendarioIni" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/calendario.gif" Enabled="False" />
+                                                                                                                            <asp:ImageButton ID="imgCalendarioIni" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/calendario.gif"  />
                                                                                                                             <asp:RequiredFieldValidator ID="valFecha" runat="server" ControlToValidate="txtfechaDocumento" ErrorMessage="*Fecha Requerida" InitialValue="T" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                         <td>
