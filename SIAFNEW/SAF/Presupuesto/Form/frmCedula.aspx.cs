@@ -304,6 +304,7 @@ namespace SAF.Presupuesto
             objDocumento.TipoCaptura = "M";
             objDocumento.Status = ddlStatusEnc.SelectedValue;
             objDocumento.Descripcion = txtConcepto.Text;
+            
             objDocumento.MotivoRechazo = txtCancelacion.Text;
             objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
             objDocumento.Cuenta = (DDLCuenta_Banco.SelectedValue == "0") ? txtcuenta.Text : DDLCuenta_Banco.SelectedValue;
@@ -331,10 +332,10 @@ namespace SAF.Presupuesto
             objDocumento.Fecha_Final = "";
             objDocumento.GeneracionSimultanea = rbtdoc_simultaneo.SelectedValue;
             objDocumento.Usuario = SesionUsu.Usu_Nombre;
-            objDocumento.PolizaComprometida = "";
-            objDocumento.PolizaDevengado = "";
-            objDocumento.PolizaEjercido = "";
-            objDocumento.PolizaPagado = "";
+            objDocumento.PolizaComprometida = txtPoliza.Text; 
+            objDocumento.PolizaDevengado = txtPoliza.Text;
+            objDocumento.PolizaEjercido = txtPoliza.Text;
+            objDocumento.PolizaPagado = txtPoliza.Text;
             objDocumento.ClaveCuenta = "";
             objDocumento.ClaveEvento = ddlevento.SelectedValue;
             objDocumento.KeyDocumento = "";
@@ -542,6 +543,7 @@ namespace SAF.Presupuesto
 
 
                     txtCedula.Text = objDocumento.Folio;
+                    txtPoliza.Text = objDocumento.PolizaComprometida;
                     ddlTipoEnc.SelectedValue = objDocumento.Tipo;
                     ValidacionTipoDet();
                     txtfechaDocumento.Text = objDocumento.Fecha;
@@ -570,6 +572,7 @@ namespace SAF.Presupuesto
                     txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
                     txtNumero_Cheque.Text = objDocumento.NumeroCheque;
                     txtcuenta.Text = objDocumento.Cuenta;
+                    DDLCuenta_Banco.SelectedValue= objDocumento.Cuenta;
                     txtcuenta.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
                     //rbtmovimiento.SelectedValue = objDocumento.Regulariza;
