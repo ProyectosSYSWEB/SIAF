@@ -361,13 +361,30 @@ namespace SAF.Presupuesto
             else
             {
                     objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
-                    CNDocumentos.EditarDocumentoEncabezado(objDocumento, ref Verificador);
+                    CNDocumentos.EditarCedulaEncabezado(objDocumento, ref Verificador);
                     if (Verificador == "0")
                     {
                         VerificadorDet = string.Empty;
                         GuardarDetalle(ref VerificadorDet, Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text));
                         if (VerificadorDet == "0")
                         {
+
+                        if (ddlStatusEnc.SelectedValue == "A")
+                        {
+                            Pres_Documento CedulasAdicionales = new Pres_Documento();
+                            string VerificadorCedulasAdicionales=string.Empty;
+                            CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text); 
+                            CNDocumentos.ConsultarCedulasAdicionales(ref CedulasAdicionales,ref VerificadorCedulasAdicionales);
+                            if (VerificadorCedulasAdicionales == "0")
+                            {
+                                GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaDevengado));
+                                GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaEjercido));
+                                GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaPagado));
+                            }
+                            else
+                                VerificadorInserta = VerificadorCedulasAdicionales;
+                        }
+                                
                             VerificadorInserta = "0";
                             //lblError.Text = "Los datos han sido actualizados correctamente";
                             //SesionUsu.Editar = -1;
@@ -403,7 +420,7 @@ namespace SAF.Presupuesto
                 objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
                 objDocumentoDet.SuperTipo = "C";
                 objDocumentoDet.Tipo = string.Empty;
-                objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                objDocumentoDet.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
                 CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                 if (Verificador == "0")
                 {

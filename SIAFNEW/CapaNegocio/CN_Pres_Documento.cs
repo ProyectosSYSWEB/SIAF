@@ -34,6 +34,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void ConsultarCedulasAdicionales(ref Pres_Documento objDocumento, ref string Verificador)
+        {
+            try
+            {
+                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
+                CDDocumento.ConsultarCedulasAdicionales(ref objDocumento, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void InsertaDocumentoEncabezado(ref Pres_Documento objdocumento, ref string Verificador)
         {
             try
@@ -52,6 +64,18 @@ namespace CapaNegocio
             {
                 CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
                 CDDocumento.EditarDocumentoEncabezado(objdocumento, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EditarCedulaEncabezado(Pres_Documento objdocumento, ref string Verificador)
+        {
+            try
+            {
+                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
+                CDDocumento.EditarCedulaEncabezado(objdocumento, ref Verificador);
             }
             catch (Exception ex)
             {

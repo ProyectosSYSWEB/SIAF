@@ -265,6 +265,7 @@ namespace SAF.Presupuesto
             objDocumento.GeneracionSimultanea = "N";
             objDocumento.KeyDocumento = "";
             objDocumento.KeyPoliza = "";
+            objDocumento.ISR = "0";
 
             objDocumento.CedulaDevengado = "";
             objDocumento.CedulaEjercido = "";
@@ -721,10 +722,13 @@ namespace SAF.Presupuesto
                     objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
                     objDocumentoDet.Importe_origen = Convert.ToDouble(txtImporteOrigen.Text);
                     objDocumentoDet.Importe_destino = 0;
+
                     objDocumentoDet.Importe_mensual = Convert.ToDouble(txtImporteOrigen.Text);
                     objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                    
-                  
+
+                    objDocumentoDet.Beneficiario_tipo = string.Empty;
+                    objDocumentoDet.Beneficiario_nombre = string.Empty;
+                    objDocumentoDet.Beneficiario_clave = string.Empty;
 
 
                     if (Session["DocDet"] == null)
