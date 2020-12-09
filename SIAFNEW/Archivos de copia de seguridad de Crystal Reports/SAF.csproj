@@ -51,17 +51,13 @@
     <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="BusyBoxDotNet, Version=0.2.1.1366, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Lis\Programas\BusyBoxDotNet-0.2.1-bin\BusyBoxDotNet-0.2.1-bin\BusyBoxDotNet.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
       <HintPath>..\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
     </Reference>
@@ -96,28 +92,6 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="AdjuntosTemp\00000-PAPE761214IU4-FACTURA-89.XML" />
-    <Content Include="AdjuntosTemp\11101-11101-C-147.XML" />
-    <Content Include="AdjuntosTemp\11101-11101-COMP6406297LAFF2045.XML" />
-    <Content Include="AdjuntosTemp\11101-11101-FACTURA MAPEO DE CONCEPTOS SAT - 48_UAC_D450175B-D970-4FA5-AF38-6E469DBDA808.XML" />
-    <Content Include="AdjuntosTemp\11101-C-146.XML" />
-    <Content Include="AdjuntosTemp\11101-C-147.XML" />
-    <Content Include="AdjuntosTemp\11101-COMP6406297LAFF2045.XML" />
-    <Content Include="AdjuntosTemp\11101-FACTURA DATAPAC DP-156 JUNIO 2018 COMP6406297LAFF1836.XML" />
-    <Content Include="AdjuntosTemp\11101-FACTURA MAPEO DE CONCEPTOS SAT - 48_UAC_D450175B-D970-4FA5-AF38-6E469DBDA808.XML" />
-    <Content Include="AdjuntosTemp\11201-C-147.XML" />
-    <Content Include="AdjuntosTemp\11201-PAPE761214IU4-FACTURA-89.XML" />
-    <Content Include="AdjuntosTemp\11201-UAC1.XML" />
-    <Content Include="AdjuntosTemp\11201-UAC750417LE8_19209210_FAOMXMMS_2596592_1.XML" />
-    <Content Include="AdjuntosTemp\11301-FACTURA_FNPE_31368930_MAR_FRI.XML" />
-    <Content Include="AdjuntosTemp\21501-VPT100305V95_FACTURA_19362_0FFF4AF0-52A5-4CC4-85A7-0FB4ED131237.XML" />
-    <Content Include="AdjuntosTemp\75101-AAA10374-2BA1-4537-99F9-F547AE983E3B.XML" />
-    <Content Include="Adjuntos\11101-11101-11101-C-147.XML" />
-    <Content Include="Adjuntos\11101-11101-C-146.XML" />
-    <Content Include="Adjuntos\11101-C-146.XML" />
-    <Content Include="Adjuntos\11101-COMP6406297LAFF2045.XML" />
-    <Content Include="Adjuntos\11101-FACTURA DATAPAC DP-156 JUNIO 2018 COMP6406297LAFF1836.XML" />
-    <Content Include="Adjuntos\11201-UAC1.XML" />
     <Content Include="Inicio.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="images\atras.png" />
@@ -466,6 +440,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AdjuntosTemp\" />
+    <Folder Include="Adjuntos\" />
+    <Folder Include="ArchivosMenu\" />
     <Folder Include="Scripts\select2\" />
   </ItemGroup>
   <ItemGroup>
@@ -483,29 +460,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Adjuntos\11101-11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
-    <Content Include="Adjuntos\11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
-    <Content Include="Adjuntos\EDO_CTA_2019-72103-RECIBO CRISTINA NIETO VASCONCELOS.PDF" />
-    <Content Include="Adjuntos\EDO_CTA_2019-72103-RECIBO ENITH GUADALUPE HERNANDEZ LOPEZ.PDF" />
-    <Content Include="Adjuntos\EDO_CTA_2019-72103-RECIBO LEIDY ANAI MARTINEZ RODRIGUEZ.PDF" />
-    <Content Include="Adjuntos\EDO_CTA_2020-42901-RECIBO CRISTINA NIETO VASCONCELOS.PDF" />
-    <Content Include="Adjuntos\EDO_CTA_2020-42901-RECIBO ENITH GUADALUPE HERNANDEZ LOPEZ.PDF" />
-    <Content Include="Adjuntos\EDO_CTA_2020-42901-RECIBO LEIDY ANAI MARTINEZ RODRIGUEZ.PDF" />
-    <Content Include="AdjuntosTemp\11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
-    <Content Include="AdjuntosTemp\11301-FACTURA_FNPE_31368930_MAR_FRI.PDF" />
-    <Content Include="AdjuntosTemp\EDO_CTA_2019-72103-RECIBO CRISTINA NIETO VASCONCELOS.PDF" />
-    <Content Include="AdjuntosTemp\EDO_CTA_2019-72103-RECIBO ENITH GUADALUPE HERNANDEZ LOPEZ.PDF" />
-    <Content Include="AdjuntosTemp\EDO_CTA_2019-72103-RECIBO LEIDY ANAI MARTINEZ RODRIGUEZ.PDF" />
-    <Content Include="AdjuntosTemp\EDO_CTA_2020-42901-11101-11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
-    <Content Include="AdjuntosTemp\EDO_CTA_2020-42901-11101-37412EXENTOS_ENERO__MAYO_2020_VARIOS.PDF" />
-    <Content Include="AdjuntosTemp\EDO_CTA_2020-42901-ESTADOCUENTA.PDF" />
-    <Content Include="ArchivosMenu\WebDPP712.sitemap" />
-    <Content Include="ArchivosMenu\WebDPP71201.sitemap" />
-    <Content Include="ArchivosMenu\WebDPPADALILIA.sitemap" />
-    <Content Include="ArchivosMenu\WebDPPHORTENCIA.sitemap" />
-    <Content Include="ArchivosMenu\WebLISSETH.sitemap" />
-    <Content Include="ArchivosMenu\WebRUBICEL_6.sitemap" />
-    <Content Include="ArchivosMenu\WebVICTOR726.sitemap" />
     <None Include="bootstrap-3.3.2-dist\css\bootstrap-theme.css.map" />
     <None Include="bootstrap-3.3.2-dist\css\bootstrap.css.map" />
     <None Include="bootstrap-3.3.2-dist\fonts\glyphicons-halflings-regular.eot" />
