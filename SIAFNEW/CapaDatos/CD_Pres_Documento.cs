@@ -81,6 +81,7 @@ namespace CapaDatos
                                             "P_FECHA_FINAL",
                                             "P_GENERACION_SIMULTANEA",
                                             "P_CONTABILIZAR",
+                                            "P_POLIZA",
                                             "p_bandera"
                 };
 
@@ -104,6 +105,7 @@ namespace CapaDatos
                     objDocumento.Fecha_Final = Convert.ToString(Cmd.Parameters["P_FECHA_FINAL"].Value);
                     objDocumento.GeneracionSimultanea = Convert.ToString(Cmd.Parameters["P_GENERACION_SIMULTANEA"].Value);
                     objDocumento.Contabilizar = Convert.ToString(Cmd.Parameters["P_CONTABILIZAR"].Value);
+                    objDocumento.PolizaComprometida= Convert.ToString(Cmd.Parameters["P_POLIZA"].Value); 
 
                 }
 
@@ -278,7 +280,8 @@ namespace CapaDatos
                                         "P_GENERACION_SIMULTANEA",
                                         "P_USUARIO",
                                         "P_CONTABILIZAR",
-                                        "P_ISR"};
+                                        "P_ISR",
+                                         "P_POLIZA"};
                 object[] Valores =    {  objdocumento.Id,
                                         objdocumento.CentroContable,
                                         objdocumento.Dependencia,
@@ -299,7 +302,8 @@ namespace CapaDatos
                                         objdocumento.GeneracionSimultanea,
                                         objdocumento.Usuario,
                                         objdocumento.Contabilizar,
-                                        objdocumento .ISR};
+                                        objdocumento .ISR,
+                                        objdocumento.PolizaComprometida};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_CEDULAS", ref Verificador, Parametros, Valores, ParametrosOut);               
