@@ -158,6 +158,34 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void GenerarPoliza(ref Pres_Documento objdocumento, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID_DOC" };
+                object[] Valores =    { objdocumento.Id};
+                String[] ParametrosOut = { "p_Bandera" };
+
+                if (objdocumento.ClaveEvento == "01")
+                    Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZAS_AUTO_CEDULAS", ref Verificador, Parametros, Valores, ParametrosOut);
+                else
+                {
+                    if (objdocumento.ClaveEvento == "06")
+                        Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZAS_AUTO_HONO", ref Verificador, Parametros, Valores, ParametrosOut);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
         public void InsertaDocumentoEncabezado(ref Pres_Documento objdocumento, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -281,7 +309,9 @@ namespace CapaDatos
                                         "P_USUARIO",
                                         "P_CONTABILIZAR",
                                         "P_ISR",
-                                         "P_POLIZA"};
+                                         "P_POLIZA",
+                                        "P_IMPORTE_OPERACION",
+                                        "P_IMPORTE_CHEQUE"};
                 object[] Valores =    {  objdocumento.Id,
                                         objdocumento.CentroContable,
                                         objdocumento.Dependencia,
@@ -303,7 +333,9 @@ namespace CapaDatos
                                         objdocumento.Usuario,
                                         objdocumento.Contabilizar,
                                         objdocumento .ISR,
-                                        objdocumento.PolizaComprometida};
+                                        objdocumento.PolizaComprometida,
+                                        objdocumento.Importe_Operacion,
+                                        objdocumento.Importe_Cheque};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_CEDULAS", ref Verificador, Parametros, Valores, ParametrosOut);               

@@ -31,7 +31,7 @@ namespace SAF.Presupuesto
         private static List<Comun> Listcodigo = new List<Comun>(); //En tu declaración de variables
         private static List<Comun> ListDependencia = new List<Comun>();
         private static List<Comun> ListPartida = new List<Comun>();
-        int guar_continue;
+        
         int honorarios = 1;
         #endregion
         protected void Page_Load(object sender, EventArgs e)
@@ -63,6 +63,9 @@ namespace SAF.Presupuesto
                 grdDocumentos.DataSource = null;
                 grdDocumentos.DataBind();
 
+                txtImporteOperacion.Text = "0.00";
+                txtImporteCheque.Text = "0.00";
+                txtImporteISR.Text = "0.00";
                 if (ddlevento.SelectedValue != "06")
                 {
                     lblImporteISR.Visible = false;
@@ -115,8 +118,10 @@ namespace SAF.Presupuesto
             lblTotal_Origen.Text = "0";
             lblFormatoDisponible.Text = "0";
             lblFormatoTotal_Origen.Text = "0";
-            txtImporteOrigen.Text = "0";            
-            
+            txtImporteOrigen.Text = "0";
+            txtImporteOperacion.Text = "0.00";
+            txtImporteCheque.Text = "0.00";
+
             ValidacionTipoEnc();
             ddlMesFin.SelectedValue = System.DateTime.Now.ToString("MM");
             grdDetalles.DataSource = null;
@@ -229,7 +234,7 @@ namespace SAF.Presupuesto
                 grdDetalles.DataSource = ListDocDet;
                 grdDetalles.DataBind();
                 Sumatoria(grdDetalles);
-                txtImporteOperacion.Text = lblFormatoTotal_Origen.Text;
+                txtImporteOperacion.Text = lblTotal_Origen.Text;
 
                 Celdas = new Int32[] { 2, 3, 4,6,7, 8, 9, 10,11,12 };
                        
@@ -304,6 +309,8 @@ namespace SAF.Presupuesto
             objDocumento.TipoCaptura = "M";
             objDocumento.Status = ddlStatusEnc.SelectedValue;
             objDocumento.Descripcion = txtConcepto.Text;
+            objDocumento.Importe_Cheque =Convert.ToDouble(txtImporteCheque.Text);
+            objDocumento.Importe_Operacion = Convert.ToDouble(txtImporteOperacion.Text);
             
             objDocumento.MotivoRechazo = txtCancelacion.Text;
             objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
@@ -374,13 +381,21 @@ namespace SAF.Presupuesto
                         {
                             Pres_Documento CedulasAdicionales = new Pres_Documento();
                             string VerificadorCedulasAdicionales=string.Empty;
-                            CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text); 
+                            CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                            CedulasAdicionales.ClaveEvento =objDocumento.ClaveEvento;
                             CNDocumentos.ConsultarCedulasAdicionales(ref CedulasAdicionales,ref VerificadorCedulasAdicionales);
                             if (VerificadorCedulasAdicionales == "0")
                             {
                                 GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaDevengado));
                                 GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaEjercido));
                                 GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaPagado));
+                                CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                                CedulasAdicionales.ClaveEvento = objDocumento.ClaveEvento;
+                                if (CedulasAdicionales.ClaveEvento == "01" || CedulasAdicionales.ClaveEvento == "06")
+                                    CNDocumentos.GenerarPoliza(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
+
+                                if (VerificadorCedulasAdicionales != "0")
+                                    lblErrorDet.Text = VerificadorCedulasAdicionales;
                             }
                             else
                                 VerificadorInserta = VerificadorCedulasAdicionales;

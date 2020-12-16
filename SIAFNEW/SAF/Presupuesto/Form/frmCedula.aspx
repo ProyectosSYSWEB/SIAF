@@ -449,7 +449,7 @@
                                                                                                                         <td>
                                                                                                                             <asp:UpdatePanel ID="UpdPnlImporteOperacion" runat="server">
                                                                                                                         <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteOperacion" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteOperacion_TextChanged">0</asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtImporteOperacion" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteOperacion_TextChanged" Enabled="False">0</asp:TextBox>
                                                                                                                             </ContentTemplate>
                                                                                                                                 </asp:UpdatePanel>
                                                                                                                         </td>
