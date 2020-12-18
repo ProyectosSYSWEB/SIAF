@@ -34,6 +34,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void GenerarPoliza(ref Pres_Documento objDocumento, ref string Verificador)
+        {
+            try
+            {
+                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
+                CDDocumento.GenerarPoliza(ref objDocumento, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void ConsultarCedulasAdicionales(ref Pres_Documento objDocumento, ref string Verificador)
         {
             try
