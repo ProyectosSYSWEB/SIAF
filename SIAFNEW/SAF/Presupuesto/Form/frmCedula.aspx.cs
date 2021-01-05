@@ -1,4 +1,4 @@
-﻿//MODIFICADO POR CARLOS EL 17DIC2020
+﻿//MODIFICADO POR CARLOS EL 04ENERO2021
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +64,7 @@ namespace SAF.Presupuesto
                 grdDocumentos.DataSource = null;
                 grdDocumentos.DataBind();
 
+                txtImporteOperacion.Enabled = false;
                 txtImporteOperacion.Text = "0.00";
                 txtImporteCheque.Text = "0.00";
                 txtImporteISR.Text = "0.00";
@@ -191,9 +192,11 @@ namespace SAF.Presupuesto
                     DDLCuenta_Banco.Visible = true;
                     DDLCuenta_Banco_SelectedIndexChanged(null, null);
                     txtcuenta.Visible = false;
+                   
         }
         private void ValidacionTipoDet()
         {
+
             rbtdoc_simultaneo.SelectedValue = "N";
             rbtdoc_simultaneo.Visible = false;
             lbldoc_simultaneo.Visible = false;
@@ -333,7 +336,7 @@ namespace SAF.Presupuesto
                 objDocumento.CedulaPagado = "";
                 objDocumento.CedulaComprometido = txtCedula.Text;// si es simultaneo folio y si no segun el tipo y los demas null
             }            
-            objDocumento.ISR = txtImporteISR.Text;            
+            objDocumento.ISR = Convert.ToDouble(txtImporteISR.Text);            
             objDocumento.KeyPoliza811 = "";
             objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
             objDocumento.Regulariza = "N"; //rbtmovimiento.SelectedValue;
@@ -591,8 +594,11 @@ namespace SAF.Presupuesto
                     DDLCuenta_Banco.SelectedValue= objDocumento.Cuenta;
                     txtcuenta.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
+                    txtImporteCheque.Text = Convert.ToString(objDocumento.Importe_Cheque);
+                    txtImporteOperacion.Text = Convert.ToString(objDocumento.Importe_Operacion);
+                    txtImporteISR.Text = Convert.ToString(objDocumento.ISR);
                     //rbtmovimiento.SelectedValue = objDocumento.Regulariza;
-                    
+
                     rbtdoc_simultaneo.SelectedValue = objDocumento.GeneracionSimultanea;
                     //rdoBttnContabilizar.SelectedValue = objDocumento.Contabilizar;
 
@@ -604,12 +610,21 @@ namespace SAF.Presupuesto
                     objDocumentoDet.Id_Documento = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                     List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
                     CNDocDet.DocumentoDetConsultaGrid(ref objDocumentoDet, ref ListDocDet);
+                   
                     if (ddlevento.SelectedValue != "06")
                     {
-                       
+                        lblImporteISR.Visible = false;
+                        txtImporteISR.Visible = false;
+                        txtImporteCheque.Visible = false;
+                        lblImporteCheque.Visible = false;
                     }
                     else
                     {
+
+                        lblImporteISR.Visible = true;
+                        txtImporteISR.Visible = true;
+                        txtImporteCheque.Visible = true;
+                        lblImporteCheque.Visible = true;
                         txt_clave_beneficiario.Text = objDocumentoDet.Beneficiario_clave;
                         txtBeneficiario.Text = objDocumentoDet.Beneficiario_nombre;
                         txtReferencia.Text = objDocumentoDet.Referencia;
@@ -684,10 +699,10 @@ namespace SAF.Presupuesto
             try
             {
                 if (grdDetalles.Rows.Count > 0)
-                {          
-                    if (ddlevento.SelectedValue=="06")
+                {
+                    if (ddlevento.SelectedValue == "06")
                     {
-                        if (Convert.ToInt32( txtImporteOrigen.Text) ==Convert.ToInt32( txtImporteISR.Text) + Convert.ToInt32( txtImporteCheque.Text))
+                        if (Convert.ToInt32(txtImporteOperacion.Text) == Convert.ToInt32(txtImporteISR.Text) + Convert.ToInt32(txtImporteCheque.Text))
                         {
                             honorarios = 1;
                         }
@@ -695,81 +710,81 @@ namespace SAF.Presupuesto
                         {
                             honorarios = 0;
                         }
-                        
+
                     }
                     else
                     {
                         honorarios = 1;
                     }
-                    if (honorarios==1)
-                    {                   
-                    if (rbtdoc_simultaneo.SelectedValue == "S" && SesionUsu.Usu_Rep == "C" && SesionUsu.Editar == 0)
+                    if (honorarios == 1)
                     {
-                        for (int i = 0; i < 4; i++)
+                        if (rbtdoc_simultaneo.SelectedValue == "S" && SesionUsu.Usu_Rep == "C" && SesionUsu.Editar == 0)
                         {
-                            switch (i)
+                            for (int i = 0; i < 4; i++)
                             {
-                                case 0:
-                                    objDocumento.Tipo = "CC";
-                                    guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                    if (VerificadorInserta != "0")
-                                        i = 4;                                    
-                                    break;
-                                //case 1:
-                                //    objDocumento.Tipo = "CD";
-                                //    guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                //    if (VerificadorInserta != "0")
-                                //        i = 4;
-                                //    break;
-                                //case 2:
-                                //    if (ddlevento.SelectedValue != "09")
-                                //    {
-                                //        if (ddlevento.SelectedValue != "10")
-                                //        {
-                                //            objDocumento.Tipo = "CE";
-                                //        guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                //        if (VerificadorInserta != "0")
-                                //            i = 4;
-                                //        }
-                                //    }
-                                    
-                                //    break;
-                                //case 3:
-                                //    if (ddlevento.SelectedValue != "09")
-                                //    {
-                                //        if (ddlevento.SelectedValue != "10")
-                                //        {
-                                //            objDocumento.Tipo = "CP";
-                                //        guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                //         if (VerificadorInserta != "0")
-                                //        i = 4;
-                                //        }
-                                //    }
-                                //    break;
+                                switch (i)
+                                {
+                                    case 0:
+                                        objDocumento.Tipo = "CC";
+                                        guarda_encabezado(ref VerificadorInserta, ref Folio);
+                                        if (VerificadorInserta != "0")
+                                            i = 4;
+                                        break;
+                                        //case 1:
+                                        //    objDocumento.Tipo = "CD";
+                                        //    guarda_encabezado(ref VerificadorInserta, ref Folio);
+                                        //    if (VerificadorInserta != "0")
+                                        //        i = 4;
+                                        //    break;
+                                        //case 2:
+                                        //    if (ddlevento.SelectedValue != "09")
+                                        //    {
+                                        //        if (ddlevento.SelectedValue != "10")
+                                        //        {
+                                        //            objDocumento.Tipo = "CE";
+                                        //        guarda_encabezado(ref VerificadorInserta, ref Folio);
+                                        //        if (VerificadorInserta != "0")
+                                        //            i = 4;
+                                        //        }
+                                        //    }
+
+                                        //    break;
+                                        //case 3:
+                                        //    if (ddlevento.SelectedValue != "09")
+                                        //    {
+                                        //        if (ddlevento.SelectedValue != "10")
+                                        //        {
+                                        //            objDocumento.Tipo = "CP";
+                                        //        guarda_encabezado(ref VerificadorInserta, ref Folio);
+                                        //         if (VerificadorInserta != "0")
+                                        //        i = 4;
+                                        //        }
+                                        //    }
+                                        //    break;
+                                }
+                            }
+
+                            if (VerificadorInserta != "0")
+                                lblErrorDet.Text = VerificadorInserta;
+
+                            else
+                            {
+                                SesionUsu.Editar = -1;
+                                ddlCentroContable.Enabled = true;
+                                ddlTipoEnc.Enabled = true;
+                                MultiView1.ActiveViewIndex = 0;
+                                ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
+                                CargarGrid(ref grdDocumentos, 0);
+                                //lblMesIni.Visible = true;
+                                //ddlMesIni.Visible = true;
+                                //lblMesFin.Visible = true;
+                                //ddlMesFin.Visible = true;
+                                lblError.Text = "Los datos han sido agregados correctamente.";
                             }
                         }
-
-                        if (VerificadorInserta != "0")                        
-                            lblErrorDet.Text = VerificadorInserta;
-                        
                         else
                         {
-                            SesionUsu.Editar = -1;
-                            ddlCentroContable.Enabled = true;
-                            ddlTipoEnc.Enabled = true;
-                            MultiView1.ActiveViewIndex = 0;
-                            ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
-                            CargarGrid(ref grdDocumentos, 0);
-                            //lblMesIni.Visible = true;
-                            //ddlMesIni.Visible = true;
-                            //lblMesFin.Visible = true;
-                            //ddlMesFin.Visible = true;
-                            lblError.Text = "Los datos han sido agregados correctamente.";
-                        }
-                    }
-                    else
-                    {
-                       
+
                             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
                             if (VerificadorInserta != "0")
@@ -788,18 +803,18 @@ namespace SAF.Presupuesto
                                 ddlCentroContable.Enabled = true;
                                 penel_detalle.Visible = false;
                             }
-                    }
+                        }
                     }
                     else
                     {
                         lblErrorDet.Text = "El importe de operacion es incorrecto.";
                     }
                 }
-                
+
                 else
                 {
-                    lblErrorDet.Text = "No se han agregado códigos programáticos.";                   
-                } 
+                    lblErrorDet.Text = "No se han agregado códigos programáticos.";
+                }
             }
             catch (Exception ex)
             {

@@ -48,7 +48,7 @@ namespace CapaEntidad
         private string _Ejercicios;
         private string _Contabilizar;
         private string _PolizaDevengado;
-        private string _ISR;
+        private double _ISR;
         private double _Importe_Cheque;
         private double _Importe_Operacion;
 
@@ -72,7 +72,7 @@ namespace CapaEntidad
             get { return _Importe_Cheque; }
             set { _Importe_Cheque = value; }
         }
-        public string ISR
+        public double ISR
         {
             get { return _ISR; }
             set { _ISR = value; }
