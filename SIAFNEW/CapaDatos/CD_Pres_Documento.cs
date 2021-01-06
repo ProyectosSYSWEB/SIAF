@@ -82,6 +82,9 @@ namespace CapaDatos
                                             "P_GENERACION_SIMULTANEA",
                                             "P_CONTABILIZAR",
                                             "P_POLIZA",
+                                            "P_ISR",
+                                            "P_IMPORTE_OPERACION",
+                                            "P_IMPORTE_CHEQUE",
                                             "p_bandera"
                 };
 
@@ -105,7 +108,10 @@ namespace CapaDatos
                     objDocumento.Fecha_Final = Convert.ToString(Cmd.Parameters["P_FECHA_FINAL"].Value);
                     objDocumento.GeneracionSimultanea = Convert.ToString(Cmd.Parameters["P_GENERACION_SIMULTANEA"].Value);
                     objDocumento.Contabilizar = Convert.ToString(Cmd.Parameters["P_CONTABILIZAR"].Value);
-                    objDocumento.PolizaComprometida= Convert.ToString(Cmd.Parameters["P_POLIZA"].Value); 
+                    objDocumento.PolizaComprometida= Convert.ToString(Cmd.Parameters["P_POLIZA"].Value);
+                    objDocumento.ISR = Convert.ToDouble(Cmd.Parameters["P_ISR"].Value);
+                    objDocumento.Importe_Operacion = Convert.ToDouble(Cmd.Parameters["P_IMPORTE_OPERACION"].Value);
+                    objDocumento.Importe_Cheque = Convert.ToDouble(Cmd.Parameters["P_IMPORTE_CHEQUE"].Value);
 
                 }
 
@@ -196,13 +202,13 @@ namespace CapaDatos
                                         "P_DESCRIPCION", "P_MOTIVO_RECHAZO", "P_MOTIVO_AUTORIZACION", "P_CUENTA", "P_NUMERO_CHEQUE", "P_CEDULA_COMPROMETIDO", "P_CEDULA_DEVENGADO",
                                         "P_CEDULA_EJERCIDO", "P_CEDULA_PAGADO", "P_POLIZA_COMPROMETIDO","P_POLIZA_DEVENGADO", "P_POLIZA_EJERCIDO", "P_POLIZA_PAGADO", "P_CLAVE_CUENTA", "P_CLAVE_EVENTO",
                                         "P_KEY_DOCUMENTO", "P_KEY_POLIZA", "P_KEY_POLIZA_811", "P_EJERCICIO", "P_REGULARIZA", "P_FECHA_FINAL", "P_GENERACION_SIMULTANEA",
-                                        "P_USUARIO","P_CONTABILIZAR", "P_ISR" };
+                                        "P_USUARIO","P_CONTABILIZAR", "P_ISR","P_IMPORTE_OPERACION","P_IMPORTE_CHEQUE"};
                 object[] Valores =    { objdocumento.CentroContable, objdocumento.Dependencia,objdocumento.SuperTipo,objdocumento.Tipo ,objdocumento.Fecha,
                                         objdocumento.MesAnio,objdocumento.TipoCaptura,objdocumento.Status,objdocumento.Descripcion,objdocumento.MotivoRechazo,objdocumento.MotivoAutorizacion,
                                         objdocumento.Cuenta,objdocumento.NumeroCheque,objdocumento.CedulaComprometido,objdocumento.CedulaDevengado,objdocumento.CedulaEjercido,
                                         objdocumento.CedulaPagado,objdocumento.PolizaComprometida, objdocumento.PolizaDevengado,objdocumento.PolizaEjercido,objdocumento.PolizaPagado,objdocumento.ClaveCuenta,
                                         objdocumento.ClaveEvento,objdocumento.KeyDocumento,objdocumento.KeyPoliza, objdocumento.KeyPoliza811, objdocumento.Ejercicios , objdocumento.Regulariza,
-                                        objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar, objdocumento.ISR };
+                                        objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar, objdocumento.ISR,objdocumento.Importe_Operacion,objdocumento.Importe_Cheque };
                 String[] ParametrosOut = { "P_ID", "P_FOLIO", "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRESUP_DOCUMENTOS", ref Verificador, Parametros, Valores, ParametrosOut);
