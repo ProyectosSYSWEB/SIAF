@@ -386,7 +386,7 @@ namespace SAF.Presupuesto
             objDocumento.ClaveEvento = "00";
             objDocumento.KeyDocumento = "";
             objDocumento.KeyPoliza = "";
-            objDocumento.ISR = "0";
+            objDocumento.ISR = 0;
            
 
             if (SesionUsu.Editar == 0)

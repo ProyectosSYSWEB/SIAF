@@ -265,7 +265,7 @@ namespace SAF.Presupuesto
             objDocumento.GeneracionSimultanea = "N";
             objDocumento.KeyDocumento = "";
             objDocumento.KeyPoliza = "";
-            objDocumento.ISR = "0";
+            objDocumento.ISR = 0;
 
             objDocumento.CedulaDevengado = "";
             objDocumento.CedulaEjercido = "";
