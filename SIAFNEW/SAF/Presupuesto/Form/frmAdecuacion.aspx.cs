@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CapaEntidad;
 using CapaNegocio;
-
+//MODIFICADO EL 06 ENERO DE 2021
 namespace SAF.Presupuesto
 {
     public partial class frmAdecuacion : System.Web.UI.Page
@@ -386,7 +386,9 @@ namespace SAF.Presupuesto
             objDocumento.ClaveEvento = "00";
             objDocumento.KeyDocumento = "";
             objDocumento.KeyPoliza = "";
-            objDocumento.ISR = "0";
+            objDocumento.Importe_Operacion = Convert.ToDouble("0.00");
+            objDocumento.Importe_Cheque = Convert.ToDouble("0.00");
+            objDocumento.ISR = Convert.ToDouble("0.00");
            
 
             if (SesionUsu.Editar == 0)
