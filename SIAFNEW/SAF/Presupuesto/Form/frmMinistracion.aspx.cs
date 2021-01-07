@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CapaEntidad;
 using CapaNegocio;
-
+//MODIFICADO EL 06 ENERO DE 2021
 namespace SAF.Presupuesto
 {
     public partial class frmMinistracion : System.Web.UI.Page
@@ -122,7 +122,7 @@ namespace SAF.Presupuesto
                 //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatus, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
                 //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "M");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);
                 ddlTipoEnc.Items.RemoveAt(0);
@@ -265,7 +265,9 @@ namespace SAF.Presupuesto
             objDocumento.GeneracionSimultanea = "N";
             objDocumento.KeyDocumento = "";
             objDocumento.KeyPoliza = "";
-            objDocumento.ISR = 0;
+            objDocumento.Importe_Operacion = Convert.ToDouble("0.00");
+            objDocumento.Importe_Cheque = Convert.ToDouble("0.00");
+            objDocumento.ISR = Convert.ToDouble("0.00") ;
 
             objDocumento.CedulaDevengado = "";
             objDocumento.CedulaEjercido = "";
@@ -442,7 +444,7 @@ namespace SAF.Presupuesto
                     /*Inicializa controles para editar*/
                     SesionUsu.Editar = 1;
                     //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "M");
                     //lblMesIni.Visible = false;
                     //lblMesFin.Visible = false;
                     //ddlMesFin.Visible = false;
@@ -817,6 +819,13 @@ namespace SAF.Presupuesto
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddlCapitulo.SelectedValue.Substring(0,1), ddlFuente_F.SelectedValue, ref ListPartida);
             disponible();
         }
+        protected void ddlMesInicialDet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblMsjCP.Text = string.Empty;
+            lblFormatoDisponible.Text = "$0.00";
+            lblDisponible.Text = "0.00";
+            disponible();
+        }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
         {
             string ruta1 = string.Empty;
@@ -825,5 +834,7 @@ namespace SAF.Presupuesto
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
         #endregion
+
+       
     }
 }

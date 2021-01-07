@@ -557,7 +557,7 @@
                                                                                                                 </td>
                                                                                                                 <td class="auto-style70" valign="top">
                                                                                                                     <asp:UpdatePanel ID="updPnlMesIniDet" runat="server"><ContentTemplate>
-                                                                                                                            <asp:DropDownList ID="ddlMesInicialDet" runat="server"  Width="150px">
+                                                                                                                            <asp:DropDownList ID="ddlMesInicialDet" runat="server"  Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlMesInicialDet_SelectedIndexChanged">
                                                                                                                                 <asp:ListItem Value="01">Enero</asp:ListItem>
                                                                                                                                 <asp:ListItem Value="02">Febrero</asp:ListItem>
                                                                                                                                 <asp:ListItem Value="03">Marzo</asp:ListItem>
