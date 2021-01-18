@@ -229,7 +229,7 @@
                                                                             </div>
                                                                             <asp:UpdatePanel ID="UpdDocumentos" runat="server">
                                                                                 <ContentTemplate>
-                                                                                    <asp:GridView ID="grdDocumentos" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." OnPageIndexChanging="grdDocumentos_PageIndexChanging" OnRowDeleting="grdDocumentos_RowDeleting" OnSelectedIndexChanged="grdDocumentos_SelectedIndexChanged" PageSize="15" Width="100%">
+                                                                                    <asp:GridView ID="grdDocumentos" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." OnPageIndexChanging="grdDocumentos_PageIndexChanging" OnRowDeleting="grdDocumentos_RowDeleting" PageSize="15" Width="100%">
                                                                                         <Columns>
                                                                                             <asp:BoundField DataField="ID" HeaderText="ID" />
                                                                                             <asp:BoundField DataField="Dependencia" HeaderText="DEPENDENCIA">
@@ -251,13 +251,21 @@
                                                                                             <asp:BoundField DataField="Origen" DataFormatString="{0:c}" HeaderText="IMPORTE" >
                                                                                                 <ItemStyle HorizontalAlign="Right" />
                                                                                             </asp:BoundField>
-                                                                                            <asp:TemplateField>
+                                                                                           <%-- <asp:TemplateField>
                                                                                                 <ItemTemplate>
                                                                                                     <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible='<%# Bind("Opcion_Modificar") %>'>Editar</asp:LinkButton>
                                                                                                     <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>
                                                                                                 </ItemTemplate>
                                                                                                  <ItemStyle HorizontalAlign="Center"/>
-                                                                                            </asp:TemplateField>
+                                                                                            </asp:TemplateField>--%>
+                                                                                            <asp:BoundField DataField="Opcion_Modificar_Str" />
+                                                                                              <asp:TemplateField>
+                                                        <ItemTemplate>                                                           
+                                                                    <asp:LinkButton ID="linkBttnEditar" runat="server" 
+                                                                        onclick="linkBttnEditar_Click" Enabled='<%# Bind("Opcion_Modificar2") %>'><%# DataBinder.Eval(Container.DataItem, "Opcion_Modificar_Str")%></asp:LinkButton>                                                               
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
                                                                                             <asp:TemplateField>
                                                                                                 <ItemTemplate>
                                                                                                     <asp:UpdatePanel ID="UpdatePanel104" runat="server">
@@ -472,24 +480,26 @@
 </asp:UpdatePanel>
 
 
-                                                                                                                    <asp:UpdateProgress ID="updProDepen" runat="server" AssociatedUpdatePanelID="updPnlDepen"><progresstemplate>
+                                                                                                                    <asp:UpdateProgress ID="updProDepen" runat="server" AssociatedUpdatePanelID="updPnlDepen">
+                                                                                                                        <ProgressTemplate>
                                                                                                                             <asp:Image ID="imgDepen" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
-                                                                                                                        
-</progresstemplate>
-</asp:UpdateProgress>
+                                                                                                                        </ProgressTemplate>
+                                                                                                                    </asp:UpdateProgress>
 
 
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td class="auto-style72" valign="top">
-                                                                                                                    <asp:Label ID="lblCodigoProg0" runat="server" Text="Capitulo"></asp:Label>
+                                                                                                                    <asp:Label ID="lblCapitulo" runat="server" Text="Capitulo"></asp:Label>
 
 
                                                                                                                 </td>
                                                                                                                 <td colspan="5" valign="top">
+                                                                                                                    <asp:UpdatePanel ID="updPnlCapitulo" runat="server"><ContentTemplate>
                                                                                                                     <asp:DropDownList ID="ddlCapitulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCapitulo_SelectedIndexChanged" Width="350px"></asp:DropDownList>
-
+ </ContentTemplate></asp:UpdatePanel>
+            
 
                                                                                                                 </td>
                                                                                                             </tr>
@@ -500,9 +510,15 @@
 
                                                                                                                 </td>
                                                                                                                 <td colspan="5" valign="top">
+                                                                                                                    <asp:UpdatePanel ID="updPnlFuenteF" runat="server"><ContentTemplate>
                                                                                                                     <asp:DropDownList ID="ddlFuente_F" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_F_SelectedIndexChanged" Width="100%"></asp:DropDownList>
 
-
+                                                                                                                    </ContentTemplate></asp:UpdatePanel>
+            <asp:UpdateProgress ID="updProFuenteF" runat="server" AssociatedUpdatePanelID="updPnlCapitulo">
+                                                                                                                        <ProgressTemplate>
+                                                                                                                            <asp:Image ID="imgFuenteF" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="https://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
+                                                                                                                        </ProgressTemplate>
+                                                                                                                    </asp:UpdateProgress>
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <tr>
@@ -512,9 +528,18 @@
 
                                                                                                                 </td>
                                                                                                                 <td colspan="5" valign="top">
-                                                                                                                    <asp:DropDownList ID="ddlCodigoProg" runat="server" AutoPostBack="True" CssClass="select2" OnSelectedIndexChanged="LstCodigoProg_SelectedIndexChanged" Width="100%"></asp:DropDownList>
+                                                                                                                    <asp:UpdatePanel ID="updPnlCodProg" runat="server">
+                                                                                                                        <ContentTemplate>
+                                                                                                                            <asp:DropDownList ID="ddlCodigoProg" runat="server" AutoPostBack="True" CssClass="select2" OnSelectedIndexChanged="LstCodigoProg_SelectedIndexChanged" Width="100%"></asp:DropDownList>
+                                                                                                                        </ContentTemplate>
+                                                                                                                            </asp:UpdatePanel>
 
 
+                                                                                                                    <asp:UpdateProgress ID="updProCodProg" runat="server" AssociatedUpdatePanelID="updPnlFuenteF">
+                                                                                                                        <ProgressTemplate>
+                                                                                                                            <asp:Image ID="imgCodProg" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="https://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
+                                                                                                                        </ProgressTemplate>
+                                                                                                                    </asp:UpdateProgress>
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <tr>
@@ -543,7 +568,12 @@
 
                                                                                                                 </td>
                                                                                                                 <td class="auto-style9" valign="top">
-                                                                                                                    &#160;</td>
+                                                                                                                    <asp:UpdateProgress ID="updProDisponible" runat="server" AssociatedUpdatePanelID="updPnlCodProg">
+                                                                                                                        <ProgressTemplate>
+                                                                                                                            <asp:Image ID="imgDisponible" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="https://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
+                                                                                                                        </ProgressTemplate>
+                                                                                                                    </asp:UpdateProgress>
+                                                                                                                </td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td class="auto-style72" valign="top">

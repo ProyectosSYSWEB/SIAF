@@ -753,7 +753,7 @@ namespace CapaNegocio
             var textbox = control as TextBox;
             var ddl = control as DropDownList;
 
-            if (textbox != null)
+            if (textbox != null && textbox.ID !="txtCedula" && textbox.ID != "txtfechaDocumento")
             {
                 textbox.Enabled = true ;
             }           
