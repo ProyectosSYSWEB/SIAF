@@ -616,6 +616,15 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.DropDownList ddlCapitulo;
         
         /// <summary>
+        /// Control updProCapitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress updProCapitulo;
+        
+        /// <summary>
         /// Control lblCodigoProg1.
         /// </summary>
         /// <remarks>
