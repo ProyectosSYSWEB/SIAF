@@ -58,6 +58,8 @@ namespace CapaEntidad
         private bool _Opcion_Eliminar2;
         private bool _Opcion_Modificar;
         private bool _Opcion_Modificar2;
+        private string _Opcion_Modificar_Str;
+        private string _Opcion_Modificar2_Str;
         private bool _Opcion_Copiar;
         private bool _Opcion_Copiar2;
 
@@ -301,6 +303,16 @@ namespace CapaEntidad
         {
             get { return _Opcion_Modificar2; }
             set { _Opcion_Modificar2 = value; }
+        }
+        public string Opcion_Modificar_Str
+        {
+            get { return _Opcion_Modificar_Str; }
+            set { _Opcion_Modificar_Str = value; }
+        }
+        public string Opcion_Modificar2_Str
+        {
+            get { return _Opcion_Modificar2_Str; }
+            set { _Opcion_Modificar2_Str = value; }
         }
         public bool Opcion_Copiar
         {

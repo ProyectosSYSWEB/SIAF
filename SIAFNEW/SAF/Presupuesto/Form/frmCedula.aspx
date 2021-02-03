@@ -4,8 +4,8 @@
         <script src="../../Scripts/jquery/jquery-3.1.1.min.js"></script>
     <script src="../../Scripts/select2/js/select2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <link href="../../Scripts/select2/css/select2.min.css" type="text/css" rel="stylesheet" />
-    <%--MODIFICADO POR CARLOS EL 04ENERO2021--%>
+    <link href="https://sysweb.unach.mx/ingresos/Scripts/select2/css/select2.min.css" type="text/css" rel="stylesheet" />
+    <%--MODIFICADO POR CARLOS EL 16ENERO2021--%>
     <style type="text/css">
               
         .auto-style4 {
@@ -257,7 +257,7 @@
                                                                             </div>
                                                                             <asp:UpdatePanel ID="UpdDocumentos" runat="server">
                                                                                 <ContentTemplate>
-                                                                                    <asp:GridView ID="grdDocumentos" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." OnPageIndexChanging="grdDocumentos_PageIndexChanging" OnSelectedIndexChanged="grdDocumentos_SelectedIndexChanged" PageSize="15" Width="100%" OnRowDeleting="grdDocumentos_RowDeleting">
+                                                                                    <asp:GridView ID="grdDocumentos" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." OnPageIndexChanging="grdDocumentos_PageIndexChanging" OnSelectedIndexChanged="grdDocumentos_SelectedIndexChanged" PageSize="20" Width="100%" OnRowDeleting="grdDocumentos_RowDeleting">
                                                                                         <Columns>
                                                                                             <asp:BoundField DataField="ID" HeaderText="ID" />
                                                                                             <asp:BoundField DataField="Dependencia" HeaderText="DEPENDENCIA" />
@@ -342,7 +342,7 @@
                                                                                                         </asp:DropDownList>
                                                                                                     </ContentTemplate>
                                                                                                 </asp:UpdatePanel>
-                                                                                                <asp:Label ID="lblStatusEnc" runat="server" Font-Bold="True" Font-Size="20px"></asp:Label>
+                                                                                                <%--<asp:Label ID="lblStatusEnc" runat="server" Font-Bold="True" Font-Size="20px"></asp:Label>--%>
                                                                                                 <br />
                                                                                                 <asp:RequiredFieldValidator ID="validadorStatus" runat="server" ControlToValidate="ddlStatusEnc" ErrorMessage="*Estatus requerido" InitialValue="X" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                             </td>
@@ -352,7 +352,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
-                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
+                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
                                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                                 <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Datos Grales.">
                                                                                                     <HeaderTemplate>
@@ -360,6 +360,8 @@
                                                                                                     
 </HeaderTemplate>
                                                                                                     
+
+
 
 <ContentTemplate>
                                                                                                         &#160;<asp:UpdatePanel ID="UpdatePanel107" runat="server">
@@ -385,6 +387,7 @@
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <asp:TextBox ID="txtPoliza" runat="server"  Width="95px" MaxLength="7"></asp:TextBox>
+                                                                                                                            <asp:RequiredFieldValidator ID="RFVPoliza" runat="server" ErrorMessage="*" ControlToValidate="txtPoliza" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                         </tr>
                                                                                                                         
@@ -433,15 +436,16 @@
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <asp:TextBox ID="txtNumero_Cheque" runat="server" Width="95px"></asp:TextBox>
+                                                                                                                            <asp:RequiredFieldValidator ID="RFVNumCheque" runat="server" ControlToValidate="txtNumero_Cheque" ErrorMessage="*" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <asp:Label ID="lblfechaDocumento" runat="server" Text="Fecha"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:TextBox ID="txtfechaDocumento" runat="server" CssClass="box" Enabled="false" Width="95px"></asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtfechaDocumento" runat="server" CssClass="box" Enabled="false" Width="95px" AutoPostBack="True" OnTextChanged="txtfechaDocumento_TextChanged"></asp:TextBox>
                                                                                                                             <ajaxToolkit:CalendarExtender ID="CalendarExtenderIni" runat="server" PopupButtonID="imgCalendarioIni" TargetControlID="txtfechaDocumento" />
                                                                                                                             <asp:ImageButton ID="imgCalendarioIni" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/calendario.gif"  />
-                                                                                                                            <asp:RequiredFieldValidator ID="valFecha" runat="server" ControlToValidate="txtfechaDocumento" ErrorMessage="*Fecha Requerida" InitialValue="T" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
+                                                                                                                            <asp:RequiredFieldValidator ID="valFecha" runat="server" ControlToValidate="txtfechaDocumento" ErrorMessage="*" InitialValue="T" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <asp:Label ID="lblImporteOperacion" runat="server" Text="Importe operación"></asp:Label>
@@ -449,7 +453,8 @@
                                                                                                                         <td>
                                                                                                                             <asp:UpdatePanel ID="UpdPnlImporteOperacion" runat="server">
                                                                                                                         <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteOperacion" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteOperacion_TextChanged" Enabled="False">0</asp:TextBox>
+                                                                                                                            <%--<asp:TextBox ID="txtImporteOperacion" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteOperacion_TextChanged" Enabled="False">0</asp:TextBox>--%>
+                                                                                                                            <asp:Label ID="lblImporte_Operacion" runat="server" Text="0.00"></asp:Label>
                                                                                                                             </ContentTemplate>
                                                                                                                                 </asp:UpdatePanel>
                                                                                                                         </td>
@@ -460,24 +465,19 @@
                                                                                                                             <asp:Label ID="lblImporteCheque" runat="server" Text="Importe cheque"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:UpdatePanel ID="UpdPnlImporteCheque" runat="server">
-                                                                                                                        <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteCheque" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteCheque_TextChanged">0</asp:TextBox>
-                                                                                                                        </ContentTemplate>
-                                                                                                                            </asp:UpdatePanel>
-                                                                                                                            <asp:RegularExpressionValidator ID="REVImporteCheque" runat="server" ControlToValidate="txtImporteCheque" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="Guardar">*Formato numérico</asp:RegularExpressionValidator>
+                                                                                                                            
+                                                                                                                            <asp:TextBox ID="txtImporteCheque" runat="server" Width="95px"  >0.00</asp:TextBox>
+                                                                                                                        
+                                                                                                                            <asp:RequiredFieldValidator ID="RFVImporteCheque" runat="server" ErrorMessage="*" ControlToValidate="txtImporteCheque" ValidationGroup="Guardar" InitialValue="0.00"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                         
                                                                                                                         <td>
                                                                                                                             <asp:Label ID="lblImporteISR" runat="server" Text="Importe ISR" Visible="False"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:UpdatePanel ID="UpdPnlImporteISR" runat="server">
-                                                                                                                        <ContentTemplate>
-                                                                                                                            <asp:TextBox ID="txtImporteISR" runat="server" Width="95px" AutoPostBack="True"  OnTextChanged="txtImporteISR_TextChanged" Visible="False">0</asp:TextBox>
-                                                                                                                        </ContentTemplate>
-                                                                                                                                </asp:UpdatePanel>
-                                                                                                                            <asp:RegularExpressionValidator ID="REVImporteISR" runat="server" ControlToValidate="txtImporteISR" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="Guardar">*Formato numérico</asp:RegularExpressionValidator>
+                                                                                                                            <asp:TextBox ID="txtImporteISR" runat="server" Width="95px"   Visible="False">0.00</asp:TextBox>
+                                                                                                                        
+                                                                                                                            <asp:RequiredFieldValidator ID="RFVImporteISR" runat="server" ErrorMessage="*" ControlToValidate="txtImporteISR" ValidationGroup="Guardar" InitialValue="0.00"></asp:RequiredFieldValidator>
                                                                                                                             </td>
                                                                                                                     </tr>
                                                                                                                     <tr>
@@ -487,7 +487,7 @@
                                                                                                                         <td colspan="5" valign="top" class="auto-style74">
                                                                                                                             <asp:TextBox ID="txtConcepto" runat="server" Height="80px" TextMode="MultiLine" Width="100%"></asp:TextBox>
                                                                                                                             <br />
-                                                                                                                            <asp:RequiredFieldValidator ID="valConcepto" runat="server" ControlToValidate="txtConcepto" ErrorMessage="*Concepto Requerido" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
+                                                                                                                            <asp:RequiredFieldValidator ID="RFVConcepto" runat="server" ControlToValidate="txtConcepto" ErrorMessage="*Concepto Requerido" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                     <tr>
@@ -535,6 +535,8 @@
 </ContentTemplate>
                                                                                                 
 
+
+
 </ajaxToolkit:TabPanel>
                                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                                 <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Detalles">
@@ -543,6 +545,8 @@
                                                                                                     
 </HeaderTemplate>
                                                                                                     
+
+
 
 <ContentTemplate>
                                                                                                         <table style="width:100%;">
@@ -559,14 +563,18 @@
 </asp:UpdatePanel>
 
 
+
+
                                                                                                                 </td>
-                                                                                                                <td colspan="5" valign="top">
+                                                                                                                <td valign="top">
                                                                                                                     <asp:UpdatePanel ID="updPnlDepen" runat="server"><ContentTemplate>
                                                                                                                             <asp:DropDownList ID="ddlDepen" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlDepen_SelectedIndexChanged" Width="100%">
                                                                                                                             </asp:DropDownList>
                                                                                                                         
 </ContentTemplate>
 </asp:UpdatePanel>
+
+
 
 
                                                                                                                     <asp:UpdateProgress ID="updProDepen" runat="server" AssociatedUpdatePanelID="updPnlDepen"><progresstemplate>
@@ -576,112 +584,52 @@
 </asp:UpdateProgress>
 
 
+
+
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td class="auto-style72" valign="top">
-                                                                                                                    <asp:Label ID="lblCodigoProg0" runat="server" Text="Capitulo"></asp:Label>
+                                                                                                                    <asp:Label ID="lblCapitulo" runat="server" Text="Capitulo"></asp:Label>
+
+
 
 
                                                                                                                 </td>
-                                                                                                                <td colspan="5" valign="top">
+                                                                                                                <td valign="top">
+                                                                                                                    <asp:UpdatePanel ID="updPnlCapitulo" runat="server"><ContentTemplate>
                                                                                                                     <asp:DropDownList ID="ddlCapitulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCapitulo_SelectedIndexChanged" Width="350px"></asp:DropDownList>
+                                                                                                                         </ContentTemplate></asp:UpdatePanel>
+            
+
 
 
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td class="auto-style72" valign="top">
-                                                                                                                    <asp:Label ID="lblCodigoProg1" runat="server" Text="Fuente"></asp:Label>
+                                                                                                                    <asp:Label ID="lblFuenteF" runat="server" Text="Fuente"></asp:Label>
+
+
 
 
                                                                                                                 </td>
-                                                                                                                <td colspan="5" valign="top">
+                                                                                                                <td valign="top">
+                                                                                                                     <asp:UpdatePanel ID="updPnlFuenteF" runat="server"><ContentTemplate>
                                                                                                                     <asp:DropDownList ID="ddlFuente_F" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_F_SelectedIndexChanged" Width="100%"></asp:DropDownList>
 
+                                                                                                                    
+</ContentTemplate>
+</asp:UpdatePanel>
+                                                                                                                   <asp:UpdateProgress ID="updProFuenteF" runat="server" AssociatedUpdatePanelID="updPnlCapitulo">
+                                                                                                                        <ProgressTemplate>
+                                                                                                                            <asp:Image ID="imgFuenteF" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="https://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
+                                                                                                                        </ProgressTemplate>
+                                                                                                                    </asp:UpdateProgress>
+
 
                                                                                                                 </td>
                                                                                                             </tr>
-                                                                                                            <tr>
-                                                                                                                <td class="auto-style72" valign="top">
-                                                                                                                    <asp:UpdatePanel ID="UpdatePanel114" runat="server"><ContentTemplate>
-                                                                                                                            <asp:Label ID="lblMesInicialDet" runat="server" Text="Mes"></asp:Label>
-                                                                                                                        
-</ContentTemplate>
-</asp:UpdatePanel>
-
-
-                                                                                                                </td>
-                                                                                                                <td class="auto-style70" valign="top">
-                                                                                                                    <asp:UpdatePanel ID="updPnlMesIniDet" runat="server"><ContentTemplate>
-                                                                                                                            <asp:DropDownList ID="ddlMesInicialDet" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMesInicialDet_SelectedIndexChanged" Width="100px">
-                                                                                                                                <asp:ListItem Value="01">Enero</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="02">Febrero</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="03">Marzo</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="04">Abril</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="05">Mayo</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="06">Junio</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="07">Julio</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="08">Agosto</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="09">Septiembre</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="10">Octubre</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="11">Noviembre</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="12">Diciembre</asp:ListItem>
-                                                                                                                            </asp:DropDownList>
-                                                                                                                        
-</ContentTemplate>
-</asp:UpdatePanel>
-
-
-                                                                                                                    <asp:UpdateProgress ID="updPrgMesIniDet" runat="server" AssociatedUpdatePanelID="updPnlMesIniDet"><progresstemplate>
-                                                                                                                            <asp:Image ID="imgMesIniDet" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
-                                                                                                                        
-</progresstemplate>
-</asp:UpdateProgress>
-
-
-                                                                                                                </td>
-                                                                                                                <td class="auto-style71" valign="top">&#160;</td>
-                                                                                                                <td class="auto-style4" valign="top">
-                                                                                                                    <asp:UpdatePanel ID="UpdatePanel113" runat="server"><ContentTemplate>
-                                                                                                                            <asp:Label ID="lblMesFinalDet" runat="server" Text="Mes Final" Visible="False"></asp:Label>
-                                                                                                                        
-</ContentTemplate>
-</asp:UpdatePanel>
-
-
-                                                                                                                </td>
-                                                                                                                <td class="auto-style21" valign="top">
-                                                                                                                    <asp:UpdatePanel ID="updPnlMesFinalDet" runat="server"><ContentTemplate>
-                                                                                                                            <asp:DropDownList ID="ddlMesFinalDet" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMesFinalDet_SelectedIndexChanged" Visible="False" Width="100px">
-                                                                                                                                <asp:ListItem Value="01">Enero</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="02">Febrero</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="03">Marzo</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="04">Abril</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="05">Mayo</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="06">Junio</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="07">Julio</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="08">Agosto</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="09">Septiembre</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="10">Octubre</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="11">Noviembre</asp:ListItem>
-                                                                                                                                <asp:ListItem Value="12">Diciembre</asp:ListItem>
-                                                                                                                            </asp:DropDownList>
-                                                                                                                        
-</ContentTemplate>
-</asp:UpdatePanel>
-
-
-                                                                                                                    <asp:UpdateProgress ID="updPrgMesFinalDet" runat="server" AssociatedUpdatePanelID="updPnlMesFinalDet"><progresstemplate>
-                                                                                                                            <asp:Image ID="imgMesFinalDet" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
-                                                                                                                        
-</progresstemplate>
-</asp:UpdateProgress>
-
-
-                                                                                                                </td>
-                                                                                                                <td class="auto-style9" valign="top">&#160;</td>
-                                                                                                                </tr>
                                                                                                             </table>
     
     <asp:Panel ID="penel_detalle" runat="server" Visible="False">
@@ -690,10 +638,25 @@
                                                                                                             <tr>
                                                                                                                 <td class="auto-style72" valign="top">
                                                                                                                     <asp:Label ID="lblCodigoProg" runat="server" Text="Código Programático"></asp:Label>
+
+
                                                                                                                 </td>
                                                                                                                 <td colspan="5" valign="top">
+                                                                                                                     <asp:UpdatePanel ID="updPnlCodProg" runat="server"><ContentTemplate>
                                                                                                                     <asp:DropDownList ID="ddlCodigoProg" runat="server" AutoPostBack="True" CssClass="select2" OnSelectedIndexChanged="LstCodigoProg_SelectedIndexChanged" Width="100%">
                                                                                                                     </asp:DropDownList>
+                                                                                                                            
+</ContentTemplate>
+</asp:UpdatePanel>
+
+
+                                                                                                                    <asp:UpdateProgress ID="updProCodProg" runat="server" AssociatedUpdatePanelID="updPnlFuenteF"><ProgressTemplate>
+                                                                                                                            <asp:Image ID="imgCodProg" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="https://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
+                                                                                                                        
+</ProgressTemplate>
+</asp:UpdateProgress>
+
+
                                                                                                                 </td>
                                                                                                             </tr>
                                                                                                             <tr>
@@ -703,6 +666,8 @@
                                                                                                                 <td class="auto-style71" valign="top">&#160;</td>
                                                                                                                 <td class="auto-style4" valign="top">
                                                                                                                     <asp:Label ID="lblLeyDisponible" runat="server" Font-Bold="True" Font-Size="18px" Text="Disponible"></asp:Label>
+
+
 
 
                                                                                                                 </td>
@@ -715,18 +680,30 @@
 </asp:UpdatePanel>
 
 
+
+
                                                                                                                 </td>
                                                                                                                 <td class="auto-style9" valign="top">
-                                                                                                                    &#160;</td>
+
+                                                                                                                    <asp:UpdateProgress ID="updProDisponible" runat="server" AssociatedUpdatePanelID="updPnlCodProg">
+                                                                                                                        <ProgressTemplate>
+                                                                                                                            <asp:Image ID="imgDisponible" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="https://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
+                                                                                                                        </ProgressTemplate>
+                                                                                                                    </asp:UpdateProgress>
+                                                                                                                </td>
                                                                                                             </tr>
                                                                                                             <tr>
                                                                                                                 <td>
                                                                                                                     <asp:Label ID="lblPartida" runat="server" Text="Concepto del Gasto"></asp:Label>
 
 
+
+
                                                                                                                 </td>
                                                                                                                 <td colspan="2">
                                                                                                                     <asp:TextBox ID="txtDesPartida" runat="server" Width="100%"></asp:TextBox>
+
+
 
 
                                                                                                                 </td>
@@ -741,9 +718,13 @@
                                                                                                                     <asp:Label ID="lblReferencia" runat="server" Text="Doc. referencia"></asp:Label>
 
 
+
+
                                                                                                                 </td>
                                                                                                                 <td>
                                                                                                                     <asp:TextBox ID="txtReferencia" runat="server" Width="100px"></asp:TextBox>
+
+
 
 
                                                                                                                 </td>
@@ -751,14 +732,17 @@
                                                                                                                     <asp:Label ID="lblTipoBeneficiario" runat="server" Text="Tipo beneficiario"></asp:Label>
 
 
+
+
                                                                                                                 </td>
                                                                                                                 <td colspan="2">
-                                                                                                                    <asp:DropDownList ID="DDLTipoBeneficiario" runat="server" Width="100%" OnSelectedIndexChanged="DDLTipoBeneficiario_SelectedIndexChanged">
-                                                                                                                        <asp:ListItem>PROVEEDOR</asp:ListItem>
-                                                                                                                        <asp:ListItem>EMPLEADO</asp:ListItem>
-                                                                                                                        <asp:ListItem>OTROS.</asp:ListItem>
-                                                                                                                        <asp:ListItem Value="X">INSTITUCION</asp:ListItem>
-                                                                                                                    </asp:DropDownList>
+                                                                                                                    <asp:DropDownList ID="DDLTipoBeneficiario" runat="server" Width="100%" OnSelectedIndexChanged="DDLTipoBeneficiario_SelectedIndexChanged"><asp:ListItem>PROVEEDOR</asp:ListItem>
+<asp:ListItem>EMPLEADO</asp:ListItem>
+<asp:ListItem>OTROS.</asp:ListItem>
+<asp:ListItem Value="X">INSTITUCION</asp:ListItem>
+</asp:DropDownList>
+
+
 
                                                                                                                 </td>
                                                                                                                 
@@ -771,19 +755,27 @@
                                                                                                             <tr>
                                                                                                                 <td>
                                                                                                                     <asp:Label ID="lblClaveBeneficiario" runat="server" Text="Clave beneficiario"></asp:Label>
+
+
                                                                                                                 </td>
                                                                                                                 
                                                                                                                 <td>
                                                                                                                     <asp:TextBox ID="txt_clave_beneficiario" runat="server"></asp:TextBox>
+
+
                                                                                                                 </td>
                                                                                                                 </td>
                                                                                                                 <td>
                                                                                                                     <asp:Label ID="lblBeneficiario" runat="server" Text="Nombre/Descripcion"></asp:Label>
 
 
+
+
                                                                                                                 </td>
                                                                                                                 <td colspan="2">
                                                                                                                     <asp:TextBox ID="txtBeneficiario" runat="server" Width="100%"></asp:TextBox>
+
+
 
 
                                                                                                                 </td>
@@ -797,6 +789,8 @@
 </asp:UpdatePanel>
 
 
+
+
                                                                                                                 </td>
                                                                                                                 <td class="auto-style70" valign="top">
                                                                                                                     <asp:UpdatePanel ID="updPnlImpOrigen" runat="server"><ContentTemplate>
@@ -806,6 +800,8 @@
 </asp:UpdatePanel>
 
 
+
+
                                                                                                                     <asp:UpdateProgress ID="updPrgImpMen0" runat="server" AssociatedUpdatePanelID="updPnlImpOrigen"><progresstemplate>
                                                                                                                             <asp:Image ID="imgImpMen0" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." />
                                                                                                                         
@@ -813,17 +809,25 @@
 </asp:UpdateProgress>
 
 
+
+
                                                                                                                     <br />
                                                                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtImporteOrigen" ErrorMessage="RequiredFieldValidator" ValidationGroup="GpoCodProg">*Requerido</asp:RequiredFieldValidator>
+
+
 
 
                                                                                                                     <br />
                                                                                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator104" runat="server" ControlToValidate="txtImporteOrigen" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="GpoCodProg">*Formato (999,999,999.99)</asp:RegularExpressionValidator>
 
 
+
+
                                                                                                                 </td>
                                                                                                                 <td class="auto-style71" valign="top">
                                                                                                                     <asp:Button ID="btnAgregarDet" runat="server" CssClass="btn" OnClick="btnAgregarDet_Click" Text="AGREGAR" ValidationGroup="GpoCodProg" />
+
+
 
 
                                                                                                                 </td>
@@ -848,6 +852,8 @@
                                                                      </table>
 
     </asp:Panel>
+
+
     <table width="100%">
     <tr>
         <td align="center">
@@ -859,9 +865,15 @@
                     <td width="10%">&#160;</td>
                     <td align="left" width="45%">
                         <asp:Label ID="lblLeyTotal_Origen" runat="server" Font-Bold="True" Text="TOTAL ORIGEN"></asp:Label>
+
+
                         <asp:Label ID="lblFormatoTotal_Origen" runat="server" Font-Bold="True" Font-Size="Large" Text="0"></asp:Label>
+
+
                         <br />
                         <asp:Label ID="lblTotal_Origen" runat="server" Visible="False"></asp:Label>
+
+
                     </td>
                 </tr>
             </table>
@@ -881,6 +893,8 @@
 </asp:UpdatePanel>
 
 
+
+
                                                                                                                
        
                                                                                                             <tr>
@@ -891,6 +905,8 @@
                                                                                                             </tr>
 </progresstemplate>
 </asp:UpdateProgress>
+
+
 
 
                                                                                                                 
@@ -956,11 +972,15 @@
 </asp:UpdatePanel>
 
 
+
+
                                                                                                         <br />
                                                                                                         <br />
                                                                                                     
 </ContentTemplate>
                                                                                                 
+
+
 
 </ajaxToolkit:TabPanel>
                                                                                             </ajaxToolkit:TabContainer>

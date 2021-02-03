@@ -364,15 +364,6 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.DropDownList ddlStatusEnc;
         
         /// <summary>
-        /// Control lblStatusEnc.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatusEnc;
-        
-        /// <summary>
         /// Control validadorStatus.
         /// </summary>
         /// <remarks>
@@ -472,6 +463,15 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.TextBox txtPoliza;
         
         /// <summary>
+        /// Control RFVPoliza.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVPoliza;
+        
+        /// <summary>
         /// Control lblcuenta.
         /// </summary>
         /// <remarks>
@@ -553,6 +553,15 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.TextBox txtNumero_Cheque;
         
         /// <summary>
+        /// Control RFVNumCheque.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVNumCheque;
+        
+        /// <summary>
         /// Control lblfechaDocumento.
         /// </summary>
         /// <remarks>
@@ -616,13 +625,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.UpdatePanel UpdPnlImporteOperacion;
         
         /// <summary>
-        /// Control txtImporteOperacion.
+        /// Control lblImporte_Operacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImporteOperacion;
+        protected global::System.Web.UI.WebControls.Label lblImporte_Operacion;
         
         /// <summary>
         /// Control lblImporteCheque.
@@ -634,15 +643,6 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.Label lblImporteCheque;
         
         /// <summary>
-        /// Control UpdPnlImporteCheque.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdPnlImporteCheque;
-        
-        /// <summary>
         /// Control txtImporteCheque.
         /// </summary>
         /// <remarks>
@@ -652,13 +652,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.TextBox txtImporteCheque;
         
         /// <summary>
-        /// Control REVImporteCheque.
+        /// Control RFVImporteCheque.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator REVImporteCheque;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVImporteCheque;
         
         /// <summary>
         /// Control lblImporteISR.
@@ -670,15 +670,6 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.Label lblImporteISR;
         
         /// <summary>
-        /// Control UpdPnlImporteISR.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdPnlImporteISR;
-        
-        /// <summary>
         /// Control txtImporteISR.
         /// </summary>
         /// <remarks>
@@ -688,13 +679,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.TextBox txtImporteISR;
         
         /// <summary>
-        /// Control REVImporteISR.
+        /// Control RFVImporteISR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator REVImporteISR;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVImporteISR;
         
         /// <summary>
         /// Control lblConcepto.
@@ -715,13 +706,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.TextBox txtConcepto;
         
         /// <summary>
-        /// Control valConcepto.
+        /// Control RFVConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valConcepto;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVConcepto;
         
         /// <summary>
         /// Control UpdatePanel119.
@@ -859,13 +850,22 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.UpdateProgress updProDepen;
         
         /// <summary>
-        /// Control lblCodigoProg0.
+        /// Control lblCapitulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCodigoProg0;
+        protected global::System.Web.UI.WebControls.Label lblCapitulo;
+        
+        /// <summary>
+        /// Control updPnlCapitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlCapitulo;
         
         /// <summary>
         /// Control ddlCapitulo.
@@ -877,13 +877,22 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.DropDownList ddlCapitulo;
         
         /// <summary>
-        /// Control lblCodigoProg1.
+        /// Control lblFuenteF.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCodigoProg1;
+        protected global::System.Web.UI.WebControls.Label lblFuenteF;
+        
+        /// <summary>
+        /// Control updPnlFuenteF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlFuenteF;
         
         /// <summary>
         /// Control ddlFuente_F.
@@ -895,94 +904,13 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.DropDownList ddlFuente_F;
         
         /// <summary>
-        /// Control UpdatePanel114.
+        /// Control updProFuenteF.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel114;
-        
-        /// <summary>
-        /// Control lblMesInicialDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMesInicialDet;
-        
-        /// <summary>
-        /// Control updPnlMesIniDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPnlMesIniDet;
-        
-        /// <summary>
-        /// Control ddlMesInicialDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMesInicialDet;
-        
-        /// <summary>
-        /// Control updPrgMesIniDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updPrgMesIniDet;
-        
-        /// <summary>
-        /// Control UpdatePanel113.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel113;
-        
-        /// <summary>
-        /// Control lblMesFinalDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMesFinalDet;
-        
-        /// <summary>
-        /// Control updPnlMesFinalDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPnlMesFinalDet;
-        
-        /// <summary>
-        /// Control ddlMesFinalDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMesFinalDet;
-        
-        /// <summary>
-        /// Control updPrgMesFinalDet.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updPrgMesFinalDet;
+        protected global::System.Web.UI.UpdateProgress updProFuenteF;
         
         /// <summary>
         /// Control penel_detalle.
@@ -1003,6 +931,15 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.Label lblCodigoProg;
         
         /// <summary>
+        /// Control updPnlCodProg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlCodProg;
+        
+        /// <summary>
         /// Control ddlCodigoProg.
         /// </summary>
         /// <remarks>
@@ -1010,6 +947,15 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCodigoProg;
+        
+        /// <summary>
+        /// Control updProCodProg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress updProCodProg;
         
         /// <summary>
         /// Control lblLeyDisponible.
@@ -1046,6 +992,15 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDisponible;
+        
+        /// <summary>
+        /// Control updProDisponible.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress updProDisponible;
         
         /// <summary>
         /// Control lblPartida.

@@ -1,4 +1,4 @@
-﻿//MODIFICADO POR CARLOS EL 04ENERO2021
+﻿//MODIFICADO POR CARLOS EL 16ENERO2021
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +42,7 @@ namespace SAF.Presupuesto
             {
                 inicializar();              
             }
-            else
-                ScriptManager.RegisterStartupScript(this, GetType(), "PRUEBA", "Autocomplete();", true);
+            
         }
         #region <Funciones y Sub>
         private void inicializar()
@@ -55,17 +54,17 @@ namespace SAF.Presupuesto
                                
                 MultiView1.ActiveViewIndex = 0;
                 TabContainer1.ActiveTabIndex = 0;
-                DateTime fechaIni = Convert.ToDateTime("01/01/" + SesionUsu.Usu_Ejercicio);
-                DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
-                CalendarExtenderIni.StartDate = fechaIni;
-                CalendarExtenderIni.EndDate = fechaFin;
+                //DateTime fechaIni = Convert.ToDateTime("01/01/" + SesionUsu.Usu_Ejercicio);
+                //DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
+                //CalendarExtenderIni.StartDate = fechaIni;
+                //CalendarExtenderIni.EndDate = fechaFin;
                 cargarcombos();
                 ValidacionTipoEnc();
                 grdDocumentos.DataSource = null;
                 grdDocumentos.DataBind();
 
-                txtImporteOperacion.Enabled = false;
-                txtImporteOperacion.Text = "0.00";
+                lblImporte_Operacion.Enabled = false;
+                lblImporte_Operacion.Text = "0.00";
                 txtImporteCheque.Text = "0.00";
                 txtImporteISR.Text = "0.00";
                 if (ddlevento.SelectedValue != "06")
@@ -74,7 +73,8 @@ namespace SAF.Presupuesto
                     txtImporteISR.Visible = false;
                     txtImporteCheque.Visible = false;
                     lblImporteCheque.Visible = false;
-
+                    RFVImporteCheque.Enabled = false;
+                    RFVImporteISR.Enabled = false;
                 }
                 else
                 {
@@ -82,6 +82,8 @@ namespace SAF.Presupuesto
                     txtImporteISR.Visible = true;
                     txtImporteCheque.Visible = true;
                     lblImporteCheque.Visible = true;
+                    RFVImporteCheque.Enabled = true;
+                    RFVImporteISR.Enabled = true;
                 }
 
 
@@ -93,12 +95,23 @@ namespace SAF.Presupuesto
 
         }
         private void LimpiarControles()
-        {          
-            txtfechaDocumento.Text = System.DateTime.Now.ToString("dd/MM/yyyy");
+        {
+            ddlevento.SelectedIndex = 0;
             txtCedula.Text = string.Empty;
+            txtPoliza.Text = string.Empty;
+            DDLCuenta_Banco.SelectedIndex = 0;
             txtcuenta.Text = string.Empty;
             txtNumero_Cheque.Text = string.Empty;
-            ddlevento.SelectedIndex = 0;
+            DateTime fechaIni = Convert.ToDateTime("01/" + ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaDos + "/" + SesionUsu.Usu_Ejercicio);
+            DateTime fechaFin = Convert.ToDateTime("01/" + ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaDos + "/" + SesionUsu.Usu_Ejercicio);
+            fechaFin = fechaFin.AddMonths(1).AddDays(-1);
+            CalendarExtenderIni.StartDate = fechaIni;
+            CalendarExtenderIni.EndDate = fechaFin;
+            //txtfechaDocumento.Text = System.DateTime.Now.ToString("dd/MM/yyyy");
+            txtfechaDocumento.Text = fechaIni.ToString("dd/MM/yyyy");
+            lblImporte_Operacion.Text = "0.00";
+            txtImporteCheque.Text = "0.00";
+            txtImporteISR.Text = "0.00";
             txtConcepto.Text = string.Empty;
             txtAutorizacion.Text = string.Empty;
             txtCancelacion.Text = string.Empty;
@@ -111,24 +124,25 @@ namespace SAF.Presupuesto
             /*Controles Detalle*/
             DateTime fecha = Convert.ToDateTime(txtfechaDocumento.Text);
             string MesFecha = fecha.ToString("MM");
-            ddlMesInicialDet.SelectedValue = MesFecha;
-            ddlMesFinalDet.SelectedValue = MesFecha;
+            //ddlMesInicialDet.SelectedValue = MesFecha;
+            //ddlMesFinalDet.SelectedValue = MesFecha;
             validadorStatus.ValidationGroup = "Guardar";
             ddlStatusEnc.Enabled = false;
-            lblDisponible.Text = "0";
-            lblDisponible.Text = "0";
-            lblTotal_Origen.Text = "0";
-            lblFormatoDisponible.Text = "0";
-            lblFormatoTotal_Origen.Text = "0";
-            txtImporteOrigen.Text = "0";
-            txtImporteOperacion.Text = "0.00";
+            lblDisponible.Text = "0.00";
+            lblDisponible.Text = "0.00";
+            lblTotal_Origen.Text = "0.00";
+            lblFormatoDisponible.Text = "0.00";
+            lblFormatoTotal_Origen.Text = "0.00";
+            txtImporteOrigen.Text = "0.00";
+            lblImporte_Operacion.Text = "0.00";
             txtImporteCheque.Text = "0.00";
 
             ValidacionTipoEnc();
-            ddlMesFin.SelectedValue = System.DateTime.Now.ToString("MM");
+            //ddlMesFin.SelectedValue = System.DateTime.Now.ToString("MM");
             grdDetalles.DataSource = null;
             grdDetalles.DataBind();
             lblError.Text = string.Empty;
+            ddlDepen_SelectedIndexChanged(null, null);
         }
         private void Valida_Origen_Destino()
         {
@@ -204,8 +218,8 @@ namespace SAF.Presupuesto
                 rbtOrigen_Destino.Visible = false;
                 validadorTipo.ValidationGroup = string.Empty;
                 rbtdoc_simultaneo.SelectedValue = "S";
-                lblMesInicialDet.Visible = false;
-                ddlMesInicialDet.Visible = false;
+                //lblMesInicialDet.Visible = false;
+                //ddlMesInicialDet.Visible = false;
                 lblLeyTotal_Origen.Text = "TOTAL";
         }
         private void StatusEnc(string Status)
@@ -238,7 +252,7 @@ namespace SAF.Presupuesto
                 grdDetalles.DataSource = ListDocDet;
                 grdDetalles.DataBind();
                 Sumatoria(grdDetalles);
-                txtImporteOperacion.Text = lblTotal_Origen.Text;
+                lblImporte_Operacion.Text = lblTotal_Origen.Text;
 
                 Celdas = new Int32[] { 2, 3, 4,6,7, 8, 9, 10,11,12 };
                        
@@ -285,15 +299,7 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
-                
-                //if (Permisos == "D8P1P1-01")
-                //    Celdas = new Int32[] { 0,8,9,10};
-                //else
-                //    Celdas = new Int32[] { 0,0,8,8 };
-                //if (grid.Rows.Count > 0)
-                //{
-                //    CNComun.HideColumns(grid , Celdas);
-                //}
+
             }
             catch (Exception ex)
             {
@@ -314,7 +320,7 @@ namespace SAF.Presupuesto
             objDocumento.Status = ddlStatusEnc.SelectedValue;
             objDocumento.Descripcion = txtConcepto.Text;
             objDocumento.Importe_Cheque =Convert.ToDouble(txtImporteCheque.Text);
-            objDocumento.Importe_Operacion = Convert.ToDouble(txtImporteOperacion.Text);
+            objDocumento.Importe_Operacion = Convert.ToDouble(lblImporte_Operacion.Text);
             
             objDocumento.MotivoRechazo = txtCancelacion.Text;
             objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
@@ -399,7 +405,8 @@ namespace SAF.Presupuesto
                                     CNDocumentos.GenerarPoliza(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
 
                                 if (VerificadorCedulasAdicionales != "0")
-                                    lblErrorDet.Text = VerificadorCedulasAdicionales;
+                                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + VerificadorCedulasAdicionales + "');", true);
+                                //lblErrorDet.Text = VerificadorCedulasAdicionales;
                             }
                             else
                                 VerificadorInserta = VerificadorCedulasAdicionales;
@@ -434,7 +441,8 @@ namespace SAF.Presupuesto
         private void disponible()
         {
             lblError.Text = string.Empty;
-            lblDisponible.Text = string.Empty;
+            lblDisponible.Text = "0.00";
+            lblFormatoDisponible.Text = "0.00";
             try
             {
                 objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
@@ -502,19 +510,8 @@ namespace SAF.Presupuesto
             GridViewRow row = (GridViewRow)cbi.NamingContainer;
             grdDocumentos.SelectedIndex = row.RowIndex;
             string ruta1 = string.Empty;
-            switch (SesionUsu.Usu_Rep)
-            {
-                case "M":
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-001&id=" + grdDocumentos.SelectedRow.Cells[0].Text;
-                    break;
-                case "C":
+          
                     ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-002&id=" + grdDocumentos.SelectedRow.Cells[0].Text;
-                    break;
-                case "A":
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-003&id=" + grdDocumentos.SelectedRow.Cells[0].Text;
-                    break;
-            }
-
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
@@ -533,7 +530,7 @@ namespace SAF.Presupuesto
         {
             Verificador = string.Empty;
             lblMsjCP.Text = string.Empty;
-            lblStatusEnc.Text = string.Empty;
+            //lblStatusEnc.Text = string.Empty;
             validadorStatus.ValidationGroup = "Guardar";
             CNComun.Limpiador_controles(UpdatePanel1);
             string Status = string.Empty;
@@ -564,13 +561,13 @@ namespace SAF.Presupuesto
                     txtCedula.Text = objDocumento.Folio;
                     txtPoliza.Text = objDocumento.PolizaComprometida;
                     ddlTipoEnc.SelectedValue = objDocumento.Tipo;
-                    ValidacionTipoDet();
+                    //ValidacionTipoDet();
                     txtfechaDocumento.Text = objDocumento.Fecha;
                     Status= objDocumento.Status;
                     if ( Status == "R" || Status == "I")
                     {
                         validadorStatus.ValidationGroup = string.Empty;
-                        lblStatusEnc.Text = (Status == "A")?"Autorizado":"Rechazado";                                                
+                        //lblStatusEnc.Text = (Status == "A")?"Autorizado":"Rechazado";                                                
                         StatusEnc(Status);
                         ddlStatusEnc.Visible = (Status == "A") ? false:true;
                         penel_detalle.Visible = true;
@@ -595,7 +592,7 @@ namespace SAF.Presupuesto
                     txtcuenta.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
                     txtImporteCheque.Text = Convert.ToString(objDocumento.Importe_Cheque);
-                    txtImporteOperacion.Text = Convert.ToString(objDocumento.Importe_Operacion);
+                    lblImporte_Operacion.Text = Convert.ToString(objDocumento.Importe_Operacion);
                     txtImporteISR.Text = Convert.ToString(objDocumento.ISR);
                     //rbtmovimiento.SelectedValue = objDocumento.Regulariza;
 
@@ -603,9 +600,9 @@ namespace SAF.Presupuesto
                     //rdoBttnContabilizar.SelectedValue = objDocumento.Contabilizar;
 
                     /*Llena Grid Detalle*/
-                    ddlMesInicialDet.SelectedValue = "01";
-                    ddlMesFinalDet.SelectedValue = "01";
-                    txtImporteOrigen.Text = "0";                    
+                    //ddlMesInicialDet.SelectedValue = "01";
+                    //ddlMesFinalDet.SelectedValue = "01";
+                    txtImporteOrigen.Text = "0.00";                    
                     //txtImporteDestino.Text = "0";
                     objDocumentoDet.Id_Documento = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                     List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
@@ -629,9 +626,9 @@ namespace SAF.Presupuesto
                         txtBeneficiario.Text = objDocumentoDet.Beneficiario_nombre;
                         txtReferencia.Text = objDocumentoDet.Referencia;
                         txtDesPartida.Text = objDocumentoDet.Desc_Partida; 
-                        ddlDepen.SelectedValue = objDocumentoDet.Desc_Codigo_Prog.Substring(8,5);
-                        ddlCapitulo.SelectedValue= objDocumentoDet.Desc_Codigo_Prog.Substring(19, 1)+"000";
-                        ddlFuente_F.SelectedValue= objDocumentoDet.Desc_Codigo_Prog.Substring(25, 5);
+                        //ddlDepen.SelectedValue = objDocumentoDet.Desc_Codigo_Prog.Substring(8,5);
+                        //ddlCapitulo.SelectedValue= objDocumentoDet.Desc_Codigo_Prog.Substring(19, 1)+"000";
+                        //ddlFuente_F.SelectedValue= objDocumentoDet.Desc_Codigo_Prog.Substring(25, 5);
                        
                     }
                     
@@ -646,7 +643,7 @@ namespace SAF.Presupuesto
                     if (ddlStatusEnc.SelectedValue=="R"|| ddlStatusEnc.SelectedValue == "I" )
                     {
                         
-                         CNComun.Habilitar_controles(UpdatePanel1);
+                        CNComun.Habilitar_controles(UpdatePanel1);
                         btnGuardar.Enabled = true ;
                     }
                     else
@@ -658,7 +655,8 @@ namespace SAF.Presupuesto
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + ex.Message + "');", true);
+                //lblError.Text = ex.Message;
             }
         }
         
@@ -685,10 +683,12 @@ namespace SAF.Presupuesto
             btnGuardar.Enabled = true;
             ddlCentroContable.Enabled = true;
             ddlTipoEnc.Enabled = true;
+            ddlMesFin.SelectedValue = ddlMesIni.SelectedValue;
             ddlStatus.Enabled = true;
             MultiView1.ActiveViewIndex = 0;
             penel_detalle.Visible = false;
             txtcuenta.Visible = true;
+            txtbuscar.Text = string.Empty;
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -702,7 +702,7 @@ namespace SAF.Presupuesto
                 {
                     if (ddlevento.SelectedValue == "06")
                     {
-                        if (Convert.ToInt32(txtImporteOperacion.Text) == Convert.ToInt32(txtImporteISR.Text) + Convert.ToInt32(txtImporteCheque.Text))
+                        if (Convert.ToInt32(lblImporte_Operacion.Text) == Convert.ToInt32(txtImporteISR.Text) + Convert.ToInt32(txtImporteCheque.Text))
                         {
                             honorarios = 1;
                         }
@@ -765,7 +765,8 @@ namespace SAF.Presupuesto
                             }
 
                             if (VerificadorInserta != "0")
-                                lblErrorDet.Text = VerificadorInserta;
+                                //lblErrorDet.Text = VerificadorInserta;
+                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: '"+ VerificadorInserta+");", true);
 
                             else
                             {
@@ -779,7 +780,8 @@ namespace SAF.Presupuesto
                                 //ddlMesIni.Visible = true;
                                 //lblMesFin.Visible = true;
                                 //ddlMesFin.Visible = true;
-                                lblError.Text = "Los datos han sido agregados correctamente.";
+                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, 'La cédula ha sido agregada correctamente.');", true);
+                                //lblError.Text = "Los datos han sido agregados correctamente.";
                             }
                         }
                         else
@@ -788,7 +790,8 @@ namespace SAF.Presupuesto
                             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
                             if (VerificadorInserta != "0")
-                                lblErrorDet.Text = VerificadorInserta;
+                                //lblErrorDet.Text = VerificadorInserta;
+                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: '" + VerificadorInserta + ");", true);
                             else
                             {
                                 SesionUsu.Editar = -1;
@@ -799,7 +802,9 @@ namespace SAF.Presupuesto
                                 //ddlMesIni.Visible = true;
                                 //lblMesFin.Visible = true;
                                 //ddlMesFin.Visible = true;
-                                lblError.Text = (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
+                                //lblError.Text = (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
+                                string MiMensaje= (Folio == string.Empty) ? "La cédula ha sido modificada correctamente." : "La cédula ha sido agregada correctamente, con el número de folio:" + Folio; 
+                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, '"+MiMensaje+"');", true);
                                 ddlCentroContable.Enabled = true;
                                 penel_detalle.Visible = false;
                             }
@@ -807,13 +812,15 @@ namespace SAF.Presupuesto
                     }
                     else
                     {
-                        lblErrorDet.Text = "El importe de operacion es incorrecto.";
+                        //lblErrorDet.Text = "El importe de operación no coincide con el importe cheque + importe ISR.";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe de operación no coincide con el importe cheque + importe ISR.');", true);
                     }
                 }
 
                 else
                 {
-                    lblErrorDet.Text = "No se han agregado códigos programáticos.";
+                    //lblErrorDet.Text = "No se han agregado códigos programáticos.";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'No se han agregado códigos programáticos.');", true);
                 }
             }
             catch (Exception ex)
@@ -843,6 +850,7 @@ namespace SAF.Presupuesto
                 ListPartida.Clear();
                 CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia","p_capitulo","p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue,ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ref ListPartida);
+                ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
                 disponible();
             }
             catch (Exception ex)
@@ -931,53 +939,10 @@ namespace SAF.Presupuesto
             }
             //Valida_Origen_Destino();
         }
-        protected void txtImporteISR_TextChanged(object sender, EventArgs e)
-        {
-            try
-            { 
-            if (txtImporteISR.Text == string.Empty)
-                txtImporteISR.Text = "0";
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-        }
-        protected void txtImporteCheque_TextChanged(object sender, EventArgs e)
-        {
-            try
-            { 
-            if (txtImporteCheque.Text == string.Empty)
-                txtImporteCheque.Text = "0";
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-        }
-        protected void txtImporteOperacion_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtImporteOperacion.Text == string.Empty)
-                    txtImporteOperacion.Text = "0";
-            }            
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-        }
-        protected void ddlFecha_Ini_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        protected void ddlMesInicialDet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ddlMesFinalDet.SelectedValue = ddlMesInicialDet.SelectedValue;
-            if (txtImporteOrigen.Text != string.Empty)
-                txtImporteDestino_TextChanged(null, null);
-
-        }       
+        
+        
+        
+        
         protected void imgBttnPDF_Click(object sender, ImageClickEventArgs e)
         {
             string ruta1 = string.Empty;
@@ -988,18 +953,9 @@ namespace SAF.Presupuesto
         protected void imgBttnPDF_Lotes_Click(object sender, ImageClickEventArgs e)
         {
             string ruta1 = string.Empty;
-            switch (SesionUsu.Usu_Rep)
-            {
-                case "M":
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteM&Dependencia=" + ddlCentroContable.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
-                    break;
-                case "C":
+            
                     ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteC&Dependencia=" + ddlCentroContable.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
-                    break;
-                case "A":
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteA&Dependencia=" + ddlCentroContable.SelectedValue + "&TipoDoc=" + ddlTipo.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
-                    break;
-            }
+                   
 
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
@@ -1031,7 +987,8 @@ namespace SAF.Presupuesto
                 var content = new List<Pres_Documento_Detalle>();
                 if (Session["DocDet"] != null)
                 {
-                    string MesIni = Convert.ToString(Convert.ToInt32(ddlMesInicialDet.SelectedValue));
+                    //string MesIni = Convert.ToString(Convert.ToInt32(ddlMesInicialDet.SelectedValue));
+                    string MesIni = Convert.ToString(Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2)));
                     List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
                     ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
                     var filteredCodigosProg = from c in ListDocDet
@@ -1048,13 +1005,16 @@ namespace SAF.Presupuesto
                     objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text;
                     objDocumentoDet.Ur_clave = ddlDepen.SelectedValue;
                     objDocumentoDet.Tipo = (SesionUsu.Usu_Rep != "C")? rbtOrigen_Destino.SelectedValue : ddlTipoEnc.SelectedValue.Substring(1);
-                    objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    //objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    //objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocumentoDet.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
+                    objDocumentoDet.Mes_final = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
                     objDocumentoDet.Cuenta_banco = "";
                     objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
                     objDocumentoDet.Importe_origen = Convert.ToDouble(txtImporteOrigen.Text);
                     objDocumentoDet.Importe_destino = 0;
                     objDocumentoDet.Importe_mensual = Convert.ToDouble(txtImporteOrigen.Text);
-                    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    
                     objDocumentoDet.Desc_Partida  = txtDesPartida.Text;
                     objDocumentoDet.Beneficiario_tipo = DDLTipoBeneficiario.SelectedValue;
                     objDocumentoDet.Beneficiario_clave  = txt_clave_beneficiario.Text;
@@ -1067,9 +1027,12 @@ namespace SAF.Presupuesto
                             objDocumentoDet.Importe_origen = 0;
                             objDocumentoDet.Importe_destino = Convert.ToDouble(txtImporteOrigen.Text);
                         }
-                        objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                        objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
-                        int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
+                        //objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                        //objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
+                        //int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
+                        objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
+                        objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
+                        int tot = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2)) - Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2)) + 1;
                         objDocumentoDet.Importe_mensual = Convert.ToDouble((Convert.ToDouble(txtImporteOrigen.Text)) / tot);
                     }
 
@@ -1124,6 +1087,15 @@ namespace SAF.Presupuesto
         protected void DDLCentroContable_SelectedIndexChanged(object sender, EventArgs e)
         {
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencia_x_Centro", ref ddlDepen, "p_centro_contable", "p_usuario", ddlCentroContable.SelectedValue, SesionUsu.Usu_Nombre);
+            if (SesionUsu.Usu_TipoUsu == "A" || SesionUsu.Usu_TipoUsu == "SA")
+            {
+                string DepOriginal = ddlDepen.SelectedValue;
+                ddlDepen.SelectedValue = "81101";
+                ddlDepen.Items.RemoveAt(ddlDepen.SelectedIndex);
+                ddlDepen.SelectedValue = DepOriginal;
+                ddlDepen.SelectedIndex = 0;
+            }
+
             ddlDepen_SelectedIndexChanged(null, null);
             try
             {
@@ -1147,6 +1119,7 @@ namespace SAF.Presupuesto
             {
                 //ddlDepen_SelectedIndexChanged(null, null);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ref ListPartida);
+                ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
                 disponible();
             }
             catch (Exception ex)
@@ -1158,6 +1131,7 @@ namespace SAF.Presupuesto
         {
             //ddlDepen_SelectedIndexChanged(null, null);
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddlCapitulo.SelectedValue.Substring(0,1), ddlFuente_F.SelectedValue, ref ListPartida);
+            ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
             disponible();
         }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
@@ -1177,7 +1151,8 @@ namespace SAF.Presupuesto
                 txtImporteISR.Visible = false;
                 txtImporteCheque.Visible = false;
                 lblImporteCheque.Visible = false;
-
+                RFVImporteCheque.Enabled = false;
+                RFVImporteISR.Enabled = false;
             }
             else
             {
@@ -1185,6 +1160,8 @@ namespace SAF.Presupuesto
                 txtImporteISR.Visible = true;
                 txtImporteCheque.Visible = true ;
                 lblImporteCheque.Visible = true ;
+                RFVImporteCheque.Enabled = true;
+                RFVImporteISR.Enabled = true;
             }
             }
 
@@ -1220,6 +1197,11 @@ namespace SAF.Presupuesto
             {
                 lblError.Text = ex.Message;
             }
+        }
+
+        protected void txtfechaDocumento_TextChanged(object sender, EventArgs e)
+        {
+            disponible();
         }
     }
 }
