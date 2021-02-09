@@ -208,11 +208,15 @@ namespace SAF.Presupuesto
                 if (grdDetalles.Rows.Count > 0)
                 {
                     ddlTipoEnc.Enabled = false;
+                    ddlFuente_F.Enabled = false;
+                    ddlMesInicialDet.Enabled = false;
                     CNComun.HideColumns(grdDetalles, Celdas);
                 }
                 else
                 {
                     ddlTipoEnc.Enabled = true;
+                    ddlFuente_F.Enabled = true;
+                    ddlMesInicialDet.Enabled = true;
                 }
             }
             catch (Exception ex)
