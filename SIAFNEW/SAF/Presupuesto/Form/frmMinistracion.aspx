@@ -320,7 +320,7 @@
                                                                                                 <asp:Label ID="lblTipoEnc" runat="server" Text="Tipo"></asp:Label>
                                                                                             </td>
                                                                                             <td valign="top" class="col1">
-                                                                                                <asp:DropDownList ID="ddlTipoEnc" runat="server"  Width="150px" AutoPostBack="True">
+                                                                                                <asp:DropDownList ID="ddlTipoEnc" runat="server"  Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlTipoEnc_SelectedIndexChanged">
                                                                                                 </asp:DropDownList>
                                                                                                 <br />
                                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlTipoEnc" ErrorMessage="*Tipo requerido" InitialValue="0" ValidationGroup="GpoCodProg"></asp:RequiredFieldValidator>
