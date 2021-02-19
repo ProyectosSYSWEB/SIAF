@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CN_Basicos.cs" />
     <Compile Include="CN_Comun.cs" />
+    <Compile Include="CN_Consultas.cs" />
     <Compile Include="CN_Costeo.cs" />
     <Compile Include="CN_Cuentas_contables.cs" />
     <Compile Include="CN_Informativa.cs" />

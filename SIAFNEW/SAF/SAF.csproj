@@ -55,14 +55,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Lis\Programas\BusyBoxDotNet-0.2.1-bin\BusyBoxDotNet-0.2.1-bin\BusyBoxDotNet.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Web.dll</HintPath>
-    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
       <HintPath>..\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
     </Reference>
@@ -199,8 +197,10 @@
     <Content Include="Informacion.htm" />
     <Content Include="Presupuesto\Form\frmAdecuacion.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogos.aspx" />
+    <Content Include="Presupuesto\Form\frmCatPresupUnv.aspx" />
     <Content Include="Presupuesto\Form\frmCedula.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
+    <Content Include="Presupuesto\Form\frmConsultas.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
     <Content Include="Presupuesto\Form\FRMcrea_Plantilla.aspx" />
     <Content Include="Presupuesto\Form\frmDashboard.aspx" />
@@ -337,6 +337,13 @@
     <Compile Include="Presupuesto\Form\frmCatalogos.aspx.designer.cs">
       <DependentUpon>frmCatalogos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmCatPresupUnv.aspx.cs">
+      <DependentUpon>frmCatPresupUnv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatPresupUnv.aspx.designer.cs">
+      <DependentUpon>frmCatPresupUnv.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\frmCedula.aspx.cs">
       <DependentUpon>frmCedula.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -350,6 +357,13 @@
     </Compile>
     <Compile Include="Presupuesto\Form\FRMCierre_Dependencia.aspx.designer.cs">
       <DependentUpon>FRMCierre_Dependencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmConsultas.aspx.cs">
+      <DependentUpon>frmConsultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmConsultas.aspx.designer.cs">
+      <DependentUpon>frmConsultas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMCosteo.aspx.cs">
       <DependentUpon>FRMCosteo.aspx</DependentUpon>

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basicos.cs" />
+    <Compile Include="Consultas.cs" />
     <Compile Include="cuentas_contables.cs" />
     <Compile Include="Mnu.cs" />
     <Compile Include="Presupues.cs" />
