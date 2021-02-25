@@ -480,6 +480,7 @@ namespace SAF.Presupuesto
                     objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
                     objDocumentoDet.SuperTipo = "A";
                     objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
 
                     CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                     if (Verificador == "0")
@@ -506,6 +507,7 @@ namespace SAF.Presupuesto
             {
                 List<Pres_Documento> List = new List<Pres_Documento>();
                 objDocumento.Usuario= SesionUsu.Usu_Nombre;
+                objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
                 objDocumento.Dependencia = ddlCentroContable.SelectedValue;
                 objDocumento.Fecha_Inicial = ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2,2);
                 objDocumento.Fecha_Final = ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
@@ -513,6 +515,11 @@ namespace SAF.Presupuesto
                 objDocumento.SuperTipo = SesionUsu.Usu_Rep;
                 objDocumento.Status = ddlStatus.SelectedValue;
                 objDocumento.P_Buscar = txtbuscar.Text;
+
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                    objDocumento.Editor = "1";
+                else
+                    objDocumento.Editor = "0";
 
                 if (IdGrid == 0)
                 {
@@ -626,17 +633,24 @@ namespace SAF.Presupuesto
                     if (Status == "A" || Status == "R")
                     {
                         validadorStatus.ValidationGroup = string.Empty;
-                        lblStatusEnc.Text = (Status == "A")?"Autorizado":"Rechazado";                                                
+                        lblStatusEnc.Text = (Status == "A")?"Autorizado":"Rechazado";
+                        lblStatusEnc.Visible = false;
                         StatusEnc(Status);
-                        ddlStatusEnc.Visible = (Status == "A") ? false:true;
+                        //ddlStatusEnc.Visible = (Status == "A") ? false:true;
                         
                     }
                     else
                     {
-                        ddlStatusEnc.SelectedValue = objDocumento.Status;
-                        ddlStatusEnc_SelectedIndexChanged(null, null);
-                        ddlStatusEnc.Visible = true;
+                        //ddlStatusEnc.SelectedValue = objDocumento.Status;
+                        //ddlStatusEnc_SelectedIndexChanged(null, null);
+                        //ddlStatusEnc.Visible = true;
                     }
+                    //Repetido, estaba en el ELSE
+                    ddlStatusEnc.SelectedValue = objDocumento.Status;
+                    ddlStatusEnc_SelectedIndexChanged(null, null);
+                    ddlStatusEnc.Visible = true;
+
+
                     txtConcepto.Text = objDocumento.Descripcion;
                     txtCancelacion.Text = objDocumento.MotivoRechazo;
                     txtAutorizacion.Text = objDocumento.MotivoAutorizacion;

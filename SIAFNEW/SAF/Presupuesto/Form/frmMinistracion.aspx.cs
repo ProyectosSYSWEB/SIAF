@@ -30,7 +30,7 @@ namespace SAF.Presupuesto
         private static List<Comun> Listcodigo = new List<Comun>(); //En tu declaración de variables
         private static List<Comun> ListDependencia = new List<Comun>();
         private static List<Comun> ListPartida = new List<Comun>();
-        int guar_continue;
+        //int guar_continue;
 
         #endregion
         protected void Page_Load(object sender, EventArgs e)
@@ -123,6 +123,8 @@ namespace SAF.Presupuesto
             DateTime fecha = Convert.ToDateTime(txtfechaDocumento.Text);
             string MesFecha = fecha.ToString("MM");
             ddlMesInicialDet.SelectedValue = MesFecha;
+            ddlMesInicialDet.Enabled = true;
+            ddlFuente_F.Enabled = true;
             validadorStatus.ValidationGroup = "Guardar";
             ddlStatusEnc.Enabled = false;
             lblDisponible.Text = "0.00";
@@ -203,21 +205,31 @@ namespace SAF.Presupuesto
                 grdDetalles.DataSource = ListDocDet;
                 grdDetalles.DataBind();
                 Sumatoria(grdDetalles);
-                Celdas = new Int32[] { 3,4,7 };
+                Celdas = new Int32[] { 3,4,7,9 };
                        
                 if (grdDetalles.Rows.Count > 0)
                 {
                     ddlTipoEnc.Enabled = false;
                     ddlFuente_F.Enabled = false;
                     ddlMesInicialDet.Enabled = false;
-                    CNComun.HideColumns(grdDetalles, Celdas);
-                }
+                    ddlDepen.Enabled = false;
+                    if (ddlTipoEnc.SelectedValue == "MN" && SesionUsu.Editar==0)
+                    {
+
+                        Celdas = new Int32[] { 3, 3, 4, 7 };
+                    }
+                    if (Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Editar" || Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Ver")
+                        ddlFuente_F.SelectedValue = ListDocDet.ElementAt(0).Desc_Codigo_Prog.Substring(25, 5);
+                    
+                 }
                 else
                 {
                     ddlTipoEnc.Enabled = true;
                     ddlFuente_F.Enabled = true;
                     ddlMesInicialDet.Enabled = true;
+                    ddlDepen.Enabled = true;
                 }
+                    CNComun.HideColumns(grdDetalles, Celdas);
             }
             catch (Exception ex)
             {
@@ -242,6 +254,7 @@ namespace SAF.Presupuesto
                     ddlTipoEnc.Enabled = false;
                     ddlFuente_F.Enabled = false;
                     ddlMesInicialDet.Enabled = false;
+                    ddlDepen.Enabled = false;
                     CNComun.HideColumns(grdDetalles, Celdas);
                 }
                 else
@@ -249,6 +262,7 @@ namespace SAF.Presupuesto
                     ddlTipoEnc.Enabled = true;
                     ddlFuente_F.Enabled = true;
                     ddlMesInicialDet.Enabled = true;
+                    ddlDepen.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -282,10 +296,10 @@ namespace SAF.Presupuesto
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
 
-                if (SesionUsu.Usu_TipoUsu != "N")
-                    Celdas = new Int32[] { 0, 8, 0 };
+                if (SesionUsu.Usu_TipoUsu== "N" )
+                    Celdas = new Int32[] { 0, 8, 9,10 };
                 else
-                    Celdas = new Int32[] { 0, 8, 9 };
+                    Celdas = new Int32[] { 0, 8 };
 
                 if (grid.Rows.Count > 0)
                 {
@@ -301,7 +315,7 @@ namespace SAF.Presupuesto
         {
             Verificador = string.Empty;
             objDocumento.CentroContable = "";
-            objDocumento.Dependencia = ddlCentroContable.SelectedValue;
+            objDocumento.Dependencia = ddlDepen.SelectedValue;
             objDocumento.Folio = txtFolio.Text;
             objDocumento.SuperTipo = SesionUsu.Usu_Rep;
             objDocumento.Fecha = txtfechaDocumento.Text;
@@ -380,14 +394,21 @@ namespace SAF.Presupuesto
         }
         protected void EditaRegistro(object sender, GridViewUpdateEventArgs e)
         {
-            List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
-            ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
-            GridViewRow row = grdDetalles.Rows[e.RowIndex];
-            ListDocDet[e.RowIndex].Importe_origen = Convert.ToDouble(((TextBox)(row.Cells[7].Controls[0])).Text);
-            ListDocDet[e.RowIndex].Importe_destino = Convert.ToDouble(((TextBox)(row.Cells[8].Controls[0])).Text);
-            grdDetalles.EditIndex = -1;
-            Session["DocDet"] = ListDocDet;
-            CargarGridDetalle(ListDocDet);
+            try
+            {
+                List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
+                ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
+                GridViewRow row = grdDetalles.Rows[e.RowIndex];
+                ListDocDet[e.RowIndex].Importe_origen = Convert.ToDouble(((TextBox)(row.Cells[7].Controls[0])).Text);
+                ListDocDet[e.RowIndex].Importe_destino = 0.00;
+                ListDocDet[e.RowIndex].Importe_mensual = Convert.ToDouble(((TextBox)(row.Cells[7].Controls[0])).Text); 
+                grdDetalles.EditIndex = -1;
+                Session["DocDet"] = ListDocDet;
+                CargarGridDetalle(ListDocDet);
+            }
+            catch (Exception ex)
+            {
+            }
         }
         private void disponible()
         {
@@ -411,6 +432,7 @@ namespace SAF.Presupuesto
                 objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
                 objDocumentoDet.SuperTipo = "M";
                 objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
 
                 CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                 if (Verificador == "0")
@@ -434,6 +456,7 @@ namespace SAF.Presupuesto
             {
                 List<Pres_Documento> List = new List<Pres_Documento>();
                 objDocumento.Usuario= SesionUsu.Usu_Nombre;
+                objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
                 objDocumento.Dependencia = ddlCentroContable.SelectedValue;
                 objDocumento.Fecha_Inicial = ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2,2);
                 objDocumento.Fecha_Final = ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
@@ -528,21 +551,25 @@ namespace SAF.Presupuesto
             
                 try
                 {
-                    objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                //if (Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Editar")
+                  SesionUsu.Editar = 1;
+                //else
+                //    SesionUsu.Editar = 0;
+               
+
+                objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                     CNDocumentos.ConsultarDocumentoSel(ref objDocumento, ref Verificador);
                     if (Verificador == "0")
                     {
-                        ddlDepen.SelectedValue = ddlCentroContable.SelectedValue;
-                        Session["DocDet"] = null;
+                    //ddlDepen.SelectedValue = ddlCentroContable.SelectedValue;
+                    ddlDepen.SelectedValue = objDocumento.Dependencia;
+                    Session["DocDet"] = null;
                         grdDetalles.DataSource = null;
                         grdDetalles.DataBind();
 
 
                         /*Inicializa controles para editar*/
-                    if (Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Editar")
-                        SesionUsu.Editar = 1;
-                    else
-                        SesionUsu.Editar = 0;
+                   
                     //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "M");
                         //lblMesIni.Visible = false;
@@ -551,7 +578,7 @@ namespace SAF.Presupuesto
                         //ddlMesIni.Visible = false;                    
                         ddlStatusEnc.Enabled = true;
                         ddlTipoEnc.Enabled = false;
-                        ddlCentroContable.SelectedValue = objDocumento.Dependencia;
+                        ddlCentroContable.SelectedValue = objDocumento.CentroContable;
                         ddlDepen.SelectedValue = objDocumento.Dependencia;
                         ddlDepen_SelectedIndexChanged(null, null);
                         lblFolio.Visible = true;
@@ -569,6 +596,15 @@ namespace SAF.Presupuesto
                             StatusEnc(Status);
                             ddlStatusEnc.Visible = (Status == "A") ? false : true;
                             btnGuardar.Visible = false;
+                            SesionUsu.Editar = 0;
+                            if (SesionUsu.Usu_TipoUsu=="SA")
+                            {
+                                btnGuardar.Visible = true;
+                                SesionUsu.Editar = 1;
+                                ddlStatusEnc.Visible = true;
+                                ddlStatusEnc.SelectedValue = "A";
+                                lblStatusEnc.Visible = false ;
+                            }
                         }
                         else
                         {
@@ -989,6 +1025,7 @@ namespace SAF.Presupuesto
                 TabContainer1.ActiveTabIndex = 0;
                 Session["DocDet"] = null;
                 ddlCentroContable.Enabled = false;
+                ddlDepen.Enabled = true;
                 LimpiarControles();
             }
             else

@@ -17,8 +17,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { "p_dependencia","p_fecha_inicial","p_fecha_final","p_tipo", "p_supertipo", "p_status","p_buscar","p_editor" };
-                String[] Valores = { objDocumento.Dependencia, objDocumento.Fecha_Inicial, objDocumento.Fecha_Final, objDocumento.Tipo, objDocumento.SuperTipo, objDocumento.Status, objDocumento.P_Buscar, objDocumento.Editor };
+                String[] Parametros = { "p_ejercicio","p_dependencia","p_fecha_inicial","p_fecha_final","p_tipo", "p_supertipo", "p_status","p_buscar","p_editor" };
+                String[] Valores = { objDocumento.Ejercicios, objDocumento.Dependencia, objDocumento.Fecha_Inicial, objDocumento.Fecha_Final, objDocumento.Tipo, objDocumento.SuperTipo, objDocumento.Status, objDocumento.P_Buscar, objDocumento.Editor };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("pkg_Presupuesto.Obt_Grid_Documentos", ref dr, Parametros, Valores);
 
@@ -112,7 +112,8 @@ namespace CapaDatos
                 string[] ParametrosIn = { "P_ID" };
                 object[] Valores = { Convert.ToInt32(objDocumento.Id)
             };
-                string[] ParametrosOut = {  "P_DEPENDENCIA",
+                string[] ParametrosOut = {  "P_CENTRO_CONTABLE",
+                                            "P_DEPENDENCIA",
                                             "P_FOLIO",
                                             "P_TIPO",
                                             "P_FECHA",
@@ -139,6 +140,7 @@ namespace CapaDatos
                 if (Verificador == "0")
                 {
                     objDocumento = new Pres_Documento();
+                    objDocumento.CentroContable = Convert.ToString(Cmd.Parameters["P_CENTRO_CONTABLE"].Value);
                     objDocumento.Dependencia = Convert.ToString(Cmd.Parameters["P_DEPENDENCIA"].Value);
                     objDocumento.Folio = Convert.ToString(Cmd.Parameters["P_FOLIO"].Value);
                     objDocumento.Tipo = Convert.ToString(Cmd.Parameters["P_TIPO"].Value);

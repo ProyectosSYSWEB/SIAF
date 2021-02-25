@@ -52,12 +52,14 @@ namespace CapaDatos
                 String[] Parametros = { "P_ID_CODIGO_PROG",
                                         "P_MES",
                                         "P_SUPERTIPO",
-                                        "P_TIPO"
+                                        "P_TIPO",
+                                        "P_EJERCICIO"
                                        };
                 object[] Valores = { objDocDet.Id_Codigo_Prog,
                                     objDocDet.Mes_inicial,
                                     objDocDet.SuperTipo,
-                                    objDocDet.Tipo
+                                    objDocDet.Tipo,
+                                    objDocDet.Ejercicios
                                     };
                 String[] ParametrosOut = { "P_DISPONIBLE", "P_BANDERA" };
                 Cmd = CDDatos.GenerarOracleCommand("OBT_DISPONIBLE_CODIGO_PROG", ref Verificador, Parametros, Valores, ParametrosOut);

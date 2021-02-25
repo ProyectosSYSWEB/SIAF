@@ -302,6 +302,12 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
+                Celdas = new Int32[] { 0 };
+
+                if (grid.Rows.Count > 0)
+                {
+                    CNComun.HideColumns(grid, Celdas);
+                }
 
             }
             catch (Exception ex)
@@ -452,6 +458,8 @@ namespace SAF.Presupuesto
                 objDocumentoDet.SuperTipo = "C";
                 objDocumentoDet.Tipo = string.Empty;
                 objDocumentoDet.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
+                objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
+
                 CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                 if (Verificador == "0")
                 {
@@ -474,6 +482,7 @@ namespace SAF.Presupuesto
             {
                 List<Pres_Documento> List = new List<Pres_Documento>();
                 objDocumento.Usuario= SesionUsu.Usu_Nombre;
+                objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
                 objDocumento.Dependencia = ddlCentroContable.SelectedValue;
                 objDocumento.Fecha_Inicial = ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2,2);
                 objDocumento.Fecha_Final = ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);

@@ -5,7 +5,7 @@
     <script src="../../Scripts/select2/js/select2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <link href="https://sysweb.unach.mx/ingresos/Scripts/select2/css/select2.min.css" type="text/css" rel="stylesheet" />
-    <%--MODIFICADO POR CARLOS EL 16ENERO2021--%>
+    <%--MODIFICADO POR CARLOS EL 09FEBRERO2021--%>
     <style type="text/css">
               
         .auto-style4 {
@@ -71,7 +71,7 @@
 
             document.getElementById(e.id).value = "";
             if (txtfechaDocumento == "1") {
-                var Mes = document.getElementById('ctl00_MainContent_txtfechaDocumento').value;
+                var Mes = document.getElementById('ctl00_MainContent_TabContainer1_TabPanel1_txtfechaDocumento').value;
             }
             else {
                 var Mes = document.getElementById('ctl00_MainContent_txtfechaDocumento_Copia').value;
@@ -85,15 +85,40 @@
                 Valor = "";
             }
             var NumPoliza = Mes + Valor;
-            if (NumPoliza.length <= 7) {
-                document.getElementById(e.id).value = NumPoliza;
-            }
-            else {
+             if (NumPoliza.length <= 7)
+             {
+                 if(NumPoliza.length==7)
+                     if (NumPoliza.substr(6, 1) == "D" || NumPoliza.substr(6, 1) == "E")
+                         document.getElementById(e.id).value = Valor2.substr(0, 7);
+                     else
+                         document.getElementById(e.id).value = Valor2.substr(0, 6);
+                  else
+                     document.getElementById(e.id).value = NumPoliza;
+             }
+             else
+             {
                 document.getElementById(e.id).value = Valor2.substr(0, 7);
-            }
+             }
 
         }
+        function MascaraNumCheque(e) {
+            var Valor = e.value;
+            var Valor2 = e.value;
 
+            document.getElementById(e.id).value = "";
+            
+            var NumCheque = Valor;
+             if (NumCheque.length <= 5)
+             {
+                 NumCheque = NumCheque.padStart(5, '0');
+                 document.getElementById(e.id).value = NumCheque;
+             }
+             else
+             {
+                 document.getElementById(e.id).value = Valor2.substr(1,4)+Valor2.substr(5,1);
+             }
+
+        }
     </script>  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
@@ -387,7 +412,7 @@
                                                                                                                             <asp:Label ID="lblPoliza" runat="server" Text="Póliza"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server"  Width="95px" MaxLength="7"></asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server"  Width="95px" onkeyup="MascaraNumPoliza(this,1);"></asp:TextBox>
                                                                                                                             <asp:RequiredFieldValidator ID="RFVPoliza" runat="server" ErrorMessage="*" ControlToValidate="txtPoliza" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                         </tr>
@@ -436,7 +461,7 @@
                                                                                                                             <asp:Label ID="lblNumero_Cheque" runat="server" Text="Número cheque"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:TextBox ID="txtNumero_Cheque" runat="server" Width="95px"></asp:TextBox>
+                                                                                                                            <asp:TextBox ID="txtNumero_Cheque" runat="server" Width="95px" onkeyup="MascaraNumCheque(this);"></asp:TextBox>
                                                                                                                             <asp:RequiredFieldValidator ID="RFVNumCheque" runat="server" ControlToValidate="txtNumero_Cheque" ErrorMessage="*" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                         </td>
                                                                                                                         <td>

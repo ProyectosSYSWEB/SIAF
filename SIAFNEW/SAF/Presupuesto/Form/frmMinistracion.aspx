@@ -772,6 +772,7 @@
                                                                                                                                     <HeaderStyle HorizontalAlign="Right" />
                                                                                                                                     <ItemStyle HorizontalAlign="Right" />
                                                                                                                                     </asp:BoundField>
+                                                                                                                                     <asp:CommandField ShowEditButton="True" />
                                                                                                                                    <asp:CommandField ShowDeleteButton="True" />
                                                                                                                                 </Columns>
                                                                                                                                 <FooterStyle CssClass="enc" />
