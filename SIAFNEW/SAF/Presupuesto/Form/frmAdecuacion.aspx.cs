@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CapaEntidad;
 using CapaNegocio;
-//MODIFICADO EL 16 ENERO DE 2021
+//MODIFICADO EL 08 FEBRERO DE 2021
 namespace SAF.Presupuesto
 {
     public partial class frmAdecuacion : System.Web.UI.Page
@@ -40,8 +40,8 @@ namespace SAF.Presupuesto
             {
                 inicializar();              
             }
-            
 
+            ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
 
         }
         #region <Funciones y Sub>
@@ -227,6 +227,7 @@ namespace SAF.Presupuesto
                 {
                     lblMesFinalDet.Visible = true;
                     ddlMesFinalDet.Visible = true;
+                    ddlMesFinalDet.Enabled = true;
                     ddlMesInicialDet.Visible = true;
                     lblMesInicialDet.Visible = true;
 
@@ -238,6 +239,9 @@ namespace SAF.Presupuesto
                     else
                     {
                         ddlMesInicialDet.SelectedValue = "12";
+                        ddlMesFinalDet.SelectedValue = "12";
+                        ddlMesFinalDet.Enabled = false;
+
                         ddlMesInicialDet.Visible = false;
                         lblMesInicialDet.Visible = false;
                         rbtOrigen_Destino.SelectedValue = "D";
@@ -476,6 +480,7 @@ namespace SAF.Presupuesto
                     objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
                     objDocumentoDet.SuperTipo = "A";
                     objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
 
                     CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                     if (Verificador == "0")
@@ -502,6 +507,7 @@ namespace SAF.Presupuesto
             {
                 List<Pres_Documento> List = new List<Pres_Documento>();
                 objDocumento.Usuario= SesionUsu.Usu_Nombre;
+                objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
                 objDocumento.Dependencia = ddlCentroContable.SelectedValue;
                 objDocumento.Fecha_Inicial = ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2,2);
                 objDocumento.Fecha_Final = ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
@@ -509,6 +515,11 @@ namespace SAF.Presupuesto
                 objDocumento.SuperTipo = SesionUsu.Usu_Rep;
                 objDocumento.Status = ddlStatus.SelectedValue;
                 objDocumento.P_Buscar = txtbuscar.Text;
+
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                    objDocumento.Editor = "1";
+                else
+                    objDocumento.Editor = "0";
 
                 if (IdGrid == 0)
                 {
@@ -622,17 +633,24 @@ namespace SAF.Presupuesto
                     if (Status == "A" || Status == "R")
                     {
                         validadorStatus.ValidationGroup = string.Empty;
-                        lblStatusEnc.Text = (Status == "A")?"Autorizado":"Rechazado";                                                
+                        lblStatusEnc.Text = (Status == "A")?"Autorizado":"Rechazado";
+                        lblStatusEnc.Visible = false;
                         StatusEnc(Status);
-                        ddlStatusEnc.Visible = (Status == "A") ? false:true;
+                        //ddlStatusEnc.Visible = (Status == "A") ? false:true;
                         
                     }
                     else
                     {
-                        ddlStatusEnc.SelectedValue = objDocumento.Status;
-                        ddlStatusEnc_SelectedIndexChanged(null, null);
-                        ddlStatusEnc.Visible = true;
+                        //ddlStatusEnc.SelectedValue = objDocumento.Status;
+                        //ddlStatusEnc_SelectedIndexChanged(null, null);
+                        //ddlStatusEnc.Visible = true;
                     }
+                    //Repetido, estaba en el ELSE
+                    ddlStatusEnc.SelectedValue = objDocumento.Status;
+                    ddlStatusEnc_SelectedIndexChanged(null, null);
+                    ddlStatusEnc.Visible = true;
+
+
                     txtConcepto.Text = objDocumento.Descripcion;
                     txtCancelacion.Text = objDocumento.MotivoRechazo;
                     txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
@@ -760,7 +778,7 @@ namespace SAF.Presupuesto
                 ListPartida.Clear();
                 CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia","p_capitulo","p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue,ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ref ListPartida);
-                ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
+                
                 disponible();
             }
             catch (Exception ex)
@@ -956,7 +974,7 @@ namespace SAF.Presupuesto
                     string MesIni = Convert.ToString(Convert.ToInt32(ddlMesInicialDet.SelectedValue));
                     List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
                     ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
-                    var filteredCodigosProg = from c in ListDocDet
+                    var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
                                               where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue 
                                               && Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
                                               
@@ -1006,12 +1024,10 @@ namespace SAF.Presupuesto
                     ddlFuente_F.Enabled = false;
                 }
                 else
-                    //lblMsjCP.Text = "El mes ya se encuentra asignado.";
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El mes ya se encuentra asignado.');", true);
 
             }
             else
-                //lblMsjCP.Text = "El importe no está permitido.";
             ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
         }
         
@@ -1062,7 +1078,7 @@ namespace SAF.Presupuesto
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ref ListPartida);
-                ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
+                
                 disponible();
             }
             catch (Exception ex)
@@ -1074,7 +1090,7 @@ namespace SAF.Presupuesto
         {
             //ddlDepen_SelectedIndexChanged(null, null);
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddlCapitulo.SelectedValue.Substring(0,1), ddlFuente_F.SelectedValue, ref ListPartida);
-            ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
+            
             disponible();
         }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)

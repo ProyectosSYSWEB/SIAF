@@ -83,13 +83,9 @@
                                 <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                             </div>
                             <asp:DropDownList ID="ddlEjercicio" runat="server" CssClass="form-control">
+                                <asp:ListItem>2021</asp:ListItem>
                                 <asp:ListItem>2020</asp:ListItem>
-                                <asp:ListItem>2019</asp:ListItem>
-                                <asp:ListItem>2018</asp:ListItem>
-                                <asp:ListItem>2017</asp:ListItem>
-                                <asp:ListItem>2016</asp:ListItem>
-                                <asp:ListItem>2015</asp:ListItem>
-                                <asp:ListItem>2014</asp:ListItem>
+                                
                             </asp:DropDownList>
                         </div>
                         <div class="row">

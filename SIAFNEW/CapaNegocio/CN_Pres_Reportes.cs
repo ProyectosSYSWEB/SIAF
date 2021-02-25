@@ -22,6 +22,32 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void ConsultaGrid_Fuente_x_Centro(ref Pres_Reportes objReporte, ref List<Pres_Reportes> List)
+        {
+            try
+            {
+                CD_Pres_Reportes CDReportes = new CD_Pres_Reportes();
+                CDReportes.ConsultaGrid_Fuente_x_Centro(ref objReporte, ref List);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void ConsultaGrid_Partida_x_Centro(ref Pres_Reportes objReporte, ref List<Pres_Reportes> List)
+        {
+            try
+            {
+                CD_Pres_Reportes CDReportes = new CD_Pres_Reportes();
+                CDReportes.ConsultaGrid_Partida_x_Centro(ref objReporte, ref List);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void ConsultaGrid_Capitulo(ref Pres_Reportes objReporte, ref List<Pres_Reportes> List)
         {
             try

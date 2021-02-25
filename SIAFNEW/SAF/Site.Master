@@ -156,8 +156,9 @@
                 </asp:DropDownList>
                 <asp:DropDownList ID="ddlUsu_Ejercicio" runat="server"
                     CssClass="fondo_label_login" Enabled="False">
+                    <asp:ListItem>2021</asp:ListItem>
                     <asp:ListItem>2020</asp:ListItem>
-                    <asp:ListItem>2019</asp:ListItem>
+                    
                 </asp:DropDownList>
                 <asp:Button ID="btnIr" runat="server" Text="Cambiar" CssClass="btn4" OnClick="btnIr_Click" />
 

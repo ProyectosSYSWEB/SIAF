@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CapaEntidad;
 using CapaNegocio;
-//MODIFICADO EL 16 ENERO DE 2021
+//MODIFICADO EL 08 FEBRERO DE 2021
 namespace SAF.Presupuesto
 {
     public partial class frmMinistracion : System.Web.UI.Page
@@ -30,7 +30,7 @@ namespace SAF.Presupuesto
         private static List<Comun> Listcodigo = new List<Comun>(); //En tu declaración de variables
         private static List<Comun> ListDependencia = new List<Comun>();
         private static List<Comun> ListPartida = new List<Comun>();
-        int guar_continue;
+        //int guar_continue;
 
         #endregion
         protected void Page_Load(object sender, EventArgs e)
@@ -40,8 +40,8 @@ namespace SAF.Presupuesto
             {
                 inicializar();              
             }
-            
 
+            ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
 
         }
         #region <Funciones y Sub>
@@ -89,6 +89,30 @@ namespace SAF.Presupuesto
             txtAutorizacion.Text = string.Empty;
             txtCancelacion.Text = string.Empty;
             ddlTipoEnc.SelectedIndex = 0;
+            ddlTipoEnc_SelectedIndexChanged(null, null);
+            //if (ddlTipoEnc.SelectedValue=="MN")
+            //{
+            //    lblCapitulo.Visible = false;
+            //    ddlCapitulo.Visible = false;
+            //    lblCodigoProg.Visible = false;
+            //    ddlCodigoProg.Visible = false;
+            //    lblLeyDisponible.Visible = false;
+            //    lblFormatoDisponible.Visible = false;
+            //    lblImporteOrigen.Visible = false;
+            //    txtImporteOrigen.Visible = false;
+            //}
+            //else
+            //{
+            //    lblCapitulo.Visible = true;
+            //    ddlCapitulo.Visible = true;
+            //    lblCodigoProg.Visible = true;
+            //    ddlCodigoProg.Visible = true;
+            //    lblLeyDisponible.Visible = true;
+            //    lblFormatoDisponible.Visible = true;
+            //    lblDisponible.Visible = true;
+            //    lblImporteOrigen.Visible = true;
+            //    txtImporteOrigen.Visible = true;
+            //}
             ddlStatusEnc.Visible = true;
             //ddlStatusEnc.SelectedValue = "I";
             lblStatusEnc.Visible = false;
@@ -99,6 +123,8 @@ namespace SAF.Presupuesto
             DateTime fecha = Convert.ToDateTime(txtfechaDocumento.Text);
             string MesFecha = fecha.ToString("MM");
             ddlMesInicialDet.SelectedValue = MesFecha;
+            ddlMesInicialDet.Enabled = true;
+            ddlFuente_F.Enabled = true;
             validadorStatus.ValidationGroup = "Guardar";
             ddlStatusEnc.Enabled = false;
             lblDisponible.Text = "0.00";
@@ -179,16 +205,64 @@ namespace SAF.Presupuesto
                 grdDetalles.DataSource = ListDocDet;
                 grdDetalles.DataBind();
                 Sumatoria(grdDetalles);
-                Celdas = new Int32[] { 3,4,7 };
+                Celdas = new Int32[] { 3,4,7,9 };
                        
                 if (grdDetalles.Rows.Count > 0)
                 {
                     ddlTipoEnc.Enabled = false;
+                    ddlFuente_F.Enabled = false;
+                    ddlMesInicialDet.Enabled = false;
+                    ddlDepen.Enabled = false;
+                    if (ddlTipoEnc.SelectedValue == "MN" && SesionUsu.Editar==0)
+                    {
+
+                        Celdas = new Int32[] { 3, 3, 4, 7 };
+                    }
+                    if (Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Editar" || Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Ver")
+                        ddlFuente_F.SelectedValue = ListDocDet.ElementAt(0).Desc_Codigo_Prog.Substring(25, 5);
+                    
+                 }
+                else
+                {
+                    ddlTipoEnc.Enabled = true;
+                    ddlFuente_F.Enabled = true;
+                    ddlMesInicialDet.Enabled = true;
+                    ddlDepen.Enabled = true;
+                }
+                    CNComun.HideColumns(grdDetalles, Celdas);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+        private void CargarGridDetalle_Ordinaria()
+        {
+            lblError.Text = string.Empty;
+          
+            try
+            {
+                DataTable dt = new DataTable();
+                grdDetalles.DataSource = dt;
+                grdDetalles.DataSource = GetList_Ordinaria();
+                grdDetalles.DataBind();
+                Sumatoria(grdDetalles);
+                Celdas = new Int32[] { 3, 4, 7 };
+
+                if (grdDetalles.Rows.Count > 0)
+                {
+                    ddlTipoEnc.Enabled = false;
+                    ddlFuente_F.Enabled = false;
+                    ddlMesInicialDet.Enabled = false;
+                    ddlDepen.Enabled = false;
                     CNComun.HideColumns(grdDetalles, Celdas);
                 }
                 else
                 {
                     ddlTipoEnc.Enabled = true;
+                    ddlFuente_F.Enabled = true;
+                    ddlMesInicialDet.Enabled = true;
+                    ddlDepen.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -222,10 +296,10 @@ namespace SAF.Presupuesto
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
 
-                if (SesionUsu.Usu_TipoUsu != "N")
-                    Celdas = new Int32[] { 0, 8, 0 };
+                if (SesionUsu.Usu_TipoUsu== "N" )
+                    Celdas = new Int32[] { 0, 8, 9,10 };
                 else
-                    Celdas = new Int32[] { 0, 8, 9 };
+                    Celdas = new Int32[] { 0, 8 };
 
                 if (grid.Rows.Count > 0)
                 {
@@ -241,7 +315,7 @@ namespace SAF.Presupuesto
         {
             Verificador = string.Empty;
             objDocumento.CentroContable = "";
-            objDocumento.Dependencia = ddlCentroContable.SelectedValue;
+            objDocumento.Dependencia = ddlDepen.SelectedValue;
             objDocumento.Folio = txtFolio.Text;
             objDocumento.SuperTipo = SesionUsu.Usu_Rep;
             objDocumento.Fecha = txtfechaDocumento.Text;
@@ -320,14 +394,21 @@ namespace SAF.Presupuesto
         }
         protected void EditaRegistro(object sender, GridViewUpdateEventArgs e)
         {
-            List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
-            ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
-            GridViewRow row = grdDetalles.Rows[e.RowIndex];
-            ListDocDet[e.RowIndex].Importe_origen = Convert.ToDouble(((TextBox)(row.Cells[7].Controls[0])).Text);
-            ListDocDet[e.RowIndex].Importe_destino = Convert.ToDouble(((TextBox)(row.Cells[8].Controls[0])).Text);
-            grdDetalles.EditIndex = -1;
-            Session["DocDet"] = ListDocDet;
-            CargarGridDetalle(ListDocDet);
+            try
+            {
+                List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
+                ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
+                GridViewRow row = grdDetalles.Rows[e.RowIndex];
+                ListDocDet[e.RowIndex].Importe_origen = Convert.ToDouble(((TextBox)(row.Cells[7].Controls[0])).Text);
+                ListDocDet[e.RowIndex].Importe_destino = 0.00;
+                ListDocDet[e.RowIndex].Importe_mensual = Convert.ToDouble(((TextBox)(row.Cells[7].Controls[0])).Text); 
+                grdDetalles.EditIndex = -1;
+                Session["DocDet"] = ListDocDet;
+                CargarGridDetalle(ListDocDet);
+            }
+            catch (Exception ex)
+            {
+            }
         }
         private void disponible()
         {
@@ -351,6 +432,7 @@ namespace SAF.Presupuesto
                 objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
                 objDocumentoDet.SuperTipo = "M";
                 objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
 
                 CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
                 if (Verificador == "0")
@@ -374,6 +456,7 @@ namespace SAF.Presupuesto
             {
                 List<Pres_Documento> List = new List<Pres_Documento>();
                 objDocumento.Usuario= SesionUsu.Usu_Nombre;
+                objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
                 objDocumento.Dependencia = ddlCentroContable.SelectedValue;
                 objDocumento.Fecha_Inicial = ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2,2);
                 objDocumento.Fecha_Final = ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
@@ -393,6 +476,30 @@ namespace SAF.Presupuesto
                     //CNDocumentos.ConsultaGrid(ref objDocumento, ref List);
                 }
 
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private List<Pres_Documento_Detalle> GetList_Ordinaria()
+        {
+            try
+            {
+                List<Pres_Documento_Detalle> List = new List<Pres_Documento_Detalle>();
+                Pres_Documento Datos = new Pres_Documento();
+
+                Datos.Ejercicios = SesionUsu.Usu_Ejercicio;
+                Datos.Dependencia = ddlDepen.SelectedValue;
+                Datos.Tipo = (SesionUsu.Usu_Rep != "C") ? rbtOrigen_Destino.SelectedValue : ddlTipoEnc.SelectedValue.Substring(1);
+                Datos.Fecha_Inicial = ddlMesInicialDet.SelectedValue;
+                Datos.Cuenta = (SesionUsu.Usu_Rep == "M") ? (DDLCta_Banco.SelectedValue == "0") ? txtCuenta.Text : DDLCta_Banco.SelectedValue : "";
+                Datos.P_Buscar = ddlFuente_F.SelectedValue;
+
+                CNDocumentos.ConsultarGrid_CodProg_Ordinaria(ref Datos, ref List);
+
+                Session["DocDet"] = List;
                 return List;
             }
             catch (Exception ex)
@@ -444,21 +551,25 @@ namespace SAF.Presupuesto
             
                 try
                 {
-                    objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                //if (Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Editar")
+                  SesionUsu.Editar = 1;
+                //else
+                //    SesionUsu.Editar = 0;
+               
+
+                objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                     CNDocumentos.ConsultarDocumentoSel(ref objDocumento, ref Verificador);
                     if (Verificador == "0")
                     {
-                        ddlDepen.SelectedValue = ddlCentroContable.SelectedValue;
-                        Session["DocDet"] = null;
+                    //ddlDepen.SelectedValue = ddlCentroContable.SelectedValue;
+                    ddlDepen.SelectedValue = objDocumento.Dependencia;
+                    Session["DocDet"] = null;
                         grdDetalles.DataSource = null;
                         grdDetalles.DataBind();
 
 
                         /*Inicializa controles para editar*/
-                    if (Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Editar")
-                        SesionUsu.Editar = 1;
-                    else
-                        SesionUsu.Editar = 0;
+                   
                     //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "M");
                         //lblMesIni.Visible = false;
@@ -467,13 +578,15 @@ namespace SAF.Presupuesto
                         //ddlMesIni.Visible = false;                    
                         ddlStatusEnc.Enabled = true;
                         ddlTipoEnc.Enabled = false;
-                        ddlCentroContable.SelectedValue = objDocumento.Dependencia;
+                        ddlCentroContable.SelectedValue = objDocumento.CentroContable;
                         ddlDepen.SelectedValue = objDocumento.Dependencia;
                         ddlDepen_SelectedIndexChanged(null, null);
                         lblFolio.Visible = true;
                         txtFolio.Visible = true;
                         txtFolio.Text = objDocumento.Folio;
                         ddlTipoEnc.SelectedValue = objDocumento.Tipo;
+                        ddlTipoEnc_SelectedIndexChanged(null, null);
+                   
                         txtfechaDocumento.Text = objDocumento.Fecha;
                         Status = objDocumento.Status;
                         if (Status == "A")
@@ -483,6 +596,15 @@ namespace SAF.Presupuesto
                             StatusEnc(Status);
                             ddlStatusEnc.Visible = (Status == "A") ? false : true;
                             btnGuardar.Visible = false;
+                            SesionUsu.Editar = 0;
+                            if (SesionUsu.Usu_TipoUsu=="SA")
+                            {
+                                btnGuardar.Visible = true;
+                                SesionUsu.Editar = 1;
+                                ddlStatusEnc.Visible = true;
+                                ddlStatusEnc.SelectedValue = "A";
+                                lblStatusEnc.Visible = false ;
+                            }
                         }
                         else
                         {
@@ -672,7 +794,7 @@ namespace SAF.Presupuesto
                 ListPartida.Clear();
                 CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia","p_capitulo","p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue,ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ref ListPartida);
-                ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
+                
                 disponible();
             }
             catch (Exception ex)
@@ -784,78 +906,99 @@ namespace SAF.Presupuesto
         }
         protected void btnAgregarDet_Click(object sender, EventArgs e)
         {
-            lblErrorDet.Text = string.Empty;
-            lblMsjCP.Text = string.Empty;
-            if (ddlTipoEnc.SelectedValue == "0")
-                //lblMsjCP.Text = "*Tipo requerido.<br>";
-            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Selecciones TipoEnc válido.');", true);
-            else if (ddlTipoEnc.SelectedValue != "AA" && Convert.ToDouble(lblDisponible.Text) == 0) // && Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
-                //lblMsjCP.Text = lblMsjCP.Text + "*No hay saldo disponible.";
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, '*No hay saldo disponible.');", true);
-            else if (ddlTipoEnc.SelectedValue != "AA" && Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
-                //lblMsjCP.Text = lblMsjCP.Text + "*El importe debe ser menor o igual al disponible.";
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
-            else if (ddlTipoEnc.SelectedValue == "AA" && Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
-                //lblMsjCP.Text = lblMsjCP.Text + "*El importe debe ser menor al disponible.";
-            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor al disponible.');", true);
-            else if (txtImporteOrigen.Text == "0")
-                //lblMsjCP.Text = lblMsjCP.Text + "*Agregar importe.";
-            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Agregar importe.');", true);
+            if (ddlTipoEnc.SelectedValue=="MN")
+            {
+                //Pres_Documento Datos = new Pres_Documento();
+                //Datos.Dependencia = ddlDepen.SelectedValue;
+                //Datos.Tipo = (SesionUsu.Usu_Rep != "C") ? rbtOrigen_Destino.SelectedValue : ddlTipoEnc.SelectedValue.Substring(1);
+                //Datos.Fecha_Inicial = ddlMesInicialDet.SelectedValue;
+                //Datos.Cuenta = (SesionUsu.Usu_Rep == "M") ? (DDLCta_Banco.SelectedValue == "0") ? txtCuenta.Text : DDLCta_Banco.SelectedValue : "";
+                CargarGridDetalle_Ordinaria();
+                
+            }
             else
             {
-                var content = new List<Pres_Documento_Detalle>();
-                if (Session["DocDet"] != null)
+                lblErrorDet.Text = string.Empty;
+                lblMsjCP.Text = string.Empty;
+                if (ddlTipoEnc.SelectedValue == "0")
+                    //lblMsjCP.Text = "*Tipo requerido.<br>";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Selecciones TipoEnc válido.');", true);
+                else if (ddlTipoEnc.SelectedValue != "AA" && Convert.ToDouble(lblDisponible.Text) == 0) // && Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
+                                                                                                        //lblMsjCP.Text = lblMsjCP.Text + "*No hay saldo disponible.";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, '*No hay saldo disponible.');", true);
+                else if (ddlTipoEnc.SelectedValue != "AA" && Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
+                    //lblMsjCP.Text = lblMsjCP.Text + "*El importe debe ser menor o igual al disponible.";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
+                else if (ddlTipoEnc.SelectedValue == "AA" && Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
+                    //lblMsjCP.Text = lblMsjCP.Text + "*El importe debe ser menor al disponible.";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor al disponible.');", true);
+                else if (txtImporteOrigen.Text == "0")
+                    //lblMsjCP.Text = lblMsjCP.Text + "*Agregar importe.";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Agregar importe.');", true);
+                else
                 {
-                    string MesIni = Convert.ToString(Convert.ToInt32(ddlMesInicialDet.SelectedValue));
-                    List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
-                    ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
-                    var filteredCodigosProg = from c in ListDocDet
-                                              where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue 
-                                              && Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
-                                              
-                                              select c;
-
-                    content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
-                }
-                if (content.Count == 0)
-                {
-                    objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                    objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text;
-                    objDocumentoDet.Ur_clave = ddlDepen.SelectedValue;
-                    objDocumentoDet.Tipo = (SesionUsu.Usu_Rep != "C")? rbtOrigen_Destino.SelectedValue : ddlTipoEnc.SelectedValue.Substring(1);
-                    objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                    objDocumentoDet.Cuenta_banco = (SesionUsu.Usu_Rep == "M") ? (DDLCta_Banco.SelectedValue == "0") ? txtCuenta.Text : DDLCta_Banco.SelectedValue : "";
-                    objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
-                    objDocumentoDet.Importe_origen = Convert.ToDouble(txtImporteOrigen.Text);
-                    objDocumentoDet.Importe_destino = 0;
-
-                    objDocumentoDet.Importe_mensual = Convert.ToDouble(txtImporteOrigen.Text);
-                    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-
-                    objDocumentoDet.Beneficiario_tipo = string.Empty;
-                    objDocumentoDet.Beneficiario_nombre = string.Empty;
-                    objDocumentoDet.Beneficiario_clave = string.Empty;
-
-
-                    if (Session["DocDet"] == null)
+                    var content = new List<Pres_Documento_Detalle>();
+                    if (Session["DocDet"] != null)
                     {
-                        ListDocDet = new List<Pres_Documento_Detalle>();
-                        ListDocDet.Add(objDocumentoDet);
+                        string MesIni = Convert.ToString(Convert.ToInt32(ddlMesInicialDet.SelectedValue));
+                        List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
+                        ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
+                        var filteredCodigosProg = from c in ListDocDet
+                                                  where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue
+                                                  && Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
+
+                                                  select c;
+
+                        content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
+                    }
+                    if (content.Count == 0)
+                    {
+                        objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
+                        objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text;
+                        objDocumentoDet.Ur_clave = ddlDepen.SelectedValue;
+                        objDocumentoDet.Tipo = (SesionUsu.Usu_Rep != "C") ? rbtOrigen_Destino.SelectedValue : ddlTipoEnc.SelectedValue.Substring(1);
+                        objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                        objDocumentoDet.Cuenta_banco = (SesionUsu.Usu_Rep == "M") ? (DDLCta_Banco.SelectedValue == "0") ? txtCuenta.Text : DDLCta_Banco.SelectedValue : "";
+                        objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
+                        objDocumentoDet.Importe_origen = Math.Abs(Convert.ToDouble(txtImporteOrigen.Text));
+                        if (ddlTipoEnc.SelectedValue == "MC")
+                        {
+                            objDocumentoDet.Importe_origen = objDocumentoDet.Importe_origen * (-1);
+                        }
+
+
+                        objDocumentoDet.Importe_destino = 0;
+
+                        //objDocumentoDet.Importe_mensual = Convert.ToDouble(txtImporteOrigen.Text);
+                        objDocumentoDet.Importe_mensual = objDocumentoDet.Importe_origen;
+                        objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+
+                        objDocumentoDet.Beneficiario_tipo = string.Empty;
+                        objDocumentoDet.Beneficiario_nombre = string.Empty;
+                        objDocumentoDet.Beneficiario_clave = string.Empty;
+
+
+                        if (Session["DocDet"] == null)
+                        {
+                            ListDocDet = new List<Pres_Documento_Detalle>();
+                            ListDocDet.Add(objDocumentoDet);
+                        }
+                        else
+                        {
+                            ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
+                            ListDocDet.Add(objDocumentoDet);
+                        }
+                        Session["DocDet"] = ListDocDet;
+                        CargarGridDetalle(ListDocDet);
+                        //ddlTipoEnc.Enabled = false;
                     }
                     else
-                    {
-                        ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
-                        ListDocDet.Add(objDocumentoDet);
-                    }
-                    Session["DocDet"] = ListDocDet;
-                    CargarGridDetalle(ListDocDet);
-                    ddlTipoEnc.Enabled = false;
+                        //lblMsjCP.Text = "El mes ya se encuentra asignado.";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El mes ya se encuentra asignado.');", true);
                 }
-                else
-                    //lblMsjCP.Text = "El mes ya se encuentra asignado.";
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El mes ya se encuentra asignado.');", true);
             }
-
+           
+            
         }
        
         protected void rbtOrigen_Destino_SelectedIndexChanged(object sender, EventArgs e)
@@ -882,6 +1025,7 @@ namespace SAF.Presupuesto
                 TabContainer1.ActiveTabIndex = 0;
                 Session["DocDet"] = null;
                 ddlCentroContable.Enabled = false;
+                ddlDepen.Enabled = true;
                 LimpiarControles();
             }
             else
@@ -931,7 +1075,7 @@ namespace SAF.Presupuesto
         protected void DDLFuente_F_SelectedIndexChanged(object sender, EventArgs e)
         {
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddlCapitulo.SelectedValue.Substring(0,1), ddlFuente_F.SelectedValue, ref ListPartida);
-            ScriptManager.RegisterStartupScript(this, GetType(), "COD_PROG", "Autocomplete();", true);
+            
             disponible();
         }
         protected void ddlMesInicialDet_SelectedIndexChanged(object sender, EventArgs e)
@@ -941,6 +1085,31 @@ namespace SAF.Presupuesto
             lblDisponible.Text = "0.00";
             disponible();
         }
+        protected void ddlTipoEnc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlTipoEnc.SelectedValue == "MN")
+            {
+                lblCapitulo.Visible = false;
+                ddlCapitulo.Visible = false;
+                lblCodigoProg.Visible = false;
+                ddlCodigoProg.Visible = false;
+                lblLeyDisponible.Visible = false;
+                lblFormatoDisponible.Visible = false;
+                lblImporteOrigen.Visible = false;
+                txtImporteOrigen.Visible = false;
+            }
+            else
+            {
+                lblCapitulo.Visible = true;
+                ddlCapitulo.Visible = true;
+                lblCodigoProg.Visible = true;
+                ddlCodigoProg.Visible = true;
+                lblLeyDisponible.Visible = true;
+                lblFormatoDisponible.Visible = true;
+                lblImporteOrigen.Visible = true;
+                txtImporteOrigen.Visible = true;
+            }
+        }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
         {
             string ruta1 = string.Empty;
@@ -948,8 +1117,9 @@ namespace SAF.Presupuesto
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
+
         #endregion
 
-       
+        
     }
 }

@@ -17,8 +17,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { "p_dependencia","p_fecha_inicial","p_fecha_final","p_tipo", "p_supertipo", "p_status","p_buscar","p_editor" };
-                String[] Valores = { objDocumento.Dependencia, objDocumento.Fecha_Inicial, objDocumento.Fecha_Final, objDocumento.Tipo, objDocumento.SuperTipo, objDocumento.Status, objDocumento.P_Buscar, objDocumento.Editor };
+                String[] Parametros = { "p_ejercicio","p_dependencia","p_fecha_inicial","p_fecha_final","p_tipo", "p_supertipo", "p_status","p_buscar","p_editor" };
+                String[] Valores = { objDocumento.Ejercicios, objDocumento.Dependencia, objDocumento.Fecha_Inicial, objDocumento.Fecha_Final, objDocumento.Tipo, objDocumento.SuperTipo, objDocumento.Status, objDocumento.P_Buscar, objDocumento.Editor };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("pkg_Presupuesto.Obt_Grid_Documentos", ref dr, Parametros, Valores);
 
@@ -43,9 +43,52 @@ namespace CapaDatos
                         objDocumento.Opcion_Modificar2 = Convert.ToString(dr.GetValue(10)) == "S" ? true : false;
                     objDocumento.Opcion_Eliminar = Convert.ToString(dr.GetValue(14)) == "S" ? false : true;
                     objDocumento.Opcion_Eliminar2 = Convert.ToString(dr.GetValue(14)) == "S" ? true : false;
-                    
 
+                    objDocumento.ClaveEvento = Convert.ToString(dr.GetValue(15));
                     List.Add(objDocumento);
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref cmm);
+            }
+        }
+        public void ConsultarGrid_CodProg_Ordinaria(ref Pres_Documento objDocumento, ref List<Pres_Documento_Detalle> List)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand cmm = null;
+            try
+            {
+                OracleDataReader dr = null;
+                String[] Parametros = { "p_ejercicio","p_dependencia", "p_fuente","p_mes"};
+                String[] Valores = { objDocumento.Ejercicios,objDocumento.Dependencia, objDocumento.P_Buscar,objDocumento.Fecha_Inicial};
+
+                cmm = CDDatos.GenerarOracleCommandCursor("pkg_Presupuesto.Obt_Grid_CodProg_Ordinaria", ref dr, Parametros, Valores);
+
+                while (dr.Read())
+                {
+                    Pres_Documento_Detalle objDocumento_Detalle = new Pres_Documento_Detalle();
+                    objDocumento_Detalle.Id_Codigo_Prog = Convert.ToInt32(dr.GetValue(0));
+                    objDocumento_Detalle.Desc_Codigo_Prog = Convert.ToString(dr.GetValue(1));
+                    objDocumento_Detalle.Desc_Partida = Convert.ToString(dr.GetValue(2));
+                    objDocumento_Detalle.Importe_origen = Convert.ToDouble(dr.GetValue(3));
+                    objDocumento_Detalle.Importe_mensual = objDocumento_Detalle.Importe_origen;
+                    objDocumento_Detalle.Destino = 0.00;
+                    objDocumento_Detalle.SuperTipo = "M";
+                    objDocumento_Detalle.Ur_clave =objDocumento.Dependencia;
+                    objDocumento_Detalle.Mes_inicial = Convert.ToInt32(objDocumento.Fecha_Inicial);
+                    objDocumento_Detalle.Mes_final = Convert.ToInt32(objDocumento.Fecha_Inicial);
+                    objDocumento_Detalle.Tipo = objDocumento.Tipo;
+                    objDocumento_Detalle.Cuenta_banco = objDocumento.Cuenta;
+                    objDocumento_Detalle.Beneficiario_tipo = string.Empty;
+                    objDocumento_Detalle.Beneficiario_nombre = string.Empty;
+                    objDocumento_Detalle.Beneficiario_clave = string.Empty;
+                    List.Add(objDocumento_Detalle);
                 }
                 dr.Close();
             }
@@ -69,7 +112,8 @@ namespace CapaDatos
                 string[] ParametrosIn = { "P_ID" };
                 object[] Valores = { Convert.ToInt32(objDocumento.Id)
             };
-                string[] ParametrosOut = {  "P_DEPENDENCIA",
+                string[] ParametrosOut = {  "P_CENTRO_CONTABLE",
+                                            "P_DEPENDENCIA",
                                             "P_FOLIO",
                                             "P_TIPO",
                                             "P_FECHA",
@@ -96,6 +140,7 @@ namespace CapaDatos
                 if (Verificador == "0")
                 {
                     objDocumento = new Pres_Documento();
+                    objDocumento.CentroContable = Convert.ToString(Cmd.Parameters["P_CENTRO_CONTABLE"].Value);
                     objDocumento.Dependencia = Convert.ToString(Cmd.Parameters["P_DEPENDENCIA"].Value);
                     objDocumento.Folio = Convert.ToString(Cmd.Parameters["P_FOLIO"].Value);
                     objDocumento.Tipo = Convert.ToString(Cmd.Parameters["P_TIPO"].Value);

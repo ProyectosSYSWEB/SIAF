@@ -17,8 +17,25 @@ namespace CapaEntidad
         private string _Proyecto;
         private string _DependenciaF;
         private string _Subprograma;
+        private string _Partida;
+        private string _Mes_anio;
+        private string _Estatus;
 
-
+        public string Estatus
+        {
+            get { return _Estatus; }
+            set { _Estatus = value; }
+        }
+        public string Mes_anio
+        {
+            get { return _Mes_anio; }
+            set { _Mes_anio = value; }
+        }
+        public string Partida
+        {
+            get { return _Partida; }
+            set { _Partida = value; }
+        }
         public string SubPrograma
         {
             get { return _Subprograma; }
@@ -43,7 +60,7 @@ namespace CapaEntidad
         public string Tipo
         {
             get { return _Tipo; }
-            set { _Descripcion = value; }
+            set { _Tipo = value; }
         }
         public string Descripcion
         {

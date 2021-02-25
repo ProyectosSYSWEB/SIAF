@@ -22,6 +22,19 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void ConsultarGrid_CodProg_Ordinaria(ref Pres_Documento objDocumento, ref List<Pres_Documento_Detalle> List)
+        {
+            try
+            {
+                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
+                CDDocumento.ConsultarGrid_CodProg_Ordinaria(ref objDocumento, ref List);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void ConsultarDocumentoSel(ref Pres_Documento objDocumento, ref string Verificador)
         {
             try
