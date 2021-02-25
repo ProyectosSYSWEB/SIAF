@@ -99,6 +99,60 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void Verificar_Correo_UNACH(ref Usuario objUsuario, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+
+                String[] Parametros = { "P_USUARIO" };
+                Object[] Valores = { objUsuario.CUsuario };
+                String[] ParametrosOut = { "P_RESULTADO", "p_bandera" };
+                Cmd = CDDatos.GenerarOracleCommand("OBT_STATUS_MAIL_TEL_USER", ref Verificador, Parametros, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objUsuario.Status = Convert.ToString(Cmd.Parameters["P_RESULTADO"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void ObtenerUsuario(ref Usuario ObjUsuario, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_CORREO", "P_ID_SISTEMA" };
+                object[] Valores = { ObjUsuario.Correo_UNACH, 15939 };
+                string[] ParametrosOut = { "P_USUARIO", "P_TIPO_USU", "P_BANDERA" };
+
+                Cmd = CDDatos.GenerarOracleCommand("VAL_USUARIO_PRESUPUESTO", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    ObjUsuario = new Usuario();
+                    ObjUsuario.TipoUsu = Convert.ToString(Cmd.Parameters["P_TIPO_USU"].Value);
+                    ObjUsuario.CUsuario = Convert.ToString(Cmd.Parameters["P_USUARIO"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+
 
     }
 }

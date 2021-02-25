@@ -168,6 +168,111 @@ namespace CapaDatos
                 throw new Exception(ex.Message);
             }
         }
+        public void LlenarTree2(ref TreeView Arbolito, Mnu mnu, List<Mnu> List)
+        {
+
+            try
+            {
+                #region <Variables>
+                string valor = string.Empty;
+                string descripcion = string.Empty;
+                #endregion
+
+                OracleDataReader dr = null;
+                CD_Datos CDDatos = new CD_Datos();
+                string[] Parametros = { "p_usuario", "p_grupo", "p_id_padre" };
+                object[] Valores = { mnu.UsuarioNombre, mnu.Grupo, mnu.IdPadre };
+
+                OracleCommand Cmd = CDDatos.GenerarOracleCommandCursor("Pkg_Contratos.Obt_Sistemas", ref dr, Parametros, Valores);
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        mnu = new Mnu();
+                        mnu.Id = Convert.ToInt32(dr["id"].ToString());
+                        mnu.Padre = Convert.ToString(dr["id_padre"].ToString());
+                        mnu.Descripcion = dr["descripcion"].ToString();
+                        mnu.Clave = dr["clave"].ToString();
+                        List.Add(mnu);
+
+                    }
+                    //BindTreeDef(List, null, Arbolito);
+                    dr.Close();
+                }
+
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void LlenarTreeDef(Mnu mnu, List<Mnu> List)
+        {
+
+            try
+            {
+                #region <Variables>
+                string valor = string.Empty;
+                string descripcion = string.Empty;
+                #endregion
+
+                OracleDataReader dr = null;
+                CD_Datos CDDatos = new CD_Datos();
+
+                string[] Parametros = { "p_usuario", "p_grupo", "p_id_padre" };
+                object[] Valores = { mnu.UsuarioNombre, mnu.Grupo, mnu.IdPadre };
+
+                OracleCommand Cmd = CDDatos.GenerarOracleCommandCursor("Pkg_Contratos.Obt_Sistemas", ref dr, Parametros, Valores);
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        mnu = new Mnu();
+                        mnu.Id = Convert.ToInt32(dr["id"].ToString());
+                        mnu.Padre = Convert.ToString(dr["id_padre"].ToString());
+                        mnu.Descripcion = dr["descripcion"].ToString();
+                        mnu.Clave = dr["clave"].ToString();
+                        List.Add(mnu);
+                                    
+                    }
+                    //BindTreeDef(List, null, Arbolito);
+                    dr.Close();
+                }
+
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private void BindTreeDef(IEnumerable<Mnu> list, TreeNode parentNode, TreeView tree)
+        {
+            var nodes = list.Where(x => parentNode == null ? x.Padre == "0" : x.Padre == parentNode.Value);
+            //    products.Where(p => categories
+            //.Any(cat => p.Categories.Any(pcat => pcat.Id == cat.Id)).ToList();
+            foreach (var node in nodes)
+            {
+                TreeNode newNode = new TreeNode(node.Descripcion, node.Id.ToString());
+                if (parentNode == null)
+                {
+                    tree.Nodes.Add(newNode);
+                    newNode.Selected = true;
+                    //tree.ExpandAll();
+                }
+                else
+                {
+                    parentNode.ChildNodes.Add(newNode);
+                    parentNode.Collapse();
+                }
+                BindTreeDef(list, newNode, tree);
+            }
+        }
         private void BindTree(IEnumerable<Presupues> list, TreeNode parentNode, TreeView tree)
         {
             var nodes = list.Where(x => parentNode == null ? x.Padre == "0" : x.Padre == parentNode.Value);
@@ -190,7 +295,6 @@ namespace CapaDatos
                 BindTree(list, newNode, tree);
             }
         }
-
         public void GenerateXMLFile(Mnu mnu, string fullPath)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -228,10 +332,10 @@ namespace CapaDatos
                             objXMLTW.WriteAttributeString("description", dr["descripcion"].ToString().ToUpper());
                             if (dr["clave"].ToString().Contains(".aspx"))
                                 objXMLTW.WriteAttributeString("url", dr["clave"].ToString());
-                            else                                
-                                objXMLTW.WriteAttributeString("url", "Default.aspx?cve=" + dr["id"].ToString());
+                            else
+                                objXMLTW.WriteAttributeString("url", "Default.aspx?mnu=" + dr["cve"].ToString());
 
-                            
+
 
                             //objXMLTW.WriteAttributeString("url", dr["clave"].ToString());
                             ChildMaster(objXMLTW, mnu, MasterID);
@@ -241,16 +345,16 @@ namespace CapaDatos
                     dr.Close();
 
                     objXMLTW.WriteStartElement("siteMapNode");
-                    objXMLTW.WriteAttributeString("title", "PASSWORD");
+                    objXMLTW.WriteAttributeString("title", "CAMBIO DE CONTRASEÑA");
                     objXMLTW.WriteAttributeString("description", "PASSWORD");
-                    objXMLTW.WriteAttributeString("url", "http://www.sysweb.unach.mx/administrator/");
+                    objXMLTW.WriteAttributeString("url", "https://ldapauthmaster.unach.mx/pssform_resetaccount.php");
                     objXMLTW.WriteEndElement();
 
-                    objXMLTW.WriteStartElement("siteMapNode");
-                    objXMLTW.WriteAttributeString("title", "AYUDA");
-                    objXMLTW.WriteAttributeString("description", "AYUDA");
-                    objXMLTW.WriteAttributeString("url", "http://sysweb.unach.mx/saf/Manual_Usuario.pdf");
-                    objXMLTW.WriteEndElement();
+                    //objXMLTW.WriteStartElement("siteMapNode");
+                    //objXMLTW.WriteAttributeString("title", "AYUDA");
+                    //objXMLTW.WriteAttributeString("description", "AYUDA");
+                    //objXMLTW.WriteAttributeString("url", "http://sysweb.unach.mx/saf/Manual_Usuario.pdf");
+                    //objXMLTW.WriteEndElement();
 
                     objXMLTW.WriteStartElement("siteMapNode");
                     objXMLTW.WriteAttributeString("title", "SALIR");
@@ -323,6 +427,93 @@ namespace CapaDatos
             finally
             {
                 CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void LlenarTree(ref TreeView Arbolito, Mnu objMenu, ref List<Mnu> List)
+        {
+
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+
+            try
+            {
+                OracleDataReader dr = null;
+
+
+                string[] Parametros = {
+                                        "P_ID_SISTEMA",
+                                        "P_USUARIO",
+                                        "P_PADRE"
+                                      };
+                object[] Valores = {
+                                        objMenu.Grupo,
+                                        objMenu.UsuarioNombre,
+                                        objMenu.Padre
+                                   };
+                string Usuario = objMenu.UsuarioNombre;
+                int Grupo = objMenu.Grupo;
+                Cmd = CDDatos.GenerarOracleCommandCursor("Pkg_Contratos.Obt_Tree_Menu", ref dr, Parametros, Valores);
+
+                if (dr.HasRows)
+                {
+
+                    while (dr.Read())
+                    {
+                        objMenu = new Mnu();
+                        objMenu.Id = Convert.ToInt32(dr["id"].ToString());
+                        objMenu.Descripcion = Convert.ToString(dr["descripcion"].ToString());
+                        objMenu.Navigate_Url = Convert.ToString(dr["clave"].ToString());
+                        objMenu.Padre = Convert.ToString(dr["padre"].ToString());
+                        objMenu.Clave = Convert.ToString(dr["clave"].ToString());
+                        objMenu.Id_Padre = Convert.ToInt32(dr["id_padre"].ToString());
+                        objMenu.UsuarioNombre = Usuario;
+                        objMenu.Grupo = Grupo;
+                        List.Add(objMenu);
+                        //LlenarTree(ref Arbolito, objMenu, ref List);
+
+                    }
+                    dr.Close();
+                }
+
+
+                BindTree(List, null, Arbolito);
+                //Arbolito.CollapseAll();
+                dr.Close();
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+        private void BindTree(IEnumerable<Mnu> list, TreeNode parentNode, TreeView tree)
+        {
+            var nodes = list.Where(x => parentNode == null ? x.Padre == "0" : x.Id_Padre == int.Parse(parentNode.Value));
+            foreach (var node in nodes)
+            {
+                //TreeNode newNode = new TreeNode(node.Descripcion_Proyecto, node.IdProy.ToString());
+                TreeNode newNode = new TreeNode(node.Descripcion, node.Id.ToString(), "", node.Navigate_Url, "");
+
+
+                if (node.Padre == "0")
+                {
+                    //if (node.Nivel > 6)
+                    //parentNode.ImageUrl = "../Imagenes/add.png";
+                    //newNode.Expand();
+                    tree.Nodes.Add(newNode);
+                    tree.CollapseAll();
+                }
+                else
+                {
+                    parentNode.ChildNodes.Add(newNode);
+
+                }
+                BindTree(list, newNode, tree);
             }
         }
     }

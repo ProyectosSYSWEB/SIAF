@@ -8,53 +8,77 @@ namespace CapaEntidad
    public class Pres_Documento
     {
         private int _Id;
-        public string _Dependencia;
-        public string _SuperTipo;
-        public string _Tipo;
-        public string _No_Documento;
-        public string _Fecha;
-        public string _Status;
-        public string _Concepto;
-        public double _Origen;
-        public double _Destino;
-        public string _Usuario;
-        public string _P_Buscar;
-        public string _Fecha_Inicial;
-        public string _Fecha_Final;
-        public string _Editor;
-        public string _Folio;
-        public string _Descripcion;
-        public string _MotivoRechazo;
-        public string _MotivoAutorizacion;
-        public string _Cuenta;
-        public string _NumeroCheque;
-        public string _CedulaComprometido;
-        public string _CedulaDevengado;
-        public string _CedulaEjercido;
-        public string _CedulaPagado;
-        public string _PolizaComprometido;
-        public string _PolizaEjercido;
-        public string _PolizaPagado;
-        public string _ClaveCuenta;
-        public string _ClaveEvento;
-        public string _KeyDocumento;
-        public string _KeyPoliza;
-        public string _KeyPoliza811;
-        public string _Regulariza;
-        public string _GeneracionSimultanea;
-        public string _CentroContable;
-        public string _MesAnio;
-        public string _TipoCaptura;
-        public string _Ejercicios;
-        public string _Contabilizar;
-        private string _PolizaDevengado;        
+        private string _Dependencia;
+        private string _SuperTipo;
+        private string _Tipo;
+        private string _No_Documento;
+        private string _Fecha;
+        private string _Status;
+        private string _Concepto;
+        private double _Origen;
+        private double _Destino;
+        private string _Usuario;
+        private string _P_Buscar;
+        private string _Fecha_Inicial;
+        private string _Fecha_Final;
+        private string _Editor;
+        private string _Folio;
+        private string _Descripcion;
+        private string _MotivoRechazo;
+        private string _MotivoAutorizacion;
+        private string _Cuenta;
+        private string _NumeroCheque;
+        private string _CedulaComprometido;
+        private string _CedulaDevengado;
+        private string _CedulaEjercido;
+        private string _CedulaPagado;
+        private string _PolizaComprometido;
+        private string _PolizaEjercido;
+        private string _PolizaPagado;
+        private string _ClaveCuenta;
+        private string _ClaveEvento;
+        private string _KeyDocumento;
+        private string _KeyPoliza;
+        private string _KeyPoliza811;
+        private string _Regulariza;
+        private string _GeneracionSimultanea;
+        private string _CentroContable;
+        private string _MesAnio;
+        private string _TipoCaptura;
+        private string _Ejercicios;
+        private string _Contabilizar;
+        private string _PolizaDevengado;
+        private double _ISR;
+        private double _Importe_Cheque;
+        private double _Importe_Operacion;
+
+
+
         private bool _Opcion_Eliminar;
         private bool _Opcion_Eliminar2;
         private bool _Opcion_Modificar;
         private bool _Opcion_Modificar2;
+        private string _Opcion_Modificar_Str;
+        private string _Opcion_Modificar2_Str;
         private bool _Opcion_Copiar;
         private bool _Opcion_Copiar2;
 
+
+        public double Importe_Operacion
+        {
+            get { return _Importe_Operacion; }
+            set { _Importe_Operacion = value; }
+        }
+        public double Importe_Cheque
+        {
+            get { return _Importe_Cheque; }
+            set { _Importe_Cheque = value; }
+        }
+        public double ISR
+        {
+            get { return _ISR; }
+            set { _ISR = value; }
+        }
         public string PolizaDevengado
         {
             get { return _PolizaDevengado; }
@@ -279,6 +303,16 @@ namespace CapaEntidad
         {
             get { return _Opcion_Modificar2; }
             set { _Opcion_Modificar2 = value; }
+        }
+        public string Opcion_Modificar_Str
+        {
+            get { return _Opcion_Modificar_Str; }
+            set { _Opcion_Modificar_Str = value; }
+        }
+        public string Opcion_Modificar2_Str
+        {
+            get { return _Opcion_Modificar2_Str; }
+            set { _Opcion_Modificar2_Str = value; }
         }
         public bool Opcion_Copiar
         {

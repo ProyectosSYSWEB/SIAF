@@ -23,8 +23,20 @@ namespace CapaEntidad
         private string _id_sistema;
         private string _Plantilla;
         private string _Cerrada;
+        private string _Correo_UNACH;
+        private string _Nombre_Completo;
 
 
+        public string Nombre_Completo
+        {
+            get { return _Nombre_Completo; }
+            set { _Nombre_Completo = value; }
+        }
+        public string Correo_UNACH
+        {
+            get { return _Correo_UNACH; }
+            set { _Correo_UNACH = value; }
+        }
         public string Cerrada
         {
             get { return _Cerrada; }

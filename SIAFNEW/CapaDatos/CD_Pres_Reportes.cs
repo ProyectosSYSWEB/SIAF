@@ -40,6 +40,70 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
+        public void ConsultaGrid_Fuente_x_Centro(ref Pres_Reportes objReportes, ref List<Pres_Reportes> List)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand cmm = null;
+            try
+            {
+                OracleDataReader dr = null;
+                String[] Parametros = { "p_ejercicio", "p_centro_contable_ini", "p_centro_contable_fin",
+                                        "p_tipo","p_mes","p_estatus"};
+                String[] Valores = { objReportes.Ejercicio, objReportes.Dependencia, objReportes.DependenciaF,
+                                    objReportes.Tipo,objReportes.Mes_anio,objReportes.Estatus};
+
+                cmm = CDDatos.GenerarOracleCommandCursor("pkg_Presupuesto.Obt_Grid_Fuente_x_Centro", ref dr, Parametros, Valores);
+
+                while (dr.Read())
+                {
+                    objReportes = new Pres_Reportes();
+                    objReportes.Id = Convert.ToString(dr.GetValue(0));
+                    objReportes.Descripcion = Convert.ToString(dr.GetValue(1));
+                    List.Add(objReportes);
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref cmm);
+            }
+        }
+        public void ConsultaGrid_Partida_x_Centro(ref Pres_Reportes objReportes, ref List<Pres_Reportes> List)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand cmm = null;
+            try
+            {
+                OracleDataReader dr = null;
+                String[] Parametros = { "p_ejercicio", "p_centro_contable_ini", "p_centro_contable_fin",
+                                        "p_tipo","p_mes","p_estatus"};
+                String[] Valores = { objReportes.Ejercicio, objReportes.Dependencia, objReportes.DependenciaF,
+                                    objReportes.Tipo,objReportes.Mes_anio,objReportes.Estatus};
+
+                cmm = CDDatos.GenerarOracleCommandCursor("pkg_Presupuesto.Obt_Grid_Partida_x_Centro", ref dr, Parametros, Valores);
+
+                while (dr.Read())
+                {
+                    objReportes = new Pres_Reportes();
+                    objReportes.Id = Convert.ToString(dr.GetValue(0));
+                    objReportes.Descripcion = Convert.ToString(dr.GetValue(1));
+                    List.Add(objReportes);
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref cmm);
+            }
+        }
         public void ConsultaGrid_Capitulo(ref Pres_Reportes objReportes, ref List<Pres_Reportes> List)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -57,6 +121,36 @@ namespace CapaDatos
                     objReportes = new Pres_Reportes();
                     objReportes.Id  = Convert.ToString(dr.GetValue(0));
                     objReportes.Capitulo = Convert.ToString(dr.GetValue(1));
+                    List.Add(objReportes);
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref cmm);
+            }
+        }
+        public void ConsultaGrid_Subprograma(ref Pres_Reportes objReportes, ref List<Pres_Reportes> List)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand cmm = null;
+            try
+            {
+                OracleDataReader dr = null;
+                String[] Parametros = { "p_ejercicio", "p_dependencia", "p_dependencia_f" };
+                String[] Valores = { objReportes.Ejercicio, objReportes.Dependencia, objReportes.DependenciaF };
+
+                cmm = CDDatos.GenerarOracleCommandCursor("pkg_Presupuesto.Obt_Grid_Subprograma", ref dr, Parametros, Valores);
+
+                while (dr.Read())
+                {
+                    objReportes = new Pres_Reportes();
+                    objReportes.Id = Convert.ToString(dr.GetValue(0));
+                    objReportes.SubPrograma = Convert.ToString(dr.GetValue(1));
                     List.Add(objReportes);
                 }
                 dr.Close();

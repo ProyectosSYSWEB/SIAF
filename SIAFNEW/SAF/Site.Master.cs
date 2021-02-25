@@ -31,12 +31,8 @@ namespace SAF
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
-            
-            //if (!IsPostBack)
-            //{
-                //BusyBoxButton1.Attributes.Add("onClick", BusyBox1.ShowFunctionCall);
-                Inicializar();
-            //}
+            bttnCorreoUnach.Text = SesionUsu.Correo_UNACH;
+            Inicializar();
                 
             
 
@@ -51,7 +47,7 @@ namespace SAF
                 ddlUsu_Ejercicio.SelectedValue = SesionUsu.Usu_Ejercicio;                
                 mnu.NombreMenu = "MenuTop";
                 mnu.UsuarioNombre = SesionUsu.Usu_Nombre;
-                mnu.Grupo = 1;
+                mnu.Grupo = 15939;
 
                 string siteMap = "ArchivosMenu/Web" + SesionUsu.Usu_Nombre + ".sitemap";
                 string fullPath = Path.Combine(Server.MapPath("~"), siteMap);
@@ -126,6 +122,11 @@ namespace SAF
         protected void BusyBoxButton1_Click1(object sender, EventArgs e)
         {
             SesionUsu.Usu_Ejercicio = ddlUsu_Ejercicio.SelectedValue;
+        }
+
+        protected void linkBttnInicio_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Inicio.aspx");
         }
     }
 }
