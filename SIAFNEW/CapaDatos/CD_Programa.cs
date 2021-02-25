@@ -41,5 +41,29 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
+
+
+        public void InsertarPrograma(ref Programa objPrograma, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_FUNCION", "P_F_PROG", "P_DESCRIP", "P_FUNFED" };
+                object[] Valores = { objPrograma.Funcion, objPrograma.F_Prog, objPrograma.Descripcion, objPrograma.Funfed  };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("INS_CAT_F_PROG", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
     }
 }

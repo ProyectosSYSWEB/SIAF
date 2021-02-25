@@ -43,7 +43,13 @@
                             <tr>
                                 <td>
                                     <button class="" >Guardar</button>
-                                </td>                                
+                                </td>                    
+                                <td>
+
+                                </td>
+                                <td>
+                                    <a href="frmCentrosContab.aspx"> Regresar </a>
+                                </td>
                             </tr>
 
                             <tr>

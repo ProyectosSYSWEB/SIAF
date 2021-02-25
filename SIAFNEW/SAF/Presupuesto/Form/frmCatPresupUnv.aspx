@@ -260,6 +260,16 @@
                                     </asp:TextBox>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <button>Guardar</button>
+                                </td>
+                                <td>                                    
+                                </td>
+                                <td>
+                                    <a href="frmPresupUnv.aspx">Regresar</a>
+                                </td>
+                            </tr>
 
                             <tr>
                                 <td>&nbsp;</td>

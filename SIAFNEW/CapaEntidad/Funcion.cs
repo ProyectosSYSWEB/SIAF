@@ -30,5 +30,49 @@ namespace CapaEntidad
             get { return _Id; }
             set { _Id = value; }
         }
+
+        private string _Tipo;
+
+        public string Tipo
+        {
+            get { return _Tipo; }
+            set { _Tipo = value; }
+        }
+
+        private string _Clave;
+
+        public string Clave
+        {
+            get { return _Clave; }
+            set { _Clave = value; }
+        }
+
+        private string _Status;
+
+        public string Status
+        {
+            get { return _Status; }
+            set { _Status = value; }
+        }
+
+        private string _Valor;
+
+        public string Valor
+        {
+            get { return _Valor; }
+            set { _Valor = value; }
+        }
+
+        private string _Orden;
+
+        public string Orden
+        {
+            get { return _Orden; }
+            set { _Orden = value; }
+        }
+
+
+
+
     }
 }

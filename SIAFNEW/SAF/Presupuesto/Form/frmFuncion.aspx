@@ -24,26 +24,15 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <button class="">Nuevo presupuesto</button>
+                                <a href="frmCatalogoFunciones.aspx">Nueva función</a>
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GRDFunciones" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="funcion" HeaderText="Función" />
-                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
-                                                                <ContentTemplate>
-                                                                    <%--<asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar el Documento?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>--%>
-                                                                </ContentTemplate>
-                                                            </asp:UpdatePanel>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />                                                                                                                                                           
                                                 </Columns>
-
                                                 <FooterStyle CssClass="enc" />
                                                 <PagerStyle CssClass="enc" HorizontalAlign="Center" Width="100%" />
                                                 <SelectedRowStyle CssClass="sel" />

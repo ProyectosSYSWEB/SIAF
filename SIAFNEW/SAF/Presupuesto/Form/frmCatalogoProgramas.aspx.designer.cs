@@ -60,13 +60,13 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.Label lblFuncion;
 
         /// <summary>
-        /// Control DDLFun.
+        /// Control DDLFuncion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLFun;
+        protected global::System.Web.UI.WebControls.DropDownList DDLFuncion;
 
         /// <summary>
         /// Control lblFunFed.
@@ -78,13 +78,13 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.Label lblFunFed;
 
         /// <summary>
-        /// Control DDLFunfed.
+        /// Control DDLFuenteFed.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLFunfed;
+        protected global::System.Web.UI.WebControls.DropDownList DDLFuenteFed;
 
         /// <summary>
         /// Control lblProg.
@@ -121,5 +121,14 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+
+        /// <summary>
+        /// Control BTNGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTNGuardar;
     }
 }

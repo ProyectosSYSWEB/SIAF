@@ -24,31 +24,28 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDCargarDatosFuncion();
         }
-
-
-
         protected void GRDCargarDatosFuncion()
         {
             try
             {
                 Funcion objFuncion = new Funcion();
                 List<Funcion> listFuncion = new List<Funcion>();
-                CN_Funcion.FuncionGrid(ref objFuncion, ref listFuncion);
-                //SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                //DataSet ds = new DataSet();
-                //sda.Fill(ds);//
+                CN_Funcion.FuncionGrid(ref objFuncion, ref listFuncion);                
                 GRDFunciones.DataSource = listFuncion;
                 GRDFunciones.DataBind();
+                if (SesionUsu.Usu_TipoUsu != "SA")
+                {
+                    GRDFunciones.Columns.RemoveAt(3);
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
-        }
+        }        
     }
 }

@@ -23,9 +23,8 @@
                                 <td style="width: 30%">
                                     <asp:Label ID="lblFuncion" runat="server" Text="Función"></asp:Label>
                                 </td>
-                                <td>
-                                    <asp:DropDownList ID="DDLFun" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                <td>                                    
+                                    <asp:DropDownList ID="DDLFuncion" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
                                 </td>
                             </tr>
 
@@ -33,9 +32,8 @@
                                 <td style="width: 30%">
                                     <asp:Label ID="lblFunFed" runat="server" Text="Función Federal"></asp:Label>
                                 </td>
-                                <td>
-                                    <asp:DropDownList ID="DDLFunfed" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                <td>                                    
+                                    <asp:DropDownList ID="DDLFuenteFed" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
                                 </td>
                             </tr>
 
@@ -63,7 +61,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" Text="Guardar" ID="BTNGuardar" OnClick="BTNGuardar_Click" />                                    
                                 </td>                                
                             </tr>
 

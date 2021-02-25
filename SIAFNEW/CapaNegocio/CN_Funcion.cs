@@ -20,6 +20,20 @@ namespace CapaNegocio
             {
                 throw new Exception(ex.Message);
             }
-        }        
+        }
+
+        public void InsertarFuncion(ref Funcion objFuncion, ref string Verificador)
+        {
+            try
+            {
+
+                CD_Funcion CDFuncion = new CD_Funcion();
+                CDFuncion.InsertarFuncion(ref objFuncion, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <button class="btn-success">Nuevo presupuesto</button>
+                                <a href="frmCatPresupUnv.aspx">Nuevo presupuesto</a>                                
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>

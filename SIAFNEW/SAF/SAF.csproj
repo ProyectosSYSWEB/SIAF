@@ -196,6 +196,7 @@
     <Content Include="images\wood_pattern.jpg" />
     <Content Include="Informacion.htm" />
     <Content Include="Presupuesto\Form\frmAdecuacion.aspx" />
+    <Content Include="Presupuesto\Form\frmCapitulo.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoCapitulos.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoCentrosContab.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoCtrlPres.aspx" />
@@ -209,21 +210,28 @@
     <Content Include="Presupuesto\Form\frmCatFuenteFin.aspx" />
     <Content Include="Presupuesto\Form\frmCatPresupUnv.aspx" />
     <Content Include="Presupuesto\Form\frmCedula.aspx" />
+    <Content Include="Presupuesto\Form\frmCentrosContab.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
     <Content Include="Presupuesto\Form\frmConsultas.aspx" />
+    <Content Include="Presupuesto\Form\frmControlPresupSaf.aspx" />
+    <Content Include="Presupuesto\Form\frmControlPresupuestal.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
     <Content Include="Presupuesto\Form\FRMcrea_Plantilla.aspx" />
     <Content Include="Presupuesto\Form\frmDashboard.aspx" />
+    <Content Include="Presupuesto\Form\frmDependencia.aspx" />
     <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
+    <Content Include="Presupuesto\Form\frmFuenteFin.aspx" />
     <Content Include="Presupuesto\Form\frmFuncion.aspx" />
     <Content Include="Presupuesto\Form\FRMInterinos.aspx" />
     <Content Include="Presupuesto\Form\frmMinistracion.aspx" />
     <Content Include="Presupuesto\Form\FRMMonitor.aspx" />
+    <Content Include="Presupuesto\Form\frmPartida.aspx" />
     <Content Include="Presupuesto\Form\FRMPlantilla.aspx" />
     <Content Include="Presupuesto\Form\frmPresupuesto.aspx" />
     <Content Include="Presupuesto\Form\FRMHis_Nomina.aspx" />
     <Content Include="Presupuesto\Form\frmPresupUnv.aspx" />
     <Content Include="Presupuesto\Form\frmPrograma.aspx" />
+    <Content Include="Presupuesto\Form\frmProyecto.aspx" />
     <Content Include="Presupuesto\Form\frmSubprograma.aspx" />
     <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
     <Content Include="Presupuesto\Reportes\VisualizadorCrystal.aspx" />
@@ -344,6 +352,13 @@
     <Compile Include="Presupuesto\Form\frmAdecuacion.aspx.designer.cs">
       <DependentUpon>frmAdecuacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmCapitulo.aspx.cs">
+      <DependentUpon>frmCapitulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCapitulo.aspx.designer.cs">
+      <DependentUpon>frmCapitulo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\frmCatalogoCapitulos.aspx.cs">
       <DependentUpon>frmCatalogoCapitulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -435,6 +450,13 @@
     <Compile Include="Presupuesto\Form\frmCedula.aspx.designer.cs">
       <DependentUpon>frmCedula.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmCentrosContab.aspx.cs">
+      <DependentUpon>frmCentrosContab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCentrosContab.aspx.designer.cs">
+      <DependentUpon>frmCentrosContab.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\FRMCierre_Dependencia.aspx.cs">
       <DependentUpon>FRMCierre_Dependencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -448,6 +470,20 @@
     </Compile>
     <Compile Include="Presupuesto\Form\frmConsultas.aspx.designer.cs">
       <DependentUpon>frmConsultas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlPresupSaf.aspx.cs">
+      <DependentUpon>frmControlPresupSaf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlPresupSaf.aspx.designer.cs">
+      <DependentUpon>frmControlPresupSaf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlPresupuestal.aspx.cs">
+      <DependentUpon>frmControlPresupuestal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlPresupuestal.aspx.designer.cs">
+      <DependentUpon>frmControlPresupuestal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMCosteo.aspx.cs">
       <DependentUpon>FRMCosteo.aspx</DependentUpon>
@@ -470,12 +506,26 @@
     <Compile Include="Presupuesto\Form\frmDashboard.aspx.designer.cs">
       <DependentUpon>frmDashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmDependencia.aspx.cs">
+      <DependentUpon>frmDependencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmDependencia.aspx.designer.cs">
+      <DependentUpon>frmDependencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\FRMDocumento.aspx.cs">
       <DependentUpon>FRMDocumento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMDocumento.aspx.designer.cs">
       <DependentUpon>FRMDocumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmFuenteFin.aspx.cs">
+      <DependentUpon>frmFuenteFin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmFuenteFin.aspx.designer.cs">
+      <DependentUpon>frmFuenteFin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\frmFuncion.aspx.cs">
       <DependentUpon>frmFuncion.aspx</DependentUpon>
@@ -504,6 +554,13 @@
     </Compile>
     <Compile Include="Presupuesto\Form\FRMMonitor.aspx.designer.cs">
       <DependentUpon>FRMMonitor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmPartida.aspx.cs">
+      <DependentUpon>frmPartida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmPartida.aspx.designer.cs">
+      <DependentUpon>frmPartida.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMPlantilla.aspx.cs">
       <DependentUpon>FRMPlantilla.aspx</DependentUpon>
@@ -539,6 +596,13 @@
     </Compile>
     <Compile Include="Presupuesto\Form\frmPrograma.aspx.designer.cs">
       <DependentUpon>frmPrograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmProyecto.aspx.cs">
+      <DependentUpon>frmProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmProyecto.aspx.designer.cs">
+      <DependentUpon>frmProyecto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\frmSubprograma.aspx.cs">
       <DependentUpon>frmSubprograma.aspx</DependentUpon>

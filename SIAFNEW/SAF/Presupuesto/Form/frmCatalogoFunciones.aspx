@@ -20,7 +20,7 @@
                         <table style="width: 100%;">
                             <tr>
                                 <td style="width:30%">
-                                    <asp:Label ID="lblTipoGasto" runat="server" Text="Funciones">
+                                    <asp:Label ID="lblTipoGasto" runat="server" Text="Función">
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
@@ -41,8 +41,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
-                                </td>                                
+                                    <button class="" onclick="btnGuardarFuncion()" >Guardar</button>
+                                </td>          
+                                <td>
+                                </td>
+                                <td>
+                                    <a href="frmFuncion.aspx">Regresar</a>
+                                </td>
                             </tr>
 
                             <tr>
