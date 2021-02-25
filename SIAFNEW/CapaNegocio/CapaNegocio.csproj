@@ -42,30 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CN_Basicos.cs" />
-    <Compile Include="CN_Capitulo.cs" />
-    <Compile Include="CN_Cat_Ctrl_Presp_Saf.cs" />
-    <Compile Include="CN_CentrosContab.cs" />
-    <Compile Include="CN_Codigo_Prog.cs" />
     <Compile Include="CN_Comun.cs" />
-    <Compile Include="CN_Consultas.cs" />
     <Compile Include="CN_Costeo.cs" />
     <Compile Include="CN_Cuentas_contables.cs" />
-    <Compile Include="CN_Dependencias.cs" />
-    <Compile Include="CN_Estruct.cs" />
-    <Compile Include="CN_FuenteFin.cs" />
-    <Compile Include="CN_Funcion.cs" />
     <Compile Include="CN_Informativa.cs" />
     <Compile Include="CN_Mnu.cs" />
-    <Compile Include="CN_Partida.cs" />
     <Compile Include="CN_Presupuesto.cs" />
-    <Compile Include="CN_PresupUnv.cs" />
     <Compile Include="CN_Pres_Documento.cs" />
     <Compile Include="CN_Pres_Documento_Det.cs" />
     <Compile Include="CN_Pres_Plantilla.cs" />
     <Compile Include="CN_Pres_Reportes.cs" />
-    <Compile Include="CN_Programa.cs" />
-    <Compile Include="CN_Proyecto.cs" />
-    <Compile Include="CN_Subprog.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="CN_Pres_Nomina.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
