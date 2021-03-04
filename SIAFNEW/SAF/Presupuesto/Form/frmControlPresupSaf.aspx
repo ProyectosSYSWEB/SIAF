@@ -23,7 +23,7 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <a href="frmCatCtrlPresupSaf.aspx">Nueva dependencia</a>        
+                                <a href="frmCatCtrlPresupSaf.aspx">Nuevo codigo programatico</a>        
                                 <tr>
                                 <td style="width: 30%">
                                     <asp:Label ID="lblCentroContab" runat="server" Text="Centro contable"></asp:Label>

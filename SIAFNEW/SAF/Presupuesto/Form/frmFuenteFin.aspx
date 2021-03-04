@@ -24,7 +24,7 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <a href="frmCatalogoCapitulos.aspx"></a>
+                                <a href="frmCatFuenteFin.aspx">Nueva fuente</a>
                              <tr>                                
                             </tr>
                                 <td colspan="3">                            

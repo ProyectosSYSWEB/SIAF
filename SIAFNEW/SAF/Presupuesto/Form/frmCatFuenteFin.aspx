@@ -67,9 +67,14 @@
                             <tr>
                                 <td>
                                     <asp:Button runat="server" ID="BTNGuardarFuenteFin" Text="Guardar" OnClick="BTNGuardarFuenteFin_Click" />
-                                </td>                                
-                            </tr>
+                                </td>       
+                                <td>
 
+                                </td>
+                                <td>
+                                    <a href="frmFuenteFin.aspx">Regresar</a>
+                                </td>
+                            </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>

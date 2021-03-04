@@ -35,7 +35,7 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab);
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab, "p_ejercicio", SesionUsu.Usu_Ejercicio);
         }
 
 
@@ -67,7 +67,7 @@ namespace SAF.Presupuesto.Form
                 Codigo_Prog objCodProg = new Codigo_Prog();
                 List<Codigo_Prog> list = new List<Codigo_Prog>();
                 objCodProg.Centro_Contable = DDLCentroContab.SelectedValue;
-                objCodProg.Ejercicio = "2021";
+                objCodProg.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CN_Codigo_Prog.CodigoProgGrid(ref objCodProg, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 //DataSet ds = new DataSet();

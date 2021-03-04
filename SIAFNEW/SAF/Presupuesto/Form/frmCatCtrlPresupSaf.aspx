@@ -139,7 +139,9 @@
                             <tr>
                                 <td>
                                     <asp:Button runat="server" ID="BTNGuardarCodigo" Text="Guardar" OnClick="BTNGuardarCodigo_Click" />
-                                </td>                                
+                                </td>
+                                <td></td>
+                                <td><a href="frmControlPresupSaf.aspx">Regresar</a></td>
                             </tr>                            
 
                             <tr>
