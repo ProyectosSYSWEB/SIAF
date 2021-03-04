@@ -70,7 +70,6 @@
     <Compile Include="CD_Proyecto.cs" />
     <Compile Include="CD_Subprograma.cs" />
     <Compile Include="CD_Usuario.cs" />
-    <Compile Include="ExeProcedimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

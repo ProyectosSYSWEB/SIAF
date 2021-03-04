@@ -535,6 +535,15 @@ namespace SAF.Presupuesto {
         protected global::AjaxControlToolkit.TabPanel TabPanel2;
         
         /// <summary>
+        /// Control lblDependenciaDocumento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDependenciaDocumento;
+        
+        /// <summary>
         /// Control UpdatePanel124.
         /// </summary>
         /// <remarks>
@@ -623,6 +632,15 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updProCapitulo;
+        
+        /// <summary>
+        /// Control lblFF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFF;
         
         /// <summary>
         /// Control lblCodigoProg1.
@@ -875,24 +893,6 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updPrgImpMen0;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator10.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
-        
-        /// <summary>
-        /// Control RegularExpressionValidator104.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator104;
         
         /// <summary>
         /// Control btnAgregarDet.

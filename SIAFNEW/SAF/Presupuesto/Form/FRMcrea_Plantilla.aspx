@@ -66,35 +66,24 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="4">
-                                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                                        <ContentTemplate>
-                                                            <asp:GridView ID="GRDDependencia" runat="server" AutoGenerateColumns="False" CssClass="mGrid" OnSelectedIndexChanged="GRDDependencia_SelectedIndexChanged" Width="100%">
-                                                                <Columns>
-                                                                    <asp:BoundField DataField="DEPENDENCIA" HeaderText="DEPENDENCIA" />
-                                                                    <asp:BoundField DataField="DESCRIPCION" HeaderText="DESCRIPCION" />
-                                                                    <asp:BoundField DataField="TOTAL" HeaderText="# DOCENTES" />
-                                                                    <asp:CommandField SelectText="CREAR PLANTILLA" ShowSelectButton="True" />
-                                                                </Columns>
-                                                                <FooterStyle CssClass="enc" />
-                                                                <PagerStyle CssClass="enc" HorizontalAlign="Center" />
-                                                                <SelectedRowStyle CssClass="sel" />
-                                                                <HeaderStyle CssClass="enc" />
-                                                                <AlternatingRowStyle CssClass="alt" />
-                                                            </asp:GridView>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
+                                                    <asp:GridView runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" ID="GRDDependencia" OnSelectedIndexChanged="GRDDependencia_SelectedIndexChanged">
+                                                        <Columns>
+                                                            <asp:BoundField DataField="DEPENDENCIA" HeaderText="DEPENDENCIA" />
+                                                            <asp:BoundField DataField="DESCRIPCION" HeaderText="DESCRIPCION" />
+                                                            <asp:BoundField DataField="TOTAL" HeaderText="# DOCENTES" />
+                                                            <asp:CommandField SelectText="CREAR PLANTILLA" ShowSelectButton="True" />
+                                                        </Columns>
+                                                        <FooterStyle CssClass="enc" />
+                                                        <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                        <SelectedRowStyle CssClass="sel" />
+                                                        <HeaderStyle CssClass="enc" />
+                                                        <AlternatingRowStyle CssClass="alt" />
+                                                    </asp:GridView>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;</td>
-                                                <td colspan="2">
-                                                     <asp:UpdateProgress ID="UpdateProgress01" runat="server" AssociatedUpdatePanelID="UpdatePanel2">
-                                                        <ProgressTemplate>
-                                                            <asp:Image ID="Image31" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." Width="50px" />
-                                                        </ProgressTemplate>
-                                                    </asp:UpdateProgress>
-
-                                                </td>
+                                                <td colspan="2">&nbsp;</td>
                                                 <td>&nbsp;</td>
                                             </tr>
                                         </table>
@@ -193,7 +182,7 @@
                                                 <td colspan="5">
                                                     <asp:UpdateProgress ID="UpdateProgress4" runat="server" AssociatedUpdatePanelID="UpdatePanel108">
                                                         <ProgressTemplate>
-                                                            <asp:Image ID="Image32" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." Width="50px" />
+                                                            <asp:Image ID="Image31" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" ToolTip="Espere un momento, por favor.." Width="50px" />
                                                         </ProgressTemplate>
                                                     </asp:UpdateProgress>
                                                 </td>

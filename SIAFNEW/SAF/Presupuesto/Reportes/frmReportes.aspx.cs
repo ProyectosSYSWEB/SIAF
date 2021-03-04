@@ -142,32 +142,37 @@ namespace SAF.Presupuesto.Reportes
                         DDLTipoCedula_v8.SelectedValue = "T";
                         DDLTipoCedula_v8.Items.RemoveAt(DDLTipoCedula_v8.SelectedIndex);
                         break;
-                    case "RP-PRESUP_RP008":
-                        MultiView1.ActiveViewIndex = 8;
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v9, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep);
-                        DDLMes_v9.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2,'0');
-                        btnchkCapitulos.Visible = false;
-                        btnchkProyectos.Visible = false;
-                        btnchkFuentes.Visible = false;
+                   
+                    case "RP-PRESUP_RP003":
+                        MultiView1.ActiveViewIndex = 13;
+                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v14, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
+                        btnChkCapitulos_v14.Visible = false;
+                        btnChkSubprogramas_v14.Visible = false;
                         break;
                     case "RP-PRESUP_RP005":
                         MultiView1.ActiveViewIndex = 8;
-                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v9, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep);
+                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v9, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
                         DDLMes_v9.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
                         grdProyecto_v9.Visible = false;
                         btnchkCapitulos.Visible = false;
                         btnchkProyectos.Visible = false;
                         btnchkFuentes.Visible = false;
+                        DDLDependencia_v9_SelectedIndexChanged(null, null);
                         break;
-                    case "RP-PRESUP_RP019":
-                        MultiView1.ActiveViewIndex = 9;
-                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Centro_Contable", ref DDLCentroContable_v10, "p_usuario", "p_ejercicio", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio);
-                        DDLMes_v10.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
+                  
+                    case "RP-PRESUP_RP008":
+                        MultiView1.ActiveViewIndex = 8;
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v9, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
+                        DDLMes_v9.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
+                        btnchkCapitulos.Visible = false;
+                        btnchkProyectos.Visible = false;
+                        btnchkFuentes.Visible = false;
+                        DDLDependencia_v9_SelectedIndexChanged(null, null);
                         break;
                     case "RP-PRESUP_RP009":
                         MultiView1.ActiveViewIndex = 10;
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependenciaInicial_v11, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep);
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependenciaFinal_v11, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep);
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependenciaInicial_v11, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependenciaFinal_v11, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
                         btnChkFuentes_v11.Visible = false;
                         btnChkCapitulos_v11.Visible = false;
                         break;
@@ -177,6 +182,11 @@ namespace SAF.Presupuesto.Reportes
                         DDLCentroContable_v12_SelectedIndexChanged(null, null);
                         DDLMes_v12.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
                         btnChkFuentes_v12.Visible = false;
+                        break;
+                    case "RP-PRESUP_RP019":
+                        MultiView1.ActiveViewIndex = 9;
+                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Centro_Contable", ref DDLCentroContable_v10, "p_usuario", "p_ejercicio", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio);
+                        DDLMes_v10.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
                         break;
                     case "RP-PRESUP_SP00":
                         MultiView1.ActiveViewIndex = 12;
@@ -189,13 +199,7 @@ namespace SAF.Presupuesto.Reportes
                         btnChkFuentes_v13.Visible = false;
                         txtFechaEntrega.Text = System.DateTime.Now.ToString("dd/MMMM/yyyy");
                         break;
-                    case "RP-PRESUP_RP003":
-                        MultiView1.ActiveViewIndex = 13;
-                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Centro_Contable", ref DDLDependencia_v14, "p_usuario", "p_ejercicio",  SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio);
-                        btnChkCapitulos_v14.Visible = false;
-                        btnChkSubprogramas_v14.Visible = false;
-
-                        break;
+                   
                 }
                         if (Request.QueryString["P_REP"]== "RP-TEMPORAL")
                     {
@@ -1468,7 +1472,7 @@ namespace SAF.Presupuesto.Reportes
             rowSubprograma(grdSubprogramas_v14, "chkSubprograma_v14");
             string ruta = string.Empty;
                         
-            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
+            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
@@ -1479,7 +1483,7 @@ namespace SAF.Presupuesto.Reportes
             rowSubprograma(grdSubprogramas_v14, "chkSubprograma_v14");
             string ruta = string.Empty;
 
-            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
+            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
