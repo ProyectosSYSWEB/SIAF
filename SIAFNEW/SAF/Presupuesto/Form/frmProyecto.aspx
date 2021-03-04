@@ -30,9 +30,9 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDProyectos" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GRDProyectos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Tipo_Proy" HeaderText="Tipo proyecto" />                                                    
+                                                    <%--<asp:BoundField DataField="Tipo_Proy" HeaderText="Tipo proyecto" />--%>
                                                     <asp:BoundField DataField="Proyecto" HeaderText="Proyecto" />
                                                     <asp:BoundField DataField="Descrip" HeaderText="Descripcion" />
                                                     <asp:TemplateField>

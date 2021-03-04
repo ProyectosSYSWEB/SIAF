@@ -25,7 +25,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtCap" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtCap" Text="" runat="server" Width="500px" maxlength="4">
                                     </asp:TextBox>
                                 </td>
                             </tr>                            
@@ -47,20 +47,20 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtNvl" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtNvl" Text="" runat="server" Width="500px" maxlength="1">
                                     </asp:TextBox>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarCap" Text="Guardar" OnClick="BTNGuardarCap_Click" />
                                 </td>  
                                 <td>
 
                                 </td>
                                 <td>
-                                    <a href="frmCatFuenteFin.aspx">Regresar</a>
+                                    <a href="frmCapitulo.aspx">Regresar</a>
                                 </td>                                
 
                             </tr>

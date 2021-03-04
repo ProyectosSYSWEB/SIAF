@@ -62,5 +62,23 @@ namespace CapaEntidad
             get { return _Descrip2; }
             set { _Descrip2 = value; }
         }
+
+        private string _Ejercicio;
+
+        public string Ejercicio
+        {
+            get { return _Ejercicio; }
+            set { _Ejercicio = value; }
+        }
+
+
+        private string _Concepto;
+
+        public string Concepto
+        {
+            get { return _Concepto; }
+            set { _Concepto = value; }
+        }
+
     }
 }

@@ -19,6 +19,17 @@
                     <td class="auto-style1">
                         <table style="width: 100%;">
 
+
+                            <tr>
+                                <td style="width: 30%">
+                                    <asp:Label ID="Label3" runat="server" Text="Dependencia">
+                                    </asp:Label>
+                                </td>
+                                <td>                                    
+                                    <asp:DropDownList ID="DDLDependencia" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLDependencia_SelectedIndexChanged" ></asp:DropDownList>
+                                </td> 
+                            </tr>
+
                             <tr>
                                 <td style="width: 30%">
                                     <asp:Label ID="lblTipoOpe" runat="server" Text="Código programático"></asp:Label>
@@ -28,14 +39,14 @@
                                 </td>
                             </tr>
 
-                            <tr>
+                            <%--<tr>
                                 <td style="width: 30%">
                                     <asp:Label ID="lblTiporRec" runat="server" Text="Centro contable"></asp:Label>
                                 </td>
                                 <td>                                    
                                     <asp:DropDownList ID="DDLCContab" runat="server" Width="500px" AutoPostBack="True" Enabled="false"></asp:DropDownList>
                                 </td> 
-                            </tr>
+                            </tr>--%>
 
                             <tr>
                                 <td style="width: 30%">
@@ -57,15 +68,7 @@
                                 </td> 
                             </tr>
 
-                            <tr>
-                                <td style="width: 30%">
-                                    <asp:Label ID="Label3" runat="server" Text="Dependencia">
-                                    </asp:Label>
-                                </td>
-                                <td>                                    
-                                    <asp:DropDownList ID="DDLDependencia" runat="server" Width="500px" AutoPostBack="True" Enabled="false"></asp:DropDownList>
-                                </td> 
-                            </tr>
+                            
 
                             <tr>
                                 <td style="width: 30%">
@@ -95,7 +98,7 @@
                                     </asp:Label>
                                 </td>
                                 <td>                                    
-                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
+                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_SelectedIndexChanged"></asp:DropDownList>
                                 </td> 
                             </tr>
 
@@ -121,11 +124,23 @@
                                     </asp:TextBox>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="Label7" runat="server" Text="Construcción del código programático">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtCodProg" Text="" runat="server" Width="500px" Enabled="false">
+                                    </asp:TextBox>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarCodigo" Text="Guardar" OnClick="BTNGuardarCodigo_Click" />
                                 </td>                                
-                            </tr>
+                            </tr>                            
 
                             <tr>
                                 <td>&nbsp;</td>

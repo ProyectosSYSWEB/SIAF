@@ -119,5 +119,171 @@ namespace CapaEntidad
             set { _Id = value; }
         }
 
+        private string _TipoPres;
+
+        public string TipoPres
+        {
+            get { return _TipoPres; }
+            set { _TipoPres = value; }
+        }
+
+        private string _DependOrig;
+
+        public string DependOrig
+        {
+            get { return _DependOrig; }
+            set { _DependOrig = value; }
+        }
+
+        private string _Dep_Origen;
+
+        public string Dep_Origen
+        {
+            get { return _Dep_Origen; }
+            set { _Dep_Origen = value; }
+        }
+
+        private string _Ref_Docto;
+
+        public string Ref_Docto
+        {
+            get { return _Ref_Docto; }
+            set { _Ref_Docto = value; }
+        }
+
+        private string _Fecha_Doc;
+
+        public string Fecha_Doc
+        {
+            get { return _Fecha_Doc; }
+            set { _Fecha_Doc = value; }
+        }
+
+        private string _Autorizado;
+
+        public string Autorizado
+        {
+            get { return _Autorizado; }
+            set { _Autorizado = value; }
+        }
+
+        private string _Mes;
+
+        public string Mes
+        {
+            get { return _Mes; }
+            set { _Mes = value; }
+        }
+
+        private string _TipoOper;
+
+        public string TipoOper
+        {
+            get { return _TipoOper; }
+            set { _TipoOper = value; }
+        }
+
+        private string _C_Contab;
+
+        public string C_Contab
+        {
+            get { return _C_Contab; }
+            set { _C_Contab = value; }
+        }
+
+        private string _Depend;
+
+        public string Depend
+        {
+            get { return _Depend; }
+            set { _Depend = value; }
+        }
+
+        private string _Fecha_Oper;
+
+        public string Fecha_Oper
+        {
+            get { return _Fecha_Oper; }
+            set { _Fecha_Oper = value; }
+        }
+
+        private string _Estat_Oper;
+
+        public string Estat_Oper
+        {
+            get { return _Estat_Oper; }
+            set { _Estat_Oper = value; }
+        }
+
+        private string _Estat_Reg;
+
+        public string Estat_Reg
+        {
+            get { return _Estat_Reg; }
+            set { _Estat_Reg = value; }
+        }
+
+        private string _Fecha_Captura;
+
+        public string Fecha_Captura
+        {
+            get { return _Fecha_Captura; }
+            set { _Fecha_Captura = value; }
+        }
+
+        private string _Fecha_Aplicacion;
+
+        public string Fecha_Aplicacion
+        {
+            get { return _Fecha_Aplicacion; }
+            set { _Fecha_Aplicacion = value; }
+        }
+
+        private string _Fecha_Mod;
+
+        public string Fecha_Mod
+        {
+            get { return _Fecha_Mod; }
+            set { _Fecha_Mod = value; }
+        }
+
+        private string _Stat_Contab;
+
+        public string Stat_Contab
+        {
+            get { return _Stat_Contab; }
+            set { _Stat_Contab = value; }
+        }
+
+        private string _Key_Pol;
+
+        public string Key_Pol
+        {
+            get { return _Key_Pol; }
+            set { _Key_Pol = value; }
+        }
+
+        private string _Codigo_Ant;
+
+        public string Codigo_Ant
+        {
+            get { return _Codigo_Ant; }
+            set { _Codigo_Ant = value; }
+        }
+
+
+        private string _Cod_Programatico;
+
+        public string Cod_Programatico
+        {
+            get { return _Cod_Programatico; }
+            set { _Cod_Programatico = value; }
+        }
+
+
+
+
+
+
     }
 }

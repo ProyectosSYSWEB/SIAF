@@ -26,8 +26,7 @@
                                     <asp:Label ID="lblCap" runat="server" Text="Capitulo"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLCapt" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                    <asp:DropDownList ID="DDLCapt" runat="server" Width="500px" AutoPostBack="True"  OnSelectedIndexChanged="DDLCapt_SelectedIndexChanged"></asp:DropDownList>                                    
                                 </td>
                             </tr>
 
@@ -36,8 +35,7 @@
                                     <asp:Label ID="lblSubcap" runat="server" Text="Subcapitulo"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLSubcap" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                    <asp:DropDownList ID="DDLSubcap" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLSubcap_SelectedIndexChanged"></asp:DropDownList>                                    
                                 </td>
                             </tr>
 
@@ -46,8 +44,7 @@
                                     <asp:Label ID="lblsubsubcap" runat="server" Text="Sub-subcapitulo"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLSubsubcap" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                    <asp:DropDownList ID="DDLSubsubcap" runat="server" Width="500px" AutoPostBack="True" OnTextChanged="DDLSubsubcap_SelectedIndexChanged"  ></asp:DropDownList>                                    
                                 </td>
                             </tr>
 
@@ -57,7 +54,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtPartida" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtPartida" Text="" runat="server" Width="500px" MaxLength="5">
                                     </asp:TextBox>
                                 </td>
                             </tr>                            
@@ -75,7 +72,7 @@
 
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarPartida" Text="Guardar" OnClick="BTNGuardarPartida_Click" />
                                 </td>
                                 <td>                                    
                                 </td>

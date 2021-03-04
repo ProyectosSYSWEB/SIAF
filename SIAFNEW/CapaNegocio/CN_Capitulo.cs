@@ -22,5 +22,19 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void InsertarCapitulo(ref Basicos objBasicos, ref string Verificador)
+        {
+            try
+            {
+                CD_Capitulos CD_Capitulos = new CD_Capitulos();
+                CD_Capitulos.InsertarCapitulo(ref objBasicos, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

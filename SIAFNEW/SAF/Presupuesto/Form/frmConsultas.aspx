@@ -88,7 +88,7 @@
                                 </td>
                                 <td>                                     
                                     <asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="GRDCargarDatosCodProg">
-                                        <asp:ListItem>2020</asp:ListItem>
+                                        
                                     </asp:DropDownList>
                                 </td>
                                 <td>&nbsp;</td>

@@ -29,7 +29,7 @@
                                         <asp:ListItem Value="D">Disminución</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
-                            </tr>
+                            </tr>                           
 
                             <tr>
                                 <td style="width: 30%">
@@ -37,12 +37,23 @@
                                     </asp:Label>
                                 </td>
                                 <td>                                    
-                                    <asp:DropDownList ID="DDLTipoRec" runat="server" Width="500px" AutoPostBack="True">
-                                        <asp:ListItem Value="A">Año en curso</asp:ListItem>
-                                        <asp:ListItem Value="D">Remanente</asp:ListItem>
+                                    <asp:DropDownList ID="DDLTipoRec" runat="server" Width="500px" OnSelectedIndexChanged="DDLTipoRec_SelectedIndexChanged" AutoPostBack="True">
+                                        <asp:ListItem Value="AC">Año en curso</asp:ListItem>
+                                        <asp:ListItem Value="RM">Remanente</asp:ListItem>
                                     </asp:DropDownList>
                                 </td> 
                             </tr>                            
+
+                            <tr >
+                                <td style="width:30%">
+                                    <asp:Label ID="lblTipoOperacion" runat="server" Text="Consecutivo Tipo Operación">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">
+                                    <asp:TextBox ID="txtConsecutivoOpe" Text="" runat="server" ReadOnly="true" Width="200px" Enabled="false">
+                                    </asp:TextBox>                                    
+                                </td>
+                            </tr>
 
                             <tr >
                                 <td style="width:30%">
@@ -50,9 +61,9 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">
-                                    <asp:TextBox ID="txtDepOrigen" Text="99999" runat="server" ReadOnly="true" Width="200px" Enabled="false">
+                                    <asp:TextBox ID="txtDepOrigen" Text="99999" runat="server" ReadOnly="true" Width="50px" Enabled="false">
                                     </asp:TextBox>
-                                    <asp:TextBox ID="txtNombDepOrigen" Text="Dependencia origen" runat="server" Width="300px">
+                                    <asp:TextBox ID="txtNombDepOrigen" Text="Dependencia origen" runat="server" Width="450px">
                                     </asp:TextBox>
                                 </td>
                             </tr>
@@ -131,11 +142,11 @@
 
                             <tr>
                                 <td style="width: 30%">
-                                    <asp:Label ID="lblFuncion" runat="server" Text="Función">
+                                    <asp:Label ID="lblFuncion" runat="server" Text="Fuentes">
                                     </asp:Label>
                                 </td>
                                 <td>                                    
-                                    <asp:DropDownList ID="DDLFuncion" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuncion_OnSelectedIndexChanged"></asp:DropDownList>                                    
+                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_OnSelectedIndexChanged"></asp:DropDownList>                                    
                                 </td>
                             </tr>
 
@@ -262,7 +273,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button>Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarPres" OnClick="BTNGuardarPres_Click" Text="Guardar" />
                                 </td>
                                 <td>                                    
                                 </td>

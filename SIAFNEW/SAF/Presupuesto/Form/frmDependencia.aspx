@@ -24,7 +24,7 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <a href="">Nueva dependencia</a>        
+                                <a href="frmCatalogoDependencias.aspx">Nueva dependencia</a>        
                                 <tr>
                                 <td style="width: 30%">
                                     <asp:Label ID="lblCentroContab" runat="server" Text="Centro contable"></asp:Label>
@@ -37,7 +37,7 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GDRDependencias" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GDRDependencias" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="C_Contab" HeaderText="Centro contable" />
                                                     <asp:BoundField DataField="Depend" HeaderText="Dependencia" />

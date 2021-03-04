@@ -35,21 +35,21 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtClavepro" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtClavepro" Text="" runat="server" Width="500px" maxlength="4" >
                                     </asp:TextBox>
                                 </td>
                             </tr>
 
-                            <tr>
+                            <%--<tr>
                                 <td style="width:30%">
                                     <asp:Label ID="lblClavepoa" runat="server" Text="Clave poa">
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtClavepoa" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtClavepoa" Text="" runat="server" Width="500px" maxlength="4">
                                     </asp:TextBox>
                                 </td>
-                            </tr>
+                            </tr>--%>
 
                             <tr>
                                 <td style="width:30%">
@@ -63,7 +63,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarProyecto" Text="Guardar"  OnClick="BTNGuardarProyecto_Click"/>
                                 </td>
                                 <td>                                    
                                 </td>

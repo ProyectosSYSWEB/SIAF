@@ -16,8 +16,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { };
-                String[] Valores = { };
+                String[] Parametros = {"p_ejercicio" };
+                String[] Valores = { objCentrosContab.Ejercicio };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Centros_Contab", ref dr, Parametros, Valores);
 
@@ -38,6 +38,30 @@ namespace CapaDatos
             finally
             {
                 CDDatos.LimpiarOracleCommand(ref cmm);
+            }
+        }
+
+
+        public void InsertarCentroContable(ref CentrosContab objCentrosContab, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_CLAVE", "P_DESCRIPCION", "P_DIRECTOR", "P_ADMINISTRADOR", "P_SALIENTE", "P_ENTRANTE", "P_EJERCICIO" };
+                object[] Valores = { objCentrosContab.C_Contab, objCentrosContab.Descrip, objCentrosContab.Director, objCentrosContab.Administrador, objCentrosContab.Saliente, objCentrosContab.Entrante, objCentrosContab.Ejercicio };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("INS_CAT_C_CONTAB", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
     }

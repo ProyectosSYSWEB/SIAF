@@ -16,10 +16,10 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { "P_CENTRO_CONTAB" };
-                String[] Valores = { objDependencia.C_Contab };
+                String[] Parametros = { "P_CENTRO_CONTAB", "P_EJERCICIO" };
+                String[] Valores = { objDependencia.C_Contab, Convert.ToString( objDependencia.Ejercicio) };
 
-                cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Depcias", ref dr, Parametros, Valores);
+                cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Saf_Presup_Depcias", ref dr, Parametros, Valores);
 
                 while (dr.Read())
                 {
@@ -29,9 +29,7 @@ namespace CapaDatos
                     objDependencia.Descrip = Convert.ToString(dr.GetValue(2));
                     objDependencia.Administ = Convert.ToString(dr.GetValue(3));
                     objDependencia.Titular = Convert.ToString(dr.GetValue(4));
-                    objDependencia.Titular_Puesto = Convert.ToString(dr.GetValue(5));
-                    objDependencia.Titular_Ant = Convert.ToString(dr.GetValue(6));
-                    objDependencia.Titular_Puesto_Ant = Convert.ToString(dr.GetValue(7));
+                    objDependencia.Titular_Puesto = Convert.ToString(dr.GetValue(5));                    
                     List.Add(objDependencia);
                 }
                 dr.Close();

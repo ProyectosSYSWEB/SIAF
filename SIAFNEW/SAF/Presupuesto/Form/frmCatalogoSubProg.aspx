@@ -23,9 +23,8 @@
                                 <td style="width: 30%">
                                     <asp:Label ID="lblNvlAcad" runat="server" Text="Nivel académico"></asp:Label>
                                 </td>
-                                <td>
-                                    <asp:DropDownList ID="DDLNvlacd" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                <td>                                    
+                                    <asp:DropDownList ID="DDLNvlacd" runat="server" Width="500px" AutoPostBack="True" ></asp:DropDownList>
                                 </td>
                             </tr>
 

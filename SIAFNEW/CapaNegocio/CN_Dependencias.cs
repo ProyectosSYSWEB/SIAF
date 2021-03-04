@@ -21,6 +21,19 @@ namespace CapaNegocio
             {
                 throw new Exception(ex.Message);
             }
-        }       
+        }
+        public void InsertarDependencia(ref Dependencias objDependencias, ref string Verificador)
+        {
+            try
+            {
+                CD_Presupuesto DatosPresupuesto = new CD_Presupuesto();
+                DatosPresupuesto.InsertarDependencia(ref objDependencias, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

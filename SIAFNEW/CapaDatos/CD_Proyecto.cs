@@ -16,8 +16,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = {  };
-                String[] Valores = {  };
+                String[] Parametros = { "p_ejercicio" };
+                String[] Valores = { objProyectos.Ejercicio };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Cat_Proy", ref dr, Parametros, Valores);
 
@@ -38,6 +38,30 @@ namespace CapaDatos
             finally
             {
                 CDDatos.LimpiarOracleCommand(ref cmm);
+            }
+        }
+
+
+        public void InsertarProyecto(ref Proyectos objProyectos, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_CLAVE", "P_DESCRIPCION", "P_STATUS", "P_ID_TIPO_PROYECTO", "P_EJERCICIO" };
+                object[] Valores = { objProyectos.Clave_Proy, objProyectos.Descrip, objProyectos.Status, objProyectos.Id_Tipo_Proyecto, objProyectos.Ejercicio };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRESUP_PROYECTOS", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
     }

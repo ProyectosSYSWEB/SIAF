@@ -39,5 +39,30 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
+
+
+
+        public void InsertarFuente(ref FuentesFin objFuentes, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_FUENTE", "P_ID_TIPO_FINANCIAMIENTO", "P_ID_TIPO_FONDO", "P_DESCRIPCION" };
+                object[] Valores = { objFuentes.Fuente, objFuentes.TipoFinan, objFuentes.TipoFondo, objFuentes.Descrip};
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_BASICOS", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
     }
 }

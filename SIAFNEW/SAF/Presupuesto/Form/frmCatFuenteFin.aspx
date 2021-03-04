@@ -26,7 +26,7 @@
                                     <asp:Label ID="lblTipofuente" runat="server" Text="Tipo Fuente"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLTipofuente" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
+                                    <asp:DropDownList ID="DDLTipofuente" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLTipofuente_SelectedIndexChanged"></asp:DropDownList>
                                     <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
                                 </td>
                             </tr>
@@ -66,7 +66,7 @@
 
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarFuenteFin" Text="Guardar" OnClick="BTNGuardarFuenteFin_Click" />
                                 </td>                                
                             </tr>
 

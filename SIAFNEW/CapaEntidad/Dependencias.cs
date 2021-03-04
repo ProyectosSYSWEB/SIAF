@@ -70,5 +70,95 @@ namespace CapaEntidad
             get { return _Titular_Puesto_Ant; }
             set { _Titular_Puesto_Ant = value; }
         }
+
+        private string _Clave;
+
+        public string Clave
+        {
+            get { return _Clave; }
+            set { _Clave = value; }
+        }
+
+        private string _Domicilio;
+
+        public string Domicilio
+        {
+            get { return _Domicilio; }
+            set { _Domicilio = value; }
+        }
+
+        private string _Id_Estado;
+
+        public string Id_Estado
+        {
+            get { return _Id_Estado; }
+            set { _Id_Estado = value; }
+        }
+
+        private string _Id_Municipio;
+
+        public string Id_Municipio
+        {
+            get { return _Id_Municipio; }
+            set { _Id_Municipio = value; }
+        }
+
+        private string _Zona_Economica;
+
+        public string Zona_Economica
+        {
+            get { return _Zona_Economica; }
+            set { _Zona_Economica = value; }
+        }
+
+        private string _Tel_Titular;
+
+        public string Tel_Titular
+        {
+            get { return _Tel_Titular; }
+            set { _Tel_Titular = value; }
+        }
+
+        private string _Cel_Titular;
+
+        public string Cel_Titular
+        {
+            get { return _Cel_Titular; }
+            set { _Cel_Titular = value; }
+        }
+
+        private string _Tel_Admin;
+
+        public string Tel_Admin
+        {
+            get { return _Tel_Admin; }
+            set { _Tel_Admin = value; }
+        }
+
+        private string _Cel_Admin;
+
+        public string Cel_Admin
+        {
+            get { return _Cel_Admin; }
+            set { _Cel_Admin = value; }
+        }
+
+        private string _Nombramiento;
+
+        public string Nombramiento
+        {
+            get { return _Nombramiento; }
+            set { _Nombramiento = value; }
+        }
+
+        private int _Ejercicio;
+
+        public int Ejercicio
+        {
+            get { return _Ejercicio; }
+            set { _Ejercicio = value; }
+        }
+
+
     }
 }

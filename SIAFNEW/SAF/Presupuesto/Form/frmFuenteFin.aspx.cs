@@ -48,7 +48,7 @@ namespace SAF.Presupuesto.Form
             {
                 lblError.Text = ex.Message;
             }
-        }        
-       
+        }
+
     }
 }

@@ -28,10 +28,10 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDProgramas" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GRDProgramas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Subprog" HeaderText="Clave" />                                                    
-                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                                    <asp:BoundField DataField="Subprog" HeaderText="Clave"  />                                                    
+                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción"  />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:UpdatePanel ID="UpdatePanel104" runat="server">

@@ -87,6 +87,24 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.DropDownList DDLTipoRec;
 
         /// <summary>
+        /// Control lblTipoOperacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipoOperacion;
+
+        /// <summary>
+        /// Control txtConsecutivoOpe.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConsecutivoOpe;
+
+        /// <summary>
         /// Control lblDepOrg.
         /// </summary>
         /// <remarks>
@@ -258,13 +276,13 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.Label lblFuncion;
 
         /// <summary>
-        /// Control DDLFuncion.
+        /// Control DDLFuente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLFuncion;
+        protected global::System.Web.UI.WebControls.DropDownList DDLFuente;
 
         /// <summary>
         /// Control lblCodProg.
@@ -463,5 +481,14 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDigMinis;
+
+        /// <summary>
+        /// Control BTNGuardarPres.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTNGuardarPres;
     }
 }

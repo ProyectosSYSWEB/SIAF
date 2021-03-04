@@ -31,6 +31,7 @@ namespace SAF.Presupuesto.Form
         private void Inicializar()
         {
             CargarCombos();
+            ObtenerConsecutivoTipoOperacion("A");
         }
 
 
@@ -38,11 +39,11 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab, "P_EJERCICIO", SesionUsu.Usu_Ejercicio);
                 DDLCentroContab.SelectedValue = "81101";
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Funcion", ref DDLFuncion);
-                DDLFuncion.SelectedValue = "1";
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Ctx_Dp01", ref DDLCodProg, "p_centro_contable", "p_funcion", DDLCentroContab.SelectedValue, DDLFuncion.SelectedValue);                                
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente);
+                DDLFuente.SelectedValue = "1";
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Ctx_Dp01", ref DDLCodProg, "p_centro_contable", "p_funcion", DDLCentroContab.SelectedValue, DDLFuente.SelectedValue);                                
             }
             catch (Exception ex)
             {
@@ -50,11 +51,11 @@ namespace SAF.Presupuesto.Form
             }
         }
 
-        protected void DDLFuncion_OnSelectedIndexChanged(object sender, EventArgs e)
+        protected void DDLFuente_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Ctx_Dp01", ref DDLCodProg, "p_centro_contable", "p_funcion", DDLCentroContab.SelectedValue, DDLFuncion.SelectedValue);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Ctx_Dp01", ref DDLCodProg, "p_centro_contable", "p_funcion", DDLCentroContab.SelectedValue, DDLFuente.SelectedValue);
             }
             catch(Exception ex)
             {
@@ -78,7 +79,7 @@ namespace SAF.Presupuesto.Form
                 txtProyecto.Text = PresupUnv.Proyecto;
                 txtTipoGasto.Text = PresupUnv.Tipo_Gasto;
                 txtDigMinis.Text = PresupUnv.Dig_Ministrado;
-                txtFuncion.Text = PresupUnv.Funcion;                              
+                txtFuncion.Text = PresupUnv.Funcion;                
             }
             catch (Exception ex)
             {
@@ -86,6 +87,78 @@ namespace SAF.Presupuesto.Form
             }
         }
 
+        private void ObtenerConsecutivoTipoOperacion(string TipoOperacion)
+        {
+            try
+            {
+                string Verificador = string.Empty;
+                PresupUnv.TipoOper = "AC";
+                CN_PresupUnv.ObtenerConsecutivoTipoOperacion(ref PresupUnv, ref Verificador);
+                txtConsecutivoOpe.Text =  Convert.ToString(PresupUnv.Id);
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
 
+        protected void DDLTipoRec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string Verificador = string.Empty;
+                PresupUnv.TipoOper = DDLTipoRec.SelectedValue;
+                CN_PresupUnv.ObtenerConsecutivoTipoOperacion(ref PresupUnv, ref Verificador);
+                txtConsecutivoOpe.Text = Convert.ToString(PresupUnv.Id);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNGuardarPres_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    string Verificador = string.Empty;
+                    string Dependencia = txtDependencia.Text;
+                    PresupUnv objPresUnv = new PresupUnv();
+                    objPresUnv.TipoPres = DDLTipoRec.SelectedValue;
+                    objPresUnv.DependOrig = "99999"; //Agregar
+                    objPresUnv.Dep_Origen = txtNombDepOrigen.Text; // Agregar
+                    objPresUnv.Ref_Docto = txtRefDocto.Text;
+                    objPresUnv.Fecha_Doc = txtfechaDocumento.Text;
+                    objPresUnv.Concepto = txtConcepto.Text;
+                    objPresUnv.Autorizado = txtImporte.Text;
+                    objPresUnv.Mes = txtMes.Text;
+                    objPresUnv.TipoOper = DDLTipoOperacion.Text;
+                    objPresUnv.C_Contab = DDLCentroContab.SelectedValue;
+                    objPresUnv.Depend = Dependencia.Substring(0, 5);
+                    objPresUnv.Cod_Programatico = DDLCodProg.SelectedValue;
+                    objPresUnv.Fecha_Oper = txtfechaDocumento.Text;
+                    objPresUnv.Fecha_Captura = txtfechaDocumento.Text;
+                    objPresUnv.Fecha_Aplicacion = txtfechaDocumento.Text;
+                    objPresUnv.Stat_Contab = "S";
+                    objPresUnv.Estat_Reg = "A";
+                    objPresUnv.Estat_Oper = "2";
+                    CN_PresupUnv.Insertar_PresupUnv(ref objPresUnv, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se guardo correctamente";
+                    else if (Verificador == "1")
+                        lblError.Text = "Este código ya existe";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
     }
 }

@@ -38,12 +38,13 @@ namespace SAF.Presupuesto.Form
         private void CargarCombos()
         {
             try
-            {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Cat_Estruct", ref DDLCodProg);                
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCContab);
+            {                
+                //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCContab);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Programa", ref DDLPrograma);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_SubPrograma", ref DDLSubprog);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_SubPrograma", ref DDLSubprog, "p_nivel", "");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Depend", ref DDLDependencia);
+                DDLDependencia.SelectedValue = "1";
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Cat_Estruct", ref DDLCodProg, "P_DEPENDENCIA", "P_EJERCICIO", DDLDependencia.SelectedValue, SesionUsu.Usu_Ejercicio);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Proyecto", ref DDLProyecto);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Partidas", ref DDLPartida);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente);
@@ -62,15 +63,15 @@ namespace SAF.Presupuesto.Form
             {
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.ObtenerDatosCodProg(DDLCodProg.SelectedValue, ref objCodProg, ref Verificador );
-                DDLCContab.SelectedValue = objCodProg.Centro_Contable;
+                //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
                 DDLPrograma.SelectedValue = objCodProg.Programa;
                 DDLSubprog.SelectedValue = objCodProg.SubPrograma;
                 DDLDependencia.SelectedValue = objCodProg.Dependencia;
                 DDLProyecto.SelectedValue = objCodProg.Proyecto;
                 DDLPartida.SelectedValue = objCodProg.Partida;
                 DDLFuente.SelectedValue = objCodProg.Fuente;
-                txtTipoGasto.Text = "01";
-                txtDigiMinistrado.Text = "01";
+                txtTipoGasto.Text = "1";
+                txtDigiMinistrado.Text = "1";
                 Session["CodigoProg"] = objCodProg;
             }
             catch(Exception ex)
@@ -85,18 +86,67 @@ namespace SAF.Presupuesto.Form
             {
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.ObtenerDatosCodProg(DDLCodProg.SelectedValue, ref objCodProg, ref Verificador);
-                DDLCContab.SelectedValue = objCodProg.Centro_Contable;
+                //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
                 DDLPrograma.SelectedValue = objCodProg.Programa;
                 DDLSubprog.SelectedValue = objCodProg.SubPrograma;
                 DDLDependencia.SelectedValue = objCodProg.Dependencia;
                 DDLProyecto.SelectedValue = objCodProg.Proyecto;
                 DDLPartida.SelectedValue = objCodProg.Partida;
                 DDLFuente.SelectedValue = objCodProg.Fuente;
-                txtTipoGasto.Text = "01";
-                txtDigiMinistrado.Text = "01";
+                txtTipoGasto.Text = "1";
+                txtDigiMinistrado.Text = "1";
                 Session["CodigoProg"] = objCodProg;
             }
             catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void DDLDependencia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Cat_Estruct", ref DDLCodProg, "P_DEPENDENCIA", "P_EJERCICIO", DDLDependencia.SelectedValue, SesionUsu.Usu_Ejercicio);
+                if (DDLDependencia.SelectedValue == "81101")
+                    txtDigiMinistrado.Text = "2";
+                else
+                    txtDigiMinistrado.Text = "1";
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void DDLFuente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtCodProg.Text = DDLPrograma.SelectedValue +"."+ DDLSubprog.SelectedValue + "." + DDLDependencia.SelectedValue + "." + DDLProyecto.SelectedValue + "." + DDLPartida.SelectedValue + "." + DDLFuente.SelectedValue + "." + txtTipoGasto.Text + "." + txtDigiMinistrado.Text;
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNGuardarCodigo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cat_Ctrl_Presp_Saf objCodigoProg = new Cat_Ctrl_Presp_Saf();                
+                objCodProg.Funcion = DDLPrograma.SelectedValue;
+                objCodProg.SubPrograma = DDLSubprog.SelectedValue;
+                objCodProg.Dependencia = DDLDependencia.SelectedValue;
+                objCodProg.Proyecto = DDLProyecto.SelectedValue;
+                objCodProg.Partida = DDLPartida.SelectedValue;
+                objCodProg.Fuente = DDLFuente.SelectedValue;
+                objCodProg.TipoGasto = txtTipoGasto.Text;
+                objCodProg.Dig_Ministrado = txtDigiMinistrado.Text;
+                objCodProg.Ejercicio = SesionUsu.Usu_Ejercicio;
+            }
+            catch(Exception ex)
             {
                 lblError.Text = ex.Message;
             }

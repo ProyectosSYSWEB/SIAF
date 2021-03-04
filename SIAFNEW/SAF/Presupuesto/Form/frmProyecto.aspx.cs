@@ -41,6 +41,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 Proyectos objProyectos = new Proyectos();
+                objProyectos.Ejercicio = SesionUsu.Usu_Ejercicio;
                 List<Proyectos> listPresUnv = new List<Proyectos>();
                 CN_Proyecto.ProyectoGrid(ref objProyectos, ref listPresUnv);                
                 GRDProyectos.DataSource = listPresUnv;
