@@ -193,19 +193,43 @@
     <Content Include="images\wood_pattern.jpg" />
     <Content Include="Informacion.htm" />
     <Content Include="Presupuesto\Form\frmAdecuacion.aspx" />
+    <Content Include="Presupuesto\Form\frmCapitulo.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoCapitulos.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoCentrosContab.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoCtrlPres.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoFunciones.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoPartidas.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoProgramas.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoProyecto.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogos.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoSubProg.aspx" />
+    <Content Include="Presupuesto\Form\frmCatCtrlPresupSaf.aspx" />
+    <Content Include="Presupuesto\Form\frmCatFuenteFin.aspx" />
+    <Content Include="Presupuesto\Form\frmCatPresupUnv.aspx" />
     <Content Include="Presupuesto\Form\frmCedula.aspx" />
+    <Content Include="Presupuesto\Form\frmCentrosContab.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
+    <Content Include="Presupuesto\Form\frmConsultas.aspx" />
+    <Content Include="Presupuesto\Form\frmControlPresupSaf.aspx" />
+    <Content Include="Presupuesto\Form\frmControlPresupuestal.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
     <Content Include="Presupuesto\Form\FRMcrea_Plantilla.aspx" />
     <Content Include="Presupuesto\Form\frmDashboard.aspx" />
+    <Content Include="Presupuesto\Form\frmDependencia.aspx" />
     <Content Include="Presupuesto\Form\FRMDocumento.aspx" />
+    <Content Include="Presupuesto\Form\frmFuenteFin.aspx" />
+    <Content Include="Presupuesto\Form\frmFuncion.aspx" />
     <Content Include="Presupuesto\Form\FRMInterinos.aspx" />
     <Content Include="Presupuesto\Form\frmMinistracion.aspx" />
     <Content Include="Presupuesto\Form\FRMMonitor.aspx" />
+    <Content Include="Presupuesto\Form\frmPartida.aspx" />
     <Content Include="Presupuesto\Form\FRMPlantilla.aspx" />
     <Content Include="Presupuesto\Form\frmPresupuesto.aspx" />
     <Content Include="Presupuesto\Form\FRMHis_Nomina.aspx" />
+    <Content Include="Presupuesto\Form\frmPresupUnv.aspx" />
+    <Content Include="Presupuesto\Form\frmPrograma.aspx" />
+    <Content Include="Presupuesto\Form\frmProyecto.aspx" />
+    <Content Include="Presupuesto\Form\frmSubprograma.aspx" />
     <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
     <Content Include="Presupuesto\Reportes\VisualizadorCrystal.aspx" />
     <Content Include="Scripts\Calendario\calendar_date_select.js" />
@@ -325,12 +349,96 @@
     <Compile Include="Presupuesto\Form\frmAdecuacion.aspx.designer.cs">
       <DependentUpon>frmAdecuacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmCapitulo.aspx.cs">
+      <DependentUpon>frmCapitulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCapitulo.aspx.designer.cs">
+      <DependentUpon>frmCapitulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoCapitulos.aspx.cs">
+      <DependentUpon>frmCatalogoCapitulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoCapitulos.aspx.designer.cs">
+      <DependentUpon>frmCatalogoCapitulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoCentrosContab.aspx.cs">
+      <DependentUpon>frmCatalogoCentrosContab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoCentrosContab.aspx.designer.cs">
+      <DependentUpon>frmCatalogoCentrosContab.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoCtrlPres.aspx.cs">
+      <DependentUpon>frmCatalogoCtrlPres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoCtrlPres.aspx.designer.cs">
+      <DependentUpon>frmCatalogoCtrlPres.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoFunciones.aspx.cs">
+      <DependentUpon>frmCatalogoFunciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoFunciones.aspx.designer.cs">
+      <DependentUpon>frmCatalogoFunciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoPartidas.aspx.cs">
+      <DependentUpon>frmCatalogoPartidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoPartidas.aspx.designer.cs">
+      <DependentUpon>frmCatalogoPartidas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoProgramas.aspx.cs">
+      <DependentUpon>frmCatalogoProgramas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoProgramas.aspx.designer.cs">
+      <DependentUpon>frmCatalogoProgramas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoProyecto.aspx.cs">
+      <DependentUpon>frmCatalogoProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoProyecto.aspx.designer.cs">
+      <DependentUpon>frmCatalogoProyecto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\frmCatalogos.aspx.cs">
       <DependentUpon>frmCatalogos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presupuesto\Form\frmCatalogos.aspx.designer.cs">
       <DependentUpon>frmCatalogos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoSubProg.aspx.cs">
+      <DependentUpon>frmCatalogoSubProg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoSubProg.aspx.designer.cs">
+      <DependentUpon>frmCatalogoSubProg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatCtrlPresupSaf.aspx.cs">
+      <DependentUpon>frmCatCtrlPresupSaf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatCtrlPresupSaf.aspx.designer.cs">
+      <DependentUpon>frmCatCtrlPresupSaf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatFuenteFin.aspx.cs">
+      <DependentUpon>frmCatFuenteFin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatFuenteFin.aspx.designer.cs">
+      <DependentUpon>frmCatFuenteFin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatPresupUnv.aspx.cs">
+      <DependentUpon>frmCatPresupUnv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatPresupUnv.aspx.designer.cs">
+      <DependentUpon>frmCatPresupUnv.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\frmCedula.aspx.cs">
       <DependentUpon>frmCedula.aspx</DependentUpon>
@@ -339,12 +447,40 @@
     <Compile Include="Presupuesto\Form\frmCedula.aspx.designer.cs">
       <DependentUpon>frmCedula.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmCentrosContab.aspx.cs">
+      <DependentUpon>frmCentrosContab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCentrosContab.aspx.designer.cs">
+      <DependentUpon>frmCentrosContab.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\FRMCierre_Dependencia.aspx.cs">
       <DependentUpon>FRMCierre_Dependencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMCierre_Dependencia.aspx.designer.cs">
       <DependentUpon>FRMCierre_Dependencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmConsultas.aspx.cs">
+      <DependentUpon>frmConsultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmConsultas.aspx.designer.cs">
+      <DependentUpon>frmConsultas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlPresupSaf.aspx.cs">
+      <DependentUpon>frmControlPresupSaf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlPresupSaf.aspx.designer.cs">
+      <DependentUpon>frmControlPresupSaf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlPresupuestal.aspx.cs">
+      <DependentUpon>frmControlPresupuestal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlPresupuestal.aspx.designer.cs">
+      <DependentUpon>frmControlPresupuestal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMCosteo.aspx.cs">
       <DependentUpon>FRMCosteo.aspx</DependentUpon>
@@ -367,12 +503,33 @@
     <Compile Include="Presupuesto\Form\frmDashboard.aspx.designer.cs">
       <DependentUpon>frmDashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmDependencia.aspx.cs">
+      <DependentUpon>frmDependencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmDependencia.aspx.designer.cs">
+      <DependentUpon>frmDependencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\FRMDocumento.aspx.cs">
       <DependentUpon>FRMDocumento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMDocumento.aspx.designer.cs">
       <DependentUpon>FRMDocumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmFuenteFin.aspx.cs">
+      <DependentUpon>frmFuenteFin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmFuenteFin.aspx.designer.cs">
+      <DependentUpon>frmFuenteFin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmFuncion.aspx.cs">
+      <DependentUpon>frmFuncion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmFuncion.aspx.designer.cs">
+      <DependentUpon>frmFuncion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\FRMInterinos.aspx.cs">
       <DependentUpon>FRMInterinos.aspx</DependentUpon>
@@ -395,6 +552,13 @@
     <Compile Include="Presupuesto\Form\FRMMonitor.aspx.designer.cs">
       <DependentUpon>FRMMonitor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmPartida.aspx.cs">
+      <DependentUpon>frmPartida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmPartida.aspx.designer.cs">
+      <DependentUpon>frmPartida.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\FRMPlantilla.aspx.cs">
       <DependentUpon>FRMPlantilla.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -416,12 +580,136 @@
     <Compile Include="Presupuesto\Form\FRMHis_Nomina.aspx.designer.cs">
       <DependentUpon>FRMHis_Nomina.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmPresupUnv.aspx.cs">
+      <DependentUpon>frmPresupUnv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmPresupUnv.aspx.designer.cs">
+      <DependentUpon>frmPresupUnv.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmPrograma.aspx.cs">
+      <DependentUpon>frmPrograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmPrograma.aspx.designer.cs">
+      <DependentUpon>frmPrograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmProyecto.aspx.cs">
+      <DependentUpon>frmProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmProyecto.aspx.designer.cs">
+      <DependentUpon>frmProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmSubprograma.aspx.cs">
+      <DependentUpon>frmSubprograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmSubprograma.aspx.designer.cs">
+      <DependentUpon>frmSubprograma.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Reportes\frmReportes.aspx.cs">
       <DependentUpon>frmReportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presupuesto\Reportes\frmReportes.aspx.designer.cs">
       <DependentUpon>frmReportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\rpt-003.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt-003.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_GRID_DOCS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_GRID_DOCS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_LOTEA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_LOTEA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_LOTEC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_LOTEC.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_LOTEM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_LOTEM.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP003.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP003.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005AD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP005AD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005AR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP005AR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005MD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP005MD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005MR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP005MR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008AD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP008AD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008AR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP008AR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008MD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP008MD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008MR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP008MR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP009A.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP009A.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP009B.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP009B.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Presupuesto\Reportes\VisualizadorCrystal.aspx.cs">
       <DependentUpon>VisualizadorCrystal.aspx</DependentUpon>
@@ -476,6 +764,72 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Presupuesto\Reportes\rpt-003.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt-003.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_GRID_DOCS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_GRID_DOCS.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_LOTEA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_LOTEA.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_LOTEC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_LOTEC.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_LOTEM.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_LOTEM.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP003.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP003.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005AD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP005AD.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005AR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP005AR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005MD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP005MD.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005MR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP005MR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008AD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP008AD.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008AR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP008AR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008MD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP008MD.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008MR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP008MR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP009A.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP009A.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP009B.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP009B.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

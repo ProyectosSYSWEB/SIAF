@@ -52,7 +52,7 @@
                                     <tr>
                                        
                                          <td style="width:20%">
-                                            <asp:Label ID="Label7" runat="server" Text="Tipo"></asp:Label>
+                                            <asp:Label ID="Label7" runat="server" Text="Etapa"></asp:Label>
                                         </td>
                                         <td style="width:30%">
                                             <asp:DropDownList ID="ddltipo" runat="server" Width="85%">

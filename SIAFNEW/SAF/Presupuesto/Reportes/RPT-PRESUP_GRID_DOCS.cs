@@ -16,14 +16,14 @@ namespace SAF.Presupuesto.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RPT_PRESUP_RP008AR : ReportClass {
+    public class RPT_PRESUP_GRID_DOCS : ReportClass {
         
-        public RPT_PRESUP_RP008AR() {
+        public RPT_PRESUP_GRID_DOCS() {
         }
         
         public override string ResourceName {
             get {
-                return "RPT-PRESUP_RP008AR.rpt";
+                return "RPT-PRESUP_GRID_DOCS.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SAF.Presupuesto.Reportes {
         
         public override string FullResourceName {
             get {
-                return "SAF.Presupuesto.Reportes.RPT-PRESUP_RP008AR.rpt";
+                return "SAF.Presupuesto.Reportes.RPT-PRESUP_GRID_DOCS.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,41 +82,9 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[7];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[8];
+                return this.ReportDefinition.Sections[4];
             }
         }
         
@@ -130,7 +98,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_2p_capitulo {
+        public CrystalDecisions.Shared.IParameterField Parameter_2p_fecha_inicial {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -138,7 +106,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_2p_fuente {
+        public CrystalDecisions.Shared.IParameterField Parameter_3p_fecha_final {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -146,7 +114,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_3p_proyecto {
+        public CrystalDecisions.Shared.IParameterField Parameter_4p_tipo {
             get {
                 return this.DataDefinition.ParameterFields[3];
             }
@@ -154,7 +122,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_4p_ministrable {
+        public CrystalDecisions.Shared.IParameterField Parameter_5p_supertipo {
             get {
                 return this.DataDefinition.ParameterFields[4];
             }
@@ -162,7 +130,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_5p_ejercicio {
+        public CrystalDecisions.Shared.IParameterField Parameter_6p_status {
             get {
                 return this.DataDefinition.ParameterFields[5];
             }
@@ -170,7 +138,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_6p_mes {
+        public CrystalDecisions.Shared.IParameterField Parameter_7p_ejercicio {
             get {
                 return this.DataDefinition.ParameterFields[6];
             }
@@ -178,9 +146,9 @@ namespace SAF.Presupuesto.Reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRPT_PRESUP_RP008AR : Component, ICachedReport {
+    public class CachedRPT_PRESUP_GRID_DOCS : Component, ICachedReport {
         
-        public CachedRPT_PRESUP_RP008AR() {
+        public CachedRPT_PRESUP_GRID_DOCS() {
         }
         
         [Browsable(false)]
@@ -217,7 +185,7 @@ namespace SAF.Presupuesto.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RPT_PRESUP_RP008AR rpt = new RPT_PRESUP_RP008AR();
+            RPT_PRESUP_GRID_DOCS rpt = new RPT_PRESUP_GRID_DOCS();
             rpt.Site = this.Site;
             return rpt;
         }

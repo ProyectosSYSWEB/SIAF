@@ -41,16 +41,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basicos.cs" />
+    <Compile Include="Cat_Ctrl_Presp_Saf.cs" />
+    <Compile Include="CentrosContab.cs" />
+    <Compile Include="Codigo_Prog.cs" />
+    <Compile Include="Consultas.cs" />
     <Compile Include="cuentas_contables.cs" />
+    <Compile Include="Dependencias.cs" />
+    <Compile Include="Estruct.cs" />
+    <Compile Include="FuentesFin.cs" />
+    <Compile Include="Funcion.cs" />
     <Compile Include="Mnu.cs" />
+    <Compile Include="Partidas.cs" />
     <Compile Include="Presupues.cs" />
+    <Compile Include="PresupUnv.cs" />
     <Compile Include="Pres_Costeo.cs" />
     <Compile Include="Pres_Documento.cs" />
     <Compile Include="Pres_Documento_Detalle.cs" />
     <Compile Include="Pres_Nomina.cs" />
     <Compile Include="Pres_Plantilla.cs" />
     <Compile Include="Pres_Reportes.cs" />
+    <Compile Include="Programa.cs" />
+    <Compile Include="Proyectos.cs" />
     <Compile Include="Sesion.cs" />
+    <Compile Include="Subprograma.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Comun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

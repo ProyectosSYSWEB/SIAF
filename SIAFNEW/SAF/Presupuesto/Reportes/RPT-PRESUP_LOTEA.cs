@@ -16,14 +16,14 @@ namespace SAF.Presupuesto.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RPT_PRESUP_RP008AR : ReportClass {
+    public class RPT_PRESUP_LOTEA : ReportClass {
         
-        public RPT_PRESUP_RP008AR() {
+        public RPT_PRESUP_LOTEA() {
         }
         
         public override string ResourceName {
             get {
-                return "RPT-PRESUP_RP008AR.rpt";
+                return "RPT-PRESUP_LOTEA.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SAF.Presupuesto.Reportes {
         
         public override string FullResourceName {
             get {
-                return "SAF.Presupuesto.Reportes.RPT-PRESUP_RP008AR.rpt";
+                return "SAF.Presupuesto.Reportes.RPT-PRESUP_LOTEA.rpt";
             }
             set {
                 // Do nothing
@@ -130,7 +130,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_2p_capitulo {
+        public CrystalDecisions.Shared.IParameterField Parameter_2p_fecha_inicial {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -138,7 +138,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_2p_fuente {
+        public CrystalDecisions.Shared.IParameterField Parameter_3p_fecha_final {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -146,7 +146,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_3p_proyecto {
+        public CrystalDecisions.Shared.IParameterField Parameter_4p_tipo {
             get {
                 return this.DataDefinition.ParameterFields[3];
             }
@@ -154,7 +154,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_4p_ministrable {
+        public CrystalDecisions.Shared.IParameterField Parameter_6p_status {
             get {
                 return this.DataDefinition.ParameterFields[4];
             }
@@ -162,25 +162,17 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_5p_ejercicio {
+        public CrystalDecisions.Shared.IParameterField Parameter_7p_ejercicio {
             get {
                 return this.DataDefinition.ParameterFields[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_6p_mes {
-            get {
-                return this.DataDefinition.ParameterFields[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRPT_PRESUP_RP008AR : Component, ICachedReport {
+    public class CachedRPT_PRESUP_LOTEA : Component, ICachedReport {
         
-        public CachedRPT_PRESUP_RP008AR() {
+        public CachedRPT_PRESUP_LOTEA() {
         }
         
         [Browsable(false)]
@@ -217,7 +209,7 @@ namespace SAF.Presupuesto.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RPT_PRESUP_RP008AR rpt = new RPT_PRESUP_RP008AR();
+            RPT_PRESUP_LOTEA rpt = new RPT_PRESUP_LOTEA();
             rpt.Site = this.Site;
             return rpt;
         }

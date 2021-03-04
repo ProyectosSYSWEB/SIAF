@@ -29,7 +29,7 @@ namespace CapaNegocio
             {
 
                 CD_Programa CD_Programa = new CD_Programa();
-                CD_Programa.InsertarPrograma(ref objFuncion, ref Verificador);
+                CD_Programa.InsertarPrograma(ref objPrograma, ref Verificador);
             }
             catch (Exception ex)
             {
