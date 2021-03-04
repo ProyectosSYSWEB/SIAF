@@ -88,7 +88,7 @@
                         <table style="width:100%;">
                         <tr>
                             <td class="col1">
-                                <asp:Label ID="lblDependencia0" runat="server" Text="Centro Contable"></asp:Label>
+                                <asp:Label ID="lblDependencia0" runat="server" Text="Dependencia"></asp:Label>
                             </td>
                             <td colspan="5">
                                 <asp:UpdatePanel ID="UpdatePanel126" runat="server">
@@ -185,7 +185,7 @@
                                                                             <table style="width:100%;">
                                                                                 <tr>
                                                                                     <td width="80%">
-                                                                                        <asp:TextBox ID="txtbuscar" runat="server" CssClass="textbuscar" placeholder="#Documento/Concepto" Width="100%"></asp:TextBox>
+                                                                                        <asp:TextBox ID="txtbuscar" runat="server" CssClass="textbuscar" placeholder="Dependencia/No. Documento/Concepto" Width="100%"></asp:TextBox>
                                                                                     </td>
                                                                                     <td width="20%">
                                                                                         <asp:UpdatePanel ID="updBtns" runat="server">
@@ -495,6 +495,10 @@
 <ContentTemplate>
 <table style="width:100%;">
     <tr>
+        <td style="width:10%"></td>
+        <td><asp:Label ID="lblDependenciaDocumento" runat="server" Text="Dependencia" Visible="False"></asp:Label></td>
+    </tr>
+    <tr>
         <td class="auto-style72" valign="top" style="width:10%">
             <asp:UpdatePanel ID="UpdatePanel124" runat="server"><ContentTemplate>
                     <asp:RadioButtonList ID="rbtOrigen_Destino" runat="server" AutoPostBack="True" OnSelectedIndexChanged="rbtOrigen_Destino_SelectedIndexChanged" RepeatDirection="Horizontal">
@@ -612,6 +616,10 @@
 
 
         </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><asp:Label ID="lblFF" runat="server" Text="FF" Visible="False"></asp:Label></td>
     </tr>
     <tr>
         <td class="auto-style72" valign="top">
@@ -989,7 +997,6 @@
 
 
             <br />
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtImporteOrigen" ErrorMessage="RequiredFieldValidator" ValidationGroup="GpoCodProg">*Requerido</asp:RequiredFieldValidator>
 
 
 
@@ -1007,7 +1014,6 @@
 
 
             <br />
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator104" runat="server" ControlToValidate="txtImporteOrigen" SetFocusOnError="True" ValidationExpression="^-?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9]{0,2})?$" ValidationGroup="GpoCodProg">*Formato (999,999,999.99)</asp:RegularExpressionValidator>
 
 
 

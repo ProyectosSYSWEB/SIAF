@@ -208,12 +208,10 @@ namespace CapaNegocio
         public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1, string parametro2, string parametro3, string parametro4, string valor1, string valor2, string valor3, string valor4)
         {
             try
-            {//agreggué los parametrso que hacian falta que son los siguientes 
-                //CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2,  valor1, valor2, valor3); ANTES
-                //CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2,parametro3,parametro4  valor1, valor2, valor3, valor4); AHORA
+            {
                 List<Comun> Lista = new List<Comun>();
                 CD_Comun CDComun = new CD_Comun();
-                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2,parametro3,parametro4,  valor1, valor2, valor3, valor4);
+                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2,  valor1, valor2, valor3);
                 DDL.Items.Clear();
                 if (Lista.Count > 0)
                 {

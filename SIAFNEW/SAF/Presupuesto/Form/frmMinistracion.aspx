@@ -89,7 +89,7 @@
                         <table style="width:100%;">
                         <tr>
                             <td class="col1">
-                                <asp:Label ID="lblDependencia0" runat="server" Text="Centro contable"></asp:Label>
+                                <asp:Label ID="lblDependencia0" runat="server" Text="Dependencia"></asp:Label>
                             </td>
                             <td colspan="5">
                                 <asp:UpdatePanel ID="UpdatePanel126" runat="server">
@@ -182,7 +182,7 @@
                                                                             <table style="width:100%;">
                                                                                 <tr>
                                                                                     <td width="80%">
-                                                                                        <asp:TextBox ID="txtbuscar" runat="server" CssClass="textbuscar" placeholder="#Documento/Concepto" Width="100%"></asp:TextBox>
+                                                                                        <asp:TextBox ID="txtbuscar" runat="server" CssClass="textbuscar" placeholder="Dependencia/No. Documento/Concepto" Width="100%"></asp:TextBox>
                                                                                     </td>
                                                                                     <td width="20%">
                                                                                         <asp:UpdatePanel ID="updBtns" runat="server">
