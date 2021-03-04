@@ -61,7 +61,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                lblError.Text = ex.Message; 
             }
         }
     }
