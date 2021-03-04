@@ -21,5 +21,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void InsertarCodigoProg(string Id, ref Cat_Ctrl_Presp_Saf objCodProg, ref string Verificador)
+        {
+            try
+            {
+                CD_Cat_Ctrl_Presp_Saf CD_Cat_Pres = new CD_Cat_Ctrl_Presp_Saf();
+                CD_Cat_Pres.InsertarCodigoProg(ref objCodProg, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }        
     }
 }

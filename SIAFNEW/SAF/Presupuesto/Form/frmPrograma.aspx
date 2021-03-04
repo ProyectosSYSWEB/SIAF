@@ -28,7 +28,7 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDProgramas" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GRDProgramas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="Funcion" HeaderText="Función" />
                                                     <asp:BoundField DataField="F_Prog" HeaderText="F Prog" />

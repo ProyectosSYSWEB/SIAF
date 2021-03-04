@@ -87,24 +87,6 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.TextBox txtClavepro;
 
         /// <summary>
-        /// Control lblClavepoa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblClavepoa;
-
-        /// <summary>
-        /// Control txtClavepoa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClavepoa;
-
-        /// <summary>
         /// Control lblDescrip.
         /// </summary>
         /// <remarks>
@@ -121,5 +103,14 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescrip;
+
+        /// <summary>
+        /// Control BTNGuardarProyecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTNGuardarProyecto;
     }
 }

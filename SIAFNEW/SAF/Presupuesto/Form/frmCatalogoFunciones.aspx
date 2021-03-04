@@ -24,7 +24,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtFuncion" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtFuncion" Text="" runat="server" Width="500px" MaxLength="3">
                                     </asp:TextBox>
                                 </td>
                             </tr>
@@ -41,7 +41,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button class="" onclick="btnGuardarFuncion()" >Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarFuncion" Text="Guardar" OnClick="BTNGuardarFuncion_Click" />
                                 </td>          
                                 <td>
                                 </td>

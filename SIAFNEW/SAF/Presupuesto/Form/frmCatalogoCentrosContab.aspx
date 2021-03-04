@@ -25,14 +25,14 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtCentroContab" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtCentroContab" Text="" runat="server" Width="500px" MaxLength="5">
                                     </asp:TextBox>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td style="width:30%">
-                                    <asp:Label ID="lblDependencia" runat="server" Text="Nombre dependencia">
+                                    <asp:Label ID="lblDependencia" runat="server" Text="Nombre centro contable">
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
@@ -40,9 +40,57 @@
                                     </asp:TextBox>
                                 </td>
                             </tr>
+
+
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="lblAdministrador" runat="server" Text="Administrador">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtAdministrador" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="lblDirector" runat="server" Text="Titular">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtDirector" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="lblSaliente" runat="server" Text="Titular saliente">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtSaliente" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="lblEntrante" runat="server" Text="Titular entrante">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtEntrante" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr>
+
+
+
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarCatCContab" OnClick="BTNGuardarCatCContab_Click" Text="Guardar" />
                                 </td>                    
                                 <td>
 

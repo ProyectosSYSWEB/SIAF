@@ -28,7 +28,7 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDCentrosContab" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GRDCentrosContab" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="C_Contab" HeaderText="Centro contable" />
                                                     <asp:BoundField DataField="Descrip" HeaderText="Descripcion" />

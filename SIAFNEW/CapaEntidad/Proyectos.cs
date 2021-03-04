@@ -47,6 +47,37 @@ namespace CapaEntidad
             set { _Importe = value; }
         }
 
+        private string _Clave_Proy;
+
+        public string Clave_Proy
+        {
+            get { return _Clave_Proy; }
+            set { _Clave_Proy = value; }
+        }
+
+        private string _Ejercicio;
+
+        public string Ejercicio
+        {
+            get { return _Ejercicio; }
+            set { _Ejercicio = value; }
+        }
+
+        private string _Status;
+
+        public string Status
+        {
+            get { return _Status; }
+            set { _Status = value; }
+        }
+
+        private string _Id_Tipo_Proyecto;
+
+        public string Id_Tipo_Proyecto
+        {
+            get { return _Id_Tipo_Proyecto; }
+            set { _Id_Tipo_Proyecto = value; }
+        }
 
     }
 }

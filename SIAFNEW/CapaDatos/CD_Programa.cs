@@ -49,7 +49,7 @@ namespace CapaDatos
             OracleCommand Cmd = null;
             try
             {
-                String[] Parametros = { "P_FUNCION", "P_F_PROG", "P_DESCRIP", "P_FUNFED" };
+                String[] Parametros = { "P_FUNCION", "P_F_PROG", "P_DESCRIP", "P_FUNFED" }; // No se inserta ningun dato en el parametor FFUNFED
                 object[] Valores = { objPrograma.Funcion, objPrograma.F_Prog, objPrograma.Descripcion, objPrograma.Funfed  };
                 String[] ParametrosOut = { "p_Bandera" };
 

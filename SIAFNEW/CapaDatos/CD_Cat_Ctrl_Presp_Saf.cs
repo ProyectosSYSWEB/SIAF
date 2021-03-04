@@ -38,7 +38,34 @@ namespace CapaDatos
             {
                 CDDatos.LimpiarOracleCommand(ref cmd);
             }
-        }       
-        
+        }
+
+
+        public void InsertarCodigoProg(ref Cat_Ctrl_Presp_Saf objCodProg, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_FUNCION_PROGRAMA", "P_SUBPROGRAMA", "P_DEPENDENCIA", "P_PROYECTO", "P_PARTIDA", "P_FUENTE", "P_TIPO_GASTO", "P_DIG_MINIST", "P_EJERCICIO" };
+                object[] Valores = { objCodProg.Funcion, objCodProg.SubPrograma, objCodProg.Dependencia, objCodProg.Proyecto, objCodProg.Partida, objCodProg.Fuente, objCodProg.TipoGasto, objCodProg.Dig_Ministrado, objCodProg.Ejercicio};
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_Basicos", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+
+
+
     }
 }

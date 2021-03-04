@@ -37,6 +37,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 CentrosContab objCentroContab = new CentrosContab();
+                objCentroContab.Ejercicio = SesionUsu.Usu_Ejercicio;
                 List<CentrosContab> list = new List<CentrosContab>();
                 CN_CentrosContab.CContabGrid(ref objCentroContab, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);

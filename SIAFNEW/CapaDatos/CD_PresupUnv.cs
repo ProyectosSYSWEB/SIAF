@@ -18,7 +18,7 @@ namespace CapaDatos
             {
                 string[] ParametrosIn = { "P_CODIGO_PROG" };
                 object[] Valores = { objPresupUnv.Codigo_Programatico };
-                string[] ParametrosOut = { "P_CENTRO_CONTABLE", "P_DEPENDENCIA", "P_PROGRAMA", "P_SUBPROGRAMA", "P_PARTIDA", "P_FUENTE", "P_PROYECTO", "P_TIPO_GASTO", "P_DIG_MINISTRADO" , "P_FUNCION", "p_bandera" };
+                string[] ParametrosOut = { "P_CENTRO_CONTABLE", "P_DEPENDENCIA", "P_PROGRAMA", "P_SUBPROGRAMA", "P_PARTIDA", "P_FUENTE", "P_PROYECTO", "P_TIPO_GASTO", "P_DIG_MINISTRADO", "P_FUNCION", "p_bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("OBT_DESC_CTX_DP01", ref Verificador, ParametrosIn, Valores, ParametrosOut);
                 if (Verificador == "0")
@@ -81,5 +81,61 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
+
+
+        public void Insertar_PresupUnv(ref PresupUnv objPresup, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_TIPOPRES", "P_DEPENDORIG", "P_DEP_ORIGEN", "P_REF_DOCTO", "P_FECHA_DOC", "P_CONCEPTO", "P_AUTORIZADO", "P_MES", "P_TIPOOPER", "P_C_CONTAB", "P_DEPEND",
+                    "P_CODIGO_PRO", "P_FECHA_OPER", "P_ESTAT_REG", "P_FECHA_CAPTURA", "P_FECHA_APL", "P_STAT_CONTAB" };
+                object[] Valores = { objPresup.TipoPres, objPresup.DependOrig, objPresup.Dep_Origen, objPresup.Ref_Docto, objPresup.Fecha_Doc, objPresup.Concepto, objPresup.Autorizado, 
+                    objPresup.Mes, objPresup.TipoOper, objPresup.C_Contab, objPresup.Depend, objPresup.Cod_Programatico, objPresup.Fecha_Oper, objPresup.Estat_Reg, objPresup.Fecha_Captura, objPresup.Fecha_Aplicacion,
+                objPresup.Stat_Contab };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("INS_REG_PRESUP", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+
+        public void ObtenerConsecutivoTipoOperacion(ref PresupUnv objPresupUnv, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_TIPO_OPE" };
+                object[] Valores = { objPresupUnv.TipoOper };
+                string[] ParametrosOut = { "P_ID", "p_bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("OBT_ULTIMO_CONSECUTIVO", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objPresupUnv = new PresupUnv();
+                    objPresupUnv.Id = Convert.ToInt32(Cmd.Parameters["P_ID"].Value);                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
     }
 }

@@ -19,9 +19,9 @@ namespace SAF.Presupuesto.Form
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];            
-        }
+        }        
 
-        protected void btnGuardarFuncion(object sender, EventArgs e)
+        protected void BTNGuardarFuncion_Click(object sender, EventArgs e)
         {
             try
             {
@@ -36,15 +36,18 @@ namespace SAF.Presupuesto.Form
                     objFuncion.Orden = "";
                     string Verificador = string.Empty;
                     CN_Funcion.InsertarFuncion(ref objFuncion, ref Verificador);
+                    if(Verificador == "0")
+                        lblError.Text = "Se ha guardado correctamente";
+                    else
+                        lblError.Text = Verificador;
                 }
                 else
                     lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-        
     }
 }

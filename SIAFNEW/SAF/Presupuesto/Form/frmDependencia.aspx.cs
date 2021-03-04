@@ -35,7 +35,7 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab);
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab, "p_ejercicio", SesionUsu.Usu_Ejercicio);
         }
 
 
@@ -46,6 +46,7 @@ namespace SAF.Presupuesto.Form
                 Dependencias objDependencias = new Dependencias();
                 List<Dependencias> list = new List<Dependencias>();
                 objDependencias.C_Contab = DDLCentroContab.SelectedValue;
+                objDependencias.Ejercicio = Convert.ToInt32( SesionUsu.Usu_Ejercicio);
                 CN_Dependencias.DependenciasGrid(ref objDependencias, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 //DataSet ds = new DataSet();
@@ -66,6 +67,7 @@ namespace SAF.Presupuesto.Form
                 Dependencias objDependencias = new Dependencias();
                 List<Dependencias> list = new List<Dependencias>();
                 objDependencias.C_Contab = DDLCentroContab.SelectedValue;
+                objDependencias.Ejercicio = Convert.ToInt32( SesionUsu.Usu_Ejercicio);
                 CN_Dependencias.DependenciasGrid(ref objDependencias, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 //DataSet ds = new DataSet();

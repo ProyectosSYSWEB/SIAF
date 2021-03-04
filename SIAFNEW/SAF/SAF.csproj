@@ -200,12 +200,14 @@
     <Content Include="Presupuesto\Form\frmCatalogoCapitulos.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoCentrosContab.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoCtrlPres.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoDependencias.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoFunciones.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoPartidas.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoProgramas.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoProyecto.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogos.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoSubProg.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoSubSubPrograma.aspx" />
     <Content Include="Presupuesto\Form\frmCatCtrlPresupSaf.aspx" />
     <Content Include="Presupuesto\Form\frmCatFuenteFin.aspx" />
     <Content Include="Presupuesto\Form\frmCatPresupUnv.aspx" />
@@ -233,6 +235,7 @@
     <Content Include="Presupuesto\Form\frmPrograma.aspx" />
     <Content Include="Presupuesto\Form\frmProyecto.aspx" />
     <Content Include="Presupuesto\Form\frmSubprograma.aspx" />
+    <Content Include="Presupuesto\Form\frmSubSubPrograma.aspx" />
     <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
     <Content Include="Presupuesto\Reportes\VisualizadorCrystal.aspx" />
     <Content Include="Scripts\Calendario\calendar_date_select.js" />
@@ -380,6 +383,13 @@
     <Compile Include="Presupuesto\Form\frmCatalogoCtrlPres.aspx.designer.cs">
       <DependentUpon>frmCatalogoCtrlPres.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoDependencias.aspx.cs">
+      <DependentUpon>frmCatalogoDependencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoDependencias.aspx.designer.cs">
+      <DependentUpon>frmCatalogoDependencias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\frmCatalogoFunciones.aspx.cs">
       <DependentUpon>frmCatalogoFunciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -421,6 +431,13 @@
     </Compile>
     <Compile Include="Presupuesto\Form\frmCatalogoSubProg.aspx.designer.cs">
       <DependentUpon>frmCatalogoSubProg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoSubSubPrograma.aspx.cs">
+      <DependentUpon>frmCatalogoSubSubPrograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoSubSubPrograma.aspx.designer.cs">
+      <DependentUpon>frmCatalogoSubSubPrograma.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\frmCatCtrlPresupSaf.aspx.cs">
       <DependentUpon>frmCatCtrlPresupSaf.aspx</DependentUpon>
@@ -611,11 +628,12 @@
     <Compile Include="Presupuesto\Form\frmSubprograma.aspx.designer.cs">
       <DependentUpon>frmSubprograma.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presupuesto\Reportes\CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="Presupuesto\Form\frmSubSubPrograma.aspx.cs">
+      <DependentUpon>frmSubSubPrograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmSubSubPrograma.aspx.designer.cs">
+      <DependentUpon>frmSubSubPrograma.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Reportes\frmReportes.aspx.cs">
       <DependentUpon>frmReportes.aspx</DependentUpon>
@@ -724,12 +742,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RPT-011.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-012-CAL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-012-CAL.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-012-GRAF.cs">
@@ -919,10 +931,6 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Presupuesto\Reportes\CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\rpt-001.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt-001.cs</LastGenOutput>
@@ -990,10 +998,6 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-011.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-011.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-012-CAL.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-012-CAL.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-012-GRAF.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

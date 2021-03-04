@@ -28,14 +28,14 @@
                                 </td>
                             </tr>
 
-                            <tr>
+                            <%--<tr>
                                 <td style="width: 30%">
                                     <asp:Label ID="lblFunFed" runat="server" Text="Función Federal"></asp:Label>
                                 </td>
                                 <td>                                    
                                     <asp:DropDownList ID="DDLFuenteFed" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
                                 </td>
-                            </tr>
+                            </tr>--%>
 
 
                             <tr>
@@ -44,7 +44,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtPrograma" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtPrograma" Text="" runat="server" Width="500px" MaxLength="3">
                                     </asp:TextBox>
                                 </td>
                             </tr>
@@ -62,7 +62,13 @@
                             <tr>
                                 <td>
                                     <asp:Button runat="server" Text="Guardar" ID="BTNGuardar" OnClick="BTNGuardar_Click" />                                    
-                                </td>                                
+                                </td>  
+                                <td>
+
+                                </td>
+                                <td>
+                                    <a href="frmPrograma.aspx">Regresar</a>                                   
+                                </td>                                                           
                             </tr>
 
                             <tr>

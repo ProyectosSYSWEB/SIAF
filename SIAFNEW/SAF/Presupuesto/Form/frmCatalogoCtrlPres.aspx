@@ -26,8 +26,7 @@
                                     <asp:Label ID="lblCentroContab" runat="server" Text="Centro contable"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLCentroContab" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                    <asp:DropDownList ID="DDLCentroContab" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCentroContab_SelectedIndexChanged"></asp:DropDownList>                                    
                                 </td>
                             </tr>
 
@@ -36,7 +35,7 @@
                                     <asp:Label ID="lblTipofondo" runat="server" Text="Programa"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLPrograma" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
+                                    <asp:DropDownList ID="DDLPrograma" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLPrograma_SelectedIndexChanged"></asp:DropDownList>
                                     <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
                                 </td>
                             </tr>
@@ -75,7 +74,7 @@
 
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" ID="BTNGuardarCatPres" Text="Guardar" OnClick="BTNGuardarCatPres_Click" />
                                 </td>
                                 <td>                                    
                                 </td>

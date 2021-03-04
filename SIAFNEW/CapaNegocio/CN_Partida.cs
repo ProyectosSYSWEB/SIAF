@@ -22,5 +22,19 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void InsertarPartida(ref Partidas objPartida, ref string Verificador)
+        {
+            try
+            {
+                CD_Partidas CD_Partidas = new CD_Partidas();
+                CD_Partidas.InsertarPartida(ref objPartida, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 Partidas objPartidas = new Partidas();
+                objPartidas.Ejercicio = SesionUsu.Usu_Ejercicio;
                 List<Partidas> list = new List<Partidas>();
                 CN_Partida.PartidasGrid(ref objPartidas, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);

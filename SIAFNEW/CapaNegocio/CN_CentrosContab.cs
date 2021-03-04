@@ -22,5 +22,19 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void InsertarCentroContable(ref CentrosContab objCentrosContab, ref string Verificador)
+        {
+            try
+            {
+                CD_CentrosContab CD_CentrosContab = new CD_CentrosContab();
+                CD_CentrosContab.InsertarCentroContable(ref objCentrosContab, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

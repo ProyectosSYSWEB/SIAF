@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link type="image/x-icon" href="https://sysweb.unach.mx/resources/imagenes/favicon.ico" rel="shortcut icon" />
-    <link rel="stylesheet" href="https://sysweb.unach.mx/resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://sysweb.unach.mx/resources/bootstrap/css/bootstrap.min.css">    
     <link rel="stylesheet" type="text/css" href="https://sysweb.unach.mx/resources/bootstrap/css/mdb.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

@@ -38,6 +38,30 @@ namespace CapaEntidad
             set { _Estatus = value; }
         }
 
+        private string _Programa;
+
+        public string Programa
+        {
+            get { return _Programa; }
+            set { _Programa = value; }
+        }
+
+        private string _Tipo;
+
+        public string Tipo
+        {
+            get { return _Tipo; }
+            set { _Tipo = value; }
+        }
+
+        private string _Status;
+
+        public string Status
+        {
+            get { return _Status; }
+            set { _Status = value; }
+        }
+
 
     }
 }

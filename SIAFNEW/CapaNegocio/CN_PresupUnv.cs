@@ -37,5 +37,32 @@ namespace CapaNegocio
             }
         }
 
+        public void Insertar_PresupUnv(ref PresupUnv objPresUnv, ref string Verificador)
+        {
+            try
+            {
+                CD_PresupUnv CD_Presupunv = new CD_PresupUnv();
+                CD_Presupunv.Insertar_PresupUnv(ref objPresUnv, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void ObtenerConsecutivoTipoOperacion(ref PresupUnv objPresupUnv, ref string Verificador)
+        {
+            try
+            {
+                CD_PresupUnv CD_PresupUnv = new CD_PresupUnv();
+                CD_PresupUnv.ObtenerConsecutivoTipoOperacion(ref objPresupUnv, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

@@ -28,7 +28,7 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDCodProg" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="Tipo_Gasto" HeaderText="Tipo " />
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
@@ -48,14 +48,10 @@
                                                 </Columns>
 
                                                 <FooterStyle CssClass="enc" />
-                                                <PagerStyle CssClass="enc" HorizontalAlign="Center" Width="100%" />
+                                                <%--<PagerStyle CssClass="enc" HorizontalAlign="Center" Width="100%" />--%>
                                                 <SelectedRowStyle CssClass="sel" />
                                                 <HeaderStyle CssClass="enc" />
                                                 <AlternatingRowStyle CssClass="alt" />
-
-
-                                                
-
                                             </asp:GridView>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
