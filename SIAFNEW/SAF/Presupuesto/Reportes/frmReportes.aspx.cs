@@ -148,6 +148,7 @@ namespace SAF.Presupuesto.Reportes
                         CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v14, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
                         btnChkCapitulos_v14.Visible = false;
                         btnChkSubprogramas_v14.Visible = false;
+                        DDLDependencia_v14_SelectedIndexChanged(null, null);
                         break;
                     case "RP-PRESUP_RP005":
                         MultiView1.ActiveViewIndex = 8;
