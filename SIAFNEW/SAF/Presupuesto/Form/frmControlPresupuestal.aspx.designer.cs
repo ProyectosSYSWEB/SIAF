@@ -60,13 +60,13 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.Label lblCentroContab;
 
         /// <summary>
-        /// Control DDLCentroContab.
+        /// Control DDLDependencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLCentroContab;
+        protected global::System.Web.UI.WebControls.DropDownList DDLDependencia;
 
         /// <summary>
         /// Control UpdatePanel11.

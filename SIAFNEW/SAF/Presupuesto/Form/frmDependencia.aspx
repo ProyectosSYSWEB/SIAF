@@ -24,7 +24,9 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <a href="frmCatalogoDependencias.aspx">Nueva dependencia</a>        
+                                <a href="frmCatalogoDependencias.aspx">Nueva dependencia</a>
+                                <br />
+                                <asp:Label ID="LBLNumDepend" runat="server"></asp:Label>
                                 <tr>
                                 <td style="width: 30%">
                                     <asp:Label ID="lblCentroContab" runat="server" Text="Centro contable"></asp:Label>

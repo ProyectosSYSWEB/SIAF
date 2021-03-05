@@ -34,8 +34,8 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab, "p_ejercicio", SesionUsu.Usu_Ejercicio);
-            DDLCentroContab.SelectedValue = "1";
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia,"p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "M");
+            DDLDependencia.SelectedValue = "1";
         }
 
         protected void GRDCargarDatosEstructuraProg()
@@ -44,7 +44,7 @@ namespace SAF.Presupuesto.Form
             {
                 Estruct objEstruct = new Estruct();
                 objEstruct.Ejercicio = SesionUsu.Usu_Ejercicio;
-                objEstruct.Centro_Contable = DDLCentroContab.SelectedValue;
+                objEstruct.Dependencia = DDLDependencia.SelectedValue;
                 List<Estruct> list = new List<Estruct>();
                 CN_Estruct.EstructGrid(ref objEstruct, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -65,7 +65,7 @@ namespace SAF.Presupuesto.Form
             {
                 Estruct objEstruct = new Estruct();
                 objEstruct.Ejercicio = SesionUsu.Usu_Ejercicio;
-                objEstruct.Centro_Contable = DDLCentroContab.SelectedValue;
+                objEstruct.Dependencia = DDLDependencia.SelectedValue;
                 List<Estruct> list = new List<Estruct>();
                 CN_Estruct.EstructGrid(ref objEstruct, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);

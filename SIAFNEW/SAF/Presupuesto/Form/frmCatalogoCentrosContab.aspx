@@ -41,6 +41,16 @@
                                 </td>
                             </tr>
 
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="lblDirector" runat="server" Text="Titular">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtDirector" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr>
 
                             <tr>
                                 <td style="width:30%">
@@ -55,15 +65,15 @@
 
                             <tr>
                                 <td style="width:30%">
-                                    <asp:Label ID="lblDirector" runat="server" Text="Titular">
+                                    <asp:Label ID="lblEntrante" runat="server" Text="Titular entrante">
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtDirector" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtEntrante" Text="" runat="server" Width="500px">
                                     </asp:TextBox>
                                 </td>
                             </tr>
-
+                                                        
                             <tr>
                                 <td style="width:30%">
                                     <asp:Label ID="lblSaliente" runat="server" Text="Titular saliente">
@@ -73,20 +83,7 @@
                                     <asp:TextBox ID="txtSaliente" Text="" runat="server" Width="500px">
                                     </asp:TextBox>
                                 </td>
-                            </tr>
-
-                            <tr>
-                                <td style="width:30%">
-                                    <asp:Label ID="lblEntrante" runat="server" Text="Titular entrante">
-                                    </asp:Label>
-                                </td>
-                                <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtEntrante" Text="" runat="server" Width="500px">
-                                    </asp:TextBox>
-                                </td>
-                            </tr>
-
-
+                            </tr>                                                       
 
                             <tr>
                                 <td>

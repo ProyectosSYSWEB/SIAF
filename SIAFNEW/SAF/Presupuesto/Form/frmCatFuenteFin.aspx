@@ -41,6 +41,16 @@
                                 </td>
                             </tr>
 
+                            <tr>
+                                <td style="width: 30%">
+                                    <asp:Label ID="Label1" runat="server" Text="Tipo Fuente"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDDLTipoSubFondo" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
+                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                </td>
+                            </tr>
+
                             
                             <tr>
                                 <td style="width:30%">

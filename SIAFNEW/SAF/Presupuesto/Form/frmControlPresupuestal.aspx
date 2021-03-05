@@ -27,10 +27,10 @@
                                 <a href="frmCatalogoCtrlPres.aspx">Nueva estructura programática</a>       
                                 <tr>
                                     <td style="width: 30%">
-                                    <asp:Label ID="lblCentroContab" runat="server" Text="Centro contable"></asp:Label>
+                                    <asp:Label ID="lblCentroContab" runat="server" Text="Dependencia"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLCentroContab" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCentroContab_SelectedIndexChanged"></asp:DropDownList>                                    
+                                    <asp:DropDownList ID="DDLDependencia" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCentroContab_SelectedIndexChanged"></asp:DropDownList>                                    
                                 </td>
                                 </tr>
                                 <td colspan="3">                            
@@ -40,7 +40,7 @@
                                                 <Columns>
                                                     <asp:BoundField DataField="Centro_Contable" HeaderText="Centro contable" />
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia"/>
-                                                    <asp:BoundField DataField="Codigo" HeaderText="Código" />
+                                                    <asp:BoundField DataField="Codigo" HeaderText="Estructura programática" />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:UpdatePanel ID="UpdatePanel104" runat="server">

@@ -131,7 +131,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtCodProg" Text="" runat="server" Width="500px" Enabled="false">
+                                    <asp:TextBox ID="txtCodProg" Text="" runat="server" Width="500px" Enabled="false" ForeColor="Black">
                                     </asp:TextBox>
                                 </td>
                             </tr>

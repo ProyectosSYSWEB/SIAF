@@ -63,11 +63,33 @@
 
                             <tr>
                                 <td style="width:30%">
+                                    <asp:Label ID="lblNombramiento" runat="server" Text="Nombramiento del titular">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtNombramiento" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width:30%">
                                     <asp:Label ID="lblAdministrador" runat="server" Text="Administrador">
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
                                     <asp:TextBox ID="txtAdministrador" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="lblNombramientoAdmin" runat="server" Text="Nombramiento del administrador">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtNombAdmin" Text="" runat="server" Width="500px">
                                     </asp:TextBox>
                                 </td>
                             </tr>
@@ -160,16 +182,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td style="width:30%">
-                                    <asp:Label ID="lblNombramiento" runat="server" Text="Nombramiento">
-                                    </asp:Label>
-                                </td>
-                                <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtNombramiento" Text="" runat="server" Width="500px">
-                                    </asp:TextBox>
-                                </td>
-                            </tr>
+                            
 
 
                             <tr>

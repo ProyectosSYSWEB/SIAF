@@ -26,10 +26,10 @@
                                 <a href="frmCatCtrlPresupSaf.aspx">Nuevo codigo programatico</a>        
                                 <tr>
                                 <td style="width: 30%">
-                                    <asp:Label ID="lblCentroContab" runat="server" Text="Centro contable"></asp:Label>
+                                    <asp:Label ID="lblCentroContab" runat="server" Text="Dependencia"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLCentroContab" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCentroContab_SelectedIndexChanged"></asp:DropDownList>
+                                    <asp:DropDownList ID="DDLDependencias" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCentroContab_SelectedIndexChanged"></asp:DropDownList>
                                     <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
                                 </td>
                             </tr>
@@ -39,6 +39,7 @@
                                             <asp:GridView ID="GRDCodProg"  runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="Centro_Contable" HeaderText="Centro contable" />
+                                                    <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Codigo" HeaderText="Código" />                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>

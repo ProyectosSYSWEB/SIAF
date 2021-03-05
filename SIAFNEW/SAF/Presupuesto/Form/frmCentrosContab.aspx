@@ -24,7 +24,9 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <a href="frmCatalogoCentrosContab.aspx">Nuevo centro contable</a>                                
+                                <a href="frmCatalogoCentrosContab.aspx">Nuevo centro contable</a>
+                                <br />
+                                <asp:Label runat="server" ID="LBLncc"></asp:Label>
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>

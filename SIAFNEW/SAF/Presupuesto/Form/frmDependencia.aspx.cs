@@ -53,6 +53,7 @@ namespace SAF.Presupuesto.Form
                 //sda.Fill(ds);//
                 GDRDependencias.DataSource = list;
                 GDRDependencias.DataBind();
+                LBLNumDepend.Text = "Total de dependencias: " + list.Count;
             }
             catch (Exception ex)
             {
@@ -74,6 +75,7 @@ namespace SAF.Presupuesto.Form
                 //sda.Fill(ds);//
                 GDRDependencias.DataSource = list;
                 GDRDependencias.DataBind();
+                LBLNumDepend.Text = "Total de dependencias: " + list.Count;
             }
             catch (Exception ex)
             {

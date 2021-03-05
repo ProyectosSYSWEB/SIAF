@@ -36,8 +36,8 @@ namespace SAF.Presupuesto.Form
             {
                 Basicos objBasicos = new Basicos();
                 List<Basicos> list = new List<Basicos>();
-                objBasicos.tipo = "CAT_EVENTO";
-                objBasicos.status = "A";
+                objBasicos.tipo = "CAT_CAPITULO";
+                objBasicos.valor = "1";
                 CN_Capitulo.CapitulosGrid(ref objBasicos, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 //DataSet ds = new DataSet();

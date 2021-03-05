@@ -16,8 +16,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = {};
-                String[] Valores = { };
+                String[] Parametros = { "p_ejercicio" };
+                String[] Valores = { objFuentes.Ejercicio};
 
                 cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_TipoFinan", ref dr, Parametros, Valores);
 
