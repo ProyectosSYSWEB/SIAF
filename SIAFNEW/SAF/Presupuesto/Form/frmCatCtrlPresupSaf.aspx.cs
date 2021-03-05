@@ -93,8 +93,8 @@ namespace SAF.Presupuesto.Form
                 DDLProyecto.SelectedValue = objCodProg.Proyecto;
                 DDLPartida.SelectedValue = objCodProg.Partida;
                 DDLFuente.SelectedValue = objCodProg.Fuente;
-                txtTipoGasto.Text = "1";
-                txtDigiMinistrado.Text = "1";
+                //txtTipoGasto.Text = "1";
+                //txtDigiMinistrado.Text = "1";
                 Session["CodigoProg"] = objCodProg;
             }
             catch (Exception ex)
