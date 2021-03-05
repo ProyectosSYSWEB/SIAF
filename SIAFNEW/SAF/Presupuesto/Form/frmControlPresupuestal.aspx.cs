@@ -14,6 +14,7 @@ namespace SAF.Presupuesto.Form
         #region Variables
         Sesion SesionUsu = new Sesion();
         CN_Estruct CN_Estruct = new CN_Estruct();
+        CN_Comun CNComun = new CN_Comun();
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -27,7 +28,14 @@ namespace SAF.Presupuesto.Form
 
         private void Inicializar()
         {
-            GRDCargarDatosEstructuraProg();
+            CargarCombos();
+            GRDCargarDatosEstructuraProg();            
+        }
+
+        protected void CargarCombos()
+        {
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia,"p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "M");
+            DDLDependencia.SelectedValue = "1";
         }
 
         protected void GRDCargarDatosEstructuraProg()
@@ -35,6 +43,29 @@ namespace SAF.Presupuesto.Form
             try
             {
                 Estruct objEstruct = new Estruct();
+                objEstruct.Ejercicio = SesionUsu.Usu_Ejercicio;
+                objEstruct.Dependencia = DDLDependencia.SelectedValue;
+                List<Estruct> list = new List<Estruct>();
+                CN_Estruct.EstructGrid(ref objEstruct, ref list);
+                //SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                //DataSet ds = new DataSet();
+                //sda.Fill(ds);//
+                GRDEstrucProg.DataSource = list;
+                GRDEstrucProg.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void DDLCentroContab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Estruct objEstruct = new Estruct();
+                objEstruct.Ejercicio = SesionUsu.Usu_Ejercicio;
+                objEstruct.Dependencia = DDLDependencia.SelectedValue;
                 List<Estruct> list = new List<Estruct>();
                 CN_Estruct.EstructGrid(ref objEstruct, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);

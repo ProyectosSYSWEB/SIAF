@@ -34,7 +34,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtPrograma" Text="" runat="server" Width="500px">
+                                    <asp:TextBox ID="txtPrograma" Text="" runat="server" Width="500px" MaxLength="3">
                                     </asp:TextBox>
                                 </td>
                             </tr>

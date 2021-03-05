@@ -25,7 +25,17 @@
                         <table style="width: 100%">
                             <tr>
                                 <a href="frmCatalogoProyecto.aspx">Nuevo proyecto</a>
-                             <tr>                                
+
+
+                                <td style="width: 30%">
+                                    <asp:Label ID="lblTipoProy" runat="server" Text="Tipo proyecto"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDLTipoProy" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLTipoProy_SelectedIndexChanged"></asp:DropDownList>
+                                </td>
+
+                             <tr>
+                             
                             </tr>
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">

@@ -31,10 +31,16 @@ namespace SAF.Presupuesto.Form
 
         private void Inicializar()
         {
+            CargarCombos();
             GRDCargarDatosProyectos();
+            
         }
 
-
+        protected void CargarCombos()
+        {
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Grid_Cat_TipoProy", ref DDLTipoProy);
+            DDLTipoProy.SelectedValue = "1";
+        }
 
         protected void GRDCargarDatosProyectos()
         {
@@ -42,8 +48,29 @@ namespace SAF.Presupuesto.Form
             {
                 Proyectos objProyectos = new Proyectos();
                 objProyectos.Ejercicio = SesionUsu.Usu_Ejercicio;
+                string Proyecto = DDLTipoProy.SelectedValue;
+                objProyectos.Tipo_Proy = Proyecto.Substring(0, 1);
                 List<Proyectos> listPresUnv = new List<Proyectos>();
                 CN_Proyecto.ProyectoGrid(ref objProyectos, ref listPresUnv);                
+                GRDProyectos.DataSource = listPresUnv;
+                GRDProyectos.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void DDLTipoProy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Proyectos objProyectos = new Proyectos();
+                objProyectos.Ejercicio = SesionUsu.Usu_Ejercicio;
+                string Proyecto = DDLTipoProy.SelectedValue;
+                objProyectos.Tipo_Proy = Proyecto.Substring(0, 1);
+                List<Proyectos> listPresUnv = new List<Proyectos>();
+                CN_Proyecto.ProyectoGrid(ref objProyectos, ref listPresUnv);
                 GRDProyectos.DataSource = listPresUnv;
                 GRDProyectos.DataBind();
             }

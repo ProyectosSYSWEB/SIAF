@@ -24,14 +24,23 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <a href="frmCatalogoCtrlPres.aspx">Nueva estructura programática</a>                                
+                                <a href="frmCatalogoCtrlPres.aspx">Nueva estructura programática</a>       
+                                <tr>
+                                    <td style="width: 30%">
+                                    <asp:Label ID="lblCentroContab" runat="server" Text="Dependencia"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDLDependencia" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCentroContab_SelectedIndexChanged"></asp:DropDownList>                                    
+                                </td>
+                                </tr>
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GRDEstrucProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="Centro_Contable" HeaderText="Centro contable" />
-                                                    <asp:BoundField DataField="Codigo" HeaderText="Código" />
+                                                    <asp:BoundField DataField="Dependencia" HeaderText="Dependencia"/>
+                                                    <asp:BoundField DataField="Codigo" HeaderText="Estructura programática" />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:UpdatePanel ID="UpdatePanel104" runat="server">
