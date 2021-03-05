@@ -22,12 +22,12 @@ namespace CapaNegocio
             }
         }
 
-        public void InsertarCodigoProg(string Id, ref Cat_Ctrl_Presp_Saf objCodProg, ref string Verificador)
+        public void InsertarCodigoProg(Cat_Ctrl_Presp_Saf objCodProg, ref string Verificador)
         {
             try
             {
                 CD_Cat_Ctrl_Presp_Saf CD_Cat_Pres = new CD_Cat_Ctrl_Presp_Saf();
-                CD_Cat_Pres.InsertarCodigoProg(ref objCodProg, ref Verificador);
+                CD_Cat_Pres.InsertarCodigoProg(objCodProg, ref Verificador);
             }
             catch (Exception ex)
             {

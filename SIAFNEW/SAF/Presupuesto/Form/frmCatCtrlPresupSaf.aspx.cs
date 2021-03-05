@@ -135,16 +135,22 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Cat_Ctrl_Presp_Saf objCodigoProg = new Cat_Ctrl_Presp_Saf();                
-                objCodProg.Funcion = DDLPrograma.SelectedValue;
-                objCodProg.SubPrograma = DDLSubprog.SelectedValue;
-                objCodProg.Dependencia = DDLDependencia.SelectedValue;
-                objCodProg.Proyecto = DDLProyecto.SelectedValue;
-                objCodProg.Partida = DDLPartida.SelectedValue;
-                objCodProg.Fuente = DDLFuente.SelectedValue;
-                objCodProg.TipoGasto = txtTipoGasto.Text;
-                objCodProg.Dig_Ministrado = txtDigiMinistrado.Text;
-                objCodProg.Ejercicio = SesionUsu.Usu_Ejercicio;
+                Cat_Ctrl_Presp_Saf objCodigoProg = new Cat_Ctrl_Presp_Saf();
+                objCodigoProg.Funcion = DDLPrograma.SelectedValue;
+                objCodigoProg.SubPrograma = DDLSubprog.SelectedValue;
+                objCodigoProg.Dependencia = DDLDependencia.SelectedValue;
+                objCodigoProg.Proyecto = DDLProyecto.SelectedValue;
+                objCodigoProg.Partida = DDLPartida.SelectedValue;
+                objCodigoProg.Fuente = DDLFuente.SelectedValue;
+                objCodigoProg.TipoGasto = txtTipoGasto.Text;
+                objCodigoProg.Dig_Ministrado = txtDigiMinistrado.Text;
+                objCodigoProg.Ejercicio = SesionUsu.Usu_Ejercicio;
+                string Verificador = string.Empty;
+                CN_Cat_Ctrl_Presp.InsertarCodigoProg(objCodigoProg, ref Verificador);
+                if(Verificador == "0")
+                    lblError.Text = "Se ha guardado correctamente";
+                else
+                    lblError.Text = Verificador;
             }
             catch(Exception ex)
             {

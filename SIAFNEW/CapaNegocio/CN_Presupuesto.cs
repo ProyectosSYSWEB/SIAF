@@ -22,5 +22,20 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void InsertarEstructuraProg(Presupues ObjPresupuesto, ref string Verificador)
+        {
+            try
+            {
+                CD_Presupuesto DatosPresupuesto = new CD_Presupuesto();
+                DatosPresupuesto.InsertarEstructuraProgramatica(ObjPresupuesto, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }
