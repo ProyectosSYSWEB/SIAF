@@ -48,11 +48,12 @@ namespace SAF.Presupuesto.Reportes
                 {
                     case "RP-001":
                         MultiView1.ActiveViewIndex = 0;
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDependencia, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep, ref ListDependencia);
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDependencia, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES", ref ListDependencia);
                         btnChkCapitulos_v1.Visible = false;
                         btnChkFuentes_v1.Visible = false;
                         btnChkProyectos_v1.Visible = false;
                         grdProyectos_v1.Visible = false;
+                        ddlDependencia_SelectedIndexChanged(null, null);
                         break;
                     case "RP-004":
                         MultiView1.ActiveViewIndex = 2;
@@ -145,14 +146,14 @@ namespace SAF.Presupuesto.Reportes
                    
                     case "RP-PRESUP_RP003":
                         MultiView1.ActiveViewIndex = 13;
-                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v14, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
+                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v14, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES");
                         btnChkCapitulos_v14.Visible = false;
                         btnChkSubprogramas_v14.Visible = false;
                         DDLDependencia_v14_SelectedIndexChanged(null, null);
                         break;
                     case "RP-PRESUP_RP005":
                         MultiView1.ActiveViewIndex = 8;
-                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v9, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
+                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v9, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES");
                         DDLMes_v9.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
                         grdProyecto_v9.Visible = false;
                         btnchkCapitulos.Visible = false;
@@ -163,7 +164,7 @@ namespace SAF.Presupuesto.Reportes
                   
                     case "RP-PRESUP_RP008":
                         MultiView1.ActiveViewIndex = 8;
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v9, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v9, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES");
                         DDLMes_v9.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
                         btnchkCapitulos.Visible = false;
                         btnchkProyectos.Visible = false;
@@ -172,8 +173,8 @@ namespace SAF.Presupuesto.Reportes
                         break;
                     case "RP-PRESUP_RP009":
                         MultiView1.ActiveViewIndex = 10;
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependenciaInicial_v11, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependenciaFinal_v11, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependenciaInicial_v11, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES");
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependenciaFinal_v11, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES");
                         btnChkFuentes_v11.Visible = false;
                         btnChkCapitulos_v11.Visible = false;
                         break;
@@ -191,7 +192,7 @@ namespace SAF.Presupuesto.Reportes
                         break;
                     case "RP-PRESUP_SP00":
                         MultiView1.ActiveViewIndex = 12;
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v13, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep);
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v13, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio,"REPORTES" );
                         DDLMesFin_Modificado.SelectedValue = "12";
                         DDLMesFin_Ejercido.SelectedValue = "12";
                         grdCapitulo_v13.Visible = false;

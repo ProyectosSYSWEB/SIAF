@@ -615,6 +615,12 @@
     <Compile Include="Presupuesto\Reportes\frmReportes.aspx.designer.cs">
       <DependentUpon>frmReportes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Reportes\rpt-001.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt-001.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Presupuesto\Reportes\rpt-003.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -728,8 +734,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AdjuntosTemp\" />
-    <Folder Include="Adjuntos\" />
     <Folder Include="ArchivosMenu\" />
     <Folder Include="Scripts\select2\" />
   </ItemGroup>
@@ -766,6 +770,10 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Presupuesto\Reportes\rpt-001.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt-001.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\rpt-003.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt-003.cs</LastGenOutput>

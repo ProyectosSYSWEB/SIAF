@@ -116,6 +116,12 @@ namespace SAF.Presupuesto
             txtConcepto.Text = string.Empty;
             txtAutorizacion.Text = string.Empty;
             txtCancelacion.Text = string.Empty;
+            ddlFuente_F.Enabled = true;
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
+            if (DDLCuenta_Banco.Items.Count >= 1)
+                DDLCuenta_Banco.Items.RemoveAt(0);
+            DDLCuenta_Banco.Items.Insert(0, new ListItem("--OTRA CUENTA BANCO--", "0"));
+            DDLCuenta_Banco_SelectedIndexChanged(null, null);
             ddlTipoEnc.SelectedIndex = 0;
             ddlStatusEnc.Visible = true;
             ddlStatusEnc.SelectedValue = "I";
@@ -176,21 +182,16 @@ namespace SAF.Presupuesto
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "1");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Centro_Contable", ref ddlCentroContable, "p_usuario", "p_ejercicio", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio,ref ListDependencia);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlCentroContable, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep, ref ListDependencia);
                 DDLCentroContable_SelectedIndexChanged(null, null);
-                ddlDepen_SelectedIndexChanged(null, null);
-                CNComun.LlenaCombo("PKG_CONTABILIDAD.Obt_Combo_Ctas_Bancos", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
+
+                CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);                
-                //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep);
                 ddlTipoEnc.Items.RemoveAt(0);
-                ddlTipoEnc.Items.Insert(0, new ListItem("--ELEGIR TIPO--", "0"));
-                if(DDLCuenta_Banco.Items.Count>=1)
-                    DDLCuenta_Banco.Items.RemoveAt(0);
                
-                DDLCuenta_Banco.Items.Insert(0, new ListItem("--OTRA CUENTA BANCO--", "0"));
                
             }
             catch (Exception ex)
@@ -262,12 +263,18 @@ namespace SAF.Presupuesto
                 {
                     ddlTipoEnc.Enabled = false;
                     ddlevento.Enabled = false;
+                    ddlFuente_F.Enabled = false;
+                    DDLCuenta_Banco.Enabled = false;
                     CNComun.HideColumns(grdDetalles, Celdas);
+                    lblFF.Text = grdDetalles.Rows[0].Cells[4].Text.Substring(25, 5);
                 }
                 else
                 {
                     ddlTipoEnc.Enabled = true;
                     ddlevento.Enabled = true;
+                    ddlFuente_F.Enabled = true;
+                    DDLCuenta_Banco.Enabled = true;
+                    lblFF.Text = string.Empty;
                 }
             }
             catch (Exception ex)
@@ -457,7 +464,7 @@ namespace SAF.Presupuesto
             {
                 objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
                 objDocumentoDet.SuperTipo = "C";
-                objDocumentoDet.Tipo = string.Empty;
+                objDocumentoDet.Tipo = ddlevento.SelectedValue;
                 objDocumentoDet.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
                 objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
 
@@ -1028,10 +1035,10 @@ namespace SAF.Presupuesto
                     objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
 
                     objDocumentoDet.Importe_origen = Math.Abs(Convert.ToDouble(txtImporteOrigen.Text));
-                    if (ddlevento.SelectedValue == "98")
-                    {
-                        objDocumentoDet.Importe_origen = objDocumentoDet.Importe_origen * (-1);
-                    }
+                    //if (ddlevento.SelectedValue == "98") //CANCELACION DE CEDULAS
+                    //{
+                    //    objDocumentoDet.Importe_origen = objDocumentoDet.Importe_origen * (-1);
+                    //}
                     objDocumentoDet.Importe_destino = 0;
                     //objDocumentoDet.Importe_mensual = Convert.ToDouble(txtImporteOrigen.Text);
                     objDocumentoDet.Importe_mensual = objDocumentoDet.Importe_origen;
@@ -1107,7 +1114,8 @@ namespace SAF.Presupuesto
         }
         protected void DDLCentroContable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencia_x_Centro", ref ddlDepen, "p_centro_contable", "p_usuario", ddlCentroContable.SelectedValue, SesionUsu.Usu_Nombre);
+
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
             if (SesionUsu.Usu_TipoUsu == "A" || SesionUsu.Usu_TipoUsu == "SA")
             {
                 string DepOriginal = ddlDepen.SelectedValue;
@@ -1117,17 +1125,20 @@ namespace SAF.Presupuesto
                 ddlDepen.SelectedIndex = 0;
             }
 
-            ddlDepen_SelectedIndexChanged(null, null);
             try
             {
-                    string MesAbierto = ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaDos.PadLeft(2, '0');
-                    DateTime fechaIni = Convert.ToDateTime("01/" + MesAbierto + "/" + SesionUsu.Usu_Ejercicio);
-                    DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
-                    CalendarExtenderIni.StartDate = fechaIni;
-                    CalendarExtenderIni.EndDate = fechaFin;
-                    CNComun.LlenaCombo("PKG_CONTABILIDAD.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
-                    
-               
+                string MesAbierto = ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaDos.PadLeft(2, '0');
+                DateTime fechaIni = Convert.ToDateTime("01/" + MesAbierto + "/" + SesionUsu.Usu_Ejercicio);
+                DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
+                CalendarExtenderIni.StartDate = fechaIni;
+                CalendarExtenderIni.EndDate = fechaFin;
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
+                if (DDLCuenta_Banco.Items.Count >= 1)
+                    DDLCuenta_Banco.Items.RemoveAt(0);
+
+                DDLCuenta_Banco.Items.Insert(0, new ListItem("--OTRA CUENTA BANCO--", "0"));
+
+                DDLCuenta_Banco_SelectedIndexChanged(null, null);
             }
             catch (Exception ex)
             {
@@ -1166,6 +1177,9 @@ namespace SAF.Presupuesto
 
         protected void ddlevento_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlCapitulo.SelectedIndex = 0;
+           
+            ddlCapitulo.Enabled = true;
             if (ddlevento.SelectedValue != "06")
             {
                 lblImporteISR.Visible = false;
@@ -1174,6 +1188,11 @@ namespace SAF.Presupuesto
                 lblImporteCheque.Visible = false;
                 RFVImporteCheque.Enabled = false;
                 RFVImporteISR.Enabled = false;
+                if (ddlevento.SelectedValue == "97")//PAGO DE PASIVOS DE EJERCICIOS ANTERIORES
+                {
+                    ddlCapitulo.SelectedValue = "9000";
+                    ddlCapitulo.Enabled = false;
+                }
             }
             else
             {
@@ -1184,7 +1203,8 @@ namespace SAF.Presupuesto
                 RFVImporteCheque.Enabled = true;
                 RFVImporteISR.Enabled = true;
             }
-            }
+            DDLCapitulo_SelectedIndexChanged(null, null);
+        }
 
         protected void DDLTipoBeneficiario_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -472,6 +472,42 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.TextBox txtFolio;
         
         /// <summary>
+        /// Control lblFF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFF;
+        
+        /// <summary>
+        /// Control lblCodigoProg1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodigoProg1;
+        
+        /// <summary>
+        /// Control updPnlFuenteF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlFuenteF;
+        
+        /// <summary>
+        /// Control ddlFuente_F.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFuente_F;
+        
+        /// <summary>
         /// Control lblcuenta.
         /// </summary>
         /// <remarks>
@@ -661,15 +697,6 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.DropDownList ddlDepen;
         
         /// <summary>
-        /// Control updProDepen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProDepen;
-        
-        /// <summary>
         /// Control lblCapitulo.
         /// </summary>
         /// <remarks>
@@ -695,42 +722,6 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCapitulo;
-        
-        /// <summary>
-        /// Control lblCodigoProg1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCodigoProg1;
-        
-        /// <summary>
-        /// Control updPnlFuenteF.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPnlFuenteF;
-        
-        /// <summary>
-        /// Control ddlFuente_F.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFuente_F;
-        
-        /// <summary>
-        /// Control updProFuenteF.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdateProgress updProFuenteF;
         
         /// <summary>
         /// Control lblCodigoProg.
