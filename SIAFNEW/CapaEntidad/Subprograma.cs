@@ -62,6 +62,31 @@ namespace CapaEntidad
             set { _Status = value; }
         }
 
+        private string _Ejercicio;
+
+        public string Ejercicio
+        {
+            get { return _Ejercicio; }
+            set { _Ejercicio = value; }
+        }
+
+        private string _DependenciaI;
+
+        public string DependenciaI
+        {
+            get { return _DependenciaI; }
+            set { _DependenciaI = value; }
+        }
+
+        private string _DependenciaF;
+
+        public string DependenciaF
+        {
+            get { return _DependenciaF; }
+            set { _DependenciaF = value; }
+        }
+
+
 
     }
 }

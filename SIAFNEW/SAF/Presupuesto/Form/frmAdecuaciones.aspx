@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCapitulo.aspx.cs" EnableEventValidation="false" Inherits="SAF.Presupuesto.Form.frmCapitulo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmAdecuaciones.aspx.cs" EnableEventValidation="false" Inherits="SAF.Presupuesto.Form.frmAdecuaciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
@@ -30,7 +30,7 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDCapitulos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowCommand="GRDCapitulos_RowCommand">
+                                            <asp:GridView ID="GRDCapitulos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Name" ItemStyle-Width="150" Visible="true">
                                                         <ItemTemplate>                                                            
@@ -46,7 +46,7 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:Button Text="Eliminar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" OnClick="BtnEliminarRegistro" />
+                                                            <asp:Button Text="Eliminar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>"/>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     

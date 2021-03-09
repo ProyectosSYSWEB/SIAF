@@ -193,7 +193,9 @@
     <Content Include="images\wood_pattern.jpg" />
     <Content Include="Informacion.htm" />
     <Content Include="Presupuesto\Form\frmAdecuacion.aspx" />
+    <Content Include="Presupuesto\Form\frmAdecuaciones.aspx" />
     <Content Include="Presupuesto\Form\frmCapitulo.aspx" />
+    <Content Include="Presupuesto\Form\frmCatalogoAdecuaciones.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoCapitulos.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoCentrosContab.aspx" />
     <Content Include="Presupuesto\Form\frmCatalogoCtrlPres.aspx" />
@@ -350,12 +352,26 @@
     <Compile Include="Presupuesto\Form\frmAdecuacion.aspx.designer.cs">
       <DependentUpon>frmAdecuacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmAdecuaciones.aspx.cs">
+      <DependentUpon>frmAdecuaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmAdecuaciones.aspx.designer.cs">
+      <DependentUpon>frmAdecuaciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\frmCapitulo.aspx.cs">
       <DependentUpon>frmCapitulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presupuesto\Form\frmCapitulo.aspx.designer.cs">
       <DependentUpon>frmCapitulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoAdecuaciones.aspx.cs">
+      <DependentUpon>frmCatalogoAdecuaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmCatalogoAdecuaciones.aspx.designer.cs">
+      <DependentUpon>frmCatalogoAdecuaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\frmCatalogoCapitulos.aspx.cs">
       <DependentUpon>frmCatalogoCapitulos.aspx</DependentUpon>

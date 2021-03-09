@@ -40,7 +40,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia, "p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre ,SesionUsu.Usu_Ejercicio, "");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia, "p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre ,SesionUsu.Usu_Ejercicio, "X");
             }
             catch (Exception ex)
             {
@@ -80,6 +80,7 @@ namespace SAF.Presupuesto.Form
                 Consultas objConsultas = new Consultas();
                 List<Consultas> listConsultas = new List<Consultas>();
                 objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CNConsultas.PolizaConsultaGrid(ref objConsultas, ref listConsultas);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 //DataSet ds = new DataSet();

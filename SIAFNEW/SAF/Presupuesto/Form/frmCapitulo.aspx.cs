@@ -50,5 +50,35 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
+        protected void GRDCapitulos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                //Determine the RowIndex of the Row whose Button was clicked.
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+
+                //Reference the GridView Row.
+                GridViewRow row = GRDCapitulos.Rows[rowIndex];
+                
+                //Fetch value of Name.
+                string capEditar = (row.FindControl("clave") as Label).Text;
+
+                Basicos objCap = new Basicos();
+                objCap.clave = capEditar;
+                Session["SessionCapituloEdit"] = objCap;
+                Response.Redirect("frmCatalogoCapitulos.aspx", true);
+
+                //(row.FindControl("clave") as TextBox).Text = "New" + name;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

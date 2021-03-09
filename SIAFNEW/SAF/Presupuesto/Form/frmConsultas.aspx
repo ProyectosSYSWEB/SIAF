@@ -49,28 +49,31 @@
                                     <asp:CheckBox ID="CBCap1" runat="server" AutoPostBack="true" Text="Capitulo 1000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
                                 </td>
                                 <td>
+                                    <asp:CheckBox ID="CBCap5" runat="server" AutoPostBack="true" Text="Capitulo 5000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
+                                </td>                                
+                            </tr>
+                            <tr>          
+                                <td>
                                     <asp:CheckBox ID="CBCap2" runat="server" AutoPostBack="true" Text="Capitulo 2000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
+                                    
+                                </td>
+                                <td>
+                                    <asp:CheckBox ID="CBCap6" runat="server" AutoPostBack="true" Text="Capitulo 6000" OnCheckedChanged="CBCap_OnCheckedChanged"/>                                    
+                                    
                                 </td>                                
                             </tr>
                             <tr>          
                                 <td>
                                     <asp:CheckBox ID="CBCap3" runat="server" AutoPostBack="true" Text="Capitulo 3000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
+                                    
                                 </td>
-                                <td>
-                                    <asp:CheckBox ID="CBCap4" runat="server" AutoPostBack="true" Text="Capitulo 4000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>                                
-                            </tr>
-                            <tr>          
-                                <td>
-                                    <asp:CheckBox ID="CBCap5" runat="server" AutoPostBack="true" Text="Capitulo 5000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>
-                                <td>
-                                    <asp:CheckBox ID="CBCap6" runat="server" AutoPostBack="true" Text="Capitulo 6000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>                                
-                            </tr>
-                            <tr>          
                                 <td>
                                     <asp:CheckBox ID="CBCap7" runat="server" AutoPostBack="true" Text="Capitulo 7000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
+                                </td>                                
+                            </tr>
+                            <tr>          
+                                <td>
+                                    <asp:CheckBox ID="CBCap4" runat="server" AutoPostBack="true" Text="Capitulo 4000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
                                 </td>
                                 <td>
                                     <asp:CheckBox ID="CBCap8" runat="server" AutoPostBack="true" Text="Capitulo 8000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
@@ -101,11 +104,14 @@
                                             <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="MES" HeaderText="MES" />
-                                                    <asp:BoundField DataField="AUTORIZADO" HeaderText="AUTORIZADO" />
-                                                    <asp:BoundField DataField="AUMENTO" HeaderText="AUMENTO" />
-                                                    <asp:BoundField DataField="DISMINUCION" HeaderText="DISMINUCION" />
-                                                    <asp:BoundField DataField="EJERCIDO" HeaderText="EJERCIDO" />
-                                                    <asp:BoundField DataField="MODIFICADO" HeaderText="MODIFICADO" />
+                                                    <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" />
+                                                    <asp:BoundField DataField="Modificado" HeaderText="Modificado" />
+                                                    <asp:BoundField DataField="Ministrado" HeaderText="Ministrado" />
+                                                    <asp:BoundField DataField="Comprometido" HeaderText="Comprometido" />
+                                                    <asp:BoundField DataField="Devengado" HeaderText="Devengado" />
+                                                    <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" />
+                                                    <asp:BoundField DataField="Pagado" HeaderText="Pagado" />
+                                                    <asp:BoundField DataField="Disminucion" HeaderText="Disminucion" />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:UpdatePanel ID="UpdatePanel12" runat="server">
