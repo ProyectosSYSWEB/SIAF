@@ -390,6 +390,7 @@ namespace SAF.Presupuesto
             objDocumento.Dependencia = lblDependenciaDocumento.Text;
             objDocumento.Folio = txtfolio.Text;
             objDocumento.SuperTipo = SesionUsu.Usu_Rep;
+            objDocumento.Tipo = ddlTipoEnc.SelectedValue;
             objDocumento.Fecha = txtfechaDocumento.Text;
             string fech = txtfechaDocumento.Text;
             objDocumento.MesAnio = fech.Substring(3, 2) + SesionUsu.Usu_Ejercicio.Substring(2, 2);
@@ -399,7 +400,7 @@ namespace SAF.Presupuesto
             objDocumento.MotivoRechazo = txtCancelacion.Text;
             objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
             objDocumento.Seguimiento = txtSeguimiento.Text;
-            objDocumento.Cuenta = string.Empty;
+            objDocumento.Cuenta = "00000";
             objDocumento.NumeroCheque = "00000";
             objDocumento.Contabilizar = "S";
            
@@ -419,7 +420,7 @@ namespace SAF.Presupuesto
             objDocumento.PolizaDevengado = "";
             objDocumento.PolizaEjercido = "";
             objDocumento.PolizaPagado = "";
-            objDocumento.ClaveCuenta = "";
+            objDocumento.ClaveCuenta = "00";
             objDocumento.ClaveEvento = "00";
             objDocumento.KeyDocumento = "";
             objDocumento.KeyPoliza = "";
@@ -759,7 +760,7 @@ namespace SAF.Presupuesto
                     {
 
 
-                        objDocumento.Tipo = ddlTipoEnc.SelectedValue;
+                        
                         guarda_encabezado(ref VerificadorInserta, ref Folio);
                         if (VerificadorInserta != "0")
                             //lblErrorDet.Text = VerificadorInserta;
@@ -1119,7 +1120,7 @@ namespace SAF.Presupuesto
             try
             {
                 
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
                 ddlDepen_SelectedIndexChanged(null, null);
                 
             }

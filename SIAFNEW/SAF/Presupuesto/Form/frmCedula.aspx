@@ -65,7 +65,8 @@
                 document.getElementById("ctl00_MainContent_TabContainer1_TabPanel2_txtImporteDestino").value = Valor;
             }
         }
-         function MascaraNumPoliza(e,txtfechaDocumento) {
+        function MascaraNumPoliza(e, txtfechaDocumento)
+        {
             var Valor = e.value;
             var Valor2 = e.value;
 
@@ -87,13 +88,18 @@
             var NumPoliza = Mes + Valor;
              if (NumPoliza.length <= 7)
              {
-                 if(NumPoliza.length==7)
-                     if (NumPoliza.substr(6, 1) == "D" || NumPoliza.substr(6, 1) == "E")
-                         document.getElementById(e.id).value = Valor2.substr(0, 7);
+                 if (NumPoliza.length == 3)
+                     if (NumPoliza.substr(2, 1) == "F" || NumPoliza.substr(2, 1) == "E" || NumPoliza.substr(2, 1) == "I"
+                         || NumPoliza.substr(2, 1) == "N" || NumPoliza.substr(2, 1) == "C" || NumPoliza.substr(2, 1) == "B"
+                         || NumPoliza.substr(2, 1) == "R" || NumPoliza.substr(2, 1) == "P" || NumPoliza.substr(2, 1) == "O"
+                         || NumPoliza.substr(2, 1) == "A")
+                         document.getElementById(e.id).value = Valor2.substr(0, 3);
                      else
-                         document.getElementById(e.id).value = Valor2.substr(0, 6);
-                  else
+                         document.getElementById(e.id).value = Valor2.substr(0, 2);
+                 else {
+                     
                      document.getElementById(e.id).value = NumPoliza;
+                 }
              }
              else
              {

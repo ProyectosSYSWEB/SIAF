@@ -280,7 +280,8 @@ namespace CapaDatos
                                         objdocumento.Cuenta,objdocumento.NumeroCheque,objdocumento.CedulaComprometido,objdocumento.CedulaDevengado,objdocumento.CedulaEjercido,
                                         objdocumento.CedulaPagado,objdocumento.PolizaComprometida, objdocumento.PolizaDevengado,objdocumento.PolizaEjercido,objdocumento.PolizaPagado,objdocumento.ClaveCuenta,
                                         objdocumento.ClaveEvento,objdocumento.KeyDocumento,objdocumento.KeyPoliza, objdocumento.KeyPoliza811, objdocumento.Ejercicios , objdocumento.Regulariza,
-                                        objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar, objdocumento.ISR,objdocumento.Importe_Operacion,objdocumento.Importe_Cheque,objdocumento.Seguimiento+DetalleSeguimiento };
+                                        objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar, objdocumento.ISR,objdocumento.Importe_Operacion,objdocumento.Importe_Cheque,objdocumento.Seguimiento+DetalleSeguimiento
+                };
                 String[] ParametrosOut = { "P_ID", "P_FOLIO", "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRESUP_DOCUMENTOS", ref Verificador, Parametros, Valores, ParametrosOut);
