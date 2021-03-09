@@ -90,6 +90,7 @@ namespace SAF.Presupuesto
                 txtConcepto.Text = string.Empty;
                 txtAutorizacion.Text = string.Empty;
                 txtCancelacion.Text = string.Empty;
+                txtSeguimiento.Text = string.Empty;
                 ddlFuente_F.Enabled = true;
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
                 if (DDLCta_Banco.Items.Count >= 1)
@@ -316,6 +317,7 @@ namespace SAF.Presupuesto
             objDocumento.Descripcion = txtConcepto.Text;
             objDocumento.MotivoRechazo = txtCancelacion.Text;
             objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
+            objDocumento.Seguimiento = txtSeguimiento.Text;
             objDocumento.Cuenta = (DDLCta_Banco.SelectedValue == "0") ? txtCuenta.Text : DDLCta_Banco.SelectedValue;
             objDocumento.NumeroCheque = "00000";
             objDocumento.Contabilizar = "S";
@@ -606,6 +608,8 @@ namespace SAF.Presupuesto
                         txtConcepto.Text = objDocumento.Descripcion;
                         txtCancelacion.Text = objDocumento.MotivoRechazo;
                         txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
+                        txtSeguimiento.Text = objDocumento.Seguimiento;
+                        txtSeguimiento.Enabled = false;
                         DDLCta_Banco.SelectedValue = objDocumento.Cuenta;
                         /*Llena Grid Detalle*/
                         ddlMesInicialDet.SelectedValue = "01";
@@ -941,8 +945,9 @@ namespace SAF.Presupuesto
                         //objDocumentoDet.Importe_mensual = Convert.ToDouble(txtImporteOrigen.Text);
                         objDocumentoDet.Importe_mensual = objDocumentoDet.Importe_origen;
                         objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-
-                        objDocumentoDet.Beneficiario_tipo = string.Empty;
+                        objDocumentoDet.Concepto = string.Empty;
+                        objDocumentoDet.Referencia = string.Empty;
+                        objDocumentoDet.Beneficiario_tipo = "X";
                         objDocumentoDet.Beneficiario_nombre = string.Empty;
                         objDocumentoDet.Beneficiario_clave = string.Empty;
 

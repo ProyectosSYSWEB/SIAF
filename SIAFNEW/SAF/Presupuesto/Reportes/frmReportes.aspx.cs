@@ -178,6 +178,11 @@ namespace SAF.Presupuesto.Reportes
                         btnChkFuentes_v11.Visible = false;
                         btnChkCapitulos_v11.Visible = false;
                         break;
+                    case "RP-PRESUP_RP012":
+                        MultiView1.ActiveViewIndex = 14;
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v15, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "OTROS");
+                        DDLMes_v15.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
+                        break;
                     case "RP-PRESUP_RP017":
                         MultiView1.ActiveViewIndex = 11;
                         CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Centro_Contable", ref DDLCentroContable_v12, "p_usuario", "p_ejercicio", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio);
@@ -1486,6 +1491,23 @@ namespace SAF.Presupuesto.Reportes
             string ruta = string.Empty;
 
             ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
+            string _open1 = "window.open('" + ruta + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+        }
+        protected void imgBttnPdf_v15_click(object sender, ImageClickEventArgs e)
+        {
+            string ruta = string.Empty;
+
+            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP012&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v15.SelectedValue +  "&TipoDoc=" + DDLPeriodo_v15.SelectedValue + "&MesIni=" + DDLMes_v15.SelectedValue;
+            string _open1 = "window.open('" + ruta + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+        }
+
+        protected void imgBttnExcel_v15_click(object sender, ImageClickEventArgs e)
+        {
+            string ruta = string.Empty;
+
+            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP012_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v15.SelectedValue + "&TipoDoc=" + DDLPeriodo_v15.SelectedValue + "&MesIni=" + DDLMes_v15.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }

@@ -535,15 +535,6 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.DropDownList DDLCuenta_Banco;
         
         /// <summary>
-        /// Control txtcuenta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcuenta;
-        
-        /// <summary>
         /// Control lbldoc_simultaneo.
         /// </summary>
         /// <remarks>
@@ -578,6 +569,15 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNumero_Cheque;
+        
+        /// <summary>
+        /// Control updPnlNum_Cheque.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlNum_Cheque;
         
         /// <summary>
         /// Control txtNumero_Cheque.
@@ -821,6 +821,15 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCancelacion;
+        
+        /// <summary>
+        /// Control txtSeguimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSeguimiento;
         
         /// <summary>
         /// Control TabPanel2.

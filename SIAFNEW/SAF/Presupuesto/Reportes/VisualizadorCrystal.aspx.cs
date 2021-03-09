@@ -541,6 +541,25 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(3, Ejercicio); report.SetParameterValue(4, TipoDoc); report.SetParameterValue(5, Proyecto);
                         reporte_XLS();
                         break;
+                    case "RP-PRESUP_RP012":
+                        if(TipoDoc=="A")
+                            Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP012A.rpt";
+                        else
+                            Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP012M.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Ejercicio); report.SetParameterValue(2, MesIni);
+                        reporte_PDF();
+                        break;
+                    case "RP-PRESUP_RP012_XLS":
+                        if (TipoDoc == "A")
+                            Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP012A.rpt";
+                        else
+                            Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP012M.rpt";
+                        reportes_dir();
+                        reportes_dir();
+                        report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Ejercicio); report.SetParameterValue(2, MesIni);
+                        reporte_XLS();
+                        break;
                     case "RP-PRESUP_RP019":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP019A.rpt";
                         reportes_dir();

@@ -51,9 +51,9 @@ namespace CapaEntidad
         private double _ISR;
         private double _Importe_Cheque;
         private double _Importe_Operacion;
+        private string _Seguimiento;
 
-
-
+        
         private bool _Opcion_Eliminar;
         private bool _Opcion_Eliminar2;
         private bool _Opcion_Modificar;
@@ -64,6 +64,11 @@ namespace CapaEntidad
         private bool _Opcion_Copiar2;
 
 
+        public string Seguimiento
+        {
+            get { return _Seguimiento; }
+            set { _Seguimiento = value; }
+        }
         public double Importe_Operacion
         {
             get { return _Importe_Operacion; }

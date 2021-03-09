@@ -89,6 +89,7 @@ namespace SAF.Presupuesto
             txtConcepto.Text = string.Empty;
             txtAutorizacion.Text = string.Empty;
             txtCancelacion.Text = string.Empty;
+            txtSeguimiento.Text = string.Empty;
             if (ddlTipo.SelectedValue != "T")
                 ddlTipoEnc.SelectedValue = ddlTipo.SelectedValue;
             else
@@ -190,6 +191,7 @@ namespace SAF.Presupuesto
                     lblMesInicialDet.Text = "Mes inicial";
                     lblMesFinalDet.Visible = false;
                     ddlMesFinalDet.Visible = false;
+                    txtSeguimiento.Enabled = false;
                     ocultar();
         }
         private void ValidacionTipoDet()
@@ -396,6 +398,7 @@ namespace SAF.Presupuesto
             objDocumento.Descripcion = txtConcepto.Text;
             objDocumento.MotivoRechazo = txtCancelacion.Text;
             objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
+            objDocumento.Seguimiento = txtSeguimiento.Text;
             objDocumento.Cuenta = string.Empty;
             objDocumento.NumeroCheque = "00000";
             objDocumento.Contabilizar = "S";
@@ -684,8 +687,8 @@ namespace SAF.Presupuesto
                     txtConcepto.Text = objDocumento.Descripcion;
                     txtCancelacion.Text = objDocumento.MotivoRechazo;
                     txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
-                    
-                    
+                    txtSeguimiento.Text = objDocumento.Seguimiento;
+                    txtSeguimiento.Enabled = false;
 
                     /*Llena Grid Detalle*/
                     ddlMesInicialDet.SelectedValue = "01";
@@ -1026,26 +1029,28 @@ namespace SAF.Presupuesto
                 if (content.Count == 0)
                 {
                     objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                    objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0,34);
+                    objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0, 34);
                     objDocumentoDet.Ur_clave = ddlDepen.SelectedValue;
-                    if (ddlDepen.SelectedValue!="81101")
+                    if (ddlDepen.SelectedValue != "81101")
                         lblDependenciaDocumento.Text = ddlDepen.SelectedValue;
-                    objDocumentoDet.Tipo =  rbtOrigen_Destino.SelectedValue ;
+                    objDocumentoDet.Tipo = rbtOrigen_Destino.SelectedValue;
                     objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                     //if(ddlTipoEnc.SelectedValue=="AA" || ddlTipoEnc.SelectedValue=="AR")
                     //    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesFinalDet.SelectedValue);
                     //else
-                        objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                    objDocumentoDet.Cuenta_banco =  "";
+                    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocumentoDet.Cuenta_banco = "";
                     //objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
 
-                        objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                        objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
-                        int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
-                        objDocumentoDet.Importe_mensual = Math.Round(Convert.ToDouble((Convert.ToDecimal(txtImporteOrigen.Text)) / tot),2);
+                    objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
+                    int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
+                    objDocumentoDet.Importe_mensual = Math.Round(Convert.ToDouble((Convert.ToDecimal(txtImporteOrigen.Text)) / tot), 2);
                     objDocumentoDet.Importe_origen = objDocumentoDet.Importe_mensual * tot;
                     objDocumentoDet.Importe_destino = 0;
-                    objDocumentoDet.Beneficiario_tipo =string.Empty;
+                    objDocumentoDet.Concepto = string.Empty;
+                    objDocumentoDet.Referencia = string.Empty;
+                    objDocumentoDet.Beneficiario_tipo ="X";
                     objDocumentoDet.Beneficiario_nombre = string.Empty;
                     objDocumentoDet.Beneficiario_clave = string.Empty;
                    

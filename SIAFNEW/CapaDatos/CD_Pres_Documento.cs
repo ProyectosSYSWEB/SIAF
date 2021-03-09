@@ -85,7 +85,9 @@ namespace CapaDatos
                     objDocumento_Detalle.Mes_final = Convert.ToInt32(objDocumento.Fecha_Inicial);
                     objDocumento_Detalle.Tipo = objDocumento.Tipo;
                     objDocumento_Detalle.Cuenta_banco = objDocumento.Cuenta;
-                    objDocumento_Detalle.Beneficiario_tipo = string.Empty;
+                    objDocumento_Detalle.Concepto = string.Empty;
+                    objDocumento_Detalle.Referencia = string.Empty;
+                    objDocumento_Detalle.Beneficiario_tipo = "X";
                     objDocumento_Detalle.Beneficiario_nombre = string.Empty;
                     objDocumento_Detalle.Beneficiario_clave = string.Empty;
                     List.Add(objDocumento_Detalle);
@@ -133,6 +135,7 @@ namespace CapaDatos
                                             "P_ISR",
                                             "P_IMPORTE_OPERACION",
                                             "P_IMPORTE_CHEQUE",
+                                            "P_SEGUIMIENTO",
                                             "p_bandera"
                 };
 
@@ -161,6 +164,8 @@ namespace CapaDatos
                     objDocumento.ISR = Convert.ToDouble(Cmd.Parameters["P_ISR"].Value);
                     objDocumento.Importe_Operacion = Convert.ToDouble(Cmd.Parameters["P_IMPORTE_OPERACION"].Value);
                     objDocumento.Importe_Cheque = Convert.ToDouble(Cmd.Parameters["P_IMPORTE_CHEQUE"].Value);
+                    objDocumento.Seguimiento = Convert.ToString(Cmd.Parameters["P_SEGUIMIENTO"].Value);
+
 
                 }
 
@@ -246,18 +251,36 @@ namespace CapaDatos
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
             try
-            { 
+            {
+                string DetalleSeguimiento = string.Empty;
+                switch (objdocumento.Status)
+                {
+                    case "I":
+                        DetalleSeguimiento = "INICIAL    - ";
+                        break;
+                    case "T":
+                        DetalleSeguimiento = "TRAMITE    - ";
+                        break;
+                    case "A":
+                        DetalleSeguimiento = "AUTORIZADO - ";
+                        break;
+                    case "R":
+                        DetalleSeguimiento = "RECHAZADO  - ";
+                        break;
+                }
+                DetalleSeguimiento = DetalleSeguimiento + DateTime.Now.ToString("dd/MMMM/yyyy hh:mm tt")+" - "+ objdocumento.Usuario+"\n";
+                    
                 String[] Parametros = { "P_CENTRO_CONTABLE", "P_DEPENDENCIA", "P_SUPERTIPO", "P_TIPO", "P_FECHA", "P_MES_ANIO", "P_TIPO_CAPTURA", "P_STATUS",
                                         "P_DESCRIPCION", "P_MOTIVO_RECHAZO", "P_MOTIVO_AUTORIZACION", "P_CUENTA", "P_NUMERO_CHEQUE", "P_CEDULA_COMPROMETIDO", "P_CEDULA_DEVENGADO",
                                         "P_CEDULA_EJERCIDO", "P_CEDULA_PAGADO", "P_POLIZA_COMPROMETIDO","P_POLIZA_DEVENGADO", "P_POLIZA_EJERCIDO", "P_POLIZA_PAGADO", "P_CLAVE_CUENTA", "P_CLAVE_EVENTO",
                                         "P_KEY_DOCUMENTO", "P_KEY_POLIZA", "P_KEY_POLIZA_811", "P_EJERCICIO", "P_REGULARIZA", "P_FECHA_FINAL", "P_GENERACION_SIMULTANEA",
-                                        "P_USUARIO","P_CONTABILIZAR", "P_ISR","P_IMPORTE_OPERACION","P_IMPORTE_CHEQUE"};
+                                        "P_USUARIO","P_CONTABILIZAR", "P_ISR","P_IMPORTE_OPERACION","P_IMPORTE_CHEQUE","P_SEGUIMIENTO"};
                 object[] Valores =    { objdocumento.CentroContable, objdocumento.Dependencia,objdocumento.SuperTipo,objdocumento.Tipo ,objdocumento.Fecha,
                                         objdocumento.MesAnio,objdocumento.TipoCaptura,objdocumento.Status,objdocumento.Descripcion,objdocumento.MotivoRechazo,objdocumento.MotivoAutorizacion,
                                         objdocumento.Cuenta,objdocumento.NumeroCheque,objdocumento.CedulaComprometido,objdocumento.CedulaDevengado,objdocumento.CedulaEjercido,
                                         objdocumento.CedulaPagado,objdocumento.PolizaComprometida, objdocumento.PolizaDevengado,objdocumento.PolizaEjercido,objdocumento.PolizaPagado,objdocumento.ClaveCuenta,
                                         objdocumento.ClaveEvento,objdocumento.KeyDocumento,objdocumento.KeyPoliza, objdocumento.KeyPoliza811, objdocumento.Ejercicios , objdocumento.Regulariza,
-                                        objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar, objdocumento.ISR,objdocumento.Importe_Operacion,objdocumento.Importe_Cheque };
+                                        objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar, objdocumento.ISR,objdocumento.Importe_Operacion,objdocumento.Importe_Cheque,objdocumento.Seguimiento+DetalleSeguimiento };
                 String[] ParametrosOut = { "P_ID", "P_FOLIO", "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRESUP_DOCUMENTOS", ref Verificador, Parametros, Valores, ParametrosOut);
@@ -282,6 +305,23 @@ namespace CapaDatos
             OracleCommand Cmd = null;
             try
             {
+                string DetalleSeguimiento = string.Empty;
+                switch (objdocumento.Status)
+                {
+                    case "I":
+                        DetalleSeguimiento = "INICIAL    - ";
+                        break;
+                    case "T":
+                        DetalleSeguimiento = "TRAMITE    - ";
+                        break;
+                    case "A":
+                        DetalleSeguimiento = "AUTORIZADO - ";
+                        break;
+                    case "R":
+                        DetalleSeguimiento = "RECHAZADO  - ";
+                        break;
+                }
+                DetalleSeguimiento = DetalleSeguimiento + DateTime.Now.ToString("dd/MMMM/yyyy hh:mm tt") + " - " + objdocumento.Usuario + "\n";
                 String[] Parametros = { "P_ID",
                                         "P_CENTRO_CONTABLE",
                                         "P_DEPENDENCIA",
@@ -302,7 +342,8 @@ namespace CapaDatos
                                         "P_GENERACION_SIMULTANEA",
                                         "P_USUARIO",
                                         "P_CONTABILIZAR",
-                                        "P_ISR"};
+                                        "P_ISR",
+                                        "P_SEGUIMIENTO"};
                 object[] Valores =    {  objdocumento.Id,
                                         objdocumento.CentroContable,
                                         objdocumento.Dependencia,
@@ -323,7 +364,8 @@ namespace CapaDatos
                                         objdocumento.GeneracionSimultanea,
                                         objdocumento.Usuario,
                                         objdocumento.Contabilizar,
-                                        objdocumento .ISR};
+                                        objdocumento.ISR,
+                                        objdocumento.Seguimiento+DetalleSeguimiento};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_DOCUMENTOS", ref Verificador, Parametros, Valores, ParametrosOut);
@@ -343,6 +385,23 @@ namespace CapaDatos
             OracleCommand Cmd = null;
             try
             {
+                string DetalleSeguimiento = string.Empty;
+                switch (objdocumento.Status)
+                {
+                    case "I":
+                        DetalleSeguimiento = "INICIAL    - ";
+                        break;
+                    case "T":
+                        DetalleSeguimiento = "TRAMITE    - ";
+                        break;
+                    case "A":
+                        DetalleSeguimiento = "AUTORIZADO - ";
+                        break;
+                    case "R":
+                        DetalleSeguimiento = "RECHAZADO  - ";
+                        break;
+                }
+                DetalleSeguimiento = DetalleSeguimiento + DateTime.Now.ToString("dd/MMMM/yyyy hh:mm tt") + " - " + objdocumento.Usuario + "\n";
                 String[] Parametros = { "P_ID",
                                         "P_CENTRO_CONTABLE",
                                         "P_DEPENDENCIA",
@@ -366,7 +425,8 @@ namespace CapaDatos
                                         "P_ISR",
                                          "P_POLIZA",
                                         "P_IMPORTE_OPERACION",
-                                        "P_IMPORTE_CHEQUE"};
+                                        "P_IMPORTE_CHEQUE",
+                                        "P_SEGUIMIENTO" };
                 object[] Valores =    {  objdocumento.Id,
                                         objdocumento.CentroContable,
                                         objdocumento.Dependencia,
@@ -390,7 +450,8 @@ namespace CapaDatos
                                         objdocumento .ISR,
                                         objdocumento.PolizaComprometida,
                                         objdocumento.Importe_Operacion,
-                                        objdocumento.Importe_Cheque};
+                                        objdocumento.Importe_Cheque,
+                                        objdocumento.Seguimiento+DetalleSeguimiento};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_CEDULAS", ref Verificador, Parametros, Valores, ParametrosOut);               
