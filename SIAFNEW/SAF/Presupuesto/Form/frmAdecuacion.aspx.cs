@@ -89,6 +89,7 @@ namespace SAF.Presupuesto
             txtConcepto.Text = string.Empty;
             txtAutorizacion.Text = string.Empty;
             txtCancelacion.Text = string.Empty;
+            txtSeguimiento.Text = string.Empty;
             if (ddlTipo.SelectedValue != "T")
                 ddlTipoEnc.SelectedValue = ddlTipo.SelectedValue;
             else
@@ -167,8 +168,8 @@ namespace SAF.Presupuesto
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "1");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlCentroContable, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep, ref ListDependencia);
-                DDLCentroContable_SelectedIndexChanged(null, null);
-                ddlDepen_SelectedIndexChanged(null, null);
+                //DDLCentroContable_SelectedIndexChanged(null, null);
+                //ddlDepen_SelectedIndexChanged(null, null);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
@@ -190,11 +191,12 @@ namespace SAF.Presupuesto
                     lblMesInicialDet.Text = "Mes inicial";
                     lblMesFinalDet.Visible = false;
                     ddlMesFinalDet.Visible = false;
+                    txtSeguimiento.Enabled = false;
                     ocultar();
         }
         private void ValidacionTipoDet()
         {
-
+           
             lblMesInicialDet.Text = "Mes inicial";
             lblMesFinalDet.Visible = true;
             ddlMesFinalDet.Visible = true;
@@ -204,9 +206,8 @@ namespace SAF.Presupuesto
             
             lblLeyTotal_Origen.Text = "TOTAL ORIGEN";
             
-          
-                //validadorTipo.ValidationGroup = "GpoCodProg";
-                if (ddlTipoEnc.SelectedValue == "AA")
+            //validadorTipo.ValidationGroup = "GpoCodProg";
+            if (ddlTipoEnc.SelectedValue == "AA")
                 {
                    
                     if (ddlDepen.SelectedValue != "81101")
@@ -231,6 +232,7 @@ namespace SAF.Presupuesto
 
                 else if (ddlTipoEnc.SelectedValue == "AR")
                 {
+                    
                     lblMesFinalDet.Visible = false;
                     ddlMesFinalDet.Visible = false;
                     ddlMesFinalDet.Enabled = false;
@@ -262,8 +264,19 @@ namespace SAF.Presupuesto
                     ddlMesFinalDet.Visible = false;
 
                     rbtOrigen_Destino.Enabled = true;
+                    rbtOrigen_Destino.SelectedValue = "O";
+                if (SesionUsu.Usu_TipoUsu == "A" || SesionUsu.Usu_TipoUsu == "SA")
+                {
+                        string DepOriginal = ddlDepen.SelectedValue;
+                        ddlDepen.SelectedValue = "81101";
+                        ddlDepen.Items.RemoveAt(ddlDepen.SelectedIndex);
+                        ddlDepen.SelectedValue = DepOriginal;
+                        ddlDepen.SelectedIndex = 0;
                     
                 }
+
+
+            }
             
             
         }
@@ -385,6 +398,7 @@ namespace SAF.Presupuesto
             objDocumento.Descripcion = txtConcepto.Text;
             objDocumento.MotivoRechazo = txtCancelacion.Text;
             objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
+            objDocumento.Seguimiento = txtSeguimiento.Text;
             objDocumento.Cuenta = string.Empty;
             objDocumento.NumeroCheque = "00000";
             objDocumento.Contabilizar = "S";
@@ -673,8 +687,8 @@ namespace SAF.Presupuesto
                     txtConcepto.Text = objDocumento.Descripcion;
                     txtCancelacion.Text = objDocumento.MotivoRechazo;
                     txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
-                    
-                    
+                    txtSeguimiento.Text = objDocumento.Seguimiento;
+                    txtSeguimiento.Enabled = false;
 
                     /*Llena Grid Detalle*/
                     ddlMesInicialDet.SelectedValue = "01";
@@ -1015,26 +1029,28 @@ namespace SAF.Presupuesto
                 if (content.Count == 0)
                 {
                     objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                    objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0,34);
+                    objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0, 34);
                     objDocumentoDet.Ur_clave = ddlDepen.SelectedValue;
-                    if (ddlDepen.SelectedValue!="81101")
+                    if (ddlDepen.SelectedValue != "81101")
                         lblDependenciaDocumento.Text = ddlDepen.SelectedValue;
-                    objDocumentoDet.Tipo =  rbtOrigen_Destino.SelectedValue ;
+                    objDocumentoDet.Tipo = rbtOrigen_Destino.SelectedValue;
                     objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                     //if(ddlTipoEnc.SelectedValue=="AA" || ddlTipoEnc.SelectedValue=="AR")
                     //    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesFinalDet.SelectedValue);
                     //else
-                        objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                    objDocumentoDet.Cuenta_banco =  "";
+                    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocumentoDet.Cuenta_banco = "";
                     //objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
 
-                        objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                        objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
-                        int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
-                        objDocumentoDet.Importe_mensual = Math.Round(Convert.ToDouble((Convert.ToDecimal(txtImporteOrigen.Text)) / tot),2);
+                    objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
+                    int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
+                    objDocumentoDet.Importe_mensual = Math.Round(Convert.ToDouble((Convert.ToDecimal(txtImporteOrigen.Text)) / tot), 2);
                     objDocumentoDet.Importe_origen = objDocumentoDet.Importe_mensual * tot;
                     objDocumentoDet.Importe_destino = 0;
-                    objDocumentoDet.Beneficiario_tipo =string.Empty;
+                    objDocumentoDet.Concepto = string.Empty;
+                    objDocumentoDet.Referencia = string.Empty;
+                    objDocumentoDet.Beneficiario_tipo ="X";
                     objDocumentoDet.Beneficiario_nombre = string.Empty;
                     objDocumentoDet.Beneficiario_clave = string.Empty;
                    
@@ -1089,19 +1105,22 @@ namespace SAF.Presupuesto
             Session["DocDet"] = null;
             ddlCentroContable.Enabled = false;
             LimpiarControles();
-            ValidacionTipoDet();
+            DDLCentroContable_SelectedIndexChanged(null,null);
+            //ValidacionTipoDet();
         }
         protected void ddlTipoEnc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValidacionTipoDet();
+            DDLCentroContable_SelectedIndexChanged(null, null);
+           
         }
         protected void DDLCentroContable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
-            ddlDepen_SelectedIndexChanged(null, null);
+           
             try
             {
-               
+                
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
+                ddlDepen_SelectedIndexChanged(null, null);
                 
             }
             catch (Exception ex)

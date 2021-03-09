@@ -1704,6 +1704,82 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </asp:View>
+                    <asp:View ID="View15" runat="server">
+                        <asp:UpdatePanel ID="UpdatePanel18" runat="server">
+                            <ContentTemplate>
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="width:20%">
+                                            <asp:Label ID="Label52" runat="server" Text="Dependencia"></asp:Label>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:DropDownList ID="DDLDependencia_v15" runat="server" Width="100%"  >
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label53" runat="server" Text="Período"></asp:Label>
+                                        </td>
+                                        <td style="width:30%">
+                                            <asp:DropDownList ID="DDLPeriodo_v15" runat="server" Width="85%">
+                                                <asp:ListItem Value="M">Mensual</asp:ListItem>
+                                                <asp:ListItem Value="A">Acumulado</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td style="width:20%">
+                                            <asp:Label ID="Label54" runat="server" Text="Mes"></asp:Label>
+                                        </td>
+                                        <td style="width:30%">
+                                            <asp:DropDownList ID="DDLMes_v15" runat="server" Width="85%">
+                                                <asp:ListItem Value="01">Enero</asp:ListItem>
+                                                                <asp:ListItem Value="02">Febrero</asp:ListItem>
+                                                                <asp:ListItem Value="03">Marzo</asp:ListItem>
+                                                                <asp:ListItem Value="04">Abril</asp:ListItem>
+                                                                <asp:ListItem Value="05">Mayo</asp:ListItem>
+                                                                <asp:ListItem Value="06">Junio</asp:ListItem>
+                                                                <asp:ListItem Value="07">Julio</asp:ListItem>
+                                                                <asp:ListItem Value="08">Agosto</asp:ListItem>
+                                                                <asp:ListItem Value="09">Septiembre</asp:ListItem>
+                                                                <asp:ListItem Value="10">Octubre</asp:ListItem>
+                                                                <asp:ListItem Value="11">Noviembre</asp:ListItem>
+                                                                <asp:ListItem Value="12">Diciembre</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Label ID="Label55" runat="server" Text="Reporte"></asp:Label>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:DropDownList ID="DDLReporte_v15" runat="server" Width="100%">
+                                             <asp:ListItem Value="RP0012">RP012 - Estado presupuestal por fuente de financiamiento</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td></tr>
+
+                                    <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                             
+                                    <tr>
+                                        <td class="cuadro_botones" colspan="4">
+                                            <asp:UpdatePanel ID="UpdatePanel19" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:ImageButton ID="imgBttnPdf_v15" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" onclick="imgBttnPdf_v15_click" title="Reporte PDF" />
+                                                    <asp:ImageButton ID="imgBttnExcel_v15" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/excel.png" onclick="imgBttnExcel_v15_click" title="Reporte Excel" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td colspan="3">&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </asp:View>
                 </asp:MultiView>                
             </td>
         </tr>
