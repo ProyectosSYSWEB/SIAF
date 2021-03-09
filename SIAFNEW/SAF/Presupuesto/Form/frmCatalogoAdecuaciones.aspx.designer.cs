@@ -11,7 +11,7 @@ namespace SAF.Presupuesto.Form
 {
 
 
-    public partial class frmCatalogoDependencias
+    public partial class frmCatalogoAdecuaciones
     {
 
         /// <summary>
@@ -51,282 +51,210 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// Control lblCentroContab.
+        /// Control lblTipoAdecuacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCentroContab;
+        protected global::System.Web.UI.WebControls.Label lblTipoAdecuacion;
 
         /// <summary>
-        /// Control DDLCentroContab.
+        /// Control DDLTipoAdecuacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLCentroContab;
+        protected global::System.Web.UI.WebControls.DropDownList DDLTipoAdecuacion;
 
         /// <summary>
-        /// Control lblClvDepend.
+        /// Control lblMesAnio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblClvDepend;
+        protected global::System.Web.UI.WebControls.Label lblMesAnio;
 
         /// <summary>
-        /// Control txtClvDepend.
+        /// Control txtMesAnio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClvDepend;
+        protected global::System.Web.UI.WebControls.TextBox txtMesAnio;
 
         /// <summary>
-        /// Control lblDependencia.
+        /// Control lblfechaDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDependencia;
+        protected global::System.Web.UI.WebControls.Label lblfechaDocumento;
 
         /// <summary>
-        /// Control txtDependencia.
+        /// Control txtfechaDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDependencia;
+        protected global::System.Web.UI.WebControls.TextBox txtfechaDocumento;
 
         /// <summary>
-        /// Control lblTitular.
+        /// Control CalendarExtenderIni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitular;
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtenderIni;
 
         /// <summary>
-        /// Control txtTitular.
+        /// Control imgCalendarioIni.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTitular;
+        protected global::System.Web.UI.WebControls.ImageButton imgCalendarioIni;
 
         /// <summary>
-        /// Control lblNombramiento.
+        /// Control valFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombramiento;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valFecha;
 
         /// <summary>
-        /// Control txtNombramiento.
+        /// Control lblStatusOpe.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombramiento;
+        protected global::System.Web.UI.WebControls.Label lblStatusOpe;
 
         /// <summary>
-        /// Control lblAdministrador.
+        /// Control txtStatusOperacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdministrador;
+        protected global::System.Web.UI.WebControls.TextBox txtStatusOperacion;
 
         /// <summary>
-        /// Control txtAdministrador.
+        /// Control lblConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdministrador;
+        protected global::System.Web.UI.WebControls.Label lblConcepto;
 
         /// <summary>
-        /// Control lblNombramientoAdmin.
+        /// Control txtConcepto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombramientoAdmin;
+        protected global::System.Web.UI.WebControls.TextBox txtConcepto;
 
         /// <summary>
-        /// Control txtNombAdmin.
+        /// Control lbl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombAdmin;
+        protected global::System.Web.UI.WebControls.Label lbl;
 
         /// <summary>
-        /// Control lblDomicilio.
+        /// Control DDLMesInicial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDomicilio;
+        protected global::System.Web.UI.WebControls.DropDownList DDLMesInicial;
 
         /// <summary>
-        /// Control txtDomicilio.
+        /// Control Label1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDomicilio;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Control lblEstado.
+        /// Control DropDownList1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEstado;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
 
         /// <summary>
-        /// Control DDLEstado.
+        /// Control lblPartida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLEstado;
+        protected global::System.Web.UI.WebControls.Label lblPartida;
 
         /// <summary>
-        /// Control lblMunicipio.
+        /// Control DDLPartida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMunicipio;
+        protected global::System.Web.UI.WebControls.DropDownList DDLPartida;
 
         /// <summary>
-        /// Control DDLMunicipio.
+        /// Control lblFuente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLMunicipio;
+        protected global::System.Web.UI.WebControls.Label lblFuente;
 
         /// <summary>
-        /// Control lblZonaEco.
+        /// Control DDLFuente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblZonaEco;
+        protected global::System.Web.UI.WebControls.DropDownList DDLFuente;
 
         /// <summary>
-        /// Control txtZonaEconomica.
+        /// Control lblNvl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtZonaEconomica;
+        protected global::System.Web.UI.WebControls.Label lblNvl;
 
         /// <summary>
-        /// Control lblTelefonoTitular.
+        /// Control txtNvl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTelefonoTitular;
-
-        /// <summary>
-        /// Control txtTelTitular.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelTitular;
-
-        /// <summary>
-        /// Control lblCelTitular.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCelTitular;
-
-        /// <summary>
-        /// Control txtCelTitular.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCelTitular;
-
-        /// <summary>
-        /// Control lblTelAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTelAdmin;
-
-        /// <summary>
-        /// Control txtTelAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelAdmin;
-
-        /// <summary>
-        /// Control lblCelAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCelAdmin;
-
-        /// <summary>
-        /// Control txtCelAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCelAdmin;
-
-        /// <summary>
-        /// Control BTNGuardarDepend.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTNGuardarDepend;
+        protected global::System.Web.UI.WebControls.TextBox txtNvl;
     }
 }

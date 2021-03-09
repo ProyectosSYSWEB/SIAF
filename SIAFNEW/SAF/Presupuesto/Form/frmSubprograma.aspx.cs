@@ -38,6 +38,9 @@ namespace SAF.Presupuesto.Form
             {
                 Subprograma objSubprogramaa = new Subprograma();
                 List<Subprograma> list = new List<Subprograma>();
+                objSubprogramaa.DependenciaI = "11101";
+                objSubprogramaa.DependenciaF = "81101";
+                objSubprogramaa.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CN_Subprog.SubprogramasGrid(ref objSubprogramaa, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 //DataSet ds = new DataSet();

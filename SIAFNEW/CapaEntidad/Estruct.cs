@@ -79,5 +79,14 @@ namespace CapaEntidad
             set { _Codigo = value; }
         }
 
+        private string _Ejercicio;
+
+        public string Ejercicio
+        {
+            get { return _Ejercicio; }
+            set { _Ejercicio = value; }
+        }
+
+
     }
 }

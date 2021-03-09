@@ -16,8 +16,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;                
-                String[] Parametros = { "p_cod_prog" };
-                String[] Valores = { objConsultas.Codigo_Programatico };
+                String[] Parametros = { "p_cod_prog", "p_ejercicio" };
+                String[] Valores = { objConsultas.Codigo_Programatico, objConsultas.Ejercicio };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Presup_Dp01", ref dr, Parametros, Valores);
 
@@ -26,10 +26,14 @@ namespace CapaDatos
                     objConsultas = new Consultas();
                     objConsultas.Mes = Convert.ToString(dr.GetValue(0));
                     objConsultas.Autorizado = Convert.ToString(dr.GetValue(1));
-                    objConsultas.Aumento = Convert.ToString(dr.GetValue(2));
-                    objConsultas.Disminucion = Convert.ToString(dr.GetValue(3));
-                    objConsultas.Ejercido = Convert.ToString(dr.GetValue(4));
-                    objConsultas.Modificado = Convert.ToString(dr.GetValue(5));
+                    objConsultas.Modificado = Convert.ToString(dr.GetValue(2));
+                    objConsultas.Ministrado = Convert.ToString(dr.GetValue(3));
+                    objConsultas.Comprometido = Convert.ToString(dr.GetValue(4));
+                    objConsultas.Devengado = Convert.ToString(dr.GetValue(5));
+                    objConsultas.Ejercicio = Convert.ToString(dr.GetValue(6));
+                    objConsultas.Pagado = Convert.ToString(dr.GetValue(7));
+                    objConsultas.Disminucion = Convert.ToString(dr.GetValue(8));
+
                     List.Add(objConsultas);
                 }
                 dr.Close();

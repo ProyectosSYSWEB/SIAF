@@ -41,7 +41,7 @@ namespace CapaDatos
         }
 
 
-        public void InsertarCodigoProg(ref Cat_Ctrl_Presp_Saf objCodProg, ref string Verificador)
+        public void InsertarCodigoProg(Cat_Ctrl_Presp_Saf objCodProg, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
@@ -51,7 +51,7 @@ namespace CapaDatos
                 object[] Valores = { objCodProg.Funcion, objCodProg.SubPrograma, objCodProg.Dependencia, objCodProg.Proyecto, objCodProg.Partida, objCodProg.Fuente, objCodProg.TipoGasto, objCodProg.Dig_Ministrado, objCodProg.Ejercicio};
                 String[] ParametrosOut = { "p_Bandera" };
 
-                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_Basicos", ref Verificador, Parametros, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRESUP_COD_PROG", ref Verificador, Parametros, Valores, ParametrosOut);
 
             }
             catch (Exception ex)

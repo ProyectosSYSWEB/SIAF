@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmFuenteFin.aspx.cs" Inherits="SAF.Presupuesto.Form.frmFuenteFin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmAdecuaciones.aspx.cs" EnableEventValidation="false" Inherits="SAF.Presupuesto.Form.frmAdecuaciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
@@ -24,27 +24,32 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <a href="frmCatFuenteFin.aspx">Nueva fuente</a>
+                                <a href="frmCatalogoCapitulos.aspx">Nuevo capitulo</a>
                              <tr>                                
                             </tr>
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDFuenteFin" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GRDCapitulos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Fuente" HeaderText="Fuente" />                                                                                                        
-                                                    <asp:BoundField DataField="Descrip" HeaderText="Descripcion" />
-                                                    
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
-                                                                <ContentTemplate>
-                                                                    <%--<asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar el Documento?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>--%>
-                                                                </ContentTemplate>
-                                                            </asp:UpdatePanel>
+                                                    <asp:TemplateField HeaderText="Name" ItemStyle-Width="150" Visible="true">
+                                                        <ItemTemplate>                                                            
+                                                            <asp:Label ID="clave" runat="server" Text='<%# Eval("clave") %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+                                                    <%--<asp:BoundField DataField="clave" HeaderText="Clave" />                                                                                                        --%>
+                                                    <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />                                                    
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:Button Text="Editar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:Button Text="Eliminar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>"/>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    
                                                 </Columns>
 
                                                 <FooterStyle CssClass="enc" />

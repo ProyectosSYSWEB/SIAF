@@ -30,8 +30,23 @@
                                         <ContentTemplate>
                                             <asp:GridView ID="GRDFunciones" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
-                                                    <asp:BoundField DataField="funcion" HeaderText="Función" />
-                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />                                                                                                                                                           
+                                                    <asp:TemplateField HeaderText="Name" ItemStyle-Width="150" Visible="true">
+                                                        <ItemTemplate>                                                            
+                                                            <asp:Label ID="funcion" runat="server" Text='<%# Eval("Funcion") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:Button Text="Editar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:Button Text="Eliminar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
                                                 </Columns>
                                                 <FooterStyle CssClass="enc" />
                                                 <PagerStyle CssClass="enc" HorizontalAlign="Center" Width="100%" />

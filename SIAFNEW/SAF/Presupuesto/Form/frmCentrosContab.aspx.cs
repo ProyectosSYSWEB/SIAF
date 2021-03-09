@@ -45,6 +45,7 @@ namespace SAF.Presupuesto.Form
                 //sda.Fill(ds);//
                 GRDCentrosContab.DataSource = list;
                 GRDCentrosContab.DataBind();
+                LBLncc.Text = "Total de centros contables: " + Convert.ToString(list.Count);
             }
             catch (Exception ex)
             {

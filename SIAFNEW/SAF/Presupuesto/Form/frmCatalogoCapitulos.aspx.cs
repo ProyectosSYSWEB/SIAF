@@ -20,6 +20,24 @@ namespace SAF.Presupuesto.Form
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
+            if (!IsPostBack)
+            {
+                CargarDatosCapitulo();
+            }
+        }
+
+        private void CargarDatosCapitulo()
+        {
+            try
+            {
+                Basicos objCapitulo = new Basicos();
+                if (Session["SessionCapituloEdit"] != null)
+                    objCapitulo = (Basicos)Session["SessionCapituloEdit"];
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
         }
 
         protected void BTNGuardarCap_Click(object sender, EventArgs e)

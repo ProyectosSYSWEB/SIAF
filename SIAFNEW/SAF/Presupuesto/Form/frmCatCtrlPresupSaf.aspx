@@ -131,7 +131,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtCodProg" Text="" runat="server" Width="500px" Enabled="false">
+                                    <asp:TextBox ID="txtCodProg" Text="" runat="server" Width="500px" Enabled="false" ForeColor="Black">
                                     </asp:TextBox>
                                 </td>
                             </tr>
@@ -139,7 +139,9 @@
                             <tr>
                                 <td>
                                     <asp:Button runat="server" ID="BTNGuardarCodigo" Text="Guardar" OnClick="BTNGuardarCodigo_Click" />
-                                </td>                                
+                                </td>
+                                <td></td>
+                                <td><a href="frmControlPresupSaf.aspx">Regresar</a></td>
                             </tr>                            
 
                             <tr>

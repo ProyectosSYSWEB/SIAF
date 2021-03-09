@@ -11,7 +11,7 @@ namespace SAF.Presupuesto.Form
 {
 
 
-    public partial class frmProyecto
+    public partial class frmAdecuaciones
     {
 
         /// <summary>
@@ -51,24 +51,6 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// Control lblTipoProy.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipoProy;
-
-        /// <summary>
-        /// Control DDLTipoProy.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLTipoProy;
-
-        /// <summary>
         /// Control UpdatePanel11.
         /// </summary>
         /// <remarks>
@@ -78,12 +60,12 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.UpdatePanel UpdatePanel11;
 
         /// <summary>
-        /// Control GRDProyectos.
+        /// Control GRDCapitulos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GRDProyectos;
+        protected global::System.Web.UI.WebControls.GridView GRDCapitulos;
     }
 }

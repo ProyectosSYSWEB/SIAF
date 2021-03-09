@@ -16,10 +16,10 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { "p_tipo", "p_status" };
-                String[] Valores = { objBasicos.tipo, objBasicos.status };
+                String[] Parametros = { "p_tipo", "p_valor" };
+                String[] Valores = { objBasicos.tipo, objBasicos.valor };
 
-                cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Catalogos", ref dr, Parametros, Valores);
+                cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Capitulos", ref dr, Parametros, Valores);
 
                 while (dr.Read())
                 {

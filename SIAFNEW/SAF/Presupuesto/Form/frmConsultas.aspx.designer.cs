@@ -105,33 +105,6 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.CheckBox CBCap1;
 
         /// <summary>
-        /// Control CBCap2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CBCap2;
-
-        /// <summary>
-        /// Control CBCap3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CBCap3;
-
-        /// <summary>
-        /// Control CBCap4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CBCap4;
-
-        /// <summary>
         /// Control CBCap5.
         /// </summary>
         /// <remarks>
@@ -139,6 +112,15 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CBCap5;
+
+        /// <summary>
+        /// Control CBCap2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CBCap2;
 
         /// <summary>
         /// Control CBCap6.
@@ -150,6 +132,15 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.CheckBox CBCap6;
 
         /// <summary>
+        /// Control CBCap3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CBCap3;
+
+        /// <summary>
         /// Control CBCap7.
         /// </summary>
         /// <remarks>
@@ -157,6 +148,15 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CBCap7;
+
+        /// <summary>
+        /// Control CBCap4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CBCap4;
 
         /// <summary>
         /// Control CBCap8.

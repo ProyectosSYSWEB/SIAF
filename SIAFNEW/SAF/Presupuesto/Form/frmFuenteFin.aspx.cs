@@ -37,6 +37,7 @@ namespace SAF.Presupuesto.Form
             {
                 FuentesFin objFuenteFin = new FuentesFin();
                 List<FuentesFin> list = new List<FuentesFin>();
+                objFuenteFin.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CN_FuenteFin.FuentesGrid(ref objFuenteFin, ref list);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 //DataSet ds = new DataSet();

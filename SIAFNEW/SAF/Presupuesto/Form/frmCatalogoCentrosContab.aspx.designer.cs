@@ -87,24 +87,6 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.TextBox txtDependencia;
 
         /// <summary>
-        /// Control lblAdministrador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdministrador;
-
-        /// <summary>
-        /// Control txtAdministrador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdministrador;
-
-        /// <summary>
         /// Control lblDirector.
         /// </summary>
         /// <remarks>
@@ -123,22 +105,22 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.TextBox txtDirector;
 
         /// <summary>
-        /// Control lblSaliente.
+        /// Control lblAdministrador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSaliente;
+        protected global::System.Web.UI.WebControls.Label lblAdministrador;
 
         /// <summary>
-        /// Control txtSaliente.
+        /// Control txtAdministrador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSaliente;
+        protected global::System.Web.UI.WebControls.TextBox txtAdministrador;
 
         /// <summary>
         /// Control lblEntrante.
@@ -157,6 +139,24 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEntrante;
+
+        /// <summary>
+        /// Control lblSaliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSaliente;
+
+        /// <summary>
+        /// Control txtSaliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSaliente;
 
         /// <summary>
         /// Control BTNGuardarCatCContab.

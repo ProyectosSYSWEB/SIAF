@@ -64,18 +64,25 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                FuentesFin objFuentesFin = new FuentesFin();
+                Presupues objEstrucProg = new Presupues();
                 if (SesionUsu.Usu_TipoUsu == "SA")
                 {
-                    //objFuentesFin.Fuente = txtFuente.Text;
-                    //objFuentesFin.TipoFinan = DDLTipofuente.SelectedValue;
-                    //objFuentesFin.TipoFondo = DDLTipofondo.SelectedValue;
-                    //objFuentesFin.Descrip = txtDescrip.Text;
-                    //string Verificador = string.Empty;
-                    //CN_FuenteFin.InsertarFuente(ref objFuentesFin, ref Verificador);
+                    string Verificador = string.Empty;
+                    objEstrucProg.Centro_Contable = DDLCentroContab.SelectedValue;
+                    objEstrucProg.Programa = DDLPrograma.SelectedValue;
+                    objEstrucProg.SubPrograma = DDLSubprog.SelectedValue;
+                    objEstrucProg.Dependencia = DDLDepend.SelectedValue;
+                    objEstrucProg.Proyecto = DDLProy.SelectedValue;
+                    objEstrucProg.Status = "A";
+                    objEstrucProg.Ejercicio = Convert.ToInt32(SesionUsu.Usu_Ejercicio);
+                    CN_Presupuesto.InsertarEstructuraProg(objEstrucProg, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha guardado correctamente";
+                    else
+                        lblError.Text = Verificador;
                 }
                 else
-                    lblError.Text = lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {

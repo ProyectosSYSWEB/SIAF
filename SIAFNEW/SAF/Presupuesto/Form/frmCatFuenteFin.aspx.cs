@@ -34,10 +34,13 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofuente);
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofuente, "p_valor" , "1");
             DDLTipofuente.SelectedValue = "1";            
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Fondo", ref DDLTipofondo);
-            DDLTipofondo.SelectedValue = "1";            
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofondo, "p_valor", "2");
+            DDLTipofondo.SelectedValue = "1";
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDDLTipoSubFondo, "p_valor", "3");
+            DDLTipofondo.SelectedValue = "1";
+
         }
         protected void DDLTipofuente_SelectedIndexChanged(object sender, EventArgs e)
         {

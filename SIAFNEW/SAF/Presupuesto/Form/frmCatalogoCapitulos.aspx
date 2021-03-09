@@ -47,7 +47,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtNvl" Text="" runat="server" Width="500px" maxlength="1">
+                                    <asp:TextBox ID="txtNvl" Text="1" runat="server" Width="500px" maxlength="1" Enabled="false">
                                     </asp:TextBox>
                                 </td>
                             </tr>

@@ -50,18 +50,17 @@ namespace CapaDatos
             }
         }
 
-
-        public void InsertarDependencia(ref Dependencias objDependencias, ref string Verificador)
+        public void InsertarEstructuraProgramatica(Presupues objEstruct, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
             try
             {
-                String[] Parametros = { "P_C_CONTAB", "P_CLAVE", "P_DESCRIPCION", "P_TITULAR", "P_ADMINISTRADOR", "P_DOMICILIO", "P_ID_ESTADO", "P_ID_MUNICIPIO", "P_ZONA_ECONOMICA", "P_TEL_TITULAR", "P_CEL_TITULAR", "P_TEL_ADMIN", "P_CEL_ADMIN", "P_NOMBRAMIENTO", "P_EJERCICIO" };
-                object[] Valores = { objDependencias.C_Contab, objDependencias.Clave, objDependencias.Descrip, objDependencias.Titular, objDependencias.Administ, objDependencias.Domicilio, objDependencias.Id_Estado, objDependencias.Id_Municipio, objDependencias.Zona_Economica, objDependencias.Tel_Titular, objDependencias.Cel_Titular, objDependencias.Tel_Admin, objDependencias.Cel_Admin, objDependencias.Nombramiento, objDependencias.Ejercicio };            
+                String[] Parametros = { "P_CENTRO_CONTABLE", "P_PROGRAMA", "P_SUBPROGRAMA", "P_DEPENDENCIA", "P_PROYECTO", "P_STATUS", "P_EJERCICIO" };
+                object[] Valores = { objEstruct.Centro_Contable, objEstruct.Programa, objEstruct.SubPrograma, objEstruct.Dependencia, objEstruct.Proyecto, objEstruct.Status, objEstruct.Ejercicio };
                 String[] ParametrosOut = { "p_Bandera" };
 
-                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRES_CAT_DEPEN", ref Verificador, Parametros, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("INS_CAT_ESTRUCT", ref Verificador, Parametros, Valores, ParametrosOut);
 
             }
             catch (Exception ex)
@@ -73,5 +72,8 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+
+
+        
     }
 }

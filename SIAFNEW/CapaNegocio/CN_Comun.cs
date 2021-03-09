@@ -211,7 +211,7 @@ namespace CapaNegocio
             {
                 List<Comun> Lista = new List<Comun>();
                 CD_Comun CDComun = new CD_Comun();
-                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2,  valor1, valor2, valor3);
+                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2, parametro3, parametro4,  valor1, valor2, valor3, valor4);
                 DDL.Items.Clear();
                 if (Lista.Count > 0)
                 {

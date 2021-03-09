@@ -84,6 +84,54 @@ namespace CapaEntidad
             set { _Avance = value; }
         }
 
+        private string _Centro_Contable;
+
+        public string Centro_Contable
+        {
+            get { return _Centro_Contable; }
+            set { _Centro_Contable = value; }
+        }
+
+        private string _Programa;
+
+        public string Programa
+        {
+            get { return _Programa; }
+            set { _Programa = value; }
+        }
+        private string _SubPrograma;
+
+        public string SubPrograma
+        {
+            get { return _SubPrograma; }
+            set { _SubPrograma = value; }
+        }
+
+        private string _Dependencia;
+
+        public string Dependencia
+        {
+            get { return _Dependencia; }
+            set { _Dependencia = value; }
+        }
+
+        private string _Proyecto;
+
+        public string Proyecto
+        {
+            get { return _Proyecto; }
+            set { _Proyecto = value; }
+        }
+
+        private string _Status;
+
+        public string Status
+        {
+            get { return _Status; }
+            set { _Status = value; }
+        }
+
+
 
     }
 }
