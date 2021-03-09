@@ -92,6 +92,47 @@ namespace CapaEntidad
             set { _Modificado = value; }
         }
 
+        private string _Ejercicio;
+
+        public string Ejercicio
+        {
+            get { return _Ejercicio; }
+            set { _Ejercicio = value; }
+        }
+
+        private string _Ministrado;
+
+        public string Ministrado
+        {
+            get { return _Ministrado; }
+            set { _Ministrado = value; }
+        }
+
+        private string _Comprometido;
+
+        public string Comprometido
+        {
+            get { return _Comprometido; }
+            set { _Comprometido = value; }
+        }
+
+        private string _Devengado;
+
+        public string Devengado
+        {
+            get { return _Devengado; }
+            set { _Devengado = value; }
+        }
+
+        private string _Pagado;
+
+        public string Pagado
+        {
+            get { return _Pagado; }
+            set { _Pagado = value; }
+        }
+
+
 
 
     }
