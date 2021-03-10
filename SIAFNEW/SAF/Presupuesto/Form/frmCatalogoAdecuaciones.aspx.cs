@@ -36,31 +36,41 @@ namespace SAF.Presupuesto.Form
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Partidas", ref DDLPartida);
                 DDLPartida.SelectedValue = "1";
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente);//agregar el ejercicio al metodo y al sp
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente, "p_ejercicio", SesionUsu.Usu_Ejercicio);
                 DDLPartida.SelectedValue = "1";
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
-
+        }
+        protected void CargarComboCodProg()
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Adecuaciones", ref DDLCodOrigen, "p_partida", "p_fuente", objAdecuacion.Partida, objAdecuacion.Fuente);
+                ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
         }
 
         protected void CargarDatosAdecuacion()
         {
             try
-            {
-                List<Adecuaciones> ListMod = new List<Adecuaciones>();
-                Adecuaciones objAdecuacionMod = new Adecuaciones();
+            {                                
                 int mesIni = Convert.ToInt32(DDLMesInicial.SelectedValue);
                 int mesFin = Convert.ToInt32(DDLMesFin.SelectedValue);
                 objAdecuacion.Partida = DDLPartida.SelectedValue;
                 objAdecuacion.Fuente = DDLFuente.SelectedValue;
                 objAdecuacion.MesIni = mesIni;
-                objAdecuacion.MesFin = mesFin;
+                objAdecuacion.MesFin = mesFin;                
                 CN_Adecuaciones.CapitulosGrid(objAdecuacion, ref List);
                 GRDAdecuaciones.DataSource = List;
                 GRDAdecuaciones.DataBind();
+                CargarComboCodProg();
             }
             catch(Exception ex)
             {
@@ -73,6 +83,35 @@ namespace SAF.Presupuesto.Form
             try
             {
                 CargarDatosAdecuacion();
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void ObtenerDatosCodigoOrigen(string CodigoOrigen)
+        {
+            try
+            {
+                string Verificador = string.Empty;
+                objAdecuacion.Codigo_Programatico = CodigoOrigen;
+                CN_Adecuaciones.ObtenerDatosCogidoAdecuaciones(ref objAdecuacion, ref Verificador);
+                List.Add(objAdecuacion);
+                GRDAdecuaciones.DataSource = List;
+                GRDAdecuaciones.DataBind();
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void DDLCodOrigen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {                
+                ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
             }
             catch(Exception ex)
             {

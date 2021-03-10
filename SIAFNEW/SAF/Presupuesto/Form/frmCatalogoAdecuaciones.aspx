@@ -137,8 +137,16 @@
                                 <td>
                                     <asp:DropDownList ID="DDLFuente" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_SelectedIndexChanged"></asp:DropDownList>
                                 </td>
-                            </tr>   
+                            </tr>
 
+                            <tr>
+                                <td style="width: 30%">
+                                    <asp:Label ID="lblCodigoOrigen" runat="server" Text="Origen"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDLCodOrigen" runat="server" Width="500px" AutoPostBack="True"  OnSelectedIndexChanged="DDLCodOrigen_SelectedIndexChanged"></asp:DropDownList>
+                                </td>
+                            </tr>
 
 
                             <td colspan="3">                            
@@ -146,6 +154,7 @@
                                         <ContentTemplate>
                                             <asp:GridView ID="GRDAdecuaciones" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
+                                                    <asp:BoundField DataField="Mes" HeaderText="Mes" />
                                                     <asp:BoundField DataField="TipoOperacion" HeaderText="Tipo operación " />
                                                     <asp:BoundField DataField="Centro_Contab" HeaderText="C. Contab" />
                                                     <asp:BoundField DataField="Codigo_Programatico" HeaderText="Código programático" />

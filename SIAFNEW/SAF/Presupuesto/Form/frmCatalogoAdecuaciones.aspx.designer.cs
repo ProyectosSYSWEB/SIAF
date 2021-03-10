@@ -240,6 +240,24 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.DropDownList DDLFuente;
 
         /// <summary>
+        /// Control lblCodigoOrigen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodigoOrigen;
+
+        /// <summary>
+        /// Control DDLCodOrigen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLCodOrigen;
+
+        /// <summary>
         /// Control UpdatePanel11.
         /// </summary>
         /// <remarks>

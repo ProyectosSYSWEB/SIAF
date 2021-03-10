@@ -22,5 +22,19 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void ObtenerDatosCogidoAdecuaciones(ref Adecuaciones objAdecuacion, ref string Verificador)
+        {
+            try
+            {
+                CD_Adecuaciones CD_Adecuaciones = new CD_Adecuaciones();
+                CD_Adecuaciones.ObtenerDatosCogidoAdecuaciones(ref objAdecuacion, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
