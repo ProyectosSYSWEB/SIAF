@@ -44,11 +44,11 @@
                                                             <asp:Button Text="Editar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField>
+                                                    <%--<asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button Text="Eliminar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" OnClick="BtnEliminarRegistro" />
                                                         </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                    </asp:TemplateField>--%>
                                                     
                                                 </Columns>
 

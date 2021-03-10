@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CD_Adecuaciones.cs" />
     <Compile Include="CD_Basicos.cs" />
     <Compile Include="CD_Capitulos.cs" />
     <Compile Include="CD_Cat_Ctrl_Presp_Saf.cs" />

@@ -41,7 +41,7 @@ namespace SAF.Presupuesto.Form
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab, "P_EJERCICIO", SesionUsu.Usu_Ejercicio);
                 DDLCentroContab.SelectedValue = "81101";
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente, "P_EJERCICIO", SesionUsu.Usu_Ejercicio);
                 DDLFuente.SelectedValue = "1";
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Ctx_Dp01", ref DDLCodProg, "p_centro_contable", "p_funcion", DDLCentroContab.SelectedValue, DDLFuente.SelectedValue);                                
             }
