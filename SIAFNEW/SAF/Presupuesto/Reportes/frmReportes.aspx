@@ -1713,7 +1713,7 @@
                                             <asp:Label ID="Label52" runat="server" Text="Dependencia"></asp:Label>
                                         </td>
                                         <td colspan="3">
-                                            <asp:DropDownList ID="DDLDependencia_v15" runat="server" Width="100%"  >
+                                            <asp:DropDownList ID="DDLDependencia_v15" runat="server" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DDLDependencia_v15_SelectedIndexChanged"  >
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -1752,11 +1752,82 @@
                                             <asp:Label ID="Label55" runat="server" Text="Reporte"></asp:Label>
                                         </td>
                                         <td colspan="3">
-                                            <asp:DropDownList ID="DDLReporte_v15" runat="server" Width="100%">
-                                             <asp:ListItem Value="RP0012">RP012 - Estado presupuestal por fuente de financiamiento</asp:ListItem>
+                                            <asp:DropDownList ID="DDLReporte_v15" runat="server" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DDLReporte_v15_SelectedIndexChanged">
+                                                <asp:ListItem Value="RP012">RP012 - Estado presupuestal por dependencia y fuente de financiamiento</asp:ListItem>
+                                                <asp:ListItem Value="RP012G">RP012G - Estado presupuestal general por fuente de financiamiento</asp:ListItem>
                                             </asp:DropDownList>
                                         </td></tr>
-
+                                     <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:GridView ID="grdCapitulo_v15" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." Width="50%">
+                                                <Columns>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:UpdatePanel ID="UpdatePanel105" runat="server">
+                                                                <ContentTemplate>
+                                                                    <asp:CheckBox ID="chkcapitulo_v15" runat="server" />
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" Width="10px" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="id" HeaderText="ID" />
+                                                    <asp:BoundField DataField="capitulo" HeaderText="CAPITULO" />
+                                                </Columns>
+                                                <FooterStyle CssClass="enc" />
+                                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                    <SelectedRowStyle CssClass="sel" />
+                                                    <HeaderStyle CssClass="enc" />                                                
+                                                    <AlternatingRowStyle CssClass="alt" /> 
+                                            </asp:GridView>
+                                             <asp:Button ID="btnChkCapitulos_v15" runat="server"  OnClick="btnChkCapitulos_v15_Click"
+                                                        Text="Marcar todos" Width="15%"  CssClass="btn" CausesValidation="False" />
+                                        </td>
+                                       
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="4">
+                                           </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:GridView ID="grdGrupoFuente_v15" runat="server" AutoGenerateColumns="False" Width="100%" CssClass="mGrid" EmptyDataText="No se encontró ningún registro.">
+                                                <Columns>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:CheckBox ID="chkfuente_v15" runat="server" />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" Width="10px" />
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="FUENTE" HeaderText="FUENTE" />
+                                                    <asp:BoundField DataField="DESCRIPCION" HeaderText="GRUPO FINANCIAMIENTO" />
+                                                </Columns>
+                                                <FooterStyle CssClass="enc" />
+                                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                    <SelectedRowStyle CssClass="sel" />
+                                                    <HeaderStyle CssClass="enc" />                                                
+                                                    <AlternatingRowStyle CssClass="alt" /> 
+                                            </asp:GridView>
+                                             <asp:Button ID="btnChkFuentes_v15" runat="server"  OnClick="btnChkFuentes_v15_Click"
+                                                        Text="Marcar todos" Width="15%"  CssClass="btn" CausesValidation="False" />
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td colspan="4">
+                                           </td>
+                                        
+                                    </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                     </tr>

@@ -188,7 +188,7 @@ namespace SAF.Presupuesto
                 DDLCentroContable_SelectedIndexChanged(null, null);
 
                 CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus,"p_supertipo","C");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);                
@@ -312,7 +312,7 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
-                Celdas = new Int32[] { 0 };
+                Celdas = new Int32[] { 0,9 };
 
                 if (grid.Rows.Count > 0)
                 {
@@ -421,30 +421,29 @@ namespace SAF.Presupuesto
                                     GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaDevengado));
                                     GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaEjercido));
                                     GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaPagado));
-                                    CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
-                                    CedulasAdicionales.ClaveEvento = objDocumento.ClaveEvento;
-                                    if (CedulasAdicionales.ClaveEvento == "01" || CedulasAdicionales.ClaveEvento == "06")
-                                        CNDocumentos.GenerarPoliza(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
+                                    if (VerificadorCedulasAdicionales == "0")
+                                    {
+                                        CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                                        CedulasAdicionales.ClaveEvento = objDocumento.ClaveEvento;
+                                        if (CedulasAdicionales.ClaveEvento == "01" || CedulasAdicionales.ClaveEvento == "06")
+                                            CNDocumentos.GenerarPoliza(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
 
-                                    if (VerificadorCedulasAdicionales != "0")
-                                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + VerificadorCedulasAdicionales + "');", true);
-                                    //lblErrorDet.Text = VerificadorCedulasAdicionales;
+                                        if (VerificadorCedulasAdicionales != "0")
+                                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al generar la póliza automática: " + VerificadorCedulasAdicionales + "');", true);
+                                    }
+                                    else
+                                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar el detalle de las cédulas adicionales: " + VerificadorCedulasAdicionales + "');", true);
+
                                 }
                                 else
-                                    VerificadorInserta = VerificadorCedulasAdicionales;
+                                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al consultar  las cédulas adicionales: " + VerificadorCedulasAdicionales + "');", true);
                             }
-
-                            VerificadorInserta = "0";
-                            //lblError.Text = "Los datos han sido actualizados correctamente";
-                            //SesionUsu.Editar = -1;
-                            //MultiView1.ActiveViewIndex = 0;
-                            //CargarGrid(ref grdDocumentos, 0);
                         }
                         else
-                            VerificadorInserta = VerificadorDet;
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar el detalle de la cédula CC: " + VerificadorDet + "');", true); ;
                     }
                     else
-                        VerificadorInserta = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar la cédula CC: " + Verificador + "');", true);
 
                 }
             }

@@ -61,6 +61,19 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void ConsultarGrid_GrupoFuente(ref Pres_Reportes objReporte, ref List<Pres_Reportes> List)
+        {
+            try
+            {
+                CD_Pres_Reportes CDReportes = new CD_Pres_Reportes();
+                CDReportes.ConsultarGrid_GrupoFuente(ref objReporte, ref List);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void ConsultaGrid_Subprograma(ref Pres_Reportes objReporte, ref List<Pres_Reportes> List)
         {
             try

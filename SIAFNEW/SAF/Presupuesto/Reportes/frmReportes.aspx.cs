@@ -180,8 +180,13 @@ namespace SAF.Presupuesto.Reportes
                         break;
                     case "RP-PRESUP_RP012":
                         MultiView1.ActiveViewIndex = 14;
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v15, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "OTROS");
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v15, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES");
                         DDLMes_v15.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
+                        grdCapitulo_v15.Visible = false;
+                        btnChkCapitulos_v15.Visible = false;
+                        btnChkFuentes_v15.Visible = false;
+                        btnChkFuentes_v15.Visible = false;
+                        DDLDependencia_v15_SelectedIndexChanged(null, null);
                         break;
                     case "RP-PRESUP_RP017":
                         MultiView1.ActiveViewIndex = 11;
@@ -791,6 +796,40 @@ namespace SAF.Presupuesto.Reportes
                     objReportes.Mes_anio = DDLMes_v8.SelectedValue + objReportes.Ejercicio.Substring(2, 2);
                     objReportes.Estatus = DDLStatus_v8.SelectedValue;
                     CNReportes.ConsultaGrid_Partida_x_Centro(ref objReportes, ref List);
+                }
+                else if (IdGrid == 21)
+                {
+                    if (DDLReporte_v15.SelectedValue=="RP012G")
+                    {
+                        objReportes.Dependencia = "00000";
+                        objReportes.DependenciaF = "00000";
+                    }
+                    else
+                    {
+                        objReportes.Dependencia = DDLDependencia_v15.SelectedValue;
+                        objReportes.DependenciaF = DDLDependencia_v15.SelectedValue;
+                    }
+                    objReportes.Tipo = string.Empty;
+                    objReportes.Mes_anio = DDLMes_v15.SelectedValue + objReportes.Ejercicio.Substring(2, 2);
+                    objReportes.Estatus = string.Empty;
+                    CNReportes.ConsultaGrid_Capitulo(ref objReportes, ref List);
+                }
+                else if (IdGrid == 22)
+                {
+                    if (DDLReporte_v15.SelectedValue == "RP012G")
+                    {
+                        objReportes.Dependencia = "00000";
+                        objReportes.DependenciaF = "00000";
+                    }
+                    else
+                    {
+                        objReportes.Dependencia = DDLDependencia_v15.SelectedValue;
+                        objReportes.DependenciaF = DDLDependencia_v15.SelectedValue;
+                    }
+                    objReportes.Tipo = string.Empty;
+                    objReportes.Mes_anio = DDLMes_v15.SelectedValue + objReportes.Ejercicio.Substring(2, 2);
+                    objReportes.Estatus = string.Empty;
+                    CNReportes.ConsultarGrid_GrupoFuente(ref objReportes, ref List);
                 }
                 else
                 {
@@ -1496,9 +1535,14 @@ namespace SAF.Presupuesto.Reportes
         }
         protected void imgBttnPdf_v15_click(object sender, ImageClickEventArgs e)
         {
+            rowCapitulo(grdCapitulo_v15, "chkCapitulo_v15");
+            rowFuente(grdGrupoFuente_v15, "chkFuente_v15");
             string ruta = string.Empty;
 
-            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP012&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v15.SelectedValue +  "&TipoDoc=" + DDLPeriodo_v15.SelectedValue + "&MesIni=" + DDLMes_v15.SelectedValue;
+            if(DDLReporte_v15.SelectedValue=="RP012G")
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP012&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + "00000" + "&TipoDoc=" + DDLPeriodo_v15.SelectedValue + "&MesIni=" + DDLMes_v15.SelectedValue +"&Capitulo=" + objReportes.Capitulo + "&Fuente=" + objReportes.Fuente;
+            else
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP012&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v15.SelectedValue +  "&TipoDoc=" + DDLPeriodo_v15.SelectedValue + "&MesIni=" + DDLMes_v15.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Fuente=" + objReportes.Fuente;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
@@ -1506,8 +1550,11 @@ namespace SAF.Presupuesto.Reportes
         protected void imgBttnExcel_v15_click(object sender, ImageClickEventArgs e)
         {
             string ruta = string.Empty;
+            if (DDLReporte_v15.SelectedValue == "RP012G")
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP012&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + "00000" + "&TipoDoc=" + DDLPeriodo_v15.SelectedValue + "&MesIni=" + DDLMes_v15.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Fuente=" + objReportes.Fuente;
+            else
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP012&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v15.SelectedValue + "&TipoDoc=" + DDLPeriodo_v15.SelectedValue + "&MesIni=" + DDLMes_v15.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Fuente=" + objReportes.Fuente;
 
-            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP012_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v15.SelectedValue + "&TipoDoc=" + DDLPeriodo_v15.SelectedValue + "&MesIni=" + DDLMes_v15.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
@@ -1693,6 +1740,52 @@ namespace SAF.Presupuesto.Reportes
             grdFuente_v12.Visible = false;
             btnChkFuentes_v12.Visible = false;
         }
+        protected void DDLDependencia_v15_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarGrid(ref grdCapitulo_v15, 21);
+            CargarGrid(ref grdGrupoFuente_v15, 22);
+            grdCapitulo_v15.Visible = true;
+            grdGrupoFuente_v15.Visible = true;
+
+            if (grdCapitulo_v15.Rows.Count > 0)
+            {
+                btnChkCapitulos_v15.Text = "Marcar todos";
+                btnChkCapitulos_v15.Visible = true;
+            }
+            else
+                btnChkCapitulos_v15.Visible = false;
+
+            if (grdGrupoFuente_v15.Rows.Count > 0)
+            {
+                btnChkFuentes_v15.Text = "Marcar todos";
+                btnChkFuentes_v15.Visible = true;
+            }
+            else
+                btnChkFuentes_v15.Visible = false;
+        }
+        protected void DDLReporte_v15_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarGrid(ref grdCapitulo_v15, 21);
+            CargarGrid(ref grdGrupoFuente_v15, 22);
+            grdCapitulo_v15.Visible = true;
+            grdGrupoFuente_v15.Visible = true;
+
+            if (grdCapitulo_v15.Rows.Count > 0)
+            {
+                btnChkCapitulos_v15.Text = "Marcar todos";
+                btnChkCapitulos_v15.Visible = true;
+            }
+            else
+                btnChkCapitulos_v15.Visible = false;
+
+            if (grdGrupoFuente_v15.Rows.Count > 0)
+            {
+                btnChkFuentes_v15.Text = "Marcar todos";
+                btnChkFuentes_v15.Visible = true;
+            }
+            else
+                btnChkFuentes_v15.Visible = false;
+        }
         protected void btnChkFuentes_v12_Click(object sender, EventArgs e)
         {
             bool check;
@@ -1773,6 +1866,46 @@ namespace SAF.Presupuesto.Reportes
             }
         }
 
+        protected void btnChkFuentes_v15_Click(object sender, EventArgs e)
+        {
+            bool check;
+            if (btnChkFuentes_v15.Text == "Marcar todos")
+            {
+                btnChkFuentes_v15.Text = "Quitar todos";
+                check = true;
+            }
+            else
+            {
+                btnChkFuentes_v15.Text = "Marcar todos";
+                check = false;
+            }
+            foreach (GridViewRow row in grdGrupoFuente_v15.Rows)
+            {
+                CheckBox check_box = row.FindControl("chkFuente_v15") as CheckBox;
+                check_box.Checked = check;
+            }
+        }
+
+        protected void btnChkCapitulos_v15_Click(object sender, EventArgs e)
+        {
+            bool check;
+            if (btnChkCapitulos_v15.Text == "Marcar todos")
+            {
+                btnChkCapitulos_v15.Text = "Quitar todos";
+                check = true;
+            }
+            else
+            {
+                btnChkCapitulos_v15.Text = "Marcar todos";
+                check = false;
+            }
+            foreach (GridViewRow row in grdCapitulo_v15.Rows)
+            {
+                CheckBox check_box = row.FindControl("chkCapitulo_v15") as CheckBox;
+                check_box.Checked = check;
+            }
+        }
+
         protected void btnChkSubprogramas_v14_Click(object sender, EventArgs e)
         {
             bool check;
@@ -1793,6 +1926,6 @@ namespace SAF.Presupuesto.Reportes
             }
         }
 
-       
+        
     }
 }
