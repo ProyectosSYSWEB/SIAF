@@ -164,9 +164,8 @@ namespace SAF.Presupuesto.Form
 
                 else if (DDLCodProg.Items.Count == 1)
                 {
-                    DDLCodProg.Enabled = false;
-                    GRDCodProg.DataSource = null;
-                    GRDCodProg.DataBind();
+                    DDLCodProg.Enabled = true;                    
+                    CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                 }
             }
             catch (Exception ex)
