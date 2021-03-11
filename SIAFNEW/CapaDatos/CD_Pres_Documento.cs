@@ -229,11 +229,11 @@ namespace CapaDatos
                 String[] ParametrosOut = { "p_Bandera" };
 
                 if (objdocumento.ClaveEvento == "01")
-                    Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZAS_AUTO_CEDULAS", ref Verificador, Parametros, Valores, ParametrosOut);
+                    Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_CEDULA_APLI", ref Verificador, Parametros, Valores, ParametrosOut);
                 else
                 {
                     if (objdocumento.ClaveEvento == "06")
-                        Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZAS_AUTO_HONO", ref Verificador, Parametros, Valores, ParametrosOut);
+                        Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_HONO_APLI", ref Verificador, Parametros, Valores, ParametrosOut);
                 }
 
             }
