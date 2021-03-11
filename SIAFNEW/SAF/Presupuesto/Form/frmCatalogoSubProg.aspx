@@ -51,7 +51,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button class="" >Guardar</button>
+                                    <asp:Button runat="server" Text="Guardar" OnClick="BTNGuardar_Click"/>
                                 </td>       
                                 <td>
 

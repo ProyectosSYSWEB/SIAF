@@ -52,9 +52,11 @@ namespace SAF.Presupuesto.Form
                     objBasicos.orden = "";
                     string Verificador = string.Empty;
                     CN_Subprog.InsertarSubPrograma(ref objBasicos, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se han registrado los cambios";
                 }
                 else
-                    lblError.Text = lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {

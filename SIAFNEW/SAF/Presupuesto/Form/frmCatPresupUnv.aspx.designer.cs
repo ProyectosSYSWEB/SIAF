@@ -69,6 +69,15 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.DropDownList DDLTipoOperacion;
 
         /// <summary>
+        /// Control BTNGuardarPres.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTNGuardarPres;
+
+        /// <summary>
         /// Control lblTiporRec.
         /// </summary>
         /// <remarks>
@@ -445,50 +454,5 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFuente;
-
-        /// <summary>
-        /// Control lblTipoGasto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipoGasto;
-
-        /// <summary>
-        /// Control txtTipoGasto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipoGasto;
-
-        /// <summary>
-        /// Control lblDigitoMinist.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDigitoMinist;
-
-        /// <summary>
-        /// Control txtDigMinis.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDigMinis;
-
-        /// <summary>
-        /// Control BTNGuardarPres.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTNGuardarPres;
     }
 }

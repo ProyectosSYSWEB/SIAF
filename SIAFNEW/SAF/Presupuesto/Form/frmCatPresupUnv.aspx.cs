@@ -77,8 +77,8 @@ namespace SAF.Presupuesto.Form
                 txtPartida.Text = PresupUnv.Partida;
                 txtFuente.Text = PresupUnv.Fuente;
                 txtProyecto.Text = PresupUnv.Proyecto;
-                txtTipoGasto.Text = PresupUnv.Tipo_Gasto;
-                txtDigMinis.Text = PresupUnv.Dig_Ministrado;
+                //txtTipoGasto.Text = PresupUnv.Tipo_Gasto;
+                //txtDigMinis.Text = PresupUnv.Dig_Ministrado;
                 txtFuncion.Text = PresupUnv.Funcion;                
             }
             catch (Exception ex)
