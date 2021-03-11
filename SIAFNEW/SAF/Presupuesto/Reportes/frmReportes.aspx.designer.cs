@@ -2128,6 +2128,42 @@ namespace SAF.Presupuesto.Reportes {
         protected global::System.Web.UI.WebControls.DropDownList DDLReporte_v15;
         
         /// <summary>
+        /// Control grdCapitulo_v15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdCapitulo_v15;
+        
+        /// <summary>
+        /// Control btnChkCapitulos_v15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnChkCapitulos_v15;
+        
+        /// <summary>
+        /// Control grdGrupoFuente_v15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdGrupoFuente_v15;
+        
+        /// <summary>
+        /// Control btnChkFuentes_v15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnChkFuentes_v15;
+        
+        /// <summary>
         /// Control UpdatePanel19.
         /// </summary>
         /// <remarks>

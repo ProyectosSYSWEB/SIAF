@@ -548,6 +548,7 @@ namespace SAF.Presupuesto.Reportes
                             Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP012M.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Ejercicio); report.SetParameterValue(2, MesIni);
+                        report.SetParameterValue(3, Capitulo); report.SetParameterValue(4, Fuente);
                         reporte_PDF();
                         break;
                     case "RP-PRESUP_RP012_XLS":
@@ -556,8 +557,8 @@ namespace SAF.Presupuesto.Reportes
                         else
                             Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP012M.rpt";
                         reportes_dir();
-                        reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Ejercicio); report.SetParameterValue(2, MesIni);
+                        report.SetParameterValue(3, Capitulo); report.SetParameterValue(4, Fuente);
                         reporte_XLS();
                         break;
                     case "RP-PRESUP_RP019":
