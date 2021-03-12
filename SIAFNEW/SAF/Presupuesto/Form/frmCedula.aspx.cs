@@ -436,15 +436,23 @@ namespace SAF.Presupuesto
 
                                 }
                                 else
+                                {
+                                    VerificadorInserta = VerificadorCedulasAdicionales;
                                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al consultar  las cédulas adicionales: " + VerificadorCedulasAdicionales + "');", true);
+                                }
                             }
                         }
                         else
+                        {
+                            VerificadorInserta = VerificadorDet;
                             ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar el detalle de la cédula CC: " + VerificadorDet + "');", true); ;
+                        }
                     }
                     else
+                    {
+                        VerificadorInserta = Verificador;
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar la cédula CC: " + Verificador + "');", true);
-
+                    }
                 }
             }
             catch (Exception ex)
@@ -818,6 +826,7 @@ namespace SAF.Presupuesto
                         {
 
                             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
+                            VerificadorInserta = "0";
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
                             if (VerificadorInserta != "0")
                                 //lblErrorDet.Text = VerificadorInserta;
@@ -1141,10 +1150,7 @@ namespace SAF.Presupuesto
                 CalendarExtenderIni.StartDate = fechaIni;
                 CalendarExtenderIni.EndDate = fechaFin;
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
-                if (DDLCuenta_Banco.Items.Count >= 1)
-                    DDLCuenta_Banco.Items.RemoveAt(0);
 
-                DDLCuenta_Banco.Items.Insert(0, new ListItem("--OTRA CUENTA BANCO--", "0"));
 
                 
             }

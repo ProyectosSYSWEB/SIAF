@@ -86,8 +86,9 @@
                 Valor = "";
             }
             var NumPoliza = Mes + Valor;
-             if (NumPoliza.length <= 7)
+             if (NumPoliza.length <= 8)
              {
+                 
                  if (NumPoliza.length == 3)
                      if (NumPoliza.substr(2, 1) == "F" || NumPoliza.substr(2, 1) == "E" || NumPoliza.substr(2, 1) == "I"
                          || NumPoliza.substr(2, 1) == "N" || NumPoliza.substr(2, 1) == "C" || NumPoliza.substr(2, 1) == "B"
@@ -96,14 +97,19 @@
                          document.getElementById(e.id).value = Valor2.substr(0, 3);
                      else
                          document.getElementById(e.id).value = Valor2.substr(0, 2);
-                 else {
+                 else
+                     if (NumPoliza.length == 8)
+                         if (NumPoliza.substr(7, 1) == "D" || NumPoliza.substr(7, 1) == "E")
+                             document.getElementById(e.id).value = Valor2.substr(0, 8);
+                         else
+                             document.getElementById(e.id).value = Valor2.substr(0, 7);
+                     else
+                         document.getElementById(e.id).value = NumPoliza;
                      
-                     document.getElementById(e.id).value = NumPoliza;
-                 }
              }
              else
              {
-                document.getElementById(e.id).value = Valor2.substr(0, 7);
+                document.getElementById(e.id).value = Valor2.substr(0, 8);
              }
 
         }
