@@ -119,10 +119,8 @@ namespace SAF.Presupuesto
             txtCancelacion.Text = string.Empty;
             txtSeguimiento.Text = string.Empty;
             ddlFuente_F.Enabled = true;
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
-            if (DDLCuenta_Banco.Items.Count >= 1)
-                DDLCuenta_Banco.Items.RemoveAt(0);
-            DDLCuenta_Banco.Items.Insert(0, new ListItem("--OTRA CUENTA BANCO--", "0"));
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
+           
             
             ddlTipoEnc.SelectedIndex = 0;
             ddlStatusEnc.Visible = true;
@@ -192,7 +190,7 @@ namespace SAF.Presupuesto
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", SesionUsu.Usu_Rep);                
-                ddlTipoEnc.Items.RemoveAt(0);
+               
                
                
             }
@@ -346,6 +344,7 @@ namespace SAF.Presupuesto
                 objDocumento.MotivoRechazo = txtCancelacion.Text;
                 objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
                 objDocumento.Seguimiento = txtSeguimiento.Text;
+                objDocumento.ClaveCuenta = DDLCuenta_Banco.SelectedValue; 
                 objDocumento.Cuenta = DDLCuenta_Banco.SelectedValue;
 
                 objDocumento.NumeroCheque = txtNumero_Cheque.Text;
@@ -375,7 +374,6 @@ namespace SAF.Presupuesto
                 objDocumento.PolizaDevengado = txtPoliza.Text;
                 objDocumento.PolizaEjercido = txtPoliza.Text;
                 objDocumento.PolizaPagado = txtPoliza.Text;
-                objDocumento.ClaveCuenta = "";
                 objDocumento.ClaveEvento = ddlevento.SelectedValue;
                 objDocumento.KeyDocumento = "";
                 objDocumento.KeyPoliza = "";
@@ -436,15 +434,23 @@ namespace SAF.Presupuesto
 
                                 }
                                 else
+                                {
+                                    VerificadorInserta = VerificadorCedulasAdicionales;
                                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al consultar  las cédulas adicionales: " + VerificadorCedulasAdicionales + "');", true);
+                                }
                             }
                         }
                         else
+                        {
+                            VerificadorInserta = VerificadorDet;
                             ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar el detalle de la cédula CC: " + VerificadorDet + "');", true); ;
+                        }
                     }
                     else
+                    {
+                        VerificadorInserta = Verificador;
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar la cédula CC: " + Verificador + "');", true);
-
+                    }
                 }
             }
             catch (Exception ex)
@@ -818,6 +824,7 @@ namespace SAF.Presupuesto
                         {
 
                             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
+                            VerificadorInserta = "0";
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
                             if (VerificadorInserta != "0")
                                 //lblErrorDet.Text = VerificadorInserta;
@@ -1140,11 +1147,8 @@ namespace SAF.Presupuesto
                 DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
                 CalendarExtenderIni.StartDate = fechaIni;
                 CalendarExtenderIni.EndDate = fechaFin;
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
-                if (DDLCuenta_Banco.Items.Count >= 1)
-                    DDLCuenta_Banco.Items.RemoveAt(0);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
 
-                DDLCuenta_Banco.Items.Insert(0, new ListItem("--OTRA CUENTA BANCO--", "0"));
 
                 
             }
