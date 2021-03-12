@@ -623,7 +623,6 @@ namespace SAF.Presupuesto
                         txtConcepto.Text = objDocumento.Descripcion;
                     txtCancelacion.Text = objDocumento.MotivoRechazo;
                     txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
-                    txtSeguimiento.Enabled = false;
                     txtSeguimiento.Text = objDocumento.Seguimiento;
                     txtNumero_Cheque.Text = objDocumento.NumeroCheque;
                     DDLCuenta_Banco.SelectedValue= objDocumento.Cuenta;
@@ -732,102 +731,27 @@ namespace SAF.Presupuesto
             lblMsjCP.Text = string.Empty;
             string VerificadorInserta = string.Empty;
             string Folio = string.Empty;
+            VerificadorInserta = "0";
+            bool ImportePermitido = true;
             try
             {
                 if (grdDetalles.Rows.Count > 0)
                 {
                     if (ddlevento.SelectedValue == "06")
                     {
-                        if (Convert.ToInt32(lblImporte_Operacion.Text) == Convert.ToInt32(txtImporteISR.Text) + Convert.ToInt32(txtImporteCheque.Text))
-                        {
-                            honorarios = 1;
-                        }
+                        if (Convert.ToDouble(lblImporte_Operacion.Text) == Convert.ToDouble(txtImporteISR.Text) + Convert.ToDouble(txtImporteCheque.Text))
+                            ImportePermitido = true;
                         else
-                        {
-                            honorarios = 0;
-                        }
-
+                            ImportePermitido = false;
                     }
-                    else
+                    
+                      if(  ImportePermitido )
                     {
-                        honorarios = 1;
-                    }
-                    if (honorarios == 1)
-                    {
-                        if (rbtdoc_simultaneo.SelectedValue == "S" && SesionUsu.Usu_Rep == "C" && SesionUsu.Editar == 0)
-                        {
-                            for (int i = 0; i < 4; i++)
-                            {
-                                switch (i)
-                                {
-                                    case 0:
-                                        objDocumento.Tipo = "CC";
-                                        guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                        if (VerificadorInserta != "0")
-                                            i = 4;
-                                        break;
-                                        //case 1:
-                                        //    objDocumento.Tipo = "CD";
-                                        //    guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                        //    if (VerificadorInserta != "0")
-                                        //        i = 4;
-                                        //    break;
-                                        //case 2:
-                                        //    if (ddlevento.SelectedValue != "09")
-                                        //    {
-                                        //        if (ddlevento.SelectedValue != "10")
-                                        //        {
-                                        //            objDocumento.Tipo = "CE";
-                                        //        guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                        //        if (VerificadorInserta != "0")
-                                        //            i = 4;
-                                        //        }
-                                        //    }
-
-                                        //    break;
-                                        //case 3:
-                                        //    if (ddlevento.SelectedValue != "09")
-                                        //    {
-                                        //        if (ddlevento.SelectedValue != "10")
-                                        //        {
-                                        //            objDocumento.Tipo = "CP";
-                                        //        guarda_encabezado(ref VerificadorInserta, ref Folio);
-                                        //         if (VerificadorInserta != "0")
-                                        //        i = 4;
-                                        //        }
-                                        //    }
-                                        //    break;
-                                }
-                            }
-
-                            if (VerificadorInserta != "0")
-                                //lblErrorDet.Text = VerificadorInserta;
-                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: '"+ VerificadorInserta+");", true);
-
-                            else
-                            {
-                                SesionUsu.Editar = -1;
-                                ddlCentroContable.Enabled = true;
-                                ddlTipoEnc.Enabled = true;
-                                MultiView1.ActiveViewIndex = 0;
-                                ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
-                                CargarGrid(ref grdDocumentos, 0);
-                                //lblMesIni.Visible = true;
-                                //ddlMesIni.Visible = true;
-                                //lblMesFin.Visible = true;
-                                //ddlMesFin.Visible = true;
-                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, 'La cédula ha sido agregada correctamente.');", true);
-                                //lblError.Text = "Los datos han sido agregados correctamente.";
-                            }
-                        }
-                        else
-                        {
-
+                       
                             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
-                            VerificadorInserta = "0";
+                           
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
                             if (VerificadorInserta != "0")
-                                //lblErrorDet.Text = VerificadorInserta;
                                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: '" + VerificadorInserta + ");", true);
                             else
                             {
@@ -835,28 +759,21 @@ namespace SAF.Presupuesto
                                 MultiView1.ActiveViewIndex = 0;
                                 ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
                                 CargarGrid(ref grdDocumentos, 0);
-                                //lblMesIni.Visible = true;
-                                //ddlMesIni.Visible = true;
-                                //lblMesFin.Visible = true;
-                                //ddlMesFin.Visible = true;
-                                //lblError.Text = (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
                                 string MiMensaje= (Folio == string.Empty) ? "La cédula ha sido modificada correctamente." : "La cédula ha sido agregada correctamente, con el número de folio:" + Folio; 
                                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, '"+MiMensaje+"');", true);
                                 ddlCentroContable.Enabled = true;
                                 penel_detalle.Visible = false;
                             }
-                        }
+                        
                     }
                     else
                     {
-                        //lblErrorDet.Text = "El importe de operación no coincide con el importe cheque + importe ISR.";
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe de operación no coincide con el importe cheque + importe ISR.');", true);
                     }
                 }
 
                 else
                 {
-                    //lblErrorDet.Text = "No se han agregado códigos programáticos.";
                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'No se han agregado códigos programáticos.');", true);
                 }
             }
