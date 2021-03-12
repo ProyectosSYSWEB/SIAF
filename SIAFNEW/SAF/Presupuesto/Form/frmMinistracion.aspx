@@ -406,7 +406,7 @@
                                                                                                                         <td colspan="4" valign="top">
                                                                                                                             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                                                                                                                 <ContentTemplate>
-                                                                                                                                    <asp:DropDownList ID="DDLCta_Banco" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCta_Banco_SelectedIndexChanged"  Width="100%">
+                                                                                                                                    <asp:DropDownList ID="DDLCta_Banco" runat="server" OnSelectedIndexChanged="DDLCta_Banco_SelectedIndexChanged"  Width="100%">
                                                                                                                                     </asp:DropDownList>
                                                                                                                                     <br />
                                                                                                                                     <asp:TextBox ID="txtCuenta" runat="server" Visible="False" Width="100%"></asp:TextBox>
@@ -459,7 +459,7 @@
                                                                                                                     <tr>
                                                                                                                        <td></td>
                                                                                                                         <td colspan="5">
-                                                                                                                            <asp:TextBox ID="txtSeguimiento" runat="server" Enabled="False" Height="150px" TextMode="MultiLine" Width=100%></asp:TextBox></td>
+                                                                                                                            <asp:TextBox ID="txtSeguimiento" runat="server" Height="150px" TextMode="MultiLine" Width=100% ReadOnly="True"></asp:TextBox></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
                                                                                                                         <td class="cuadro_botones" colspan="5"></td>

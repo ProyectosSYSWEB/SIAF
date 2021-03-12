@@ -594,7 +594,7 @@
                                                                                                                     <tr>
                                                                                                                         <td></td>
                                                                                                                         <td colspan="5">
-                                                                                                                            <asp:TextBox ID="txtSeguimiento" runat="server" Enabled="False" Height="150px" TextMode="MultiLine" Width=100%></asp:TextBox></td>
+                                                                                                                            <asp:TextBox ID="txtSeguimiento" runat="server" Height="150px" TextMode="MultiLine" Width=100% ReadOnly="True"></asp:TextBox></td>
                                                                                                                     </tr>
                                                                                                                   
                                                                                                                 </table>
