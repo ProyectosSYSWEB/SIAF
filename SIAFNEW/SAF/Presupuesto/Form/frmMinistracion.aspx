@@ -406,7 +406,7 @@
                                                                                                                         <td colspan="4" valign="top">
                                                                                                                             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                                                                                                                 <ContentTemplate>
-                                                                                                                                    <asp:DropDownList ID="DDLCta_Banco" runat="server" OnSelectedIndexChanged="DDLCta_Banco_SelectedIndexChanged"  Width="100%">
+                                                                                                                                    <asp:DropDownList ID="DDLCta_Banco" runat="server"  Width="100%">
                                                                                                                                     </asp:DropDownList>
                                                                                                                                     <br />
                                                                                                                                     <asp:TextBox ID="txtCuenta" runat="server" Visible="False" Width="100%"></asp:TextBox>

@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CapaEntidad;
 using CapaNegocio;
-//MODIFICADO EL 08 FEBRERO DE 2021
 namespace SAF.Presupuesto
 {
     public partial class frmMinistracion : System.Web.UI.Page
@@ -606,7 +605,6 @@ namespace SAF.Presupuesto
                         txtCancelacion.Text = objDocumento.MotivoRechazo;
                         txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
                         txtSeguimiento.Text = objDocumento.Seguimiento;
-                        txtSeguimiento.Enabled = false;
                         DDLCta_Banco.SelectedValue = objDocumento.Cuenta;
                         /*Llena Grid Detalle*/
                         ddlMesInicialDet.SelectedValue = "01";

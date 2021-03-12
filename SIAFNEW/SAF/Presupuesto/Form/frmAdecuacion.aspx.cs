@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Data;
 using CapaEntidad;
 using CapaNegocio;
-//MODIFICADO EL 26 FEBRERO DE 2021
 namespace SAF.Presupuesto
 {
     public partial class frmAdecuacion : System.Web.UI.Page
@@ -191,7 +190,7 @@ namespace SAF.Presupuesto
                     lblMesInicialDet.Text = "Mes inicial";
                     lblMesFinalDet.Visible = false;
                     ddlMesFinalDet.Visible = false;
-                    txtSeguimiento.Enabled = false;
+                   
                     ocultar();
         }
         private void ValidacionTipoDet()
@@ -689,7 +688,7 @@ namespace SAF.Presupuesto
                     txtCancelacion.Text = objDocumento.MotivoRechazo;
                     txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
                     txtSeguimiento.Text = objDocumento.Seguimiento;
-                    txtSeguimiento.Enabled = false;
+                    
 
                     /*Llena Grid Detalle*/
                     ddlMesInicialDet.SelectedValue = "01";
