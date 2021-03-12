@@ -92,11 +92,8 @@ namespace SAF.Presupuesto
                 txtCancelacion.Text = string.Empty;
                 txtSeguimiento.Text = string.Empty;
                 ddlFuente_F.Enabled = true;
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
-                if (DDLCta_Banco.Items.Count >= 1)
-                    DDLCta_Banco.Items.RemoveAt(0);
-                DDLCta_Banco.Items.Insert(0, new ListItem("--OTRA CUENTA BANCO--", "0"));
-                DDLCta_Banco_SelectedIndexChanged(null, null);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio,ddlCentroContable.SelectedValue);
+               
 
                 if (ddlTipo.SelectedValue != "T")
                     ddlTipoEnc.SelectedValue = ddlTipo.SelectedValue;
@@ -1020,7 +1017,7 @@ namespace SAF.Presupuesto
                     DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
                     CalendarExtenderIni.StartDate = fechaIni;
                     CalendarExtenderIni.EndDate = fechaFin;
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
                
 
                 

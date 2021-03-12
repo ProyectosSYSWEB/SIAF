@@ -119,10 +119,8 @@ namespace SAF.Presupuesto
             txtCancelacion.Text = string.Empty;
             txtSeguimiento.Text = string.Empty;
             ddlFuente_F.Enabled = true;
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
-            if (DDLCuenta_Banco.Items.Count >= 1)
-                DDLCuenta_Banco.Items.RemoveAt(0);
-            DDLCuenta_Banco.Items.Insert(0, new ListItem("--OTRA CUENTA BANCO--", "0"));
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
+           
             
             ddlTipoEnc.SelectedIndex = 0;
             ddlStatusEnc.Visible = true;
@@ -346,6 +344,7 @@ namespace SAF.Presupuesto
                 objDocumento.MotivoRechazo = txtCancelacion.Text;
                 objDocumento.MotivoAutorizacion = txtAutorizacion.Text;
                 objDocumento.Seguimiento = txtSeguimiento.Text;
+                objDocumento.ClaveCuenta = DDLCuenta_Banco.SelectedValue; 
                 objDocumento.Cuenta = DDLCuenta_Banco.SelectedValue;
 
                 objDocumento.NumeroCheque = txtNumero_Cheque.Text;
@@ -375,7 +374,6 @@ namespace SAF.Presupuesto
                 objDocumento.PolizaDevengado = txtPoliza.Text;
                 objDocumento.PolizaEjercido = txtPoliza.Text;
                 objDocumento.PolizaPagado = txtPoliza.Text;
-                objDocumento.ClaveCuenta = "";
                 objDocumento.ClaveEvento = ddlevento.SelectedValue;
                 objDocumento.KeyDocumento = "";
                 objDocumento.KeyPoliza = "";
@@ -1149,7 +1147,7 @@ namespace SAF.Presupuesto
                 DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
                 CalendarExtenderIni.StartDate = fechaIni;
                 CalendarExtenderIni.EndDate = fechaFin;
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ListDependencia[ddlCentroContable.SelectedIndex].EtiquetaTres);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
 
 
                 
