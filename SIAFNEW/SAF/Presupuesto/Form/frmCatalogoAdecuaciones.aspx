@@ -61,7 +61,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtStatusOperacion" Text="" runat="server" Width="500px" maxlength="4" Enabled="false">
+                                    <asp:TextBox ID="txtStatusOperacion" Text="INICIAL" runat="server" Width="500px" maxlength="4" Enabled="false">
                                     </asp:TextBox>
                                 </td>
                             </tr>
@@ -150,6 +150,7 @@
 
 
                             <td colspan="3">                            
+                                <label>Total destino: <asp:Label runat="server" ID="SumaDestino"></asp:Label></label>
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GRDAdecuaciones" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">

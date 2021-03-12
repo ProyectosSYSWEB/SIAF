@@ -53,13 +53,19 @@ namespace SAF.Presupuesto.Form
             {
                 int mesIni = Convert.ToInt32(DDLMesInicial.SelectedValue);
                 int mesFin = Convert.ToInt32(DDLMesFin.SelectedValue);
+                decimal suma = 0;
                 objAdecuacion.Partida = DDLPartida.SelectedValue;
                 objAdecuacion.Fuente = DDLFuente.SelectedValue;
                 objAdecuacion.MesIni = mesIni;
                 objAdecuacion.MesFin = mesFin;
                 CN_Adecuaciones.CapitulosGrid(objAdecuacion, ref List);
                 GRDAdecuaciones.DataSource = List;
-                GRDAdecuaciones.DataBind();                
+                GRDAdecuaciones.DataBind();
+                for(int i = 0; i< List.Count; i++)
+                {
+                    suma = suma + Convert.ToDecimal(List[i].Destino);
+                }
+                SumaDestino.Text =  Convert.ToString(suma);
             }
             catch (Exception ex)
             {
@@ -83,11 +89,18 @@ namespace SAF.Presupuesto.Form
             try
             {
                 string Verificador = string.Empty;
+                decimal suma = 0;
                 objAdecuacion.Codigo_Programatico = CodigoOrigen;
                 CN_Adecuaciones.ObtenerDatosCogidoAdecuaciones(ref objAdecuacion, ref Verificador);
+                for (int i = 0; i < List.Count; i++)
+                {
+                    suma = suma + Convert.ToDecimal(List[i].Destino);
+                }
+                SumaDestino.Text = Convert.ToString(suma);
                 List.Add(objAdecuacion);
                 GRDAdecuaciones.DataSource = List;
                 GRDAdecuaciones.DataBind();
+                
             }
             catch (Exception ex)
             {
@@ -99,6 +112,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 CargarDatosAdecuacion();
+                CargarConceptoDocto();
             }
             catch(Exception ex)
             {
@@ -111,6 +125,26 @@ namespace SAF.Presupuesto.Form
             {
                 CargarDatosAdecuacion();
                 ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);                
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void CargarConceptoDocto()
+        {
+            try
+            {
+                string Mes = txtfechaDocumento.Text;                
+                Mes = Mes.Replace("/", "");
+                string Anio = Mes;
+                Mes = Mes.Substring(2, 2);
+                Anio = Anio.Substring(6, 2);
+                string Descripcion = DDLPartida.SelectedItem.Text.Substring(8, DDLPartida.SelectedItem.Text.Length);
+
+                txtConcepto.Text = "AMPLIACIÓN RP = " + Descripcion + " ** MES = " + Mes+ Anio;
+                txtMesAnio.Text = Mes + Anio;
             }
             catch(Exception ex)
             {
