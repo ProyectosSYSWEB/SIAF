@@ -29,6 +29,7 @@ namespace CapaDatos
                     objAdecuacion.Centro_Contab = Convert.ToString(dr.GetValue(2));
                     objAdecuacion.Codigo_Programatico = Convert.ToString(dr.GetValue(3));
                     objAdecuacion.Destino = Convert.ToString(dr.GetValue(4));
+                    objAdecuacion.Origen = Convert.ToString(dr.GetValue(5));
                     List.Add(objAdecuacion);
                 }
                 dr.Close();
@@ -52,7 +53,7 @@ namespace CapaDatos
             {
                 string[] ParametrosIn = {"P_CODIGO"};
                 object[] Valores = { objAdecuaciones.Codigo_Programatico };
-                string[] ParametrosOut = {"P_MES","P_TIPO_OPE","P_C_CONTAB","P_DESTINO","p_bandera"};
+                string[] ParametrosOut = {"P_MES","P_TIPO_OPE","P_C_CONTAB", "P_ORIGEN", "p_bandera"};
 
                 Cmd = CDDatos.GenerarOracleCommand("OBT_COD_PROG_ADECUACIONES", ref Verificador, ParametrosIn, Valores, ParametrosOut);
                 if (Verificador == "0")
@@ -61,8 +62,9 @@ namespace CapaDatos
                     objAdecuaciones.Mes = Convert.ToString(Cmd.Parameters["P_MES"].Value);
                     objAdecuaciones.TipoOperacion = Convert.ToString(Cmd.Parameters["P_TIPO_OPE"].Value);
                     objAdecuaciones.Centro_Contab = Convert.ToString(Cmd.Parameters["P_C_CONTAB"].Value);
-                    objAdecuaciones.Destino = Convert.ToString(Cmd.Parameters["P_DESTINO"].Value);
+                    objAdecuaciones.Origen = Convert.ToString(Cmd.Parameters["P_ORIGEN"].Value);
                     objAdecuaciones.Codigo_Programatico = Convert.ToString(Cmd.Parameters["P_CODIGO"].Value);
+                    objAdecuaciones.Destino = "0";
                 }
             }
             catch (Exception ex)

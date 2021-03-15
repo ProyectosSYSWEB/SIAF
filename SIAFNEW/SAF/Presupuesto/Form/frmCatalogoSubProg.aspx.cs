@@ -54,6 +54,8 @@ namespace SAF.Presupuesto.Form
                     CN_Subprog.InsertarSubPrograma(ref objBasicos, ref Verificador);
                     if (Verificador == "0")
                         lblError.Text = "Se han registrado los cambios";
+                    else
+                        lblError.Text = Verificador;
                 }
                 else
                     lblError.Text = "No tiene los privilegios para realizar esta acción";

@@ -28,6 +28,14 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
+                                            <tr>
+                                <td style="width: 30%">
+                                    <asp:Label ID="lblNvlAcad" runat="server" Text="Nivel académico"></asp:Label>
+                                </td>
+                                <td>                                    
+                                    <asp:DropDownList ID="DDLNvlacd" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLNvlacd_SelectedIndexChanged"></asp:DropDownList>
+                                </td>
+                            </tr>
                                             <asp:GridView ID="GRDProgramas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="Subprog" HeaderText="Clave"  />                                                    

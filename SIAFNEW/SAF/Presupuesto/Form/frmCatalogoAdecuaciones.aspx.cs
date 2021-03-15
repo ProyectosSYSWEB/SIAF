@@ -39,7 +39,7 @@ namespace SAF.Presupuesto.Form
                 DDLPartida.SelectedValue = "1";
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente, "p_ejercicio", SesionUsu.Usu_Ejercicio);
                 DDLPartida.SelectedValue = "1";
-                CargarDatosAdecuacion();
+                //CargarDatosAdecuacion();
                 CargarComboCodProg();
             }
             catch (Exception ex)
@@ -61,11 +61,11 @@ namespace SAF.Presupuesto.Form
                 CN_Adecuaciones.CapitulosGrid(objAdecuacion, ref List);
                 GRDAdecuaciones.DataSource = List;
                 GRDAdecuaciones.DataBind();
-                for(int i = 0; i< List.Count; i++)
+                for (int i = 0; i < List.Count; i++)
                 {
                     suma = suma + Convert.ToDecimal(List[i].Destino);
                 }
-                SumaDestino.Text =  Convert.ToString(suma);
+                SumaDestino.Text = Convert.ToString(suma);
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Adecuaciones", ref DDLCodOrigen, "p_partida", "p_fuente", objAdecuacion.Partida, objAdecuacion.Fuente);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Adecuaciones", ref DDLCodOrigen, "p_partida", "p_fuente", DDLPartida.SelectedValue, DDLFuente.SelectedValue);
                 ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
             }
             catch (Exception ex)
@@ -100,53 +100,88 @@ namespace SAF.Presupuesto.Form
                 List.Add(objAdecuacion);
                 GRDAdecuaciones.DataSource = List;
                 GRDAdecuaciones.DataBind();
-                
+
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-        protected void DDLFuente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                CargarDatosAdecuacion();
-                CargarConceptoDocto();
-            }
-            catch(Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-        }
-        protected void DDLCodOrigen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                CargarDatosAdecuacion();
-                ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);                
-            }
-            catch(Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-        }
+       
 
         protected void CargarConceptoDocto()
         {
             try
             {
-                string Mes = txtfechaDocumento.Text;                
+                string Mes = txtfechaDocumento.Text;
                 Mes = Mes.Replace("/", "");
                 string Anio = Mes;
                 Mes = Mes.Substring(2, 2);
                 Anio = Anio.Substring(6, 2);
-                string Descripcion = DDLPartida.SelectedItem.Text.Substring(8, DDLPartida.SelectedItem.Text.Length);
+                int tamañoCadena = DDLPartida.SelectedItem.Text.Length;
+                string Descripcion = DDLPartida.SelectedItem.Text;
+                tamañoCadena = tamañoCadena - 8;
+                Descripcion = Descripcion.Substring(8, tamañoCadena);
 
-                txtConcepto.Text = "AMPLIACIÓN RP = " + Descripcion + " ** MES = " + Mes+ Anio;
+                txtConcepto.Text = "AMPLIACIÓN RP = " + Descripcion + " ** MES = " + Mes + Anio;
                 txtMesAnio.Text = Mes + Anio;
             }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }        
+
+        protected void BTNSumarDestinos_Click(object sender, EventArgs e)
+        {
+            foreach (GridViewRow row in GRDAdecuaciones.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    string key = GRDAdecuaciones.DataKeys[row.RowIndex].Value.ToString();
+                    string value = "";
+                    TextBox txtedit = (TextBox)row.FindControl("txtedit");
+                    value = txtedit.Text;
+
+                    //do whatever you want
+
+                }
+            }
+        }
+
+        protected void BTNBuscarAdecuacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarDatosAdecuacion();
+                CargarConceptoDocto();                
+                ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
+            }
             catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void DDLFuente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarComboCodProg();
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void DDLPartida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarComboCodProg();
+            }
+            catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
