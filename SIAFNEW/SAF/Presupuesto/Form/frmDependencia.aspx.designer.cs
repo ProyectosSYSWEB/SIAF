@@ -51,13 +51,22 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// Control LBLNumDepend.
+        /// Control UpdatePanel11.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LBLNumDepend;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel11;
+
+        /// <summary>
+        /// Control btnNuevo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnNuevo;
 
         /// <summary>
         /// Control lblCentroContab.
@@ -78,13 +87,13 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.DropDownList DDLCentroContab;
 
         /// <summary>
-        /// Control UpdatePanel11.
+        /// Control LBLNumDepend.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel11;
+        protected global::System.Web.UI.WebControls.Label LBLNumDepend;
 
         /// <summary>
         /// Control GDRDependencias.

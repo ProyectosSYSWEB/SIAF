@@ -28,6 +28,14 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
+                                            <tr>
+                                <td style="width: 30%">
+                                    <asp:Label ID="lblCap" runat="server" Text="Sub-Capitulo"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDLClave" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLClave_SelectedIndexChanged"  ></asp:DropDownList>                                    
+                                </td>
+                            </tr>
                                             <asp:GridView ID="GRDPartidas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="Partida" HeaderText="Partida" />

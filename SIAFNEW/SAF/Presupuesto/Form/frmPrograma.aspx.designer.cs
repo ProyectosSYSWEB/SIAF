@@ -60,6 +60,24 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.UpdatePanel UpdatePanel11;
 
         /// <summary>
+        /// Control lblFuncion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFuncion;
+
+        /// <summary>
+        /// Control DDLFuncion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLFuncion;
+
+        /// <summary>
         /// Control GRDProgramas.
         /// </summary>
         /// <remarks>
