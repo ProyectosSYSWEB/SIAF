@@ -657,6 +657,18 @@
       <DependentUpon>rpt-003.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CAPITULO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_COMPARATIVO_CAPITULO.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CUENTA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_COMPARATIVO_CUENTA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_GRID_DOCS.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -787,6 +799,14 @@
     <EmbeddedResource Include="Presupuesto\Reportes\rpt-003.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt-003.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CAPITULO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_COMPARATIVO_CAPITULO.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CUENTA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_COMPARATIVO_CUENTA.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_GRID_DOCS.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
