@@ -37,6 +37,7 @@ namespace CapaDatos
                                             "P_MES_FINAL",
                                             "P_CUENTA_BANCO",
                                             "P_CONCEPTO",
+                                            "P_TIPO_DOC_REFERENCIA",
                                             "P_REFERENCIA",
                                             "P_BENEFICIARIO_TIPO",
                                             "P_BENEFICIARIO_NOMBRE",
@@ -53,6 +54,7 @@ namespace CapaDatos
                         DDet[i].Mes_final,
                         DDet[i].Cuenta_banco,
                         DDet[i].Concepto,
+                        DDet[i].TipoDocReferencia,
                         DDet[i].Referencia,
                         DDet[i].Beneficiario_tipo,
                         DDet[i].Beneficiario_nombre,
@@ -124,20 +126,23 @@ namespace CapaDatos
                     objDocDet.Tipo = Convert.ToString(dr.GetValue(3));
                     objDocDet.Ur_clave = Convert.ToString(dr.GetValue(2));
                     objDocDet.Id_Codigo_Prog = Convert.ToInt32(dr.GetValue(0));
-                    objDocDet.Desc_Codigo_Prog = Convert.ToString(dr.GetValue(15));
+                    
                     objDocDet.Cuenta_banco = Convert.ToString(dr.GetValue(9));
                     objDocDet.Mes_inicial = Convert.ToInt32(dr.GetValue(7));
                     objDocDet.Mes_final = Convert.ToInt32(dr.GetValue(8));
                     objDocDet.Importe_origen = Convert.ToDouble(dr.GetValue(4));
                     objDocDet.Importe_destino = Convert.ToDouble(dr.GetValue(5));
                     objDocDet.Importe_mensual = Convert.ToDouble(dr.GetValue(6));
-                    objDocDet.Desc_Partida = Convert.ToString(dr.GetValue(16));
+                   
 
                     objDocDet.Concepto = Convert.ToString(dr.GetValue(10));
                     objDocDet.Referencia = Convert.ToString(dr.GetValue(11));
                     objDocDet.Beneficiario_tipo = Convert.ToString(dr.GetValue(12));
                     objDocDet.Beneficiario_nombre = Convert.ToString(dr.GetValue(13));
                     objDocDet.Beneficiario_clave = Convert.ToString(dr.GetValue(14));
+                    objDocDet.Desc_Codigo_Prog = Convert.ToString(dr.GetValue(15));
+                    objDocDet.Desc_Partida = Convert.ToString(dr.GetValue(16));
+                    objDocDet.TipoDocReferencia = Convert.ToString(dr.GetValue(17));
 
                     List.Add(objDocDet);
                 }
