@@ -11,7 +11,7 @@ namespace SAF.Presupuesto.Form
 {
 
 
-    public partial class frmCapitulo
+    public partial class frmCatalogoAdecuaciones
     {
 
         /// <summary>
