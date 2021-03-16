@@ -23,35 +23,39 @@
                 <tr>
                     <td class="auto-style1">                        
                         <table style="width: 100%">
-                            <tr>
-                                <a href="frmCatalogoProgramas.aspx">Nuevo programa</a>
+                            <tr>                                
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
+                                            <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click"  ValidationGroup="Agregar"/>
                                             <tr>
-                                <td style="width: 30%">
-                                    <asp:Label ID="lblFuncion" runat="server" Text="Función"></asp:Label>
-                                </td>
-                                <td>                                    
-                                    <asp:DropDownList ID="DDLFuncion" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuncion_SelectedIndexChanged">
-                                    </asp:DropDownList>
-                                </td>
-                            </tr>
-                                            <asp:GridView ID="GRDProgramas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                                <td style="width: 30%">
+                                                    <asp:Label ID="lblFuncion" runat="server" Text="Función"></asp:Label>
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="DDLFuncion" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuncion_SelectedIndexChanged">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+                                            <asp:GridView ID="GRDProgramas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowDeleting="GRDProgramas_RowDeleting" OnSelectedIndexChanged="GRDProgramas_SelectedIndexChanged">
                                                 <Columns>
                                                     <asp:BoundField DataField="Funcion" HeaderText="Función" />
                                                     <asp:BoundField DataField="F_Prog" HeaderText="F Prog" />
                                                     <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
-                                                                <ContentTemplate>
-                                                                    <%--<asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar el Documento?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>--%>
-                                                                </ContentTemplate>
-                                                            </asp:UpdatePanel>
+                                                            <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
+                                                            <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Editar</asp:LinkButton>
+                                                            <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    
                                                 </Columns>
 
                                                 <FooterStyle CssClass="enc" />

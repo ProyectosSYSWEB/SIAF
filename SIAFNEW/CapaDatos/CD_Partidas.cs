@@ -26,7 +26,8 @@ namespace CapaDatos
                     objPartidas = new Partidas();
                     objPartidas.Partida = Convert.ToString(dr.GetValue(0));
                     objPartidas.Concepto = Convert.ToString(dr.GetValue(1));
-                    objPartidas.Descrip = Convert.ToString(dr.GetValue(1));
+                    objPartidas.Descrip = Convert.ToString(dr.GetValue(2));
+                    objPartidas.Id = Convert.ToString(dr.GetValue(3));
                     List.Add(objPartidas);
                 }
                 dr.Close();

@@ -11,7 +11,7 @@ namespace SAF.Presupuesto.Form
 {
 
 
-    public partial class frmCatalogoAdecuaciones
+    public partial class frmCapitulo
     {
 
         /// <summary>
@@ -240,6 +240,15 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.DropDownList DDLFuente;
 
         /// <summary>
+        /// Control BTNBuscarAdecuacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTNBuscarAdecuacion;
+
+        /// <summary>
         /// Control lblCodigoOrigen.
         /// </summary>
         /// <remarks>
@@ -258,15 +267,6 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.DropDownList DDLCodOrigen;
 
         /// <summary>
-        /// Control BTNBuscarAdecuacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTNBuscarAdecuacion;
-
-        /// <summary>
         /// Control SumaDestino.
         /// </summary>
         /// <remarks>
@@ -274,6 +274,15 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label SumaDestino;
+
+        /// <summary>
+        /// Control SumaDestinoMod.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SumaDestinoMod;
 
         /// <summary>
         /// Control BTNSumarDestinos.
@@ -285,13 +294,13 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.Button BTNSumarDestinos;
 
         /// <summary>
-        /// Control BTNAplicar.
+        /// Control BTNGuardarAdecuacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTNAplicar;
+        protected global::System.Web.UI.WebControls.Button BTNGuardarAdecuacion;
 
         /// <summary>
         /// Control UpdatePanel11.

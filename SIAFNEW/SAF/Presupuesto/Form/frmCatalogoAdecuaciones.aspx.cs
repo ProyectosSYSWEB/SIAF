@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 namespace SAF.Presupuesto.Form
 {
     public partial class frmCatalogoAdecuaciones : System.Web.UI.Page
@@ -17,6 +16,7 @@ namespace SAF.Presupuesto.Form
         CN_Adecuaciones CN_Adecuaciones = new CN_Adecuaciones();
         List<Adecuaciones> List = new List<Adecuaciones>();
         List<Adecuaciones> ListOrigen = new List<Adecuaciones>();
+        double sumaDestino = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -134,18 +134,18 @@ namespace SAF.Presupuesto.Form
 
         protected void BTNSumarDestinos_Click(object sender, EventArgs e)
         {
-            foreach (GridViewRow row in GRDAdecuaciones.Rows)
-            {
-                if (row.RowType == DataControlRowType.DataRow)
+            try
+            {                
+                for (int i = 0; i < GRDAdecuaciones.Rows.Count - 1; i++)
                 {
-                    string key = GRDAdecuaciones.DataKeys[row.RowIndex].Value.ToString();
-                    string value = "";
-                    TextBox txtedit = (TextBox)row.FindControl("txtedit");
-                    value = txtedit.Text;
-
-                    //do whatever you want
-
+                    TextBox destino = GRDAdecuaciones.Rows[i].FindControl("txtEditDestino") as TextBox;
+                    sumaDestino = sumaDestino + Convert.ToDouble(destino.Text);
                 }
+                SumaDestinoMod.Text =  Convert.ToString(sumaDestino);
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
             }
         }
 
@@ -184,6 +184,31 @@ namespace SAF.Presupuesto.Form
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNGuardarAdecuacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int registro = GRDAdecuaciones.Rows.Count;
+                TextBox origen = GRDAdecuaciones.Rows[registro].FindControl("txtEditDestino") as TextBox;
+                double cantidadOrigen = Convert.ToDouble(origen.Text);
+                double cantidadDestino = 0;
+                if (SumaDestinoMod.Text != "")
+                    cantidadDestino = Convert.ToDouble(SumaDestinoMod.Text);
+                else
+                    cantidadDestino = Convert.ToDouble(SumaDestino.Text);
+                if (cantidadDestino > cantidadOrigen)
+                    lblError.Text = "No se puede realizar una adecuación con el destino mayor al origen";
+                else
+                {
+
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
     }

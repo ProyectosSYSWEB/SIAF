@@ -38,7 +38,7 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Grid_Cat_TipoProy", ref DDLTipoProy);
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Grid_Cat_TipoProy", ref DDLTipoProy, "p_todos", "N");
             DDLTipoProy.SelectedValue = "1";
         }
 
@@ -73,6 +73,63 @@ namespace SAF.Presupuesto.Form
                 CN_Proyecto.ProyectoGrid(ref objProyectos, ref listPresUnv);
                 GRDProyectos.DataSource = listPresUnv;
                 GRDProyectos.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void GRDProyectos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            lblError.Text = string.Empty;
+            try
+            {
+                Dependencias objDependencias = new Dependencias();
+                string Verificador = string.Empty;
+                int fila = e.RowIndex;
+                objDependencias.C_Contab = Convert.ToString(GRDProyectos.Rows[fila].Cells[3].Text);
+                //if (SesionUsu.Usu_TipoUsu == "SU")
+                //{
+                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
+                //    if (Verificador == "0")
+                //        lblError.Text = "Se ha eliminado correctamente";
+                //    else
+                //        lblError.Text = Verificador;
+                //}
+                //else
+                //{
+                //    lblError.Text = Verificador;
+                //}
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void GRDProyectos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Dependencias objDependencias = new Dependencias();
+                objDependencias.C_Contab = Convert.ToString(GRDProyectos.SelectedRow.Cells[3].Text);
+                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
+
+                //MultiView1.ActiveViewIndex = 1;
+                //TabGridDepen.ActiveTabIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                Response.Redirect("frmCatalogoProyecto.aspx", true);
             }
             catch (Exception ex)
             {

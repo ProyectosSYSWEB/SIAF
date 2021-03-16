@@ -25,7 +25,8 @@ namespace CapaDatos
                 {
                     objFuentes = new FuentesFin();
                     objFuentes.Fuente = Convert.ToString(dr.GetValue(0));
-                    objFuentes.Descrip = Convert.ToString(dr.GetValue(1));                    
+                    objFuentes.Descrip = Convert.ToString(dr.GetValue(1));
+                    objFuentes.Id = Convert.ToString(dr.GetValue(2));
                     List.Add(objFuentes);
                 }
                 dr.Close();
