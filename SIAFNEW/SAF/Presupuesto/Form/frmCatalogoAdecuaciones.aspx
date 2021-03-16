@@ -114,6 +114,11 @@
                                     <asp:DropDownList ID="DDLFuente" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_SelectedIndexChanged"></asp:DropDownList>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <asp:Button runat="server" ID="BTNBuscarAdecuacion" Text="Buscar" OnClick="BTNBuscarAdecuacion_Click"/>
+                                </td>
+                            </tr>
                             </tr>
 
                             <tr>
@@ -123,20 +128,18 @@
                                 <td>
                                     <asp:DropDownList ID="DDLCodOrigen" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <asp:Button runat="server" ID="BTNBuscarAdecuacion" Text="Buscar" OnClick="BTNBuscarAdecuacion_Click"/>
-                                </td>
-                            </tr>
+                            </tr>                            
 
 
                             <td colspan="3">                            
                                 <label>Total destino: <asp:Label runat="server" ID="SumaDestino"></asp:Label></label>
                                 <br />
+                                <label>Total destino modificado: <asp:Label runat="server" ID="SumaDestinoMod"></asp:Label></label>
+                                <br />
                                 <asp:Button runat="server" ID="BTNSumarDestinos" Text="Sumar montos destino" OnClick="BTNSumarDestinos_Click"/>
                                 <br />
-                                <asp:Button runat="server" ID="BTNAplicar" Text="Aplicar Cambios" />
+                                <asp:Button runat="server" ID="BTNGuardarAdecuacion" Text="Aplicar Cambios" OnClick="BTNGuardarAdecuacion_Click"
+                                    />
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GRDAdecuaciones" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">

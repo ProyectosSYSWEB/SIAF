@@ -27,6 +27,7 @@ namespace CapaDatos
                     objProyectos.Tipo_Proy = Convert.ToString(dr.GetValue(0));
                     objProyectos.Proyecto = Convert.ToString(dr.GetValue(1));
                     objProyectos.Descrip = Convert.ToString(dr.GetValue(2));
+                    objProyectos.Id = Convert.ToString(dr.GetValue(3));
                     List.Add(objProyectos);
                 }
                 dr.Close();

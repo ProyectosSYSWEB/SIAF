@@ -34,7 +34,7 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd);            
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd, "p_tipocombo", "N");            
         }
 
         protected void BTNGuardar_Click(object sender, EventArgs e)
