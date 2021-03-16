@@ -92,7 +92,8 @@
                  if (NumPoliza.length == 3)
                      if (NumPoliza.substr(2, 1) == "F" || NumPoliza.substr(2, 1) == "E" || NumPoliza.substr(2, 1) == "I"
                          || NumPoliza.substr(2, 1) == "C" || NumPoliza.substr(2, 1) == "f" || NumPoliza.substr(2, 1) == "e"
-                         || NumPoliza.substr(2, 1) == "i"|| NumPoliza.substr(2, 1) == "c" )
+                         || NumPoliza.substr(2, 1) == "i" || NumPoliza.substr(2, 1) == "c"
+                     || NumPoliza.substr(2, 1) == "P"|| NumPoliza.substr(2, 1) == "p")
                          document.getElementById(e.id).value = Valor2.substr(0, 3);
                      else
                          document.getElementById(e.id).value = Valor2.substr(0, 2);

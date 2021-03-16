@@ -1049,6 +1049,7 @@ namespace SAF.Presupuesto
                     objDocumentoDet.Importe_origen = objDocumentoDet.Importe_mensual * tot;
                     objDocumentoDet.Importe_destino = 0;
                     objDocumentoDet.Concepto = string.Empty;
+                    objDocumentoDet.TipoDocReferencia = string.Empty;
                     objDocumentoDet.Referencia = string.Empty;
                     objDocumentoDet.Beneficiario_tipo ="X";
                     objDocumentoDet.Beneficiario_nombre = string.Empty;
