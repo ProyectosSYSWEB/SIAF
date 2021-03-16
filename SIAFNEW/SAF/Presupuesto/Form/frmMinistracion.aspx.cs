@@ -935,6 +935,7 @@ namespace SAF.Presupuesto
                         objDocumentoDet.Importe_mensual = objDocumentoDet.Importe_origen;
                         objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                         objDocumentoDet.Concepto = string.Empty;
+                        objDocumentoDet.TipoDocReferencia = string.Empty;
                         objDocumentoDet.Referencia = string.Empty;
                         objDocumentoDet.Beneficiario_tipo = "X";
                         objDocumentoDet.Beneficiario_nombre = string.Empty;
