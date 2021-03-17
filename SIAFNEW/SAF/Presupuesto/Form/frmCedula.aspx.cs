@@ -68,6 +68,7 @@ namespace SAF.Presupuesto
             ddlevento.Enabled = true;
             txtCedula.Text = string.Empty;
             txtPoliza.Text = string.Empty;
+            DDLCuenta_Banco.Visible = true;
             DDLCuenta_Banco.Enabled = true;
             
             txtImporte_Operacion.Enabled = false;
@@ -198,9 +199,9 @@ namespace SAF.Presupuesto
                 txtImporte_Operacion.Text = lblTotal_Origen.Text;
 
                 if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
-                    Celdas = new Int32[] { 1,2,  4,9,10,11,12,13,14,15,16,17,18,20 };
+                    Celdas = new Int32[] { 1,2,3,  4,9,10,11,12,13,14,15,16,17,18,20 };
                 else
-                    Celdas = new Int32[] { 1, 2,  4, 9,10, 11, 12, 13, 14, 15, 16, 17,18 };
+                    Celdas = new Int32[] { 1, 2,3,  4, 9,10, 11, 12, 13, 14, 15, 16, 17,18 };
 
                 if (grdDetalles.Rows.Count > 0)
                 {
@@ -564,6 +565,7 @@ namespace SAF.Presupuesto
                     txtSeguimiento.Text = objDocumento.Seguimiento;
                     txtNumero_Cheque.Text = objDocumento.NumeroCheque;
                     DDLCuenta_Banco.SelectedValue= objDocumento.Cuenta;
+                    DDLCuenta_Banco.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
                     txtImporteCheque.Text = Convert.ToString(objDocumento.Importe_Cheque);
                     txtImporte_Operacion.Text = Convert.ToString(objDocumento.Importe_Operacion);
