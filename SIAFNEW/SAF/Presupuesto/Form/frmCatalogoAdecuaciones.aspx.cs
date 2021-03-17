@@ -16,7 +16,7 @@ namespace SAF.Presupuesto.Form
         CN_Adecuaciones CN_Adecuaciones = new CN_Adecuaciones();
         List<Adecuaciones> List = new List<Adecuaciones>();
         List<Adecuaciones> ListOrigen = new List<Adecuaciones>();
-        double sumaDestino = 0;
+        double sumaInternaDestino = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -35,12 +35,14 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = string.Empty;
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Partidas", ref DDLPartida);
                 DDLPartida.SelectedValue = "1";
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente, "p_ejercicio", SesionUsu.Usu_Ejercicio);
                 DDLPartida.SelectedValue = "1";
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Adecuaciones", ref DDLCodOrigen, "p_partida", "p_fuente", DDLPartida.SelectedValue, DDLFuente.SelectedValue);
                 //CargarDatosAdecuacion();
-                CargarComboCodProg();
+                //CargarComboCodProg();
             }
             catch (Exception ex)
             {
@@ -51,6 +53,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = string.Empty;
                 int mesIni = Convert.ToInt32(DDLMesInicial.SelectedValue);
                 int mesFin = Convert.ToInt32(DDLMesFin.SelectedValue);
                 decimal suma = 0;
@@ -76,11 +79,15 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                DDLCodOrigen.Enabled = false;
+                lblError.Text = string.Empty;
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Adecuaciones", ref DDLCodOrigen, "p_partida", "p_fuente", DDLPartida.SelectedValue, DDLFuente.SelectedValue);
-                ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
+                //ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
+                DDLCodOrigen.Enabled = true;
             }
             catch (Exception ex)
             {
+                DDLCodOrigen.Enabled = true;
                 lblError.Text = ex.Message;
             }
         }
@@ -88,13 +95,14 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = string.Empty;
                 string Verificador = string.Empty;
                 decimal suma = 0;
                 objAdecuacion.Codigo_Programatico = CodigoOrigen;
                 CN_Adecuaciones.ObtenerDatosCogidoAdecuaciones(ref objAdecuacion, ref Verificador);
                 for (int i = 0; i < List.Count; i++)
                 {
-                    suma = suma + Convert.ToDecimal(List[i].Destino);
+                    suma = suma + Convert.ToDecimal(List[i].Suma_Destino);
                 }
                 SumaDestino.Text = Convert.ToString(suma);
                 List.Add(objAdecuacion);
@@ -113,6 +121,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = string.Empty;
                 string Mes = txtfechaDocumento.Text;
                 Mes = Mes.Replace("/", "");
                 string Anio = Mes;
@@ -135,13 +144,15 @@ namespace SAF.Presupuesto.Form
         protected void BTNSumarDestinos_Click(object sender, EventArgs e)
         {
             try
-            {                
+            {
+                
+                lblError.Text = string.Empty;
                 for (int i = 0; i < GRDAdecuaciones.Rows.Count - 1; i++)
                 {
-                    TextBox destino = GRDAdecuaciones.Rows[i].FindControl("txtEditDestino") as TextBox;
-                    sumaDestino = sumaDestino + Convert.ToDouble(destino.Text);
+                    TextBox destino = GRDAdecuaciones.Rows[i].FindControl("txtSumaDestino") as TextBox;
+                    sumaInternaDestino = sumaInternaDestino + Convert.ToDouble(destino.Text);
                 }
-                SumaDestinoMod.Text =  Convert.ToString(sumaDestino);
+                SumaDestinoMod.Text =  Convert.ToString(sumaInternaDestino);
             }
             catch(Exception ex)
             {
@@ -153,6 +164,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = string.Empty;
                 CargarDatosAdecuacion();
                 CargarConceptoDocto();                
                 ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
@@ -167,6 +179,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = string.Empty;
                 CargarComboCodProg();
             }
             catch(Exception ex)
@@ -179,6 +192,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = string.Empty;
                 CargarComboCodProg();
             }
             catch (Exception ex)
@@ -191,6 +205,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = string.Empty;
                 int registro = GRDAdecuaciones.Rows.Count;
                 TextBox origen = GRDAdecuaciones.Rows[registro].FindControl("txtEditDestino") as TextBox;
                 double cantidadOrigen = Convert.ToDouble(origen.Text);
@@ -203,11 +218,16 @@ namespace SAF.Presupuesto.Form
                     lblError.Text = "No se puede realizar una adecuación con el destino mayor al origen";
                 else
                 {
-
+                    //CN_Adecuaciones.InsertarProyecto(ref objProyectos, ref Verificador);
+                    //if (Verificador == "0")
+                    //    lblError.Text = "Se ha guardado correctamente";
+                    //else
+                    //    lblError.Text = Verificador;
                 }
             }
             catch(Exception ex)
             {
+                lblError.Text = ex.Message;
 
             }
         }

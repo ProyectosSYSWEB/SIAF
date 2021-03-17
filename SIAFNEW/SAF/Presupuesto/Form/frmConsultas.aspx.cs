@@ -40,7 +40,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia, "p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre ,SesionUsu.Usu_Ejercicio, "X");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia, "p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre ,SesionUsu.Usu_Ejercicio, "CAT");
             }
             catch (Exception ex)
             {
@@ -153,6 +153,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                lblError.Text = " ";
                 DDLCodProg.Enabled = false;
                 capitulos = (String)Session["Capitulos"];
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, capitulos, DDLFuente.SelectedValue);
@@ -164,7 +165,7 @@ namespace SAF.Presupuesto.Form
 
                 else if (DDLCodProg.Items.Count == 1)
                 {
-                    DDLCodProg.Enabled = true;                    
+                    DDLCodProg.Enabled = false;                    
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                 }
             }

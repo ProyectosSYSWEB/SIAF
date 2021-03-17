@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCatalogoAdecuaciones.aspx.cs" Inherits="SAF.Presupuesto.Form.frmCatalogoAdecuaciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">    
+    <style type="text/css">        
+        .ColumnaOculta{
+            display:none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdateProgress ID="UpdateProgress1" runat="server">
@@ -116,7 +121,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Button runat="server" ID="BTNBuscarAdecuacion" Text="Buscar" OnClick="BTNBuscarAdecuacion_Click"/>
+                                    <asp:Button runat="server" ID="BTNBuscarAdecuacion" Text="Agregar" OnClick="BTNBuscarAdecuacion_Click"/>
                                 </td>
                             </tr>
                             </tr>
@@ -158,14 +163,9 @@
                                                             <asp:TextBox ID="txtEditOrigen" runat="server" Text='<%# Eval("Origen") %>'></asp:TextBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>                                                   
-                                                    <asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Destino" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" >                                                        
                                                         <ItemTemplate>
-                                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
-                                                                <ContentTemplate>
-                                                                    <%--<asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar el Documento?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>--%>
-                                                                </ContentTemplate>
-                                                            </asp:UpdatePanel>
+                                                            <asp:TextBox ID="txtSumaDestino" runat="server" Text='<%# Eval("Suma_Destino") %>'></asp:TextBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
