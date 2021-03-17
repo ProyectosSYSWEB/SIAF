@@ -2,13 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using CapaEntidad;
 using CapaNegocio;
-using System.Web.UI.DataVisualization.Charting;
 
 namespace SAF.Presupuesto
 {
@@ -29,11 +27,11 @@ namespace SAF.Presupuesto
         Pres_Documento_Detalle objDocumentoDet = new Pres_Documento_Detalle();
         private static List<Comun> ListConceptos = new List<Comun>();
         private static List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
-        private static List<Comun> Listcodigo = new List<Comun>(); //En tu declaración de variables
+        private static List<Comun> Listcodigo = new List<Comun>();
         private static List<Comun> ListDependencia = new List<Comun>();
         private static List<Comun> ListPartida = new List<Comun>();
         
-        int honorarios = 1;
+       
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,6 +68,7 @@ namespace SAF.Presupuesto
             ddlevento.Enabled = true;
             txtCedula.Text = string.Empty;
             txtPoliza.Text = string.Empty;
+            DDLCuenta_Banco.Visible = true;
             DDLCuenta_Banco.Enabled = true;
             
             txtImporte_Operacion.Enabled = false;
@@ -193,15 +192,16 @@ namespace SAF.Presupuesto
             lblError.Text = string.Empty;
             try
             {
-                grdDetalles.DataSource = ListDocDet;
+               
+                 grdDetalles.DataSource = ListDocDet;
                 grdDetalles.DataBind();
                 Sumatoria(grdDetalles);
                 txtImporte_Operacion.Text = lblTotal_Origen.Text;
 
                 if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
-                    Celdas = new Int32[] { 1,2, 3, 4,9,10,11,12,13,14,15,16,17,18,20 };
+                    Celdas = new Int32[] { 1,2,3,  4,9,10,11,12,13,14,15,16,17,18,20 };
                 else
-                    Celdas = new Int32[] { 1, 2, 3, 4, 9,10, 11, 12, 13, 14, 15, 16, 17,18 };
+                    Celdas = new Int32[] { 1, 2,3,  4, 9,10, 11, 12, 13, 14, 15, 16, 17,18 };
 
                 if (grdDetalles.Rows.Count > 0)
                 {
@@ -241,8 +241,9 @@ namespace SAF.Presupuesto
         }
         private void GuardarDetalle(ref string Verificador, int Documento)
         {
-            ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
-            CNDocDet.DocumentoDetInsertar(ListDocDet, Documento, ref Verificador);
+            List<Pres_Documento_Detalle> ListaDetalle = new List<Pres_Documento_Detalle>();
+            ListaDetalle = (List<Pres_Documento_Detalle>)Session["DocDet"];
+            CNDocDet.DocumentoDetInsertar(ListaDetalle, Documento, ref Verificador);
         }
         private void CargarGrid(ref GridView grid, int idGrid)
         {
@@ -407,14 +408,14 @@ namespace SAF.Presupuesto
         }
         protected void EditaRegistro(object sender, GridViewUpdateEventArgs e)
         {
-            List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
-            ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
-            GridViewRow row = grdDetalles.Rows[e.RowIndex];
-            ListDocDet[e.RowIndex].Importe_origen = Convert.ToDouble(((TextBox)(row.Cells[7].Controls[0])).Text);
-            ListDocDet[e.RowIndex].Importe_destino = Convert.ToDouble(((TextBox)(row.Cells[8].Controls[0])).Text);
-            grdDetalles.EditIndex = -1;
-            Session["DocDet"] = ListDocDet;
-            CargarGridDetalle(ListDocDet);
+            //List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
+            //ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
+            //GridViewRow row = grdDetalles.Rows[e.RowIndex];
+            //ListDocDet[e.RowIndex].Importe_origen = Convert.ToDouble(((TextBox)(row.Cells[7].Controls[0])).Text);
+            //ListDocDet[e.RowIndex].Importe_destino = Convert.ToDouble(((TextBox)(row.Cells[8].Controls[0])).Text);
+            //grdDetalles.EditIndex = -1;
+            //Session["DocDet"] = ListDocDet;
+            //CargarGridDetalle(ListDocDet);
         }
         private void disponible()
         {
@@ -423,17 +424,18 @@ namespace SAF.Presupuesto
             lblFormatoDisponible.Text = "0.00";
             try
             {
-                objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                objDocumentoDet.SuperTipo = "C";
-                objDocumentoDet.Tipo = ddlevento.SelectedValue;
-                objDocumentoDet.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
-                objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
+                Pres_Documento_Detalle objDocDet = new Pres_Documento_Detalle();
+                objDocDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
+                objDocDet.SuperTipo = "C";
+                objDocDet.Tipo = ddlevento.SelectedValue;
+                objDocDet.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
+                objDocDet.Ejercicios = SesionUsu.Usu_Ejercicio;
 
-                CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
+                CNDocDet.ObtDisponibleCodigoProg(objDocDet, ref Verificador);
                 if (Verificador == "0")
                 {
-                    lblDisponible.Text = Convert.ToString(objDocumentoDet.Importe_disponible);
-                    lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocumentoDet.Importe_disponible));
+                    lblDisponible.Text = Convert.ToString(objDocDet.Importe_disponible);
+                    lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocDet.Importe_disponible));
                 }
             }
 
@@ -516,8 +518,8 @@ namespace SAF.Presupuesto
             Verificador = string.Empty;
             lblMsjCP.Text = string.Empty;
             validadorStatus.ValidationGroup = "Guardar";
-           
-            
+            Session["DocDet"] = null;
+
             string Status = string.Empty;
             try
             {
@@ -526,9 +528,7 @@ namespace SAF.Presupuesto
                 CNDocumentos.ConsultarDocumentoSel(ref objDocumento, ref Verificador);
                 if (Verificador == "0")
                 {
-                    
-                    Session["DocDet"] = null;
-                    
+
                     grdDetalles.DataSource = null;
                     grdDetalles.DataBind();
                     /*Inicializa controles para editar*/
@@ -540,8 +540,7 @@ namespace SAF.Presupuesto
                     ddlevento.Enabled = false;
                     ddlDependencia.SelectedValue = objDocumento.Dependencia;
                    
-                   
-
+         
                     txtCedula.Text = objDocumento.Folio;
                     txtPoliza.Text = objDocumento.PolizaComprometida;
                     ddlTipoEnc.SelectedValue = objDocumento.Tipo;
@@ -551,7 +550,6 @@ namespace SAF.Presupuesto
                     {
                         validadorStatus.ValidationGroup = string.Empty;
                                              
-                       
                         ddlStatusEnc.Visible = (Status == "A") ? false:true;
                         panel_detalle.Visible = true;
                         btnGuardar.Enabled = true  ;
@@ -564,15 +562,14 @@ namespace SAF.Presupuesto
                         btnGuardar.Enabled = false;
                     }                    
                         txtConcepto.Text = objDocumento.Descripcion;
-                   
                     txtSeguimiento.Text = objDocumento.Seguimiento;
                     txtNumero_Cheque.Text = objDocumento.NumeroCheque;
                     DDLCuenta_Banco.SelectedValue= objDocumento.Cuenta;
+                    DDLCuenta_Banco.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
                     txtImporteCheque.Text = Convert.ToString(objDocumento.Importe_Cheque);
                     txtImporte_Operacion.Text = Convert.ToString(objDocumento.Importe_Operacion);
                     txtImporteISR.Text = Convert.ToString(objDocumento.ISR);
-                   
                     txtImporteOrigen.Text = "0.00";                    
                     objDocumentoDet.Id_Documento = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                     List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
@@ -580,6 +577,7 @@ namespace SAF.Presupuesto
                     
                     DataTable dt = new DataTable();
                     Session["DocDet"] = ListDocDet;
+                    
                     CargarGridDetalle(ListDocDet);
                     SesionUsu.Editar = 1;
                     ddlFuente_F.SelectedValue = lblFF.Text;
@@ -608,6 +606,7 @@ namespace SAF.Presupuesto
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             CNComun.Habilitar_controles(UpdatePanel1);
+           
             btnGuardar.Enabled = true;
             ddlDependencia.Enabled = true;
             ddlTipoEnc.Enabled = true;
@@ -720,19 +719,19 @@ namespace SAF.Presupuesto
         protected void grdDetalles_RowEditing(object sender, GridViewEditEventArgs e)
         {
             
-            grdDetalles.EditIndex = e.NewEditIndex;
-            List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
-            ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
-            Session["DocDet"] = ListDocDet;
-            CargarGridDetalle(ListDocDet);
+            //grdDetalles.EditIndex = e.NewEditIndex;
+            //List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
+            //ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
+            //Session["DocDet"] = ListDocDet;
+            //CargarGridDetalle(ListDocDet);
 
         }
         protected void grdDetalles_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
-            ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
-            grdDetalles.EditIndex = -1;
-            CargarGridDetalle(ListDocDet);
+            //List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
+            //ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
+            //grdDetalles.EditIndex = -1;
+            //CargarGridDetalle(ListDocDet);
         }
         protected void txtImporteOrigen_TextChanged(object sender, EventArgs e)
         {
@@ -774,73 +773,67 @@ namespace SAF.Presupuesto
        
         protected void btnAgregarDet_Click(object sender, EventArgs e)
         {
-            lblErrorDet.Text = string.Empty;
-            lblMsjCP.Text = string.Empty;
-            ddlevento.Enabled = false;
-            if (Convert.ToDouble(txtImporteOrigen.Text)==0 || Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe capturado no está permitido.');", true);
-            else
+            if (ddlCodigoProg.SelectedValue != "0")
             {
-                var content = new List<Pres_Documento_Detalle>();
-                if (Session["DocDet"] != null)
+                lblErrorDet.Text = string.Empty;
+                lblMsjCP.Text = string.Empty;
+                ddlevento.Enabled = false;
+
+
+                if (Convert.ToDouble(txtImporteOrigen.Text) == 0 || Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe capturado no está permitido.');", true);
+                else
                 {
-                    //string MesIni = Convert.ToString(Convert.ToInt32(ddlMesInicialDet.SelectedValue));
-                    string MesIni = Convert.ToString(Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2)));
-                    List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
-                    ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
-                    var filteredCodigosProg = from c in ListDocDetBusca
-                                              where  Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
-                                              
-                                              select c;
-
-                    content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
-                }
-                if (content.Count == 0)
-                {
-                    objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                    objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0,34);
-                    objDocumentoDet.Ur_clave = ddlDependencia.SelectedValue;
-                    objDocumentoDet.Tipo = "O";
-                    
-                    objDocumentoDet.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
-                    objDocumentoDet.Mes_final = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
-                    objDocumentoDet.Cuenta_banco = DDLCuenta_Banco.SelectedValue;
-                    
-
-                    objDocumentoDet.Importe_origen = Math.Abs(Convert.ToDouble(txtImporteOrigen.Text));
-
-                    objDocumentoDet.Importe_destino = 0;
-                    
-                    objDocumentoDet.Importe_mensual = objDocumentoDet.Importe_origen;
-
-                    objDocumentoDet.Concepto  = txtDesPartida.Text.ToUpper();
-                    objDocumentoDet.TipoDocReferencia = ddlTipoDocReferencia.SelectedValue;
-                    objDocumentoDet.Referencia = txtReferencia.Text;
-                    objDocumentoDet.Beneficiario_tipo = DDLTipoBeneficiario.SelectedValue;
-                    objDocumentoDet.Beneficiario_clave  = txtClaveBeneficiario.Text;
-                    objDocumentoDet.Beneficiario_nombre = txtBeneficiario.Text.ToUpper();
-
-                    
-
-
-                    if (Session["DocDet"] == null)
+                    var content = new List<Pres_Documento_Detalle>();
+                    Pres_Documento_Detalle Detalle = new Pres_Documento_Detalle();
+                    List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
+                     
+                    if (Session["DocDet"] != null)
                     {
-                        ListDocDet = new List<Pres_Documento_Detalle>();
-                        ListDocDet.Add(objDocumentoDet);
+                        List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
+                        ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
+                        var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
+                                                  where Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
+
+                                                  select c;
+
+                        content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
                     }
-                    else
+                    if (content.Count == 0)
                     {
-                        ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
-                        ListDocDet.Add(objDocumentoDet);
-                    }
+                        Detalle.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
+                        Detalle.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0, 34);
+                        Detalle.Ur_clave = ddlDependencia.SelectedValue;
+                        Detalle.Tipo = "O";
+
+                        Detalle.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
+                        Detalle.Mes_final = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
+                        Detalle.Cuenta_banco = DDLCuenta_Banco.SelectedValue;
+
+                        Detalle.Importe_origen = Math.Abs(Convert.ToDouble(txtImporteOrigen.Text));
+                        Detalle.Importe_destino = 0;
+                        Detalle.Importe_mensual = Detalle.Importe_origen;
+                        Detalle.Concepto = txtDesPartida.Text.ToUpper();
+                        Detalle.TipoDocReferencia = ddlTipoDocReferencia.SelectedValue;
+                        Detalle.Referencia = txtReferencia.Text;
+                        Detalle.Beneficiario_tipo = DDLTipoBeneficiario.SelectedValue;
+                        Detalle.Beneficiario_clave = txtClaveBeneficiario.Text;
+                        Detalle.Beneficiario_nombre = txtBeneficiario.Text.ToUpper();
+
+                        if (Session["DocDet"] != null)
+                            ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
+
+                     ListDocDet.Add(Detalle);
                     Session["DocDet"] = ListDocDet;
                     CargarGridDetalle(ListDocDet);
                     ddlTipoEnc.Enabled = false;
-                }
-                else
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El código programático ya está capturado.');", true);
-            }
 
+
+                    }
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El código programático ya está capturado.');", true);
+                }
+            }
         }
         protected void ddlTipoEnc_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -865,8 +858,8 @@ namespace SAF.Presupuesto
             SesionUsu.Editar = 0;
             MultiView1.ActiveViewIndex = 1;
             TabContainer1.ActiveTabIndex = 0;
-            ListDocDet.Clear();
             Session["DocDet"] = null;
+
             ddlDependencia.Enabled = false;
             panel_detalle.Visible = true;
             CargarCombosAdicionales();
@@ -893,8 +886,7 @@ namespace SAF.Presupuesto
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente","p_clave_evento", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ddlevento.SelectedValue, ref ListPartida);
-                disponible();
-            }
+                       }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
@@ -904,7 +896,7 @@ namespace SAF.Presupuesto
         {
 
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0,1), ddlFuente_F.SelectedValue, ref ListPartida);
-            disponible();
+            
         }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
         {
