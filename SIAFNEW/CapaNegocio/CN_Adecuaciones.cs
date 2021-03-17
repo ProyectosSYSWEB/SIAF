@@ -36,5 +36,19 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void InsertarDocumentoAdecuacion(ref List<Adecuaciones> List, ref string Verificador)
+        {
+            try
+            {
+                CD_Adecuaciones CD_Adecuaciones = new CD_Adecuaciones();
+                CD_Adecuaciones.InsertarDocumentoAdecuacion(ref List, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

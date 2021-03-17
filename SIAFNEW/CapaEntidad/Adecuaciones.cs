@@ -159,5 +159,13 @@ namespace CapaEntidad
             set { _Origen = value; }
         }
 
+        private string _Suma_Destino;
+
+        public string Suma_Destino
+        {
+            get { return _Suma_Destino; }
+            set { _Suma_Destino = value; }
+        }
+
     }
 }

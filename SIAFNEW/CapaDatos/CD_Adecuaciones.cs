@@ -28,8 +28,9 @@ namespace CapaDatos
                     objAdecuacion.TipoOperacion = Convert.ToString(dr.GetValue(1));
                     objAdecuacion.Centro_Contab = Convert.ToString(dr.GetValue(2));
                     objAdecuacion.Codigo_Programatico = Convert.ToString(dr.GetValue(3));
-                    objAdecuacion.Destino = Convert.ToString(dr.GetValue(4));
-                    objAdecuacion.Origen = Convert.ToString(dr.GetValue(5));
+                    objAdecuacion.Destino = Convert.ToString(dr.GetValue(4));                    
+                    objAdecuacion.Suma_Destino = Convert.ToString(dr.GetValue(5));
+                    objAdecuacion.Origen = Convert.ToString(dr.GetValue(6));
                     List.Add(objAdecuacion);
                 }
                 dr.Close();
@@ -76,5 +77,32 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+
+
+
+        public void InsertarDocumentoAdecuacion(ref List<Adecuaciones> List, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_C_CONTAB", "P_CLAVE", "P_DESCRIPCION", "P_TITULAR", "P_ADMINISTRADOR", "P_DOMICILIO", "P_ID_ESTADO", "P_ID_MUNICIPIO", "P_ZONA_ECONOMICA", "P_TEL_TITULAR", "P_CEL_TITULAR", "P_TEL_ADMIN", "P_CEL_ADMIN", "P_NOMBRAMIENTO", "P_EJERCICIO" };
+                object[] Valores = {/* objDependencias.C_Contab, objDependencias.Clave, objDependencias.Descrip, objDependencias.Titular, objDependencias.Administ, objDependencias.Domicilio, objDependencias.Id_Estado, objDependencias.Id_Municipio, objDependencias.Zona_Economica, objDependencias.Tel_Titular, objDependencias.Cel_Titular, objDependencias.Tel_Admin, objDependencias.Cel_Admin, objDependencias.Nombramiento, objDependencias.Ejercicio*/ };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRES_CAT_DEPEN", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+
     }
 }
