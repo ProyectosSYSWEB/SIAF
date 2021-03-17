@@ -167,5 +167,102 @@ namespace CapaEntidad
             set { _Suma_Destino = value; }
         }
 
+        private string _Dependencia;
+
+        public string Dependencia
+        {
+            get { return _Dependencia; }
+            set { _Dependencia = value; }
+        }
+
+        private string _SuperTipo;
+
+        public string SuperTipo
+        {
+            get { return _SuperTipo; }
+            set { _SuperTipo = value; }
+        }
+
+        private string _Fecha;
+
+        public string Fecha
+        {
+            get { return _Fecha; }
+            set { _Fecha = value; }
+        }
+
+        private string _MesAnio;
+
+        public string MesAnio
+        {
+            get { return _MesAnio; }
+            set { _MesAnio = value; }
+        }
+
+        private string _Tipo_Captura;
+
+        public string Tipo_Captura
+        {
+            get { return _Tipo_Captura; }
+            set { _Tipo_Captura = value; }
+        }
+
+        private string _Status;
+
+        public string Status
+        {
+            get { return _Status; }
+            set { _Status = value; }
+        }
+
+        private string _Descripcion;
+
+        public string Descripcion
+        {
+            get { return _Descripcion; }
+            set { _Descripcion = value; }
+        }
+
+        private string _Usuario;
+
+        public string Usuario
+        {
+            get { return _Usuario; }
+            set { _Usuario = value; }
+        }
+
+        private string _FechaCaptura;
+
+        public string FechaCaptura
+        {
+            get { return _FechaCaptura; }
+            set { _FechaCaptura = value; }
+        }
+
+        private string _FechaAplicacion;
+
+        public string FechaAplicacion
+        {
+            get { return _FechaAplicacion; }
+            set { _FechaAplicacion = value; }
+        }
+
+        private string _ClaveEvento;
+
+        public string ClaveEvento
+        {
+            get { return _ClaveEvento; }
+            set { _ClaveEvento = value; }
+        }
+
+        private string _KeyDocumento;
+
+        public string KeyDocumento
+        {
+            get { return _KeyDocumento; }
+            set { _KeyDocumento = value; }
+        }
+
+
     }
 }

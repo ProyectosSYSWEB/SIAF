@@ -80,18 +80,57 @@ namespace CapaDatos
 
 
 
-        public void InsertarDocumentoAdecuacion(ref List<Adecuaciones> List, ref string Verificador)
+        public void InsertarDocumentoAdecuacion(ref List<Adecuaciones> List, Adecuaciones objAdecuacion, ref string Verificador)
         {
+            string Id_Documento = "";
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
             try
             {
-                String[] Parametros = { "P_C_CONTAB", "P_CLAVE", "P_DESCRIPCION", "P_TITULAR", "P_ADMINISTRADOR", "P_DOMICILIO", "P_ID_ESTADO", "P_ID_MUNICIPIO", "P_ZONA_ECONOMICA", "P_TEL_TITULAR", "P_CEL_TITULAR", "P_TEL_ADMIN", "P_CEL_ADMIN", "P_NOMBRAMIENTO", "P_EJERCICIO" };
-                object[] Valores = {/* objDependencias.C_Contab, objDependencias.Clave, objDependencias.Descrip, objDependencias.Titular, objDependencias.Administ, objDependencias.Domicilio, objDependencias.Id_Estado, objDependencias.Id_Municipio, objDependencias.Zona_Economica, objDependencias.Tel_Titular, objDependencias.Cel_Titular, objDependencias.Tel_Admin, objDependencias.Cel_Admin, objDependencias.Nombramiento, objDependencias.Ejercicio*/ };
-                String[] ParametrosOut = { "p_Bandera" };
+                String[] Parametros = {
+                    "P_CENTRO_CONTABLE", "P_DEPENDENCIA", "P_SUPERTIPO", "P_TIPO", "P_FECHA", "P_MES_ANIO", "P_TIPO_CAPTURA", "P_STATUS", "P_DESCRIPCION", "P_USUARIO", "P_FECHA_CAPTURA", "P_FECHA_APLICACION",
+                    "P_CLAVE_EVENTO", "P_EJERCICIO"};
+                object[] Valores = { objAdecuacion.Centro_Contab, objAdecuacion.Dependencia, objAdecuacion.SuperTipo, objAdecuacion.TipoOperacion, objAdecuacion.Fecha, objAdecuacion.MesAnio, objAdecuacion.Tipo_Captura,
+                objAdecuacion.Status, objAdecuacion.Descripcion, objAdecuacion.Usuario, objAdecuacion.FechaAplicacion, objAdecuacion.ClaveEvento, objAdecuacion.Ejercicio};
+                String[] ParametrosOut = { "P_ID_DOCUMENTO","P_BANDERA" };
 
-                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRES_CAT_DEPEN", ref Verificador, Parametros, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRES_CAT_DEPEN", ref Verificador, ref Id_Documento, Parametros, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    string Verificador2 = string.Empty;
+                    InsertarDocumentoDetalleAdecuacion(List, Id_Documento, ref Verificador2);                    
+                    Verificador = Verificador2;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
 
+        public void InsertarDocumentoDetalleAdecuacion(List<Adecuaciones> List, string Id_Documento, ref string Verificador)
+        {            
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                for (int i = 1; i <= List.Count; i++)
+                {
+                    for(int x = 1;  )
+                    {
+
+                    }
+                    String[] Parametros = {
+                    "P_ID_DOCUMENTO", "P_CONSECUTIVO", "P_UR_CLAVE", "P_TIPO", "P_IMPORTE_ORIGEN", "P_IMPORTE_DESTINO"
+                    , "P_IMPORTE_MENSUAL", "P_MES_INICIAL", "P_MES_FINAL"};
+                    object[] Valores = { Id_Documento, };
+                    String[] ParametrosOut = { "P_ID_DOCUMENTO" };
+                    Cmd = CDDatos.GenerarOracleCommand("INS_ADECUACION_NOMINA_DET", ref Verificador, Parametros, Valores, ParametrosOut);
+                }
             }
             catch (Exception ex)
             {
