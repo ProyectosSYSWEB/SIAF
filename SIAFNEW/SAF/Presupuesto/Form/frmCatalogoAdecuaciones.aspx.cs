@@ -217,8 +217,10 @@ namespace SAF.Presupuesto.Form
                 for (int i = 0; i < GRDAdecuaciones.Rows.Count - 1; i++)
                 {
                     TextBox destino = GRDAdecuaciones.Rows[i].FindControl("txtEditDestino") as TextBox;
+                    TextBox origenTxt = GRDAdecuaciones.Rows[i].FindControl("txtEditOrigen") as TextBox;
                     sumaInternaDestino = sumaInternaDestino + Convert.ToDouble(Regex.Replace(destino.Text, @"[\s@$]", ""));
-                    ListaAdecuaciones[i].Destino = Regex.Replace(destino.Text, @"[\s@$]", "");
+                    ListaAdecuaciones[i].Destino = Regex.Replace(destino.Text, @"[\s@$@,]", "");
+                    ListaAdecuaciones[i].Origen = Regex.Replace(origenTxt.Text, @"[\s@$@,]", "");
                 }
                 int registro = GRDAdecuaciones.Rows.Count;
                 TextBox origen = GRDAdecuaciones.Rows[registro - 1].FindControl("txtEditOrigen") as TextBox;

@@ -65,8 +65,8 @@ namespace SAF.Presupuesto.Form
             try
             {
                 Presupues objEstrucProg = new Presupues();
-                if (SesionUsu.Usu_TipoUsu == "SA")
-                {
+                //if (SesionUsu.Usu_TipoUsu == "SA")
+                //{
                     string Verificador = string.Empty;
                     objEstrucProg.Centro_Contable = DDLCentroContab.SelectedValue;
                     objEstrucProg.Programa = DDLPrograma.SelectedValue;
@@ -80,9 +80,9 @@ namespace SAF.Presupuesto.Form
                         lblError.Text = "Se ha guardado correctamente";
                     else
                         lblError.Text = Verificador;
-                }
-                else
-                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+               // }
+               // else
+                   // lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {
