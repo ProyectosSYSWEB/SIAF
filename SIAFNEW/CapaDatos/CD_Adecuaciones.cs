@@ -133,7 +133,7 @@ namespace CapaDatos
                             consecutivo = consecutivo + 1;
                             i = x;
                         }
-                        else if (z < List.Count) //se inserta el codigo origen y se asigna la nueva dependencia
+                        else if (z < List.Count-1 ) //se inserta el codigo origen y se asigna la nueva dependencia
                         {
                             int ubicacionOrigen = List.Count - 1;                            
                             CD_Datos CDDatos = new CD_Datos();
