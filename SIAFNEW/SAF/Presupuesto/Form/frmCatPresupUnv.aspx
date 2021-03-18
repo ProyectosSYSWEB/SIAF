@@ -28,6 +28,8 @@
                                         <asp:ListItem Value="A">Aumento</asp:ListItem>
                                         <asp:ListItem Value="D">Disminución</asp:ListItem>
                                     </asp:DropDownList>
+
+                                    <asp:Button runat="server" ID="BTNGuardarPres" OnClick="BTNGuardarPres_Click" Text="Guardar" />
                                 </td>
                             </tr>                           
 
@@ -250,7 +252,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
+                            <%--<tr>
                                 <td style="width: 30%">
                                     <asp:Label ID="lblTipoGasto" runat="server" Text="Tipo gasto">
                                     </asp:Label>
@@ -270,10 +272,10 @@
                                     <asp:TextBox ID="txtDigMinis" Text="" runat="server" Width="500px" ReadOnly="true" Enabled="false">
                                     </asp:TextBox>
                                 </td>
-                            </tr>
+                            </tr>--%>
                             <tr>
                                 <td>
-                                    <asp:Button runat="server" ID="BTNGuardarPres" OnClick="BTNGuardarPres_Click" Text="Guardar" />
+                                    <%--<asp:Button runat="server" ID="BTNGuardarPres" OnClick="BTNGuardarPres_Click" Text="Guardar" />--%>
                                 </td>
                                 <td>                                    
                                 </td>

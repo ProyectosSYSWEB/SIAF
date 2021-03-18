@@ -79,5 +79,13 @@ namespace CapaEntidad
             set { _Id_Tipo_Proyecto = value; }
         }
 
+        private string _Id;
+
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
     }
 }

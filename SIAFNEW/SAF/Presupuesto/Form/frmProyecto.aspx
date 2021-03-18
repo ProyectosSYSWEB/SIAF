@@ -5,6 +5,9 @@
         .auto-style1 {
             height: 17px;
         }
+        .ColumnaOculta{
+            display:none;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -24,37 +27,39 @@
                     <td class="auto-style1">                        
                         <table style="width: 100%">
                             <tr>
-                                <a href="frmCatalogoProyecto.aspx">Nuevo proyecto</a>
-
-
                                 <td style="width: 30%">
-                                    <asp:Label ID="lblTipoProy" runat="server" Text="Tipo proyecto"></asp:Label>
+                                    
                                 </td>
-                                <td>
-                                    <asp:DropDownList ID="DDLTipoProy" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLTipoProy_SelectedIndexChanged"></asp:DropDownList>
-                                </td>
-
-                             <tr>
-                             
+                             <tr>                             
                             </tr>
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDProyectos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click"  ValidationGroup="Agregar"/>
+                                            <br />
+                                            <asp:Label ID="lblTipoProy" runat="server" Text="Tipo proyecto"></asp:Label>
+                                            <asp:DropDownList ID="DDLTipoProy" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLTipoProy_SelectedIndexChanged"></asp:DropDownList>
+                                            <asp:GridView ID="GRDProyectos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowDeleting="GRDProyectos_RowDeleting" OnSelectedIndexChanged="GRDProyectos_SelectedIndexChanged">
                                                 <Columns>
                                                     <%--<asp:BoundField DataField="Tipo_Proy" HeaderText="Tipo proyecto" />--%>
                                                     <asp:BoundField DataField="Proyecto" HeaderText="Proyecto" />
                                                     <asp:BoundField DataField="Descrip" HeaderText="Descripcion" />
+                                                    <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />
+                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
-                                                                <ContentTemplate>
-                                                                    <%--<asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar el Documento?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>--%>
-                                                                </ContentTemplate>
-                                                            </asp:UpdatePanel>
+                                                            <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Editar</asp:LinkButton>
+                                                            <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+                                                    
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
+                                                            <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
                                                 </Columns>
 
                                                 <FooterStyle CssClass="enc" />

@@ -34,7 +34,7 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd);            
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd, "p_tipocombo", "N");            
         }
 
         protected void BTNGuardar_Click(object sender, EventArgs e)
@@ -52,9 +52,13 @@ namespace SAF.Presupuesto.Form
                     objBasicos.orden = "";
                     string Verificador = string.Empty;
                     CN_Subprog.InsertarSubPrograma(ref objBasicos, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se han registrado los cambios";
+                    else
+                        lblError.Text = Verificador;
                 }
                 else
-                    lblError.Text = lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {

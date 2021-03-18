@@ -23,27 +23,32 @@
                 <tr>
                     <td class="auto-style1">                        
                         <table style="width: 100%">
-                            <tr>
-                                <a href="frmCatalogoFunciones.aspx">Nueva función</a>
+                            <tr>                                
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDFunciones" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click"  ValidationGroup="Agregar"/>
+                                            <br />
+                                            <asp:GridView ID="GRDFunciones" allowpaging="true" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowDeleting="GRDFunciones_RowDeleting" OnSelectedIndexChanged="GRDFunciones_SelectedIndexChanged">
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="Name" ItemStyle-Width="150" Visible="true">
+                                                    <asp:TemplateField HeaderText="Función" ItemStyle-Width="150" Visible="true">
                                                         <ItemTemplate>                                                            
                                                             <asp:Label ID="funcion" runat="server" Text='<%# Eval("Funcion") %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />                                                   
+
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:Button Text="Editar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                                            <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Editar</asp:LinkButton>
+                                                            <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:Button Text="Eliminar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                                            <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
+                                                            <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
 

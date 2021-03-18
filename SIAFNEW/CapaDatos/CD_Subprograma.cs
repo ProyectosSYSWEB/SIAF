@@ -16,8 +16,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { "p_ejercicio", "p_dependencia", "p_dependencia_f" };
-                String[] Valores = { objSubprograma.Ejercicio, objSubprograma.DependenciaI, objSubprograma.DependenciaF };
+                String[] Parametros = {"p_nivel_acad", "p_ejercicio", "p_dependencia", "p_dependencia_f" };
+                String[] Valores = {objSubprograma.NivAcad, objSubprograma.Ejercicio, objSubprograma.DependenciaI, objSubprograma.DependenciaF };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_SubPrograma_Cat", ref dr, Parametros, Valores);
 

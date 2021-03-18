@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adecuaciones.cs" />
     <Compile Include="Basicos.cs" />
     <Compile Include="Cat_Ctrl_Presp_Saf.cs" />
     <Compile Include="CentrosContab.cs" />

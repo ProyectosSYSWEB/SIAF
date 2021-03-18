@@ -40,7 +40,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia, "p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre ,SesionUsu.Usu_Ejercicio, "X");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia, "p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre ,SesionUsu.Usu_Ejercicio, "CAT");
             }
             catch (Exception ex)
             {
@@ -60,12 +60,11 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-        protected void DDLCodProg_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GRDCargarDatosCodProg(object sender, EventArgs e)
         {
             try
-            {
-                capitulos = (String)Session["Capitulos"];
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, capitulos, DDLFuente.SelectedValue);
+            {                
+                CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
             }
             catch (Exception ex)
             {
@@ -73,20 +72,28 @@ namespace SAF.Presupuesto.Form
             }
         }
 
-        protected void GRDCargarDatosCodProg(object sender, EventArgs e)
+        protected void CargarPolizaConsultaGrid(string CodigoProgramatico)
         {
             try
             {
+                GRDCodProg.Enabled = false;
                 Consultas objConsultas = new Consultas();
                 List<Consultas> listConsultas = new List<Consultas>();
-                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Codigo_Programatico = CodigoProgramatico;
                 objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
-                CNConsultas.PolizaConsultaGrid(ref objConsultas, ref listConsultas);
-                //SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                //DataSet ds = new DataSet();
-                //sda.Fill(ds);//
-                GRDCodProg.DataSource = listConsultas;
-                GRDCodProg.DataBind();
+                CNConsultas.PolizaConsultaGrid(ref objConsultas, ref listConsultas);                
+                if(listConsultas.Count > 0)
+                {
+                    GRDCodProg.Enabled = true;
+                    GRDCodProg.DataSource = listConsultas;
+                    GRDCodProg.DataBind();
+                }
+                else
+                {
+                    GRDCodProg.Enabled = false;
+                    GRDCodProg.DataSource = null;
+                    GRDCodProg.DataBind();
+                }
             }
             catch (Exception ex)
             {
@@ -117,6 +124,8 @@ namespace SAF.Presupuesto.Form
                     ListaCaps.Add("7");
                 if (CBCap8.Checked)
                     ListaCaps.Add("8");
+                if (CBCap9.Checked)
+                    ListaCaps.Add("9");
                 //if (CBCapT.Checked)
                 //{
                 //    int cap = 1;
@@ -138,6 +147,32 @@ namespace SAF.Presupuesto.Form
             {
                 lblError.Text = ex.Message;
             }
-        }        
+        }
+
+        protected void BTNBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblError.Text = " ";
+                DDLCodProg.Enabled = false;
+                capitulos = (String)Session["Capitulos"];
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, capitulos, DDLFuente.SelectedValue);
+                if (DDLCodProg.Items.Count > 1)
+                {
+                    DDLCodProg.Enabled = true;
+                    CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                }
+
+                else if (DDLCodProg.Items.Count == 1)
+                {
+                    DDLCodProg.Enabled = false;                    
+                    CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
     }
 }

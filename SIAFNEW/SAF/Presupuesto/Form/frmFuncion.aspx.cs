@@ -46,28 +46,29 @@ namespace SAF.Presupuesto.Form
             {
                 lblError.Text = ex.Message;
             }
-        }
+        }        
 
-
-        protected void GRDCapitulos_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void GRDFunciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            lblError.Text = string.Empty;
             try
             {
-                //Determine the RowIndex of the Row whose Button was clicked.
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-
-                //Reference the GridView Row.
-                GridViewRow row = GRDFunciones.Rows[rowIndex];
-
-                //Fetch value of Name.
-                string capEditar = (row.FindControl("clave") as Label).Text;
-
-                Basicos objCap = new Basicos();
-                objCap.clave = capEditar;
-                Session["SessionCapituloEdit"] = objCap;
-                Response.Redirect("frmCatalogoCapitulos.aspx", true);
-
-                //(row.FindControl("clave") as TextBox).Text = "New" + name;
+                Dependencias objDependencias = new Dependencias();
+                string Verificador = string.Empty;
+                int fila = e.RowIndex;
+                objDependencias.C_Contab = Convert.ToString(GRDFunciones.Rows[fila].Cells[0].Text);
+                //if (SesionUsu.Usu_TipoUsu == "SU")
+                //{
+                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
+                //    if (Verificador == "0")
+                //        lblError.Text = "Se ha eliminado correctamente";
+                //    else
+                //        lblError.Text = Verificador;
+                //}
+                //else
+                //{
+                //    lblError.Text = Verificador;
+                //}
             }
             catch (Exception ex)
             {
@@ -75,21 +76,33 @@ namespace SAF.Presupuesto.Form
             }
         }
 
-        protected void BtnEliminarRegistro(object sender, GridViewCommandEventArgs e)
+        protected void GRDFunciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = GRDFunciones.Rows[rowIndex];
-                string capEditar = (row.FindControl("clave") as Label).Text;
+                Dependencias objDependencias = new Dependencias();
+                objDependencias.C_Contab = Convert.ToString(GRDFunciones.SelectedRow.Cells[0].Text);
+                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
 
+                //MultiView1.ActiveViewIndex = 1;
+                //TabGridDepen.ActiveTabIndex = 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
+                lblError.Text = ex.Message;
             }
         }
 
-
+        protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                Response.Redirect("frmCatalogoFunciones.aspx", true);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
     }
 }

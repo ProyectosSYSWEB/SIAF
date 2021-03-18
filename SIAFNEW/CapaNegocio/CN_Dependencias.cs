@@ -35,5 +35,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void EliminarDependencia(ref Dependencias objDependencias, ref string Verificador)
+        {
+            try
+            {
+                CD_Depdencencias CD_Depdencencias = new CD_Depdencencias();
+                CD_Depdencencias.EliminarDependencia(ref objDependencias, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

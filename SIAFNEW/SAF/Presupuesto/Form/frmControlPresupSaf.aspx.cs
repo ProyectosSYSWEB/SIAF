@@ -35,7 +35,7 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencias, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "X");
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencias, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "P");
         }
 
 
@@ -74,6 +74,64 @@ namespace SAF.Presupuesto.Form
                 //sda.Fill(ds);//
                 GRDCodProg.DataSource = list;
                 GRDCodProg.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void GRDCodProg_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            lblError.Text = string.Empty;
+            try
+            {
+                Dependencias objDependencias = new Dependencias();
+                string Verificador = string.Empty;
+                int fila = e.RowIndex;
+                objDependencias.C_Contab = Convert.ToString(GRDCodProg.Rows[fila].Cells[4].Text);
+                //if (SesionUsu.Usu_TipoUsu == "SU")
+                //{
+                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
+                //    if (Verificador == "0")
+                //        lblError.Text = "Se ha eliminado correctamente";
+                //    else
+                //        lblError.Text = Verificador;
+                //}
+                //else
+                //{
+                //    lblError.Text = Verificador;
+                //}
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void GRDCodProg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Dependencias objDependencias = new Dependencias();
+                objDependencias.C_Contab = Convert.ToString(GRDCodProg.SelectedRow.Cells[4].Text);
+                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
+
+                //MultiView1.ActiveViewIndex = 1;
+                //TabGridDepen.ActiveTabIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+
+        protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                Response.Redirect("frmCatCtrlPresupSaf.aspx", true);
             }
             catch (Exception ex)
             {

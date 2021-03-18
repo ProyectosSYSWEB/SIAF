@@ -16,8 +16,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { "P_EJERCICIO" };
-                String[] Valores = { objPartidas.Ejercicio };
+                String[] Parametros = {"p_capitulo", "P_EJERCICIO" };
+                String[] Valores = { objPartidas.SubCapt, objPartidas.Ejercicio };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Cat_Partida", ref dr, Parametros, Valores);
 
@@ -26,7 +26,8 @@ namespace CapaDatos
                     objPartidas = new Partidas();
                     objPartidas.Partida = Convert.ToString(dr.GetValue(0));
                     objPartidas.Concepto = Convert.ToString(dr.GetValue(1));
-                    objPartidas.Descrip = Convert.ToString(dr.GetValue(1));
+                    objPartidas.Descrip = Convert.ToString(dr.GetValue(2));
+                    objPartidas.Id = Convert.ToString(dr.GetValue(3));
                     List.Add(objPartidas);
                 }
                 dr.Close();

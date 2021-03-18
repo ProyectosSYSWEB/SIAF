@@ -26,7 +26,8 @@ namespace CapaDatos
                     objCodProg = new Codigo_Prog();
                     objCodProg.Centro_Contable = Convert.ToString(dr.GetValue(0));
                     objCodProg.Dependencia = Convert.ToString(dr.GetValue(1));
-                    objCodProg.Codigo = Convert.ToString(dr.GetValue(1));
+                    objCodProg.Codigo = Convert.ToString(dr.GetValue(2));
+                    objCodProg.Id = Convert.ToString(dr.GetValue(3));
                     List.Add(objCodProg);
                 }
                 dr.Close();

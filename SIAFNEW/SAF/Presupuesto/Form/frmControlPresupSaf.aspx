@@ -4,6 +4,9 @@
         .auto-style1 {
             height: 17px;
         }
+        .ColumnaOculta{
+            display:none;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -22,35 +25,36 @@
                 <tr>
                     <td class="auto-style1">                        
                         <table style="width: 100%">
-                            <tr>
-                                <a href="frmCatCtrlPresupSaf.aspx">Nuevo codigo programatico</a>        
-                                <tr>
-                                <td style="width: 30%">
-                                    <asp:Label ID="lblCentroContab" runat="server" Text="Dependencia"></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:DropDownList ID="DDLDependencias" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCentroContab_SelectedIndexChanged"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
-                                </td>
-                            </tr>
+                            <tr>                            
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDCodProg"  runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click"  ValidationGroup="Agregar"/>
+                                            <br />
+                                            <asp:Label ID="lblCentroContab" runat="server" Text="Dependencia"></asp:Label>
+                                            <asp:DropDownList ID="DDLDependencias" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCentroContab_SelectedIndexChanged"></asp:DropDownList>
+                                            <asp:GridView ID="GRDCodProg"  runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowDeleting="GRDCodProg_RowDeleting" OnSelectedIndexChanged="GRDCodProg_SelectedIndexChanged">
                                                 <Columns>
                                                     <asp:BoundField DataField="Centro_Contable" HeaderText="Centro contable" />
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
-                                                    <asp:BoundField DataField="Codigo" HeaderText="Código" />                                                    
+                                                    <asp:BoundField DataField="Codigo" HeaderText="Código" />
+                                                    <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"/>
+                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
-                                                                <ContentTemplate>
-                                                                    <%--<asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar el Documento?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>--%>
-                                                                </ContentTemplate>
-                                                            </asp:UpdatePanel>
+                                                            <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Editar</asp:LinkButton>
+                                                            <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+                                                    
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
+                                                            <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
+
                                                 </Columns>
 
                                                 <FooterStyle CssClass="enc" />
@@ -76,3 +80,4 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
+
