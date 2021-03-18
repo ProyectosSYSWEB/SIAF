@@ -152,22 +152,29 @@
                                                     <asp:BoundField DataField="Mes" HeaderText="Mes" />
                                                     <asp:BoundField DataField="TipoOperacion" HeaderText="Tipo operación " />
                                                     <asp:BoundField DataField="Centro_Contab" HeaderText="C. Contab" />
-                                                    <asp:BoundField DataField="Codigo_Programatico" HeaderText="Código programático" />
+                                                    <asp:BoundField DataField="Codigo_Programatico" HeaderText="Código programático" />                                                    
+
                                                     <asp:TemplateField HeaderText="Destino">                                                        
                                                         <ItemTemplate>
                                                             <asp:TextBox ID="txtEditDestino" runat="server" Text='<%# Eval("Destino") %>'></asp:TextBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+
                                                     <asp:TemplateField HeaderText="Origen">                                                        
                                                         <ItemTemplate>
                                                             <asp:TextBox ID="txtEditOrigen" runat="server" Text='<%# Eval("Origen") %>'></asp:TextBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>                                                   
+
                                                     <asp:TemplateField HeaderText="Destino" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" >                                                        
                                                         <ItemTemplate>
                                                             <asp:TextBox ID="txtSumaDestino" runat="server" Text='<%# Eval("Suma_Destino") %>'></asp:TextBox>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+
+                                                    <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"/>
+                                                    <asp:BoundField DataField="Centro_Contab" HeaderText="Centro_Contab" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"/>
+                                                    <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"/>
                                                 </Columns>
 
                                                 <FooterStyle CssClass="enc" />

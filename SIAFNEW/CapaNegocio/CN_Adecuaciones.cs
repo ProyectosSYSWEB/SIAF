@@ -37,12 +37,12 @@ namespace CapaNegocio
             }
         }
 
-        public void InsertarDocumentoAdecuacion(ref List<Adecuaciones> List, ref string Verificador)
+        public void InsertarDocumentoAdecuacion(List<Adecuaciones> List, Adecuaciones objAdecuaciones, ref string Verificador)
         {
             try
             {
                 CD_Adecuaciones CD_Adecuaciones = new CD_Adecuaciones();
-                CD_Adecuaciones.InsertarDocumentoAdecuacion(ref List, ref Verificador);
+                CD_Adecuaciones.InsertarDocumentoAdecuacion(List, objAdecuaciones, ref Verificador);
 
             }
             catch (Exception ex)
