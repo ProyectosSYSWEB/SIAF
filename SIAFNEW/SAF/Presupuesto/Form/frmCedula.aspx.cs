@@ -886,7 +886,8 @@ namespace SAF.Presupuesto
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente","p_clave_evento", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ddlevento.SelectedValue, ref ListPartida);
-                       }
+                disponible();
+            }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
@@ -896,7 +897,7 @@ namespace SAF.Presupuesto
         {
 
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0,1), ddlFuente_F.SelectedValue, ref ListPartida);
-            
+            disponible();
         }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
         {
