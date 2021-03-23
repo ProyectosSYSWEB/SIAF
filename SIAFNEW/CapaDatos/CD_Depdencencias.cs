@@ -29,7 +29,8 @@ namespace CapaDatos
                     objDependencia.Descrip = Convert.ToString(dr.GetValue(2));
                     objDependencia.Administ = Convert.ToString(dr.GetValue(3));
                     objDependencia.Titular = Convert.ToString(dr.GetValue(4));
-                    objDependencia.Titular_Puesto = Convert.ToString(dr.GetValue(5));                    
+                    objDependencia.Titular_Puesto = Convert.ToString(dr.GetValue(5));
+                    objDependencia.Id = Convert.ToString(dr.GetValue(6));
                     List.Add(objDependencia);
                 }
                 dr.Close();
@@ -55,6 +56,29 @@ namespace CapaDatos
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_SAF_PRES_CAT_DEPEN", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+        public void EliminarDependencia(ref Dependencias objDependencias, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID","P_EJERCICIO" };
+                object[] Valores = { objDependencias.Id, objDependencias.Ejercicio };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("DEL_CAT_SAF_PRESUP_DEPEND", ref Verificador, Parametros, Valores, ParametrosOut);
 
             }
             catch (Exception ex)

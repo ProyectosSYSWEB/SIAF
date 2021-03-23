@@ -5,6 +5,9 @@
         .auto-style1 {
             height: 17px;
         }
+        .ColumnaOculta{
+            display:none;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -23,32 +26,30 @@
                 <tr>
                     <td class="auto-style1">                        
                         <table style="width: 100%">
-                            <tr>
-                                <a href="frmCatalogoCapitulos.aspx">Nuevo capitulo</a>
-                             <tr>                                
-                            </tr>
+                            <tr>                            
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDCapitulos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowCommand="GRDCapitulos_RowCommand">
-                                                <Columns>
-                                                    <asp:TemplateField HeaderText="Name" ItemStyle-Width="150" Visible="true">
-                                                        <ItemTemplate>                                                            
-                                                            <asp:Label ID="clave" runat="server" Text='<%# Eval("clave") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <%--<asp:BoundField DataField="clave" HeaderText="Clave" />                                                                                                        --%>
+                                            <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click"  ValidationGroup="Agregar"/>
+                                            <asp:GridView ID="GRDCapitulos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowDeleting="GRDCapitulos_RowDeleting" OnSelectedIndexChanged="GRDCapitulos_SelectedIndexChanged">
+                                                <Columns>                                                    
+                                                    <asp:BoundField DataField="clave" HeaderText="Clave" />
                                                     <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />                                                    
+                                                    <asp:BoundField DataField="id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />  
+                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:Button Text="Editar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                                            <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Editar</asp:LinkButton>
+                                                            <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <%--<asp:TemplateField>
+                                                    
+                                                    <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:Button Text="Eliminar" runat="server" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" OnClick="BtnEliminarRegistro" />
+                                                            <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
+                                                            <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
-                                                    </asp:TemplateField>--%>
+                                                    </asp:TemplateField>
                                                     
                                                 </Columns>
 

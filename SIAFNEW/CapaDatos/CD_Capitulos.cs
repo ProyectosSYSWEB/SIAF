@@ -29,6 +29,7 @@ namespace CapaDatos
                     objBasicos.valor = Convert.ToString(dr.GetValue(2));
                     objBasicos.tipo = Convert.ToString(dr.GetValue(3));
                     objBasicos.status = Convert.ToString(dr.GetValue(4));                    
+                    objBasicos.id = Convert.ToString(dr.GetValue(5));
                     List.Add(objBasicos);
                 }
                 dr.Close();

@@ -80,5 +80,22 @@ namespace CapaEntidad
             set { _Concepto = value; }
         }
 
+        private string _SubCapt;
+
+        public string SubCapt
+        {
+            get { return _SubCapt; }
+            set { _SubCapt = value; }
+        }
+
+
+        private string _Id;
+
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
     }
 }

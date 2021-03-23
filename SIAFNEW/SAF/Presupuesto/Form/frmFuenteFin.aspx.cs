@@ -51,5 +51,61 @@ namespace SAF.Presupuesto.Form
             }
         }
 
+        protected void GRDFuenteFin_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            lblError.Text = string.Empty;
+            try
+            {
+                Dependencias objDependencias = new Dependencias();
+                string Verificador = string.Empty;
+                int fila = e.RowIndex;
+                objDependencias.C_Contab = Convert.ToString(GRDFuenteFin.Rows[fila].Cells[2].Text);
+            //    if (SesionUsu.Usu_TipoUsu == "SU")
+            //    {
+            //        CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
+            //        if (Verificador == "0")
+            //            lblError.Text = "Se ha eliminado correctamente";
+            //        else
+            //            lblError.Text = Verificador;
+            //    }
+            //    else
+            //    {
+            //        lblError.Text = Verificador;
+            //    }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void GRDFuenteFin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Dependencias objDependencias = new Dependencias();
+                objDependencias.C_Contab = Convert.ToString(GRDFuenteFin.SelectedRow.Cells[2].Text);
+                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
+
+                //MultiView1.ActiveViewIndex = 1;
+                //TabGridDepen.ActiveTabIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                Response.Redirect("frmCatFuenteFin.aspx", true);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
     }
 }
