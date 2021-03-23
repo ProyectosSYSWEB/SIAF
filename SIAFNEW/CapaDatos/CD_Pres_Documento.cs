@@ -86,6 +86,7 @@ namespace CapaDatos
                     objDocumento_Detalle.Tipo = objDocumento.Tipo;
                     objDocumento_Detalle.Cuenta_banco = objDocumento.Cuenta;
                     objDocumento_Detalle.Concepto = string.Empty;
+                    objDocumento_Detalle.TipoDocReferencia = string.Empty;
                     objDocumento_Detalle.Referencia = string.Empty;
                     objDocumento_Detalle.Beneficiario_tipo = "X";
                     objDocumento_Detalle.Beneficiario_nombre = string.Empty;
