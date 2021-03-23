@@ -39,6 +39,7 @@
                                                     <asp:BoundField DataField="Partida" HeaderText="Partida" />
                                                     <asp:BoundField DataField="Concepto" HeaderText="Concepto" />
                                                     <asp:BoundField DataField="Descrip" HeaderText="Descripcion" />
+                                                    <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" />
                                                     <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"/>
                                                     <asp:TemplateField>
                                                         <ItemTemplate>

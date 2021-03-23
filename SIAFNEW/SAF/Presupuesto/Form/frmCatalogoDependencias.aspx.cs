@@ -44,7 +44,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = "No tiene los privilegios para realizar esta acción";
+                lblError.Text = ex.Message;
             }            
         }  
 

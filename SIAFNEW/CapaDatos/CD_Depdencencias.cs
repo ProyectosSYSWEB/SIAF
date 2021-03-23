@@ -90,5 +90,72 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+
+
+        public void ObtenerDatosDependencia(ref Dependencias objDependencias, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_ID", "P_EJERCICIO" };
+                object[] Valores = { objDependencias.Id, objDependencias.Ejercicio };
+                string[] ParametrosOut = { "P_C_CONTAB", "P_CLAVE", "P_DESCRIPCION", "P_TITULAR", "P_ADMINISTRADOR", "P_DOMICILIO", "P_ID_ESTADO", "P_ID_MUNICIPIO", 
+                    "P_ZONA_ECONOMICA", "P_TEL_TITULAR", "P_CEL_TITULAR", "P_CEL_ADMIN", "P_TEL_ADMIN", "P_NOMBRAMIENTO", "P_ADMINIST_PUESTO", "P_TITULAR_PUESTO", "P_BANDERA"};
+
+                Cmd = CDDatos.GenerarOracleCommand("OBT_CAT_DEPEND", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objDependencias = new Dependencias();
+                    objDependencias.Id = Convert.ToString(Cmd.Parameters["P_ID"].Value);
+                    objDependencias.C_Contab = Convert.ToString(Cmd.Parameters["P_C_CONTAB"].Value);
+                    objDependencias.Clave = Convert.ToString(Cmd.Parameters["P_CLAVE"].Value);
+                    objDependencias.Descrip = Convert.ToString(Cmd.Parameters["P_DESCRIPCION"].Value);
+                    objDependencias.Titular = Convert.ToString(Cmd.Parameters["P_TITULAR"].Value);
+                    objDependencias.Administ = Convert.ToString(Cmd.Parameters["P_ADMINISTRADOR"].Value);
+                    objDependencias.Domicilio = Convert.ToString(Cmd.Parameters["P_DOMICILIO"].Value);
+                    objDependencias.Id_Estado = Convert.ToString(Cmd.Parameters["P_ID_ESTADO"].Value);
+                    objDependencias.Id_Municipio = Convert.ToString(Cmd.Parameters["P_ID_MUNICIPIO"].Value);
+                    objDependencias.Zona_Economica = Convert.ToString(Cmd.Parameters["P_ZONA_ECONOMICA"].Value);
+                    objDependencias.Tel_Titular = Convert.ToString(Cmd.Parameters["P_TEL_TITULAR"].Value);
+                    objDependencias.Cel_Titular = Convert.ToString(Cmd.Parameters["P_CEL_TITULAR"].Value);
+                    objDependencias.Cel_Admin = Convert.ToString(Cmd.Parameters["P_CEL_ADMIN"].Value);
+                    objDependencias.Tel_Admin = Convert.ToString(Cmd.Parameters["P_TEL_ADMIN"].Value);
+                    objDependencias.Nombramiento = Convert.ToString(Cmd.Parameters["P_NOMBRAMIENTO"].Value);
+                    objDependencias.Admin_Puesto = Convert.ToString(Cmd.Parameters["P_ADMINIST_PUESTO"].Value);
+                    objDependencias.Titular_Puesto = Convert.ToString(Cmd.Parameters["P_TITULAR_PUESTO"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EditarDependencia(ref Dependencias objDependencias, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID", "P_EJERCICIO", "P_C_CONTAB", "P_CLAVE", "P_DESCRIPCION", "P_TITULAR", "P_ADMINISTRADOR", "P_DOMICILIO", "P_ID_ESTADO", "P_ID_MUNICIPIO", "P_ZONA_ECONOMICA", "P_TEL_TITULAR", "P_CEL_TITULAR", "P_TEL_ADMIN", "P_CEL_ADMIN", "P_NOMBRAMIENTO", "P_ADMINIST_PUESTO", "P_TITULAR_PUESTO" };
+                object[] Valores = { objDependencias.Id, objDependencias.Ejercicio, objDependencias.C_Contab, objDependencias.Clave, objDependencias.Descrip, objDependencias.Titular, objDependencias.Administ, objDependencias.Domicilio, objDependencias.Id_Estado, objDependencias.Id_Municipio, objDependencias.Zona_Economica, objDependencias.Tel_Titular, objDependencias.Cel_Titular, objDependencias.Tel_Admin, objDependencias.Cel_Admin, objDependencias.Nombramiento, objDependencias.Admin_Puesto, objDependencias.Titular_Puesto };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_CAT_DEPEND", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
     }
 }

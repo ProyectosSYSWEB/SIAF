@@ -35,5 +35,39 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+
+        public void ObtenerDatosFuncion(ref Funcion objFuncion, ref string Verificador)
+        {
+            try
+            {
+                CD_Funcion CDFuncion = new CD_Funcion();
+                CDFuncion.ObtenerDatosFuncion(ref objFuncion, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EditarFuncion(ref Funcion objFuncion, ref string Verificador)
+        {
+            try
+            {
+                CD_Funcion CDFuncion = new CD_Funcion();
+                CDFuncion.EditarFuncion(ref objFuncion, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
+
+
+
     }
 }

@@ -35,7 +35,8 @@ namespace SAF.Presupuesto.Form
         protected void GRDCargarDatosCentrosContab()
         {
             try
-            {
+            {                
+                Multiview1.ActiveViewIndex = 0;
                 CentrosContab objCentroContab = new CentrosContab();
                 objCentroContab.Ejercicio = SesionUsu.Usu_Ejercicio;
                 List<CentrosContab> list = new List<CentrosContab>();
@@ -62,7 +63,7 @@ namespace SAF.Presupuesto.Form
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
                 objDependencias.C_Contab = Convert.ToString(GRDCentrosContab.Rows[fila].Cells[2].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
+                //if (SesionUsu.Usu_TipoUsu == "SA")
                 //{
                 //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
                 //    if (Verificador == "0")
@@ -85,12 +86,29 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDCentrosContab.SelectedRow.Cells[2].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Multiview1.ActiveViewIndex = 1;
+                    string Verificador = string.Empty;
+                    CentrosContab objCContab = new CentrosContab();
+                    objCContab.Id = Convert.ToString(GRDCentrosContab.SelectedRow.Cells[2].Text);
+                    objCContab.Ejercicio = SesionUsu.Usu_Ejercicio;
+                    CN_CentrosContab.ObtenerDatosCContab(ref objCContab, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        Session["SessionIdCContab"] = objCContab.Id;
+                        txtCentroContab.Text = objCContab.C_Contab;
+                        txtDependencia.Text = objCContab.Descrip;
+                        txtDirector.Text = objCContab.Director;
+                        txtAdministrador.Text = objCContab.Administrador;
+                        txtEntrante.Text = objCContab.Saliente;
+                        txtSaliente.Text = objCContab.Entrante;
+                    }
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {
@@ -103,6 +121,39 @@ namespace SAF.Presupuesto.Form
             try
             {
                 Response.Redirect("frmCatalogoCentrosContab.aspx", true);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNEditarCContab_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CentrosContab objCContab = new CentrosContab();
+                    string Verificador = string.Empty;
+                    objCContab.Id = (String)Session["SessionIdCContab"];
+                    objCContab.C_Contab = txtCentroContab.Text.ToUpper();
+                    objCContab.Descrip = txtDependencia.Text.ToUpper();
+                    objCContab.Director = txtDirector.Text;
+                    objCContab.Administrador = txtAdministrador.Text;
+                    objCContab.Saliente = txtSaliente.Text;
+                    objCContab.Entrante = txtEntrante.Text;
+                    objCContab.Ejercicio = SesionUsu.Usu_Ejercicio;
+                    CN_CentrosContab.EditarCContab(ref objCContab, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha guardado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                {
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+                }
             }
             catch (Exception ex)
             {

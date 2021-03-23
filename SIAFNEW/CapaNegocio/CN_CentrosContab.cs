@@ -36,5 +36,34 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+
+        public void ObtenerDatosCContab(ref CentrosContab objCContab, ref string Verificador)
+        {
+            try
+            {
+                CD_CentrosContab CD_CentrosContab = new CD_CentrosContab();
+                CD_CentrosContab.ObtenerDatosCContab(ref objCContab, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EditarCContab(ref CentrosContab objCContab, ref string Verificador)
+        {
+            try
+            {
+                CD_CentrosContab CD_CentrosContab = new CD_CentrosContab();
+                CD_CentrosContab.EditarCContab(ref objCContab, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }
