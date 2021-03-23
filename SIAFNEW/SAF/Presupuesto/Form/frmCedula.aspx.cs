@@ -70,7 +70,7 @@ namespace SAF.Presupuesto
             txtPoliza.Text = string.Empty;
             DDLCuenta_Banco.Visible = true;
             DDLCuenta_Banco.Enabled = true;
-            
+            lblcuenta.Visible = true;
             txtImporte_Operacion.Enabled = false;
 
             txtNumero_Cheque.Text = string.Empty;
@@ -566,6 +566,7 @@ namespace SAF.Presupuesto
                     txtNumero_Cheque.Text = objDocumento.NumeroCheque;
                     DDLCuenta_Banco.SelectedValue= objDocumento.Cuenta;
                     DDLCuenta_Banco.Visible = true;
+                    lblcuenta.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
                     txtImporteCheque.Text = Convert.ToString(objDocumento.Importe_Cheque);
                     txtImporte_Operacion.Text = Convert.ToString(objDocumento.Importe_Operacion);

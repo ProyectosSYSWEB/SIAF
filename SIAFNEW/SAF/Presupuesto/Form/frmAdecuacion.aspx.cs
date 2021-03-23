@@ -167,8 +167,8 @@ namespace SAF.Presupuesto
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "1");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlCentroContable, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep, ref ListDependencia);
-                //DDLCentroContable_SelectedIndexChanged(null, null);
-                //ddlDepen_SelectedIndexChanged(null, null);
+                DDLCentroContable_SelectedIndexChanged(null, null);
+                ddlDepen_SelectedIndexChanged(null, null);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", SesionUsu.Usu_Rep );
@@ -388,7 +388,7 @@ namespace SAF.Presupuesto
             objDocumento.CentroContable = "";
             objDocumento.Dependencia = lblDependenciaDocumento.Text;
             objDocumento.Folio = txtfolio.Text;
-            objDocumento.SuperTipo = SesionUsu.Usu_Rep;
+            objDocumento.SuperTipo = "A";
             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
             objDocumento.Fecha = txtfechaDocumento.Text;
             string fech = txtfechaDocumento.Text;

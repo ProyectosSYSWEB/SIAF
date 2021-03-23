@@ -405,17 +405,7 @@ namespace SAF.Presupuesto
             lblFormatoDisponible.Text = "0.00";
             try
             {
-                //objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                //objDocumentoDet.Desc_Codigo_Prog =ddlCodigoProg.SelectedItem.ToString();
-                //    objDocumentoDet.Tipo ="M";
-                //    objDocumentoDet.Mes_inicial =Convert.ToInt32(txtfechaDocumento.Text.Substring(3,2));
-
-                //CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
-                //if (Verificador == "0")
-                //{
-                //    lblDisponible.Text = Convert.ToString(objDocumentoDet.Importe_disponible);
-                //    lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocumentoDet.Importe_disponible));
-                //}
+                
                 objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
                 objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
                 objDocumentoDet.SuperTipo = "M";
@@ -432,10 +422,7 @@ namespace SAF.Presupuesto
 
             catch (Exception ex)
             {
-                //lblError.Text = "No tiene código programático";
-                //lblDisponible.Text  = "0";
-
-
+                
             }
         }
         private List<Pres_Documento> GetList(int IdGrid)
@@ -457,12 +444,7 @@ namespace SAF.Presupuesto
                 {
                     CNDocumentos.ConsultaGrid_Documentos(ref objDocumento, ref List);
                 }
-                else
-                {
-
-                    //objDocumento.ID = Convert.ToInt32(grg.SelectedRow.Cells[0].Text);
-                    //CNDocumentos.ConsultaGrid(ref objDocumento, ref List);
-                }
+               
 
                 return List;
             }
@@ -549,22 +531,15 @@ namespace SAF.Presupuesto
                     CNDocumentos.ConsultarDocumentoSel(ref objDocumento, ref Verificador);
                     if (Verificador == "0")
                     {
-                    //ddlDepen.SelectedValue = ddlCentroContable.SelectedValue;
-                    //ddlDepen.SelectedValue = objDocumento.Dependencia;
+                  
                     Session["DocDet"] = null;
                         grdDetalles.DataSource = null;
                         grdDetalles.DataBind();
 
 
                         /*Inicializa controles para editar*/
-                   
-                    //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_usuario", "p_supertipo", "USUARIO_NO_ESPECIFICADO", "M");
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "M");
-                        //lblMesIni.Visible = false;
-                        //lblMesFin.Visible = false;
-                        //ddlMesFin.Visible = false;
-                        //ddlMesIni.Visible = false;                    
-                        ddlStatusEnc.Enabled = true;
+                         ddlStatusEnc.Enabled = true;
                         ddlTipoEnc.Enabled = false;
                         ddlCentroContable.SelectedValue = objDocumento.Dependencia;
                         ddlDepen.SelectedValue = objDocumento.Dependencia;
@@ -619,6 +594,7 @@ namespace SAF.Presupuesto
                         MultiView1.ActiveViewIndex = 1;
                         TabContainer1.ActiveTabIndex = 0;
                         ddlFuente_F.SelectedValue = lblFF.Text;
+                        LstCodigoProg_SelectedIndexChanged(null, null);
                     }
                 }
                 catch (Exception ex)
@@ -955,6 +931,7 @@ namespace SAF.Presupuesto
                         Session["DocDet"] = ListDocDet;
                         CargarGridDetalle(ListDocDet);
                         //ddlTipoEnc.Enabled = false;
+                        txtImporteOrigen.Text = "0.00";
                     }
                     else
                         //lblMsjCP.Text = "El mes ya se encuentra asignado.";
