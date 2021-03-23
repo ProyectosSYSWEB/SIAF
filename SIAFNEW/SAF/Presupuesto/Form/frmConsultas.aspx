@@ -34,13 +34,16 @@
                                     <asp:Label ID="Label1" runat="server" Text="Fuente"></asp:Label>
                                 </td>
                                 <td>                                    
-                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="300px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_SelectedIndexChanged"></asp:DropDownList>                                    
+                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="300px" AutoPostBack="True"></asp:DropDownList>                                    
+                                </td>
+                                <td>
+                                    <asp:Button runat="server" ID="BTNBuscar" Text="Buscar" OnClick="BTNBuscar_Click"/>
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
 
                             <tr>
-                                <td style="width:30%"">
+                                <td style="width:40%"">
                                     <asp:Label ID="Label2" runat="server" Text="Seleccionar un capitulo"></asp:Label>
                                 </td>                                
                             </tr>
@@ -79,6 +82,14 @@
                                     <asp:CheckBox ID="CBCap8" runat="server" AutoPostBack="true" Text="Capitulo 8000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
                                 </td>                                
                             </tr>
+                            <tr>          
+                                <td>
+                                    <asp:CheckBox ID="CBCap9" runat="server" AutoPostBack="true" Text="Capitulo 9000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
+                                </td>
+                                <%--<td>
+                                    <asp:CheckBox ID="CheckBox2" runat="server" AutoPostBack="true" Text="Capitulo 8000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
+                                </td>--%>
+                            </tr>
                             <%--<tr>          
                                 <td>
                                     <asp:CheckBox ID="CBCapT" runat="server" AutoPostBack="true" Text="Todos" OnCheckedChanged="CBCap_OnCheckedChanged"/>
@@ -101,7 +112,7 @@
                                 <td colspan="3">
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">                                                                                                
                                                 <Columns>
                                                     <asp:BoundField DataField="MES" HeaderText="MES" />
                                                     <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" />
@@ -111,7 +122,7 @@
                                                     <asp:BoundField DataField="Devengado" HeaderText="Devengado" />
                                                     <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" />
                                                     <asp:BoundField DataField="Pagado" HeaderText="Pagado" />
-                                                    <asp:BoundField DataField="Disminucion" HeaderText="Disminucion" />
+                                                    <asp:BoundField DataField="Disminucion" HeaderText="Min - Comprometido" />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:UpdatePanel ID="UpdatePanel12" runat="server">
@@ -122,11 +133,12 @@
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
-                                                <FooterStyle CssClass="enc" />
-                                                <PagerStyle CssClass="enc" HorizontalAlign="Center" Width="100%" />
+                                                <PagerStyle HorizontalAlign="Left"/>
+                                                <FooterStyle CssClass="enc" />                                                
                                                 <SelectedRowStyle CssClass="sel" />
                                                 <HeaderStyle CssClass="enc" />
                                                 <AlternatingRowStyle CssClass="alt" />
+
                                             </asp:GridView>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>

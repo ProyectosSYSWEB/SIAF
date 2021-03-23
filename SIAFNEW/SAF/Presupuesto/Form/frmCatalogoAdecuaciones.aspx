@@ -61,7 +61,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtStatusOperacion" Text="" runat="server" Width="500px" maxlength="4" Enabled="false">
+                                    <asp:TextBox ID="txtStatusOperacion" Text="INICIAL" runat="server" Width="500px" maxlength="4" Enabled="false">
                                     </asp:TextBox>
                                 </td>
                             </tr>
@@ -104,7 +104,7 @@
                                     <asp:Label ID="Label1" runat="server" Text="Mes final"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DropDownList1" runat="server" Width="500px" AutoPostBack="True">
+                                    <asp:DropDownList ID="DDLMesFin" runat="server" Width="500px" AutoPostBack="True">
                                         <asp:ListItem Value="1">Enero</asp:ListItem>
                                         <asp:ListItem Value="2">Febrero</asp:ListItem>
                                         <asp:ListItem Value="3">Marzo</asp:ListItem>
@@ -126,33 +126,61 @@
                                     <asp:Label ID="lblPartida" runat="server" Text="Partida"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLPartida" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                    <asp:DropDownList ID="DDLPartida" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>                                    
                                 </td>
                             </tr>
-
 
                             <tr>
                                 <td style="width: 30%">
                                     <asp:Label ID="lblFuente" runat="server" Text="Fuente"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>                                    
-                                </td>
-                            </tr>   
-
-
-
-                            <tr>
-                                <td style="width:30%">
-                                    <asp:Label ID="lblNvl" runat="server" Text="Nivel">
-                                    </asp:Label>
-                                </td>
-                                <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtNvl" Text="1" runat="server" Width="500px" maxlength="1" Enabled="false">
-                                    </asp:TextBox>
+                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_SelectedIndexChanged"></asp:DropDownList>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td style="width: 30%">
+                                    <asp:Label ID="lblCodigoOrigen" runat="server" Text="Origen"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDLCodOrigen" runat="server" Width="500px" AutoPostBack="True"  OnSelectedIndexChanged="DDLCodOrigen_SelectedIndexChanged"></asp:DropDownList>
+                                </td>
+                            </tr>
+
+
+                            <td colspan="3">                            
+                                <label>Total destino: <asp:Label runat="server" ID="SumaDestino"></asp:Label></label>
+                                    <asp:UpdatePanel ID="UpdatePanel11" runat="server">
+                                        <ContentTemplate>
+                                            <asp:GridView ID="GRDAdecuaciones" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                                <Columns>
+                                                    <asp:BoundField DataField="Mes" HeaderText="Mes" />
+                                                    <asp:BoundField DataField="TipoOperacion" HeaderText="Tipo operación " />
+                                                    <asp:BoundField DataField="Centro_Contab" HeaderText="C. Contab" />
+                                                    <asp:BoundField DataField="Codigo_Programatico" HeaderText="Código programático" />
+                                                    <asp:BoundField DataField="Destino" HeaderText="Destino" />                                                                                                 
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
+                                                                <ContentTemplate>
+                                                                    <%--<asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar el Documento?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
+                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>--%>
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                </Columns>
+
+                                                <FooterStyle CssClass="enc" />
+                                                <%--<PagerStyle CssClass="enc" HorizontalAlign="Center" Width="100%" />--%>
+                                                <SelectedRowStyle CssClass="sel" />
+                                                <HeaderStyle CssClass="enc" />
+                                                <AlternatingRowStyle CssClass="alt" />
+                                            </asp:GridView>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </td>
 
                             <tr>
                                 <td>
