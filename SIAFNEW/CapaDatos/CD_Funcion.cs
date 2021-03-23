@@ -62,5 +62,65 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+
+
+
+        public void ObtenerDatosFuncion(ref Funcion objFuncion, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_CLAVE" };
+                object[] Valores = { objFuncion.Clave };
+                string[] ParametrosOut = { "P_CLAVE", "P_DESCRIPCION", "P_BANDERA" };
+
+                Cmd = CDDatos.GenerarOracleCommand("OBT_CAT_FUNCION", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objFuncion = new Funcion();
+                    objFuncion.Id = Convert.ToString(Cmd.Parameters["P_ID"].Value);
+                    objFuncion.Clave = Convert.ToString(Cmd.Parameters["P_CLAVE"].Value);
+                    objFuncion.Descripcion = Convert.ToString(Cmd.Parameters["P_DESCRIPCION"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EditarFuncion(ref Funcion objFuncion, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID", "P_CLAVE", "P_DESCRIPCION" };
+                object[] Valores = { objFuncion.Id, objFuncion.Clave, objFuncion.Descripcion};
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_CAT_FUNCION", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+
+
+
+
+
+
     }
 }

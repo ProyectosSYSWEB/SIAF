@@ -32,6 +32,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Funcion objFuncion = new Funcion();
                 List<Funcion> listFuncion = new List<Funcion>();
                 CN_Funcion.FuncionGrid(ref objFuncion, ref listFuncion);
@@ -57,7 +58,7 @@ namespace SAF.Presupuesto.Form
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
                 objDependencias.C_Contab = Convert.ToString(GRDFunciones.Rows[fila].Cells[0].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
+                //if (SesionUsu.Usu_TipoUsu == "SA")
                 //{
                 //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
                 //    if (Verificador == "0")
@@ -80,12 +81,23 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDFunciones.SelectedRow.Cells[0].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    string Verificador = string.Empty;
+                    Funcion objFuncion = new Funcion();
+                    objFuncion.Clave = Convert.ToString(GRDFunciones.SelectedRow.Cells[0].Text);
+                    CN_Funcion.ObtenerDatosFuncion(ref objFuncion, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        Session["SessionIDFuncion"] = objFuncion.Clave;
+                        txtFuncion.Text = objFuncion.Clave;
+                        txtDescripcion.Text = objFuncion.Descripcion;
+                    }
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene permisos para realizar esta acción";
             }
             catch (Exception ex)
             {
@@ -98,6 +110,32 @@ namespace SAF.Presupuesto.Form
             try
             {
                 Response.Redirect("frmCatalogoFunciones.aspx", true);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNEditarFuncion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    string Verificador = string.Empty;
+                    Funcion objFuncion = new Funcion();
+                    objFuncion.Id = (String)Session["SessionIDFuncion"];
+                    objFuncion.Clave = txtFuncion.Text;
+                    objFuncion.Descripcion = txtDescripcion.Text;
+                    CN_Funcion.EditarFuncion(ref objFuncion, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha editado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene permisos para realizar esta acción";
             }
             catch (Exception ex)
             {
