@@ -121,7 +121,7 @@ namespace SAF.Presupuesto
             lblFormatoDisponible.Text = "0";
             lblFormatoTotal_Origen.Text = "0";
             lblFormatoTotal_Destino.Text = "0";
-            txtImporteOrigen.Text = "0";            
+            txtImporteOrigen.Text = "0.00";            
             ValidacionTipoEnc();
             ddlMesFin.SelectedValue = System.DateTime.Now.ToString("MM");
             grdDetalles.DataSource = null;
@@ -318,17 +318,21 @@ namespace SAF.Presupuesto
                 if (grdDetalles.Rows.Count > 0)
                 {
                     lblFF.Text = grdDetalles.Rows[0].Cells[4].Text.Substring(25,5);
+                    ddlMesInicialDet.SelectedValue= grdDetalles.Rows[0].Cells[6].Text.PadLeft(2,'0');
                     ddlTipoEnc.Enabled = false;
                     //if(SesionUsu.Usu_TipoUsu=="SA" || SesionUsu.Usu_TipoUsu == "A")
                     //    ddlFuente_F.Enabled = true;
                     //else
-                        ddlFuente_F.Enabled = false;
+                    ddlFuente_F.Enabled = false;
+                    if(ddlTipoEnc.SelectedValue=="AP")
+                      ddlMesInicialDet.Enabled = false;
                     CNComun.HideColumns(grdDetalles, Celdas);
                 }
                 else
                 {
                     ddlTipoEnc.Enabled = true;
                     ddlFuente_F.Enabled = true;
+                    ddlMesInicialDet.Enabled = true;
                     lblFF.Text = string.Empty;
                 }
             }
@@ -429,7 +433,6 @@ namespace SAF.Presupuesto
 
             bool ImporteAutorizado = true;
             if (objDocumento.Status == "A")
-                if (objDocumento.SuperTipo == "A")//Si es una Adecuación, valida los importes
                     if (lblFormatoTotal_Origen.Text != lblFormatoTotal_Destino.Text)
                         ImporteAutorizado = false;
 
@@ -956,21 +959,31 @@ namespace SAF.Presupuesto
             lblErrorDet.Text = string.Empty;
             lblMsjCP.Text = string.Empty;
             bool ImportePermitido = false;
+            string Alerta = string.Empty;
             //bool MesPermitido = false;
 
-            if (Convert.ToDouble(txtImporteOrigen.Text)>0 || txtImporteOrigen.Text==string.Empty || txtImporteOrigen.Text==null || txtImporteOrigen.Text!="0")
+            if (Convert.ToDouble(txtImporteOrigen.Text)>0.00 || txtImporteOrigen.Text!=string.Empty || txtImporteOrigen.Text!=null || txtImporteOrigen.Text!="0")
             {
-                
+
                 if (rbtOrigen_Destino.SelectedValue == "O")
                 {
-                    if (Convert.ToDouble(txtImporteOrigen.Text) <= Convert.ToDouble(lblDisponible.Text))
-                         ImportePermitido = true;
+                    if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) < Convert.ToDouble(lblDisponible.Text))
+                        ImportePermitido = true;
                     else
-                        //lblMsjCP.Text = "*El importe debe ser menor al disponible.";
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor al disponible.');", true);
                 }
                 else
-                    ImportePermitido = true;
+                {
+                    if (rbtOrigen_Destino.SelectedValue == "D")
+                    {
+                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) > 0)
+                            ImportePermitido = true;
+                        else
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
+                    }
+                    else
+                        ImportePermitido = true;
+                }
                 //switch (ddlTipoEnc.SelectedValue)
                 //{
                 //    case "AA":
@@ -1016,15 +1029,31 @@ namespace SAF.Presupuesto
                 if (Session["DocDet"] != null )
                 {
                     string MesIni = Convert.ToString(Convert.ToInt32(ddlMesInicialDet.SelectedValue));
+                    
                     List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
                     ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
-                    var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
-                                              where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue 
-                                              && Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
-                                              
-                                              select c;
+                    if (ddlTipoEnc.SelectedValue == "AP")
+                    {
+                        var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
+                                                  where Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
 
-                    content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
+                                                  select c;
+
+                        content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
+
+                        Alerta = "El código programático ya está capturado.";
+                    }
+                    else
+                    {
+                        var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
+                                                  where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue
+                                                  && Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
+
+                                                  select c;
+
+                        content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
+                        Alerta = "El mes ya se encuentra asignado.";
+                    }
                 }
                 if (content.Count == 0)
                 {
@@ -1073,11 +1102,12 @@ namespace SAF.Presupuesto
                     }
                     Session["DocDet"] = ListDocDet;
                     CargarGridDetalle(ListDocDet);
+                    txtImporteOrigen.Text = "0.00";
                     //ddlTipoEnc.Enabled = false;
                     //ddlFuente_F.Enabled = false;
                 }
                 else
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El mes ya se encuentra asignado.');", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, '"+Alerta+"');", true);
 
             }
             else
