@@ -22,8 +22,8 @@ namespace SAF.Presupuesto
         CN_Comun CNComun = new CN_Comun();
         CN_Pres_Documento CNDocumentos = new CN_Pres_Documento();
         CN_Pres_Documento_Det CNDocDet = new CN_Pres_Documento_Det();
-        Pres_Documento objDocumento = new Pres_Documento();
-        Pres_Documento_Detalle objDocumentoDet = new Pres_Documento_Detalle();
+        //Pres_Documento objDocumento = new Pres_Documento();
+        //Pres_Documento_Detalle objDocumentoDet = new Pres_Documento_Detalle();
         private static List<Comun> ListConceptos = new List<Comun>();
         private static List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
         private static List<Comun> Listcodigo = new List<Comun>(); //En tu declaración de variables
@@ -300,11 +300,13 @@ namespace SAF.Presupuesto
         }
         private void guarda_encabezado(ref string VerificadorInserta, ref string Folio)
         {
+            Pres_Documento objDocumento = new Pres_Documento();
             Verificador = string.Empty;
             objDocumento.CentroContable = "";
             objDocumento.Dependencia = ddlDepen.SelectedValue;
             objDocumento.Folio = txtFolio.Text;
             objDocumento.SuperTipo = SesionUsu.Usu_Rep;
+            objDocumento.Tipo = ddlTipoEnc.SelectedValue;
             objDocumento.Fecha = txtfechaDocumento.Text;
             string fech = txtfechaDocumento.Text;
             objDocumento.MesAnio = fech.Substring(3, 2) + SesionUsu.Usu_Ejercicio.Substring(2, 2);
@@ -405,18 +407,18 @@ namespace SAF.Presupuesto
             lblFormatoDisponible.Text = "0.00";
             try
             {
-                
-                objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
-                objDocumentoDet.SuperTipo = "M";
-                objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
+                Pres_Documento_Detalle objDocDetalle = new Pres_Documento_Detalle();
+                objDocDetalle.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
+                objDocDetalle.Tipo = ddlTipoEnc.SelectedValue;
+                objDocDetalle.SuperTipo = "M";
+                objDocDetalle.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                objDocDetalle.Ejercicios = SesionUsu.Usu_Ejercicio;
 
-                CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
+                CNDocDet.ObtDisponibleCodigoProg(objDocDetalle, ref Verificador);
                 if (Verificador == "0")
                 {
-                    lblDisponible.Text = Convert.ToString(objDocumentoDet.Importe_disponible);
-                    lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocumentoDet.Importe_disponible));
+                    lblDisponible.Text = Convert.ToString(objDocDetalle.Importe_disponible);
+                    lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocDetalle.Importe_disponible));
                 }
             }
 
@@ -430,6 +432,7 @@ namespace SAF.Presupuesto
             try
             {
                 List<Pres_Documento> List = new List<Pres_Documento>();
+                Pres_Documento objDocumento = new Pres_Documento();
                 objDocumento.Usuario= SesionUsu.Usu_Nombre;
                 objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
                 objDocumento.Dependencia = ddlCentroContable.SelectedValue;
@@ -507,6 +510,8 @@ namespace SAF.Presupuesto
         }
         protected void linkBttnEditar_Click(object sender, EventArgs e)
         {
+            Pres_Documento objDocumento = new Pres_Documento();
+            Pres_Documento_Detalle objDocumentoDet = new Pres_Documento_Detalle();
             LinkButton cbi = (LinkButton)(sender);
             GridViewRow row = (GridViewRow)cbi.NamingContainer;
             grdDocumentos.SelectedIndex = row.RowIndex;
@@ -704,6 +709,7 @@ namespace SAF.Presupuesto
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            Pres_Documento objDocumento = new Pres_Documento();
             lblErrorDet.Text = string.Empty;
             lblMsjCP.Text = string.Empty;
             string VerificadorInserta = string.Empty;
@@ -714,7 +720,7 @@ namespace SAF.Presupuesto
                 {
                    
                        
-                            objDocumento.Tipo = ddlTipoEnc.SelectedValue;
+                            
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
                             if (VerificadorInserta != "0")
                                 lblErrorDet.Text = VerificadorInserta;
@@ -814,6 +820,8 @@ namespace SAF.Presupuesto
         
         protected void grdDocumentos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            Pres_Documento objDocumento = new Pres_Documento();
+
             lblError.Text = string.Empty;
             try
             {
@@ -849,6 +857,7 @@ namespace SAF.Presupuesto
         
         protected void btnAgregarDet_Click(object sender, EventArgs e)
         {
+            Pres_Documento_Detalle objDocumentoDet = new Pres_Documento_Detalle();
             if (ddlTipoEnc.SelectedValue=="MN")
             {
                 CargarGridDetalle_Ordinaria();
