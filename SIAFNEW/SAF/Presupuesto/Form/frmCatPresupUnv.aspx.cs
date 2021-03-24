@@ -177,5 +177,18 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
+
+        protected void txtConcepto_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string valor = txtImporte.Text;
+                //txtImporteMod.Text = String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", valor);
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
     }
 }

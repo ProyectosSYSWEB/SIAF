@@ -31,7 +31,6 @@ namespace SAF.Presupuesto.Form
             GRDCargarDatosCentrosContab();
             CargarCombo();
         }
-
         private void CargarCombo ()
         {
             try
@@ -43,7 +42,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDCargarDatosCentrosContab()
         {
             try
@@ -65,7 +63,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLClave_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -86,35 +83,33 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDPartidas_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = string.Empty;
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                Partidas objPartida = new Partidas();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDPartidas.Rows[fila].Cells[3].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
-                //{
-                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                //    if (Verificador == "0")
-                //        lblError.Text = "Se ha eliminado correctamente";
-                //    else
-                //        lblError.Text = Verificador;
-                //}
-                //else
-                //{
-                //    lblError.Text = Verificador;
-                //}
+                objPartida.Id = Convert.ToString(GRDPartidas.Rows[fila].Cells[4].Text);
+                if (SesionUsu.Usu_TipoUsu == "SU")
+                {
+                    CN_Partida.EliminarPartida(objPartida, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha eliminado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                {
+                    lblError.Text = Verificador;
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDPartidas_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -142,7 +137,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -154,7 +148,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNEditarPartida_Click(object sender, EventArgs e)
         {
             try

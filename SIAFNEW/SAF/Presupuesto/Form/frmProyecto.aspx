@@ -62,7 +62,7 @@
                                                             <asp:TemplateField>
                                                                 <ItemTemplate>
                                                                     <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
+                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible="true"></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 
@@ -87,7 +87,7 @@
                                                                 <asp:Label ID="Label1" runat="server" Text="Tipo proyecto"></asp:Label>
                                                             </td>
                                                             <td>
-                                                                <asp:DropDownList ID="DDLTipoProy2" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>                                                                
+                                                                <asp:DropDownList ID="DDLTipoProy2" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
                                                             </td>
                                                         </tr>
 

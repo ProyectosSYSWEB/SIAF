@@ -42,9 +42,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-
-
-
         public void InsertarPartida(ref Partidas objPartidas, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -67,7 +64,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
-
         public void ObtenerDatosPartida(ref Partidas objPartidas, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -120,7 +116,27 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void EliminarPartida(Partidas objPartidas, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID" };
+                object[] Valores = { objPartidas.Id };
+                String[] ParametrosOut = { "p_Bandera" };
 
+                Cmd = CDDatos.GenerarOracleCommand("", ref Verificador, Parametros, Valores, ParametrosOut);
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
     }
 }

@@ -16,7 +16,6 @@ namespace SAF.Presupuesto.Form
         CN_Comun CNComun = new CN_Comun();
         CN_FuenteFin CN_FuenteFin = new CN_FuenteFin();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -25,12 +24,10 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDFuenteFinan();
         }
-
         protected void GRDFuenteFinan()
         {
             try
@@ -51,35 +48,33 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDFuenteFin_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = string.Empty;
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                FuentesFin objFuenteFin = new FuentesFin();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDFuenteFin.Rows[fila].Cells[2].Text);
-            //    if (SesionUsu.Usu_TipoUsu == "SU")
-            //    {
-            //        CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-            //        if (Verificador == "0")
-            //            lblError.Text = "Se ha eliminado correctamente";
-            //        else
-            //            lblError.Text = Verificador;
-            //    }
-            //    else
-            //    {
-            //        lblError.Text = Verificador;
-            //    }
+                objFuenteFin.Id = Convert.ToString(GRDFuenteFin.Rows[fila].Cells[2].Text);
+                if (SesionUsu.Usu_TipoUsu == "SU")
+                {
+                    CN_FuenteFin.EliminarFuenteFin(objFuenteFin, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha eliminado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                {
+                    lblError.Text = Verificador;
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDFuenteFin_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -104,7 +99,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -116,7 +110,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNEditarFuenteFin_Click(object sender, EventArgs e)
         {
             try

@@ -33,7 +33,7 @@
 
                             <tr>
                                 <td style="width: 30%">
-                                    <asp:Label ID="lblTipoOpe" runat="server" Text="Código programático"></asp:Label>
+                                    <asp:Label ID="lblTipoOpe" runat="server" Text="Estructura programática"></asp:Label>
                                 </td>
                                 <td>                                    
                                     <asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>
