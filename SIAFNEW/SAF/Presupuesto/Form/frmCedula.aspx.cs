@@ -23,8 +23,8 @@ namespace SAF.Presupuesto
         CN_Comun CNComun = new CN_Comun();
         CN_Pres_Documento CNDocumentos = new CN_Pres_Documento();
         CN_Pres_Documento_Det CNDocDet = new CN_Pres_Documento_Det();
-        Pres_Documento objDocumento = new Pres_Documento();
-        Pres_Documento_Detalle objDocumentoDet = new Pres_Documento_Detalle();
+        //Pres_Documento objDocumento = new Pres_Documento();
+        //Pres_Documento_Detalle objDocumentoDet = new Pres_Documento_Detalle();
         private static List<Comun> ListConceptos = new List<Comun>();
         private static List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
         private static List<Comun> Listcodigo = new List<Comun>();
@@ -199,9 +199,9 @@ namespace SAF.Presupuesto
                 txtImporte_Operacion.Text = lblTotal_Origen.Text;
 
                 if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
-                    Celdas = new Int32[] { 1,2,3,  4,9,10,11,12,13,14,15,16,17,18,20 };
+                    Celdas = new Int32[] { 1,2,3,  4,10,12,13,14,15,16,17,18,20 };
                 else
-                    Celdas = new Int32[] { 1, 2,3,  4, 9,10, 11, 12, 13, 14, 15, 16, 17,18 };
+                    Celdas = new Int32[] { 1, 2,3,  4,10,12, 13, 14, 15, 16, 17,18 };
 
                 if (grdDetalles.Rows.Count > 0)
                 {
@@ -273,6 +273,7 @@ namespace SAF.Presupuesto
         {
             try
             {
+                Pres_Documento objDocumento = new Pres_Documento();
                 Verificador = string.Empty;
                 objDocumento.CentroContable = "";
                 objDocumento.Dependencia = ddlDependencia.SelectedValue;
@@ -451,6 +452,7 @@ namespace SAF.Presupuesto
         {
             try
             {
+                Pres_Documento objDocumento = new Pres_Documento();
                 List<Pres_Documento> List = new List<Pres_Documento>();
                 objDocumento.Usuario= SesionUsu.Usu_Nombre;
                 objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
@@ -519,6 +521,8 @@ namespace SAF.Presupuesto
             lblMsjCP.Text = string.Empty;
             validadorStatus.ValidationGroup = "Guardar";
             Session["DocDet"] = null;
+            Pres_Documento objDocumento = new Pres_Documento();
+            Pres_Documento_Detalle objDocumentoDet = new Pres_Documento_Detalle();
 
             string Status = string.Empty;
             try
@@ -619,6 +623,7 @@ namespace SAF.Presupuesto
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            Pres_Documento objDocumento = new Pres_Documento();
             lblErrorDet.Text = string.Empty;
             lblMsjCP.Text = string.Empty;
             string VerificadorInserta = string.Empty;
@@ -994,9 +999,11 @@ namespace SAF.Presupuesto
         protected void grdDocumentos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = string.Empty;
+
             try
             {
                 int fila = e.RowIndex;
+                Pres_Documento objDocumento = new Pres_Documento();
                 objDocumento.Id = Convert.ToInt32(grdDocumentos.Rows[fila].Cells[0].Text);
                 CNDocumentos.EliminarDocumentoEncabezado(objDocumento, ref Verificador);
                 if (Verificador == "0")
