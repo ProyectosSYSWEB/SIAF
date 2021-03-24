@@ -40,8 +40,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-
-
         public void InsertarCentroContable(ref CentrosContab objCentrosContab, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -64,9 +62,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
-
-
-
         public void ObtenerDatosCContab(ref CentrosContab objCContab, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -121,7 +116,27 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void EliminarCContab(CentrosContab objCContab, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID" };
+                object[] Valores = { objCContab.Id };
+                String[] ParametrosOut = { "p_Bandera" };
 
+                Cmd = CDDatos.GenerarOracleCommand("", ref Verificador, Parametros, Valores, ParametrosOut);
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
     }
 }

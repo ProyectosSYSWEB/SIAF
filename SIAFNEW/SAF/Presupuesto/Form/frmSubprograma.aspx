@@ -5,6 +5,7 @@
         .auto-style1 {
             height: 17px;
         }
+
         .ColumnaOculta {
             display: none;
         }
@@ -49,7 +50,7 @@
                                                         <Columns>
                                                             <asp:BoundField DataField="Subprog" HeaderText="Clave" />
                                                             <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                                                            <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"/>
+                                                            <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />
 
                                                             <asp:TemplateField>
                                                                 <ItemTemplate>
@@ -61,7 +62,7 @@
                                                             <asp:TemplateField>
                                                                 <ItemTemplate>
                                                                     <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
+                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible="true"></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 
@@ -115,7 +116,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td>
-                                                                            <asp:Button runat="server" Text="Guardar" ID="BTNEditarSubProg" OnClick="BTNEditarSubProg_Click"/>
+                                                                            <asp:Button runat="server" Text="Guardar" ID="BTNEditarSubProg" OnClick="BTNEditarSubProg_Click" />
                                                                         </td>
                                                                         <td></td>
                                                                         <td>

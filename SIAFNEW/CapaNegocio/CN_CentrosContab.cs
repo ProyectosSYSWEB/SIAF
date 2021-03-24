@@ -22,7 +22,6 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
         public void InsertarCentroContable(ref CentrosContab objCentrosContab, ref string Verificador)
         {
             try
@@ -36,8 +35,6 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
-
         public void ObtenerDatosCContab(ref CentrosContab objCContab, ref string Verificador)
         {
             try
@@ -64,6 +61,18 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void EliminarCContab( CentrosContab objCContab, ref string Verificador)
+        {
+            try
+            {
+                CD_CentrosContab CD_CentrosContab = new CD_CentrosContab();
+                CD_CentrosContab.EliminarCContab(objCContab, ref Verificador);
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

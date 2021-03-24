@@ -20,7 +20,6 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
         public void InsertarSubPrograma(ref Basicos objBasicos, ref string Verificador)
         {
             try
@@ -34,7 +33,6 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
         public void ObtenerDatosSubprograma(ref Subprograma objSubprograma, ref string Verificador)
         {
             try
@@ -48,13 +46,25 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
-        public void EditarCContab(ref Subprograma objSubprograma, ref string Verificador)
+        public void EditarSubProg(ref Subprograma objSubprograma, ref string Verificador)
         {
             try
             {
                 CD_Subprograma CD_Subprograma = new CD_Subprograma();
                 CD_Subprograma.EditarSubProg(ref objSubprograma, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EliminarSubProg(Subprograma objSubprograma, ref string Verificador)
+        {
+            try
+            {
+                CD_Subprograma CD_Subprograma = new CD_Subprograma();
+                CD_Subprograma.EliminarSubProg(objSubprograma, ref Verificador);
 
             }
             catch (Exception ex)

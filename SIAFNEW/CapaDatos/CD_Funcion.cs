@@ -39,7 +39,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-
         public void InsertarFuncion(ref Funcion objFuncion, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -62,9 +61,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
-
-
-
         public void ObtenerDatosFuncion(ref Funcion objFuncion, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -115,12 +111,27 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void EliminarFuncion(Funcion objFuncion, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_CLAVE"};
+                object[] Valores = { objFuncion.Clave };
+                String[] ParametrosOut = { "p_Bandera" };
 
+                Cmd = CDDatos.GenerarOracleCommand(" ", ref Verificador, Parametros, Valores, ParametrosOut);
 
-
-
-
-
-
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
     }
 }

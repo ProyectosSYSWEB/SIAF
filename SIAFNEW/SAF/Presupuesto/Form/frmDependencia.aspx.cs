@@ -25,21 +25,16 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             CargarCombos();
             GRDCargarDatosDepend();
             Multiview1.ActiveViewIndex = 0;
         }
-
-
         protected void CargarCombos()
         {
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab, "p_ejercicio", SesionUsu.Usu_Ejercicio);
         }
-
-
         protected void GRDCargarDatosDepend()
         {
             try
@@ -61,7 +56,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLCentroContab_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -83,7 +77,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GDRDependencias_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = string.Empty;
@@ -111,7 +104,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GDRDependencias_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -153,7 +145,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -165,7 +156,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNEditarDependencia_Click(object sender, EventArgs e)
         {
             try
@@ -208,7 +198,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void CargarCombosEditar()
         {
             try
