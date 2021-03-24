@@ -613,15 +613,27 @@
                                                                                                                 <td class="auto-style72" valign="top" style="width:10%;">
                                                                                                                     <asp:Label ID="lblCapitulo" runat="server" Text="Capitulo"></asp:Label>
                                                                                                                 </td>
-                                                                                                                <td valign="top" colspan="3">
+                                                                                                                <td valign="top">
                                                                                                                     <asp:UpdatePanel ID="updPnlCapitulo" runat="server"><ContentTemplate>
-                                                                                                                    <asp:DropDownList ID="ddlCapitulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCapitulo_SelectedIndexChanged" Width="100%"></asp:DropDownList>
+                                                                                                                    <asp:DropDownList ID="ddlCapitulo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLCapitulo_SelectedIndexChanged" Width="400px"></asp:DropDownList>
                                                                                                                          </ContentTemplate></asp:UpdatePanel>
             
 
 
 
                                                                                                                 </td>
+                <td>
+                    <asp:Label ID="lblGrupo" runat="server"></asp:Label>
+                </td>
+                <td>
+                     <asp:UpdatePanel ID="updPnlGrupo" runat="server"><ContentTemplate>
+                    <asp:DropDownList ID="ddlGrupoCodigoProgramatico" runat="server" AutoPostBack="True" Width="300px" OnSelectedIndexChanged="ddlGrupoCodigoProgramatico_SelectedIndexChanged">
+                        <asp:ListItem Value="99999">DEPENDENCIA</asp:ListItem>
+                           <asp:ListItem Value="00000">CENTRO CONTABLE</asp:ListItem>
+                    </asp:DropDownList>
+                         </ContentTemplate>
+                         </asp:UpdatePanel>
+                </td>
                                                                                                             </tr>                                                                                                
             <tr>
                                                                                                                 <td class="auto-style72" valign="top">

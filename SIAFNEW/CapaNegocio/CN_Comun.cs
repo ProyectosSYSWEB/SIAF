@@ -311,6 +311,32 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1, string parametro2, string parametro3, string parametro4, string parametro5, string parametro6, string valor1, string valor2, string valor3, string valor4, string valor5, string valor6, ref List<Comun> Etiquetas)
+        {
+            try
+            {
+                List<Comun> Lista = new List<Comun>();
+                CD_Comun CDComun = new CD_Comun();
+                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2, parametro3, parametro4, parametro5, parametro6,valor1, valor2, valor3, valor4, valor5, valor6);
+                DDL.Items.Clear();
+                if (Lista.Count > 0)
+                {
+                    DDL.DataSource = Lista;
+                    DDL.DataValueField = "IdStr";
+                    DDL.DataTextField = "Descripcion";
+                    DDL.DataBind();
+
+                }
+                else
+                {
+                    DDL.Items.Add("La opción no contiene datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1, string parametro2, string parametro3, string parametro4, string parametro5, string parametro6, string valor1, string valor2, string valor3, string valor4, string valor5, string valor6)
         {
             try
@@ -336,7 +362,33 @@ namespace CapaNegocio
             {
                 throw new Exception(ex.Message);
             }
-        }       
+        }
+        public void LlenaCombo(string SP, ref DropDownList DDL, string parametro1, string parametro2, string parametro3, string parametro4, string parametro5, string parametro6, string parametro7, string valor1, string valor2, string valor3, string valor4, string valor5, string valor6, string valor7)
+        {
+            try
+            {
+                List<Comun> Lista = new List<Comun>();
+                CD_Comun CDComun = new CD_Comun();
+                CDComun.LlenaCombo(SP, ref Lista, parametro1, parametro2, parametro3, parametro4, parametro5, parametro6, valor1, valor2, valor3, valor4, valor5, valor6);
+                DDL.Items.Clear();
+                if (Lista.Count > 0)
+                {
+                    DDL.DataSource = Lista;
+                    DDL.DataValueField = "IdStr";
+                    DDL.DataTextField = "Descripcion";
+                    DDL.DataBind();
+
+                }
+                else
+                {
+                    DDL.Items.Add("La opción no contiene datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public void LlenaCombo(string SP, ref DropDownList DDL, ref List<Comun> Etiquetas)
         {
             try

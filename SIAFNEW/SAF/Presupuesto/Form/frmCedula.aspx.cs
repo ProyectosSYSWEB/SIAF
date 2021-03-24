@@ -789,23 +789,24 @@ namespace SAF.Presupuesto
                     Pres_Documento_Detalle Detalle = new Pres_Documento_Detalle();
                     List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
                      
-                    if (Session["DocDet"] != null)
-                    {
-                        List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
-                        ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
-                        var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
-                                                  where Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
+                    //if (Session["DocDet"] != null)
+                    //{
+                    //    List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
+                    //    ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
+                    //    var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
+                    //                              where Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
 
-                                                  select c;
+                    //                              select c;
 
-                        content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
-                    }
-                    if (content.Count == 0)
-                    {
+                    //    content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
+                    //}
+                    //if (content.Count == 0)
+                    //{
                         Detalle.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
                         Detalle.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0, 34);
-                        Detalle.Ur_clave = ddlDependencia.SelectedValue;
-                        Detalle.Tipo = "O";
+                    //Detalle.Ur_clave = ddlDependencia.SelectedValue;
+                    Detalle.Ur_clave = ddlCodigoProg.SelectedItem.Text.Substring(8, 5);
+                    Detalle.Tipo = "O";
 
                         Detalle.Mes_inicial = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
                         Detalle.Mes_final = Convert.ToInt32(txtfechaDocumento.Text.Substring(3, 2));
@@ -828,11 +829,11 @@ namespace SAF.Presupuesto
                     Session["DocDet"] = ListDocDet;
                     CargarGridDetalle(ListDocDet);
                     ddlTipoEnc.Enabled = false;
+                    txtImporteOrigen.Text = "0.00";
 
-
-                    }
-                    else
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El código programático ya está capturado.');", true);
+                    //}
+                    //else
+                    //    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El código programático ya está capturado.');", true);
                 }
             }
         }
@@ -886,7 +887,7 @@ namespace SAF.Presupuesto
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente","p_clave_evento", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ddlevento.SelectedValue, ref ListPartida);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente","p_clave_evento", "p_grupo",SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ddlevento.SelectedValue, ddlGrupoCodigoProgramatico.SelectedValue, ref ListPartida);
                 disponible();
             }
             catch (Exception ex)
@@ -894,10 +895,22 @@ namespace SAF.Presupuesto
                 lblError.Text = ex.Message;
             }
 }
+        protected void ddlGrupoCodigoProgramatico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", "p_clave_evento", "p_grupo", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ddlevento.SelectedValue, ddlGrupoCodigoProgramatico.SelectedValue, ref ListPartida);
+                disponible();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
         protected void DDLFuente_F_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0,1), ddlFuente_F.SelectedValue, ref ListPartida);
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", "p_clave_evento", "p_grupo", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ddlevento.SelectedValue, ddlGrupoCodigoProgramatico.SelectedValue, ref ListPartida);
             disponible();
         }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
@@ -1042,5 +1055,7 @@ namespace SAF.Presupuesto
                 }
             }
         }
+
+        
     }
 }
