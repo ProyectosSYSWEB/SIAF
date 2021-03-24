@@ -93,6 +93,7 @@ namespace SAF.Presupuesto.Form
             {
                 string Verificador = string.Empty;
                 PresupUnv.TipoOper = "AC";
+                PresupUnv.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CN_PresupUnv.ObtenerConsecutivoTipoOperacion(ref PresupUnv, ref Verificador);
                 txtConsecutivoOpe.Text =  Convert.ToString(PresupUnv.Id);
             }
@@ -108,6 +109,7 @@ namespace SAF.Presupuesto.Form
             {
                 string Verificador = string.Empty;
                 PresupUnv.TipoOper = DDLTipoRec.SelectedValue;
+                PresupUnv.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CN_PresupUnv.ObtenerConsecutivoTipoOperacion(ref PresupUnv, ref Verificador);
                 txtConsecutivoOpe.Text = Convert.ToString(PresupUnv.Id);
             }

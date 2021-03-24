@@ -30,11 +30,13 @@
                                         <ContentTemplate>
                                             <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
+                                                    <asp:BoundField DataField="Id" HeaderText="Consecutivo"/>
                                                     <asp:BoundField DataField="Tipo_Gasto" HeaderText="Tipo " />
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Referencia_Documento" HeaderText="Referencia Documento" />
                                                     <asp:BoundField DataField="Concepto" HeaderText="Concepto" />
-                                                    <asp:BoundField DataField="Codigo_Programatico" HeaderText="Codigo Programatico" />                                                    
+                                                    <asp:BoundField DataField="Codigo_Programatico" HeaderText="Codigo Programatico" />     
+                                                    <asp:BoundField DataField="Autorizado" HeaderText="Autorizado" />    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:UpdatePanel ID="UpdatePanel104" runat="server">
