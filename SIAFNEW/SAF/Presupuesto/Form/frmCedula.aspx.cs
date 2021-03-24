@@ -279,6 +279,7 @@ namespace SAF.Presupuesto
                 objDocumento.Dependencia = ddlDependencia.SelectedValue;
                 string fech = txtfechaDocumento.Text;
                 objDocumento.Folio = fech.Substring(3, 2);
+                objDocumento.Tipo = ddlTipoEnc.SelectedValue;
                 objDocumento.SuperTipo = SesionUsu.Usu_Rep;
                 objDocumento.Fecha = txtfechaDocumento.Text;
                 objDocumento.MesAnio = fech.Substring(3, 2) + SesionUsu.Usu_Ejercicio.Substring(2, 2);
@@ -645,7 +646,7 @@ namespace SAF.Presupuesto
                       if(  ImportePermitido )
                     {
                        
-                            objDocumento.Tipo = ddlTipoEnc.SelectedValue;
+                            
                            
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
                             if (VerificadorInserta != "0")
