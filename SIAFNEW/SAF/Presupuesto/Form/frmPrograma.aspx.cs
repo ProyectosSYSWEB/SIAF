@@ -16,7 +16,6 @@ namespace SAF.Presupuesto.Form
         CN_Programa CN_Programa = new CN_Programa();
         CN_Comun CNComun = new CN_Comun();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -25,13 +24,11 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDCargarDatosFuncion();
             CargarCombos();
         }
-
         private void CargarCombos()
         {
             try {
@@ -42,7 +39,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         private void CargarCombosEdit()
         {
             try
@@ -54,7 +50,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDCargarDatosFuncion()
         {
             try
@@ -75,7 +70,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLFuncion_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -95,35 +89,33 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDProgramas_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = string.Empty;
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                Programa objPrograma = new Programa();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.Rows[fila].Cells[3].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
-                //{
-                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                //    if (Verificador == "0")
-                //        lblError.Text = "Se ha eliminado correctamente";
-                //    else
-                //        lblError.Text = Verificador;
-                //}
-                //else
-                //{
-                //    lblError.Text = Verificador;
-                //}
+                objPrograma.Id = Convert.ToString(GRDProgramas.Rows[fila].Cells[3].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_Programa.EliminarPrograma(objPrograma, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha eliminado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                {
+                    lblError.Text = "No tiene privilegios para realizar esta acción";
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDProgramas_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -154,7 +146,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -166,7 +157,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNEditarProg_Click(object sender, EventArgs e)
         {
             try

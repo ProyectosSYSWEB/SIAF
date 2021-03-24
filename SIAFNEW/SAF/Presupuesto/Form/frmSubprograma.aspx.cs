@@ -16,7 +16,6 @@ namespace SAF.Presupuesto.Form
         CN_Comun CNComun = new CN_Comun();
         CN_Subprog CN_Subprog = new CN_Subprog();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -25,19 +24,15 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDCargarDatosFuncion();
             CargarCombos();
         }
-
-
         protected void CargarCombos()
         {
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd, "p_tipocombo", "T");
         }
-
         protected void GRDCargarDatosFuncion()
         {
             try
@@ -61,7 +56,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLNvlacd_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -84,35 +78,33 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDProgramas_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = string.Empty;
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                Subprograma objSubProg = new Subprograma();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.Rows[fila].Cells[0].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
-                //{
-                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                //    if (Verificador == "0")
-                //        lblError.Text = "Se ha eliminado correctamente";
-                //    else
-                //        lblError.Text = Verificador;
-                //}
-                //else
-                //{
-                //    lblError.Text = Verificador;
-                //}
+                objSubProg.Id = Convert.ToString(GRDProgramas.Rows[fila].Cells[2].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_Subprog.EliminarSubProg(objSubProg, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha eliminado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                {
+                    lblError.Text = Verificador;
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDProgramas_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -145,7 +137,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -157,7 +148,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void CargarCombos2()
         {
             try
@@ -169,7 +159,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNEditarSubProg_Click(object sender, EventArgs e)
         {
             try
@@ -183,7 +172,7 @@ namespace SAF.Presupuesto.Form
                     objSubProg.NivAcad = DDLNvlacd2.SelectedValue;
                     objSubProg.Clave = txtPrograma.Text;
                     objSubProg.Descripcion = txtDescripcion.Text;
-                    CN_Subprog.EditarCContab(ref objSubProg, ref Verificador);
+                    CN_Subprog.EditarSubProg(ref objSubProg, ref Verificador);
                     if (Verificador == "0")
                         lblError.Text = "Se ha modificado correctamente";
                     else

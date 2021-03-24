@@ -27,21 +27,14 @@
                 <tr>
                     <td class="auto-style1">
                         <table style="width: 100%">
-                            <tr>                                
+                            <tr>
                                 <td colspan="3">
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-
-
                                             <asp:MultiView ID="Multiview1" runat="server">
-
-
-
                                                 <asp:View ID="View_1" runat="server">
-
                                                     <asp:Label runat="server" ID="LBLncc"></asp:Label>
                                                     <br />
-
                                                     <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click" ValidationGroup="Agregar" />
                                                     <asp:GridView ID="GRDCentrosContab" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowDeleting="GRDCentrosContab_RowDeleting" OnSelectedIndexChanged="GRDCentrosContab_SelectedIndexChanged">
                                                         <Columns>
@@ -58,7 +51,7 @@
                                                             <asp:TemplateField>
                                                                 <ItemTemplate>
                                                                     <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
+                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible="true"></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
                                                         </Columns>

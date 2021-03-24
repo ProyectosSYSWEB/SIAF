@@ -5,6 +5,7 @@
         .auto-style1 {
             height: 17px;
         }
+
         .ColumnaOculta {
             display: none;
         }
@@ -50,7 +51,7 @@
                                                             <asp:BoundField DataField="Funcion" HeaderText="Función" />
                                                             <asp:BoundField DataField="F_Prog" HeaderText="F Prog" />
                                                             <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                                                            <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"/>
+                                                            <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />
 
                                                             <asp:TemplateField>
                                                                 <ItemTemplate>
@@ -62,7 +63,7 @@
                                                             <asp:TemplateField>
                                                                 <ItemTemplate>
                                                                     <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" Visible="true">Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
+                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible="true"></asp:Label>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 

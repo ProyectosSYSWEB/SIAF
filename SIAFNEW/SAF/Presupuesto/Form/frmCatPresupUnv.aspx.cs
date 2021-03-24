@@ -32,6 +32,7 @@ namespace SAF.Presupuesto.Form
         {
             CargarCombos();
             ObtenerConsecutivoTipoOperacion("A");
+            ObtenerDatosCodigoProg();
         }
 
 
@@ -67,6 +68,19 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+
+                ObtenerDatosCodigoProg();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        private void ObtenerDatosCodigoProg()
+        {
+            try
+            {
                 string Verificador = string.Empty;
                 PresupUnv.Codigo_Programatico = DDLCodProg.SelectedValue;
                 CN_PresupUnv.ObtenerDatosCodProg(ref PresupUnv, ref Verificador);
@@ -79,7 +93,7 @@ namespace SAF.Presupuesto.Form
                 txtProyecto.Text = PresupUnv.Proyecto;
                 //txtTipoGasto.Text = PresupUnv.Tipo_Gasto;
                 //txtDigMinis.Text = PresupUnv.Dig_Ministrado;
-                txtFuncion.Text = PresupUnv.Funcion;                
+                txtFuncion.Text = PresupUnv.Funcion;
             }
             catch (Exception ex)
             {

@@ -41,8 +41,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-
-
         public void InsertarPrograma(ref Programa objPrograma, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -65,7 +63,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
-
         public void ObtenerDatosPrograma(ref Programa objPrograma, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -117,6 +114,27 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void EliminarPrograma(Programa objPrograma, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID" };
+                object[] Valores = { objPrograma.Id };
+                String[] ParametrosOut = { "p_Bandera" };
 
+                Cmd = CDDatos.GenerarOracleCommand("", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
     }
 }

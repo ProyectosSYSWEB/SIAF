@@ -15,7 +15,6 @@ namespace SAF.Presupuesto.Form
         Sesion SesionUsu = new Sesion();
         CN_Funcion CN_Funcion = new CN_Funcion();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -48,35 +47,33 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }        
-
         protected void GRDFunciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = string.Empty;
             try
             {
-                Dependencias objDependencias = new Dependencias();
                 string Verificador = string.Empty;
+                Funcion objFuncion = new Funcion();
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDFunciones.Rows[fila].Cells[0].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SA")
-                //{
-                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                //    if (Verificador == "0")
-                //        lblError.Text = "Se ha eliminado correctamente";
-                //    else
-                //        lblError.Text = Verificador;
-                //}
-                //else
-                //{
-                //    lblError.Text = Verificador;
-                //}
+                objFuncion.Clave = Convert.ToString(GRDFunciones.Rows[fila].Cells[0].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_Funcion.Eliminar(objFuncion, ref Verificador);                    
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha eliminado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                {
+                    lblError.Text = "No tiene privilegios para realizar esta acción";
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDFunciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -105,7 +102,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -117,7 +113,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNEditarFuncion_Click(object sender, EventArgs e)
         {
             try
