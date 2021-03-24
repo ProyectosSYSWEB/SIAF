@@ -22,7 +22,6 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
         public void InsertarCapitulo(ref Basicos objBasicos, ref string Verificador)
         {
             try
@@ -36,7 +35,6 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
         public void ObtenerDatosCapitulo(ref Basicos objBasicos, ref string Verificador)
         {
             try
@@ -56,6 +54,19 @@ namespace CapaNegocio
             {
                 CD_Capitulos CD_Capitulos = new CD_Capitulos();
                 CD_Capitulos.EditarCapitulo(ref objBasicos, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EliminarCapitulo(Basicos objBasicos, ref string Verificador)
+        {
+            try
+            {
+                CD_Capitulos CD_Capitulos = new CD_Capitulos();
+                CD_Capitulos.EliminarCapitulo(objBasicos, ref Verificador);
 
             }
             catch (Exception ex)

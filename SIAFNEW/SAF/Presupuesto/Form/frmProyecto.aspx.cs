@@ -19,7 +19,6 @@ namespace SAF.Presupuesto.Form
         string capitulos = "";
         List<string> ListaCaps = new List<string>();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -28,14 +27,12 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             CargarCombos();
             GRDCargarDatosProyectos();
             
         }
-
         protected void CargarCombos()
         {
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Grid_Cat_TipoProy", ref DDLTipoProy, "p_todos", "N");
@@ -45,7 +42,6 @@ namespace SAF.Presupuesto.Form
         {
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Grid_Cat_TipoProy", ref DDLTipoProy2, "p_todos", "N");            
         }
-
         protected void GRDCargarDatosProyectos()
         {
             try
@@ -65,7 +61,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLTipoProy_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -84,35 +79,33 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDProyectos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             lblError.Text = string.Empty;
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                Proyectos objProyectos = new Proyectos();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDProyectos.Rows[fila].Cells[3].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
-                //{
-                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                //    if (Verificador == "0")
-                //        lblError.Text = "Se ha eliminado correctamente";
-                //    else
-                //        lblError.Text = Verificador;
-                //}
-                //else
-                //{
-                //    lblError.Text = Verificador;
-                //}
+                objProyectos.Id = Convert.ToString(GRDProyectos.Rows[fila].Cells[2].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_Proyecto.EliminarProyecto(objProyectos, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha eliminado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                {
+                    lblError.Text = "No tiene privilegios para realizar esta acción";
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDProyectos_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -145,7 +138,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -157,7 +149,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNEditarProyecto_Click(object sender, EventArgs e)
         {
             try

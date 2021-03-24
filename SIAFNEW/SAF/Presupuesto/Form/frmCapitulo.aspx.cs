@@ -15,7 +15,6 @@ namespace SAF.Presupuesto.Form
         Sesion SesionUsu = new Sesion();
         CN_Capitulo CN_Capitulo = new CN_Capitulo();        
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -24,12 +23,10 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {            
             GRDCargarDatosDepend();
         }
-
         protected void GRDCargarDatosDepend()
         {
             try
@@ -56,29 +53,28 @@ namespace SAF.Presupuesto.Form
             lblError.Text = string.Empty;
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                Basicos objCapitulo = new Basicos();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDCapitulos.Rows[fila].Cells[2].Text);
-            //    if (SesionUsu.Usu_TipoUsu == "SU")
-            //    {
-            //        CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-            //        if (Verificador == "0")
-            //            lblError.Text = "Se ha eliminado correctamente";
-            //        else
-            //            lblError.Text = Verificador;
-            //    }
-            //    else
-            //    {
-            //        lblError.Text = Verificador;
-            //    }
+                objCapitulo.id = Convert.ToString(GRDCapitulos.Rows[fila].Cells[2].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_Capitulo.EliminarCapitulo(objCapitulo, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha eliminado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                {
+                    lblError.Text = "No tiene privilegios para realizar esta acción";
+                }
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDCapitulos_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -107,7 +103,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -119,7 +114,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNEditarCap_Click(object sender, EventArgs e)
         {
             try
