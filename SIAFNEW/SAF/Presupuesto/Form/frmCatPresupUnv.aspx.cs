@@ -57,6 +57,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Ctx_Dp01", ref DDLCodProg, "p_centro_contable", "p_funcion", DDLCentroContab.SelectedValue, DDLFuente.SelectedValue);
+                ObtenerDatosCodigoProg();
             }
             catch(Exception ex)
             {
