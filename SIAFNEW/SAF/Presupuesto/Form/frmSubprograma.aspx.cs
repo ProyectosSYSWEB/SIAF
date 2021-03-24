@@ -42,6 +42,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Subprograma objSubprogramaa = new Subprograma();
                 List<Subprograma> list = new List<Subprograma>();
                 objSubprogramaa.DependenciaI = "11101";
@@ -116,12 +117,28 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.SelectedRow.Cells[0].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {                    
+                    Subprograma objSubProg = new Subprograma();
+                    string Verificador = string.Empty;
+                    CargarCombos2();
+                    objSubProg.Id = Convert.ToString(GRDProgramas.SelectedRow.Cells[2].Text);
+                    CN_Subprog.ObtenerDatosSubprograma(ref objSubProg, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        Multiview1.ActiveViewIndex = 1;
+                        Session["SessionIdSubProg"] = objSubProg.Id;
+                        DDLNvlacd2.SelectedValue = objSubProg.NivAcad;
+                        txtPrograma.Text = objSubProg.Clave;
+                        txtDescripcion.Text = objSubProg.Descripcion;
+                    }
+                    else
+                    {
+                        lblError.Text = Verificador;
+                    }
+                }
+                else
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {
@@ -136,6 +153,46 @@ namespace SAF.Presupuesto.Form
                 Response.Redirect("frmCatalogoSubProg.aspx", true);
             }
             catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void CargarCombos2()
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd2, "p_tipocombo", "T");
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNEditarSubProg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if(SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Subprograma objSubProg = new Subprograma();
+                    string Verificador = string.Empty;
+                    objSubProg.Id = (String)Session["SessionIdSubProg"];
+                    objSubProg.NivAcad = DDLNvlacd2.SelectedValue;
+                    objSubProg.Clave = txtPrograma.Text;
+                    objSubProg.Descripcion = txtDescripcion.Text;
+                    CN_Subprog.EditarCContab(ref objSubProg, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha modificado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene privilegios para realizar esta acción";
+            }
+            catch (Exception ex) 
             {
                 lblError.Text = ex.Message;
             }

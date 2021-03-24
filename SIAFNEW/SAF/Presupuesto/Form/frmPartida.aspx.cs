@@ -44,12 +44,11 @@ namespace SAF.Presupuesto.Form
             }
         }
 
-
-
         protected void GRDCargarDatosCentrosContab()
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Partidas objPartidas = new Partidas();
                 objPartidas.Ejercicio = SesionUsu.Usu_Ejercicio;
                 List<Partidas> list = new List<Partidas>();
@@ -120,12 +119,23 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDPartidas.SelectedRow.Cells[3].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
+                if(SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Partidas objPartida = new Partidas();
+                    string Verificador = string.Empty;
+                    objPartida.Id = Convert.ToString(GRDPartidas.SelectedRow.Cells[4].Text);
+                    objPartida.Ejercicio = Convert.ToString(GRDPartidas.SelectedRow.Cells[3].Text);
+                    Session["SessionIdPartida"] = objPartida.Id;
+                    CN_Partida.ObtenerDatosPartida(ref objPartida, ref Verificador);
+                    txtPartida.Text = objPartida.Clave;
+                    txtDescrip.Text = objPartida.Descrip;
+                    txtConcepto.Text = objPartida.Concepto;
+                    txtEjercicio.Text = objPartida.Ejercicio;
+                    Multiview1.ActiveViewIndex = 1;
+                }
+                else
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
 
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
             }
             catch (Exception ex)
             {
@@ -140,6 +150,34 @@ namespace SAF.Presupuesto.Form
                 Response.Redirect("frmCatalogoPartidas.aspx", true);
             }
             catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNEditarPartida_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Partidas objPartida = new Partidas();
+                    string Verificador = string.Empty;
+                    objPartida.Id = (String)Session["SessionIdPartida"];
+                    objPartida.Clave = txtPartida.Text;
+                    objPartida.Descrip = txtDescrip.Text;
+                    objPartida.Concepto = txtConcepto.Text;
+                    objPartida.Ejercicio = txtEjercicio.Text;
+                    CN_Partida.EditarPartida(ref objPartida, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se han realizado los cambios correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+            }
+            catch(Exception ex)
             {
                 lblError.Text = ex.Message;
             }

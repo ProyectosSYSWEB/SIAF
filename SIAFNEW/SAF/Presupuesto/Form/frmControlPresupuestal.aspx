@@ -38,12 +38,12 @@
                                                     <asp:BoundField DataField="Codigo" HeaderText="Estructura programática" />
                                                     <asp:BoundField DataField="Id" HeaderText="Id" />
                                                     
-                                                    <asp:TemplateField>
+                                                    <%--<asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Editar</asp:LinkButton>
                                                             <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                    </asp:TemplateField>--%>
                                                     
                                                     <asp:TemplateField>
                                                         <ItemTemplate>

@@ -97,5 +97,14 @@ namespace CapaEntidad
             set { _Id = value; }
         }
 
+        private string _Clave;
+
+        public string Clave
+        {
+            get { return _Clave; }
+            set { _Clave = value; }
+        }
+
+
     }
 }

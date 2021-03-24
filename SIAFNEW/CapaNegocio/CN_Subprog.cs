@@ -34,5 +34,33 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public void ObtenerDatosSubprograma(ref Subprograma objSubprograma, ref string Verificador)
+        {
+            try
+            {
+                CD_Subprograma CD_Subprograma = new CD_Subprograma();
+                CD_Subprograma.ObtenerDatosSubprograma(ref objSubprograma, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void EditarCContab(ref Subprograma objSubprograma, ref string Verificador)
+        {
+            try
+            {
+                CD_Subprograma CD_Subprograma = new CD_Subprograma();
+                CD_Subprograma.EditarSubProg(ref objSubprograma, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

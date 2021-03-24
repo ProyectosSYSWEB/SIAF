@@ -36,5 +36,31 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void ObtenerDatosPartida(ref Partidas objPartida, ref string Verificador)
+        {
+            try
+            {
+                CD_Partidas CD_Partidas = new CD_Partidas();
+                CD_Partidas.ObtenerDatosPartida(ref objPartida, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EditarPartida(ref Partidas objPartida, ref string Verificador)
+        {
+            try
+            {
+                CD_Partidas CD_Partidas = new CD_Partidas();
+                CD_Partidas.EditarPartida(ref objPartida, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

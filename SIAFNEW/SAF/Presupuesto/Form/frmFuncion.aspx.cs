@@ -82,16 +82,17 @@ namespace SAF.Presupuesto.Form
             try
             {
                 if (SesionUsu.Usu_TipoUsu == "SA")
-                {
+                {                    
                     string Verificador = string.Empty;
                     Funcion objFuncion = new Funcion();
                     objFuncion.Clave = Convert.ToString(GRDFunciones.SelectedRow.Cells[0].Text);
                     CN_Funcion.ObtenerDatosFuncion(ref objFuncion, ref Verificador);
                     if (Verificador == "0")
                     {
-                        Session["SessionIDFuncion"] = objFuncion.Clave;
+                        Session["SessionIDFuncion"] = objFuncion.Id;
                         txtFuncion.Text = objFuncion.Clave;
                         txtDescripcion.Text = objFuncion.Descripcion;
+                        Multiview1.ActiveViewIndex = 1;
                     }
                     else
                         lblError.Text = Verificador;

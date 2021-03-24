@@ -34,6 +34,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Basicos objBasicos = new Basicos();
                 List<Basicos> list = new List<Basicos>();
                 objBasicos.tipo = "CAT_CAPITULO";
@@ -82,12 +83,24 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDCapitulos.SelectedRow.Cells[2].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Basicos objCapitulo = new Basicos();
+                    string Verificador = string.Empty;
+                    objCapitulo.id = Convert.ToString(GRDCapitulos.SelectedRow.Cells[2].Text);
+                    Session["SessionIdCap"] = objCapitulo.id;
+                    CN_Capitulo.ObtenerDatosCapitulo(ref objCapitulo, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        txtCap.Text = objCapitulo.clave;
+                        txtDescrip.Text = objCapitulo.descripcion;
+                        Multiview1.ActiveViewIndex = 1;
+                    }
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene los privilegios suficientes para realizar esta acción";
             }
             catch (Exception ex)
             {
@@ -102,6 +115,32 @@ namespace SAF.Presupuesto.Form
                 Response.Redirect("frmCatalogoCapitulos.aspx", true);
             }
             catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNEditarCap_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Basicos objCapitulo = new Basicos();
+                    string Verificador = string.Empty;
+                    objCapitulo.clave = txtCap.Text;
+                    objCapitulo.descripcion = txtDescrip.Text;
+                    objCapitulo.id = (String)Session["SessionIdCap"];
+                    CN_Capitulo.EditarCapitulo(ref objCapitulo, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha modificado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene los privilegios suficientes para realizar esta acción";
+            }
+            catch(Exception ex)
             {
                 lblError.Text = ex.Message;
             }

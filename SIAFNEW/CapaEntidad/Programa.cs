@@ -39,6 +39,30 @@ namespace CapaEntidad
             set { _Descripcion = value; }
         }
 
+        private string _Id;
+
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
+        private string _Id_FuncionProg;
+
+        public string Id_FuncionProg
+        {
+            get { return _Id_FuncionProg; }
+            set { _Id_FuncionProg = value; }
+        }
+
+        private string _Clave;
+
+        public string Clave
+        {
+            get { return _Clave; }
+            set { _Clave = value; }
+        }
+
 
     }
 }
