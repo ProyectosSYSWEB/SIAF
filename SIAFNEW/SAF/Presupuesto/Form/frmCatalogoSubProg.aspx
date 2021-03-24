@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCatalogoSubProg.aspx.cs" Inherits="SAF.Presupuesto.Form.frmCatalogoSubProg" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">    
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdateProgress ID="UpdateProgress1" runat="server">
@@ -23,39 +23,37 @@
                                 <td style="width: 30%">
                                     <asp:Label ID="lblNvlAcad" runat="server" Text="Nivel académico"></asp:Label>
                                 </td>
-                                <td>                                    
-                                    <asp:DropDownList ID="DDLNvlacd" runat="server" Width="500px" AutoPostBack="True" ></asp:DropDownList>
+                                <td>
+                                    <asp:DropDownList ID="DDLNvlacd" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td style="width:30%">
+                                <td style="width: 30%">
                                     <asp:Label ID="lblProg" runat="server" Text="Programa">
                                     </asp:Label>
                                 </td>
-                                <td style="width:80%">                                    
+                                <td style="width: 80%">
                                     <asp:TextBox ID="txtPrograma" Text="" runat="server" Width="500px" MaxLength="3">
                                     </asp:TextBox>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td style="width:30%">
+                                <td style="width: 30%">
                                     <asp:Label ID="lblDescrip" runat="server" Text="Descripción">
                                     </asp:Label>
                                 </td>
-                                <td style="width:80%">                                    
+                                <td style="width: 80%">
                                     <asp:TextBox ID="txtDescripcion" Text="" runat="server" Width="500px">
                                     </asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Button runat="server" Text="Guardar" OnClick="BTNGuardar_Click"/>
-                                </td>       
-                                <td>
-
+                                    <asp:Button runat="server" Text="Guardar" OnClick="BTNGuardar_Click" />
                                 </td>
+                                <td></td>
                                 <td>
                                     <a href="frmSubprograma.aspx">Regresar</a>
                                 </td>

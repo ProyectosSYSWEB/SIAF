@@ -73,15 +73,15 @@ namespace CapaDatos
             {
                 string[] ParametrosIn = { "P_CLAVE" };
                 object[] Valores = { objFuncion.Clave };
-                string[] ParametrosOut = { "P_CLAVE", "P_DESCRIPCION", "P_BANDERA" };
+                string[] ParametrosOut = { "P_ID", "P_DESCRIPCION", "P_BANDERA" };
 
                 Cmd = CDDatos.GenerarOracleCommand("OBT_CAT_FUNCION", ref Verificador, ParametrosIn, Valores, ParametrosOut);
                 if (Verificador == "0")
                 {
-                    objFuncion = new Funcion();
-                    objFuncion.Id = Convert.ToString(Cmd.Parameters["P_ID"].Value);
+                    objFuncion = new Funcion();                    
                     objFuncion.Clave = Convert.ToString(Cmd.Parameters["P_CLAVE"].Value);
                     objFuncion.Descripcion = Convert.ToString(Cmd.Parameters["P_DESCRIPCION"].Value);
+                    objFuncion.Id = Convert.ToString(Cmd.Parameters["P_ID"].Value);
                 }
             }
             catch (Exception ex)

@@ -43,10 +43,23 @@ namespace SAF.Presupuesto.Form
             }
         }
 
+        private void CargarCombosEdit()
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Funcion", ref DDLFuncion2);
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
         protected void GRDCargarDatosFuncion()
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Programa objPrograma = new Programa();
                 List<Programa> list = new List<Programa>();
                 objPrograma.Funcion = "0";
@@ -91,7 +104,7 @@ namespace SAF.Presupuesto.Form
                 Dependencias objDependencias = new Dependencias();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.Rows[fila].Cells[2].Text);
+                objDependencias.C_Contab = Convert.ToString(GRDProgramas.Rows[fila].Cells[3].Text);
                 //if (SesionUsu.Usu_TipoUsu == "SU")
                 //{
                 //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
@@ -115,12 +128,26 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.SelectedRow.Cells[2].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CargarCombosEdit();
+                    string Verificador = string.Empty;
+                    Programa objPrograma = new Programa();
+                    objPrograma.Id = Convert.ToString(GRDProgramas.SelectedRow.Cells[3].Text);
+                    CN_Programa.ObtenerDatosPrograma(ref objPrograma, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        Multiview1.ActiveViewIndex = 1;
+                        Session["SessionFuncionEdit"] = objPrograma.Id;
+                        DDLFuncion2.SelectedValue = objPrograma.Id_FuncionProg;
+                        txtPrograma.Text = objPrograma.Clave;
+                        txtDescripcion.Text = objPrograma.Descripcion;
+                    }
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {
@@ -137,6 +164,33 @@ namespace SAF.Presupuesto.Form
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNEditarProg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    string Verificador = string.Empty;
+                    Programa objPrograma = new Programa();
+                    objPrograma.Id = (String)Session["SessionFuncionEdit"];
+                    objPrograma.Id_FuncionProg = DDLFuncion2.SelectedValue;
+                    objPrograma.Clave = txtPrograma.Text;
+                    objPrograma.Descripcion = txtDescripcion.Text;
+                    CN_Programa.EditarPrograma(ref objPrograma, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha modificado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene privielgios para realizar esta acción";
+            }
+            catch(Exception ex)
+            {
+
             }
         }
     }

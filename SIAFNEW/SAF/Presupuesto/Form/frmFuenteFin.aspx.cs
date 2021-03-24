@@ -35,6 +35,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 FuentesFin objFuenteFin = new FuentesFin();
                 List<FuentesFin> list = new List<FuentesFin>();
                 objFuenteFin.Ejercicio = SesionUsu.Usu_Ejercicio;
@@ -83,12 +84,20 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDFuenteFin.SelectedRow.Cells[2].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                FuentesFin objFuenteFin = new FuentesFin();
+                string Verificador = string.Empty;
+                objFuenteFin.Id = Convert.ToString(GRDFuenteFin.SelectedRow.Cells[2].Text);
+                Session["SessionIdFuenteFin"] = objFuenteFin;
+                objFuenteFin.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CN_FuenteFin.ObtenerDatosFuenteFin(ref objFuenteFin, ref Verificador);
+                if (Verificador == "0")
+                {
+                    txtFuente.Text = objFuenteFin.Fuente;
+                    txtDescrip.Text = objFuenteFin.Descrip;
+                    Multiview1.ActiveViewIndex = 1;
+                }
+                else
+                    lblError.Text = Verificador;
             }
             catch (Exception ex)
             {
@@ -101,6 +110,35 @@ namespace SAF.Presupuesto.Form
             try
             {
                 Response.Redirect("frmCatFuenteFin.aspx", true);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNEditarFuenteFin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    FuentesFin objFuenteFin = new FuentesFin();
+                    string Verificador = string.Empty;
+                    objFuenteFin = (FuentesFin)Session["SessionIdFuenteFin"];
+                    //objFuenteFin.Ejercicio = SesionUsu.Usu_Ejercicio;
+                    objFuenteFin.Fuente = txtFuente.Text;
+                    objFuenteFin.Descrip = txtDescrip.Text;
+                    CN_FuenteFin.EditarFuenteFin(ref objFuenteFin, ref Verificador);
+                    if(Verificador == "0")
+                    {
+                        lblError.Text = "Se han realizado los cambios correctamente";
+                    }
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {

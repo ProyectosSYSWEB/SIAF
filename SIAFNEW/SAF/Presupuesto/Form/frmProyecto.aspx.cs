@@ -41,11 +41,16 @@ namespace SAF.Presupuesto.Form
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Grid_Cat_TipoProy", ref DDLTipoProy, "p_todos", "N");
             DDLTipoProy.SelectedValue = "1";
         }
+        protected void CargarCombos2()
+        {
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Grid_Cat_TipoProy", ref DDLTipoProy2, "p_todos", "N");            
+        }
 
         protected void GRDCargarDatosProyectos()
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Proyectos objProyectos = new Proyectos();
                 objProyectos.Ejercicio = SesionUsu.Usu_Ejercicio;
                 string Proyecto = DDLTipoProy.SelectedValue;
@@ -112,12 +117,28 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDProyectos.SelectedRow.Cells[3].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Proyectos objProyectos = new Proyectos();
+                    string Verificador = string.Empty;
+                    CargarCombos2();
+                    objProyectos.Id = Convert.ToString(GRDProyectos.SelectedRow.Cells[2].Text);
+                    objProyectos.Ejercicio = SesionUsu.Usu_Ejercicio;
+                    CN_Proyecto.ObtenerDatosProyecto(ref objProyectos, ref Verificador);
+                    if(Verificador == "0")
+                    {
+                        //DDLTipoProy2.SelectedValue = objProyectos.Id_Tipo_Proyecto;
+                        txtClavepro.Text = objProyectos.Clave_Proy;
+                        txtDescrip.Text = objProyectos.Descrip;
+                        Session["SessionIdProyecto"] = objProyectos.Id;
+                        Multiview1.ActiveViewIndex = 1;
+                    }
+                    else
+                    {
+                        lblError.Text = Verificador;
+                    }
 
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                }
             }
             catch (Exception ex)
             {
@@ -132,6 +153,34 @@ namespace SAF.Presupuesto.Form
                 Response.Redirect("frmCatalogoProyecto.aspx", true);
             }
             catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void BTNEditarProyecto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Proyectos objProyectos = new Proyectos();
+                    string Verificador = string.Empty;
+                    objProyectos.Id = (String)Session["SessionIdProyecto"];
+                    objProyectos.Id_Tipo_Proyecto = DDLTipoProy2.SelectedValue;
+                    objProyectos.Clave_Proy = txtClavepro.Text;
+                    objProyectos.Descrip = txtDescrip.Text;
+                    objProyectos.Ejercicio = SesionUsu.Usu_Ejercicio;
+                    CN_Proyecto.EditarProyecto(ref objProyectos, ref Verificador);
+                    if (Verificador == "0")
+                        lblError.Text = "Se ha modificado correctamente";
+                    else
+                        lblError.Text = Verificador;
+                }
+                else
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+            }
+            catch(Exception ex)
             {
                 lblError.Text = ex.Message;
             }

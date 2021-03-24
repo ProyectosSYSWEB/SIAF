@@ -36,5 +36,31 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+        public void ObtenerDatosPrograma(ref Programa objPrograma, ref string Verificador)
+        {
+            try
+            {
+                CD_Programa CD_Programa = new CD_Programa();
+                CD_Programa.ObtenerDatosPrograma(ref objPrograma, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EditarPrograma(ref Programa objPrograma, ref string Verificador)
+        {
+            try
+            {
+                CD_Programa CD_Programa = new CD_Programa();
+                CD_Programa.EditarPrograma(ref objPrograma, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
