@@ -734,7 +734,7 @@ namespace SAF.Presupuesto
         {
             
             ddlCentroContable.Enabled = true;
-            
+            lblErrorDet.Text = string.Empty;
             ddlTipoEnc.Enabled = true;
             ddlStatus.Enabled = true;
             MultiView1.ActiveViewIndex = 0;
@@ -760,29 +760,26 @@ namespace SAF.Presupuesto
                 {
                     if (grdDetalles.Rows.Count > 0)
                     {
-
-
-                        
                         guarda_encabezado(ref VerificadorInserta, ref Folio);
-                        if (VerificadorInserta != "0")
-                            //lblErrorDet.Text = VerificadorInserta;
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + VerificadorInserta + "');", true);
-                        else
-                        {
+                        if (VerificadorInserta == "0")
+                           {
                             SesionUsu.Editar = 0;
                             MultiView1.ActiveViewIndex = 0;
                             ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
                             CargarGrid(ref grdDocumentos, 0);
                             //lblError.Text = (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
                             string MiMensaje= (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, '"+MiMensaje+"');", true);
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, 'Error:"+MiMensaje+"');", true);
                             ddlCentroContable.Enabled = true;
-                        }
+                            }
+                        else
+                             lblErrorDet.Text = VerificadorInserta;
+                             //ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + VerificadorInserta + "');", true);
+
 
                     }
                     else
                     {
-                        //lblErrorDet.Text = "No se han agregado códigos programáticos.";
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'No se han agregado códigos programáticos.');", true);
                     }
                 }
@@ -962,27 +959,36 @@ namespace SAF.Presupuesto
             string Alerta = string.Empty;
             //bool MesPermitido = false;
 
-            if (Convert.ToDouble(txtImporteOrigen.Text)>0.00 || txtImporteOrigen.Text!=string.Empty || txtImporteOrigen.Text!=null || txtImporteOrigen.Text!="0")
+            if (Convert.ToDouble(txtImporteOrigen.Text)>0.00 && txtImporteOrigen.Text!=string.Empty && txtImporteOrigen.Text!=null)
             {
-
-                if (rbtOrigen_Destino.SelectedValue == "O")
+                if (ddlTipoEnc.SelectedValue == "AR")
                 {
-                    if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) < Convert.ToDouble(lblDisponible.Text))
+                    if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
                         ImportePermitido = true;
                     else
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor al disponible.');", true);
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
                 }
                 else
                 {
-                    if (rbtOrigen_Destino.SelectedValue == "D")
+                    if (rbtOrigen_Destino.SelectedValue == "O")
                     {
-                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) > 0)
+                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) < Convert.ToDouble(lblDisponible.Text))
                             ImportePermitido = true;
                         else
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor al disponible.');", true);
                     }
                     else
-                        ImportePermitido = true;
+                    {
+                        if (rbtOrigen_Destino.SelectedValue == "D")
+                        {
+                            if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) > 0)
+                                ImportePermitido = true;
+                            else
+                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
+                        }
+                        else
+                            ImportePermitido = true;
+                    }
                 }
                 //switch (ddlTipoEnc.SelectedValue)
                 //{
@@ -1063,17 +1069,18 @@ namespace SAF.Presupuesto
                     if (ddlDepen.SelectedValue != "81101")
                         lblDependenciaDocumento.Text = ddlDepen.SelectedValue;
                     objDocumentoDet.Tipo = rbtOrigen_Destino.SelectedValue;
-                    objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    //objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                     //if(ddlTipoEnc.SelectedValue=="AA" || ddlTipoEnc.SelectedValue=="AR")
                     //    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesFinalDet.SelectedValue);
                     //else
-                    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                    objDocumentoDet.Cuenta_banco = "";
+                    //objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocumentoDet.Cuenta_banco = "00000";
                     //objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
 
                     objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                     objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
-                    int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
+                    //int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
+                    int tot = (objDocumentoDet.Mes_final - objDocumentoDet.Mes_inicial) + 1;
                     objDocumentoDet.Importe_mensual = Math.Round(Convert.ToDouble((Convert.ToDecimal(txtImporteOrigen.Text)) / tot), 2);
                     objDocumentoDet.Importe_origen = objDocumentoDet.Importe_mensual * tot;
                     objDocumentoDet.Importe_destino = 0;
