@@ -645,23 +645,21 @@ namespace SAF.Presupuesto
                     
                       if(  ImportePermitido )
                     {
-                       
-                            
-                           
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
-                            if (VerificadorInserta != "0")
-                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: '" + VerificadorInserta + ");", true);
+                            if (VerificadorInserta == "0")
+                                {
+                                    SesionUsu.Editar = -1;
+                                    MultiView1.ActiveViewIndex = 0;
+                                    ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
+                                    CargarGrid(ref grdDocumentos, 0);
+                                    string MiMensaje= (Folio == string.Empty) ? "La cédula ha sido modificada correctamente." : "La cédula ha sido agregada correctamente, con el número de folio:" + Folio; 
+                                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, '"+MiMensaje+"');", true);
+                                    ddlDependencia.Enabled = true;
+                                    panel_detalle.Visible = false;
+                                }
                             else
-                            {
-                                SesionUsu.Editar = -1;
-                                MultiView1.ActiveViewIndex = 0;
-                                ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
-                                CargarGrid(ref grdDocumentos, 0);
-                                string MiMensaje= (Folio == string.Empty) ? "La cédula ha sido modificada correctamente." : "La cédula ha sido agregada correctamente, con el número de folio:" + Folio; 
-                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, '"+MiMensaje+"');", true);
-                                ddlDependencia.Enabled = true;
-                                panel_detalle.Visible = false;
-                            }
+                                   ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: '" + VerificadorInserta + ");", true);
+                        
                         
                     }
                     else
@@ -794,20 +792,20 @@ namespace SAF.Presupuesto
                     var content = new List<Pres_Documento_Detalle>();
                     Pres_Documento_Detalle Detalle = new Pres_Documento_Detalle();
                     List<Pres_Documento_Detalle> ListDocDet = new List<Pres_Documento_Detalle>();
-                     
-                    //if (Session["DocDet"] != null)
-                    //{
-                    //    List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
-                    //    ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
-                    //    var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
-                    //                              where Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
 
-                    //                              select c;
+                    if (Session["DocDet"] != null)
+                    {
+                        List<Pres_Documento_Detalle> ListDocDetBusca = new List<Pres_Documento_Detalle>();
+                        ListDocDetBusca = (List<Pres_Documento_Detalle>)Session["DocDet"];
+                        var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
+                                                  where Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
 
-                    //    content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
-                    //}
-                    //if (content.Count == 0)
-                    //{
+                                                  select c;
+
+                        content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
+                    }
+                    if (content.Count == 0)
+                    {
                         Detalle.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
                         Detalle.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0, 34);
                     //Detalle.Ur_clave = ddlDependencia.SelectedValue;
@@ -837,10 +835,10 @@ namespace SAF.Presupuesto
                     ddlTipoEnc.Enabled = false;
                     txtImporteOrigen.Text = "0.00";
 
-                    //}
-                    //else
-                    //    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El código programático ya está capturado.');", true);
                 }
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El código programático ya está capturado.');", true);
+            }
             }
         }
         protected void ddlTipoEnc_SelectedIndexChanged(object sender, EventArgs e)

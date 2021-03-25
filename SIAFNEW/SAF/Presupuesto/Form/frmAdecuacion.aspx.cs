@@ -769,7 +769,7 @@ namespace SAF.Presupuesto
                             CargarGrid(ref grdDocumentos, 0);
                             //lblError.Text = (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
                             string MiMensaje= (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, 'Error:"+MiMensaje+"');", true);
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1,'"+MiMensaje+"');", true);
                             ddlCentroContable.Enabled = true;
                             }
                         else
@@ -963,10 +963,20 @@ namespace SAF.Presupuesto
             {
                 if (ddlTipoEnc.SelectedValue == "AR")
                 {
-                    if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
-                        ImportePermitido = true;
+                    if (rbtOrigen_Destino.SelectedValue == "O")
+                    {
+                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
+                            ImportePermitido = true;
+                        else
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
+                    }
                     else
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
+                    {
+                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) > 0)
+                            ImportePermitido = true;
+                        else
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
+                    }
                 }
                 else
                 {
