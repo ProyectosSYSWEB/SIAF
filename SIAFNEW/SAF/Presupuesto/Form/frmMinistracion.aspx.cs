@@ -101,10 +101,12 @@ namespace SAF.Presupuesto
                 ddlTipoEnc_SelectedIndexChanged(null, null);
                 
                 ddlStatusEnc.Visible = true;
+                ddlStatusEnc.Enabled = true;
+                ddlStatusEnc_SelectedIndexChanged(null, null);
                 //ddlStatusEnc.SelectedValue = "I";
                 lblStatusEnc.Visible = false;
                 lblMsjCP.Text = string.Empty;
-                ddlStatusEnc_SelectedIndexChanged(null, null);
+                
 
                 /*Controles Detalle*/
                 DateTime fecha = Convert.ToDateTime(txtfechaDocumento.Text);
@@ -113,7 +115,6 @@ namespace SAF.Presupuesto
                 ddlMesInicialDet.Enabled = true;
 
                 validadorStatus.ValidationGroup = "Guardar";
-                ddlStatusEnc.Enabled = false;
                 lblDisponible.Text = "0.00";
                 lblDisponible.Text = "0.00";
                 lblTotal_Origen.Text = "0.00";
@@ -1003,10 +1004,6 @@ namespace SAF.Presupuesto
                     CalendarExtenderIni.StartDate = fechaIni;
                     CalendarExtenderIni.EndDate = fechaFin;
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
-               
-
-                
-
             }
             catch (Exception ex)
             {
