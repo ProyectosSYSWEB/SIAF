@@ -96,6 +96,8 @@ namespace SAF.Presupuesto.Form
                 //txtTipoGasto.Text = "1";
                 //txtDigiMinistrado.Text = "1";
                 Session["CodigoProg"] = objCodProg;
+                CargarConsttruccionCodigoProg();
+
             }
             catch (Exception ex)
             {
@@ -112,6 +114,8 @@ namespace SAF.Presupuesto.Form
                     txtDigiMinistrado.Text = "2";
                 else
                     txtDigiMinistrado.Text = "1";
+                CargarDatosCodProg();
+                CargarConsttruccionCodigoProg();
             }
             catch(Exception ex)
             {
@@ -123,7 +127,20 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                txtCodProg.Text = DDLPrograma.SelectedValue +"."+ DDLSubprog.SelectedValue + "." + DDLDependencia.SelectedValue + "." + DDLProyecto.SelectedValue + "." + DDLPartida.SelectedValue + "." + DDLFuente.SelectedValue + "." + txtTipoGasto.Text + "." + txtDigiMinistrado.Text;
+                CargarConsttruccionCodigoProg();
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+
+        protected void CargarConsttruccionCodigoProg()
+        {
+            try
+            {
+                txtCodProg.Text = DDLPrograma.SelectedValue + "." + DDLSubprog.SelectedValue + "." + DDLDependencia.SelectedValue + "." + DDLProyecto.SelectedValue + "." + DDLPartida.SelectedValue + "." + DDLFuente.SelectedValue + "." + txtTipoGasto.Text + "." + txtDigiMinistrado.Text;
             }
             catch(Exception ex)
             {
@@ -153,6 +170,18 @@ namespace SAF.Presupuesto.Form
                     lblError.Text = Verificador;
             }
             catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void DDLPartida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarConsttruccionCodigoProg();
+            }
+            catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
