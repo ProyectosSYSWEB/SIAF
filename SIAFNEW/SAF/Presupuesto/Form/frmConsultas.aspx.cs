@@ -156,7 +156,7 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = " ";
                 DDLCodProg.Enabled = false;
                 capitulos = (String)Session["Capitulos"];
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, capitulos, DDLFuente.SelectedValue);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", "p_clave_evento", "p_grupo", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, capitulos, DDLFuente.SelectedValue, "0", "99999");
                 if (DDLCodProg.Items.Count > 1)
                 {
                     DDLCodProg.Enabled = true;

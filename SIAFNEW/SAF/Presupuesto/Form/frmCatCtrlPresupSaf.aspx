@@ -88,7 +88,7 @@
                                     </asp:Label>
                                 </td>
                                 <td>                                    
-                                    <asp:DropDownList ID="DDLPartida" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
+                                    <asp:DropDownList ID="DDLPartida" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLPartida_SelectedIndexChanged"></asp:DropDownList>
                                 </td> 
                             </tr>
 
