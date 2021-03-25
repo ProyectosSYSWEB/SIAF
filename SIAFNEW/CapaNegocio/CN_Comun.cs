@@ -925,43 +925,14 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        //public void LlenaCombo(string SP, ref DropDownList DDL, string[] parametros, string[] valores)
-        //{
-        //    try
-        //    {
-        //        List<Comun> Lista = new List<Comun>();
-        //        CD_Comun CDComun = new CD_Comun();
-        //        CDComun.LlenaCombo(SP, ref Lista, parametros, valores);
-        //        DDL.Items.Clear();
-        //        if (Lista.Count > 0)
-        //        {
-        //            DDL.DataSource = Lista;
-        //            DDL.DataValueField = "IdStr";
-        //            DDL.DataTextField = "Descripcion";
-        //            DDL.DataBind();
+        public void VerificaTextoMensajeError(ref string Mensaje)
+        {
+            Mensaje = Mensaje.Replace("\r", "");
+            Mensaje = Mensaje.Replace("\n", "");
+            Mensaje = Mensaje.Replace("'", "");
+            if (Mensaje.Length >= 70)
+                Mensaje.Substring(0, 45);
 
-        //        }
-        //        else
-        //        {
-        //            DDL.Items.Add("LA OPCIÓN NO CONTIENE DATOS.");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
-        //private void VerificaFechas(TextBox txt)
-        //{
-        //    lblMsj.Text = string.Empty;
-        //    DateTime fecha = Convert.ToDateTime(txt.Text);
-        //    string Anio = fecha.ToString("yyyy");
-        //    if (Anio != SesionUsu.Usu_Ejercicio)
-        //    {
-        //        txt.Text = string.Empty;
-        //        lblMsj.Text = "Ejercicio incorrecto";
-        //    }
-
-        //}
+        }
     }
 }
