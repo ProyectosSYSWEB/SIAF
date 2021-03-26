@@ -26,20 +26,23 @@
                             <tr>
                                 <td style="width: 10%">
                                     <asp:Label ID="Label4" runat="server" Text="Dependencia"></asp:Label>
-                                </td>
-                                <td>
+                                <%--</td>
+                                <td>--%>
                                     <asp:DropDownList ID="DDLDependencia" runat="server" Width="300px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_SelectedIndexChanged"></asp:DropDownList>
                                 </td>
                                 <td style="width: 10%">
                                     <asp:Label ID="Label1" runat="server" Text="Fuente"></asp:Label>
-                                </td>
-                                <td>
+                                <%--</td>
+                                <td>--%>
                                     <asp:DropDownList ID="DDLFuente" runat="server" Width="300px" AutoPostBack="True"></asp:DropDownList>
                                 </td>
-                                <td>
-                                    <asp:Button runat="server" ID="BTNBuscar" Text="Buscar" OnClick="BTNBuscar_Click" />
+                                <td style="width: 10%">
+                                    <asp:Label ID="Label3" runat="server" Text="Código Programatico"></asp:Label>
+                                <%--</td>
+                                <td>--%>
+                                    <asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="GRDCargarDatosCodProg">
+                                    </asp:DropDownList>
                                 </td>
-                                <td>&nbsp;</td>
                             </tr>
 
 
@@ -65,28 +68,22 @@
                                     <HeaderStyle CssClass="enc" />
                                     <AlternatingRowStyle CssClass="alt" />
                                 </asp:GridView>
-                                <asp:Button ID="btnChkCapitulos_v1" runat="server" OnClick="btnChkCapitulos_v1_Click"
-                                    Text="Marcar todos" Width="15%" CssClass="btn" CausesValidation="False" />
+                                <%--<asp:Button ID="btnChkCapitulos_v1" runat="server" OnClick="btnChkCapitulos_v1_Click"
+                                    Text="Marcar todos" Width="15%" CssClass="btn" CausesValidation="False" />--%>
+                                <asp:Button runat="server" ID="BTNBuscar" Text="Buscar" CssClass="btn" OnClick="BTNBuscar_Click" />
                             </tr>
+                            
 
 
 
 
-                            <tr>
-                                <td style="width: 10%">
-                                    <asp:Label ID="Label3" runat="server" Text="Código Programatico"></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="GRDCargarDatosCodProg">
-                                    </asp:DropDownList>
-                                </td>
-                                <td>&nbsp;</td>
-                            </tr>
+                            
 
                             <tr>
                                 <td colspan="3">
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
-                                        <ContentTemplate>                                            
+                                        <ContentTemplate> 
+                                            <h6>Movimientos</h6>
                                             <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="MES" HeaderText="MES" />
@@ -124,7 +121,7 @@
                                 <td colspan="3">
                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                         <ContentTemplate>
-                                            <h6>Cedulas</h6>
+                                            <h6>Cédulas</h6>
                                             <asp:GridView ID="GRDCedulas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
