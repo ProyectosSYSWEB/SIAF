@@ -34,8 +34,6 @@ namespace SAF.Presupuesto.Form
             ObtenerConsecutivoTipoOperacion("A");
             ObtenerDatosCodigoProg();
         }
-
-
         private void CargarCombos()
         {
             try
@@ -51,7 +49,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLFuente_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -64,7 +61,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLCodProg_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -77,7 +73,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         private void ObtenerDatosCodigoProg()
         {
             try
@@ -101,7 +96,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         private void ObtenerConsecutivoTipoOperacion(string TipoOperacion)
         {
             try
@@ -117,7 +111,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLTipoRec_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -133,7 +126,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNGuardarPres_Click(object sender, EventArgs e)
         {
             try
@@ -163,7 +155,16 @@ namespace SAF.Presupuesto.Form
                     objPresUnv.Estat_Oper = "2";
                     CN_PresupUnv.Insertar_PresupUnv(ref objPresUnv, ref Verificador);
                     if (Verificador == "0")
+                    {
                         lblError.Text = "Se guardo correctamente";
+                        txtNombDepOrigen.Text = "";
+                        txtRefDocto.Text = "" ;
+                        txtfechaDocumento.Text = "";
+                        txtConcepto.Text = "";
+                        txtImporte.Text = "";
+                        txtConsecutivoOpe.Text = "";
+                        txtImporte.Text = "";                        
+                    }
                     else if (Verificador == "1")
                         lblError.Text = "Este código ya existe";
                     else

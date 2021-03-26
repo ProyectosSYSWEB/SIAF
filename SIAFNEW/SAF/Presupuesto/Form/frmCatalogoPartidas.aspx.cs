@@ -54,9 +54,17 @@ namespace SAF.Presupuesto.Form
                     objPartidas.Estatus = "A";
                     string Verificador = string.Empty;
                     CN_Partida.InsertarPartida(ref objPartidas, ref Verificador);
+                    if(Verificador == "0")
+                    {
+                        lblError.Text = "Se ha guardado correctamente";
+                        txtPartida.Text = "";
+                        txtPartida.Text = "";
+                    }
+                    else
+                        lblError.Text = Verificador;
                 }
                 else
-                    lblError.Text = lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {

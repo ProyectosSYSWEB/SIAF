@@ -39,7 +39,15 @@ namespace SAF.Presupuesto.Form
                     objCContab.Ejercicio = SesionUsu.Usu_Ejercicio;
                     CN_CentrosContab.InsertarCentroContable(ref objCContab, ref Verificador);
                     if (Verificador == "0")
+                    {
                         lblError.Text = "Se ha guardado correctamente";
+                        txtCentroContab.Text = "";
+                        txtDependencia.Text = "";
+                        txtDirector.Text = "";
+                        txtAdministrador.Text = "";
+                        txtSaliente.Text = "";
+                        txtEntrante.Text = "";
+                    }
                     else
                         lblError.Text = Verificador;
                 }

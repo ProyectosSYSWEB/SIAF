@@ -36,8 +36,12 @@ namespace SAF.Presupuesto.Form
                     objFuncion.Orden = "";
                     string Verificador = string.Empty;
                     CN_Funcion.InsertarFuncion(ref objFuncion, ref Verificador);
-                    if(Verificador == "0")
+                    if (Verificador == "0")
+                    {
                         lblError.Text = "Se ha guardado correctamente";
+                        txtFuncion.Text = "";
+                        txtDescripcion.Text = "";
+                    }
                     else
                         lblError.Text = Verificador;
                 }

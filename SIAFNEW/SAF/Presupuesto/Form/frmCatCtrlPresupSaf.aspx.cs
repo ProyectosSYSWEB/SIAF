@@ -164,8 +164,12 @@ namespace SAF.Presupuesto.Form
                 objCodigoProg.Ejercicio = SesionUsu.Usu_Ejercicio;
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.InsertarCodigoProg(objCodigoProg, ref Verificador);
-                if(Verificador == "0")
+                if (Verificador == "0")
+                {
                     lblError.Text = "Se ha guardado correctamente";
+                    txtTipoGasto.Text = "";
+                    txtDigiMinistrado.Text = "";
+                }
                 else
                     lblError.Text = Verificador;
             }
