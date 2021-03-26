@@ -71,7 +71,10 @@ namespace SAF.Presupuesto.Form
                 DDLPartida.SelectedValue = objCodProg.Partida;
                 DDLFuente.SelectedValue = objCodProg.Fuente;
                 txtTipoGasto.Text = "1";
-                //txtDigiMinistrado.Text = "1";
+                if (DDLDependencia.SelectedValue == "81101")
+                    txtDigiMinistrado.Text = "2";
+                else
+                    txtDigiMinistrado.Text = "1";
                 Session["CodigoProg"] = objCodProg;
             }
             catch(Exception ex)
@@ -92,9 +95,7 @@ namespace SAF.Presupuesto.Form
                 DDLDependencia.SelectedValue = objCodProg.Dependencia;
                 DDLProyecto.SelectedValue = objCodProg.Proyecto;
                 DDLPartida.SelectedValue = objCodProg.Partida;
-                DDLFuente.SelectedValue = objCodProg.Fuente;
-                //txtTipoGasto.Text = "1";
-                //txtDigiMinistrado.Text = "1";
+                DDLFuente.SelectedValue = objCodProg.Fuente;                
                 Session["CodigoProg"] = objCodProg;
                 CargarConsttruccionCodigoProg();
 
@@ -166,9 +167,7 @@ namespace SAF.Presupuesto.Form
                 CN_Cat_Ctrl_Presp.InsertarCodigoProg(objCodigoProg, ref Verificador);
                 if (Verificador == "0")
                 {
-                    lblError.Text = "Se ha guardado correctamente";
-                    txtTipoGasto.Text = "";
-                    txtDigiMinistrado.Text = "";
+                    lblError.Text = "Se ha guardado correctamente";                    
                 }
                 else
                     lblError.Text = Verificador;
