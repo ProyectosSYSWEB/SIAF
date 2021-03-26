@@ -193,6 +193,7 @@ namespace SAF.Presupuesto
                    
                     ocultar();
         }
+        
         private void ValidacionTipoDet()
         {
            
@@ -762,20 +763,21 @@ namespace SAF.Presupuesto
                     {
                         guarda_encabezado(ref VerificadorInserta, ref Folio);
                         if (VerificadorInserta == "0")
-                           {
+                        {
                             SesionUsu.Editar = 0;
                             MultiView1.ActiveViewIndex = 0;
                             ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
                             CargarGrid(ref grdDocumentos, 0);
                             //lblError.Text = (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
-                            string MiMensaje= (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1,'"+MiMensaje+"');", true);
+                            string MiMensaje = (Folio == string.Empty) ? "Los datos han sido modificados correctamente." : "Los datos han sido agregados correctamente, con el número de folio:" + Folio;
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1,'" + MiMensaje + "');", true);
                             ddlCentroContable.Enabled = true;
-                            }
+                        }
                         else
-                             lblErrorDet.Text = VerificadorInserta;
-                             //ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + VerificadorInserta + "');", true);
-
+                        {
+                            CNComun.VerificaTextoMensajeError(ref VerificadorInserta);
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + VerificadorInserta + "');", true);
+                        }
 
                     }
                     else
@@ -786,9 +788,11 @@ namespace SAF.Presupuesto
             }
             catch (Exception ex)
             {
-                //lblErrorDet.Text = ex.Message;
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + ex.Message + "');", true);
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, '" + Msj + "');", true);
             }
+            
         }
         protected void grdDocumentos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -950,96 +954,41 @@ namespace SAF.Presupuesto
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
-       
+
         protected void btnAgregarDet_Click(object sender, EventArgs e)
         {
             lblErrorDet.Text = string.Empty;
             lblMsjCP.Text = string.Empty;
             bool ImportePermitido = false;
             string Alerta = string.Empty;
-            //bool MesPermitido = false;
 
-            if (Convert.ToDouble(txtImporteOrigen.Text)>0.00 && txtImporteOrigen.Text!=string.Empty && txtImporteOrigen.Text!=null)
+            if (Convert.ToDouble(txtImporteOrigen.Text) > 0 && txtImporteOrigen.Text != string.Empty && txtImporteOrigen.Text != null)
             {
-                if (ddlTipoEnc.SelectedValue == "AR")
+
+                if (rbtOrigen_Destino.SelectedValue == "O")
                 {
-                    if (rbtOrigen_Destino.SelectedValue == "O")
-                    {
-                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
-                            ImportePermitido = true;
-                        else
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
-                    }
+                    if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
+                        ImportePermitido = true;
                     else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
+                }
+                else
+                {
+                    if (rbtOrigen_Destino.SelectedValue == "D")
                     {
                         if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) > 0)
                             ImportePermitido = true;
                         else
                             ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
                     }
-                }
-                else
-                {
-                    if (rbtOrigen_Destino.SelectedValue == "O")
-                    {
-                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) < Convert.ToDouble(lblDisponible.Text))
-                            ImportePermitido = true;
-                        else
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor al disponible.');", true);
-                    }
                     else
-                    {
-                        if (rbtOrigen_Destino.SelectedValue == "D")
-                        {
-                            if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) > 0)
-                                ImportePermitido = true;
-                            else
-                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
-                        }
-                        else
-                            ImportePermitido = true;
-                    }
+                        ImportePermitido = true;
                 }
-                //switch (ddlTipoEnc.SelectedValue)
-                //{
-                //    case "AA":
-                //        if (SesionUsu.Usu_TipoUsu != "N" && Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
-                //            lblMsjCP.Text = "*El importe debe ser menor al disponible.";
-                //        else
-                //            ImportePermitido = true;
-                //        break;
-                //    case "AR":
-                //        if (Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
-                //            lblMsjCP.Text = "*El importe debe ser menor al disponible.";
-                //        else
-                //            ImportePermitido = true;
-                //        break;
-                //    default:
-
-                //        if (Convert.ToDouble(txtImporteOrigen.Text) >= Convert.ToDouble(lblDisponible.Text))
-                //            lblMsjCP.Text = "*El importe debe ser menor al disponible.";
-                //        else
-                //            ImportePermitido = true;
-                //        break;
-                //}
+            
+        
             }
-
-            //int MesActual = System.DateTime.Now.Month;
-            //int MesSeleccionado = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-            //if (ddlTipoEnc.SelectedValue == "AP")
-            //{
-            //    if (MesSeleccionado < MesActual)
-            //        MesPermitido = true;
-            //}
-            //else if (ddlTipoEnc.SelectedValue == "AC")
-            //{
-            //    if (MesSeleccionado > MesActual)
-            //        MesPermitido = true;
-            //}
-
-            //else
-            //    MesPermitido = true;
-            if (ImportePermitido )//&& MesPermitido)
+           
+            if (ImportePermitido )
             {
                 var content = new List<Pres_Documento_Detalle>();
                 if (Session["DocDet"] != null )
@@ -1089,7 +1038,6 @@ namespace SAF.Presupuesto
 
                     objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                     objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
-                    //int tot = (Convert.ToInt32(ddlMesFinalDet.SelectedValue) - Convert.ToInt32(ddlMesInicialDet.SelectedValue)) + 1;
                     int tot = (objDocumentoDet.Mes_final - objDocumentoDet.Mes_inicial) + 1;
                     objDocumentoDet.Importe_mensual = Math.Round(Convert.ToDouble((Convert.ToDecimal(txtImporteOrigen.Text)) / tot), 2);
                     objDocumentoDet.Importe_origen = objDocumentoDet.Importe_mensual * tot;

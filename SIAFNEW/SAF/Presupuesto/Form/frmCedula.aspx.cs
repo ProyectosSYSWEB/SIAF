@@ -646,21 +646,23 @@ namespace SAF.Presupuesto
                       if(  ImportePermitido )
                     {
                             guarda_encabezado(ref VerificadorInserta, ref Folio);
-                            if (VerificadorInserta == "0")
-                                {
-                                    SesionUsu.Editar = -1;
-                                    MultiView1.ActiveViewIndex = 0;
-                                    ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
-                                    CargarGrid(ref grdDocumentos, 0);
-                                    string MiMensaje= (Folio == string.Empty) ? "La cédula ha sido modificada correctamente." : "La cédula ha sido agregada correctamente, con el número de folio:" + Folio; 
-                                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, '"+MiMensaje+"');", true);
-                                    ddlDependencia.Enabled = true;
-                                    panel_detalle.Visible = false;
-                                }
-                            else
-                                   ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: '" + VerificadorInserta + ");", true);
-                        
-                        
+                        if (VerificadorInserta == "0")
+                        {
+                            SesionUsu.Editar = -1;
+                            MultiView1.ActiveViewIndex = 0;
+                            ddlStatus.SelectedValue = ddlStatusEnc.SelectedValue;
+                            CargarGrid(ref grdDocumentos, 0);
+                            string MiMensaje = (Folio == string.Empty) ? "La cédula ha sido modificada correctamente." : "La cédula ha sido agregada correctamente, con el número de folio:" + Folio;
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, '" + MiMensaje + "');", true);
+                            ddlDependencia.Enabled = true;
+                            panel_detalle.Visible = false;
+                        }
+                        else
+                        {
+                            CNComun.VerificaTextoMensajeError(ref VerificadorInserta);
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error:" + VerificadorInserta + "');", true);
+
+                        }
                     }
                     else
                     {
@@ -675,7 +677,9 @@ namespace SAF.Presupuesto
             }
             catch (Exception ex)
             {
-                lblErrorDet.Text = ex.Message;
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error:" + Msj + "');", true);
             }
         }
         protected void grdDocumentos_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -784,7 +788,6 @@ namespace SAF.Presupuesto
                 lblMsjCP.Text = string.Empty;
                 ddlevento.Enabled = false;
 
-
                 if (Convert.ToDouble(txtImporteOrigen.Text) == 0 || Convert.ToDouble(txtImporteOrigen.Text) > Convert.ToDouble(lblDisponible.Text))
                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe capturado no está permitido.');", true);
                 else
@@ -826,13 +829,19 @@ namespace SAF.Presupuesto
                         Detalle.Beneficiario_clave = txtClaveBeneficiario.Text;
                         Detalle.Beneficiario_nombre = txtBeneficiario.Text.ToUpper();
 
-                        if (Session["DocDet"] != null)
+                        if (Session["DocDet"] == null)
+                        {
+                            ListDocDet = new List<Pres_Documento_Detalle>();
+                            ListDocDet.Add(Detalle);
+                        }
+                        else
+                        {
                             ListDocDet = (List<Pres_Documento_Detalle>)Session["DocDet"];
+                            ListDocDet.Add(Detalle);
+                        }
 
-                     ListDocDet.Add(Detalle);
                     Session["DocDet"] = ListDocDet;
                     CargarGridDetalle(ListDocDet);
-                    ddlTipoEnc.Enabled = false;
                     txtImporteOrigen.Text = "0.00";
 
                 }
