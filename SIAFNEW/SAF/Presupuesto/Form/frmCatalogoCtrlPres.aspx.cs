@@ -65,7 +65,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 Presupues objEstrucProg = new Presupues();
-                if (SesionUsu.Usu_TipoUsu == "SA")
+                if (SesionUsu.Usu_TipoUsu == "SA" || SesionUsu.Usu_Nombre == "HERNANDEZ" || SesionUsu.Usu_Nombre == "GORDILLO" || SesionUsu.Usu_Nombre == "JOSE.GORDILLO" || SesionUsu.Usu_Nombre == "PEREZ" || SesionUsu.Usu_Nombre == "ELIESER" || SesionUsu.Usu_Nombre == "OEL" || SesionUsu.Usu_Nombre == "SANDRA.SANCHEZ" || SesionUsu.Usu_Nombre == "FREDY712" || SesionUsu.Usu_Nombre == "CONDE" || SesionUsu.Usu_Nombre == "JORGE.CAMACHO"  || SesionUsu.Usu_Nombre == "KAREMCTS")
                 {
                     string Verificador = string.Empty;
                     objEstrucProg.Centro_Contable = DDLCentroContab.SelectedValue;

@@ -155,8 +155,8 @@ namespace SAF.Presupuesto.Form
                     CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl(Nombre_Checkbox);
                     if (chkUrs_Disponibles.Checked == true)
                     {
-                        //objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
-                        objReportes.Capitulo = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        //objReportes.Capitulo = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
                     }
                 }
 
@@ -173,7 +173,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 rowCapitulo(grdCapitulo, "chkcapitulo");
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", "p_clave_evento", "p_grupo", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, objReportes.Capitulo, DDLFuente.SelectedValue, "0", "99999");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Saf_Presup_Cod_Prog", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_fuente", "p_capitulos",  SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, DDLFuente.SelectedValue, objReportes.Capitulo);
                 if (DDLCodProg.Items.Count > 1)
                 {
                     DDLCodProg.Enabled = true;
