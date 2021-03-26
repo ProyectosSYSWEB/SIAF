@@ -124,25 +124,25 @@ namespace SAF.Presupuesto.Form
         }
 
 
-        protected void btnChkCapitulos_v1_Click(object sender, EventArgs e)
-        {
-            bool check;
-            if (btnChkCapitulos_v1.Text == "Marcar todos")
-            {
-                btnChkCapitulos_v1.Text = "Quitar todos";
-                check = true;
-            }
-            else
-            {
-                btnChkCapitulos_v1.Text = "Marcar todos";
-                check = false;
-            }
-            foreach (GridViewRow row in grdCapitulo.Rows)
-            {
-                CheckBox check_box = row.FindControl("chkcapitulo") as CheckBox;
-                check_box.Checked = check;
-            }
-        }
+        //protected void btnChkCapitulos_v1_Click(object sender, EventArgs e)
+        //{
+        //    bool check;
+        //    if (btnChkCapitulos_v1.Text == "Marcar todos")
+        //    {
+        //        btnChkCapitulos_v1.Text = "Quitar todos";
+        //        check = true;
+        //    }
+        //    else
+        //    {
+        //        btnChkCapitulos_v1.Text = "Marcar todos";
+        //        check = false;
+        //    }
+        //    foreach (GridViewRow row in grdCapitulo.Rows)
+        //    {
+        //        CheckBox check_box = row.FindControl("chkcapitulo") as CheckBox;
+        //        check_box.Checked = check;
+        //    }
+        //}
 
         protected void rowCapitulo(GridView Nombre_Grid, string Nombre_Checkbox)
         {

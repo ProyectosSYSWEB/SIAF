@@ -87,33 +87,6 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.DropDownList DDLFuente;
 
         /// <summary>
-        /// Control BTNBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTNBuscar;
-
-        /// <summary>
-        /// Control grdCapitulo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdCapitulo;
-
-        /// <summary>
-        /// Control btnChkCapitulos_v1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnChkCapitulos_v1;
-
-        /// <summary>
         /// Control Label3.
         /// </summary>
         /// <remarks>
@@ -130,6 +103,24 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLCodProg;
+
+        /// <summary>
+        /// Control grdCapitulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdCapitulo;
+
+        /// <summary>
+        /// Control BTNBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTNBuscar;
 
         /// <summary>
         /// Control UpdatePanel11.
