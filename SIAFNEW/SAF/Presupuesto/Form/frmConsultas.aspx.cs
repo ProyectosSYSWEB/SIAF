@@ -155,8 +155,8 @@ namespace SAF.Presupuesto.Form
                     CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl(Nombre_Checkbox);
                     if (chkUrs_Disponibles.Checked == true)
                     {
-                        objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
-                        //objReportes.Capitulo = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        //objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        objReportes.Capitulo = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
                     }
                 }
 
