@@ -53,7 +53,11 @@ namespace SAF.Presupuesto.Form
                     string Verificador = string.Empty;
                     CN_Subprog.InsertarSubPrograma(ref objBasicos, ref Verificador);
                     if (Verificador == "0")
+                    {
                         lblError.Text = "Se han registrado los cambios";
+                        txtPrograma.Text = "";
+                        txtDescripcion.Text = "";
+                    }
                     else
                         lblError.Text = Verificador;
                 }

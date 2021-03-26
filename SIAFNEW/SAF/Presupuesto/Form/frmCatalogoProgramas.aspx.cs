@@ -51,8 +51,12 @@ namespace SAF.Presupuesto.Form
                     objPrograma.Descripcion = txtDescripcion.Text;
                     string Verificador = string.Empty;
                     CNPrograma.InsertarPrograma(ref objPrograma, ref Verificador);
-                    if(Verificador == "0")
+                    if (Verificador == "0")
+                    {
                         lblError.Text = "Se ha guardado correctamente";
+                        txtPrograma.Text = "";
+                        txtDescripcion.Text = "";
+                    }
                     else
                         lblError.Text = Verificador;
                 }

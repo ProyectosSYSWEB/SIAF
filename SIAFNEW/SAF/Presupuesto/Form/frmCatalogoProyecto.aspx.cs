@@ -52,9 +52,14 @@ namespace SAF.Presupuesto.Form
                     string Verificador = string.Empty;
                     CN_Proyecto.InsertarProyecto(ref objProyectos, ref Verificador);
                     if (Verificador == "0")
+                    {
                         lblError.Text = "Se ha guardado correctamente";
+                        txtClavepro.Text = "";
+                        txtDescrip.Text = "";                        
+                    }
                     else
                         lblError.Text = Verificador;
+                    lblError.Text = "Se ha guardado correctamente";
                 }
                 else
                     lblError.Text = "No tiene los privilegios para realizar esta acción";

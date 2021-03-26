@@ -65,7 +65,7 @@
                                 <td style="width:80%">
                                     <asp:TextBox ID="txtDepOrigen" Text="99999" runat="server" ReadOnly="true" Width="50px" Enabled="false">
                                     </asp:TextBox>
-                                    <asp:TextBox ID="txtNombDepOrigen" Text="Dependencia origen" runat="server" Width="450px">
+                                    <asp:TextBox ID="txtNombDepOrigen"  runat="server" Width="450px">
                                     </asp:TextBox>
                                 </td>
                             </tr>

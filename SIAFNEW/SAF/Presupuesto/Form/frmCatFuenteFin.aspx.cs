@@ -58,12 +58,20 @@ namespace SAF.Presupuesto.Form
                     objFuentesFin.Fuente = txtFuente.Text;
                     objFuentesFin.TipoFinan = DDLTipofuente.SelectedValue;
                     objFuentesFin.TipoFondo = DDLTipofondo.SelectedValue;
-                    objFuentesFin.Descrip = txtDescrip.Text;                    
+                    objFuentesFin.Descrip = txtDescrip.Text;
                     string Verificador = string.Empty;
                     CN_FuenteFin.InsertarFuente(ref objFuentesFin, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        lblError.Text = "Se ha guardado correctamente";
+                        txtFuente.Text = "";
+                        txtDescrip.Text = "";
+                    }
+                    else
+                        lblError.Text = Verificador;
                 }
                 else
-                    lblError.Text = lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
             {

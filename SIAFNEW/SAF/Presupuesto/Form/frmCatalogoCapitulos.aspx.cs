@@ -54,6 +54,15 @@ namespace SAF.Presupuesto.Form
                     objBasicos.tipo = "CAT_CAPITULO";
                     objBasicos.status = "A";
                     CN_Capitulo.InsertarCapitulo(ref objBasicos, ref Verificador);
+                    if(Verificador == "0")
+                    {
+                        lblError.Text = "Se ha guardado correctamente";
+                        txtCap.Text = "";
+                        txtDescrip.Text = "";
+                        txtNvl.Text = "";
+                    }
+                    else
+                        lblError.Text = Verificador;                    
                 }
                 else
                 {

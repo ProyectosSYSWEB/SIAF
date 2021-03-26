@@ -16,8 +16,8 @@ namespace SAF.Presupuesto.Form
         #region Variables
         Sesion SesionUsu = new Sesion();
         CN_Comun CNComun = new CN_Comun();
-        CN_Consultas CNConsultas = new CN_Consultas();
         CN_Pres_Reportes CNReportes = new CN_Pres_Reportes();
+        CN_Consultas CNConsultas = new CN_Consultas();        
         Pres_Reportes objReportes = new Pres_Reportes();
         string capitulos = "";
         List<string> ListaCaps = new List<string>();
@@ -34,6 +34,7 @@ namespace SAF.Presupuesto.Form
         private void Inicializar()
         {
             CargarCombos();
+            CargarCapitulos();
         }
 
         private void CargarCombos()
@@ -65,6 +66,9 @@ namespace SAF.Presupuesto.Form
             try
             {                
                 CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                CargarGridAumentos();
+                CargarGridCedulas();
+                CargarGridMinistraciones();
             }
             catch (Exception ex)
             {
@@ -100,48 +104,62 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-        
 
-        protected void CBCap_OnCheckedChanged(object sender, EventArgs e)
+        protected void CargarCapitulos()
         {
             try
             {
-                if (CBCap1.Checked)
-                    ListaCaps.Add("1");
-                //else
-                //    ListaCaps.Remove("1000");
-                if (CBCap2.Checked)
-                    ListaCaps.Add("2");                
-                if (CBCap3.Checked)
-                    ListaCaps.Add("3");                
-                if (CBCap4.Checked)
-                    ListaCaps.Add("4");
-                if (CBCap5.Checked)
-                    ListaCaps.Add("5");
-                if (CBCap6.Checked)
-                    ListaCaps.Add("6");
-                if (CBCap7.Checked)
-                    ListaCaps.Add("7");
-                if (CBCap8.Checked)
-                    ListaCaps.Add("8");
-                if (CBCap9.Checked)
-                    ListaCaps.Add("9");
-                //if (CBCapT.Checked)
-                //{
-                //    int cap = 1;
-                //    for (int i = 1; i <= 8; i++)
-                //    {
-                //        ListaCaps.Add(Convert.ToString(cap));
-                //        cap = cap + 1;
-                //    }
-                //}
+                List<Pres_Reportes> List = new List<Pres_Reportes>();
+                objReportes.Ejercicio = SesionUsu.Usu_Ejercicio;
+                objReportes.Dependencia = "00000";
+                objReportes.DependenciaF = "00000";
+                CNReportes.ConsultaGrid_Capitulo(ref objReportes, ref List);
+                grdCapitulo.DataSource = List;
+                grdCapitulo.DataBind();
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
 
-                for (int i = 0; i < ListaCaps.Count; i++)
+
+        protected void btnChkCapitulos_v1_Click(object sender, EventArgs e)
+        {
+            bool check;
+            if (btnChkCapitulos_v1.Text == "Marcar todos")
+            {
+                btnChkCapitulos_v1.Text = "Quitar todos";
+                check = true;
+            }
+            else
+            {
+                btnChkCapitulos_v1.Text = "Marcar todos";
+                check = false;
+            }
+            foreach (GridViewRow row in grdCapitulo.Rows)
+            {
+                CheckBox check_box = row.FindControl("chkcapitulo") as CheckBox;
+                check_box.Checked = check;
+            }
+        }
+
+        protected void rowCapitulo(GridView Nombre_Grid, string Nombre_Checkbox)
+        {
+            try
+            {
+
+                objReportes.Capitulo = "0";
+                foreach (GridViewRow row in Nombre_Grid.Rows)
                 {
-                    capitulos = capitulos + ListaCaps[i] + ",";
+                    CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl(Nombre_Checkbox);
+                    if (chkUrs_Disponibles.Checked == true)
+                    {
+                        //objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        objReportes.Capitulo = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                    }
                 }
-                capitulos = capitulos.TrimEnd(',');
-                Session["Capitulos"] = capitulos;
+
             }
             catch (Exception ex)
             {
@@ -149,24 +167,29 @@ namespace SAF.Presupuesto.Form
             }
         }
 
+
         protected void BTNBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                lblError.Text = " ";
-                DDLCodProg.Enabled = false;
-                capitulos = (String)Session["Capitulos"];
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", "p_clave_evento", "p_grupo", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, capitulos, DDLFuente.SelectedValue, "0", "99999");
+                rowCapitulo(grdCapitulo, "chkcapitulo");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", "p_clave_evento", "p_grupo", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, objReportes.Capitulo, DDLFuente.SelectedValue, "0", "99999");
                 if (DDLCodProg.Items.Count > 1)
                 {
                     DDLCodProg.Enabled = true;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                    CargarCapitulos();
+                    CargarGridAumentos();
+                    CargarGridMinistraciones();
                 }
 
                 else if (DDLCodProg.Items.Count == 1)
                 {
                     DDLCodProg.Enabled = false;                    
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                    CargarCapitulos();
+                    CargarGridAumentos();
+                    CargarGridMinistraciones();
                 }
             }
             catch (Exception ex)
@@ -174,5 +197,103 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
+
+
+
+        protected void CargarGridCedulas()
+        {
+            try
+            {
+                GRDCodProg.Enabled = false;
+                Consultas objConsultas = new Consultas();
+                List<Consultas> listConsultas = new List<Consultas>();
+                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Dependencia = DDLDependencia.SelectedValue;
+                objConsultas.Supertipo = "C";
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listConsultas);
+                if (listConsultas.Count > 0)
+                {
+                    GRDCedulas.Enabled = true;
+                    GRDCedulas.DataSource = listConsultas;
+                    GRDCedulas.DataBind();
+                }
+                else
+                {
+                    GRDCedulas.Enabled = false;
+                    GRDCedulas.DataSource = null;
+                    GRDCedulas.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+        protected void CargarGridMinistraciones()
+        {
+            try
+            {
+                GRDCodProg.Enabled = false;
+                Consultas objConsultas = new Consultas();
+                List<Consultas> listConsultas = new List<Consultas>();
+                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Dependencia = DDLDependencia.SelectedValue;
+                objConsultas.Supertipo = "M";
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listConsultas);
+                if (listConsultas.Count > 0)
+                {
+                    GRDMinistraciones.Enabled = true;
+                    GRDMinistraciones.DataSource = listConsultas;
+                    GRDMinistraciones.DataBind();
+                }
+                else
+                {
+                    GRDMinistraciones.Enabled = false;
+                    GRDMinistraciones.DataSource = null;
+                    GRDMinistraciones.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+
+        protected void CargarGridAumentos()
+        {
+            try
+            {
+                GRDCodProg.Enabled = false;
+                Consultas objConsultas = new Consultas();
+                List<Consultas> listConsultas = new List<Consultas>();
+                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Dependencia = DDLDependencia.SelectedValue;
+                objConsultas.Supertipo = "A";                
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listConsultas);
+                if (listConsultas.Count > 0)
+                {
+                    GRDAumentos.Enabled = true;
+                    GRDAumentos.DataSource = listConsultas;
+                    GRDAumentos.DataBind();
+                }
+                else
+                {
+                    GRDAumentos.Enabled = false;
+                    GRDAumentos.DataSource = null;
+                    GRDAumentos.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+
+
     }
 }

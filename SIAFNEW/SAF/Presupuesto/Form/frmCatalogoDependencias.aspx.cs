@@ -71,7 +71,20 @@ namespace SAF.Presupuesto.Form
                 string Verificador = string.Empty;
                 CN_DEPENDENCIAS.InsertarDependencia(ref objDependencias, ref Verificador);
                 if (Verificador == "0")
+                {
                     lblError.Text = "Se guardo correctamente";
+                    txtClvDepend.Text = "";
+                    txtDependencia.Text = "";
+                    txtTitular.Text = "";
+                    txtAdministrador.Text = "";
+                    txtDomicilio.Text = "";
+                    txtZonaEconomica.Text = "";
+                    txtTelTitular.Text = "";
+                    txtCelTitular.Text = "";
+                    txtTelAdmin.Text = "";
+                    txtCelAdmin.Text = "";
+                    txtNombramiento.Text = "";
+                }
                 else
                     lblError.Text = Verificador;
             }
