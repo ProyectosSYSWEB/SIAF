@@ -43,6 +43,7 @@ namespace SAF.Presupuesto.Form
             {
                 PresupUnv objPresupUnv = new PresupUnv();
                 List<PresupUnv> listPresUnv = new List<PresupUnv>();
+                objPresupUnv.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CN_PresupUnv.PresUnvGrid(ref objPresupUnv, ref listPresUnv);
                 //SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 //DataSet ds = new DataSet();
@@ -54,6 +55,23 @@ namespace SAF.Presupuesto.Form
             {
                 lblError.Text = ex.Message;
             }
-        }        
+        }
+
+        protected void GRDCodProg_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            try
+            {
+                string Id =  Convert.ToString(GRDCodProg.SelectedRow.Cells[0].Text);
+                string Tipo = Convert.ToString(GRDCodProg.SelectedRow.Cells[7].Text);
+                string ruta1 = "";                        
+                ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RPT-PRESUP_UNV&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + Id + "&Tipo_V=" + Tipo;
+                string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
     }
 }

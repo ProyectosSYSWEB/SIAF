@@ -296,6 +296,13 @@ namespace CapaEntidad
             set { _Consecutivo = value; }
         }
 
+        private string _Tipo_Gasto_Param;
+
+        public string Tipo_Gasto_Param
+        {
+            get { return _Tipo_Gasto_Param; }
+            set { _Tipo_Gasto_Param = value; }
+        }
 
 
 
