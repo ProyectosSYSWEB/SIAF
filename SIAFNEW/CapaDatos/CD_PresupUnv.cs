@@ -54,8 +54,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { };
-                String[] Valores = {  };
+                String[] Parametros = { "P_EJERCICIO" };
+                String[] Valores = { objPresUnv.Ejercicio };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Reg_Presup", ref dr, Parametros, Valores);
 
@@ -69,6 +69,7 @@ namespace CapaDatos
                     objPresUnv.Concepto = Convert.ToString(dr.GetValue(4));
                     objPresUnv.Codigo_Programatico = Convert.ToString(dr.GetValue(5));
                     objPresUnv.Autorizado = Convert.ToString(dr.GetValue(6));
+                    objPresUnv.Tipo_Gasto_Param = Convert.ToString(dr.GetValue(7));
                     List.Add(objPresUnv);
                 }
                 dr.Close();

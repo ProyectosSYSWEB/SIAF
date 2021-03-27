@@ -5,6 +5,9 @@
         .auto-style1 {
             height: 17px;
         }
+        .ColumnaOculta {
+            display: none;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -28,7 +31,7 @@
                                 <td colspan="3">                            
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnSelectedIndexChanged="GRDCodProg_SelectedIndexChanged1">
                                                 <Columns>
                                                     <asp:BoundField DataField="Id" HeaderText="Consecutivo"/>
                                                     <asp:BoundField DataField="Tipo_Gasto" HeaderText="Tipo " />
@@ -37,16 +40,13 @@
                                                     <asp:BoundField DataField="Concepto" HeaderText="Concepto" />
                                                     <asp:BoundField DataField="Codigo_Programatico" HeaderText="Codigo Programatico" />     
                                                     <asp:BoundField DataField="Autorizado" HeaderText="Autorizado" />    
+                                                    <asp:BoundField DataField="Tipo_Gasto_Param" HeaderText="Tipo_Gasto_Param" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />
                                                     <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
-                                                                <ContentTemplate>
-                                                                    <%--<asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar el Documento?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
-                                                                    <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>--%>
-                                                                </ContentTemplate>
-                                                            </asp:UpdatePanel>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                                <ItemTemplate>
+                                                                    <asp:LinkButton ID="btnReporte" runat="server" CommandName="Select" Visible="true">Reporte</asp:LinkButton>
+                                                                    <asp:Label ID="lblReporte" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
                                                 </Columns>
 
                                                 <FooterStyle CssClass="enc" />

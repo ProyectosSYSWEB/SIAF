@@ -712,6 +712,12 @@ namespace SAF.Presupuesto.Reportes
                         reportes_dir();
                         reporte_PDF();
                         break;
+                    case "RPT-PRESUP_UNV":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_UNV.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Id); report.SetParameterValue(2, Tipo_V);                                                
+                        reporte_PDF();
+                        break;
                 }
             }
             catch (Exception ex)
