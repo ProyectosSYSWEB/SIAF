@@ -43,8 +43,8 @@ namespace SAF.Presupuesto.Reportes
             lblError.Text = string.Empty;
             try
             {
-                SesionUsu.Usu_Rep = Request.QueryString["P_REP"];
-                switch (SesionUsu.Usu_Rep)
+                string Reporte = Request.QueryString["P_REP"];
+                switch (Reporte)
                 {
                     case "RP-001":
                         MultiView1.ActiveViewIndex = 0;
