@@ -50,7 +50,9 @@ namespace SAF.Presupuesto.Form
                 if (SesionUsu.Usu_TipoUsu == "SA")
                 {
                     objPartidas.Partida = txtPartida.Text;
-                    objPartidas.Descrip = txtPartida.Text;
+                    objPartidas.Descrip = txtDescrip.Text;
+                    objPartidas.Concepto = txtConcepto.Text;
+                    objPartidas.Ejercicio = SesionUsu.Usu_Ejercicio;
                     objPartidas.Estatus = "A";
                     string Verificador = string.Empty;
                     CN_Partida.InsertarPartida(ref objPartidas, ref Verificador);
@@ -58,7 +60,7 @@ namespace SAF.Presupuesto.Form
                     {
                         lblError.Text = "Se ha guardado correctamente";
                         txtPartida.Text = "";
-                        txtPartida.Text = "";
+                        txtDescrip.Text = "";
                     }
                     else
                         lblError.Text = Verificador;

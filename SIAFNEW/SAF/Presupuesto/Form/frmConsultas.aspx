@@ -86,15 +86,15 @@
                                             <h6>Movimientos</h6>
                                             <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
-                                                    <asp:BoundField DataField="MES" HeaderText="MES" />
-                                                    <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" />
-                                                    <asp:BoundField DataField="Modificado" HeaderText="Modificado" />
-                                                    <asp:BoundField DataField="Ministrado" HeaderText="Ministrado" />
-                                                    <asp:BoundField DataField="Comprometido" HeaderText="Comprometido" />
-                                                    <asp:BoundField DataField="Devengado" HeaderText="Devengado" />
-                                                    <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" />
-                                                    <asp:BoundField DataField="Pagado" HeaderText="Pagado" />
-                                                    <asp:BoundField DataField="Disminucion" HeaderText="Min - Comprometido" />
+                                                    <asp:BoundField DataField="MES" HeaderText="MES" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Modificado" HeaderText="Modificado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Ministrado" HeaderText="Ministrado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Comprometido" HeaderText="Comprometido" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Devengado" HeaderText="Devengado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Pagado" HeaderText="Pagado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Disminucion" HeaderText="Min - Comprometido" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:UpdatePanel ID="UpdatePanel12" runat="server">
@@ -127,7 +127,7 @@
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Folio" HeaderText="Cedula" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                                                    <asp:BoundField DataField="Importe_Mensual" HeaderText="Parcial" />
+                                                    <asp:BoundField DataField="Importe_Mensual" HeaderText="Parcial" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" />                                                    
                                                 </Columns>
@@ -153,8 +153,8 @@
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
                                                     <asp:BoundField DataField="Folio" HeaderText="Folio" />
-                                                    <asp:BoundField DataField="Importe_Origen" HeaderText="Importe Origen" />
-                                                    <asp:BoundField DataField="Importe_Destino" HeaderText="Importe Destino" />
+                                                    <asp:BoundField DataField="Importe_Origen" HeaderText="Importe Origen" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Importe_Destino" HeaderText="Importe Destino" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Mes_Inicial" HeaderText="I" />
                                                     <asp:BoundField DataField="Mes_Final" HeaderText="F" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" />
@@ -183,7 +183,7 @@
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
                                                     <asp:BoundField DataField="Folio" HeaderText="Folio" />
-                                                    <asp:BoundField DataField="Importe_Mensual" HeaderText="Importe" />
+                                                    <asp:BoundField DataField="Importe_Mensual" HeaderText="Importe" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Mes_Inicial" HeaderText="Mes" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" />
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />

@@ -37,6 +37,7 @@
                                                 <asp:View ID="View_1" runat="server">
 
                                                     <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click" ValidationGroup="Agregar" />
+                                                    <asp:ImageButton ID="imgBttnPdf" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" OnClick="imgBttnPdf_Click" title="Reporte PDF" />
                                                     <tr>
                                                         <td style="width: 30%">
                                                             <asp:Label ID="lblFuncion" runat="server" Text="Función"></asp:Label>

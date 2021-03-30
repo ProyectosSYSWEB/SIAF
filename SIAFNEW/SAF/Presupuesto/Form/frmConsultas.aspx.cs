@@ -30,13 +30,11 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             CargarCombos();
             CargarCapitulos();
         }
-
         private void CargarCombos()
         {
             try
@@ -48,8 +46,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
-
         protected void DDLFuente_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -75,7 +71,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void CargarPolizaConsultaGrid(string CodigoProgramatico)
         {
             try
@@ -104,7 +99,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void CargarCapitulos()
         {
             try
@@ -122,8 +116,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
-
         //protected void btnChkCapitulos_v1_Click(object sender, EventArgs e)
         //{
         //    bool check;
@@ -143,7 +135,6 @@ namespace SAF.Presupuesto.Form
         //        check_box.Checked = check;
         //    }
         //}
-
         protected void rowCapitulo(GridView Nombre_Grid, string Nombre_Checkbox)
         {
             try
@@ -166,8 +157,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
-
         protected void BTNBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -178,8 +167,9 @@ namespace SAF.Presupuesto.Form
                 {
                     DDLCodProg.Enabled = true;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
-                    CargarCapitulos();
-                    CargarGridAumentos();
+                    //CargarCapitulos();                    
+                    //CargarGridCedulas();
+                    //CargarGridAumentos();
                     CargarGridMinistraciones();
                 }
 
@@ -187,9 +177,10 @@ namespace SAF.Presupuesto.Form
                 {
                     DDLCodProg.Enabled = false;                    
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
-                    CargarCapitulos();
+                    //CargarCapitulos();
+                    CargarGridCedulas();                    
                     CargarGridAumentos();
-                    CargarGridMinistraciones();
+                    CargarGridMinistraciones();                    
                 }
             }
             catch (Exception ex)
@@ -197,31 +188,21 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
-
-
         protected void CargarGridCedulas()
         {
             try
             {
-                GRDCodProg.Enabled = false;
                 Consultas objConsultas = new Consultas();
-                List<Consultas> listConsultas = new List<Consultas>();
+                List<Consultas> listCedulas = new List<Consultas>();
                 objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
                 objConsultas.Dependencia = DDLDependencia.SelectedValue;
                 objConsultas.Supertipo = "C";
                 objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
-                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listConsultas);
-                if (listConsultas.Count > 0)
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listCedulas);
+                if (listCedulas.Count > 0)
                 {
                     GRDCedulas.Enabled = true;
-                    GRDCedulas.DataSource = listConsultas;
-                    GRDCedulas.DataBind();
-                }
-                else
-                {
-                    GRDCedulas.Enabled = false;
-                    GRDCedulas.DataSource = null;
+                    GRDCedulas.DataSource = listCedulas;
                     GRDCedulas.DataBind();
                 }
             }
@@ -230,60 +211,22 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-        protected void CargarGridMinistraciones()
-        {
-            try
-            {
-                GRDCodProg.Enabled = false;
-                Consultas objConsultas = new Consultas();
-                List<Consultas> listConsultas = new List<Consultas>();
-                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
-                objConsultas.Dependencia = DDLDependencia.SelectedValue;
-                objConsultas.Supertipo = "M";
-                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
-                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listConsultas);
-                if (listConsultas.Count > 0)
-                {
-                    GRDMinistraciones.Enabled = true;
-                    GRDMinistraciones.DataSource = listConsultas;
-                    GRDMinistraciones.DataBind();
-                }
-                else
-                {
-                    GRDMinistraciones.Enabled = false;
-                    GRDMinistraciones.DataSource = null;
-                    GRDMinistraciones.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-        }
-
-
+        
         protected void CargarGridAumentos()
         {
             try
             {
-                GRDCodProg.Enabled = false;
                 Consultas objConsultas = new Consultas();
-                List<Consultas> listConsultas = new List<Consultas>();
+                List<Consultas> listAumentos = new List<Consultas>();
                 objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
                 objConsultas.Dependencia = DDLDependencia.SelectedValue;
                 objConsultas.Supertipo = "A";                
                 objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
-                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listConsultas);
-                if (listConsultas.Count > 0)
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listAumentos);
+                if (listAumentos.Count > 0)
                 {
                     GRDAumentos.Enabled = true;
-                    GRDAumentos.DataSource = listConsultas;
-                    GRDAumentos.DataBind();
-                }
-                else
-                {
-                    GRDAumentos.Enabled = false;
-                    GRDAumentos.DataSource = null;
+                    GRDAumentos.DataSource = listAumentos;
                     GRDAumentos.DataBind();
                 }
             }
@@ -293,7 +236,28 @@ namespace SAF.Presupuesto.Form
             }
         }
 
-
-
+        protected void CargarGridMinistraciones()
+        {
+            try
+            {
+                Consultas objConsultas = new Consultas();
+                List<Consultas> listMinistraciones = new List<Consultas>();
+                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Dependencia = DDLDependencia.SelectedValue;
+                objConsultas.Supertipo = "M";
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listMinistraciones);
+                if (listMinistraciones.Count > 0)
+                {
+                    GRDMinistraciones.Enabled = true;
+                    GRDMinistraciones.DataSource = listMinistraciones;
+                    GRDMinistraciones.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
     }
 }

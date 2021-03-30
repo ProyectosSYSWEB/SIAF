@@ -183,5 +183,17 @@ namespace SAF.Presupuesto.Form
 
             }
         }
+        protected void imgBttnPdf_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch(Exception ex) 
+            {
+                lblError.Text = ex.Message;
+                //ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Selecciones TipoEnc válido.');", true);
+            }
+        }
     }
 }

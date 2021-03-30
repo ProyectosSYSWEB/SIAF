@@ -20,7 +20,6 @@ namespace SAF.Presupuesto.Form
         string capitulos = "";
         List<string> ListaCaps = new List<string>();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -29,14 +28,10 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDCargarDatosPresUnv();
-        }
-        
-        
-
+        }       
         protected void GRDCargarDatosPresUnv()
         {
             try
@@ -49,14 +44,13 @@ namespace SAF.Presupuesto.Form
                 //DataSet ds = new DataSet();
                 //sda.Fill(ds);//
                 GRDCodProg.DataSource = listPresUnv;
-                GRDCodProg.DataBind();
+                GRDCodProg.DataBind();                
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void GRDCodProg_SelectedIndexChanged1(object sender, EventArgs e)
         {
             try
@@ -67,6 +61,17 @@ namespace SAF.Presupuesto.Form
                 ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RPT-PRESUP_UNV&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + Id + "&Tipo_V=" + Tipo;
                 string _open1 = "window.open('" + ruta1 + "', '_newtab');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+        protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                Response.Redirect("frmCatPresupUnv.aspx", true);
             }
             catch (Exception ex)
             {

@@ -57,7 +57,18 @@
                                     <asp:TextBox ID="txtPartida" Text="" runat="server" Width="500px" MaxLength="5">
                                     </asp:TextBox>
                                 </td>
-                            </tr>                            
+                            </tr>    
+                            
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="Label1" runat="server" Text="Concepto">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtConcepto" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr> 
 
                             <tr>
                                 <td style="width:30%">
@@ -68,7 +79,8 @@
                                     <asp:TextBox ID="txtDescrip" Text="" runat="server" Width="500px">
                                     </asp:TextBox>
                                 </td>
-                            </tr>                           
+                            </tr> 
+                            
 
                             <tr>
                                 <td>
