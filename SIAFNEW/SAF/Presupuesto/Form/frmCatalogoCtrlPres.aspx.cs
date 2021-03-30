@@ -45,7 +45,7 @@ namespace SAF.Presupuesto.Form
                 DDLSubprog.SelectedValue = "1";
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_DepXCentCont", ref DDLDepend, "p_centroCotab", DDLCentroContab.SelectedValue);
                 DDLDepend.SelectedValue = "1";
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Proyecto", ref DDLProy);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Proyecto", ref DDLProy, "p_ejercicio", SesionUsu.Usu_Ejercicio);
                 DDLProy.SelectedValue = "1";
             }
             catch (Exception ex)
