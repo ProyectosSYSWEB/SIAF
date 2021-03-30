@@ -48,8 +48,8 @@ namespace CapaDatos
             OracleCommand Cmd = null;
             try
             {
-                String[] Parametros = { "P_PARTIDA", "P_ESTATUS", "P_DESCRIP" };
-                object[] Valores = { objPartidas.Partida, objPartidas.Estatus, objPartidas.Descrip };
+                String[] Parametros = { "P_PARTIDA", "P_ESTATUS", "P_DESCRIP", "P_CONCEPTO", "P_EJERCICIO" };
+                object[] Valores = { objPartidas.Partida, objPartidas.Estatus, objPartidas.Descrip, objPartidas.Concepto, objPartidas .Ejercicio};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_CAT_PARTIDA", ref Verificador, Parametros, Valores, ParametrosOut);
