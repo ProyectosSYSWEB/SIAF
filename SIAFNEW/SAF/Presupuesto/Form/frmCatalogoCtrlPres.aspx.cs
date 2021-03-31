@@ -16,7 +16,6 @@ namespace SAF.Presupuesto.Form
         CN_Comun CNComun = new CN_Comun();
         CN_Presupuesto CN_Presupuesto = new CN_Presupuesto();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -25,13 +24,10 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             CargarCombos();
         }
-
-
         protected void CargarCombos()
         {
             try
@@ -50,16 +46,21 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }
             
         }
-
         protected void DDLCentroContab_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_DepXCentCont", ref DDLDepend, "p_centroCotab", DDLCentroContab.SelectedValue);            
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_DepXCentCont", ref DDLDepend, "p_centroCotab", DDLCentroContab.SelectedValue);
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+            }
         }
-
         protected void BTNGuardarCatPres_Click(object sender, EventArgs e)
         {
             try
@@ -77,23 +78,30 @@ namespace SAF.Presupuesto.Form
                     objEstrucProg.Ejercicio = Convert.ToInt32(SesionUsu.Usu_Ejercicio);
                     CN_Presupuesto.InsertarEstructuraProg(objEstrucProg, ref Verificador);
                     if (Verificador == "0")
-                        lblError.Text = "Se ha guardado correctamente";
-                    else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctamente.')", true);
+                    else                                            
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador + ".')", true);                    
                }
                else
-                   lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'No tiene los privilegios necesarios para realizar esta acción.')", true);
+                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ ex.Message + ".')", true);                
             }
         }
-
         protected void DDLPrograma_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string Nivel = DDLPrograma.SelectedValue;
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_SubPrograma", ref DDLSubprog, "p_nivel", Nivel.Substring(0,1));
+            try
+            {
+                string Nivel = DDLPrograma.SelectedValue;
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_SubPrograma", ref DDLSubprog, "p_nivel", Nivel.Substring(0, 1));
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+            }
         }
     }
 }

@@ -12,13 +12,13 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="mensaje">
+            <%--<div class="mensaje">
                 <asp:UpdatePanel ID="UpdatePanel100" runat="server">
                     <ContentTemplate>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-            </div>
+            </div>--%>
             <table class="tabla_contenido">
                 <tr>
                     <td class="auto-style1">

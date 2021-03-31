@@ -37,19 +37,16 @@ namespace SAF.Presupuesto.Form
                 CN_Funcion.FuncionGrid(ref objFuncion, ref listFuncion);
                 GRDFunciones.DataSource = listFuncion;
                 GRDFunciones.DataBind();
-                if (SesionUsu.Usu_TipoUsu != "SA")
-                {
-                    GRDFunciones.Columns.RemoveAt(3);
-                }
+                if (SesionUsu.Usu_TipoUsu != "SA")                
+                    GRDFunciones.Columns.RemoveAt(3);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }        
         protected void GRDFunciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            lblError.Text = string.Empty;
+        {            
             try
             {
                 string Verificador = string.Empty;
@@ -60,18 +57,16 @@ namespace SAF.Presupuesto.Form
                 {
                     CN_Funcion.Eliminar(objFuncion, ref Verificador);                    
                     if (Verificador == "0")
-                        lblError.Text = "Se ha eliminado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente')", true);
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
                 }
-                else
-                {
-                    lblError.Text = "No tiene privilegios para realizar esta acción";
-                }
+                else                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene privilegios para realizar esta acción')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void GRDFunciones_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,14 +87,15 @@ namespace SAF.Presupuesto.Form
                         Multiview1.ActiveViewIndex = 1;
                     }
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);                    
                 }
                 else
-                    lblError.Text = "No tiene permisos para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene permisos para realizar esta acción')", true);
+                    
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
@@ -110,7 +106,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void BTNEditarFuncion_Click(object sender, EventArgs e)
@@ -126,16 +122,16 @@ namespace SAF.Presupuesto.Form
                     objFuncion.Descripcion = txtDescripcion.Text;
                     CN_Funcion.EditarFuncion(ref objFuncion, ref Verificador);
                     if (Verificador == "0")
-                        lblError.Text = "Se ha editado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha editado correctamente')", true);
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
                 }
                 else
-                    lblError.Text = "No tiene permisos para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene permisos para realizar esta acción')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
     }

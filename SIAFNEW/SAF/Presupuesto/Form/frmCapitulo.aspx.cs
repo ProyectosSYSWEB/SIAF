@@ -45,12 +45,11 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }      
         protected void GRDCapitulos_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            lblError.Text = string.Empty;
+        {            
             try
             {
                 Basicos objCapitulo = new Basicos();
@@ -61,18 +60,16 @@ namespace SAF.Presupuesto.Form
                 {
                     CN_Capitulo.EliminarCapitulo(objCapitulo, ref Verificador);
                     if (Verificador == "0")
-                        lblError.Text = "Se ha eliminado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente.')", true);                    
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
                 }
                 else
-                {
-                    lblError.Text = "No tiene privilegios para realizar esta acción";
-                }
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene privilegios para realizar esta acción.')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void GRDCapitulos_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,14 +90,14 @@ namespace SAF.Presupuesto.Form
                         Multiview1.ActiveViewIndex = 1;
                     }
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + Verificador + ".')", true);
                 }
                 else
-                    lblError.Text = "No tiene los privilegios suficientes para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios suficientes para realizar esta acción.')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
@@ -111,7 +108,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void BTNEditarCap_Click(object sender, EventArgs e)
@@ -127,16 +124,16 @@ namespace SAF.Presupuesto.Form
                     objCapitulo.id = (String)Session["SessionIdCap"];
                     CN_Capitulo.EditarCapitulo(ref objCapitulo, ref Verificador);
                     if (Verificador == "0")
-                        lblError.Text = "Se ha modificado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha modificado correctamente.')", true);                    
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);                    
                 }
                 else
-                    lblError.Text = "No tiene los privilegios suficientes para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios suficientes para realizar esta acción.')", true);                
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }

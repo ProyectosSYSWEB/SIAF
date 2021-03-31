@@ -7,13 +7,13 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="mensaje">
+            <%--<div class="mensaje">
                 <asp:UpdatePanel ID="UpdatePanel100" runat="server">
                     <ContentTemplate>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-            </div>
+            </div>--%>
             <table class="tabla_contenido">
                 <tr>
                     <td class="auto-style1">
@@ -41,7 +41,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Button runat="server" ID="BTNGuardarFuncion" Text="Guardar" OnClick="BTNGuardarFuncion_Click" />
+                                    <asp:Button runat="server" ID="BTNGuardarFuncion" Text="Guardar" OnClick="BTNGuardarFuncion_Click" CssClass="btn"/>
                                 </td>          
                                 <td>
                                 </td>

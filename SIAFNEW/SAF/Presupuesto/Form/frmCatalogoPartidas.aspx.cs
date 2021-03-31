@@ -56,21 +56,22 @@ namespace SAF.Presupuesto.Form
                     objPartidas.Estatus = "A";
                     string Verificador = string.Empty;
                     CN_Partida.InsertarPartida(ref objPartidas, ref Verificador);
-                    if(Verificador == "0")
+                    if (Verificador == "0")
                     {
-                        lblError.Text = "Se ha guardado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctament.')", true);                        
                         txtPartida.Text = "";
                         txtDescrip.Text = "";
                     }
-                    else
-                        lblError.Text = Verificador;
+                    else                    
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador+".')", true);                        
+                    
                 }
                 else
-                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'No tiene los privilegios para realizar esta acción.')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ ex.Message + ".')", true);                
             }
         }
 
