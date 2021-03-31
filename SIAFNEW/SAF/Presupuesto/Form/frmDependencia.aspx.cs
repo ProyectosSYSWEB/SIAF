@@ -33,7 +33,12 @@ namespace SAF.Presupuesto.Form
         }
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab, "p_ejercicio", SesionUsu.Usu_Ejercicio);
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCentroContab, "p_ejercicio", SesionUsu.Usu_Ejercicio);
+            }
+            catch(Exception ex)
+            { ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true); }
         }
         protected void GRDCargarDatosDepend()
         {
@@ -53,7 +58,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void DDLCentroContab_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,12 +79,11 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void GDRDependencias_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            lblError.Text = string.Empty;
             try
             {
                 Dependencias objDependencias = new Dependencias();
@@ -90,18 +94,16 @@ namespace SAF.Presupuesto.Form
                 {
                     CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
                     if(Verificador == "0")
-                        lblError.Text = "Se ha eliminado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente.')", true);                    
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
                 }
                 else
-                {
-                    lblError.Text = Verificador;
-                }                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void GDRDependencias_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,11 +140,11 @@ namespace SAF.Presupuesto.Form
                     Multiview1.ActiveViewIndex = 1;
                 }
                 else
-                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción.')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
@@ -153,7 +155,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void BTNEditarDependencia_Click(object sender, EventArgs e)
@@ -184,18 +186,18 @@ namespace SAF.Presupuesto.Form
                     string Verificador = string.Empty;
                     CN_Dependencias.EditarDependencia(ref objDependencias, ref Verificador);
                     if (Verificador == "0")
-                        lblError.Text = "Se ha editado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha editado correctamente.')", true);                    
                     else if (Verificador == "1")
-                        lblError.Text = "No se puede cambiar por una clave que ya existe";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No se puede cambiar por una clave que ya existe.')", true);
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
                 }
                 else
-                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción.')", true);                
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void CargarCombosEditar()
@@ -208,7 +210,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }        
     }

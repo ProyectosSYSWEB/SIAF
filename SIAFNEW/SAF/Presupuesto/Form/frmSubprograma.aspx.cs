@@ -31,7 +31,14 @@ namespace SAF.Presupuesto.Form
         }
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd, "p_tipocombo", "T");
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd, "p_tipocombo", "T");
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
+            }
         }
         protected void GRDCargarDatosFuncion()
         {
@@ -53,7 +60,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void DDLNvlacd_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,12 +82,11 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void GRDProgramas_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            lblError.Text = string.Empty;
             try
             {
                 Subprograma objSubProg = new Subprograma();
@@ -91,18 +97,16 @@ namespace SAF.Presupuesto.Form
                 {
                     CN_Subprog.EliminarSubProg(objSubProg, ref Verificador);
                     if (Verificador == "0")
-                        lblError.Text = "Se ha eliminado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente')", true);
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
                 }
-                else
-                {
-                    lblError.Text = Verificador;
-                }
+                else                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void GRDProgramas_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,15 +130,15 @@ namespace SAF.Presupuesto.Form
                     }
                     else
                     {
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
                     }
                 }
                 else
-                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
@@ -145,7 +149,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void CargarCombos2()
@@ -156,7 +160,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
         protected void BTNEditarSubProg_Click(object sender, EventArgs e)
@@ -174,16 +178,16 @@ namespace SAF.Presupuesto.Form
                     objSubProg.Descripcion = txtDescripcion.Text;
                     CN_Subprog.EditarSubProg(ref objSubProg, ref Verificador);
                     if (Verificador == "0")
-                        lblError.Text = "Se ha modificado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha modificado correctamente.')", true);
                     else
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
                 }
                 else
-                    lblError.Text = "No tiene privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene privilegios para realizar esta acción.')", true);
             }
             catch (Exception ex) 
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
     }
