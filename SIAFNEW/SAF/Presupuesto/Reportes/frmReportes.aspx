@@ -30,10 +30,19 @@
                                 <table style="width: 100%;">
                                     <tr>
                                         <td style="width:20%">
-                                            <asp:Label ID="Label4" runat="server" Text="Dependencia"></asp:Label>
+                                            <asp:Label ID="Label4" runat="server" Text="Dependencia inicial"></asp:Label>
                                         </td>
                                         <td colspan="3">
-                                            <asp:DropDownList ID="ddlDependencia" runat="server" Width="100%" OnSelectedIndexChanged="ddlDependencia_SelectedIndexChanged" AutoPostBack="True">
+                                            <asp:DropDownList ID="ddlDependenciaInicial" runat="server" Width="100%" >
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">
+                                            <asp:Label ID="Label56" runat="server" Text="Dependencia final"></asp:Label>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:DropDownList ID="ddlDependenciaFinal" runat="server" Width="100%"  >
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -42,7 +51,7 @@
                                             <asp:Label ID="Label5" runat="server" Text="Reporte"></asp:Label>
                                         </td>
                                         <td colspan="3">
-                                            <asp:DropDownList ID="DDLReporte_v1" runat="server" Width="75%" AutoPostBack="True" OnSelectedIndexChanged="DDLReporte_v1_SelectedIndexChanged">
+                                            <asp:DropDownList ID="DDLReporte_v1" runat="server" Width="75%" >
                                                  <asp:ListItem Value="RP001">RP001 - Analítico anual por etapa y fuente de financiamiento</asp:ListItem>
                                                 <asp:ListItem Value="RP002">RP002 - Analítico por subprograma</asp:ListItem>
                                                 <asp:ListItem Value="RP004">RP004 - Analítico anual por etapa y proyecto</asp:ListItem>
@@ -77,6 +86,25 @@
                                                 <asp:ListItem Value="3">Todos</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <asp:UpdatePanel ID="updPnlBuscar_v1" runat="server">
+                                                <ContentTemplate>
+                                            <asp:Button ID="btnBuscar_v1" runat="server"  OnClick="btnBuscar_v1_Click"
+                                                        Text="Buscar"   CssClass="btn" CausesValidation="False" />
+                                                     </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                        </td>
+                                        <td>
+                                            <asp:UpdateProgress ID="updProBuscar_v1" runat="server" AssociatedUpdatePanelID="updPnlBuscar_v1">
+                                                <progresstemplate>
+                                                    <asp:Image ID="Image_v1" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" style="text-align: center" ToolTip="Espere un momento, por favor.." Width="50px" />
+                                                </progresstemplate>
+                                            </asp:UpdateProgress>
+                                        </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
@@ -180,7 +208,7 @@
                                     </tr>
                                     <tr>
                                         <td class="cuadro_botones" colspan="4">
-                                            <asp:UpdatePanel ID="UpdatePanel104" runat="server">
+                                            <asp:UpdatePanel ID="updPnlBotones_v1" runat="server">
                                                 <ContentTemplate>
                                                     <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" onclick="imgBttnPdf" title="Reporte PDF" />
                                                     <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/excel.png" onclick="imgBttnExcel" title="Reporte Excel" />
@@ -189,9 +217,16 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>&nbsp;</td>
-                                        <td colspan="3">&nbsp;</td>
-                                        <td>&nbsp;</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <asp:UpdateProgress ID="UpdateProgress8" runat="server" AssociatedUpdatePanelID="updPnlBotones_v1">
+                                                <progresstemplate>
+                                                    <asp:Image ID="Image_Botones_v1" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" style="text-align: center" ToolTip="Espere un momento, por favor.." Width="50px" />
+                                                </progresstemplate>
+                                            </asp:UpdateProgress>
+                                        </td>
+                                        <td></td>
                                     </tr>
                                 </table>
                             </ContentTemplate>
