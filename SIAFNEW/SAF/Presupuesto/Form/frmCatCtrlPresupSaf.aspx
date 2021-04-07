@@ -7,13 +7,13 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="mensaje">
+            <%--<div class="mensaje">
                 <asp:UpdatePanel ID="UpdatePanel100" runat="server">
                     <ContentTemplate>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-            </div>
+            </div>--%>
             <table class="tabla_contenido">
                 <tr>
                     <td class="auto-style1">
@@ -33,7 +33,7 @@
 
                             <tr>
                                 <td style="width: 30%">
-                                    <asp:Label ID="lblTipoOpe" runat="server" Text="Código programático"></asp:Label>
+                                    <asp:Label ID="lblTipoOpe" runat="server" Text="Estructura programática"></asp:Label>
                                 </td>
                                 <td>                                    
                                     <asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>
@@ -88,7 +88,7 @@
                                     </asp:Label>
                                 </td>
                                 <td>                                    
-                                    <asp:DropDownList ID="DDLPartida" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
+                                    <asp:DropDownList ID="DDLPartida" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLPartida_SelectedIndexChanged"></asp:DropDownList>
                                 </td> 
                             </tr>
 

@@ -16,7 +16,6 @@ namespace SAF.Presupuesto.Form
         CN_Comun CNComun = new CN_Comun();
         CN_FuenteFin CN_FuenteFin = new CN_FuenteFin();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -25,16 +24,15 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDFuenteFinan();
         }
-
         protected void GRDFuenteFinan()
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 FuentesFin objFuenteFin = new FuentesFin();
                 List<FuentesFin> list = new List<FuentesFin>();
                 objFuenteFin.Ejercicio = SesionUsu.Usu_Ejercicio;
@@ -47,55 +45,58 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void GRDFuenteFin_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            lblError.Text = string.Empty;
+        {            
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                FuentesFin objFuenteFin = new FuentesFin();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDFuenteFin.Rows[fila].Cells[2].Text);
-            //    if (SesionUsu.Usu_TipoUsu == "SU")
-            //    {
-            //        CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-            //        if (Verificador == "0")
-            //            lblError.Text = "Se ha eliminado correctamente";
-            //        else
-            //            lblError.Text = Verificador;
-            //    }
-            //    else
-            //    {
-            //        lblError.Text = Verificador;
-            //    }
+                objFuenteFin.Id = Convert.ToString(GRDFuenteFin.Rows[fila].Cells[2].Text);
+                if (SesionUsu.Usu_TipoUsu == "SU")
+                {
+                    CN_FuenteFin.EliminarFuenteFin(objFuenteFin, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente.')", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
+                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void GRDFuenteFin_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDFuenteFin.SelectedRow.Cells[2].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                FuentesFin objFuenteFin = new FuentesFin();
+                string Verificador = string.Empty;
+                objFuenteFin.Id = Convert.ToString(GRDFuenteFin.SelectedRow.Cells[2].Text);
+                Session["SessionIdFuenteFin"] = objFuenteFin;
+                objFuenteFin.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CN_FuenteFin.ObtenerDatosFuenteFin(ref objFuenteFin, ref Verificador);
+                if (Verificador == "0")
+                {
+                    txtFuente.Text = objFuenteFin.Fuente;
+                    txtDescrip.Text = objFuenteFin.Descrip;
+                    Multiview1.ActiveViewIndex = 1;
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -104,7 +105,33 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        protected void BTNEditarFuenteFin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    FuentesFin objFuenteFin = new FuentesFin();
+                    string Verificador = string.Empty;
+                    objFuenteFin = (FuentesFin)Session["SessionIdFuenteFin"];
+                    //objFuenteFin.Ejercicio = SesionUsu.Usu_Ejercicio;
+                    objFuenteFin.Fuente = txtFuente.Text;
+                    objFuenteFin.Descrip = txtDescrip.Text;
+                    CN_FuenteFin.EditarFuenteFin(ref objFuenteFin, ref Verificador);
+                    if(Verificador == "0")                    
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se han realizado los cambios correctamente.')", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción.')", true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }

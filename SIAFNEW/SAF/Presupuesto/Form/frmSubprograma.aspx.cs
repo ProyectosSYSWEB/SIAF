@@ -16,7 +16,6 @@ namespace SAF.Presupuesto.Form
         CN_Comun CNComun = new CN_Comun();
         CN_Subprog CN_Subprog = new CN_Subprog();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -25,23 +24,27 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDCargarDatosFuncion();
             CargarCombos();
         }
-
-
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd, "p_tipocombo", "T");
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd, "p_tipocombo", "T");
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
+            }
         }
-
         protected void GRDCargarDatosFuncion()
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Subprograma objSubprogramaa = new Subprograma();
                 List<Subprograma> list = new List<Subprograma>();
                 objSubprogramaa.DependenciaI = "11101";
@@ -57,10 +60,9 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
         protected void DDLNvlacd_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -80,55 +82,65 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
         protected void GRDProgramas_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            lblError.Text = string.Empty;
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                Subprograma objSubProg = new Subprograma();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.Rows[fila].Cells[0].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
-                //{
-                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                //    if (Verificador == "0")
-                //        lblError.Text = "Se ha eliminado correctamente";
-                //    else
-                //        lblError.Text = Verificador;
-                //}
-                //else
-                //{
-                //    lblError.Text = Verificador;
-                //}
+                objSubProg.Id = Convert.ToString(GRDProgramas.Rows[fila].Cells[2].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_Subprog.EliminarSubProg(objSubProg, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente')", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
+                }
+                else                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
         protected void GRDProgramas_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.SelectedRow.Cells[0].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {                    
+                    Subprograma objSubProg = new Subprograma();
+                    string Verificador = string.Empty;
+                    CargarCombos2();
+                    objSubProg.Id = Convert.ToString(GRDProgramas.SelectedRow.Cells[2].Text);
+                    CN_Subprog.ObtenerDatosSubprograma(ref objSubProg, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        Multiview1.ActiveViewIndex = 1;
+                        Session["SessionIdSubProg"] = objSubProg.Id;
+                        DDLNvlacd2.SelectedValue = objSubProg.NivAcad;
+                        txtPrograma.Text = objSubProg.Clave;
+                        txtDescripcion.Text = objSubProg.Descripcion;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
+                    }
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -137,7 +149,45 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
+            }
+        }
+        protected void CargarCombos2()
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Nvl_Academicos", ref DDLNvlacd2, "p_tipocombo", "T");
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
+            }
+        }
+        protected void BTNEditarSubProg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if(SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Subprograma objSubProg = new Subprograma();
+                    string Verificador = string.Empty;
+                    objSubProg.Id = (String)Session["SessionIdSubProg"];
+                    objSubProg.NivAcad = DDLNvlacd2.SelectedValue;
+                    objSubProg.Clave = txtPrograma.Text;
+                    objSubProg.Descripcion = txtDescripcion.Text;
+                    CN_Subprog.EditarSubProg(ref objSubProg, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha modificado correctamente.')", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene privilegios para realizar esta acción.')", true);
+            }
+            catch (Exception ex) 
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
     }

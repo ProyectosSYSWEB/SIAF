@@ -36,17 +36,23 @@ namespace SAF.Presupuesto.Form
                     objFuncion.Orden = "";
                     string Verificador = string.Empty;
                     CN_Funcion.InsertarFuncion(ref objFuncion, ref Verificador);
-                    if(Verificador == "0")
-                        lblError.Text = "Se ha guardado correctamente";
+                    if (Verificador == "0")
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, 'Se ha guardado correctamente.');", true);
+                        txtFuncion.Text = "";
+                        txtDescripcion.Text = "";                        
+                    }
                     else
-                        lblError.Text = Verificador;
+                    {                        
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ Verificador+"')", true);
+                    }
                 }
                 else
-                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'No tiene los privilegios necesarios para realizar esta acción.');", true);                    
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
     }

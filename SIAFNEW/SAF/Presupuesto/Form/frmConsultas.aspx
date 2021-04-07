@@ -12,13 +12,13 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="mensaje">
+            <%--<div class="mensaje">
                 <asp:UpdatePanel ID="UpdatePanel100" runat="server">
                     <ContentTemplate>
-                        <asp:Label ID="lblError" runat="server" Text="1-Seleccionar dependencia <br/> 2-Seleccionar capitulo <br/> 3-Seleccionar fuente <br/> 4-Seleccionar Código programático"></asp:Label>
+                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-            </div>
+            </div>--%>
             <table class="tabla_contenido">
                 <tr>
                     <td class="auto-style1">
@@ -26,103 +26,75 @@
                             <tr>
                                 <td style="width: 10%">
                                     <asp:Label ID="Label4" runat="server" Text="Dependencia"></asp:Label>
-                                </td>
-                                <td>                                    
+                                <%--</td>
+                                <td>--%>
                                     <asp:DropDownList ID="DDLDependencia" runat="server" Width="300px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_SelectedIndexChanged"></asp:DropDownList>
                                 </td>
                                 <td style="width: 10%">
                                     <asp:Label ID="Label1" runat="server" Text="Fuente"></asp:Label>
+                                <%--</td>
+                                <td>--%>
+                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="300px" AutoPostBack="True"></asp:DropDownList>
                                 </td>
-                                <td>                                    
-                                    <asp:DropDownList ID="DDLFuente" runat="server" Width="300px" AutoPostBack="True"></asp:DropDownList>                                    
-                                </td>
-                                <td>
-                                    <asp:Button runat="server" ID="BTNBuscar" Text="Buscar" OnClick="BTNBuscar_Click"/>
-                                </td>
-                                <td>&nbsp;</td>
-                            </tr>
-
-                            <tr>
-                                <td style="width:40%"">
-                                    <asp:Label ID="Label2" runat="server" Text="Seleccionar un capitulo"></asp:Label>
-                                </td>                                
-                            </tr>
-                            <tr>                                
-                                <td>
-                                    <asp:CheckBox ID="CBCap1" runat="server" AutoPostBack="true" Text="Capitulo 1000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>
-                                <td>
-                                    <asp:CheckBox ID="CBCap5" runat="server" AutoPostBack="true" Text="Capitulo 5000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>                                
-                            </tr>
-                            <tr>          
-                                <td>
-                                    <asp:CheckBox ID="CBCap2" runat="server" AutoPostBack="true" Text="Capitulo 2000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                    
-                                </td>
-                                <td>
-                                    <asp:CheckBox ID="CBCap6" runat="server" AutoPostBack="true" Text="Capitulo 6000" OnCheckedChanged="CBCap_OnCheckedChanged"/>                                    
-                                    
-                                </td>                                
-                            </tr>
-                            <tr>          
-                                <td>
-                                    <asp:CheckBox ID="CBCap3" runat="server" AutoPostBack="true" Text="Capitulo 3000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                    
-                                </td>
-                                <td>
-                                    <asp:CheckBox ID="CBCap7" runat="server" AutoPostBack="true" Text="Capitulo 7000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>                                
-                            </tr>
-                            <tr>          
-                                <td>
-                                    <asp:CheckBox ID="CBCap4" runat="server" AutoPostBack="true" Text="Capitulo 4000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>
-                                <td>
-                                    <asp:CheckBox ID="CBCap8" runat="server" AutoPostBack="true" Text="Capitulo 8000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>                                
-                            </tr>
-                            <tr>          
-                                <td>
-                                    <asp:CheckBox ID="CBCap9" runat="server" AutoPostBack="true" Text="Capitulo 9000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>
-                                <%--<td>
-                                    <asp:CheckBox ID="CheckBox2" runat="server" AutoPostBack="true" Text="Capitulo 8000" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>--%>
-                            </tr>
-                            <%--<tr>          
-                                <td>
-                                    <asp:CheckBox ID="CBCapT" runat="server" AutoPostBack="true" Text="Todos" OnCheckedChanged="CBCap_OnCheckedChanged"/>
-                                </td>
-                            </tr>--%>
-                            
-                            <tr>                                
-                                <td style="width:10%">
+                                <td style="width: 10%">
                                     <asp:Label ID="Label3" runat="server" Text="Código Programatico"></asp:Label>
-                                </td>
-                                <td>                                     
+                                <%--</td>
+                                <td>--%>
                                     <asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="GRDCargarDatosCodProg">
-                                        
                                     </asp:DropDownList>
                                 </td>
-                                <td>&nbsp;</td>
-                            </tr>                          
+                            </tr>
+
+
+                            <tr>
+                                <asp:GridView ID="grdCapitulo" runat="server" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." Width="50%">
+                                    <Columns>
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:UpdatePanel ID="UpdatePanel105" runat="server">
+                                                    <ContentTemplate>
+                                                        <asp:CheckBox ID="chkcapitulo" runat="server" />
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" Width="10px" />
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="Id" HeaderText="ID" />
+                                        <asp:BoundField DataField="Capitulo" HeaderText="CAPITULO" />
+                                    </Columns>
+                                    <FooterStyle CssClass="enc" />
+                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                    <SelectedRowStyle CssClass="sel" />
+                                    <HeaderStyle CssClass="enc" />
+                                    <AlternatingRowStyle CssClass="alt" />
+                                </asp:GridView>
+                                <%--<asp:Button ID="btnChkCapitulos_v1" runat="server" OnClick="btnChkCapitulos_v1_Click"
+                                    Text="Marcar todos" Width="15%" CssClass="btn" CausesValidation="False" />--%>
+                                <asp:Button runat="server" ID="BTNBuscar" Text="Buscar" CssClass="btn" OnClick="BTNBuscar_Click" />
+                            </tr>
+                            
+
+
+
+
+                            
 
                             <tr>
                                 <td colspan="3">
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
-                                        <ContentTemplate>
-                                            <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">                                                                                                
+                                        <ContentTemplate> 
+                                            <h6>Movimientos</h6>
+                                            <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
-                                                    <asp:BoundField DataField="MES" HeaderText="MES" />
-                                                    <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" />
-                                                    <asp:BoundField DataField="Modificado" HeaderText="Modificado" />
-                                                    <asp:BoundField DataField="Ministrado" HeaderText="Ministrado" />
-                                                    <asp:BoundField DataField="Comprometido" HeaderText="Comprometido" />
-                                                    <asp:BoundField DataField="Devengado" HeaderText="Devengado" />
-                                                    <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" />
-                                                    <asp:BoundField DataField="Pagado" HeaderText="Pagado" />
-                                                    <asp:BoundField DataField="Disminucion" HeaderText="Min - Comprometido" />
+                                                    <asp:BoundField DataField="MES" HeaderText="MES" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Modificado" HeaderText="Modificado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Ministrado" HeaderText="Ministrado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Comprometido" HeaderText="Comprometido" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Devengado" HeaderText="Devengado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Pagado" HeaderText="Pagado" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Disminucion" HeaderText="Min - Comprometido" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:UpdatePanel ID="UpdatePanel12" runat="server">
@@ -133,8 +105,8 @@
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
-                                                <PagerStyle HorizontalAlign="Left"/>
-                                                <FooterStyle CssClass="enc" />                                                
+                                                <PagerStyle HorizontalAlign="Left" />
+                                                <FooterStyle CssClass="enc" />
                                                 <SelectedRowStyle CssClass="sel" />
                                                 <HeaderStyle CssClass="enc" />
                                                 <AlternatingRowStyle CssClass="alt" />
@@ -144,6 +116,91 @@
                                     </asp:UpdatePanel>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                        <ContentTemplate>
+                                            <h6>Cédulas</h6>
+                                            <asp:GridView ID="GRDCedulas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                                <Columns>
+                                                    <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
+                                                    <asp:BoundField DataField="Folio" HeaderText="Cedula" />
+                                                    <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                                                    <asp:BoundField DataField="Importe_Mensual" HeaderText="Parcial" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
+                                                    <asp:BoundField DataField="Status" HeaderText="Status" />                                                    
+                                                </Columns>
+                                                <PagerStyle HorizontalAlign="Left" />
+                                                <FooterStyle CssClass="enc" />
+                                                <SelectedRowStyle CssClass="sel" />
+                                                <HeaderStyle CssClass="enc" />
+                                                <AlternatingRowStyle CssClass="alt" />
+
+                                            </asp:GridView>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                        <ContentTemplate>
+                                            <h6>Aumentos</h6>
+                                            <asp:GridView ID="GRDAumentos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                                <Columns>
+                                                    <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
+                                                    <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                                                    <asp:BoundField DataField="Folio" HeaderText="Folio" />
+                                                    <asp:BoundField DataField="Importe_Origen" HeaderText="Importe Origen" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Importe_Destino" HeaderText="Importe Destino" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Mes_Inicial" HeaderText="I" />
+                                                    <asp:BoundField DataField="Mes_Final" HeaderText="F" />
+                                                    <asp:BoundField DataField="Status" HeaderText="Status" />
+                                                    <asp:BoundField DataField="Fecha" HeaderText="Fecha" />                                                    
+                                                </Columns>
+                                                <PagerStyle HorizontalAlign="Left" />
+                                                <FooterStyle CssClass="enc" />
+                                                <SelectedRowStyle CssClass="sel" />
+                                                <HeaderStyle CssClass="enc" />
+                                                <AlternatingRowStyle CssClass="alt" />
+
+                                            </asp:GridView>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td colspan="3">
+                                    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                        <ContentTemplate>
+                                            <h6>Ministraciones</h6>
+                                            <asp:GridView ID="GRDMinistraciones" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                                <Columns>
+                                                    <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
+                                                    <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                                                    <asp:BoundField DataField="Folio" HeaderText="Folio" />
+                                                    <asp:BoundField DataField="Importe_Mensual" HeaderText="Importe" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Mes_Inicial" HeaderText="Mes" />
+                                                    <asp:BoundField DataField="Status" HeaderText="Status" />
+                                                    <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
+                                                </Columns>
+                                                <PagerStyle HorizontalAlign="Left" />
+                                                <FooterStyle CssClass="enc" />
+                                                <SelectedRowStyle CssClass="sel" />
+                                                <HeaderStyle CssClass="enc" />
+                                                <AlternatingRowStyle CssClass="alt" />
+
+                                            </asp:GridView>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </td>
+                            </tr>
+
+
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>

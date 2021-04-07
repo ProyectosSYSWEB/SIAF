@@ -22,13 +22,51 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
         public void InsertarProyecto(ref Proyectos objProyectos, ref string Verificador)
         {
             try
             {
                 CD_Proyecto CD_Proyecto = new CD_Proyecto();
                 CD_Proyecto.InsertarProyecto(ref objProyectos, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void ObtenerDatosProyecto(ref Proyectos objProyectos, ref string Verificador)
+        {
+            try
+            {
+                CD_Proyecto CD_Proyecto = new CD_Proyecto();
+                CD_Proyecto.ObtenerDatosProyecto(ref objProyectos, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EditarProyecto(ref Proyectos objProyectos, ref string Verificador)
+        {
+            try
+            {
+                CD_Proyecto CD_Proyecto = new CD_Proyecto();
+                CD_Proyecto.EditarProyecto(ref objProyectos, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EliminarProyecto(Proyectos objProyectos, ref string Verificador)
+        {
+            try
+            {
+                CD_Proyecto CD_Proyecto = new CD_Proyecto();
+                CD_Proyecto.EliminarProyecto(objProyectos, ref Verificador);
 
             }
             catch (Exception ex)

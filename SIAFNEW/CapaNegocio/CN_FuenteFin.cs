@@ -22,14 +22,51 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-
-
         public void InsertarFuente(ref FuentesFin objFuentesFin, ref string Verificador)
         {
             try
             {
                 CD_FuenteFin CD_FuenteFin = new CD_FuenteFin();
                 CD_FuenteFin.InsertarFuente(ref objFuentesFin, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void ObtenerDatosFuenteFin(ref FuentesFin objFuentesFin, ref string Verificador)
+        {
+            try
+            {
+                CD_FuenteFin CD_FuenteFin = new CD_FuenteFin();
+                CD_FuenteFin.ObtenerDatosFuenteFin(ref objFuentesFin, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EditarFuenteFin(ref FuentesFin objFuentesFin, ref string Verificador)
+        {
+            try
+            {
+                CD_FuenteFin CD_FuenteFin = new CD_FuenteFin();
+                CD_FuenteFin.EditarFuenteFin(ref objFuentesFin, ref Verificador);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void EliminarFuenteFin(FuentesFin objFuentesFin, ref string Verificador)
+        {
+            try
+            {
+                CD_FuenteFin CD_FuenteFin = new CD_FuenteFin();
+                CD_FuenteFin.EliminarFuenteFin(objFuentesFin, ref Verificador);
 
             }
             catch (Exception ex)

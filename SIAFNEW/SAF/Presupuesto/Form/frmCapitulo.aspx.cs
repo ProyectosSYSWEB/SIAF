@@ -15,7 +15,6 @@ namespace SAF.Presupuesto.Form
         Sesion SesionUsu = new Sesion();
         CN_Capitulo CN_Capitulo = new CN_Capitulo();        
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -24,16 +23,15 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {            
             GRDCargarDatosDepend();
         }
-
         protected void GRDCargarDatosDepend()
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Basicos objBasicos = new Basicos();
                 List<Basicos> list = new List<Basicos>();
                 objBasicos.tipo = "CAT_CAPITULO";
@@ -47,54 +45,61 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }      
         protected void GRDCapitulos_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            lblError.Text = string.Empty;
+        {            
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                Basicos objCapitulo = new Basicos();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDCapitulos.Rows[fila].Cells[2].Text);
-            //    if (SesionUsu.Usu_TipoUsu == "SU")
-            //    {
-            //        CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-            //        if (Verificador == "0")
-            //            lblError.Text = "Se ha eliminado correctamente";
-            //        else
-            //            lblError.Text = Verificador;
-            //    }
-            //    else
-            //    {
-            //        lblError.Text = Verificador;
-            //    }
+                objCapitulo.id = Convert.ToString(GRDCapitulos.Rows[fila].Cells[2].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_Capitulo.EliminarCapitulo(objCapitulo, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente.')", true);                    
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene privilegios para realizar esta acción.')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void GRDCapitulos_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDCapitulos.SelectedRow.Cells[2].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Basicos objCapitulo = new Basicos();
+                    string Verificador = string.Empty;
+                    objCapitulo.id = Convert.ToString(GRDCapitulos.SelectedRow.Cells[2].Text);
+                    Session["SessionIdCap"] = objCapitulo.id;
+                    CN_Capitulo.ObtenerDatosCapitulo(ref objCapitulo, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        txtCap.Text = objCapitulo.clave;
+                        txtDescrip.Text = objCapitulo.descripcion;
+                        Multiview1.ActiveViewIndex = 1;
+                    }
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + Verificador + ".')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios suficientes para realizar esta acción.')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -103,7 +108,32 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        protected void BTNEditarCap_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Basicos objCapitulo = new Basicos();
+                    string Verificador = string.Empty;
+                    objCapitulo.clave = txtCap.Text;
+                    objCapitulo.descripcion = txtDescrip.Text;
+                    objCapitulo.id = (String)Session["SessionIdCap"];
+                    CN_Capitulo.EditarCapitulo(ref objCapitulo, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha modificado correctamente.')", true);                    
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);                    
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios suficientes para realizar esta acción.')", true);                
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }

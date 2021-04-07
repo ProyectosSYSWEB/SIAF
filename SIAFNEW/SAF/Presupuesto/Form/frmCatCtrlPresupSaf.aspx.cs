@@ -42,10 +42,10 @@ namespace SAF.Presupuesto.Form
                 //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_CentrosContab", ref DDLCContab);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Programa", ref DDLPrograma);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_SubPrograma", ref DDLSubprog, "p_nivel", "");
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Depend", ref DDLDependencia);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "P");
                 DDLDependencia.SelectedValue = "1";
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Cat_Estruct", ref DDLCodProg, "P_DEPENDENCIA", "P_EJERCICIO", DDLDependencia.SelectedValue, SesionUsu.Usu_Ejercicio);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Proyecto", ref DDLProyecto);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Proyecto", ref DDLProyecto, "p_ejercicio", SesionUsu.Usu_Ejercicio);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Partidas", ref DDLPartida);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuentes", ref DDLFuente, "P_EJERCICIO", SesionUsu.Usu_Ejercicio);
                 //DDLFuncion.SelectedValue = "1";
@@ -53,7 +53,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }
         }
 
@@ -71,12 +71,15 @@ namespace SAF.Presupuesto.Form
                 DDLPartida.SelectedValue = objCodProg.Partida;
                 DDLFuente.SelectedValue = objCodProg.Fuente;
                 txtTipoGasto.Text = "1";
-                txtDigiMinistrado.Text = "1";
+                if (DDLDependencia.SelectedValue == "81101")
+                    txtDigiMinistrado.Text = "2";
+                else
+                    txtDigiMinistrado.Text = "1";
                 Session["CodigoProg"] = objCodProg;
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }
         }
 
@@ -92,14 +95,14 @@ namespace SAF.Presupuesto.Form
                 DDLDependencia.SelectedValue = objCodProg.Dependencia;
                 DDLProyecto.SelectedValue = objCodProg.Proyecto;
                 DDLPartida.SelectedValue = objCodProg.Partida;
-                DDLFuente.SelectedValue = objCodProg.Fuente;
-                //txtTipoGasto.Text = "1";
-                //txtDigiMinistrado.Text = "1";
+                DDLFuente.SelectedValue = objCodProg.Fuente;                
                 Session["CodigoProg"] = objCodProg;
+                CargarConsttruccionCodigoProg();
+
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }
         }
 
@@ -112,10 +115,12 @@ namespace SAF.Presupuesto.Form
                     txtDigiMinistrado.Text = "2";
                 else
                     txtDigiMinistrado.Text = "1";
+                CargarDatosCodProg();
+                CargarConsttruccionCodigoProg();
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }
         }
 
@@ -123,11 +128,24 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                txtCodProg.Text = DDLPrograma.SelectedValue +"."+ DDLSubprog.SelectedValue + "." + DDLDependencia.SelectedValue + "." + DDLProyecto.SelectedValue + "." + DDLPartida.SelectedValue + "." + DDLFuente.SelectedValue + "." + txtTipoGasto.Text + "." + txtDigiMinistrado.Text;
+                CargarConsttruccionCodigoProg();
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+            }
+        }
+
+
+        protected void CargarConsttruccionCodigoProg()
+        {
+            try
+            {
+                txtCodProg.Text = DDLPrograma.SelectedValue + "." + DDLSubprog.SelectedValue + "." + DDLDependencia.SelectedValue + "." + DDLProyecto.SelectedValue + "." + DDLPartida.SelectedValue + "." + DDLFuente.SelectedValue + "." + txtTipoGasto.Text + "." + txtDigiMinistrado.Text;
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }
         }
 
@@ -147,14 +165,26 @@ namespace SAF.Presupuesto.Form
                 objCodigoProg.Ejercicio = SesionUsu.Usu_Ejercicio;
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.InsertarCodigoProg(objCodigoProg, ref Verificador);
-                if(Verificador == "0")
-                    lblError.Text = "Se ha guardado correctamente";
+                if (Verificador == "0")               
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctamente.')", true);                
                 else
-                    lblError.Text = Verificador;
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador + ".')", true);                
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ ex.Message + ".')", true);
+            }
+        }
+
+        protected void DDLPartida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarConsttruccionCodigoProg();
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }
         }
     }

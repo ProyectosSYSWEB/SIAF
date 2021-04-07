@@ -16,8 +16,8 @@ namespace SAF.Presupuesto.Form
         #region Variables
         Sesion SesionUsu = new Sesion();
         CN_Comun CNComun = new CN_Comun();
-        CN_Consultas CNConsultas = new CN_Consultas();
         CN_Pres_Reportes CNReportes = new CN_Pres_Reportes();
+        CN_Consultas CNConsultas = new CN_Consultas();        
         Pres_Reportes objReportes = new Pres_Reportes();
         string capitulos = "";
         List<string> ListaCaps = new List<string>();
@@ -30,12 +30,11 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             CargarCombos();
+            CargarCapitulos();
         }
-
         private void CargarCombos()
         {
             try
@@ -44,11 +43,9 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
-
         protected void DDLFuente_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -57,7 +54,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void GRDCargarDatosCodProg(object sender, EventArgs e)
@@ -65,13 +62,15 @@ namespace SAF.Presupuesto.Form
             try
             {                
                 CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                CargarGridAumentos();
+                CargarGridCedulas();
+                CargarGridMinistraciones();
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void CargarPolizaConsultaGrid(string CodigoProgramatico)
         {
             try
@@ -97,81 +96,163 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-        
-
-        protected void CBCap_OnCheckedChanged(object sender, EventArgs e)
+        protected void CargarCapitulos()
         {
             try
             {
-                if (CBCap1.Checked)
-                    ListaCaps.Add("1");
-                //else
-                //    ListaCaps.Remove("1000");
-                if (CBCap2.Checked)
-                    ListaCaps.Add("2");                
-                if (CBCap3.Checked)
-                    ListaCaps.Add("3");                
-                if (CBCap4.Checked)
-                    ListaCaps.Add("4");
-                if (CBCap5.Checked)
-                    ListaCaps.Add("5");
-                if (CBCap6.Checked)
-                    ListaCaps.Add("6");
-                if (CBCap7.Checked)
-                    ListaCaps.Add("7");
-                if (CBCap8.Checked)
-                    ListaCaps.Add("8");
-                if (CBCap9.Checked)
-                    ListaCaps.Add("9");
-                //if (CBCapT.Checked)
-                //{
-                //    int cap = 1;
-                //    for (int i = 1; i <= 8; i++)
-                //    {
-                //        ListaCaps.Add(Convert.ToString(cap));
-                //        cap = cap + 1;
-                //    }
-                //}
-
-                for (int i = 0; i < ListaCaps.Count; i++)
+                List<Pres_Reportes> List = new List<Pres_Reportes>();
+                objReportes.Ejercicio = SesionUsu.Usu_Ejercicio;
+                objReportes.Dependencia = "00000";
+                objReportes.DependenciaF = "00000";
+                CNReportes.ConsultaGrid_Capitulo(ref objReportes, ref List);
+                grdCapitulo.DataSource = List;
+                grdCapitulo.DataBind();
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        //protected void btnChkCapitulos_v1_Click(object sender, EventArgs e)
+        //{
+        //    bool check;
+        //    if (btnChkCapitulos_v1.Text == "Marcar todos")
+        //    {
+        //        btnChkCapitulos_v1.Text = "Quitar todos";
+        //        check = true;
+        //    }
+        //    else
+        //    {
+        //        btnChkCapitulos_v1.Text = "Marcar todos";
+        //        check = false;
+        //    }
+        //    foreach (GridViewRow row in grdCapitulo.Rows)
+        //    {
+        //        CheckBox check_box = row.FindControl("chkcapitulo") as CheckBox;
+        //        check_box.Checked = check;
+        //    }
+        //}
+        protected void rowCapitulo(GridView Nombre_Grid, string Nombre_Checkbox)
+        {
+            try
+            {
+                objReportes.Capitulo = "0";
+                foreach (GridViewRow row in Nombre_Grid.Rows)
                 {
-                    capitulos = capitulos + ListaCaps[i] + ",";
+                    CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl(Nombre_Checkbox);
+                    if (chkUrs_Disponibles.Checked == true)
+                    {
+                        //objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        objReportes.Capitulo = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                    }
                 }
-                capitulos = capitulos.TrimEnd(',');
-                Session["Capitulos"] = capitulos;
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void BTNBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                lblError.Text = " ";
-                DDLCodProg.Enabled = false;
-                capitulos = (String)Session["Capitulos"];
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, capitulos, DDLFuente.SelectedValue);
+                rowCapitulo(grdCapitulo, "chkcapitulo");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Saf_Presup_Cod_Prog", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_fuente", "p_capitulos",  SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, DDLFuente.SelectedValue, objReportes.Capitulo);
                 if (DDLCodProg.Items.Count > 1)
                 {
                     DDLCodProg.Enabled = true;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                    //CargarCapitulos();                    
+                    //CargarGridCedulas();
+                    //CargarGridAumentos();
+                    CargarGridMinistraciones();
                 }
 
                 else if (DDLCodProg.Items.Count == 1)
                 {
                     DDLCodProg.Enabled = false;                    
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                    //CargarCapitulos();
+                    CargarGridCedulas();                    
+                    CargarGridAumentos();
+                    CargarGridMinistraciones();                    
                 }
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        protected void CargarGridCedulas()
+        {
+            try
+            {
+                Consultas objConsultas = new Consultas();
+                List<Consultas> listCedulas = new List<Consultas>();
+                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Dependencia = DDLDependencia.SelectedValue;
+                objConsultas.Supertipo = "C";
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listCedulas);
+                if (listCedulas.Count > 0)
+                {
+                    GRDCedulas.Enabled = true;
+                    GRDCedulas.DataSource = listCedulas;
+                    GRDCedulas.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }        
+        protected void CargarGridAumentos()
+        {
+            try
+            {
+                Consultas objConsultas = new Consultas();
+                List<Consultas> listAumentos = new List<Consultas>();
+                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Dependencia = DDLDependencia.SelectedValue;
+                objConsultas.Supertipo = "A";                
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listAumentos);
+                if (listAumentos.Count > 0)
+                {
+                    GRDAumentos.Enabled = true;
+                    GRDAumentos.DataSource = listAumentos;
+                    GRDAumentos.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        protected void CargarGridMinistraciones()
+        {
+            try
+            {
+                Consultas objConsultas = new Consultas();
+                List<Consultas> listMinistraciones = new List<Consultas>();
+                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Dependencia = DDLDependencia.SelectedValue;
+                objConsultas.Supertipo = "M";
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CNConsultas.ConsultaDetalleDocumento(ref objConsultas, ref listMinistraciones);
+                if (listMinistraciones.Count > 0)
+                {
+                    GRDMinistraciones.Enabled = true;
+                    GRDMinistraciones.DataSource = listMinistraciones;
+                    GRDMinistraciones.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }

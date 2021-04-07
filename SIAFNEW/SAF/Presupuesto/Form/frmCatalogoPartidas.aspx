@@ -7,13 +7,13 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="mensaje">
+            <%--<div class="mensaje">
                 <asp:UpdatePanel ID="UpdatePanel100" runat="server">
                     <ContentTemplate>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-            </div>
+            </div>--%>
             <table class="tabla_contenido">
                 <tr>
                     <td class="auto-style1">
@@ -57,7 +57,18 @@
                                     <asp:TextBox ID="txtPartida" Text="" runat="server" Width="500px" MaxLength="5">
                                     </asp:TextBox>
                                 </td>
-                            </tr>                            
+                            </tr>    
+                            
+                            <tr>
+                                <td style="width:30%">
+                                    <asp:Label ID="Label1" runat="server" Text="Concepto">
+                                    </asp:Label>
+                                </td>
+                                <td style="width:80%">                                    
+                                    <asp:TextBox ID="txtConcepto" Text="" runat="server" Width="500px">
+                                    </asp:TextBox>
+                                </td>
+                            </tr> 
 
                             <tr>
                                 <td style="width:30%">
@@ -68,7 +79,8 @@
                                     <asp:TextBox ID="txtDescrip" Text="" runat="server" Width="500px">
                                     </asp:TextBox>
                                 </td>
-                            </tr>                           
+                            </tr> 
+                            
 
                             <tr>
                                 <td>

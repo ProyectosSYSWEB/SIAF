@@ -89,6 +89,7 @@ namespace CapaDatos
         {
             string Id_Documento = "";
             string C_Contab = "";
+            string Dependencia = "";
             int z = 0;
             try
             {
@@ -96,12 +97,13 @@ namespace CapaDatos
                 {
                     double importeOperacion = 0;
                     int consecutivo = 1;
-                    if (C_Contab != List[i].Centro_Contab)
+                    if (C_Contab != List[i].Centro_Contab && Dependencia != List[i].Dependencia)
                     {
                         C_Contab = List[i].Centro_Contab;
+                        Dependencia = List[i].Dependencia;
                         for (int y = i; y < List.Count; y ++)
                         {
-                            if (C_Contab == List[y].Centro_Contab)
+                            if (C_Contab == List[y].Centro_Contab && Dependencia == List[i].Dependencia)
                                 importeOperacion = importeOperacion + Convert.ToDouble(List[y].Destino);
                             else                            
                                 y = List.Count;
@@ -119,7 +121,7 @@ namespace CapaDatos
                     for (int x = z; x <= List.Count; x++)
                     {
                         z = x;
-                        if (List[x].Centro_Contab == C_Contab)
+                        if (List[x].Centro_Contab == C_Contab && Dependencia == List[x].Dependencia && List[x].Centro_Contab != "81101")
                         {                                                   
                             CD_Datos CDDatos = new CD_Datos();
                             OracleCommand Cmd = null;
@@ -131,7 +133,7 @@ namespace CapaDatos
                             consecutivo = consecutivo + 1;
                             i = x;
                         }
-                        else//se inserta el codigo origen y se asigna la nueva dependencia
+                        else if (z < List.Count-1 ) //se inserta el codigo origen y se asigna la nueva dependencia
                         {
                             int ubicacionOrigen = List.Count - 1;                            
                             CD_Datos CDDatos = new CD_Datos();
@@ -141,7 +143,8 @@ namespace CapaDatos
                             String[] ParametrosOut = { "P_BANDERA" };
                             Cmd = CDDatos.GenerarOracleCommand("INS_ADECUACION_NOMINA_DET", ref Verificador, Parametros, Valores, ParametrosOut);
                             CDDatos.LimpiarOracleCommand(ref Cmd);
-                            C_Contab = "";                            
+                            C_Contab = "";
+                            Dependencia = "";
                             x = List.Count;
                         }                                                    
                     }                    
