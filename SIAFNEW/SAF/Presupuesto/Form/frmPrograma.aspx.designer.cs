@@ -60,6 +60,15 @@ namespace SAF.Presupuesto.Form
         protected global::System.Web.UI.WebControls.View View_1;
 
         /// <summary>
+        /// Control imgBttnPdf_v15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBttnPdf_v15;
+
+        /// <summary>
         /// Control btnNuevo.
         /// </summary>
         /// <remarks>
@@ -67,15 +76,6 @@ namespace SAF.Presupuesto.Form
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnNuevo;
-
-        /// <summary>
-        /// Control imgBttnPdf.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBttnPdf;
 
         /// <summary>
         /// Control lblFuncion.

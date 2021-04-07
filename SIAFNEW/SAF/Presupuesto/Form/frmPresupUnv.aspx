@@ -42,11 +42,11 @@
                                                     <asp:BoundField DataField="Autorizado" HeaderText="Autorizado" ItemStyle-HorizontalAlign="Right" />    
                                                     <asp:BoundField DataField="Tipo_Gasto_Param" HeaderText="Tipo_Gasto_Param" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />
                                                     <asp:TemplateField>
-                                                                <ItemTemplate>
-                                                                    <asp:LinkButton ID="btnReporte" runat="server" CommandName="Select" Visible="true">Reporte</asp:LinkButton>
-                                                                    <asp:Label ID="lblReporte" runat="server" ForeColor="#6B696B" Text="Reporte" Visible="true"></asp:Label>
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="btnReporte" runat="server" CommandName="Select" Visible="true">Reporte</asp:LinkButton>
+                                                            <asp:Label ID="lblReporte" runat="server" ForeColor="#6B696B" Text="Reporte" Visible="true"></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                 </Columns>
 
                                                 <FooterStyle CssClass="enc" />

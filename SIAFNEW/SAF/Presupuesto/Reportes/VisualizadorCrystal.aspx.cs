@@ -718,6 +718,23 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Id); report.SetParameterValue(2, Tipo_V);                                                
                         reporte_PDF();
                         break;
+                    case "RPT-PRESUP_FUENTE_FIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_FUENTE_FIN.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-PRESUP_PROGRAMAS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_PROGRAMAS.rpt";
+                        reportes_dir();
+                        reporte_PDF();
+                        break;
+                    case "RPT-PRESUP_CAT_PARTIDAS_GASTO":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_CAT_PARTIDAS_GASTO.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio);
+                        reporte_PDF();
+                        break;
                 }
             }
             catch (Exception ex)
