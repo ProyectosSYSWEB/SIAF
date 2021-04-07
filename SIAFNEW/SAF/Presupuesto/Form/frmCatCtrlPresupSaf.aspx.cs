@@ -64,18 +64,23 @@ namespace SAF.Presupuesto.Form
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.ObtenerDatosCodProg(DDLCodProg.SelectedValue, ref objCodProg, ref Verificador );
                 //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
-                DDLPrograma.SelectedValue = objCodProg.Programa;
-                DDLSubprog.SelectedValue = objCodProg.SubPrograma;
-                //DDLDependencia.SelectedValue = objCodProg.Dependencia;
-                DDLProyecto.SelectedValue = objCodProg.Proyecto;
-                DDLPartida.SelectedValue = objCodProg.Partida;
-                DDLFuente.SelectedValue = objCodProg.Fuente;
-                txtTipoGasto.Text = "1";
-                if (DDLDependencia.SelectedValue == "81101")
-                    txtDigiMinistrado.Text = "2";
+                if (Verificador == "0")
+                {
+                    DDLPrograma.SelectedValue = objCodProg.Programa;
+                    DDLSubprog.SelectedValue = objCodProg.SubPrograma;
+                    DDLDependencia.SelectedValue = objCodProg.Dependencia;
+                    DDLProyecto.SelectedValue = objCodProg.Proyecto;
+                    DDLPartida.SelectedValue = objCodProg.Partida;
+                    DDLFuente.SelectedValue = objCodProg.Fuente;
+                    txtTipoGasto.Text = "1";
+                    if (DDLDependencia.SelectedValue == "81101")
+                        txtDigiMinistrado.Text = "2";
+                    else
+                        txtDigiMinistrado.Text = "1";
+                    Session["CodigoProg"] = objCodProg;
+                }
                 else
-                    txtDigiMinistrado.Text = "1";
-                Session["CodigoProg"] = objCodProg;
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
             }
             catch(Exception ex)
             {
@@ -89,15 +94,20 @@ namespace SAF.Presupuesto.Form
             {
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.ObtenerDatosCodProg(DDLCodProg.SelectedValue, ref objCodProg, ref Verificador);
-                //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
-                DDLPrograma.SelectedValue = objCodProg.Programa;
-                DDLSubprog.SelectedValue = objCodProg.SubPrograma;
-                DDLDependencia.SelectedValue = objCodProg.Dependencia;
-                DDLProyecto.SelectedValue = objCodProg.Proyecto;
-                DDLPartida.SelectedValue = objCodProg.Partida;
-                DDLFuente.SelectedValue = objCodProg.Fuente;                
-                Session["CodigoProg"] = objCodProg;
-                CargarConsttruccionCodigoProg();
+                if (Verificador == "0")
+                {
+                    //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
+                    DDLPrograma.SelectedValue = objCodProg.Programa;
+                    DDLSubprog.SelectedValue = objCodProg.SubPrograma;
+                    DDLDependencia.SelectedValue = objCodProg.Dependencia;
+                    DDLProyecto.SelectedValue = objCodProg.Proyecto;
+                    DDLPartida.SelectedValue = objCodProg.Partida;
+                    DDLFuente.SelectedValue = objCodProg.Fuente;
+                    Session["CodigoProg"] = objCodProg;
+                    CargarConsttruccionCodigoProg();
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
 
             }
             catch (Exception ex)
