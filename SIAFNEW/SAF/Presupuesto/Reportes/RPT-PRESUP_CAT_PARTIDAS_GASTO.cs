@@ -114,7 +114,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_P_EJERCICIO {
+        public CrystalDecisions.Shared.IParameterField Parameter_EJERCICIO {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
