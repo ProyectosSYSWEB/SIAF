@@ -171,15 +171,17 @@ namespace SAF.Presupuesto.Form
                     CargarGridMinistraciones();
                 }
 
-                else if (DDLCodProg.Items.Count == 1)
+                else if (DDLCodProg.Items.Count == 1 && DDLCodProg.DataSource != null)
                 {
-                    DDLCodProg.Enabled = false;                    
+                    DDLCodProg.Enabled = false;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                     //CargarCapitulos();
-                    CargarGridCedulas();                    
+                    CargarGridCedulas();
                     CargarGridAumentos();
-                    CargarGridMinistraciones();                    
+                    CargarGridMinistraciones();
                 }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Sin códigos programaticos.')", true);
             }
             catch (Exception ex)
             {
