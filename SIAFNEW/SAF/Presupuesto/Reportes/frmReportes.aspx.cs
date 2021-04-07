@@ -43,17 +43,18 @@ namespace SAF.Presupuesto.Reportes
             lblError.Text = string.Empty;
             try
             {
-                SesionUsu.Usu_Rep = Request.QueryString["P_REP"];
-                switch (SesionUsu.Usu_Rep)
+                string Reporte = Request.QueryString["P_REP"];
+                switch (Reporte)
                 {
                     case "RP-001":
                         MultiView1.ActiveViewIndex = 0;
-                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDependencia, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES", ref ListDependencia);
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDependenciaInicial, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES", ref ListDependencia);
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDependenciaFinal, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES", ref ListDependencia);
                         btnChkCapitulos_v1.Visible = false;
                         btnChkFuentes_v1.Visible = false;
                         btnChkProyectos_v1.Visible = false;
                         grdProyectos_v1.Visible = false;
-                        ddlDependencia_SelectedIndexChanged(null, null);
+                       
                         break;
                     case "RP-004":
                         MultiView1.ActiveViewIndex = 2;
@@ -228,7 +229,7 @@ namespace SAF.Presupuesto.Reportes
         {
             try
             {             
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDependencia, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "A");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDependenciaInicial, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "A");
                 CNComun.LlenaCombo("DPP.PKG_PRES.OBT_Combo_Quincenas", ref DDL_Quincena, "p_ejercicio", SesionUsu.Usu_Ejercicio,   "DPP");
                 CNComun.LlenaCombo("PKG_PRES.Obt_Combo_Nomina", ref DDL_Nomina, "p_ejercicio", "P_Quincena", "P_Tipo", SesionUsu.Usu_Ejercicio, DDL_Quincena.SelectedValue, DDL_Tipo.SelectedValue, "DPP");
             }
@@ -251,39 +252,39 @@ namespace SAF.Presupuesto.Reportes
                     switch (ddltipo.SelectedValue)
                     {
                         case "EJERCIDO":
-                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-EJERCIDO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-EJERCIDO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
                         case "AUMENTO":
-                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-AUMENTO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-AUMENTO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
                         case "AUTORIZADO":
-                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-AUTORIZADO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-AUTORIZADO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
                         case "MODIFICADO":
-                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-MODIFICADO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-MODIFICADO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
                         case "DISMINUCION":
-                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-DISMINUCION&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-DISMINUCION&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
                         case "COMPROMETIDO":
-                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-COMPROMETIDO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-COMPROMETIDO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
                         case "XMINISTRAR":
-                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-XMINISTRAR&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-XMINISTRAR&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
                         case "MINISTRADO":
-                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-MINISTRADO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-MINISTRADO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
                         case "XEJERCER":
-                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-XEJERCER&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue;
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-XEJERCER&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                             break;
 
                     }
                 }
                 else if (DDLReporte_v1.SelectedValue == "RP002")
-                    ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP002&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddltipo.SelectedValue;
+                    ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP002&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&TipoDoc=" + ddltipo.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
                 else if (DDLReporte_v1.SelectedValue == "RP004")
-                    ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP004&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Proyecto=" + objReportes.Proyecto + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + ddltipo.SelectedValue;
+                    ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP004&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Proyecto=" + objReportes.Proyecto + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&TipoDoc=" + ddltipo.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
 
                 else
                     ruta1 = string.Empty;
@@ -298,7 +299,61 @@ namespace SAF.Presupuesto.Reportes
 
         protected void imgBttnExcel(object sender, ImageClickEventArgs e)
         {
+            try
+            {
+                rowFuente();
+                rowCapitulo();
+                rowProyecto();
+                string ruta1 = string.Empty;
+                if (DDLReporte_v1.SelectedValue == "RP001")
+                {
+                    switch (ddltipo.SelectedValue)
+                    {
+                        case "EJERCIDO":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-EJERCIDO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
+                        case "AUMENTO":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-AUMENTO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
+                        case "AUTORIZADO":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-AUTORIZADO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
+                        case "MODIFICADO":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-MODIFICADO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
+                        case "DISMINUCION":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-DISMINUCION_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
+                        case "COMPROMETIDO":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-COMPROMETIDO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
+                        case "XMINISTRAR":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-XMINISTRAR_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
+                        case "MINISTRADO":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-MINISTRADO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
+                        case "XEJERCER":
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-XEJERCER_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                            break;
 
+                    }
+                }
+                else if (DDLReporte_v1.SelectedValue == "RP002")
+                    ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP002_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + objReportes.Fuente + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&TipoDoc=" + ddltipo.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+                else if (DDLReporte_v1.SelectedValue == "RP004")
+                    ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP004_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Proyecto=" + objReportes.Proyecto + "&Capitulo=" + objReportes.Capitulo + "&Ministrable=" + ddlministrable.SelectedValue + "&Dependencia=" + ddlDependenciaInicial.SelectedValue + "&TipoDoc=" + ddltipo.SelectedValue + "&Dependencia_F=" + ddlDependenciaFinal.SelectedValue;
+
+                else
+                    ruta1 = string.Empty;
+
+                string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
         }
         protected void DDLDependenciaInicial_v11_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -364,95 +419,42 @@ namespace SAF.Presupuesto.Reportes
         {
             
         }
-        protected void ddlDependencia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
+        
+        //protected void DDLReporte_v1_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (DDLReporte_v1.SelectedValue == "RP004")
+        //    {
                
-                CargarGrid(ref grdCapitulo, 1);
-                CargarGrid(ref grdFuente, 0);
-                CargarGrid(ref grdProyectos_v1,5);
+        //        grdFuente.Visible = false;
+        //        btnChkFuentes_v1.Visible = false;
 
+        //        grdProyectos_v1.Visible = true;
+
+        //        if (grdProyectos_v1.Rows.Count > 0)
+        //        {
+        //            btnChkProyectos_v1.Text = "Marcar todos";
+        //            btnChkProyectos_v1.Visible = true;
+        //        }
+        //        else
+        //            btnChkProyectos_v1.Visible = false;
+        //    }
+        //    else
+        //    {
                
+        //        grdProyectos_v1.Visible = false;
+        //        btnChkProyectos_v1.Visible = false;
 
-                if (DDLReporte_v1.SelectedValue == "RP004")
-                {
-                    grdFuente.Visible = false;
-                    btnChkFuentes_v1.Visible = false;
-
-                    grdProyectos_v1.Visible = true;
-
-                    if (grdProyectos_v1.Rows.Count > 0)
-                    {
-                        btnChkProyectos_v1.Text = "Marcar todos";
-                        btnChkProyectos_v1.Visible = true;
-                    }
-                    else
-                        btnChkProyectos_v1.Visible = false;
-                }
-                else
-                {
-                    grdProyectos_v1.Visible = false;
-                    btnChkProyectos_v1.Visible = false;
-
-                    if (grdFuente.Rows.Count > 0)
-                    {
-                        grdFuente.Visible = true;
-                        btnChkFuentes_v1.Text = "Marcar todos";
-                        btnChkFuentes_v1.Visible = true;
-                    }
-                    else
-                        btnChkFuentes_v1.Visible = false;
-                }
-
-                if (grdCapitulo.Rows.Count > 0)
-                {
-                    btnChkCapitulos_v1.Text = "Marcar todos";
-                    btnChkCapitulos_v1.Visible = true;
-                }
-                else
-                    btnChkCapitulos_v1.Visible = false;
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-        }
-        protected void DDLReporte_v1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DDLReporte_v1.SelectedValue == "RP004")
-            {
-               
-                grdFuente.Visible = false;
-                btnChkFuentes_v1.Visible = false;
-
-                grdProyectos_v1.Visible = true;
-
-                if (grdProyectos_v1.Rows.Count > 0)
-                {
-                    btnChkProyectos_v1.Text = "Marcar todos";
-                    btnChkProyectos_v1.Visible = true;
-                }
-                else
-                    btnChkProyectos_v1.Visible = false;
-            }
-            else
-            {
-               
-                grdProyectos_v1.Visible = false;
-                btnChkProyectos_v1.Visible = false;
-
-                if (grdFuente.Rows.Count > 0)
-                {
-                    grdFuente.Visible = true;
-                    btnChkFuentes_v1.Text = "Marcar todos";
-                    btnChkFuentes_v1.Visible = true;
-                }
-                else
-                    btnChkFuentes_v1.Visible = false;
-            }
+        //        if (grdFuente.Rows.Count > 0)
+        //        {
+        //            grdFuente.Visible = true;
+        //            btnChkFuentes_v1.Text = "Marcar todos";
+        //            btnChkFuentes_v1.Visible = true;
+        //        }
+        //        else
+        //            btnChkFuentes_v1.Visible = false;
+        //    }
            
-        }
+        //}
         protected void DDLDependencia_v13_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarGrid(ref grdCapitulo_v13, 14);
@@ -727,8 +729,8 @@ namespace SAF.Presupuesto.Reportes
             try
             {
                 List<Pres_Reportes> List = new List<Pres_Reportes>();  
-                objReportes.Dependencia = ddlDependencia.SelectedValue;
-                objReportes.DependenciaF = ddlDependencia.SelectedValue;
+                objReportes.Dependencia = ddlDependenciaInicial.SelectedValue;
+                objReportes.DependenciaF = ddlDependenciaFinal.SelectedValue;
                 objReportes.Ejercicio = SesionUsu.Usu_Ejercicio;
                 
                 if (IdGrid == 0)
@@ -1380,7 +1382,58 @@ namespace SAF.Presupuesto.Reportes
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
-        
+        protected void btnBuscar_v1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                CargarGrid(ref grdCapitulo, 1);
+                CargarGrid(ref grdFuente, 0);
+                CargarGrid(ref grdProyectos_v1, 5);
+
+                if (DDLReporte_v1.SelectedValue == "RP004")
+                {
+                    grdFuente.Visible = false;
+                    btnChkFuentes_v1.Visible = false;
+
+                    grdProyectos_v1.Visible = true;
+
+                    if (grdProyectos_v1.Rows.Count > 0)
+                    {
+                        btnChkProyectos_v1.Text = "Marcar todos";
+                        btnChkProyectos_v1.Visible = true;
+                    }
+                    else
+                        btnChkProyectos_v1.Visible = false;
+                }
+                else
+                {
+                    grdProyectos_v1.Visible = false;
+                    btnChkProyectos_v1.Visible = false;
+
+                    if (grdFuente.Rows.Count > 0)
+                    {
+                        grdFuente.Visible = true;
+                        btnChkFuentes_v1.Text = "Marcar todos";
+                        btnChkFuentes_v1.Visible = true;
+                    }
+                    else
+                        btnChkFuentes_v1.Visible = false;
+                }
+
+                if (grdCapitulo.Rows.Count > 0)
+                {
+                    btnChkCapitulos_v1.Text = "Marcar todos";
+                    btnChkCapitulos_v1.Visible = true;
+                }
+                else
+                    btnChkCapitulos_v1.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
         protected void btnBuscar_v11_Click(object sender, EventArgs e)
         {
             CargarGrid(ref grdCapitulo_v11,12);
@@ -1926,6 +1979,6 @@ namespace SAF.Presupuesto.Reportes
             }
         }
 
-        
+       
     }
 }

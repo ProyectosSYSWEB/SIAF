@@ -325,7 +325,8 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
-                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
+                                                                                   
+                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
                                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                                 <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Datos Grales.">
                                                                                                     <HeaderTemplate>
@@ -1409,7 +1410,9 @@
 
 </ajaxToolkit:TabPanel>
                                                                                             </ajaxToolkit:TabContainer>
-                                                                                </td>
+                                                                               
+                                                                                    
+                                                                                            </td>
                                                                             </tr>                                                                            
                                                                             <tr>
                                                                                 <td class="cuadro_botones">
@@ -1447,10 +1450,7 @@
                                                                     </ContentTemplate>
                                                                 </asp:UpdatePanel>
                                                             </asp:View>
-                                                            <asp:View ID="View3" runat="server">
-                                                            </asp:View>
-                                                            <asp:View ID="View4" runat="server">
-                                                            </asp:View>
+                                                            
                                                         </asp:MultiView>
                                                     </ContentTemplate>
                                                 </asp:UpdatePanel>

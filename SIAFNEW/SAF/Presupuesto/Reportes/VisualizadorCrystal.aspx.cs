@@ -102,51 +102,100 @@ namespace SAF.Presupuesto.Reportes
                     case "RP-EJERCIDO":
                         Reporte = "Presupuesto\\Reportes\\RPT-Ejercido.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
 
                         break;
                     case "RP-AUMENTO":
                         Reporte = "Presupuesto\\Reportes\\RPT-Aumento.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
 
                         break;
                     case "RP-AUTORIZADO":
                         Reporte = "Presupuesto\\Reportes\\RPT-Autorizado.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
 
                         break;
                     case "RP-MODIFICADO":
                         Reporte = "Presupuesto\\Reportes\\RPT-Modificado.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
 
                         break;
                     case "RP-DISMINUCION":
                         Reporte = "Presupuesto\\Reportes\\RPT-Disminucion.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
                         break;
                     case "RP-COMPROMETIDO":
                         Reporte = "Presupuesto\\Reportes\\RPT-Comprometido.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
                         break;
                     case "RP-XMINISTRAR":
                         Reporte = "Presupuesto\\Reportes\\RPT-Xministrar.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
                         break;
                     case "RP-MINISTRADO":
                         Reporte = "Presupuesto\\Reportes\\RPT-Ministrado.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
                         break;
                     case "RP-XEJERCER":
                         Reporte = "Presupuesto\\Reportes\\RPT-Xejercer.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); reporte_PDF();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_PDF();
+                        break;
+                    case "RP-EJERCIDO_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Ejercido.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
+
+                        break;
+                    case "RP-AUMENTO_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Aumento.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
+
+                        break;
+                    case "RP-AUTORIZADO_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Autorizado.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
+
+                        break;
+                    case "RP-MODIFICADO_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Modificado.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
+
+                        break;
+                    case "RP-DISMINUCION_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Disminucion.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
+                        break;
+                    case "RP-COMPROMETIDO_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Comprometido.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
+                        break;
+                    case "RP-XMINISTRAR_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Xministrar.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
+                        break;
+                    case "RP-MINISTRADO_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Ministrado.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
+                        break;
+                    case "RP-XEJERCER_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Xejercer.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, Fuente); report.SetParameterValue(2, Capitulo); report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Dependencia); report.SetParameterValue(5, Dependencia_F); reporte_XLS();
                         break;
                     case "RP-007":
                         Reporte = "Presupuesto\\Reportes\\RPT-007.rpt";
@@ -518,6 +567,7 @@ namespace SAF.Presupuesto.Reportes
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Fuente);
                         report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, TipoDoc);
+                        report.SetParameterValue(6, Dependencia_F);
                         reporte_PDF();
                         break;
                     case "RP-PRESUP_RP002_XLS":
@@ -525,6 +575,7 @@ namespace SAF.Presupuesto.Reportes
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Fuente);
                         report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, TipoDoc);
+                        report.SetParameterValue(6, Dependencia_F);
                         reporte_XLS();
                         break;
                     case "RP-PRESUP_RP004":
@@ -532,6 +583,7 @@ namespace SAF.Presupuesto.Reportes
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Ministrable);
                         report.SetParameterValue(3, Ejercicio); report.SetParameterValue(4, TipoDoc); report.SetParameterValue(5, Proyecto);
+                        report.SetParameterValue(6, Dependencia_F);
                         reporte_PDF();
                         break;
                     case "RP-PRESUP_RP004_XLS":
@@ -539,6 +591,7 @@ namespace SAF.Presupuesto.Reportes
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Ministrable);
                         report.SetParameterValue(3, Ejercicio); report.SetParameterValue(4, TipoDoc); report.SetParameterValue(5, Proyecto);
+                        report.SetParameterValue(6, Dependencia_F);
                         reporte_XLS();
                         break;
                     case "RP-PRESUP_RP012":

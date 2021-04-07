@@ -837,10 +837,7 @@
                                                                     </ContentTemplate>
                                                                 </asp:UpdatePanel>
                                                             </asp:View>
-                                                            <asp:View ID="View3" runat="server">
-                                                            </asp:View>
-                                                            <asp:View ID="View4" runat="server">
-                                                            </asp:View>
+                                                           
                                                         </asp:MultiView>
                                                     </ContentTemplate>
                                                 </asp:UpdatePanel>

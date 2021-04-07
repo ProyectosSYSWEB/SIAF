@@ -85,13 +85,31 @@ namespace SAF.Presupuesto.Reportes {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Control ddlDependencia.
+        /// Control ddlDependenciaInicial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDependencia;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDependenciaInicial;
+        
+        /// <summary>
+        /// Control Label56.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label56;
+        
+        /// <summary>
+        /// Control ddlDependenciaFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDependenciaFinal;
         
         /// <summary>
         /// Control Label5.
@@ -148,6 +166,33 @@ namespace SAF.Presupuesto.Reportes {
         protected global::System.Web.UI.WebControls.DropDownList ddlministrable;
         
         /// <summary>
+        /// Control updPnlBuscar_v1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPnlBuscar_v1;
+        
+        /// <summary>
+        /// Control btnBuscar_v1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscar_v1;
+        
+        /// <summary>
+        /// Control updProBuscar_v1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress updProBuscar_v1;
+        
+        /// <summary>
         /// Control grdCapitulo.
         /// </summary>
         /// <remarks>
@@ -202,13 +247,13 @@ namespace SAF.Presupuesto.Reportes {
         protected global::System.Web.UI.WebControls.Button btnChkProyectos_v1;
         
         /// <summary>
-        /// Control UpdatePanel104.
+        /// Control updPnlBotones_v1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel104;
+        protected global::System.Web.UI.UpdatePanel updPnlBotones_v1;
         
         /// <summary>
         /// Control ImageButton1.
@@ -227,6 +272,15 @@ namespace SAF.Presupuesto.Reportes {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
+        
+        /// <summary>
+        /// Control UpdateProgress8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress UpdateProgress8;
         
         /// <summary>
         /// Control View2.
