@@ -66,7 +66,7 @@ namespace SAF.Presupuesto.Form
                 //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
                 DDLPrograma.SelectedValue = objCodProg.Programa;
                 DDLSubprog.SelectedValue = objCodProg.SubPrograma;
-                DDLDependencia.SelectedValue = objCodProg.Dependencia;
+                //DDLDependencia.SelectedValue = objCodProg.Dependencia;
                 DDLProyecto.SelectedValue = objCodProg.Proyecto;
                 DDLPartida.SelectedValue = objCodProg.Partida;
                 DDLFuente.SelectedValue = objCodProg.Fuente;
@@ -111,7 +111,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Cat_Estruct", ref DDLCodProg, "P_DEPENDENCIA", "P_EJERCICIO", DDLDependencia.SelectedValue, SesionUsu.Usu_Ejercicio);
-                if (DDLDependencia.DataSource != null)
+                if (DDLCodProg.DataSource != null)
                 {
                     if (DDLDependencia.SelectedValue == "81101")
                         txtDigiMinistrado.Text = "2";
