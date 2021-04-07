@@ -166,8 +166,8 @@ namespace SAF.Presupuesto.Form
                     DDLCodProg.Enabled = true;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                     //CargarCapitulos();                    
-                    //CargarGridCedulas();
-                    //CargarGridAumentos();
+                    CargarGridCedulas();
+                    CargarGridAumentos();
                     CargarGridMinistraciones();
                 }
 

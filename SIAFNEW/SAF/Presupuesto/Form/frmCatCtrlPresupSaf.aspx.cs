@@ -79,7 +79,7 @@ namespace SAF.Presupuesto.Form
                         txtDigiMinistrado.Text = "1";
                     Session["CodigoProg"] = objCodProg;
                 }
-                else
+                else if (DDLDependencia.SelectedValue != "00000")
                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
             }
             catch(Exception ex)
