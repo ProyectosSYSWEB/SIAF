@@ -788,6 +788,18 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(0, Ejercicio);
                         reporte_PDF();
                         break;
+                    case "RPT-PRESUP_CCONTAB":
+                        Reporte = "Presupuesto\\Reportes\\RPT_PRESUP_CCONTAB.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-PRESUP_DEPENDENCIAS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_DEPENDENCIAS.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio);
+                        reporte_PDF();
+                        break;
                 }
             }
             catch (Exception ex)

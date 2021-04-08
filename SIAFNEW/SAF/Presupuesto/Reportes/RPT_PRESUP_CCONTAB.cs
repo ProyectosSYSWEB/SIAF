@@ -23,7 +23,7 @@ namespace SAF.Presupuesto.Reportes {
         
         public override string ResourceName {
             get {
-                return "RPT-PRESUP_CCONTAB.rpt";
+                return "RPT_PRESUP_CCONTAB.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SAF.Presupuesto.Reportes {
         
         public override string FullResourceName {
             get {
-                return "SAF.Presupuesto.Reportes.RPT-PRESUP_CCONTAB.rpt";
+                return "SAF.Presupuesto.Reportes.RPT_PRESUP_CCONTAB.rpt";
             }
             set {
                 // Do nothing
