@@ -705,6 +705,12 @@
       <DependentUpon>RPT-PRESUP_CAT_PARTIDAS_GASTO.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_DEPENDENCIAS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_DEPENDENCIAS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_FUENTE_FIN.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -813,6 +819,12 @@
       <DependentUpon>RPT-Xministrar.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT_PRESUP_CCONTAB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_PRESUP_CCONTAB.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Presupuesto\Reportes\VisualizadorCrystal.aspx.cs">
       <DependentUpon>VisualizadorCrystal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -910,6 +922,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_CAT_PARTIDAS_GASTO.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_DEPENDENCIAS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_DEPENDENCIAS.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_FUENTE_FIN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_FUENTE_FIN.cs</LastGenOutput>
@@ -980,6 +996,10 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-Xministrar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-Xministrar.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT_PRESUP_CCONTAB.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_PRESUP_CCONTAB.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -212,6 +212,20 @@ namespace SAF.Presupuesto.Form
             {
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
-        }        
+        }
+        protected void btnObtnerReporte(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string ruta1 = "";
+                ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RPT-PRESUP_DEPENDENCIAS&Ejercicio=" + SesionUsu.Usu_Ejercicio;
+                string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
     }
 }

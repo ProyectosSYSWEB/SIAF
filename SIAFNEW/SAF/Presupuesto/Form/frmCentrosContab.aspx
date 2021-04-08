@@ -36,6 +36,7 @@
                                                     <asp:Label runat="server" ID="LBLncc"></asp:Label>
                                                     <br />
                                                     <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click" ValidationGroup="Agregar" />
+                                                    <asp:ImageButton ID="imgBttnPdf_v15" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" title="Reporte PDF" OnClick="btnObtnerReporte" />
                                                     <asp:GridView ID="GRDCentrosContab" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowDeleting="GRDCentrosContab_RowDeleting" OnSelectedIndexChanged="GRDCentrosContab_SelectedIndexChanged">
                                                         <Columns>
                                                             <asp:BoundField DataField="C_Contab" HeaderText="Centro contable" />
