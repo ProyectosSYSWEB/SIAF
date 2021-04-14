@@ -40,9 +40,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-
-
-
         public void InsertarFuente(ref FuentesFin objFuentes, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -65,5 +62,82 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void ObtenerDatosFuenteFin(ref FuentesFin objFuenteFin, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_ID", "P_EJERCICIO" };
+                object[] Valores = { objFuenteFin.Id, objFuenteFin.Ejercicio };
+                string[] ParametrosOut = { "P_FUENTE", "P_DESCRIPCION", "P_BANDERA" };
+
+                Cmd = CDDatos.GenerarOracleCommand("OBT_SAF_FUENTES", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objFuenteFin = new FuentesFin();
+                    objFuenteFin.Fuente = Convert.ToString(Cmd.Parameters["P_FUENTE"].Value);
+                    objFuenteFin.Descrip = Convert.ToString(Cmd.Parameters["P_DESCRIPCION"].Value);
+                    objFuenteFin.Id = Convert.ToString(Cmd.Parameters["P_ID"].Value);
+                    objFuenteFin.Ejercicio = Convert.ToString(Cmd.Parameters["P_EJERCICIO"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EditarFuenteFin(ref FuentesFin objFuenteFin, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_FUENTE", "P_DESCRIP", "P_ID", "P_EJERCICIO"};
+                object[] Valores = { objFuenteFin.Fuente, objFuenteFin.Descrip, objFuenteFin.Id, objFuenteFin.Ejercicio };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_FUENTES", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EliminarFuenteFin(FuentesFin objFuenteFin, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = {"P_ID" };
+                object[] Valores = { objFuenteFin.Id };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+
+
+
     }
 }

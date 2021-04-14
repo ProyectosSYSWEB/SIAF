@@ -16,7 +16,6 @@ namespace SAF.Presupuesto.Form
         CN_Programa CN_Programa = new CN_Programa();
         CN_Comun CNComun = new CN_Comun();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -25,13 +24,11 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDCargarDatosFuncion();
             CargarCombos();
         }
-
         private void CargarCombos()
         {
             try {
@@ -39,14 +36,25 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
+        private void CargarCombosEdit()
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Funcion", ref DDLFuncion2);
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
+            }
+        }
         protected void GRDCargarDatosFuncion()
         {
             try
             {
+                Multiview1.ActiveViewIndex = 0;
                 Programa objPrograma = new Programa();
                 List<Programa> list = new List<Programa>();
                 objPrograma.Funcion = "0";
@@ -59,10 +67,9 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
         protected void DDLFuncion_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -79,55 +86,63 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
         protected void GRDProgramas_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            lblError.Text = string.Empty;
+        {            
             try
             {
-                Dependencias objDependencias = new Dependencias();
+                Programa objPrograma = new Programa();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.Rows[fila].Cells[2].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
-                //{
-                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                //    if (Verificador == "0")
-                //        lblError.Text = "Se ha eliminado correctamente";
-                //    else
-                //        lblError.Text = Verificador;
-                //}
-                //else
-                //{
-                //    lblError.Text = Verificador;
-                //}
+                objPrograma.Id = Convert.ToString(GRDProgramas.Rows[fila].Cells[3].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_Programa.EliminarPrograma(objPrograma, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente')", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
+                }
+                else                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene privilegios para realizar esta acción')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
         protected void GRDProgramas_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDProgramas.SelectedRow.Cells[2].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CargarCombosEdit();
+                    string Verificador = string.Empty;
+                    Programa objPrograma = new Programa();
+                    objPrograma.Id = Convert.ToString(GRDProgramas.SelectedRow.Cells[3].Text);
+                    CN_Programa.ObtenerDatosPrograma(ref objPrograma, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        Multiview1.ActiveViewIndex = 1;
+                        Session["SessionFuncionEdit"] = objPrograma.Id;
+                        DDLFuncion2.SelectedValue = objPrograma.Id_FuncionProg;
+                        txtPrograma.Text = objPrograma.Clave;
+                        txtDescripcion.Text = objPrograma.Descripcion;
+                    }
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + Verificador + "')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene privilegios para realizar esta acción')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -136,7 +151,44 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
+            }
+        }
+        protected void BTNEditarProg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    string Verificador = string.Empty;
+                    Programa objPrograma = new Programa();
+                    objPrograma.Id = (String)Session["SessionFuncionEdit"];
+                    objPrograma.Id_FuncionProg = DDLFuncion2.SelectedValue;
+                    objPrograma.Clave = txtPrograma.Text;
+                    objPrograma.Descripcion = txtDescripcion.Text;
+                    CN_Programa.EditarPrograma(ref objPrograma, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha modificado correctamente')", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene privielgios para realizar esta acción')", true);
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
+            }
+        }
+        protected void imgBttnPdf_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch(Exception ex) 
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
     }

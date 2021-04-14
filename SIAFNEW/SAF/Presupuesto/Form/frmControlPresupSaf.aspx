@@ -14,13 +14,13 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="mensaje">
+            <%--<div class="mensaje">
                 <asp:UpdatePanel ID="UpdatePanel100" runat="server">
                     <ContentTemplate>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-            </div>
+            </div>--%>
             <table class="tabla_contenido">
                 <tr>
                     <td class="auto-style1">                        
@@ -40,12 +40,12 @@
                                                     <asp:BoundField DataField="Codigo" HeaderText="Código" />
                                                     <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"/>
                                                     
-                                                    <asp:TemplateField>
+                                                    <%--<asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Editar</asp:LinkButton>
                                                             <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible="true"></asp:Label>
                                                         </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                    </asp:TemplateField>--%>
                                                     
                                                     <asp:TemplateField>
                                                         <ItemTemplate>

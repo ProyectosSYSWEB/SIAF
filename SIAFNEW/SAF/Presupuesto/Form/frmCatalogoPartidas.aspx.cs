@@ -50,17 +50,28 @@ namespace SAF.Presupuesto.Form
                 if (SesionUsu.Usu_TipoUsu == "SA")
                 {
                     objPartidas.Partida = txtPartida.Text;
-                    objPartidas.Descrip = txtPartida.Text;
+                    objPartidas.Descrip = txtDescrip.Text;
+                    objPartidas.Concepto = txtConcepto.Text;
+                    objPartidas.Ejercicio = SesionUsu.Usu_Ejercicio;
                     objPartidas.Estatus = "A";
                     string Verificador = string.Empty;
                     CN_Partida.InsertarPartida(ref objPartidas, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctament.')", true);                        
+                        txtPartida.Text = "";
+                        txtDescrip.Text = "";
+                    }
+                    else                    
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador+".')", true);                        
+                    
                 }
                 else
-                    lblError.Text = lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'No tiene los privilegios para realizar esta acción.')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ ex.Message + ".')", true);                
             }
         }
 

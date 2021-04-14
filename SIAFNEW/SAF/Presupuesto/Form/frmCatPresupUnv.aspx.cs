@@ -32,9 +32,8 @@ namespace SAF.Presupuesto.Form
         {
             CargarCombos();
             ObtenerConsecutivoTipoOperacion("A");
+            ObtenerDatosCodigoProg();
         }
-
-
         private void CargarCombos()
         {
             try
@@ -50,20 +49,31 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLFuente_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Ctx_Dp01", ref DDLCodProg, "p_centro_contable", "p_funcion", DDLCentroContab.SelectedValue, DDLFuente.SelectedValue);
+                ObtenerDatosCodigoProg();
             }
             catch(Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLCodProg_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                ObtenerDatosCodigoProg();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+        private void ObtenerDatosCodigoProg()
         {
             try
             {
@@ -79,20 +89,20 @@ namespace SAF.Presupuesto.Form
                 txtProyecto.Text = PresupUnv.Proyecto;
                 //txtTipoGasto.Text = PresupUnv.Tipo_Gasto;
                 //txtDigMinis.Text = PresupUnv.Dig_Ministrado;
-                txtFuncion.Text = PresupUnv.Funcion;                
+                txtFuncion.Text = PresupUnv.Funcion;
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
             }
         }
-
         private void ObtenerConsecutivoTipoOperacion(string TipoOperacion)
         {
             try
             {
                 string Verificador = string.Empty;
                 PresupUnv.TipoOper = "AC";
+                PresupUnv.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CN_PresupUnv.ObtenerConsecutivoTipoOperacion(ref PresupUnv, ref Verificador);
                 txtConsecutivoOpe.Text =  Convert.ToString(PresupUnv.Id);
             }
@@ -101,13 +111,13 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void DDLTipoRec_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 string Verificador = string.Empty;
                 PresupUnv.TipoOper = DDLTipoRec.SelectedValue;
+                PresupUnv.Ejercicio = SesionUsu.Usu_Ejercicio;
                 CN_PresupUnv.ObtenerConsecutivoTipoOperacion(ref PresupUnv, ref Verificador);
                 txtConsecutivoOpe.Text = Convert.ToString(PresupUnv.Id);
             }
@@ -116,7 +126,6 @@ namespace SAF.Presupuesto.Form
                 lblError.Text = ex.Message;
             }
         }
-
         protected void BTNGuardarPres_Click(object sender, EventArgs e)
         {
             try
@@ -146,7 +155,16 @@ namespace SAF.Presupuesto.Form
                     objPresUnv.Estat_Oper = "2";
                     CN_PresupUnv.Insertar_PresupUnv(ref objPresUnv, ref Verificador);
                     if (Verificador == "0")
+                    {
                         lblError.Text = "Se guardo correctamente";
+                        txtNombDepOrigen.Text = "";
+                        txtRefDocto.Text = "" ;
+                        txtfechaDocumento.Text = "";
+                        txtConcepto.Text = "";
+                        txtImporte.Text = "";
+                        txtConsecutivoOpe.Text = "";
+                        txtImporte.Text = "";                        
+                    }
                     else if (Verificador == "1")
                         lblError.Text = "Este código ya existe";
                     else
@@ -156,6 +174,19 @@ namespace SAF.Presupuesto.Form
                     lblError.Text = "No tiene los privilegios para realizar esta acción";
             }
             catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
+        protected void txtConcepto_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string valor = txtImporte.Text;
+                //txtImporteMod.Text = String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", valor);
+            }
+            catch(Exception ex)
             {
                 lblError.Text = ex.Message;
             }

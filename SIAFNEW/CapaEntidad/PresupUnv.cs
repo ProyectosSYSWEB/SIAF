@@ -280,8 +280,29 @@ namespace CapaEntidad
             set { _Cod_Programatico = value; }
         }
 
+        private string _Ejercicio;
 
+        public string Ejercicio
+        {
+            get { return _Ejercicio; }
+            set { _Ejercicio = value; }
+        }
 
+        private string _Consecutivo;
+
+        public string Consecutivo
+        {
+            get { return _Consecutivo; }
+            set { _Consecutivo = value; }
+        }
+
+        private string _Tipo_Gasto_Param;
+
+        public string Tipo_Gasto_Param
+        {
+            get { return _Tipo_Gasto_Param; }
+            set { _Tipo_Gasto_Param = value; }
+        }
 
 
 

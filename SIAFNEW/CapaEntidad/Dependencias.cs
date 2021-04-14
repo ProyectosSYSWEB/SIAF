@@ -168,6 +168,47 @@ namespace CapaEntidad
             set { _Id = value; }
         }
 
+        private string _Id_Ur;
+
+        public string Id_Ur
+        {
+            get { return _Id_Ur; }
+            set { _Id_Ur = value; }
+        }
+
+        private string _Id_Pais;
+
+        public string Id_Pais
+        {
+            get { return _Id_Pais; }
+            set { _Id_Pais = value; }
+        }
+
+        private string _Telefono;
+
+        public string Telefono
+        {
+            get { return _Telefono; }
+            set { _Telefono = value; }
+        }
+
+        private string _Responsable;
+
+        public string Responsable
+        {
+            get { return _Responsable; }
+            set { _Responsable = value; }
+        }
+
+        private string _Admin_Puesto;
+
+        public string Admin_Puesto
+        {
+            get { return _Admin_Puesto; }
+            set { _Admin_Puesto = value; }
+        }
+
+
 
     }
 }

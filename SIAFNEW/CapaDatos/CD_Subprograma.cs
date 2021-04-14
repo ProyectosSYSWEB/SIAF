@@ -24,8 +24,9 @@ namespace CapaDatos
                 while (dr.Read())
                 {
                     objSubprograma = new Subprograma();
-                    objSubprograma.Subprog = Convert.ToString(dr.GetValue(0));
-                    objSubprograma.Descripcion = Convert.ToString(dr.GetValue(1));                    
+                    objSubprograma.Id = Convert.ToString(dr.GetValue(0));
+                    objSubprograma.Subprog = Convert.ToString(dr.GetValue(1));
+                    objSubprograma.Descripcion = Convert.ToString(dr.GetValue(2));
                     List.Add(objSubprograma);
                 }
                 dr.Close();
@@ -39,8 +40,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-
-
         public void InsertarSubPrograma(ref Basicos objBasicos, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -52,6 +51,79 @@ namespace CapaDatos
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_SAF_BASICOS", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void ObtenerDatosSubprograma(ref Subprograma objSubprograma, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_ID" };
+                object[] Valores = { objSubprograma.Id };
+                string[] ParametrosOut = { "P_CLAVE", "P_DESCRIPCION", "P_VALOR", "P_BANDERA" };
+
+                Cmd = CDDatos.GenerarOracleCommand("OBT_SAF_BASICOS_SUB_PROG", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objSubprograma = new Subprograma();
+                    objSubprograma.Id= Convert.ToString(Cmd.Parameters["P_ID"].Value);
+                    objSubprograma.Clave = Convert.ToString(Cmd.Parameters["P_CLAVE"].Value);
+                    objSubprograma.Descripcion = Convert.ToString(Cmd.Parameters["P_DESCRIPCION"].Value);
+                    objSubprograma.NivAcad = Convert.ToString(Cmd.Parameters["P_VALOR"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EditarSubProg(ref Subprograma objSubProg, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID", "P_CLAVE", "P_DESCRIPCION", "P_VALOR" };
+                object[] Valores = { objSubProg.Id, objSubProg.Clave, objSubProg.Descripcion, objSubProg.NivAcad };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_SUB_PROGRAMAS", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EliminarSubProg(Subprograma objSubProg, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID"};
+                object[] Valores = { objSubProg.Id };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("", ref Verificador, Parametros, Valores, ParametrosOut);
 
             }
             catch (Exception ex)

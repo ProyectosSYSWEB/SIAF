@@ -54,8 +54,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { };
-                String[] Valores = {  };
+                String[] Parametros = { "P_EJERCICIO" };
+                String[] Valores = { objPresUnv.Ejercicio };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("PKG_PRESUPUESTO.Obt_Grid_Reg_Presup", ref dr, Parametros, Valores);
 
@@ -68,6 +68,8 @@ namespace CapaDatos
                     objPresUnv.Referencia_Documento = Convert.ToString(dr.GetValue(3));
                     objPresUnv.Concepto = Convert.ToString(dr.GetValue(4));
                     objPresUnv.Codigo_Programatico = Convert.ToString(dr.GetValue(5));
+                    objPresUnv.Autorizado = Convert.ToString(dr.GetValue(6));
+                    objPresUnv.Tipo_Gasto_Param = Convert.ToString(dr.GetValue(7));
                     List.Add(objPresUnv);
                 }
                 dr.Close();
@@ -116,8 +118,8 @@ namespace CapaDatos
             OracleCommand Cmd = null;
             try
             {
-                string[] ParametrosIn = { "P_TIPO_OPE" };
-                object[] Valores = { objPresupUnv.TipoOper };
+                string[] ParametrosIn = { "P_TIPO_OPE", "P_EJERCICIO" };
+                object[] Valores = { objPresupUnv.TipoOper, objPresupUnv.Ejercicio };
                 string[] ParametrosOut = { "P_ID", "p_bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("OBT_ULTIMO_CONSECUTIVO", ref Verificador, ParametrosIn, Valores, ParametrosOut);

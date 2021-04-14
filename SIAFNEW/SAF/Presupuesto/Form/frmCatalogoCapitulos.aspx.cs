@@ -36,7 +36,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }
         }
 
@@ -54,15 +54,24 @@ namespace SAF.Presupuesto.Form
                     objBasicos.tipo = "CAT_CAPITULO";
                     objBasicos.status = "A";
                     CN_Capitulo.InsertarCapitulo(ref objBasicos, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctamente.')", true);                        
+                        txtCap.Text = "";
+                        txtDescrip.Text = "";
+                        txtNvl.Text = "";
+                    }
+                    else                    
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador+".')", true);                        
+                    
                 }
-                else
-                {
-                    lblError.Text = lblError.Text = "No tiene los privilegios para realizar esta acción";
-                }
+                else                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'No tiene los privilegios necesarios para realizar esta acción.')", true);                    
+                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ ex.Message+".')", true);
             }
         }
     }

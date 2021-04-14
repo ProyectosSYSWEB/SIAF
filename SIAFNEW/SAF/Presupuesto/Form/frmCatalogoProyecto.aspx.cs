@@ -52,16 +52,22 @@ namespace SAF.Presupuesto.Form
                     string Verificador = string.Empty;
                     CN_Proyecto.InsertarProyecto(ref objProyectos, ref Verificador);
                     if (Verificador == "0")
-                        lblError.Text = "Se ha guardado correctamente";
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);                        
+                        txtClavepro.Text = "";
+                        txtDescrip.Text = "";
+                    }
                     else
-                        lblError.Text = Verificador;
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ Verificador+" .')", true);
+                    }
                 }
                 else
-                    lblError.Text = "No tiene los privilegios para realizar esta acción";
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción.')", true);                
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message; 
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);                
             }
         }
     }

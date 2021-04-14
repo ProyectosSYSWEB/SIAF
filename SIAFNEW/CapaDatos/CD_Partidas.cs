@@ -28,6 +28,7 @@ namespace CapaDatos
                     objPartidas.Concepto = Convert.ToString(dr.GetValue(1));
                     objPartidas.Descrip = Convert.ToString(dr.GetValue(2));
                     objPartidas.Id = Convert.ToString(dr.GetValue(3));
+                    objPartidas.Ejercicio = Convert.ToString(dr.GetValue(4));
                     List.Add(objPartidas);
                 }
                 dr.Close();
@@ -41,20 +42,91 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-
-
-
         public void InsertarPartida(ref Partidas objPartidas, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
             try
             {
-                String[] Parametros = { "P_PARTIDA", "P_ESTATUS", "P_DESCRIP" };
-                object[] Valores = { objPartidas.Partida, objPartidas.Estatus, objPartidas.Descrip };
+                String[] Parametros = { "P_PARTIDA", "P_ESTATUS", "P_DESCRIP", "P_CONCEPTO", "P_EJERCICIO" };
+                object[] Valores = { objPartidas.Partida, objPartidas.Estatus, objPartidas.Descrip, objPartidas.Concepto, objPartidas .Ejercicio};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_CAT_PARTIDA", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void ObtenerDatosPartida(ref Partidas objPartidas, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_ID", "P_EJERCICIO" };
+                object[] Valores = { objPartidas.Id, objPartidas.Ejercicio };
+                string[] ParametrosOut = { "P_CLAVE", "P_CONCEPTO", "P_DESCRIPCION", "P_BANDERA" };
+
+                Cmd = CDDatos.GenerarOracleCommand("OBT_SAF_PRESUP_PARTIDAS", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objPartidas = new Partidas();
+                    objPartidas.Id = Convert.ToString(Cmd.Parameters["P_ID"].Value);
+                    objPartidas.Clave = Convert.ToString(Cmd.Parameters["P_CLAVE"].Value);
+                    objPartidas.Concepto = Convert.ToString(Cmd.Parameters["P_CONCEPTO"].Value);
+                    objPartidas.Descrip = Convert.ToString(Cmd.Parameters["P_DESCRIPCION"].Value);
+                    objPartidas.Ejercicio = Convert.ToString(Cmd.Parameters["P_EJERCICIO"].Value);                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EditarPartida(ref Partidas objPartidas, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_PARTIDA", "P_CONCEPTO", "P_DESCRIPCION", "P_EJERCICIO", "P_ID" };
+                object[] Valores = { objPartidas.Clave, objPartidas.Concepto, objPartidas.Descrip, objPartidas.Ejercicio, objPartidas.Id };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_PRESUP_PARTIDAS", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EliminarPartida(Partidas objPartidas, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID" };
+                object[] Valores = { objPartidas.Id };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("", ref Verificador, Parametros, Valores, ParametrosOut);
 
             }
             catch (Exception ex)

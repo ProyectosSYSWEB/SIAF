@@ -25,20 +25,22 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             CargarCombos();
             GRDCargarDatosDepend();
         }
-
-
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencias, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "P");
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencias, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "P");
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
         }
-
-
         protected void GRDCargarDatosDepend()
         {
             try
@@ -56,10 +58,9 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void DDLCentroContab_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -77,13 +78,11 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void GRDCodProg_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            lblError.Text = string.Empty;
+        {            
             try
             {
                 Dependencias objDependencias = new Dependencias();
@@ -105,10 +104,9 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void GRDCodProg_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -122,11 +120,9 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -135,7 +131,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }

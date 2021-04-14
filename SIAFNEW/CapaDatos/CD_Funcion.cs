@@ -39,7 +39,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref cmm);
             }
         }
-
         public void InsertarFuncion(ref Funcion objFuncion, ref string Verificador)
         {
             CD_Datos CDDatos = new CD_Datos();
@@ -51,6 +50,78 @@ namespace CapaDatos
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_SAF_BASICOS", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void ObtenerDatosFuncion(ref Funcion objFuncion, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_CLAVE" };
+                object[] Valores = { objFuncion.Clave };
+                string[] ParametrosOut = { "P_ID", "P_DESCRIPCION", "P_BANDERA" };
+
+                Cmd = CDDatos.GenerarOracleCommand("OBT_CAT_FUNCION", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objFuncion = new Funcion();                    
+                    objFuncion.Clave = Convert.ToString(Cmd.Parameters["P_CLAVE"].Value);
+                    objFuncion.Descripcion = Convert.ToString(Cmd.Parameters["P_DESCRIPCION"].Value);
+                    objFuncion.Id = Convert.ToString(Cmd.Parameters["P_ID"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EditarFuncion(ref Funcion objFuncion, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_ID", "P_CLAVE", "P_DESCRIPCION" };
+                object[] Valores = { objFuncion.Id, objFuncion.Clave, objFuncion.Descripcion};
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_CAT_FUNCION", ref Verificador, Parametros, Valores, ParametrosOut);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+        public void EliminarFuncion(Funcion objFuncion, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                String[] Parametros = { "P_CLAVE"};
+                object[] Valores = { objFuncion.Clave };
+                String[] ParametrosOut = { "p_Bandera" };
+
+                Cmd = CDDatos.GenerarOracleCommand(" ", ref Verificador, Parametros, Valores, ParametrosOut);
 
             }
             catch (Exception ex)

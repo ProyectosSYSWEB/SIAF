@@ -44,39 +44,60 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = "No tiene los privilegios para realizar esta acción";
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }            
         }  
 
         protected void BTNGuardarDepend_Click(object sender, EventArgs e)
         {
-            if (SesionUsu.Usu_TipoUsu == "SA")
+            try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = DDLCentroContab.SelectedValue;
-                objDependencias.Clave = txtClvDepend.Text;
-                objDependencias.Descrip = txtDependencia.Text;
-                objDependencias.Titular = txtTitular.Text;
-                objDependencias.Administ = txtAdministrador.Text;
-                objDependencias.Domicilio = txtDomicilio.Text;
-                objDependencias.Id_Estado = DDLEstado.SelectedValue;
-                objDependencias.Id_Municipio = DDLMunicipio.SelectedValue;
-                objDependencias.Zona_Economica = txtZonaEconomica.Text;
-                objDependencias.Tel_Titular = txtTelTitular.Text;
-                objDependencias.Cel_Titular = txtCelTitular.Text;
-                objDependencias.Tel_Admin = txtTelAdmin.Text;
-                objDependencias.Cel_Admin = txtCelAdmin.Text;
-                objDependencias.Nombramiento = txtNombramiento.Text;
-                objDependencias.Ejercicio = Convert.ToInt32(SesionUsu.Usu_Ejercicio);
-                string Verificador = string.Empty;
-                CN_DEPENDENCIAS.InsertarDependencia(ref objDependencias, ref Verificador);
-                if (Verificador == "0")
-                    lblError.Text = "Se guardo correctamente";
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Dependencias objDependencias = new Dependencias();
+                    objDependencias.C_Contab = DDLCentroContab.SelectedValue;
+                    objDependencias.Clave = txtClvDepend.Text;
+                    objDependencias.Descrip = txtDependencia.Text;
+                    objDependencias.Titular = txtTitular.Text;
+                    objDependencias.Administ = txtAdministrador.Text;
+                    objDependencias.Domicilio = txtDomicilio.Text;
+                    objDependencias.Id_Estado = DDLEstado.SelectedValue;
+                    objDependencias.Id_Municipio = DDLMunicipio.SelectedValue;
+                    objDependencias.Zona_Economica = txtZonaEconomica.Text;
+                    objDependencias.Tel_Titular = txtTelTitular.Text;
+                    objDependencias.Cel_Titular = txtCelTitular.Text;
+                    objDependencias.Tel_Admin = txtTelAdmin.Text;
+                    objDependencias.Cel_Admin = txtCelAdmin.Text;
+                    objDependencias.Nombramiento = txtNombramiento.Text;
+                    objDependencias.Ejercicio = Convert.ToInt32(SesionUsu.Usu_Ejercicio);
+                    string Verificador = string.Empty;
+                    CN_DEPENDENCIAS.InsertarDependencia(ref objDependencias, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se guardo correctamente.')", true);
+                        txtClvDepend.Text = "";
+                        txtDependencia.Text = "";
+                        txtTitular.Text = "";
+                        txtAdministrador.Text = "";
+                        txtDomicilio.Text = "";
+                        txtZonaEconomica.Text = "";
+                        txtTelTitular.Text = "";
+                        txtCelTitular.Text = "";
+                        txtTelAdmin.Text = "";
+                        txtCelAdmin.Text = "";
+                        txtNombramiento.Text = "";
+                    }
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+Verificador+".')", true);
+                }
                 else
-                    lblError.Text = Verificador;
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'No tiene los privilegios para realizar esta acción.')", true);
             }
-            else
-                lblError.Text = "No tiene los privilegios para realizar esta acción";
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ ex.Message+".')", true);                
+            }
+            
         }
 
         protected void DDLEstado_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,7 +108,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
             }            
         }
     }

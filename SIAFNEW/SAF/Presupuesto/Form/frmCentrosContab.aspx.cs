@@ -15,7 +15,6 @@ namespace SAF.Presupuesto.Form
         Sesion SesionUsu = new Sesion();
         CN_CentrosContab CN_CentrosContab = new CN_CentrosContab();
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             SesionUsu = (Sesion)Session["Usuario"];
@@ -24,18 +23,15 @@ namespace SAF.Presupuesto.Form
                 Inicializar();
             }
         }
-
         private void Inicializar()
         {
             GRDCargarDatosCentrosContab();
         }
-
-
-
         protected void GRDCargarDatosCentrosContab()
         {
             try
-            {
+            {                
+                Multiview1.ActiveViewIndex = 0;
                 CentrosContab objCentroContab = new CentrosContab();
                 objCentroContab.Ejercicio = SesionUsu.Usu_Ejercicio;
                 List<CentrosContab> list = new List<CentrosContab>();
@@ -49,55 +45,66 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void GRDCentrosContab_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            lblError.Text = string.Empty;
+        {            
             try
             {
-                Dependencias objDependencias = new Dependencias();
                 string Verificador = string.Empty;
+                CentrosContab objCContab = new CentrosContab();
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GRDCentrosContab.Rows[fila].Cells[2].Text);
-                //if (SesionUsu.Usu_TipoUsu == "SU")
-                //{
-                //    CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                //    if (Verificador == "0")
-                //        lblError.Text = "Se ha eliminado correctamente";
-                //    else
-                //        lblError.Text = Verificador;
-                //}
-                //else
-                //{
-                //    lblError.Text = Verificador;
-                //}
+                objCContab.Id = Convert.ToString(GRDCentrosContab.Rows[fila].Cells[2].Text);
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CN_CentrosContab.EliminarCContab(objCContab, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente.')", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción.')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void GRDCentrosContab_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                Dependencias objDependencias = new Dependencias();
-                objDependencias.C_Contab = Convert.ToString(GRDCentrosContab.SelectedRow.Cells[2].Text);
-                //strEstatus = grdDocumentos.SelectedRow.Cells[8].Text;
-
-                //MultiView1.ActiveViewIndex = 1;
-                //TabGridDepen.ActiveTabIndex = 0;
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    Multiview1.ActiveViewIndex = 1;
+                    string Verificador = string.Empty;
+                    CentrosContab objCContab = new CentrosContab();
+                    objCContab.Id = Convert.ToString(GRDCentrosContab.SelectedRow.Cells[2].Text);
+                    objCContab.Ejercicio = SesionUsu.Usu_Ejercicio;
+                    CN_CentrosContab.ObtenerDatosCContab(ref objCContab, ref Verificador);
+                    if (Verificador == "0")
+                    {
+                        Session["SessionIdCContab"] = objCContab.Id;
+                        txtCentroContab.Text = objCContab.C_Contab;
+                        txtDependencia.Text = objCContab.Descrip;
+                        txtDirector.Text = objCContab.Director;
+                        txtAdministrador.Text = objCContab.Administrador;
+                        txtEntrante.Text = objCContab.Saliente;
+                        txtSaliente.Text = objCContab.Entrante;
+                    }
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + Verificador + ".')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción.')", true);
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-
         protected void btnNuevo_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -106,7 +113,37 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        protected void BTNEditarCContab_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    CentrosContab objCContab = new CentrosContab();
+                    string Verificador = string.Empty;
+                    objCContab.Id = (String)Session["SessionIdCContab"];
+                    objCContab.C_Contab = txtCentroContab.Text.ToUpper();
+                    objCContab.Descrip = txtDependencia.Text.ToUpper();
+                    objCContab.Director = txtDirector.Text;
+                    objCContab.Administrador = txtAdministrador.Text;
+                    objCContab.Saliente = txtSaliente.Text;
+                    objCContab.Entrante = txtEntrante.Text;
+                    objCContab.Ejercicio = SesionUsu.Usu_Ejercicio;
+                    CN_CentrosContab.EditarCContab(ref objCContab, ref Verificador);
+                    if (Verificador == "0")
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción.')", true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }
