@@ -287,6 +287,12 @@
                                                                                                 </ItemTemplate>
                                                                                                  <ItemStyle HorizontalAlign="Center"/>
                                                                                             </asp:TemplateField>
+                                                                                             <asp:TemplateField>
+                                                                                                <ItemTemplate>
+                                                                                                            <asp:LinkButton ID="linkBDetalle" runat="server" OnClick="linkBDetalle_Click">Detalle</asp:LinkButton>
+                                                                                                </ItemTemplate>
+                                                                                                 <ItemStyle HorizontalAlign="Center"/>
+                                                                                            </asp:TemplateField>
                                                                                         </Columns>
                                                                                         <FooterStyle CssClass="enc" />
                                                                                         <PagerStyle CssClass="enc" HorizontalAlign="Center" />

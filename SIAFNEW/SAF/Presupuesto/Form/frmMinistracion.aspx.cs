@@ -520,6 +520,16 @@ namespace SAF.Presupuesto
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
+        protected void linkBDetalle_Click(object sender, EventArgs e)
+        {
+            LinkButton cbi = (LinkButton)(sender);
+            GridViewRow row = (GridViewRow)cbi.NamingContainer;
+            grdDocumentos.SelectedIndex = row.RowIndex;
+            string ruta1 = string.Empty;
+            ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_MIN_DET&id=" + grdDocumentos.SelectedRow.Cells[0].Text;
+            string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+        }
         protected void btnBuscar_Click(object sender, ImageClickEventArgs e)
         {
             try
