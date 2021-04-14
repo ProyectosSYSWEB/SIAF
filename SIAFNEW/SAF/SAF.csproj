@@ -232,6 +232,7 @@
     <Content Include="Presupuesto\Form\frmPresupUnv.aspx" />
     <Content Include="Presupuesto\Form\frmPrograma.aspx" />
     <Content Include="Presupuesto\Form\frmProyecto.aspx" />
+    <Content Include="Presupuesto\Form\frmReclasificacionFuenteFin.aspx" />
     <Content Include="Presupuesto\Form\frmSubprograma.aspx" />
     <Content Include="Presupuesto\Reportes\frmReportes.aspx" />
     <Content Include="Presupuesto\Reportes\VisualizadorCrystal.aspx" />
@@ -624,6 +625,13 @@
     </Compile>
     <Compile Include="Presupuesto\Form\frmProyecto.aspx.designer.cs">
       <DependentUpon>frmProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmReclasificacionFuenteFin.aspx.cs">
+      <DependentUpon>frmReclasificacionFuenteFin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmReclasificacionFuenteFin.aspx.designer.cs">
+      <DependentUpon>frmReclasificacionFuenteFin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\frmSubprograma.aspx.cs">
       <DependentUpon>frmSubprograma.aspx</DependentUpon>
