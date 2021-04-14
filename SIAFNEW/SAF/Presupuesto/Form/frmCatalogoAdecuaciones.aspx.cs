@@ -48,14 +48,13 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void CargarDatosAdecuacion()
         {
             try
-            {
-                lblError.Text = string.Empty;
+            {                
                 int mesIni = Convert.ToInt32(DDLMesInicial.SelectedValue);
                 int mesFin = Convert.ToInt32(DDLMesFin.SelectedValue);
                 decimal suma = 0;
@@ -75,15 +74,14 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void CargarComboCodProg()
         {
             try
             {
-                DDLCodOrigen.Enabled = false;
-                lblError.Text = string.Empty;
+                DDLCodOrigen.Enabled = false;                
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Adecuaciones", ref DDLCodOrigen, "p_partida", "p_fuente", DDLPartida.SelectedValue, DDLFuente.SelectedValue);
                 //ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
                 DDLCodOrigen.Enabled = true;
@@ -91,32 +89,36 @@ namespace SAF.Presupuesto.Form
             catch (Exception ex)
             {
                 DDLCodOrigen.Enabled = true;
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
         protected void ObtenerDatosCodigoOrigen(string CodigoOrigen)
         {
             try
-            {
-                lblError.Text = string.Empty;
+            {                
                 string Verificador = string.Empty;
                 decimal suma = 0;
                 objAdecuacion.Codigo_Programatico = CodigoOrigen;
                 CN_Adecuaciones.ObtenerDatosCogidoAdecuaciones(ref objAdecuacion, ref Verificador);
-                for (int i = 0; i < Lista.Count; i++)
+                if (Verificador == "0")
                 {
-                    suma = suma + Convert.ToDecimal(Lista[i].Suma_Destino);
+                    for (int i = 0; i < Lista.Count; i++)
+                    {
+                        suma = suma + Convert.ToDecimal(Lista[i].Suma_Destino);
+                    }
+                    SumaDestino.Text = Convert.ToString(suma);
+                    Session["ListaAdecunacion"] = Lista;
+                    Lista.Add(objAdecuacion);
+                    GRDAdecuaciones.DataSource = Lista;
+                    GRDAdecuaciones.DataBind();
                 }
-                SumaDestino.Text = Convert.ToString(suma);
-                Session["ListaAdecunacion"] = Lista;
-                Lista.Add(objAdecuacion);
-                GRDAdecuaciones.DataSource = Lista;
-                GRDAdecuaciones.DataBind();
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
 
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
        
@@ -124,8 +126,7 @@ namespace SAF.Presupuesto.Form
         protected void CargarConceptoDocto()
         {
             try
-            {
-                lblError.Text = string.Empty;
+            {                
                 string Mes = txtfechaDocumento.Text;
                 Mes = Mes.Replace("/", "");
                 string Anio = Mes;
@@ -135,22 +136,19 @@ namespace SAF.Presupuesto.Form
                 string Descripcion = DDLPartida.SelectedItem.Text;
                 tamañoCadena = tamañoCadena - 8;
                 Descripcion = Descripcion.Substring(8, tamañoCadena);
-
                 txtConcepto.Text = "AMPLIACIÓN RP = " + Descripcion + " ** MES = " + Mes + Anio;
                 txtMesAnio.Text = Mes + Anio;
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }        
 
         protected void BTNSumarDestinos_Click(object sender, EventArgs e)
         {
             try
-            {
-                
-                lblError.Text = string.Empty;
+            {                
                 for (int i = 0; i < GRDAdecuaciones.Rows.Count - 1; i++)
                 {
                     TextBox destino = GRDAdecuaciones.Rows[i].FindControl("txtEditDestino") as TextBox;                    
@@ -160,7 +158,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
@@ -168,48 +166,46 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                lblError.Text = string.Empty;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Buscando.')", true);
                 CargarDatosAdecuacion();
                 CargarConceptoDocto();                
                 ObtenerDatosCodigoOrigen(DDLCodOrigen.SelectedValue);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '.')", false);
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
         protected void DDLFuente_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
-            {
-                lblError.Text = string.Empty;
+            {                
                 CargarComboCodProg();
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
         protected void DDLPartida_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
-            {
-                lblError.Text = string.Empty;
+            {                
                 CargarComboCodProg();
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
         protected void BTNGuardarAdecuacion_Click(object sender, EventArgs e)
         {
             try
-            {
-                lblError.Text = string.Empty;
+            {                
                 string Verificador = string.Empty;                
                 List<Adecuaciones> ListaAdecuaciones = new List<Adecuaciones>();
                 Adecuaciones objAdecuaciones = new Adecuaciones();
@@ -245,15 +241,14 @@ namespace SAF.Presupuesto.Form
                     CN_Adecuaciones CN_Adecuaciones = new CN_Adecuaciones();
                     CN_Adecuaciones.InsertarDocumentoAdecuacion(ListaAdecuaciones, objAdecuaciones, ref Verificador);
                     if (Verificador != "0")
-                        lblError.Text = Verificador;
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" +Verificador + ".')", true);
                     else
-                        lblError.Text = "Se ha guardado correctamente";
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);
                 }
             }
             catch(Exception ex)
             {
-                lblError.Text = ex.Message;
-
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }

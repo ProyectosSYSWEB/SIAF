@@ -121,7 +121,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Button runat="server" ID="BTNBuscarAdecuacion" Text="Agregar" OnClick="BTNBuscarAdecuacion_Click"/>
+                                    <asp:Button runat="server" ID="BTNBuscarAdecuacion" Text="Buscar" CssClass="btn" OnClick="BTNBuscarAdecuacion_Click"/>
                                 </td>
                             </tr>
                             </tr>
@@ -141,9 +141,9 @@
                                 <br />
                                 <label>Total destino modificado: <asp:Label runat="server" ID="SumaDestinoMod"></asp:Label></label>
                                 <br />
-                                <asp:Button runat="server" ID="BTNSumarDestinos" Text="Sumar montos destino" OnClick="BTNSumarDestinos_Click"/>
+                                <asp:Button runat="server" ID="BTNSumarDestinos" CssClass="btn" Text="Sumar montos destino" OnClick="BTNSumarDestinos_Click"/>
                                 <br />
-                                <asp:Button runat="server" ID="BTNGuardarAdecuacion" Text="Aplicar Cambios" OnClick="BTNGuardarAdecuacion_Click"
+                                <asp:Button runat="server" ID="BTNGuardarAdecuacion" CssClass="btn" Text="Aplicar Cambios" OnClick="BTNGuardarAdecuacion_Click"
                                     />
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate>

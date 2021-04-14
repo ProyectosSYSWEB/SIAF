@@ -53,7 +53,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
@@ -64,22 +64,27 @@ namespace SAF.Presupuesto.Form
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.ObtenerDatosCodProg(DDLCodProg.SelectedValue, ref objCodProg, ref Verificador );
                 //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
-                DDLPrograma.SelectedValue = objCodProg.Programa;
-                DDLSubprog.SelectedValue = objCodProg.SubPrograma;
-                DDLDependencia.SelectedValue = objCodProg.Dependencia;
-                DDLProyecto.SelectedValue = objCodProg.Proyecto;
-                DDLPartida.SelectedValue = objCodProg.Partida;
-                DDLFuente.SelectedValue = objCodProg.Fuente;
-                txtTipoGasto.Text = "1";
-                if (DDLDependencia.SelectedValue == "81101")
-                    txtDigiMinistrado.Text = "2";
-                else
-                    txtDigiMinistrado.Text = "1";
-                Session["CodigoProg"] = objCodProg;
+                if (Verificador == "0")
+                {
+                    DDLPrograma.SelectedValue = objCodProg.Programa;
+                    DDLSubprog.SelectedValue = objCodProg.SubPrograma;
+                    DDLDependencia.SelectedValue = objCodProg.Dependencia;
+                    DDLProyecto.SelectedValue = objCodProg.Proyecto;
+                    DDLPartida.SelectedValue = objCodProg.Partida;
+                    DDLFuente.SelectedValue = objCodProg.Fuente;
+                    txtTipoGasto.Text = "1";
+                    if (DDLDependencia.SelectedValue == "81101")
+                        txtDigiMinistrado.Text = "2";
+                    else
+                        txtDigiMinistrado.Text = "1";
+                    Session["CodigoProg"] = objCodProg;
+                }
+                else if (DDLDependencia.SelectedValue != "00000")
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
             }
             catch(Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
@@ -89,20 +94,25 @@ namespace SAF.Presupuesto.Form
             {
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.ObtenerDatosCodProg(DDLCodProg.SelectedValue, ref objCodProg, ref Verificador);
-                //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
-                DDLPrograma.SelectedValue = objCodProg.Programa;
-                DDLSubprog.SelectedValue = objCodProg.SubPrograma;
-                DDLDependencia.SelectedValue = objCodProg.Dependencia;
-                DDLProyecto.SelectedValue = objCodProg.Proyecto;
-                DDLPartida.SelectedValue = objCodProg.Partida;
-                DDLFuente.SelectedValue = objCodProg.Fuente;                
-                Session["CodigoProg"] = objCodProg;
-                CargarConsttruccionCodigoProg();
+                if (Verificador == "0")
+                {
+                    //DDLCContab.SelectedValue = objCodProg.Centro_Contable;
+                    DDLPrograma.SelectedValue = objCodProg.Programa;
+                    DDLSubprog.SelectedValue = objCodProg.SubPrograma;
+                    DDLDependencia.SelectedValue = objCodProg.Dependencia;
+                    DDLProyecto.SelectedValue = objCodProg.Proyecto;
+                    DDLPartida.SelectedValue = objCodProg.Partida;
+                    DDLFuente.SelectedValue = objCodProg.Fuente;
+                    Session["CodigoProg"] = objCodProg;
+                    CargarConsttruccionCodigoProg();
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
 
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
@@ -111,16 +121,21 @@ namespace SAF.Presupuesto.Form
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cod_Prog_Cat_Estruct", ref DDLCodProg, "P_DEPENDENCIA", "P_EJERCICIO", DDLDependencia.SelectedValue, SesionUsu.Usu_Ejercicio);
-                if (DDLDependencia.SelectedValue == "81101")
-                    txtDigiMinistrado.Text = "2";
+                if (DDLCodProg.DataSource != null)
+                {
+                    if (DDLDependencia.SelectedValue == "81101")
+                        txtDigiMinistrado.Text = "2";
+                    else
+                        txtDigiMinistrado.Text = "1";
+                    CargarDatosCodProg();
+                    CargarConsttruccionCodigoProg();
+                }
                 else
-                    txtDigiMinistrado.Text = "1";
-                CargarDatosCodProg();
-                CargarConsttruccionCodigoProg();
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No existen estrucuturas programaticas para esta dependencia.')", true);                
             }
             catch(Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
@@ -132,7 +147,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
@@ -145,7 +160,7 @@ namespace SAF.Presupuesto.Form
             }
             catch(Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
 
@@ -166,13 +181,13 @@ namespace SAF.Presupuesto.Form
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.InsertarCodigoProg(objCodigoProg, ref Verificador);
                 if (Verificador == "0")               
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctamente.')", true);                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);                
                 else
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador + ".')", true);                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ Verificador + ".')", true);                
             }
             catch(Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ ex.Message + ".')", true);
             }
         }
 
@@ -184,7 +199,7 @@ namespace SAF.Presupuesto.Form
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }

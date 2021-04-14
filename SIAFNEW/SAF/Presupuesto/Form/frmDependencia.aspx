@@ -35,6 +35,7 @@
 
                                         <asp:MultiView ID="Multiview1" runat="server">
                                             <asp:View ID="View_1" runat="server">
+                                                <asp:ImageButton ID="imgBttnPdf_v15" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" title="Reporte PDF" OnClick="btnObtnerReporte" />
                                                 <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click" ValidationGroup="Agregar" />
                                                 <br />
                                                 <asp:Label ID="lblCentroContab" runat="server" Text="Centro contable"></asp:Label>

@@ -32,6 +32,23 @@ namespace CapaEntidad
         private string _Importe_Mensual;
         private string _Mes_Inicial;
         private string _Mes_Final;
+        private string _Tipo_Evento;
+        private string _Ejercido_01;
+        private string _Ejercido_02;
+        private string _Ejercido_03;
+        private string _Ejercido_04;
+        private string _Ejercido_05;
+        private string _Ejercido_06;
+        private string _Ejercido_07;
+        private string _Ejercido_08;
+        private string _Ejercido_09;
+        private string _Ejercido_10;
+        private string _Ejercido_11;
+        private string _Ejercido_12;
+        private string _Ejercido_Suma;
+        private string _DependenciaIni;
+        private string _DependenciaFin;
+
         public string Centro_Contable
         {
             get { return _Centro_Contable; }
@@ -196,6 +213,88 @@ namespace CapaEntidad
         {
             get { return _Mes_Final; }
             set { _Mes_Final = value; }
+        }
+
+        public string Tipo_Evento
+        {
+            get { return _Tipo_Evento; }
+            set { _Tipo_Evento = value; }
+        }
+
+        public string Ejercido_01
+        {
+            get { return _Ejercido_01; }
+            set { _Ejercido_01 = value; }
+        }
+        public string Ejercido_02
+        {
+            get { return _Ejercido_02; }
+            set { _Ejercido_02 = value; }
+        }
+        public string Ejercido_03
+        {
+            get { return _Ejercido_03; }
+            set { _Ejercido_03 = value; }
+        }
+        public string Ejercido_04
+        {
+            get { return _Ejercido_04; }
+            set { _Ejercido_04 = value; }
+        }
+        public string Ejercido_05
+        {
+            get { return _Ejercido_05; }
+            set { _Ejercido_05 = value; }
+        }
+        public string Ejercido_06
+        {
+            get { return _Ejercido_06; }
+            set { _Ejercido_06 = value; }
+        }
+        public string Ejercido_07
+        {
+            get { return _Ejercido_07; }
+            set { _Ejercido_07 = value; }
+        }
+        public string Ejercido_08
+        {
+            get { return _Ejercido_08; }
+            set { _Ejercido_08 = value; }
+        }
+        public string Ejercido_09
+        {
+            get { return _Ejercido_09; }
+            set { _Ejercido_09 = value; }
+        }
+            public string Ejercido_10
+        {
+            get { return _Ejercido_10; }
+            set { _Ejercido_10 = value; }
+        }
+        public string Ejercido_11
+        {
+            get { return _Ejercido_11; }
+            set { _Ejercido_11 = value; }
+        }
+        public string Ejercido_12
+        {
+            get { return _Ejercido_12; }
+            set { _Ejercido_12 = value; }
+        }
+        public string EjercidoSuma
+        {
+            get { return _Ejercido_Suma; }
+            set { _Ejercido_Suma = value; }
+        }
+        public string DependenciaIni
+        {
+            get { return _DependenciaIni; }
+            set { _DependenciaIni = value; }
+        }
+        public string DependenciaFin
+        {
+            get { return _DependenciaFin; }
+            set { _DependenciaFin = value; }
         }
     }
 }

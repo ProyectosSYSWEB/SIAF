@@ -17,7 +17,8 @@ namespace SAF.Presupuesto.Form
         Sesion SesionUsu = new Sesion();
         CN_Comun CNComun = new CN_Comun();
         CN_Pres_Reportes CNReportes = new CN_Pres_Reportes();
-        CN_Consultas CNConsultas = new CN_Consultas();        
+        CN_Consultas CNConsultas = new CN_Consultas();
+        CN_Pres_Documento CNDocumentos = new CN_Pres_Documento();
         Pres_Reportes objReportes = new Pres_Reportes();
         string capitulos = "";
         List<string> ListaCaps = new List<string>();
@@ -166,20 +167,22 @@ namespace SAF.Presupuesto.Form
                     DDLCodProg.Enabled = true;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                     //CargarCapitulos();                    
-                    //CargarGridCedulas();
-                    //CargarGridAumentos();
+                    CargarGridCedulas();
+                    CargarGridAumentos();
                     CargarGridMinistraciones();
                 }
 
-                else if (DDLCodProg.Items.Count == 1)
+                else if (DDLCodProg.Items.Count == 1 && DDLCodProg.DataSource != null)
                 {
-                    DDLCodProg.Enabled = false;                    
+                    DDLCodProg.Enabled = false;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                     //CargarCapitulos();
-                    CargarGridCedulas();                    
+                    CargarGridCedulas();
                     CargarGridAumentos();
-                    CargarGridMinistraciones();                    
+                    CargarGridMinistraciones();
                 }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Sin códigos programaticos.')", true);
             }
             catch (Exception ex)
             {
@@ -202,6 +205,12 @@ namespace SAF.Presupuesto.Form
                     GRDCedulas.Enabled = true;
                     GRDCedulas.DataSource = listCedulas;
                     GRDCedulas.DataBind();
+                }
+                else
+                {
+                    GRDMinistraciones.Enabled = true;
+                    GRDMinistraciones.DataSource = null;
+                    GRDMinistraciones.DataBind();
                 }
             }
             catch (Exception ex)
@@ -226,6 +235,13 @@ namespace SAF.Presupuesto.Form
                     GRDAumentos.DataSource = listAumentos;
                     GRDAumentos.DataBind();
                 }
+                else
+                {
+                    GRDAumentos.Enabled = true;
+                    GRDAumentos.DataSource = null;
+                    GRDAumentos.DataBind();
+                }
+
             }
             catch (Exception ex)
             {
@@ -249,10 +265,50 @@ namespace SAF.Presupuesto.Form
                     GRDMinistraciones.DataSource = listMinistraciones;
                     GRDMinistraciones.DataBind();
                 }
+                else{
+                    GRDMinistraciones.Enabled = true;
+                    GRDMinistraciones.DataSource = null;
+                    GRDMinistraciones.DataBind();
+                }
             }
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        protected void GRDCedulas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SesionUsu.Usu_TipoUsu == "SA")
+                {
+                    string Verificador = string.Empty;
+                    Pres_Documento objDocumento = new Pres_Documento();
+                    List<Pres_Documento> List = new List<Pres_Documento>();                    
+                    objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
+                    objDocumento.Dependencia = Convert.ToString(GRDCedulas.SelectedRow.Cells[0].Text);                    
+                    objDocumento.Tipo = Convert.ToString(GRDCedulas.SelectedRow.Cells[2].Text);
+                    objDocumento.SuperTipo = "C";
+                    objDocumento.Status = Convert.ToString(GRDCedulas.SelectedRow.Cells[5].Text);
+                    objDocumento.Fecha_Inicial = Convert.ToString(GRDCedulas.SelectedRow.Cells[6].Text);
+                    objDocumento.Fecha_Final = Convert.ToString(GRDCedulas.SelectedRow.Cells[7].Text);
+                    objDocumento.P_Buscar ="";
+                    objDocumento.Editor = "";
+                    CNDocumentos.ConsultaGrid_Documentos(ref objDocumento, ref List);
+                    if (Verificador == "0")
+                    {
+                        string a = "1";
+                    }
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "')", true);
+                }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene permisos para realizar esta acción')", true);
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
     }
