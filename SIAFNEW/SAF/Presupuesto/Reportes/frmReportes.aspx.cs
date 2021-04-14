@@ -1114,7 +1114,10 @@ namespace SAF.Presupuesto.Reportes
                 case "GC":
                     ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CAPITULO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
-                    
+                case "GG":
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
+                    break;
+
             }
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
@@ -1130,6 +1133,9 @@ namespace SAF.Presupuesto.Reportes
                     break;
                 case "GC":
                     ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CAPITULO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
+                    break;
+                case "GG":
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
 
             }

@@ -16,14 +16,14 @@ namespace SAF.Presupuesto.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RPT_PRESUP_COMPARATIVO_CAPITULO : ReportClass {
+    public class RPT_PRESUP_COMPARATIVO_GRUPO : ReportClass {
         
-        public RPT_PRESUP_COMPARATIVO_CAPITULO() {
+        public RPT_PRESUP_COMPARATIVO_GRUPO() {
         }
         
         public override string ResourceName {
             get {
-                return "RPT-PRESUP_COMPARATIVO_CAPITULO.rpt";
+                return "RPT-PRESUP_COMPARATIVO_GRUPO.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SAF.Presupuesto.Reportes {
         
         public override string FullResourceName {
             get {
-                return "SAF.Presupuesto.Reportes.RPT-PRESUP_COMPARATIVO_CAPITULO.rpt";
+                return "SAF.Presupuesto.Reportes.RPT-PRESUP_COMPARATIVO_GRUPO.rpt";
             }
             set {
                 // Do nothing
@@ -162,9 +162,9 @@ namespace SAF.Presupuesto.Reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRPT_PRESUP_COMPARATIVO_CAPITULO : Component, ICachedReport {
+    public class CachedRPT_PRESUP_COMPARATIVO_GRUPO : Component, ICachedReport {
         
-        public CachedRPT_PRESUP_COMPARATIVO_CAPITULO() {
+        public CachedRPT_PRESUP_COMPARATIVO_GRUPO() {
         }
         
         [Browsable(false)]
@@ -201,7 +201,7 @@ namespace SAF.Presupuesto.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RPT_PRESUP_COMPARATIVO_CAPITULO rpt = new RPT_PRESUP_COMPARATIVO_CAPITULO();
+            RPT_PRESUP_COMPARATIVO_GRUPO rpt = new RPT_PRESUP_COMPARATIVO_GRUPO();
             rpt.Site = this.Site;
             return rpt;
         }

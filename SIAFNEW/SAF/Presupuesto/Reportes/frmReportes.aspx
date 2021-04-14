@@ -594,6 +594,7 @@
                         <td colspan="2">
                             <asp:DropDownList ID="DDLTipoReporte_v7" runat="server" Width="25%" AutoPostBack="True" OnSelectedIndexChanged="DDLTipoReporte_v7_SelectedIndexChanged">
                                 <asp:ListItem Value="CC">Por cuenta contable</asp:ListItem>
+                                 <asp:ListItem Value="GG">Por grupo</asp:ListItem>
                                 <asp:ListItem Value="GC">Por capítulo</asp:ListItem>
                             </asp:DropDownList>
                         </td>
