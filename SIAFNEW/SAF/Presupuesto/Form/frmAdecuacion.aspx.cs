@@ -94,7 +94,6 @@ namespace SAF.Presupuesto
             else
                 ddlTipoEnc.SelectedIndex = 0;
             ddlTipoEnc_SelectedIndexChanged(null, null);
-            //ddlStatusEnc.SelectedValue = "I";
             lblMsjCP.Text = string.Empty;
             lblfolio.Visible = false;
             txtfolio.Visible = false;
@@ -164,19 +163,29 @@ namespace SAF.Presupuesto
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "1");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlCentroContable, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "A", ref ListDependencia);
-                DDLCentroContable_SelectedIndexChanged(null, null);
-                ddlDepen_SelectedIndexChanged(null, null);
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Todos", ref ddlStatus);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipo, "p_supertipo", "A" );
+
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+
+        }
+        private void CargarCombosAdicionales()
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "1");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
+                ddlDepen_SelectedIndexChanged(null, null);
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "A");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", "A");
-                
-                //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, SesionUsu.Usu_Rep);
                 ddlTipoEnc.Items.RemoveAt(0);
-                //ddlTipoEnc.Items.Insert(0, new ListItem("--ELEGIR TIPO--", "0"));
-               
+         
+
             }
             catch (Exception ex)
             {
@@ -611,7 +620,8 @@ namespace SAF.Presupuesto
             lblError.Text = string.Empty;
             validadorStatus.ValidationGroup = "Guardar";
             string Status = string.Empty;
-            
+            CargarCombosAdicionales();
+
             string strEstatus = string.Empty;
             try
             {
@@ -641,7 +651,8 @@ namespace SAF.Presupuesto
                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'No tiene los permisos necesarios para editar este documento.');", true);
                 if (Verificador == "0")
                 {
-                    ddlDepen.SelectedValue = ddlCentroContable.SelectedValue;
+                    
+                  
                     Session["DocDet"] = null;
                     grdDetalles.DataSource = null;
                     grdDetalles.DataBind();
@@ -1037,6 +1048,8 @@ namespace SAF.Presupuesto
 
                     objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                     objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
+                    if (ddlTipoEnc.SelectedValue == "AP")
+                        objDocumentoDet.Mes_final = objDocumentoDet.Mes_inicial;
                     int tot = (objDocumentoDet.Mes_final - objDocumentoDet.Mes_inicial) + 1;
                     objDocumentoDet.Importe_mensual = Math.Round(Convert.ToDouble((Convert.ToDecimal(txtImporteOrigen.Text)) / tot), 2);
                     objDocumentoDet.Importe_origen = objDocumentoDet.Importe_mensual * tot;
@@ -1099,29 +1112,17 @@ namespace SAF.Presupuesto
             TabContainer1.ActiveTabIndex = 0;            
             Session["DocDet"] = null;
             ddlCentroContable.Enabled = false;
+            CargarCombosAdicionales();
             LimpiarControles();
-            DDLCentroContable_SelectedIndexChanged(null,null);
+            
+           
             //ValidacionTipoDet();
         }
+
         protected void ddlTipoEnc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DDLCentroContable_SelectedIndexChanged(null, null);
-           
-        }
-        protected void DDLCentroContable_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-            try
-            {
-                
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
-                ddlDepen_SelectedIndexChanged(null, null);
-                
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }            
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref ddlDepen, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, ddlCentroContable.SelectedValue);
+            ddlDepen_SelectedIndexChanged(null, null);
         }
         protected void DDLCapitulo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1150,6 +1151,7 @@ namespace SAF.Presupuesto
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
+
         #endregion
 
        

@@ -184,10 +184,10 @@
                                                                 <table style="width:100%;">                                                                    
                                                                     <tr>
                                                                         <td class="col1">
-                                                                            <asp:Label ID="lblTipo0" runat="server" Text="Tipo"></asp:Label>
+                                                                            <asp:Label ID="lblEventos" runat="server" Text="Evento"></asp:Label>
                                                                         </td>
                                                                         <td class="col1">
-                                                                            <asp:DropDownList ID="ddlTipo" runat="server"  Width="150px">
+                                                                            <asp:DropDownList ID="ddlEventos" runat="server"  Width="300px">
                                                                             </asp:DropDownList>
                                                                         </td>
                                                                         <td class="col1">&nbsp;</td>                                                                        
@@ -1028,6 +1028,64 @@
                                                                 </asp:UpdatePanel>
                                                             </asp:View>
                                                             <asp:View ID="View3" runat="server">
+                                                                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                                                    <ContentTemplate>
+                                                                        <table style="width:100%;">
+                                                                            <tr>
+                                                                                <td><asp:Label ID="Label1" runat="server" Text="No. de cédula"></asp:Label></td>
+                                                                                                                        <td><asp:TextBox ID="txtNumero_Cedula_Act" runat="server" Enabled="False" Width="95px"></asp:TextBox></td>
+                                                                                <td class="auto-style63">
+                                                                                                                            <asp:Label ID="Label2" runat="server" Text="No. de cheque"></asp:Label>
+                                                                                                                        </td>
+                                                                                                                        <td>
+                                                                                                                             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                                                                                                                 <ContentTemplate>
+                                                                                                                            <asp:TextBox ID="txtNumero_Cheque_Act" runat="server"  Width="95px"></asp:TextBox>
+                                                                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtNumero_Cheque" ErrorMessage="*" ValidationGroup="Actualizar"></asp:RequiredFieldValidator>
+                                                                                                                                     </ContentTemplate>
+                                                                                                                                     </asp:UpdatePanel>
+                                                                                                                        </td>
+                                                                            </tr>   
+                                                                             <tr>
+                                                                                                                        <td class="auto-style73" valign="top">
+                                                                                                                            <asp:Label ID="Label3" runat="server" Text="Concepto"></asp:Label>
+                                                                                                                        </td>
+                                                                                                                        <td class="auto-style74" colspan="5" valign="top">
+                                                                                                                            <asp:TextBox ID="txtConcepto_Act" runat="server" Height="80px" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                                                                                                            <br />
+                                                                                                                            <asp:RequiredFieldValidator ID="RVConceptoAct" runat="server" ControlToValidate="txtConcepto_Act" ErrorMessage="*" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
+                                                                                                                        </td>
+                                                                                                                    </tr>
+                                                                                                                 
+                                                                                                                    <tr>
+                                                                                                                        <td></td>
+                                                                                                                        <td colspan="4">
+                                                                                                                            <asp:TextBox ID="txtSeguimiento_Act" runat="server" Height="100px" ReadOnly="True" TextMode="MultiLine" Width="100%"></asp:TextBox></td>
+                                                                                                                    </tr>
+                                                                            <tr>
+                                                                                <td class="cuadro_botones" colspan="4">
+                                                                                    <asp:UpdatePanel ID="UpdatePanel22" runat="server">
+                                                                                        <ContentTemplate>
+                                                                                            <asp:Button ID="btnActualizar" runat="server" CssClass="btn" OnClick="btnActualizar_Click" Text="Actualizar" ValidationGroup="Actualizar" />
+                                                                                            &nbsp;<asp:Button ID="btnCancelarEdicion" runat="server" CssClass="btn2" OnClick="btnCancelarEdicion_Click" Text="Cancelar" />
+                                                                                        </ContentTemplate>
+                                                                                    </asp:UpdatePanel>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                
+                                                                                <td class="centro" colspan="4">
+                                                                                    <asp:UpdateProgress ID="UpdateProgress5" runat="server" AssociatedUpdatePanelID="UpdatePanel112">
+                                                                                        <progresstemplate>
+                                                                                                    <asp:Image ID="imgActualizar" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" style="text-align: center" ToolTip="Espere un momento, por favor.." Width="50px" />
+                                                                                                </progresstemplate>
+                                                                                    </asp:UpdateProgress>
+                                                                                </td>
+                                                                                
+                                                                            </tr>
+                                                                        </table>
+                                                                    </ContentTemplate>
+                                                                </asp:UpdatePanel>
                                                             </asp:View>
                                                             <asp:View ID="View4" runat="server">
                                                             </asp:View>

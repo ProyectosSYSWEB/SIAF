@@ -93,7 +93,7 @@
                             <td colspan="5">
                                 <asp:UpdatePanel ID="UpdatePanel126" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlCentroContable" runat="server" AutoPostBack="True"  Width="100%" OnSelectedIndexChanged="DDLCentroContable_SelectedIndexChanged">
+                                        <asp:DropDownList ID="ddlCentroContable" runat="server"   Width="100%" >
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
@@ -301,7 +301,7 @@
                                                                                                 <asp:Label ID="lblTipoEnc" runat="server" Text="Tipo"></asp:Label>
                                                                                             </td>
                                                                                             <td valign="top" class="col1">
-                                                                                                <asp:DropDownList ID="ddlTipoEnc" runat="server"  Width="150px" OnSelectedIndexChanged="ddlTipoEnc_SelectedIndexChanged" AutoPostBack="True" >
+                                                                                                <asp:DropDownList ID="ddlTipoEnc" runat="server"  Width="150px" AutoPostBack="True" OnSelectedIndexChanged="ddlTipoEnc_SelectedIndexChanged"  >
                                                                                                 </asp:DropDownList>
                                                                                             </td>                                                                                            
                                                                                             <td class="col1" valign="top">&nbsp;</td>

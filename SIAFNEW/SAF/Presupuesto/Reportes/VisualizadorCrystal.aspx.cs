@@ -58,6 +58,7 @@ namespace SAF.Presupuesto.Reportes
                 string Mayor = Convert.ToString(Request.QueryString["Mayor"]);
                 string Subprograma = Convert.ToString(Request.QueryString["Subprograma"]);
                 string Partida = Convert.ToString(Request.QueryString["Partida"]);
+                string Evento = Convert.ToString(Request.QueryString["Evento"]);
 
                 Tipo = Convert.ToString(Request.QueryString["Tipo"]);
                 string caseSwitch = Tipo;
@@ -78,10 +79,16 @@ namespace SAF.Presupuesto.Reportes
                         reportes_dir();
                         report.SetParameterValue(0, Id); reporte_PDF();
                         break;
+                    case "RP-PRESUP_MIN_DET":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_MIN_DET.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Id); 
+                        reporte_PDF();
+                        break;
                     case "RP-LoteM":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_LOTEM.rpt";
                         reportes_dir();
-                        report.SetParameterValue(0, Dependencia);  report.SetParameterValue(1, MesIni); report.SetParameterValue(2, MesFin);
+                        report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, MesIni); report.SetParameterValue(2, MesFin);
                         report.SetParameterValue(3, TipoDoc); report.SetParameterValue(4, Status); report.SetParameterValue(5, Ejercicio);
                         reporte_PDF();
                         break;
@@ -89,7 +96,7 @@ namespace SAF.Presupuesto.Reportes
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_LOTEC.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, MesIni); report.SetParameterValue(2, MesFin);
-                        report.SetParameterValue(3, TipoDoc); report.SetParameterValue(4, Status); report.SetParameterValue(5, Ejercicio);
+                        report.SetParameterValue(3, TipoDoc); report.SetParameterValue(4, Status); report.SetParameterValue(5, Ejercicio); report.SetParameterValue(6, Evento);
                         reporte_PDF();
                         break;
                     case "RP-LoteA":
@@ -391,12 +398,26 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Mayor);
                         reporte_XLS();
                         break;
+                    case "RP-PRESUP_COMPARATIVO_GRUPO":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_COMPARATIVO_GRUPO.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, CentroContable);
+                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Mayor);
+                        reporte_PDF();
+                        break;
+                    case "RP-PRESUP_COMPARATIVO_GRUPO_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_COMPARATIVO_GRUPO.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, CentroContable);
+                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Mayor);
+                        reporte_XLS();
+                        break;
                     case "RP-DOCUMENTOS":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_GRID_DOCS.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, MesIni); report.SetParameterValue(2, MesFin);
                         report.SetParameterValue(3, TipoDoc); report.SetParameterValue(4, SuperTipo); report.SetParameterValue(5, Status);
-                        report.SetParameterValue(6, Ejercicio);
+                        report.SetParameterValue(6, Ejercicio); report.SetParameterValue(7, Evento);
                         reporte_PDF();
                         break;
                     case "RP-DOCUMENTOS_XLS":
@@ -404,7 +425,7 @@ namespace SAF.Presupuesto.Reportes
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, MesIni); report.SetParameterValue(2, MesFin);
                         report.SetParameterValue(3, TipoDoc); report.SetParameterValue(4, SuperTipo); report.SetParameterValue(5, Status);
-                        report.SetParameterValue(6, Ejercicio);
+                        report.SetParameterValue(6, Ejercicio); report.SetParameterValue(7, Evento);
                         reporte_XLS();
                         break;
                     case "RP-LISTADO_CEDULAS":
