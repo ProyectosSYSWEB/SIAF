@@ -280,13 +280,13 @@ namespace SAF.Presupuesto
                         ddlDepen.Items.RemoveAt(ddlDepen.SelectedIndex);
                         ddlDepen.SelectedValue = DepOriginal;
                         ddlDepen.SelectedIndex = 0;
-                    
                 }
-
+               
 
             }
-            
-            
+            if (SesionUsu.Usu_TipoUsu == "SA" && ddlCentroContable.SelectedValue == "81101")
+                rbtOrigen_Destino.Enabled = true;
+
         }
         private void StatusEnc(string Status)
         {

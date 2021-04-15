@@ -74,5 +74,31 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
+
+//=========================CONTROL CIERRE DE LOS CENTROS CONTABLES=====================
+
+        public void Control_CierreConsultaGrid(ref CentrosContab ObjControl_Cierre, ref List<CentrosContab> List)
+        {
+            try
+            {
+
+                CD_CentrosContab CDCentros_Contables = new CD_CentrosContab();
+                CDCentros_Contables.Control_CierreConsultaGrid(ref ObjControl_Cierre, ref List);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void Control_CierreEditar(ref CentrosContab ObjCentros_Contables, ref string Verificador)
+        {
+            CD_CentrosContab CDCentros_Contables = new CD_CentrosContab();
+            CDCentros_Contables.Control_CierreEditar(ref ObjCentros_Contables, ref Verificador);
+        }
+        public void Control_CierreGral(ref CentrosContab ObjControl_Cierre, string Tipo, ref string Verificador)
+        {
+            CD_CentrosContab CDControl_Cierre = new CD_CentrosContab();
+            CDControl_Cierre.Control_CierreGral(ref ObjControl_Cierre, Tipo, ref Verificador);
+        }
     }
 }
