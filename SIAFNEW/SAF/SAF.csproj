@@ -213,6 +213,7 @@
     <Content Include="Presupuesto\Form\frmCentrosContab.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
     <Content Include="Presupuesto\Form\frmConsultas.aspx" />
+    <Content Include="Presupuesto\Form\frmControlCierre.aspx" />
     <Content Include="Presupuesto\Form\frmControlPresupSaf.aspx" />
     <Content Include="Presupuesto\Form\frmControlPresupuestal.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
@@ -491,6 +492,13 @@
     </Compile>
     <Compile Include="Presupuesto\Form\frmConsultas.aspx.designer.cs">
       <DependentUpon>frmConsultas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlCierre.aspx.cs">
+      <DependentUpon>frmControlCierre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlCierre.aspx.designer.cs">
+      <DependentUpon>frmControlCierre.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presupuesto\Form\frmControlPresupSaf.aspx.cs">
       <DependentUpon>frmControlPresupSaf.aspx</DependentUpon>

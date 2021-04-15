@@ -31,12 +31,12 @@ namespace CapaEntidad
             set { _Id = value; }
         }
 
-        private string _Dependnecia;
+        private string _Dependencia;
 
         public string Dependencia
         {
-            get { return _Dependnecia; }
-            set { _Dependnecia = value; }
+            get { return _Dependencia; }
+            set { _Dependencia = value; }
         }
 
         private string _Director;
@@ -79,6 +79,32 @@ namespace CapaEntidad
             set { _Ejercicio = value; }
         }
 
+        private int _Id_Control_Cierre;
+        public int Id_Control_Cierre
+        {
+            get { return _Id_Control_Cierre; }
+            set { _Id_Control_Cierre = value; }
+        }
 
+        private string _sistema;
+        public string sistema
+        {
+            get { return _sistema; }
+            set { _sistema = value; }
+        }
+
+        private string _Mes_anio;
+        public string Mes_anio
+        {
+            get { return _Mes_anio.Trim(); }
+            set { _Mes_anio = value.Trim(); }
+        }
+
+        private string _Cierre_Definitivo;
+        public string Cierre_Definitivo
+        {
+            get { return _Cierre_Definitivo.Trim(); }
+            set { _Cierre_Definitivo = value.Trim(); }
+        }
     }
 }
