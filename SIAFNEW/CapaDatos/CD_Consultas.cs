@@ -76,7 +76,7 @@ namespace CapaDatos
                     objConsultas.Importe_Mensual = Convert.ToString(dr.GetValue(10));
                     objConsultas.Mes_Inicial = Convert.ToString(dr.GetValue(11));
                     objConsultas.Mes_Final = Convert.ToString(dr.GetValue(12));
-                    //objConsultas.Tipo_Evento = Convert.ToString(dr.GetValue(13));
+                    objConsultas.Tipo_Evento = Convert.ToString(dr.GetValue(13));
 
                     List.Add(objConsultas);
                 }
