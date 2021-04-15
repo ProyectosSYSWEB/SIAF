@@ -16,14 +16,14 @@ namespace SAF.Presupuesto.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RPT_PRESUP_CAT_PARTIDAS_GASTO : ReportClass {
+    public class RPT_PRESUP_CCONTAB : ReportClass {
         
-        public RPT_PRESUP_CAT_PARTIDAS_GASTO() {
+        public RPT_PRESUP_CCONTAB() {
         }
         
         public override string ResourceName {
             get {
-                return "RPT-PRESUP_CAT_PARTIDAS_GASTO.rpt";
+                return "RPT_PRESUP_CCONTAB.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SAF.Presupuesto.Reportes {
         
         public override string FullResourceName {
             get {
-                return "SAF.Presupuesto.Reportes.RPT-PRESUP_CAT_PARTIDAS_GASTO.rpt";
+                return "SAF.Presupuesto.Reportes.RPT_PRESUP_CCONTAB.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,33 +82,9 @@ namespace SAF.Presupuesto.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection2 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection3 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[7];
+                return this.ReportDefinition.Sections[4];
             }
         }
         
@@ -122,9 +98,9 @@ namespace SAF.Presupuesto.Reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRPT_PRESUP_CAT_PARTIDAS_GASTO : Component, ICachedReport {
+    public class CachedRPT_PRESUP_CCONTAB : Component, ICachedReport {
         
-        public CachedRPT_PRESUP_CAT_PARTIDAS_GASTO() {
+        public CachedRPT_PRESUP_CCONTAB() {
         }
         
         [Browsable(false)]
@@ -161,7 +137,7 @@ namespace SAF.Presupuesto.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RPT_PRESUP_CAT_PARTIDAS_GASTO rpt = new RPT_PRESUP_CAT_PARTIDAS_GASTO();
+            RPT_PRESUP_CCONTAB rpt = new RPT_PRESUP_CCONTAB();
             rpt.Site = this.Site;
             return rpt;
         }

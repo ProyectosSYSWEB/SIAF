@@ -26,22 +26,28 @@
                             <tr>
                                 <td style="width: 10%">
                                     <asp:Label ID="Label4" runat="server" Text="Dependencia"></asp:Label>
-                                <%--</td>
-                                <td>--%>
                                     <asp:DropDownList ID="DDLDependencia" runat="server" Width="300px" AutoPostBack="True" OnSelectedIndexChanged="DDLFuente_SelectedIndexChanged"></asp:DropDownList>
                                 </td>
                                 <td style="width: 10%">
                                     <asp:Label ID="Label1" runat="server" Text="Fuente"></asp:Label>
-                                <%--</td>
-                                <td>--%>
                                     <asp:DropDownList ID="DDLFuente" runat="server" Width="300px" AutoPostBack="True"></asp:DropDownList>
                                 </td>
                                 <td style="width: 10%">
-                                    <asp:Label ID="Label3" runat="server" Text="Código Programatico"></asp:Label>
-                                <%--</td>
-                                <td>--%>
+                                    <asp:UpdatePanel ID="updBtns" runat="server">
+                                                                                            <ContentTemplate>
+                                                                                                <asp:Label ID="Label3" runat="server" Text="Código Programatico"></asp:Label>                                
                                     <asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="GRDCargarDatosCodProg">
                                     </asp:DropDownList>
+                                                                                                </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    
+                                </td>
+                                <td align="center" colspan="5">
+                                    <asp:UpdateProgress ID="updPrBtns" runat="server" AssociatedUpdatePanelID="updBtns">
+                                        <progresstemplate>
+                                            <asp:Image ID="imgBtns" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" style="text-align: center" ToolTip="Espere un momento, por favor.." Width="50px" />
+                                        </progresstemplate>
+                                    </asp:UpdateProgress>
                                 </td>
                             </tr>
 

@@ -36,6 +36,7 @@
 
 
                                                 <asp:View ID="View_1" runat="server">
+                                                    <asp:ImageButton ID="imgBttnPdf_v15" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" title="Reporte PDF" OnClick="btnObtnerReporte" />
                                                     <asp:ImageButton ID="btnNuevo" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/nuevo.png" OnClick="btnNuevo_Click" ValidationGroup="Agregar" />
                                                     <asp:GridView ID="GRDFuenteFin" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnRowDeleting="GRDFuenteFin_RowDeleting" OnSelectedIndexChanged="GRDFuenteFin_SelectedIndexChanged">
                                                         <Columns>

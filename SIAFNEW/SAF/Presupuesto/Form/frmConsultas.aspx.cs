@@ -166,20 +166,22 @@ namespace SAF.Presupuesto.Form
                     DDLCodProg.Enabled = true;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                     //CargarCapitulos();                    
-                    //CargarGridCedulas();
-                    //CargarGridAumentos();
+                    CargarGridCedulas();
+                    CargarGridAumentos();
                     CargarGridMinistraciones();
                 }
 
-                else if (DDLCodProg.Items.Count == 1)
+                else if (DDLCodProg.Items.Count == 1 && DDLCodProg.DataSource != null)
                 {
-                    DDLCodProg.Enabled = false;                    
+                    DDLCodProg.Enabled = false;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                     //CargarCapitulos();
-                    CargarGridCedulas();                    
+                    CargarGridCedulas();
                     CargarGridAumentos();
-                    CargarGridMinistraciones();                    
+                    CargarGridMinistraciones();
                 }
+                else
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Sin códigos programaticos.')", true);
             }
             catch (Exception ex)
             {
@@ -202,6 +204,12 @@ namespace SAF.Presupuesto.Form
                     GRDCedulas.Enabled = true;
                     GRDCedulas.DataSource = listCedulas;
                     GRDCedulas.DataBind();
+                }
+                else
+                {
+                    GRDMinistraciones.Enabled = true;
+                    GRDMinistraciones.DataSource = null;
+                    GRDMinistraciones.DataBind();
                 }
             }
             catch (Exception ex)
@@ -226,6 +234,13 @@ namespace SAF.Presupuesto.Form
                     GRDAumentos.DataSource = listAumentos;
                     GRDAumentos.DataBind();
                 }
+                else
+                {
+                    GRDAumentos.Enabled = true;
+                    GRDAumentos.DataSource = null;
+                    GRDAumentos.DataBind();
+                }
+
             }
             catch (Exception ex)
             {
@@ -247,6 +262,11 @@ namespace SAF.Presupuesto.Form
                 {
                     GRDMinistraciones.Enabled = true;
                     GRDMinistraciones.DataSource = listMinistraciones;
+                    GRDMinistraciones.DataBind();
+                }
+                else{
+                    GRDMinistraciones.Enabled = true;
+                    GRDMinistraciones.DataSource = null;
                     GRDMinistraciones.DataBind();
                 }
             }
