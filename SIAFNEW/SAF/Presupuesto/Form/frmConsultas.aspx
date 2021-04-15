@@ -135,12 +135,12 @@
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Folio" HeaderText="Cedula" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                                                    <asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>
+                                                    <%--<asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>--%>
                                                     <asp:BoundField DataField="Importe_Mensual" HeaderText="Parcial" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" /> 
-                                                    <asp:BoundField DataField="FechaI" HeaderText="Mes_Inicial"  ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />
-                                                    <asp:BoundField DataField="FechaF" HeaderText="Mes_Final" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"  />
+                                                    <asp:BoundField DataField="Mes_Inicial" HeaderText="Mes_Inicial"  ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />
+                                                    <asp:BoundField DataField="Mes_Final" HeaderText="Mes_Final" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"  />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Movimientos</asp:LinkButton>
@@ -169,7 +169,7 @@
                                                 <Columns>
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                                                    <asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>
+                                                    <%--<asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>--%>
                                                     <asp:BoundField DataField="Folio" HeaderText="Folio" />
                                                     <asp:BoundField DataField="Importe_Origen" HeaderText="Importe Origen" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Importe_Destino" HeaderText="Importe Destino" ItemStyle-HorizontalAlign="Right"/>
@@ -206,7 +206,7 @@
                                                 <Columns>
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                                                    <asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>
+                                                    <%--<asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>--%>
                                                     <asp:BoundField DataField="Folio" HeaderText="Folio" />
                                                     <asp:BoundField DataField="Importe_Mensual" HeaderText="Importe" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Mes_Inicial" HeaderText="Mes" />
