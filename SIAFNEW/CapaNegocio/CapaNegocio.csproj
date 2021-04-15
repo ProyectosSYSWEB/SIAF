@@ -66,6 +66,7 @@
     <Compile Include="CN_Pres_Reportes.cs" />
     <Compile Include="CN_Programa.cs" />
     <Compile Include="CN_Proyecto.cs" />
+    <Compile Include="CN_ReclasificacionFuenteFin.cs" />
     <Compile Include="CN_Subprog.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="CN_Pres_Nomina.cs" />

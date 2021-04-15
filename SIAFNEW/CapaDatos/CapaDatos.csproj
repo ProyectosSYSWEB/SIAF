@@ -69,6 +69,7 @@
     <Compile Include="CD_Pres_Reportes.cs" />
     <Compile Include="CD_Programa.cs" />
     <Compile Include="CD_Proyecto.cs" />
+    <Compile Include="CD_ReclasifiacionFuenteFin.cs" />
     <Compile Include="CD_Subprograma.cs" />
     <Compile Include="CD_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
