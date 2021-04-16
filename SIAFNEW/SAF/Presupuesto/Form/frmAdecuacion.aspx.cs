@@ -899,33 +899,40 @@ namespace SAF.Presupuesto
             bool MesPermitido = false;
             lblMsjCP.Text = string.Empty;
             ddlMesFinalDet.SelectedValue = ddlMesInicialDet.SelectedValue;
-            if (txtImporteOrigen.Text != string.Empty)
-                txtImporteDestino_TextChanged(null, null);
-            if (ddlTipoEnc.SelectedValue == "AC" || ddlTipoEnc.SelectedValue == "AP")
+            if (ddlCentroContable.SelectedValue=="81101" && SesionUsu.Usu_TipoUsu=="SA")
+                MesPermitido = true;
+            else
             {
-                int MesActual = System.DateTime.Now.Month;
-                int MesSeleccionado = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-               
-                if (ddlTipoEnc.SelectedValue == "AP")
+                if (txtImporteOrigen.Text != string.Empty)
+                    txtImporteDestino_TextChanged(null, null);
+                if (ddlTipoEnc.SelectedValue == "AC" || ddlTipoEnc.SelectedValue == "AP")
                 {
-                    if (MesSeleccionado <= MesActual)
-                        MesPermitido = true;
-                    else
-                        //lblMsjCP.Text = "En un traspaso no se puede elegir un mes posterior al mes actual.";
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'En un traspaso no se puede elegir un mes posterior al mes actual.');", true);
+                    int MesActual = System.DateTime.Now.Month;
+                    int MesSeleccionado = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+
+                    if (ddlTipoEnc.SelectedValue == "AP")
+                    {
+                        if (MesSeleccionado <= MesActual)
+                            MesPermitido = true;
+                        else
+
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'En un traspaso no se puede elegir un mes posterior al mes actual.');", true);
+                    }
+                    else if (ddlTipoEnc.SelectedValue == "AC")
+                    {
+                        if (MesSeleccionado >= MesActual)
+                            MesPermitido = true;
+                        else
+                            //lblMsjCP.Text = "En una recalendarización no se puede elegir un mes anterior al mes actual.";
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'En una recalendarización no se puede elegir un mes anterior al mes actual.');", true);
+                    }
+
                 }
-                else if (ddlTipoEnc.SelectedValue == "AC")
-                {
-                    if (MesSeleccionado >= MesActual)
-                        MesPermitido = true;
-                    else
-                        //lblMsjCP.Text = "En una recalendarización no se puede elegir un mes anterior al mes actual.";
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'En una recalendarización no se puede elegir un mes anterior al mes actual.');", true);
-                }
+                else if (ddlTipoEnc.SelectedValue == "AR")
+                    MesPermitido = true;
                 
             }
-            else if (ddlTipoEnc.SelectedValue == "AR")
-                MesPermitido = true;
+
             if (MesPermitido)
                 disponible();
         }
@@ -972,32 +979,36 @@ namespace SAF.Presupuesto
             bool ImportePermitido = false;
             string Alerta = string.Empty;
 
-            if (Convert.ToDouble(txtImporteOrigen.Text) > 0 && txtImporteOrigen.Text != string.Empty && txtImporteOrigen.Text != null)
+            if (ddlCentroContable.SelectedValue == "81101" && SesionUsu.Usu_TipoUsu == "SA")
+                ImportePermitido = true;
+            else
             {
+                if (Convert.ToDouble(txtImporteOrigen.Text) > 0 && txtImporteOrigen.Text != string.Empty && txtImporteOrigen.Text != null)
+                {
 
-                if (rbtOrigen_Destino.SelectedValue == "O")
-                {
-                    if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
-                        ImportePermitido = true;
-                    else
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
-                }
-                else
-                {
-                    if (rbtOrigen_Destino.SelectedValue == "D")
+                    if (rbtOrigen_Destino.SelectedValue == "O")
                     {
-                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) > 0)
+                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
                             ImportePermitido = true;
                         else
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
                     }
                     else
-                        ImportePermitido = true;
+                    {
+                        if (rbtOrigen_Destino.SelectedValue == "D")
+                        {
+                            if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) > 0)
+                                ImportePermitido = true;
+                            else
+                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe no está permitido.');", true);
+                        }
+                        else
+                            ImportePermitido = true;
+                    }
+
+
                 }
-            
-        
             }
-           
             if (ImportePermitido )
             {
                 var content = new List<Pres_Documento_Detalle>();
