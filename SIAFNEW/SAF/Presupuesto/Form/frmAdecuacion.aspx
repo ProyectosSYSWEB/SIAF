@@ -379,10 +379,10 @@
             </tr>
             <tr>
                 <td class="auto-style63">
-                    <asp:Label ID="lblfolio" runat="server" Text="Folio" Visible="False"></asp:Label>
+                    <asp:Label ID="lblfolio" runat="server" Text="Folio" Visible="True"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtfolio" runat="server" Width="95px" Enabled="False" Visible="False"></asp:TextBox>
+                    <asp:TextBox ID="txtfolio" runat="server" Width="95px" Enabled="False" Visible="True"></asp:TextBox>
                 </td>
                 <td>&#160;</td>
                 <td class="auto-style75">&#160;</td>
