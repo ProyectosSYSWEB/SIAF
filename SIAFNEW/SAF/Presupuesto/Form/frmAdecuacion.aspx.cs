@@ -399,7 +399,8 @@ namespace SAF.Presupuesto
         {
             Verificador = string.Empty;
             objDocumento.CentroContable = "";
-            objDocumento.Dependencia = lblDependenciaDocumento.Text;
+            objDocumento.Dependencia = ddlDepen.SelectedValue;
+            //objDocumento.Dependencia = lblDependenciaDocumento.Text;
             objDocumento.Folio = txtfolio.Text;
             objDocumento.SuperTipo = "A";
             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
