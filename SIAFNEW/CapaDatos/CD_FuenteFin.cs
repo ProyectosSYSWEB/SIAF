@@ -46,8 +46,8 @@ namespace CapaDatos
             OracleCommand Cmd = null;
             try
             {
-                String[] Parametros = { "P_FUENTE", "P_ID_TIPO_FINANCIAMIENTO", "P_ID_TIPO_FONDO", "P_DESCRIPCION" };
-                object[] Valores = { objFuentes.Fuente, objFuentes.TipoFinan, objFuentes.TipoFondo, objFuentes.Descrip};
+                String[] Parametros = { "P_FUENTE", "P_ID_TIPO_FINANCIAMIENTO", "P_ID_TIPO_FONDO", "P_DESCRIPCION", "P_EJERCICIO" };
+                object[] Valores = { objFuentes.Fuente, objFuentes.TipoFinan, objFuentes.TipoFondo, objFuentes.Descrip, objFuentes.Ejercicio};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("INS_SAF_BASICOS", ref Verificador, Parametros, Valores, ParametrosOut);
@@ -70,7 +70,7 @@ namespace CapaDatos
             {
                 string[] ParametrosIn = { "P_ID", "P_EJERCICIO" };
                 object[] Valores = { objFuenteFin.Id, objFuenteFin.Ejercicio };
-                string[] ParametrosOut = { "P_FUENTE", "P_DESCRIPCION", "P_BANDERA" };
+                string[] ParametrosOut = { "P_FUENTE", "P_DESCRIPCION", "P_DESCRIPCION_FUENTE", "P_ID_FUENTE", "P_BANDERA" };
 
                 Cmd = CDDatos.GenerarOracleCommand("OBT_SAF_FUENTES", ref Verificador, ParametrosIn, Valores, ParametrosOut);
                 if (Verificador == "0")
@@ -80,6 +80,8 @@ namespace CapaDatos
                     objFuenteFin.Descrip = Convert.ToString(Cmd.Parameters["P_DESCRIPCION"].Value);
                     objFuenteFin.Id = Convert.ToString(Cmd.Parameters["P_ID"].Value);
                     objFuenteFin.Ejercicio = Convert.ToString(Cmd.Parameters["P_EJERCICIO"].Value);
+                    objFuenteFin.IdFuenteFin = Convert.ToString(Cmd.Parameters["P_ID_FUENTE"].Value);
+                    objFuenteFin.DescripcionFuenteFin = Convert.ToString(Cmd.Parameters["P_DESCRIPCION_FUENTE"].Value);
                 }
             }
             catch (Exception ex)
@@ -97,8 +99,8 @@ namespace CapaDatos
             OracleCommand Cmd = null;
             try
             {
-                String[] Parametros = { "P_FUENTE", "P_DESCRIP", "P_ID", "P_EJERCICIO"};
-                object[] Valores = { objFuenteFin.Fuente, objFuenteFin.Descrip, objFuenteFin.Id, objFuenteFin.Ejercicio };
+                String[] Parametros = { "P_FUENTE", "P_DESCRIP", "P_ID", "P_EJERCICIO", "P_ID_TIPO_FINAN"};
+                object[] Valores = { objFuenteFin.Fuente, objFuenteFin.Descrip, objFuenteFin.Id, objFuenteFin.Ejercicio, objFuenteFin.TipoFinan};
                 String[] ParametrosOut = { "p_Bandera" };
 
                 Cmd = CDDatos.GenerarOracleCommand("UPD_SAF_FUENTES", ref Verificador, Parametros, Valores, ParametrosOut);

@@ -34,12 +34,13 @@ namespace SAF.Presupuesto.Form
 
         protected void CargarCombos()
         {
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofuente, "p_valor" , "1");
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofuente, "p_valor", "p_clave", "1", "0");
             DDLTipofuente.SelectedValue = "1";            
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofondo, "p_valor", "2");
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofondo, "p_valor", "p_clave", "2", "0");
             DDLTipofondo.SelectedValue = "1";
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDDLTipoSubFondo, "p_valor", "3");
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDDLTipoSubFondo, "p_valor", "p_clave", "3", "0");
             DDLTipofondo.SelectedValue = "1";
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLFuenteFin, "p_valor", "p_clave", "3", "4");
 
         }
         protected void DDLTipofuente_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,7 +57,7 @@ namespace SAF.Presupuesto.Form
                 if (SesionUsu.Usu_TipoUsu == "SA")
                 {
                     objFuentesFin.Fuente = txtFuente.Text;
-                    objFuentesFin.TipoFinan = DDLTipofuente.SelectedValue;
+                    objFuentesFin.TipoFinan = DDLFuenteFin.SelectedValue;
                     objFuentesFin.TipoFondo = DDLTipofondo.SelectedValue;
                     objFuentesFin.Descrip = txtDescrip.Text;
                     string Verificador = string.Empty;
