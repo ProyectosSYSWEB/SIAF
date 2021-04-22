@@ -28,6 +28,17 @@ namespace SAF.Presupuesto.Form
         {
             GRDFuenteFinan();
         }
+        private void CargarCombos(string paramCb1)
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLFuenteFin, "p_valor", "p_clave", "3", paramCb1);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
         protected void GRDFuenteFinan()
         {
             try
@@ -87,7 +98,11 @@ namespace SAF.Presupuesto.Form
                 {
                     txtFuente.Text = objFuenteFin.Fuente;
                     txtDescrip.Text = objFuenteFin.Descrip;
+                    txtFuenteFinActual.Text = objFuenteFin.DescripcionFuenteFin;
                     Multiview1.ActiveViewIndex = 1;
+                    string fuente = objFuenteFin.Fuente.Substring(0, 3);
+                    CargarCombos(fuente);
+                    DDLFuenteFin.SelectedValue = objFuenteFin.IdFuenteFin;
                 }
                 else
                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
@@ -120,6 +135,7 @@ namespace SAF.Presupuesto.Form
                     //objFuenteFin.Ejercicio = SesionUsu.Usu_Ejercicio;
                     objFuenteFin.Fuente = txtFuente.Text;
                     objFuenteFin.Descrip = txtDescrip.Text;
+                    objFuenteFin.TipoFinan = DDLFuenteFin.SelectedValue;
                     CN_FuenteFin.EditarFuenteFin(ref objFuenteFin, ref Verificador);
                     if(Verificador == "0")                    
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se han realizado los cambios correctamente.')", true);

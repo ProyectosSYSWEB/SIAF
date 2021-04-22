@@ -92,6 +92,24 @@
                                                                 </asp:TextBox>
                                                             </td>
                                                         </tr>
+                                                        <tr>
+                                                            <td style="width: 30%">
+                                                                <asp:Label ID="Label2" runat="server" Text="Fuente de Financiamento Actual">
+                                                                </asp:Label>
+                                                            </td>
+                                                            <td style="width: 80%">
+                                                                <asp:TextBox ID="txtFuenteFinActual" Text="" runat="server" Width="500px" Enabled="false">
+                                                                </asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 30%">
+                                                                <asp:Label ID="Label1" runat="server" Text="Fuente de Financiamiento"></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:DropDownList ID="DDLFuenteFin" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
+                                                            </td>
+                                                        </tr>
 
                                                         <tr>
                                                             <td>

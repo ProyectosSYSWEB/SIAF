@@ -72,7 +72,15 @@
                                     <asp:TextBox ID="txtDescrip" Text="" runat="server" Width="500px">
                                     </asp:TextBox>
                                 </td>
-                            </tr>                           
+                            </tr> 
+                            <tr>
+                                                            <td style="width: 30%">
+                                                                <asp:Label ID="Label2" runat="server" Text="Fuente de Financiamiento"></asp:Label>
+                                                            </td>
+                                                            <td>
+                                                                <asp:DropDownList ID="DDLFuenteFin" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
+                                                            </td>
+                                                        </tr>
 
                             <tr>
                                 <td>
