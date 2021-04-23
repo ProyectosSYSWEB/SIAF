@@ -442,7 +442,7 @@ namespace SAF.Presupuesto
             objDocumento.ISR = Convert.ToDouble("0.00");
 
             bool ImporteAutorizado = true;
-            if (objDocumento.Status == "A")
+            if (objDocumento.Status == "A" || objDocumento.Status == "T")
                     if (lblFormatoTotal_Origen.Text != lblFormatoTotal_Destino.Text)
                         ImporteAutorizado = false;
 
@@ -467,7 +467,7 @@ namespace SAF.Presupuesto
                         VerificadorInserta = Verificador;
                 }
                 else
-                    VerificadorInserta = "Para cambiar el estatus a AUTORIZADO, el importe origen y destino deben ser iguales.";
+                    VerificadorInserta = "Para cambiar el estatus a AUTORIZADO o TRASPASO, el importe origen y destino deben ser iguales.";
             }
             else
             {
@@ -497,7 +497,7 @@ namespace SAF.Presupuesto
                         VerificadorInserta = Verificador;
                 }
                 else
-                    VerificadorInserta = "Para cambiar el estatus a AUTORIZADO, el importe origen y destino deben ser iguales.";
+                    VerificadorInserta = "Para cambiar el estatus a AUTORIZADO o TRASPASO, el importe origen y destino deben ser iguales.";
             }
 
         }
