@@ -442,7 +442,7 @@ namespace SAF.Presupuesto
             objDocumento.ISR = Convert.ToDouble("0.00");
 
             bool ImporteAutorizado = true;
-            if (objDocumento.Status == "A" || objDocumento.Status == "T")
+            if (objDocumento.Status == "A")
                     if (lblFormatoTotal_Origen.Text != lblFormatoTotal_Destino.Text)
                         ImporteAutorizado = false;
 
