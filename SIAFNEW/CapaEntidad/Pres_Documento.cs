@@ -52,6 +52,8 @@ namespace CapaEntidad
         private double _Importe_Cheque;
         private double _Importe_Operacion;
         private string _Seguimiento;
+        private string _Literal;
+        private string _Id_Funcion;
 
         
         private bool _Opcion_Eliminar;
@@ -329,5 +331,16 @@ namespace CapaEntidad
             get { return _Opcion_Copiar2; }
             set { _Opcion_Copiar2 = value; }
         }
+        public string Literal
+        {
+            get { return _Literal; }
+            set { _Literal = value; }
+        }
+        public string Id_Funcion
+        {
+            get { return _Id_Funcion; }
+            set { _Id_Funcion = value; }
+        }
+
     }
 }
