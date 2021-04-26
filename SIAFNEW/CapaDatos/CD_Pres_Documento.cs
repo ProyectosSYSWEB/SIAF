@@ -487,5 +487,31 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
+        public void ConsultarLiteralFuncion(ref Pres_Documento objDocumento, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_ID", "P_EJERCICIO" };
+                object[] Valores = { objDocumento.Id_Funcion, objDocumento.Ejercicios };
+                string[] ParametrosOut = { "P_LITERAL", "P_BANDERA" };
+
+                Cmd = CDDatos.GenerarOracleCommand("OBT_SAF_FUENTES_LITERAL", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                if (Verificador == "0")
+                {
+                    objDocumento = new Pres_Documento();
+                    objDocumento.Literal = Convert.ToString(Cmd.Parameters["P_LITERAL"].Value);                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
     }
 }

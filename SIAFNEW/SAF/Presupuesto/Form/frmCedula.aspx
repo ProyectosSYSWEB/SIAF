@@ -506,7 +506,8 @@
                                                                                                                             <asp:Label ID="lblPoliza" runat="server" Text="No. de póliza"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server" onkeyup="MascaraNumPoliza(this,1);" Width="95px"></asp:TextBox>
+                                                                                                                            <%--<asp:TextBox ID="txtPoliza" runat="server" onkeyup="MascaraNumPoliza(this,1);" Width="95px"></asp:TextBox>--%>
+                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server" Width="95px"></asp:TextBox>
                                                                                                                             <asp:RequiredFieldValidator ID="RFVPoliza" runat="server" ControlToValidate="txtPoliza" ErrorMessage="*" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                             <asp:RegularExpressionValidator ID="REVPoliza" runat="server" ControlToValidate="txtPoliza" SetFocusOnError="True" ValidationExpression="^[0-9][0-9][A-Z a-z][0-9][0-9][0-9][0-9][A-Z a-z]$" ValidationGroup="Guardar">*Ej.:01E0001D</asp:RegularExpressionValidator>
                                                                                                                         </td>
