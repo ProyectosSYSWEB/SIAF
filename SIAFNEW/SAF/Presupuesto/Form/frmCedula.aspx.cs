@@ -612,8 +612,9 @@ namespace SAF.Presupuesto
                     }                    
                         txtConcepto.Text = objDocumento.Descripcion;
                     txtSeguimiento.Text = objDocumento.Seguimiento;
-                    txtNumero_Cheque.Text = objDocumento.NumeroCheque;
-                    DDLCuenta_Banco.SelectedValue= objDocumento.Cuenta;
+                    if(objDocumento.ClaveEvento != "99")
+                        DDLCuenta_Banco.SelectedValue = objDocumento.Cuenta;
+                    txtNumero_Cheque.Text = objDocumento.NumeroCheque;                    
                     DDLCuenta_Banco.Visible = true;
                     DDLCuenta_Banco.Enabled = true;
                     lblcuenta.Visible = true;
@@ -658,7 +659,9 @@ namespace SAF.Presupuesto
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + ex.Message + "');", true);
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);               
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true); //lblMsj.Text = ex.Message;
             }
         }
         
