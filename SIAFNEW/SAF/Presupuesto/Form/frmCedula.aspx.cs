@@ -14,6 +14,7 @@ namespace SAF.Presupuesto
     {
 
         #region <Variables>
+        bool Adicional = false;
         Int32[] Celdas = new Int32[] { 0 };
         string Verificador = string.Empty;
         string VerificadorDet = string.Empty;
@@ -161,8 +162,8 @@ namespace SAF.Presupuesto
         {
             try
             {
-                bool Adicional = (bool)Session["CargarAdicional"];
-                if (Adicional == true)
+                Adicional = (bool)Session["CargarAdicional"];
+                if (Adicional != true)
                 {
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
                     ddlevento.Items.RemoveAt(0);
