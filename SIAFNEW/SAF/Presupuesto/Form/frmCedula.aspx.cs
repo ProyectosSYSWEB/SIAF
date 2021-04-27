@@ -162,7 +162,9 @@ namespace SAF.Presupuesto
         {
             try
             {
-                Adicional = (bool)Session["CargarAdicional"];
+                if (Session["CargarAdicional"] != null)
+                    Adicional = (bool)Session["CargarAdicional"];
+
                 if (Adicional != true)
                 {
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
