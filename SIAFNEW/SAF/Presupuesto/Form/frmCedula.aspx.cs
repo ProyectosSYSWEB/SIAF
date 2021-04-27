@@ -936,8 +936,8 @@ namespace SAF.Presupuesto
             SesionUsu.Editar = 0;
             MultiView1.ActiveViewIndex = 1;
             TabContainer1.ActiveTabIndex = 0;
-            Session["DocDet"] = null;           
-
+            Session["DocDet"] = null;
+            Session["CargarAdicional"] = true;
             ddlDependencia.Enabled = false;
             panel_detalle.Visible = true;
             CargarCombosAdicionales();
