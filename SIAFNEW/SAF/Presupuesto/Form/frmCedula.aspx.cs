@@ -165,18 +165,7 @@ namespace SAF.Presupuesto
                 if (Session["CargarAdicional"] != null)
                     Adicional = (bool)Session["CargarAdicional"];
 
-                if (Adicional != true)
-                {
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
-                    ddlevento.Items.RemoveAt(0);
-                    ddlevento_SelectedIndexChanged(null, null);
-                    CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);                                        
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "p_clave_evento", "1", ddlevento.SelectedValue);
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", "C");
-                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
-                }
-                else
+                if (Adicional == true)
                 {
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
                     ddlevento.Items.RemoveAt(0);
@@ -188,6 +177,17 @@ namespace SAF.Presupuesto
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", "C");
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "PARAMETRO", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Literal);
+                }
+                else
+                {
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
+                    ddlevento.Items.RemoveAt(0);
+                    ddlevento_SelectedIndexChanged(null, null);
+                    CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "p_clave_evento", "1", ddlevento.SelectedValue);
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", "C");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
                 }
                 
             }
@@ -570,7 +570,7 @@ namespace SAF.Presupuesto
             string Status = string.Empty;
             try
             {
-                Session["CargarAdicional"] = true;
+                Session["CargarAdicional"] = false;
                 CargarCombosAdicionales();
                 
                 objDocumento.Id =Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
