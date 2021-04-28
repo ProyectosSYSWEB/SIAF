@@ -54,8 +54,8 @@ namespace CapaEntidad
         private string _Seguimiento;
         private string _Literal;
         private string _Id_Funcion;
+        private string _Fuente;
 
-        
         private bool _Opcion_Eliminar;
         private bool _Opcion_Eliminar2;
         private bool _Opcion_Modificar;
@@ -341,6 +341,10 @@ namespace CapaEntidad
             get { return _Id_Funcion; }
             set { _Id_Funcion = value; }
         }
-
+        public string Fuente
+        {
+            get { return _Fuente; }
+            set { _Fuente = value; }
+        }
     }
 }
