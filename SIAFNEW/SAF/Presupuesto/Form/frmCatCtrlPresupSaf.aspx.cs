@@ -71,8 +71,7 @@ namespace SAF.Presupuesto.Form
                     DDLDependencia.SelectedValue = objCodProg.Dependencia;
                     DDLProyecto.SelectedValue = objCodProg.Proyecto;
                     DDLPartida.SelectedValue = objCodProg.Partida;
-                    DDLFuente.SelectedValue = objCodProg.Fuente;
-                    txtTipoGasto.Text = "1";
+                    DDLFuente.SelectedValue = objCodProg.Fuente;                    
                     if (DDLDependencia.SelectedValue == "81101")
                         txtDigiMinistrado.Text = "2";
                     else
