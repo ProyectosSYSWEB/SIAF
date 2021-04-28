@@ -936,7 +936,7 @@ namespace SAF.Presupuesto
             MultiView1.ActiveViewIndex = 1;
             TabContainer1.ActiveTabIndex = 0;
             Session["DocDet"] = null;
-            Session["CargarAdicional"] = true;
+            Session["CargarAdicional"] = false;
             ddlDependencia.Enabled = false;
             panel_detalle.Visible = true;
             CargarCombosAdicionales();
@@ -1036,6 +1036,7 @@ namespace SAF.Presupuesto
                     ddlMesCedulaOrigen.Visible = true;
                     lblCedulaOrigen.Visible = true;
                     ddlCedulaOrigen.Visible = true;
+
 
                     //DDLCuenta_Banco.Enabled = false;
                     //txtPoliza.Enabled = false;
