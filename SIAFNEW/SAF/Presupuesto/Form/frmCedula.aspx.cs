@@ -312,9 +312,7 @@ namespace SAF.Presupuesto
                 objDocumento.Importe_Operacion = Convert.ToDouble(txtImporte_Operacion.Text);
 
               
-                objDocumento.Seguimiento = txtSeguimiento.Text;
-                objDocumento.ClaveCuenta = DDLCuenta_Banco.SelectedValue; 
-                objDocumento.Cuenta = DDLCuenta_Banco.SelectedValue;
+                objDocumento.Seguimiento = txtSeguimiento.Text;                
                 objDocumento.MotivoRechazo = "";
                 objDocumento.MotivoAutorizacion = "";
                 objDocumento.NumeroCheque = txtNumero_Cheque.Text;
@@ -325,6 +323,8 @@ namespace SAF.Presupuesto
                     objDocumento.CedulaDevengado = "";    // si es simultaneo folio
                     objDocumento.CedulaEjercido = "";     // si es simultaneo folio
                     objDocumento.CedulaPagado = "";
+                    objDocumento.ClaveCuenta = DDLCuenta_Banco.SelectedValue;
+                    objDocumento.Cuenta = DDLCuenta_Banco.SelectedValue;
                 }
                     else
                 {
@@ -332,6 +332,8 @@ namespace SAF.Presupuesto
                     objDocumento.CedulaDevengado = txtCedula.Text;    // si es simultaneo folio
                     objDocumento.CedulaEjercido = txtCedula.Text;     // si es simultaneo folio
                     objDocumento.CedulaPagado = txtCedula.Text;       // si es simultaneo folio
+                    objDocumento.ClaveCuenta = (String)Session["CuentaBanco"];
+                    objDocumento.Cuenta = (String)Session["CuentaBanco"];
                 }
                 objDocumento.ISR = Convert.ToDouble(txtImporteISR.Text);
                 objDocumento.KeyPoliza811 = "";
@@ -577,19 +579,15 @@ namespace SAF.Presupuesto
                 CNDocumentos.ConsultarDocumentoSel(ref objDocumento, ref Verificador);
                 if (Verificador == "0")
                 {
-
                     grdDetalles.DataSource = null;
                     grdDetalles.DataBind();
                     /*Inicializa controles para editar*/
                     SesionUsu.Editar = 1;
-                    //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
-                    
+                    //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");                    
                     ddlStatusEnc.Enabled = true;
                     ddlTipoEnc.Enabled = false;
                     ddlevento.Enabled = false;
                     ddlDependencia.SelectedValue = objDocumento.Dependencia;
-                   
-         
                     txtCedula.Text = objDocumento.Folio;
                     txtPoliza.Text = objDocumento.PolizaComprometida;
                     ddlTipoEnc.SelectedValue = objDocumento.Tipo;
@@ -612,11 +610,12 @@ namespace SAF.Presupuesto
                     }                    
                         txtConcepto.Text = objDocumento.Descripcion;
                     txtSeguimiento.Text = objDocumento.Seguimiento;
-                    if(objDocumento.ClaveEvento != "99")
+                    if (objDocumento.ClaveEvento != "99" && objDocumento.Cuenta != "LA OPCIÓN NO CONTIENE DATOS")
                         DDLCuenta_Banco.SelectedValue = objDocumento.Cuenta;
-                    txtNumero_Cheque.Text = objDocumento.NumeroCheque;                    
+                    Session["CuentaBanco"] = objDocumento.Cuenta;
+                    ddlFuente_F.Visible = true;
                     DDLCuenta_Banco.Visible = true;
-                    DDLCuenta_Banco.Enabled = true;
+                    txtNumero_Cheque.Text = objDocumento.NumeroCheque;                                        
                     lblcuenta.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
                     ddlevento_SelectedIndexChanged(null, null);
