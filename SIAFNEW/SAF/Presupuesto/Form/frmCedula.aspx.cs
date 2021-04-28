@@ -1032,14 +1032,14 @@ namespace SAF.Presupuesto
                 if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
                 {
                     btnAgregarDet.Visible = false;
-                     lblMesCedulaOrigen.Visible = true;
+                    lblMesCedulaOrigen.Visible = true;
                     ddlMesCedulaOrigen.Visible = true;
                     lblCedulaOrigen.Visible = true;
                     ddlCedulaOrigen.Visible = true;
 
                     //DDLCuenta_Banco.Enabled = false;
-                    txtPoliza.Enabled = false;
-                    txtNumero_Cheque.Enabled = false;
+                    //txtPoliza.Enabled = false;
+                    //txtNumero_Cheque.Enabled = false;
 
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cedulas", ref ddlCedulaOrigen, "p_ejercicio", "p_dependencia", "p_mes", "p_clave_evento", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlMesCedulaOrigen.SelectedValue, ddlevento.SelectedValue);
                 }
