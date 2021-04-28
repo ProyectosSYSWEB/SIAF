@@ -110,7 +110,7 @@
                                     </asp:Label>
                                 </td>
                                 <td style="width:80%">                                    
-                                    <asp:TextBox ID="txtTipoGasto" Text="" runat="server" Width="500px" Enabled="false">
+                                    <asp:TextBox ID="txtTipoGasto" Text="1" runat="server" Width="500px" Enabled="false">
                                     </asp:TextBox>
                                 </td>
                             </tr>
