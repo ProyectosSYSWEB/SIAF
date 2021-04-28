@@ -137,6 +137,7 @@ namespace CapaDatos
                                             "P_IMPORTE_OPERACION",
                                             "P_IMPORTE_CHEQUE",
                                             "P_SEGUIMIENTO",
+                                            "P_FUENTE",
                                             "p_bandera"
                 };
 
@@ -166,6 +167,7 @@ namespace CapaDatos
                     objDocumento.Importe_Operacion = Convert.ToDouble(Cmd.Parameters["P_IMPORTE_OPERACION"].Value);
                     objDocumento.Importe_Cheque = Convert.ToDouble(Cmd.Parameters["P_IMPORTE_CHEQUE"].Value);
                     objDocumento.Seguimiento = Convert.ToString(Cmd.Parameters["P_SEGUIMIENTO"].Value);
+                    objDocumento.Fuente = Convert.ToString(Cmd.Parameters["P_FUENTE"].Value);
 
 
                 }

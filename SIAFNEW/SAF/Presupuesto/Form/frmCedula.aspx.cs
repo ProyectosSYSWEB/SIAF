@@ -588,9 +588,10 @@ namespace SAF.Presupuesto
                     ddlTipoEnc.Enabled = false;
                     ddlevento.Enabled = false;
                     ddlDependencia.SelectedValue = objDocumento.Dependencia;
+                    ddlFuente_F.SelectedValue = objDocumento.Fuente;
                     txtCedula.Text = objDocumento.Folio;
                     txtPoliza.Text = objDocumento.PolizaComprometida;
-                    ddlTipoEnc.SelectedValue = objDocumento.Tipo;
+                    ddlTipoEnc.SelectedValue = objDocumento.Tipo;                    
                     txtfechaDocumento.Text = objDocumento.Fecha;
                     Status= objDocumento.Status;
                     if ( Status == "R" || Status == "I")
