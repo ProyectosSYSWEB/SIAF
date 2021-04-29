@@ -1642,6 +1642,7 @@
                                                 <asp:ListItem Value="XMINISTRAR">Por ministrar</asp:ListItem>
                                                 <asp:ListItem Value="MINISTRADO">Ministrado</asp:ListItem>
                                                 <asp:ListItem Value="EJERCIDO">Ejercido</asp:ListItem>
+                                                <asp:ListItem Value="XEJERCER">Por ejercer</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>

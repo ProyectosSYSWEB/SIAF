@@ -14,6 +14,7 @@ namespace SAF.Presupuesto
     {
 
         #region <Variables>
+        bool Adicional = false;
         Int32[] Celdas = new Int32[] { 0 };
         string Verificador = string.Empty;
         string VerificadorDet = string.Empty;
@@ -53,7 +54,7 @@ namespace SAF.Presupuesto
                 TabContainer1.ActiveTabIndex = 0;
                 CargarCombos();
                 grdDocumentos.DataSource = null;
-                grdDocumentos.DataBind();
+                grdDocumentos.DataBind();                
             }
             catch (Exception ex)
             {
@@ -161,14 +162,34 @@ namespace SAF.Presupuesto
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
-                ddlevento.Items.RemoveAt(0);
-                ddlevento_SelectedIndexChanged(null, null);
-                CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel","p_clave_evento", "1",ddlevento.SelectedValue);
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", "C");
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
+                if (Session["CargarAdicional"] != null)
+                    Adicional = (bool)Session["CargarAdicional"];
+
+                if (Adicional == true)
+                {
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
+                    ddlevento.Items.RemoveAt(0);
+                    ddlevento_SelectedIndexChanged(null, null);
+                    CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
+                    ConsultarLiteralFuncion();
+                    string Literal = (String)Session["LiteralCedula"];
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "p_clave_evento", "1", ddlevento.SelectedValue);
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", "C");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "PARAMETRO", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Literal);
+                }
+                else
+                {
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Eventos", ref ddlevento);
+                    ddlevento.Items.RemoveAt(0);
+                    ddlevento_SelectedIndexChanged(null, null);
+                    CNComun.LlenaCombo("PKG_PRESUPUESTO.Obt_Combo_Fuente_F", ref ddlFuente_F, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "p_clave_evento", "1", ddlevento.SelectedValue);
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Tipo_Documento", ref ddlTipoEnc, "p_supertipo", "C");
+                    CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -291,9 +312,7 @@ namespace SAF.Presupuesto
                 objDocumento.Importe_Operacion = Convert.ToDouble(txtImporte_Operacion.Text);
 
               
-                objDocumento.Seguimiento = txtSeguimiento.Text;
-                objDocumento.ClaveCuenta = DDLCuenta_Banco.SelectedValue; 
-                objDocumento.Cuenta = DDLCuenta_Banco.SelectedValue;
+                objDocumento.Seguimiento = txtSeguimiento.Text;                
                 objDocumento.MotivoRechazo = "";
                 objDocumento.MotivoAutorizacion = "";
                 objDocumento.NumeroCheque = txtNumero_Cheque.Text;
@@ -304,6 +323,8 @@ namespace SAF.Presupuesto
                     objDocumento.CedulaDevengado = "";    // si es simultaneo folio
                     objDocumento.CedulaEjercido = "";     // si es simultaneo folio
                     objDocumento.CedulaPagado = "";
+                    objDocumento.ClaveCuenta = DDLCuenta_Banco.SelectedValue;
+                    objDocumento.Cuenta = DDLCuenta_Banco.SelectedValue;
                 }
                     else
                 {
@@ -311,6 +332,8 @@ namespace SAF.Presupuesto
                     objDocumento.CedulaDevengado = txtCedula.Text;    // si es simultaneo folio
                     objDocumento.CedulaEjercido = txtCedula.Text;     // si es simultaneo folio
                     objDocumento.CedulaPagado = txtCedula.Text;       // si es simultaneo folio
+                    objDocumento.ClaveCuenta = (String)Session["CuentaBanco"];
+                    objDocumento.Cuenta = (String)Session["CuentaBanco"];
                 }
                 objDocumento.ISR = Convert.ToDouble(txtImporteISR.Text);
                 objDocumento.KeyPoliza811 = "";
@@ -488,6 +511,26 @@ namespace SAF.Presupuesto
                 throw new Exception(ex.Message);
             }
         }
+
+        private void ConsultarLiteralFuncion()
+        {
+            try
+            {
+                Pres_Documento objDocumento = new Pres_Documento();
+                string Verificador = string.Empty;
+                objDocumento.Id_Funcion = ddlFuente_F.SelectedValue;
+                objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
+                CNDocumentos.ConsultarLiteralFuncion(ref objDocumento, ref Verificador);
+                Session["LiteralCedula"] = objDocumento.Literal;
+
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error : " + ex.Message + "');", true);
+            }
+        }
+
+
         #endregion
 
         #region <Botones y Eventos>
@@ -529,27 +572,26 @@ namespace SAF.Presupuesto
             string Status = string.Empty;
             try
             {
+                Session["CargarAdicional"] = false;
                 CargarCombosAdicionales();
+                
                 objDocumento.Id =Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                 CNDocumentos.ConsultarDocumentoSel(ref objDocumento, ref Verificador);
                 if (Verificador == "0")
                 {
-
                     grdDetalles.DataSource = null;
                     grdDetalles.DataBind();
                     /*Inicializa controles para editar*/
                     SesionUsu.Editar = 1;
-                    //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");
-                    
+                    //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Status_Usuario", ref ddlStatusEnc, "p_tipo_usuario", "p_supertipo", SesionUsu.Usu_TipoUsu, "C");                    
                     ddlStatusEnc.Enabled = true;
                     ddlTipoEnc.Enabled = false;
                     ddlevento.Enabled = false;
                     ddlDependencia.SelectedValue = objDocumento.Dependencia;
-                   
-         
+                    ddlFuente_F.SelectedValue = objDocumento.Fuente;
                     txtCedula.Text = objDocumento.Folio;
                     txtPoliza.Text = objDocumento.PolizaComprometida;
-                    ddlTipoEnc.SelectedValue = objDocumento.Tipo;
+                    ddlTipoEnc.SelectedValue = objDocumento.Tipo;                    
                     txtfechaDocumento.Text = objDocumento.Fecha;
                     Status= objDocumento.Status;
                     if ( Status == "R" || Status == "I")
@@ -569,10 +611,12 @@ namespace SAF.Presupuesto
                     }                    
                         txtConcepto.Text = objDocumento.Descripcion;
                     txtSeguimiento.Text = objDocumento.Seguimiento;
-                    txtNumero_Cheque.Text = objDocumento.NumeroCheque;
-                    DDLCuenta_Banco.SelectedValue= objDocumento.Cuenta;
+                    if (objDocumento.ClaveEvento != "99" && objDocumento.Cuenta != "LA OPCIÓN NO CONTIENE DATOS")
+                        DDLCuenta_Banco.SelectedValue = objDocumento.Cuenta;
+                    Session["CuentaBanco"] = objDocumento.Cuenta;
+                    ddlFuente_F.Visible = true;
                     DDLCuenta_Banco.Visible = true;
-                    DDLCuenta_Banco.Enabled = true;
+                    txtNumero_Cheque.Text = objDocumento.NumeroCheque;                                        
                     lblcuenta.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
                     ddlevento_SelectedIndexChanged(null, null);
@@ -615,7 +659,9 @@ namespace SAF.Presupuesto
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error: " + ex.Message + "');", true);
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);               
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true); //lblMsj.Text = ex.Message;
             }
         }
         
@@ -891,12 +937,14 @@ namespace SAF.Presupuesto
             MultiView1.ActiveViewIndex = 1;
             TabContainer1.ActiveTabIndex = 0;
             Session["DocDet"] = null;
-
+            Session["CargarAdicional"] = false;
             ddlDependencia.Enabled = false;
             panel_detalle.Visible = true;
             CargarCombosAdicionales();
             LimpiarControles();
-            
+            string LiteralCedula = (String)Session["LiteralCedula"];
+            txtPoliza.Text = txtfechaDocumento.Text.Substring(3, 2) + LiteralCedula;
+
         }
         protected void DDLCentroContable_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -942,6 +990,10 @@ namespace SAF.Presupuesto
 
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", "p_clave_evento", "p_grupo", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ddlevento.SelectedValue, ddlGrupoCodigoProgramatico.SelectedValue, ref ListPartida);
             disponible();
+            ConsultarLiteralFuncion();
+            string Literal = (String)Session["LiteralCedula"];
+            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "PARAMETRO", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Literal);
+            txtPoliza.Text = txtfechaDocumento.Text.Substring(3, 2) + Literal;
         }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
         {
@@ -981,14 +1033,15 @@ namespace SAF.Presupuesto
                 if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
                 {
                     btnAgregarDet.Visible = false;
-                     lblMesCedulaOrigen.Visible = true;
+                    lblMesCedulaOrigen.Visible = true;
                     ddlMesCedulaOrigen.Visible = true;
                     lblCedulaOrigen.Visible = true;
                     ddlCedulaOrigen.Visible = true;
 
+
                     //DDLCuenta_Banco.Enabled = false;
-                    txtPoliza.Enabled = false;
-                    txtNumero_Cheque.Enabled = false;
+                    //txtPoliza.Enabled = false;
+                    //txtNumero_Cheque.Enabled = false;
 
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cedulas", ref ddlCedulaOrigen, "p_ejercicio", "p_dependencia", "p_mes", "p_clave_evento", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlMesCedulaOrigen.SelectedValue, ddlevento.SelectedValue);
                 }

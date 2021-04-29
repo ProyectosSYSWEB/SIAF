@@ -399,7 +399,8 @@ namespace SAF.Presupuesto
         {
             Verificador = string.Empty;
             objDocumento.CentroContable = "";
-            objDocumento.Dependencia = lblDependenciaDocumento.Text;
+            objDocumento.Dependencia = ddlDepen.SelectedValue;
+            //objDocumento.Dependencia = lblDependenciaDocumento.Text;
             objDocumento.Folio = txtfolio.Text;
             objDocumento.SuperTipo = "A";
             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
@@ -466,7 +467,7 @@ namespace SAF.Presupuesto
                         VerificadorInserta = Verificador;
                 }
                 else
-                    VerificadorInserta = "Para cambiar el estatus a AUTORIZADO, el importe origen y destino deben ser iguales.";
+                    VerificadorInserta = "Para cambiar el estatus a AUTORIZADO o TRASPASO, el importe origen y destino deben ser iguales.";
             }
             else
             {
@@ -496,7 +497,7 @@ namespace SAF.Presupuesto
                         VerificadorInserta = Verificador;
                 }
                 else
-                    VerificadorInserta = "Para cambiar el estatus a AUTORIZADO, el importe origen y destino deben ser iguales.";
+                    VerificadorInserta = "Para cambiar el estatus a AUTORIZADO o TRASPASO, el importe origen y destino deben ser iguales.";
             }
 
         }

@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAF.Presupuesto {
-    
-    
-    public partial class frmAdecuacion {
-        
+namespace SAF.Presupuesto
+{
+
+
+    public partial class frmAdecuacion
+    {
+
         /// <summary>
         /// Control UpdatePanel100.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel100;
-        
+
         /// <summary>
         /// Control lblError.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
-        
+
         /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// Control txtDocumento.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txtDocumento;
-        
+
         /// <summary>
         /// Control lblDependencia0.
         /// </summary>
@@ -56,7 +58,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDependencia0;
-        
+
         /// <summary>
         /// Control UpdatePanel126.
         /// </summary>
@@ -65,7 +67,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel126;
-        
+
         /// <summary>
         /// Control ddlCentroContable.
         /// </summary>
@@ -74,7 +76,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCentroContable;
-        
+
         /// <summary>
         /// Control UpdatePanel102.
         /// </summary>
@@ -83,7 +85,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel102;
-        
+
         /// <summary>
         /// Control MultiView1.
         /// </summary>
@@ -92,7 +94,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.MultiView MultiView1;
-        
+
         /// <summary>
         /// Control View1.
         /// </summary>
@@ -101,7 +103,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View View1;
-        
+
         /// <summary>
         /// Control lblTipo0.
         /// </summary>
@@ -110,7 +112,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTipo0;
-        
+
         /// <summary>
         /// Control ddlTipo.
         /// </summary>
@@ -119,7 +121,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
-        
+
         /// <summary>
         /// Control lblStatus0.
         /// </summary>
@@ -128,7 +130,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStatus0;
-        
+
         /// <summary>
         /// Control ddlStatus.
         /// </summary>
@@ -137,7 +139,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
-        
+
         /// <summary>
         /// Control lblMesIni.
         /// </summary>
@@ -146,7 +148,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMesIni;
-        
+
         /// <summary>
         /// Control ddlMesIni.
         /// </summary>
@@ -155,7 +157,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMesIni;
-        
+
         /// <summary>
         /// Control lblMesFin.
         /// </summary>
@@ -164,7 +166,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMesFin;
-        
+
         /// <summary>
         /// Control ddlMesFin.
         /// </summary>
@@ -173,7 +175,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMesFin;
-        
+
         /// <summary>
         /// Control lblbuscar0.
         /// </summary>
@@ -182,7 +184,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbuscar0;
-        
+
         /// <summary>
         /// Control txtbuscar.
         /// </summary>
@@ -191,7 +193,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtbuscar;
-        
+
         /// <summary>
         /// Control updBtns.
         /// </summary>
@@ -200,7 +202,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updBtns;
-        
+
         /// <summary>
         /// Control BTNbuscar.
         /// </summary>
@@ -209,7 +211,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton BTNbuscar;
-        
+
         /// <summary>
         /// Control btnNuevo.
         /// </summary>
@@ -218,7 +220,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnNuevo;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator2.
         /// </summary>
@@ -227,7 +229,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
+
         /// <summary>
         /// Control updPrBtns.
         /// </summary>
@@ -236,7 +238,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updPrBtns;
-        
+
         /// <summary>
         /// Control UpdProDocumentos.
         /// </summary>
@@ -245,7 +247,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress UpdProDocumentos;
-        
+
         /// <summary>
         /// Control UpdDocumentos.
         /// </summary>
@@ -254,7 +256,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdDocumentos;
-        
+
         /// <summary>
         /// Control grdDocumentos.
         /// </summary>
@@ -263,7 +265,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdDocumentos;
-        
+
         /// <summary>
         /// Control imgBttnPDF.
         /// </summary>
@@ -272,7 +274,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgBttnPDF;
-        
+
         /// <summary>
         /// Control imgBttnPDF_Lotes.
         /// </summary>
@@ -281,7 +283,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgBttnPDF_Lotes;
-        
+
         /// <summary>
         /// Control imgBttnXLS.
         /// </summary>
@@ -290,7 +292,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgBttnXLS;
-        
+
         /// <summary>
         /// Control View2.
         /// </summary>
@@ -299,7 +301,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View View2;
-        
+
         /// <summary>
         /// Control UpdatePanel106.
         /// </summary>
@@ -308,7 +310,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel106;
-        
+
         /// <summary>
         /// Control lblTipoEnc.
         /// </summary>
@@ -317,7 +319,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTipoEnc;
-        
+
         /// <summary>
         /// Control ddlTipoEnc.
         /// </summary>
@@ -326,7 +328,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoEnc;
-        
+
         /// <summary>
         /// Control lblStatusEncLey.
         /// </summary>
@@ -335,7 +337,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStatusEncLey;
-        
+
         /// <summary>
         /// Control UpdatePanel4.
         /// </summary>
@@ -344,7 +346,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel4;
-        
+
         /// <summary>
         /// Control ddlStatusEnc.
         /// </summary>
@@ -353,7 +355,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStatusEnc;
-        
+
         /// <summary>
         /// Control lblStatusEnc.
         /// </summary>
@@ -362,7 +364,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStatusEnc;
-        
+
         /// <summary>
         /// Control validadorStatus.
         /// </summary>
@@ -371,7 +373,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator validadorStatus;
-        
+
         /// <summary>
         /// Control TabContainer1.
         /// </summary>
@@ -380,7 +382,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabContainer TabContainer1;
-        
+
         /// <summary>
         /// Control TabPanel1.
         /// </summary>
@@ -389,7 +391,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel1;
-        
+
         /// <summary>
         /// Control UpdatePanel107.
         /// </summary>
@@ -398,7 +400,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel107;
-        
+
         /// <summary>
         /// Control lblfechaDocumento.
         /// </summary>
@@ -407,7 +409,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblfechaDocumento;
-        
+
         /// <summary>
         /// Control txtfechaDocumento.
         /// </summary>
@@ -416,7 +418,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtfechaDocumento;
-        
+
         /// <summary>
         /// Control CalendarExtenderIni.
         /// </summary>
@@ -425,7 +427,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtenderIni;
-        
+
         /// <summary>
         /// Control imgCalendarioIni.
         /// </summary>
@@ -434,7 +436,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgCalendarioIni;
-        
+
         /// <summary>
         /// Control valFecha.
         /// </summary>
@@ -443,7 +445,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valFecha;
-        
+
         /// <summary>
         /// Control lblfolio.
         /// </summary>
@@ -452,7 +454,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblfolio;
-        
+
         /// <summary>
         /// Control txtfolio.
         /// </summary>
@@ -461,7 +463,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtfolio;
-        
+
         /// <summary>
         /// Control lblConcepto.
         /// </summary>
@@ -470,7 +472,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblConcepto;
-        
+
         /// <summary>
         /// Control txtConcepto.
         /// </summary>
@@ -479,7 +481,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConcepto;
-        
+
         /// <summary>
         /// Control valConcepto.
         /// </summary>
@@ -488,7 +490,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valConcepto;
-        
+
         /// <summary>
         /// Control UpdatePanel119.
         /// </summary>
@@ -497,7 +499,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel119;
-        
+
         /// <summary>
         /// Control lblAutorizacion.
         /// </summary>
@@ -506,7 +508,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAutorizacion;
-        
+
         /// <summary>
         /// Control UpdatePanel120.
         /// </summary>
@@ -515,7 +517,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel120;
-        
+
         /// <summary>
         /// Control txtAutorizacion.
         /// </summary>
@@ -524,7 +526,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAutorizacion;
-        
+
         /// <summary>
         /// Control txtSeguimiento.
         /// </summary>
@@ -533,7 +535,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSeguimiento;
-        
+
         /// <summary>
         /// Control TabPanel2.
         /// </summary>
@@ -542,7 +544,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel2;
-        
+
         /// <summary>
         /// Control lblDependenciaDocumento.
         /// </summary>
@@ -551,7 +553,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDependenciaDocumento;
-        
+
         /// <summary>
         /// Control UpdatePanel124.
         /// </summary>
@@ -560,7 +562,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel124;
-        
+
         /// <summary>
         /// Control rbtOrigen_Destino.
         /// </summary>
@@ -569,7 +571,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbtOrigen_Destino;
-        
+
         /// <summary>
         /// Control validadorTipo.
         /// </summary>
@@ -578,7 +580,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator validadorTipo;
-        
+
         /// <summary>
         /// Control updPnlDepen.
         /// </summary>
@@ -587,7 +589,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlDepen;
-        
+
         /// <summary>
         /// Control ddlDepen.
         /// </summary>
@@ -596,7 +598,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDepen;
-        
+
         /// <summary>
         /// Control updProDepen.
         /// </summary>
@@ -605,7 +607,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updProDepen;
-        
+
         /// <summary>
         /// Control lblCodigoProg0.
         /// </summary>
@@ -614,7 +616,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCodigoProg0;
-        
+
         /// <summary>
         /// Control updPnlCapitulo.
         /// </summary>
@@ -623,7 +625,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlCapitulo;
-        
+
         /// <summary>
         /// Control ddlCapitulo.
         /// </summary>
@@ -632,7 +634,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCapitulo;
-        
+
         /// <summary>
         /// Control updProCapitulo.
         /// </summary>
@@ -641,7 +643,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updProCapitulo;
-        
+
         /// <summary>
         /// Control lblFF.
         /// </summary>
@@ -650,7 +652,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFF;
-        
+
         /// <summary>
         /// Control lblCodigoProg1.
         /// </summary>
@@ -659,7 +661,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCodigoProg1;
-        
+
         /// <summary>
         /// Control updPnlFuenteF.
         /// </summary>
@@ -668,7 +670,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlFuenteF;
-        
+
         /// <summary>
         /// Control ddlFuente_F.
         /// </summary>
@@ -677,7 +679,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFuente_F;
-        
+
         /// <summary>
         /// Control updProFuenteF.
         /// </summary>
@@ -686,7 +688,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updProFuenteF;
-        
+
         /// <summary>
         /// Control lblCodigoProg.
         /// </summary>
@@ -695,7 +697,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCodigoProg;
-        
+
         /// <summary>
         /// Control updPnlCodProg.
         /// </summary>
@@ -704,7 +706,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlCodProg;
-        
+
         /// <summary>
         /// Control ddlCodigoProg.
         /// </summary>
@@ -713,7 +715,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCodigoProg;
-        
+
         /// <summary>
         /// Control updProCodProg.
         /// </summary>
@@ -722,7 +724,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updProCodProg;
-        
+
         /// <summary>
         /// Control updPnlBtnDisponible.
         /// </summary>
@@ -731,7 +733,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlBtnDisponible;
-        
+
         /// <summary>
         /// Control lblLeyDisponible.
         /// </summary>
@@ -740,7 +742,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLeyDisponible;
-        
+
         /// <summary>
         /// Control updPnlDisponible1.
         /// </summary>
@@ -749,7 +751,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlDisponible1;
-        
+
         /// <summary>
         /// Control lblFormatoDisponible.
         /// </summary>
@@ -758,7 +760,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFormatoDisponible;
-        
+
         /// <summary>
         /// Control lblDisponible.
         /// </summary>
@@ -767,7 +769,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDisponible;
-        
+
         /// <summary>
         /// Control UpdatePanel114.
         /// </summary>
@@ -776,7 +778,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel114;
-        
+
         /// <summary>
         /// Control lblMesInicialDet.
         /// </summary>
@@ -785,7 +787,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMesInicialDet;
-        
+
         /// <summary>
         /// Control updPnlMesIniDet.
         /// </summary>
@@ -794,7 +796,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlMesIniDet;
-        
+
         /// <summary>
         /// Control ddlMesInicialDet.
         /// </summary>
@@ -803,7 +805,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMesInicialDet;
-        
+
         /// <summary>
         /// Control updPrgMesIniDet.
         /// </summary>
@@ -812,7 +814,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updPrgMesIniDet;
-        
+
         /// <summary>
         /// Control UpdatePanel113.
         /// </summary>
@@ -821,7 +823,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel113;
-        
+
         /// <summary>
         /// Control lblMesFinalDet.
         /// </summary>
@@ -830,7 +832,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMesFinalDet;
-        
+
         /// <summary>
         /// Control updPnlMesFinalDet.
         /// </summary>
@@ -839,7 +841,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlMesFinalDet;
-        
+
         /// <summary>
         /// Control ddlMesFinalDet.
         /// </summary>
@@ -848,7 +850,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMesFinalDet;
-        
+
         /// <summary>
         /// Control updPrgMesFinalDet.
         /// </summary>
@@ -857,7 +859,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updPrgMesFinalDet;
-        
+
         /// <summary>
         /// Control UpdatePanel115.
         /// </summary>
@@ -866,7 +868,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel115;
-        
+
         /// <summary>
         /// Control lblImporteOrigen.
         /// </summary>
@@ -875,7 +877,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblImporteOrigen;
-        
+
         /// <summary>
         /// Control updPnlImpOrigen.
         /// </summary>
@@ -884,7 +886,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlImpOrigen;
-        
+
         /// <summary>
         /// Control txtImporteOrigen.
         /// </summary>
@@ -893,7 +895,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtImporteOrigen;
-        
+
         /// <summary>
         /// Control updPrgImpMen0.
         /// </summary>
@@ -902,7 +904,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updPrgImpMen0;
-        
+
         /// <summary>
         /// Control btnAgregarDet.
         /// </summary>
@@ -911,7 +913,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarDet;
-        
+
         /// <summary>
         /// Control UpdatePanel2.
         /// </summary>
@@ -920,7 +922,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
+
         /// <summary>
         /// Control lblCancelacion.
         /// </summary>
@@ -929,7 +931,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCancelacion;
-        
+
         /// <summary>
         /// Control UpdatePanel3.
         /// </summary>
@@ -938,7 +940,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
+
         /// <summary>
         /// Control txtCancelacion.
         /// </summary>
@@ -947,7 +949,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCancelacion;
-        
+
         /// <summary>
         /// Control RFVRechazo.
         /// </summary>
@@ -956,7 +958,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVRechazo;
-        
+
         /// <summary>
         /// Control lblLeyTotal_Origen.
         /// </summary>
@@ -965,7 +967,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLeyTotal_Origen;
-        
+
         /// <summary>
         /// Control lblFormatoTotal_Origen.
         /// </summary>
@@ -974,7 +976,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFormatoTotal_Origen;
-        
+
         /// <summary>
         /// Control lblTotal_Origen.
         /// </summary>
@@ -983,7 +985,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotal_Origen;
-        
+
         /// <summary>
         /// Control lblLeyTotal_Destino.
         /// </summary>
@@ -992,7 +994,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLeyTotal_Destino;
-        
+
         /// <summary>
         /// Control lblFormatoTotal_Destino.
         /// </summary>
@@ -1001,7 +1003,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFormatoTotal_Destino;
-        
+
         /// <summary>
         /// Control lblTotal_Destino.
         /// </summary>
@@ -1010,7 +1012,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotal_Destino;
-        
+
         /// <summary>
         /// Control lblMsjCP.
         /// </summary>
@@ -1019,7 +1021,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsjCP;
-        
+
         /// <summary>
         /// Control updPrgDetalles.
         /// </summary>
@@ -1028,7 +1030,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updPrgDetalles;
-        
+
         /// <summary>
         /// Control updPnlDetalles.
         /// </summary>
@@ -1037,7 +1039,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlDetalles;
-        
+
         /// <summary>
         /// Control grdDetalles.
         /// </summary>
@@ -1046,7 +1048,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdDetalles;
-        
+
         /// <summary>
         /// Control UpdatePanel112.
         /// </summary>
@@ -1055,7 +1057,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel112;
-        
+
         /// <summary>
         /// Control btnGuardar.
         /// </summary>
@@ -1064,7 +1066,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
-        
+
         /// <summary>
         /// Control btnCancelar.
         /// </summary>
@@ -1073,7 +1075,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
-        
+
         /// <summary>
         /// Control updPnlError.
         /// </summary>
@@ -1082,7 +1084,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlError;
-        
+
         /// <summary>
         /// Control lblErrorDet.
         /// </summary>
@@ -1091,7 +1093,7 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorDet;
-        
+
         /// <summary>
         /// Control UpdateProgress6.
         /// </summary>

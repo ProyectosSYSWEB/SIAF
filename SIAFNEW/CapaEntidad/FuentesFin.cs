@@ -95,6 +95,20 @@ namespace CapaEntidad
             set { _Id = value; }
         }
 
+        private string _idFuenteFin;
 
+        public string IdFuenteFin
+        {
+            get { return _idFuenteFin; }
+            set { _idFuenteFin = value; }
+        }
+
+        private string _descripcionFuenteFin;
+
+        public string DescripcionFuenteFin
+        {
+            get { return _descripcionFuenteFin; }
+            set { _descripcionFuenteFin = value; }
+        }
     }
 }
