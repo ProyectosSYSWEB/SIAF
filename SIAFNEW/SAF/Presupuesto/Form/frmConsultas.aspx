@@ -135,7 +135,7 @@
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Folio" HeaderText="Cedula" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                                                    <%--<asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>--%>
+                                                    <asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>
                                                     <asp:BoundField DataField="Importe_Mensual" HeaderText="Parcial" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" /> 
@@ -164,12 +164,12 @@
                                 <td colspan="3">
                                     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                         <ContentTemplate>
-                                            <h6>Aumentos</h6>
+                                            <h6>Adecuaciones</h6>
                                             <asp:GridView ID="GRDAumentos" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                                                    <%--<asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>--%>
+                                                    <asp:BoundField DataField="Tipo_Evento" HeaderText="Nombre Docto"/>
                                                     <asp:BoundField DataField="Folio" HeaderText="Folio" />
                                                     <asp:BoundField DataField="Importe_Origen" HeaderText="Importe Origen" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Importe_Destino" HeaderText="Importe Destino" ItemStyle-HorizontalAlign="Right"/>
@@ -206,7 +206,7 @@
                                                 <Columns>
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                                                    <%--<asp:BoundField DataField="Tipo_Evento" HeaderText="Evento"/>--%>
+                                                    <asp:BoundField DataField="Tipo_Evento" HeaderText="Nombre Docto"/>
                                                     <asp:BoundField DataField="Folio" HeaderText="Folio" />
                                                     <asp:BoundField DataField="Importe_Mensual" HeaderText="Importe" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="Mes_Inicial" HeaderText="Mes" />
