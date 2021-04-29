@@ -616,6 +616,7 @@ namespace SAF.Presupuesto
                     Session["CuentaBanco"] = objDocumento.Cuenta;
                     ddlFuente_F.Visible = true;
                     DDLCuenta_Banco.Visible = true;
+                    DDLCuenta_Banco.SelectedValue = objDocumento.Cuenta;
                     txtNumero_Cheque.Text = objDocumento.NumeroCheque;                                        
                     lblcuenta.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
