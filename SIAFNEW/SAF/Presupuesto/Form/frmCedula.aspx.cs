@@ -484,8 +484,9 @@ namespace SAF.Presupuesto
                 objDocumento.Dependencia = ddlDependencia.SelectedValue;
                 objDocumento.Fecha_Inicial = ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2,2);
                 objDocumento.Fecha_Final = ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
-                objDocumento.Tipo = ddlEventos.SelectedValue; //EVENTO
+                objDocumento.ClaveEvento = ddlEventos.SelectedValue; //EVENTO
                 objDocumento.SuperTipo = "C";
+                objDocumento.Tipo = ddlTipoCedula.SelectedValue;
                 objDocumento.Status = ddlStatus.SelectedValue;
                 objDocumento.P_Buscar = txtbuscar.Text;
                 if(SesionUsu.Usu_TipoUsu=="SA")
