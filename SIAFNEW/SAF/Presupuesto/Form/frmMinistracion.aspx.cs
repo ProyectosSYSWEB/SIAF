@@ -461,8 +461,9 @@ namespace SAF.Presupuesto
                 objDocumento.Dependencia = ddlCentroContable.SelectedValue;
                 objDocumento.Fecha_Inicial = ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2,2);
                 objDocumento.Fecha_Final = ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2);
-                objDocumento.Tipo = ddlTipo.SelectedValue;
+                objDocumento.ClaveEvento = ddlTipo.SelectedValue;
                 objDocumento.SuperTipo = "M";
+                objDocumento.Tipo = null;
                 objDocumento.Status = ddlStatus.SelectedValue;
                 objDocumento.P_Buscar = txtbuscar.Text;
 
