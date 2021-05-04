@@ -726,6 +726,12 @@
       <DependentUpon>RPT-PRESUP_FUENTE_FIN.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_LOTEC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_LOTEC.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_MIN_DET.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -968,6 +974,10 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_FUENTE_FIN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_FUENTE_FIN.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_LOTEC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_LOTEC.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_MIN_DET.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
