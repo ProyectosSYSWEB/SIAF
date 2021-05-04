@@ -836,7 +836,7 @@ namespace SAF.Presupuesto
         {
             string ruta1 = string.Empty;
             
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteC&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + "T" + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Ejercicio=" + SesionUsu.Usu_Ejercicio+"&Evento=" + ddlEventos.SelectedValue;
+                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteC&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + "C" + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Ejercicio=" + SesionUsu.Usu_Ejercicio+"&Evento=" + ddlEventos.SelectedValue + "&TipoDocumento=" +ddlTipoCedula.SelectedValue;
                    
 
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
