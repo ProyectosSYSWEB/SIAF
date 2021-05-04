@@ -952,11 +952,11 @@ namespace SAF.Presupuesto
         {
             try
             {
-                string MesAbierto = ListDependencia[ddlDependencia.SelectedIndex].EtiquetaDos.PadLeft(2, '0');
-                DateTime fechaIni = Convert.ToDateTime("01/" + MesAbierto + "/" + SesionUsu.Usu_Ejercicio);
-                DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
-                CalendarExtenderIni.StartDate = fechaIni;
-                CalendarExtenderIni.EndDate = fechaFin;
+                //string MesAbierto = ListDependencia[ddlDependencia.SelectedIndex].EtiquetaDos.PadLeft(2, '0');
+                //DateTime fechaIni = Convert.ToDateTime("01/" + MesAbierto + "/" + SesionUsu.Usu_Ejercicio);
+                //DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
+                //CalendarExtenderIni.StartDate = fechaIni;
+                //CalendarExtenderIni.EndDate = fechaFin;
             }
             catch (Exception ex)
             {

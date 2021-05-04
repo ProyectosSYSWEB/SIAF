@@ -40,6 +40,36 @@
         .auto-style75 {
             width: 157px;
         }
+
+        .overlay {
+            position: fixed;
+            z-index: 98;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #aaa;
+            filter: alpha(opacity=80);
+            opacity: 0.8;
+        }
+
+        .overlayContent {
+            z-index: 99;
+            margin: 250px auto;
+            width: 80px;
+            height: 80px;
+        }
+
+            .overlayContent h2 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #000;
+            }
+
+            .overlayContent img {
+                width: 30px;
+                height: 30px;
+            }
         </style>
     <script type="text/javascript">
         function Autocomplete() {
@@ -93,7 +123,7 @@
                             <td colspan="5">
                                 <asp:UpdatePanel ID="UpdatePanel126" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlCentroContable" runat="server"   Width="100%" >
+                                        <asp:DropDownList ID="ddlCentroContable" runat="server"   Width="100%"  >
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
@@ -326,7 +356,7 @@
                                                                             <tr>
                                                                                 <td>
                                                                                    
-                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
+                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
                                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                                 <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Datos Grales.">
                                                                                                     <HeaderTemplate>
@@ -1439,10 +1469,19 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="centro">
-                                                                                    <asp:UpdateProgress ID="UpdateProgress6" runat="server" AssociatedUpdatePanelID="UpdatePanel112">
+                                                                                    <%--<asp:UpdateProgress ID="UpdateProgress6" runat="server" AssociatedUpdatePanelID="UpdatePanel112">
                                                                                         <progresstemplate>
                                                                                                     <asp:Image ID="Image1q2" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" style="text-align: center" ToolTip="Espere un momento, por favor.." Width="50px" />
                                                                                                 </progresstemplate>
+                                                                                    </asp:UpdateProgress>--%>
+                                                                                    <asp:UpdateProgress ID="UpdateProgress6" runat="server" AssociatedUpdatePanelID="UpdatePanel112">
+                                                                                        <ProgressTemplate>
+                                                                                            <div class="overlay">
+                                                                                                <div class="overlayContent">
+                                                                                                    <asp:Image ID="img1" runat="server" Height="100px" ImageUrl="~/images/loader2.gif" Width="100px" />
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </ProgressTemplate>
                                                                                     </asp:UpdateProgress>
                                                                                 </td>
                                                                             </tr>
