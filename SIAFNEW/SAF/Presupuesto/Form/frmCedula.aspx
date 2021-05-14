@@ -211,7 +211,16 @@
                                                                             <asp:Label ID="lblStatus0" runat="server" Text="Estatus"></asp:Label>
                                                                         </td>
                                                                         <td class="col1">
+
+                                                                            <asp:DropDownList ID="ddlTipoCedula" runat="server" Width="150px">                                                                                
+                                                                                <asp:ListItem Value="T">Todos</asp:ListItem>
+                                                                                <asp:ListItem Value="CC">Comprometido</asp:ListItem>
+                                                                                <asp:ListItem Value="CD">Devengado</asp:ListItem>
+                                                                                <asp:ListItem Value="CE">Ejercido</asp:ListItem>
+                                                                                <asp:ListItem Value="CP">Pagado</asp:ListItem>                                                                                
+
                                                                             <asp:DropDownList ID="ddlStatus" runat="server" Width="150px">
+
                                                                             </asp:DropDownList>
                                                                         </td>                                                                        
                                                                         <tr>
