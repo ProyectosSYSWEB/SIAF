@@ -92,6 +92,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="images\loader2.gif" />
     <Content Include="Inicio.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="images\atras.png" />
