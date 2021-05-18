@@ -2029,6 +2029,24 @@ namespace SAF.Presupuesto.Reportes {
         protected global::System.Web.UI.WebControls.DropDownList DDLTipo_v14;
         
         /// <summary>
+        /// Control Label57.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label57;
+        
+        /// <summary>
+        /// Control DDLMinistrable_v14.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLMinistrable_v14;
+        
+        /// <summary>
         /// Control grdCapitulos_v14.
         /// </summary>
         /// <remarks>

@@ -1632,8 +1632,8 @@
                                           <td style="width:20%">
                                             <asp:Label ID="Label50" runat="server" Text="Tipo"></asp:Label>
                                         </td>
-                                        <td colspan="3">
-                                            <asp:DropDownList ID="DDLTipo_v14" runat="server" Width="25%">
+                                        <td>
+                                            <asp:DropDownList ID="DDLTipo_v14" runat="server" Width="85%">
                                                 <asp:ListItem Value="AUMENTO">Aumento</asp:ListItem>
                                                 <asp:ListItem Value="AUTORIZADO">Autorizado</asp:ListItem>
                                                 <asp:ListItem Value="MODIFICADO">Modificado</asp:ListItem>
@@ -1643,6 +1643,16 @@
                                                 <asp:ListItem Value="MINISTRADO">Ministrado</asp:ListItem>
                                                 <asp:ListItem Value="EJERCIDO">Ejercido</asp:ListItem>
                                                 <asp:ListItem Value="XEJERCER">Por ejercer</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                          <td style="width:20%">
+                                            <asp:Label ID="Label57" runat="server" Text="Dígito ministrador"></asp:Label>
+                                        </td>
+                                        <td style="width:30%">
+                                            <asp:DropDownList ID="DDLMinistrable_v14" runat="server" Width="85%">
+                                                <asp:ListItem Value="1">Ministrable</asp:ListItem>
+                                                <asp:ListItem Value="2">No ministrable</asp:ListItem>
+                                                <asp:ListItem Value="3">Todos</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>

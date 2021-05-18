@@ -948,21 +948,7 @@ namespace SAF.Presupuesto
             txtPoliza.Text = txtfechaDocumento.Text.Substring(3, 2) + LiteralCedula;
 
         }
-        protected void DDLCentroContable_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                //string MesAbierto = ListDependencia[ddlDependencia.SelectedIndex].EtiquetaDos.PadLeft(2, '0');
-                //DateTime fechaIni = Convert.ToDateTime("01/" + MesAbierto + "/" + SesionUsu.Usu_Ejercicio);
-                //DateTime fechaFin = Convert.ToDateTime("31/12/" + SesionUsu.Usu_Ejercicio);
-                //CalendarExtenderIni.StartDate = fechaIni;
-                //CalendarExtenderIni.EndDate = fechaFin;
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }            
-        }
+       
         protected void DDLCapitulo_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
