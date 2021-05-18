@@ -768,14 +768,14 @@ namespace SAF.Presupuesto.Reportes
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP003.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Subprograma);
-                        report.SetParameterValue(3, Ejercicio); report.SetParameterValue(4, TipoDoc);
+                        report.SetParameterValue(3, Ejercicio); report.SetParameterValue(4, TipoDoc); report.SetParameterValue(5, Ministrable);
                         reporte_PDF();
                         break;
                     case "RP-PRESUP_RP003_XLS":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP003.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Subprograma);
-                        report.SetParameterValue(3, Ejercicio); report.SetParameterValue(4, TipoDoc);
+                        report.SetParameterValue(3, Ejercicio); report.SetParameterValue(4, TipoDoc); report.SetParameterValue(5, Ministrable);
                         reporte_XLS();
                         break;
                     case "RPT-UsuariosAdminUr":

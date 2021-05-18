@@ -160,7 +160,7 @@
                             <td colspan="5">
                                 <asp:UpdatePanel ID="UpdatePanel126" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlDependencia" runat="server" AutoPostBack="True"  Width="100%" OnSelectedIndexChanged="DDLCentroContable_SelectedIndexChanged">
+                                        <asp:DropDownList ID="ddlDependencia" runat="server"  Width="100%" >
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>

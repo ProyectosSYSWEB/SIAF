@@ -1577,7 +1577,7 @@ namespace SAF.Presupuesto.Reportes
             rowSubprograma(grdSubprogramas_v14, "chkSubprograma_v14");
             string ruta = string.Empty;
                         
-            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
+            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue + "&Ministrable="+DDLMinistrable_v14.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
@@ -1588,7 +1588,7 @@ namespace SAF.Presupuesto.Reportes
             rowSubprograma(grdSubprogramas_v14, "chkSubprograma_v14");
             string ruta = string.Empty;
 
-            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
+            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue + "&Ministrable=" + DDLMinistrable_v14.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
