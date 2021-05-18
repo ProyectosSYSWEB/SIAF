@@ -208,9 +208,9 @@ namespace SAF.Presupuesto.Form
                 }
                 else
                 {
-                    GRDMinistraciones.Enabled = true;
-                    GRDMinistraciones.DataSource = null;
-                    GRDMinistraciones.DataBind();
+                    GRDCedulas.Enabled = true;
+                    GRDCedulas.DataSource = null;
+                    GRDCedulas.DataBind();
                 }
             }
             catch (Exception ex)
