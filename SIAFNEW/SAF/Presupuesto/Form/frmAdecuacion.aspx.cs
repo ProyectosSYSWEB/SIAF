@@ -488,9 +488,7 @@ namespace SAF.Presupuesto
         {
             lblError.Text = string.Empty;
             lblDisponible.Text = "0.00";
-            //lblFormatoDisponible.Text = "0.00";
             lblFormatoDisponible.Text = string.Format("{0:c}", "0");
-            //lblDisponible.Visible = false;
             lblLeyDisponible.Visible = false;
             lblFormatoDisponible.Visible = false;
 
@@ -498,7 +496,6 @@ namespace SAF.Presupuesto
             {
                 if (rbtOrigen_Destino.SelectedValue == "O")
                 {
-                    
                     lblLeyDisponible.Visible = true;
                     lblFormatoDisponible.Visible = true;
 
@@ -516,15 +513,11 @@ namespace SAF.Presupuesto
                         lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocumentoDet.Importe_disponible));
                     }
                 }
-                //else
                     
             }
 
             catch (Exception ex)
             {
-                //lblError.Text = "No tiene código programático";
-                //lblDisponible.Text  = "0";
-
 
             }
         }

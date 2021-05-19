@@ -65,52 +65,78 @@
                 document.getElementById("ctl00_MainContent_TabContainer1_TabPanel2_txtImporteDestino").value = Valor;
             }
         }
-        function MascaraNumPoliza(e, txtfechaDocumento)
-        {
+        //function MascaraNumPoliza(e, txtfechaDocumento)
+        //{
+        //    var Valor = e.value;
+        //    var Valor2 = e.value;
+
+        //    document.getElementById(e.id).value = "";
+        //    if (txtfechaDocumento == "1") {
+        //        var Mes = document.getElementById('ctl00_MainContent_TabContainer1_TabPanel1_txtfechaDocumento').value;
+        //    }
+        //    else {
+        //        var Mes = document.getElementById('ctl00_MainContent_txtfechaDocumento_Copia').value;
+        //    }
+        //    Mes = Mes.substr(3, 2);
+
+        //    if (Valor.length > 2) {
+        //        Valor = Valor.substr(2);
+        //    }
+        //    else {
+        //        Valor = "";
+        //    }
+        //    var NumPoliza = Mes + Valor;
+        //     if (NumPoliza.length <= 8)
+        //     {
+                 
+        //         if (NumPoliza.length == 3)
+        //             if (NumPoliza.substr(2, 1) == "F" || NumPoliza.substr(2, 1) == "E" || NumPoliza.substr(2, 1) == "I"
+        //                 || NumPoliza.substr(2, 1) == "C" || NumPoliza.substr(2, 1) == "f" || NumPoliza.substr(2, 1) == "e"
+        //                 || NumPoliza.substr(2, 1) == "i" || NumPoliza.substr(2, 1) == "c"
+        //             || NumPoliza.substr(2, 1) == "P"|| NumPoliza.substr(2, 1) == "p")
+        //                 document.getElementById(e.id).value = Valor2.substr(0, 3);
+        //             else
+        //                 document.getElementById(e.id).value = Valor2.substr(0, 2);
+        //         else
+        //             if (NumPoliza.length == 8)
+        //                 if (NumPoliza.substr(7, 1) == "D" || NumPoliza.substr(7, 1) == "E"
+        //                     ||NumPoliza.substr(7, 1) == "d" || NumPoliza.substr(7, 1) == "e")
+        //                     document.getElementById(e.id).value = Valor2.substr(0, 8);
+        //                 else
+        //                     document.getElementById(e.id).value = Valor2.substr(0, 7);
+        //             else
+        //                 document.getElementById(e.id).value = NumPoliza;
+                     
+        //     }
+        //     else
+        //     {
+        //        document.getElementById(e.id).value = Valor2.substr(0, 8);
+        //     }
+
+        //}
+        function MascaraNumPoliza(e) {
             var Valor = e.value;
             var Valor2 = e.value;
 
             document.getElementById(e.id).value = "";
-            if (txtfechaDocumento == "1") {
-                var Mes = document.getElementById('ctl00_MainContent_TabContainer1_TabPanel1_txtfechaDocumento').value;
-            }
-            else {
-                var Mes = document.getElementById('ctl00_MainContent_txtfechaDocumento_Copia').value;
-            }
-            Mes = Mes.substr(3, 2);
-
-            if (Valor.length > 2) {
-                Valor = Valor.substr(2);
-            }
-            else {
-                Valor = "";
-            }
-            var NumPoliza = Mes + Valor;
-             if (NumPoliza.length <= 8)
+            
+            var NumPoliza = Valor;
+             if (NumPoliza.length <= 5)
              {
                  
-                 if (NumPoliza.length == 3)
-                     if (NumPoliza.substr(2, 1) == "F" || NumPoliza.substr(2, 1) == "E" || NumPoliza.substr(2, 1) == "I"
-                         || NumPoliza.substr(2, 1) == "C" || NumPoliza.substr(2, 1) == "f" || NumPoliza.substr(2, 1) == "e"
-                         || NumPoliza.substr(2, 1) == "i" || NumPoliza.substr(2, 1) == "c"
-                     || NumPoliza.substr(2, 1) == "P"|| NumPoliza.substr(2, 1) == "p")
-                         document.getElementById(e.id).value = Valor2.substr(0, 3);
-                     else
-                         document.getElementById(e.id).value = Valor2.substr(0, 2);
-                 else
-                     if (NumPoliza.length == 8)
-                         if (NumPoliza.substr(7, 1) == "D" || NumPoliza.substr(7, 1) == "E"
-                             ||NumPoliza.substr(7, 1) == "d" || NumPoliza.substr(7, 1) == "e")
-                             document.getElementById(e.id).value = Valor2.substr(0, 8);
+                     if (NumPoliza.length == 5)
+                         if (NumPoliza.substr(4, 1) == "D" || NumPoliza.substr(4, 1) == "E"
+                             ||NumPoliza.substr(4, 1) == "d" || NumPoliza.substr(4, 1) == "e")
+                             document.getElementById(e.id).value = Valor2.substr(0, 5);
                          else
-                             document.getElementById(e.id).value = Valor2.substr(0, 7);
+                             document.getElementById(e.id).value = Valor2.substr(0, 4);
                      else
                          document.getElementById(e.id).value = NumPoliza;
                      
              }
              else
              {
-                document.getElementById(e.id).value = Valor2.substr(0, 8);
+                document.getElementById(e.id).value = Valor2.substr(0, 5);
              }
 
         }
@@ -206,7 +232,7 @@
                                                                                 </asp:DropDownList>
                                                                             </td>
                                                                         <td class="col1">
-                                                                            &nbsp;</td>
+                                                                          </td>
                                                                         <td class="col1">
                                                                             <asp:Label ID="lblStatus0" runat="server" Text="Estatus"></asp:Label>
                                                                         </td>
@@ -234,7 +260,7 @@
                                                                                     <asp:ListItem Value="12">Diciembre</asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                             </td>
-                                                                            <td class="col1">&nbsp;</td>
+                                                                            <td class="col1"></td>
                                                                             <td class="col1">
                                                                                 <asp:Label ID="lblMesFin" runat="server" Text="Mes final"></asp:Label>
                                                                             </td>
@@ -408,7 +434,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>
-                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
+                                                                                    <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" CssClass="ajax__myTab" Width="100%" AutoPostBack="True" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
                                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                                 <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Datos Grales.">
                                                                                                     <HeaderTemplate>
@@ -523,10 +549,11 @@
                                                                                                                             <asp:Label ID="lblPoliza" runat="server" Text="No. de póliza"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <%--<asp:TextBox ID="txtPoliza" runat="server" onkeyup="MascaraNumPoliza(this,1);" Width="95px"></asp:TextBox>--%>
-                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server" Width="95px"></asp:TextBox>
+                                                                                                                            <asp:Label ID="lblMesPol" runat="server" Width="25px"></asp:Label>
+                                                                                                                            <asp:Label ID="lblLiteralPol" runat="server" Width="5px"></asp:Label>
+                                                                                                                            <asp:TextBox ID="txtPoliza" runat="server" Width="65px" onkeyup="MascaraNumPoliza(this);"></asp:TextBox>
                                                                                                                             <asp:RequiredFieldValidator ID="RFVPoliza" runat="server" ControlToValidate="txtPoliza" ErrorMessage="*" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
-                                                                                                                            <asp:RegularExpressionValidator ID="REVPoliza" runat="server" ControlToValidate="txtPoliza" SetFocusOnError="True" ValidationExpression="^[0-9][0-9][A-Z a-z][0-9][0-9][0-9][0-9][A-Z a-z]$" ValidationGroup="Guardar">*Ej.:01E0001D</asp:RegularExpressionValidator>
+                                                                                                                            <asp:RegularExpressionValidator ID="REVPoliza" runat="server" ControlToValidate="txtPoliza" SetFocusOnError="True" ValidationExpression="^[0-9][0-9][0-9][0-9][A-Z a-z]$" ValidationGroup="Guardar">*Ej.:0001D</asp:RegularExpressionValidator>
                                                                                                                         </td>
                                                                                                                         <td class="auto-style63">
                                                                                                                             <asp:Label ID="lblNumero_Cheque" runat="server" Text="No. de cheque"></asp:Label>

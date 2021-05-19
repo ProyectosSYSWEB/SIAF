@@ -625,6 +625,24 @@ namespace SAF.Presupuesto {
         protected global::System.Web.UI.WebControls.Label lblPoliza;
         
         /// <summary>
+        /// Control lblMesPol.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMesPol;
+        
+        /// <summary>
+        /// Control lblLiteralPol.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLiteralPol;
+        
+        /// <summary>
         /// Control txtPoliza.
         /// </summary>
         /// <remarks>
