@@ -107,7 +107,7 @@ namespace SAF.Presupuesto
             string MesFecha = fecha.ToString("MM");
             ddlMesInicialDet.SelectedValue = MesFecha;
             ddlMesFinalDet.SelectedValue = MesFecha;
-            lblDependenciaDocumento.Text = string.Empty;
+            //lblDependenciaDocumento.Text = string.Empty;
             //ddlDepen.SelectedValue = ddlDependencia.SelectedValue;
             //ddlDepen_SelectedIndexChanged(null, null);
             validadorStatus.ValidationGroup = "Guardar";
@@ -399,8 +399,9 @@ namespace SAF.Presupuesto
         {
             Verificador = string.Empty;
             objDocumento.CentroContable = "";
-            objDocumento.Dependencia = ddlDepen.SelectedValue;
+            //objDocumento.Dependencia = ddlDepen.SelectedValue;
             //objDocumento.Dependencia = lblDependenciaDocumento.Text;
+            objDocumento.Dependencia = ddlCentroContable.SelectedValue;
             objDocumento.Folio = txtfolio.Text;
             objDocumento.SuperTipo = "A";
             objDocumento.Tipo = ddlTipoEnc.SelectedValue;
@@ -668,8 +669,8 @@ namespace SAF.Presupuesto
                     ddlStatusEnc.Enabled = true;
                     ddlTipoEnc.Enabled = false;
                     
-                    ddlCentroContable.SelectedValue = objDocumento.CentroContable;
-                    lblDependenciaDocumento.Text = objDocumento.Dependencia;
+                    //ddlCentroContable.SelectedValue = objDocumento.CentroContable;
+                    //lblDependenciaDocumento.Text = objDocumento.Dependencia;
                     ddlDepen.SelectedValue = objDocumento.Dependencia;
                     ddlDepen_SelectedIndexChanged(null, null);
                     lblfolio.Visible = true;
@@ -1048,16 +1049,13 @@ namespace SAF.Presupuesto
                     objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
                     objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0, 34);
                     objDocumentoDet.Ur_clave = ddlDepen.SelectedValue;
-                    if (ddlDepen.SelectedValue != "81101")
-                        lblDependenciaDocumento.Text = ddlDepen.SelectedValue;
+                    //if (ddlDepen.SelectedValue != "81101")
+                    //lblDependenciaDocumento.Text = ddlDepen.SelectedValue;
+                    //lblDependenciaDocumento.Text = ddlDepen.SelectedValue;
                     objDocumentoDet.Tipo = rbtOrigen_Destino.SelectedValue;
-                    //objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                    //if(ddlTipoEnc.SelectedValue=="AA" || ddlTipoEnc.SelectedValue=="AR")
-                    //    objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesFinalDet.SelectedValue);
-                    //else
-                    //objDocumentoDet.Mes_final = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    
                     objDocumentoDet.Cuenta_banco = "00000";
-                    //objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
+                   
 
                     objDocumentoDet.Mes_inicial = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesInicialDet.SelectedValue);
                     objDocumentoDet.Mes_final = (ddlDepen.SelectedValue == "81101") ? 12 : Convert.ToInt32(ddlMesFinalDet.SelectedValue);
@@ -1165,8 +1163,9 @@ namespace SAF.Presupuesto
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
 
+
         #endregion
 
-       
+        
     }
 }
