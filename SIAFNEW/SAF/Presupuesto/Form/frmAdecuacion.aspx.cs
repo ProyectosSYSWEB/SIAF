@@ -491,7 +491,7 @@ namespace SAF.Presupuesto
             lblFormatoDisponible.Text = string.Format("{0:c}", "0");
             lblLeyDisponible.Visible = false;
             lblFormatoDisponible.Visible = false;
-
+            Pres_Documento_Detalle objDocDet = new Pres_Documento_Detalle ();
             try
             {
                 if (rbtOrigen_Destino.SelectedValue == "O")
@@ -499,18 +499,18 @@ namespace SAF.Presupuesto
                     lblLeyDisponible.Visible = true;
                     lblFormatoDisponible.Visible = true;
 
-                    objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                    objDocumentoDet.Tipo = ddlTipoEnc.SelectedValue;
-                    objDocumentoDet.SuperTipo = "A";
-                    objDocumentoDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
-                    objDocumentoDet.Ejercicios = SesionUsu.Usu_Ejercicio;
+                    objDocDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
+                    objDocDet.Tipo = ddlTipoEnc.SelectedValue;
+                    objDocDet.SuperTipo = "A";
+                    objDocDet.Mes_inicial = Convert.ToInt32(ddlMesInicialDet.SelectedValue);
+                    objDocDet.Ejercicios = SesionUsu.Usu_Ejercicio;
 
-                    CNDocDet.ObtDisponibleCodigoProg(objDocumentoDet, ref Verificador);
+                    CNDocDet.ObtDisponibleCodigoProg(objDocDet, ref Verificador);
                     if (Verificador == "0")
                     {
                       
-                        lblDisponible.Text = Convert.ToString(objDocumentoDet.Importe_disponible);
-                        lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocumentoDet.Importe_disponible));
+                        lblDisponible.Text = Convert.ToString(objDocDet.Importe_disponible);
+                        lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocDet.Importe_disponible));
                     }
                 }
                     
