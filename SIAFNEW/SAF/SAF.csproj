@@ -769,9 +769,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP021A_PARTIDA.cs">
+      <DependentUpon>RPT-PRESUP_RP021A_PARTIDA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP021A_PROYECTO.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP021A_PARTIDA.rpt</DependentUpon>
+      <DependentUpon>RPT-PRESUP_RP021A_PROYECTO.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_UNV.cs">
@@ -1012,6 +1018,10 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP021A_PARTIDA.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_RP021A_PARTIDA.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP021A_PROYECTO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP021A_PROYECTO.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_UNV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
