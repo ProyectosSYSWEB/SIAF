@@ -766,7 +766,7 @@
                                 <asp:ListItem Value="T">Todas</asp:ListItem>
                                 <asp:ListItem Value="F">Fuente financiamiento</asp:ListItem>
                                 <asp:ListItem Value="P">Partida</asp:ListItem>
-                                
+                                <asp:ListItem Value="Y">Proyecto</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -778,7 +778,7 @@
                                             
                                         </td>
                                         <td colspan="3">
-                                            <asp:GridView ID="grdDatos_v8" runat="server" AutoGenerateColumns="False" Width="100%" CssClass="mGrid" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="grdDatos_v8" runat="server" AutoGenerateColumns="False" Width="100%" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." >
                                                 <Columns>
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
