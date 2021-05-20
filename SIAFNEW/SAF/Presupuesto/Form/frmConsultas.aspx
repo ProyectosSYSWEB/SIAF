@@ -132,6 +132,7 @@
                                             <h6>Cédulas</h6>
                                             <asp:GridView ID="GRDCedulas" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro." OnSelectedIndexChanged="GRDCedulas_SelectedIndexChanged">
                                                 <Columns>
+                                                    <asp:BoundField DataField="ID" HeaderText="ID" />
                                                     <asp:BoundField DataField="Dependencia" HeaderText="Dependencia" />
                                                     <asp:BoundField DataField="Folio" HeaderText="Cedula" />
                                                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
@@ -140,13 +141,16 @@
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" /> 
                                                     <asp:BoundField DataField="Mes_Inicial" HeaderText="Mes_Inicial"  ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta" />
-                                                    <asp:BoundField DataField="Mes_Final" HeaderText="Mes_Final" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"  />
+                                                    <asp:BoundField DataField="Mes_Final" HeaderText="Mes_Final" ItemStyle-CssClass="ColumnaOculta" HeaderStyle-CssClass="ColumnaOculta"  />                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" Visible="true">Movimientos</asp:LinkButton>
-                                                            <asp:Label ID="lblMovCedulas" runat="server" ForeColor="#6B696B" Text="Movimientos" Visible="true"></asp:Label>
+                                                            <asp:UpdatePanel ID="UpdatePanel105" runat="server">
+                                                                <ContentTemplate>
+                                                                    <asp:LinkButton ID="LinkBImprimir" runat="server" OnClick="LinkBImprimir_Click">Imprimir</asp:LinkButton>
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
                                                         </ItemTemplate>
-                                                     </asp:TemplateField>
+                                                    </asp:TemplateField>
                                                 </Columns>
                                                 <PagerStyle HorizontalAlign="Left" />
                                                 <FooterStyle CssClass="enc" />
@@ -177,12 +181,12 @@
                                                     <asp:BoundField DataField="Mes_Final" HeaderText="F" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" />
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
-                                                    <asp:TemplateField>
+                                                    <%--<asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="linkBtnMovAumentos" runat="server" CommandName="Delete" Visible="true">Movimientos</asp:LinkButton>
                                                             <asp:Label ID="lblMovAumentos" runat="server" ForeColor="#6B696B" Text="Movimientos" Visible="true"></asp:Label>
                                                         </ItemTemplate>
-                                                     </asp:TemplateField>
+                                                     </asp:TemplateField>--%>
                                                 </Columns>
                                                 <PagerStyle HorizontalAlign="Left" />
                                                 <FooterStyle CssClass="enc" />
@@ -212,12 +216,12 @@
                                                     <asp:BoundField DataField="Mes_Inicial" HeaderText="Mes" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" />
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
-                                                    <asp:TemplateField>
+                                                    <%--<asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="linkBtnMovMinist" runat="server" CommandName="Delete" Visible="true">Movimientos</asp:LinkButton>
                                                             <asp:Label ID="lblMovMinist" runat="server" ForeColor="#6B696B" Text="Movimientos" Visible="true"></asp:Label>
                                                         </ItemTemplate>
-                                                     </asp:TemplateField>
+                                                     </asp:TemplateField>--%>
                                                 </Columns>
                                                 <PagerStyle HorizontalAlign="Left" />
                                                 <FooterStyle CssClass="enc" />

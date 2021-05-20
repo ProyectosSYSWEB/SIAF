@@ -208,9 +208,9 @@ namespace SAF.Presupuesto.Form
                 }
                 else
                 {
-                    GRDMinistraciones.Enabled = true;
-                    GRDMinistraciones.DataSource = null;
-                    GRDMinistraciones.DataBind();
+                    GRDCedulas.Enabled = true;
+                    GRDCedulas.DataSource = null;
+                    GRDCedulas.DataBind();
                 }
             }
             catch (Exception ex)
@@ -311,5 +311,18 @@ namespace SAF.Presupuesto.Form
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + "')", true);
             }
         }
+
+        protected void LinkBImprimir_Click(object sender, EventArgs e)
+        {
+            LinkButton cbi = (LinkButton)(sender);
+            GridViewRow row = (GridViewRow)cbi.NamingContainer;
+            GRDCedulas.SelectedIndex = row.RowIndex;
+            string ruta1 = string.Empty;
+
+            ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-002&id=" + GRDCedulas.SelectedRow.Cells[0].Text;
+            string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+        }
+
     }
 }
