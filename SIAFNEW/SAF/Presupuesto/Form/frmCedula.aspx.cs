@@ -574,6 +574,7 @@ namespace SAF.Presupuesto
                     ddlevento.Enabled = false;
                     ddlDependencia.SelectedValue = objDocumento.Dependencia;
                     ddlFuente_F.SelectedValue = objDocumento.Fuente;
+                    DDLFuente_F_SelectedIndexChanged(null, null);
                     txtCedula.Text = objDocumento.Folio;
                     lblMesPol.Text = objDocumento.PolizaComprometida.Substring(0, 2);
                     lblLiteralPol.Text = objDocumento.PolizaComprometida.Substring(2, 1);
