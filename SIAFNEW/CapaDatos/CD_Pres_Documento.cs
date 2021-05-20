@@ -36,6 +36,7 @@ namespace CapaDatos
                     objDocumento.Origen = Convert.ToDouble(dr.GetValue(8));
                     objDocumento.Destino = Convert.ToDouble(dr.GetValue(9));
                     objDocumento.Opcion_Modificar = Convert.ToString(dr.GetValue(10)) == "S" ? false : true;
+                    objDocumento.Opcion_Generar_Doc = Convert.ToString(dr.GetValue(10)) == "S" ? true : false;
                     objDocumento.Opcion_Modificar_Str = Convert.ToString(dr.GetValue(6)) == "Autorizado" ? "Ver" : "Editar";
                     if(objDocumento.SuperTipo=="Ministración")
                         objDocumento.Opcion_Modificar2 = true;// Convert.ToString(dr.GetValue(10)) == "RECIBIDA" ? false : true;
@@ -505,6 +506,28 @@ namespace CapaDatos
                     objDocumento = new Pres_Documento();
                     objDocumento.Literal = Convert.ToString(Cmd.Parameters["P_LITERAL"].Value);                    
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CDDatos.LimpiarOracleCommand(ref Cmd);
+            }
+        }
+
+        public void GenerarPolizaPrevia(Pres_Documento objDocumento, ref string Verificador)
+        {
+            CD_Datos CDDatos = new CD_Datos();
+            OracleCommand Cmd = null;
+            try
+            {
+                string[] ParametrosIn = { "P_ID"};
+                object[] Valores = { objDocumento.Id_Funcion };
+                string[] ParametrosOut = {"P_BANDERA" };
+                Cmd = CDDatos.GenerarOracleCommand("gnr_poliza_auto_hono", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZAS_AUTO_CEDULAS", ref Verificador, ParametrosIn, Valores, ParametrosOut);
             }
             catch (Exception ex)
             {

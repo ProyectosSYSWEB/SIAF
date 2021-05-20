@@ -119,7 +119,28 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEventos;
-        
+
+
+
+        /// <summary>
+        /// Control lblTipoCedula.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipoCedula;
+
+        /// <summary>
+        /// Control ddlTipoCedula.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoCedula;
+
+
         /// <summary>
         /// Control lblStatus0.
         /// </summary>
@@ -173,7 +194,27 @@ namespace SAF.Presupuesto {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMesFin;
-        
+
+
+
+        /// <summary>
+        /// Control lblTipoCedula.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipoCedula;
+
+        /// <summary>
+        /// Control ddlTipoCedula.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoCedula;
+
         /// <summary>
         /// Control lblbuscar0.
         /// </summary>
@@ -624,6 +665,7 @@ namespace SAF.Presupuesto {
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLiteralPol;
         
+
         /// <summary>
         /// Control txtPoliza.
         /// </summary>

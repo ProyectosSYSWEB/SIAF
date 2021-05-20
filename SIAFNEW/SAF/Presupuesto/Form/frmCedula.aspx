@@ -216,12 +216,33 @@
                                                                             <asp:DropDownList ID="ddlEventos" runat="server"  Width="300px">
                                                                             </asp:DropDownList>
                                                                         </td>
+
+                                                                        </tr>
+                                                                    </tr>
+                                                                    <tr>
+                                                                         <td class="col1">
+                                                                                <asp:Label ID="lblTipoCedula" runat="server" Text="Tipo"></asp:Label>
+                                                                            </td>
+                                                                            <td class="col1">
+                                                                                <asp:DropDownList ID="ddlTipoCedula" runat="server" Width="150px">
+                                                                                    <asp:ListItem Value="T">Todos</asp:ListItem>
+                                                                                    <asp:ListItem Value="CC">Comprometido</asp:ListItem>
+                                                                                    <asp:ListItem Value="CD">Devengado</asp:ListItem>
+                                                                                    <asp:ListItem Value="CE">Ejercido</asp:ListItem>                                                                                    
+                                                                                    <asp:ListItem Value="CP">Pagado</asp:ListItem>                                                                                    
+                                                                                </asp:DropDownList>
+                                                                            </td>
+                                                                        <td class="col1">
+                                                                            &nbsp;</td>
+
                                                                         <td class="col1">&nbsp;</td>                                                                        
+
                                                                         <td class="col1">
                                                                             <asp:Label ID="lblStatus0" runat="server" Text="Estatus"></asp:Label>
                                                                         </td>
                                                                         <td class="col1">
                                                                             <asp:DropDownList ID="ddlStatus" runat="server" Width="150px">
+
                                                                             </asp:DropDownList>
                                                                         </td>
                                                                     </tr>
@@ -245,6 +266,7 @@
                                                                                 <asp:ListItem Value="10">Octubre</asp:ListItem>
                                                                                 <asp:ListItem Value="11">Noviembre</asp:ListItem>
                                                                                 <asp:ListItem Value="12">Diciembre</asp:ListItem>
+
                                                                             </asp:DropDownList>
                                                                         </td>
                                                                         <td class="col1">&nbsp;</td>                                                                        
@@ -410,6 +432,110 @@
                                                                                             <asp:Image ID="Image1q1" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" style="text-align: center" ToolTip="Espere un momento, por favor.." Width="50px" />
                                                                                         </progresstemplate>
                                                                                     </asp:UpdateProgress>--%>&nbsp;</td>
+
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="5">
+                                                                                <div align="center">
+                                                                                    <asp:UpdateProgress ID="UpdProDocumentos" runat="server" AssociatedUpdatePanelID="UpdDocumentos">
+                                                                                        <progresstemplate>
+                                                                                            <asp:Image ID="imgDocumentos" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" style="text-align: center" ToolTip="Espere un momento, por favor.." Width="50px" />
+                                                                                        </progresstemplate>
+                                                                                    </asp:UpdateProgress>
+                                                                                </div>
+                                                                                <asp:UpdatePanel ID="UpdDocumentos" runat="server">
+                                                                                    <ContentTemplate>
+                                                                                        <asp:GridView ID="grdDocumentos" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." OnPageIndexChanging="grdDocumentos_PageIndexChanging" OnRowDeleting="grdDocumentos_RowDeleting" OnSelectedIndexChanged="grdDocumentos_SelectedIndexChanged" PageSize="20" Width="100%">
+                                                                                            <Columns>
+                                                                                                <asp:BoundField DataField="ID" HeaderText="ID" />
+                                                                                                <asp:BoundField DataField="Dependencia" HeaderText="DEPENDENCIA" />
+                                                                                                <asp:BoundField DataField="TIPO" HeaderText="TIPO" />
+                                                                                                <asp:BoundField DataField="No_Documento" HeaderText="CÉDULA" />
+                                                                                                <asp:BoundField DataField="ClaveEvento" HeaderText="EVENTO" />
+                                                                                                <asp:BoundField DataField="Fecha" HeaderText="FECHA" />
+                                                                                                <asp:BoundField DataField="Status" HeaderText="ESTATUS" />
+                                                                                                <asp:BoundField DataField="Concepto" HeaderText="CONCEPTO" />
+                                                                                                <asp:BoundField DataField="Origen" DataFormatString="{0:c}" HeaderText="IMPORTE" />
+                                                                                                <asp:BoundField DataField="Destino" DataFormatString="{0:c}" HeaderText="DESTINO" />
+                                                                                                <asp:TemplateField>
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" OnClick="linkBttnEditar_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Editar</asp:LinkButton>
+                                                                                                        <asp:Label ID="lblEditar" runat="server" ForeColor="#6B696B" Text="Editar" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+                                                                                                <asp:TemplateField>
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:UpdatePanel ID="UpdatePanel104" runat="server">
+                                                                                                            <ContentTemplate>
+                                                                                                                <asp:LinkButton ID="linkBttnEliminar" runat="server" CommandName="Delete" onclientclick="return confirm('¿Desea eliminar la cédula?');" Visible='<%# Bind("Opcion_Eliminar") %>'>Eliminar</asp:LinkButton>
+                                                                                                                <asp:Label ID="lblEliminar" runat="server" ForeColor="#6B696B" Text="Eliminar" Visible='<%# Bind("Opcion_Eliminar2") %>'></asp:Label>
+                                                                                                            </ContentTemplate>
+                                                                                                        </asp:UpdatePanel>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+
+                                                                                                <asp:TemplateField>
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:UpdatePanel ID="UpdatePanel105" runat="server">
+                                                                                                            <ContentTemplate>
+                                                                                                                <asp:LinkButton ID="LinkBImprimir" runat="server" OnClick="LinkBImprimir_Click">Imprimir</asp:LinkButton>
+                                                                                                            </ContentTemplate>
+                                                                                                        </asp:UpdatePanel>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+
+                                                                                                <asp:TemplateField>
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:UpdatePanel ID="UpdatePanel106" runat="server">
+                                                                                                            <ContentTemplate>
+                                                                                                                 <asp:LinkButton ID="LinkVistaPrevia" runat="server" CommandName="Select" OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Vista Previa Poliza</asp:LinkButton>
+                                                                                                                 <asp:Label ID="lblVistaPreviaPoliza" runat="server" ForeColor="#6B696B" Text="Vista Previa Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>                                                                                                                
+                                                                                                            </ContentTemplate>
+                                                                                                        </asp:UpdatePanel>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+
+                                                                                                <asp:TemplateField>
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:UpdatePanel ID="UpdatePanel107" runat="server">
+                                                                                                            <ContentTemplate>
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPoliza" runat="server" CommandName="Select" OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Generar Poliza</asp:LinkButton>
+                                                                                                                 <asp:Label ID="lblGenerarPoliza" runat="server" ForeColor="#6B696B" Text="Generar Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>                                                                                                                
+                                                                                                            </ContentTemplate>
+                                                                                                        </asp:UpdatePanel>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+
+                                                                                                <asp:TemplateField>
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:UpdatePanel ID="UpdatePanel108" runat="server">
+                                                                                                            <ContentTemplate>
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaFinal" runat="server" CommandName="Select" OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Generar_Doc") %>'>Ver Poliza</asp:LinkButton>
+                                                                                                                                                                                                                              
+                                                                                                            </ContentTemplate>
+                                                                                                        </asp:UpdatePanel>
+                                                                                                    </ItemTemplate>
+                                                                                                </asp:TemplateField>
+
+                                                                                            </Columns>
+                                                                                            <FooterStyle CssClass="enc" />
+                                                                                            <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                                                            <SelectedRowStyle CssClass="sel" />
+                                                                                            <HeaderStyle CssClass="enc" />
+                                                                                            <AlternatingRowStyle CssClass="alt" />
+                                                                                        </asp:GridView>
+                                                                                    </ContentTemplate>
+                                                                                </asp:UpdatePanel>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="cuadro_botones" colspan="5">
+                                                                                <asp:ImageButton ID="imgBttnPDF" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" OnClick="imgBttnPDF_Click" title="Reporte PDF" />
+                                                                                <asp:ImageButton ID="imgBttnPDF_Lotes" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf2.png" OnClick="imgBttnPDF_Lotes_Click" title="Reporte/Lote" ValidationGroup="Agregar" />
+                                                                                <asp:ImageButton ID="imgBttnXLS" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/excel.png" OnClick="imgBttnXLS_Click" title="Reporte Excel" />
+                                                                            </td>
+                                                                        </tr>
+
                                                                     </tr>
                                                                     <tr>
                                                                         <td colspan="5">
@@ -476,6 +602,7 @@
                                                                             <asp:ImageButton ID="imgBttnPDF_Lotes" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf2.png" OnClick="imgBttnPDF_Lotes_Click" title="Reporte/Lote" ValidationGroup="Agregar" />
                                                                             <asp:ImageButton ID="imgBttnXLS" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/excel.png"  title="Reporte Excel" OnClick="imgBttnXLS_Click" />
                                                                         </td>
+
                                                                     </tr>
                                                                 </table>
                                                             </asp:View>

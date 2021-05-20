@@ -64,7 +64,7 @@ namespace CapaEntidad
         private string _Opcion_Modificar2_Str;
         private bool _Opcion_Copiar;
         private bool _Opcion_Copiar2;
-
+        private bool _Opcion_Generar_Doc;
 
         public string Seguimiento
         {
@@ -345,6 +345,12 @@ namespace CapaEntidad
         {
             get { return _Fuente; }
             set { _Fuente = value; }
+        }
+
+        public bool Opcion_Generar_Doc
+        {
+            get { return _Opcion_Generar_Doc; }
+            set { _Opcion_Generar_Doc = value; }
         }
     }
 }
