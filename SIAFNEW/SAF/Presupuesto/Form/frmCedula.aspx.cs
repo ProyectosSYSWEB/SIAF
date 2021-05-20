@@ -1152,5 +1152,38 @@ namespace SAF.Presupuesto
         {
 
         }
+
+        protected void LinkVistaPrevia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Pres_Documento objDocumento = new Pres_Documento();
+                LinkButton cbi = (LinkButton)(sender);
+                GridViewRow row = (GridViewRow)cbi.NamingContainer;
+                grdDocumentos.SelectedIndex = row.RowIndex;
+                string Verificador = string.Empty;
+                objDocumento.Id = grdDocumentos.SelectedIndex;
+                CNDocumentos.GenerarPolizaPrevia(objDocumento, ref Verificador);
+
+                if (Verificador == "0")
+                {
+                    //string ruta1 = string.Empty;
+                    //ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-002&id=" + grdDocumentos.SelectedRow.Cells[0].Text;
+                    //string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+                }
+                else
+                {
+                    CNComun.VerificaTextoMensajeError(ref Verificador);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "');", true); //lblMsj.Text = ex.Message;
+                }
+            }
+            catch (Exception ex)
+            {
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true); //lblMsj.Text = ex.Message;
+            }
+        }
     }
 }
