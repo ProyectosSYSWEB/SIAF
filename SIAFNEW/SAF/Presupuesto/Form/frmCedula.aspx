@@ -228,8 +228,6 @@
                                                                     <tr>
                                                                         <td class="col1">
 
-                                                                          </td>
-
                                                                             <asp:Label ID="lblMesIni" runat="server" Text="Mes inicial" Width="160px"></asp:Label>
                                                                         </td>
 
@@ -270,7 +268,7 @@
                                                                             </asp:DropDownList>
 
                                                                         </td>                                                                        
-                                                                        <tr>
+                                                                        <%--<tr>
                                                                             <td class="col1">
                                                                                 <asp:Label ID="lblMesIni" runat="server" Text="Mes inicial" Width="160px"></asp:Label>
                                                                             </td>
@@ -310,7 +308,7 @@
                                                                                     <asp:ListItem Value="12">Diciembre</asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                             </td>
-                                                                        </tr>
+                                                                        </tr>--%>
                                                                         
                                                                         <tr>
                                                                             <td class="col1" valign="top">
