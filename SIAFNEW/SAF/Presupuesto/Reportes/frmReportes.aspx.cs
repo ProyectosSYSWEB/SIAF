@@ -143,6 +143,7 @@ namespace SAF.Presupuesto.Reportes
                         CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Tipo_Documento", ref DDLTipoCedula_v8,"p_supertipo","C");
                         DDLTipoCedula_v8.SelectedValue = "T";
                         DDLTipoCedula_v8.Items.RemoveAt(DDLTipoCedula_v8.SelectedIndex);
+                        btnChkDatos_v8.Visible = false;
                         break;
                    
                     case "RP-PRESUP_RP003":
@@ -675,6 +676,30 @@ namespace SAF.Presupuesto.Reportes
                 lblError.Text = ex.Message;
             }
         }
+        public void rowProyecto(GridView Nombre_Grid, string Nombre_Checkbox)
+        {
+            try
+            {
+
+                objReportes.Proyecto = string.Empty;
+                foreach (GridViewRow row in Nombre_Grid.Rows)
+                {
+                    CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl(Nombre_Checkbox);
+                    if (chkUrs_Disponibles.Checked == true)
+                    {
+                        if (objReportes.Proyecto == string.Empty)
+                            objReportes.Proyecto = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        else
+                            objReportes.Proyecto = objReportes.Proyecto + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
         public void rowParametros( ref string pCapitulo,ref string pFuente,ref string pProyecto)
         {
             try
@@ -833,6 +858,15 @@ namespace SAF.Presupuesto.Reportes
                     objReportes.Estatus = string.Empty;
                     CNReportes.ConsultarGrid_GrupoFuente(ref objReportes, ref List);
                 }
+                else if (IdGrid == 23)
+                {
+                    objReportes.Dependencia = DDLCentro_Contable_v8.SelectedValue;
+                    objReportes.DependenciaF = DDLCentro_Contable_v8.SelectedValue;
+                    objReportes.Tipo = DDLTipoCedula_v8.SelectedValue;
+                    objReportes.Mes_anio = DDLMes_v8.SelectedValue + objReportes.Ejercicio.Substring(2, 2);
+                    objReportes.Estatus = DDLStatus_v8.SelectedValue;
+                    CNReportes.ConsultaGrid_Proyecto(ref objReportes, ref List);
+                }
                 else
                 {
                     objReportes.Dependencia = DDLDependencia_v9.SelectedValue;
@@ -926,11 +960,15 @@ namespace SAF.Presupuesto.Reportes
             btnChkDatos_v8.Visible = false;
             if (DDLFiltro_v8.SelectedValue!="T")
             {
-                if(DDLFiltro_v8.SelectedValue == "F")
-                    CargarGrid(ref grdDatos_v8, 19 );
+                if (DDLFiltro_v8.SelectedValue == "F")
+                    CargarGrid(ref grdDatos_v8, 19);
                 else
-                    CargarGrid(ref grdDatos_v8, 20);
-
+                {
+                    if (DDLFiltro_v8.SelectedValue == "P")
+                        CargarGrid(ref grdDatos_v8, 20);
+                    else
+                        CargarGrid(ref grdDatos_v8, 23);
+                }
                 if (grdDatos_v8.Rows.Count > 0)
                 {
                     grdDatos_v8.Visible = true;
@@ -943,7 +981,7 @@ namespace SAF.Presupuesto.Reportes
             }
            
         }
-
+       
         protected void excel_temporal0_Click(object sender, ImageClickEventArgs e)
         {
             string caseSwitch = SesionUsu.Usu_Rep;
@@ -1165,6 +1203,10 @@ namespace SAF.Presupuesto.Reportes
                         rowPartida(grdDatos_v8, "chkDatos_v8");
                         ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LISTADO_CEDULAS_P&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v8.SelectedValue + "&MesIni=" + DDLMes_v8.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&TipoDoc=" + DDLTipoCedula_v8.SelectedValue + "&Status=" + DDLStatus_v8.SelectedValue + "&Partida=" + objReportes.Partida;
                         break;
+                    case "Y":
+                        rowProyecto(grdDatos_v8, "chkDatos_v8");
+                        ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LISTADO_CEDULAS_Y&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v8.SelectedValue + "&MesIni=" + DDLMes_v8.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&TipoDoc=" + DDLTipoCedula_v8.SelectedValue + "&Status=" + DDLStatus_v8.SelectedValue + "&Proyecto=" + objReportes.Proyecto;
+                        break;
                 }
             }
             string _open1 = "window.open('" + ruta + "', '_newtab');";
@@ -1191,6 +1233,10 @@ namespace SAF.Presupuesto.Reportes
                     case "P":
                         rowPartida(grdDatos_v8, "chkDatos_v8");
                         ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LISTADO_CEDULAS_P_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v8.SelectedValue + "&MesIni=" + DDLMes_v8.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&TipoDoc=" + DDLTipoCedula_v8.SelectedValue + "&Status=" + DDLStatus_v8.SelectedValue + "&Partida=" + objReportes.Partida;
+                        break;
+                    case "Y":
+                        rowProyecto(grdDatos_v8, "chkDatos_v8");
+                        ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LISTADO_CEDULAS_Y&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v8.SelectedValue + "&MesIni=" + DDLMes_v8.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&TipoDoc=" + DDLTipoCedula_v8.SelectedValue + "&Status=" + DDLStatus_v8.SelectedValue + "&Proyecto=" + objReportes.Proyecto;
                         break;
                 }
             }
@@ -1577,7 +1623,7 @@ namespace SAF.Presupuesto.Reportes
             rowSubprograma(grdSubprogramas_v14, "chkSubprograma_v14");
             string ruta = string.Empty;
                         
-            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
+            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue + "&Ministrable="+DDLMinistrable_v14.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
@@ -1588,7 +1634,7 @@ namespace SAF.Presupuesto.Reportes
             rowSubprograma(grdSubprogramas_v14, "chkSubprograma_v14");
             string ruta = string.Empty;
 
-            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue;
+            ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP003_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v14.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&TipoDoc=" + DDLTipo_v14.SelectedValue + "&Ministrable=" + DDLMinistrable_v14.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
@@ -1985,6 +2031,6 @@ namespace SAF.Presupuesto.Reportes
             }
         }
 
-       
+        
     }
 }
