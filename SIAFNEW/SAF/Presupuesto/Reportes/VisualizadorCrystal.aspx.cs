@@ -571,6 +571,20 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, MesIni);
                         reporte_PDF();
                         break;
+                    case "RP-PRESUP_RP005TD":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP005TD.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Fuente);
+                        report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, MesIni);
+                        reporte_PDF();
+                        break;
+                    case "RP-PRESUP_RP005TR":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP005TR.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Fuente);
+                        report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, MesIni);
+                        reporte_PDF();
+                        break;
                     case "RP-PRESUP_RP005MD_XLS":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP005MD.rpt";
                         reportes_dir();
@@ -594,6 +608,20 @@ namespace SAF.Presupuesto.Reportes
                         break;
                     case "RP-PRESUP_RP005AR_XLS":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP005AR.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Fuente);
+                        report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, MesIni);
+                        reporte_XLS();
+                        break;
+                    case "RP-PRESUP_RP005TD_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP005TD.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Fuente);
+                        report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, MesIni);
+                        reporte_XLS();
+                        break;
+                    case "RP-PRESUP_RP005TR_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_RP005TR.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Capitulo); report.SetParameterValue(2, Fuente);
                         report.SetParameterValue(3, Ministrable); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, MesIni);

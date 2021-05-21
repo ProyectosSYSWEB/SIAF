@@ -1246,24 +1246,7 @@ namespace SAF.Presupuesto.Reportes
 
         protected void imgBttnPdf_v9_click(object sender, ImageClickEventArgs e)
         {
-            //try
-            //{
-            //    string parametroCapitulo = string.Empty; 
-            //    string parametroFuente = string.Empty; 
-            //    string parametroProyecto = string.Empty; 
-            //    rowParametros(ref parametroCapitulo, ref parametroFuente, ref parametroProyecto);
-            //    string ruta1 = string.Empty;
-            //   if(DDLPeriodo_v9.SelectedValue=="M")
-            //    ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP008M&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Proyecto=" + parametroProyecto + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
-            //   else
-            //     ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP008A&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Proyecto=" + parametroProyecto + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
-            //    string _open1 = "window.open('" + ruta1 + "', '_newtab');";
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
-            //}
-            //catch (Exception ex)
-            //{
-            //    lblError.Text = ex.Message;
-            //}
+            
             try
             {
                 string reporte = Request.QueryString["P_REP"];
@@ -1295,7 +1278,7 @@ namespace SAF.Presupuesto.Reportes
                 }
                 else if (reporte == "RP-PRESUP_RP005")
                 {
-                    if (DDLPeriodo_v9.SelectedValue == "M")
+                    if (DDLPeriodo_v9.SelectedValue == "M") //MENSUAL
                     {
                         if (DDLReporte_v9.SelectedValue == "DET")
                             ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005MD&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
@@ -1304,10 +1287,21 @@ namespace SAF.Presupuesto.Reportes
                     }
                     else
                     {
-                        if (DDLReporte_v9.SelectedValue == "DET")
-                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005AD&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                        if (DDLPeriodo_v9.SelectedValue == "T") //TRIMESTRAL
+                        {
+                            if (DDLReporte_v9.SelectedValue == "DET")
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005TD&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
                         else
-                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005AR&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005TR&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                        }
+
+                        else   //ACUMULADO
+                        {
+                            if (DDLReporte_v9.SelectedValue == "DET") 
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005AD&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                            else
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005AR&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                        }
                     }
                 }
                 string _open1 = "window.open('" + ruta1 + "', '_newtab');";
@@ -1351,7 +1345,7 @@ namespace SAF.Presupuesto.Reportes
                 }
                 else if (reporte == "RP-PRESUP_RP005")
                 {
-                    if (DDLPeriodo_v9.SelectedValue == "M")
+                    if (DDLPeriodo_v9.SelectedValue == "M") //MENSUAL
                     {
                         if (DDLReporte_v9.SelectedValue == "DET")
                             ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005MD_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
@@ -1360,10 +1354,20 @@ namespace SAF.Presupuesto.Reportes
                     }
                     else
                     {
-                        if (DDLReporte_v9.SelectedValue == "DET")
-                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005AD_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
-                        else
-                            ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005AR_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                        if (DDLPeriodo_v9.SelectedValue == "T") //TRIMESTRAL
+                        {
+                            if (DDLReporte_v9.SelectedValue == "DET")
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005TD_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                            else
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005TR_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                        }
+                        else  //ACUMULADO
+                        {
+                            if (DDLReporte_v9.SelectedValue == "DET")
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005AD_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                            else
+                                ruta1 = "VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP005AR_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Fuente=" + parametroFuente + "&Capitulo=" + parametroCapitulo + "&Ministrable=" + DDLMinistrable_v9.SelectedValue + "&Dependencia=" + DDLDependencia_v9.SelectedValue + "&MesIni=" + DDLMes_v9.SelectedValue;
+                        }
                     }
                 }
                 string _open1 = "window.open('" + ruta1 + "', '_newtab');";
@@ -2031,6 +2035,5 @@ namespace SAF.Presupuesto.Reportes
             }
         }
 
-        
     }
 }

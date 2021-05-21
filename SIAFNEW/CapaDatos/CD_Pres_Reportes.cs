@@ -210,7 +210,7 @@ namespace CapaDatos
                 {
                     objReportes = new Pres_Reportes();
                     objReportes.Id = Convert.ToString(dr.GetValue(0));
-                    objReportes.SubPrograma = Convert.ToString(dr.GetValue(1));
+                    objReportes.Descripcion = Convert.ToString(dr.GetValue(1));
                     List.Add(objReportes);
                 }
                 dr.Close();
