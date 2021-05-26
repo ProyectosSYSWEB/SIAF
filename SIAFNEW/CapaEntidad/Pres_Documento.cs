@@ -55,6 +55,7 @@ namespace CapaEntidad
         private string _Literal;
         private string _Id_Funcion;
         private string _Fuente;
+        private string _Clave_Evento;
 
         private bool _Opcion_Eliminar;
         private bool _Opcion_Eliminar2;
@@ -351,6 +352,12 @@ namespace CapaEntidad
         {
             get { return _Opcion_Generar_Doc; }
             set { _Opcion_Generar_Doc = value; }
+        }
+
+        public string Clave_Evento
+        {
+            get { return _Clave_Evento; }
+            set { _Clave_Evento = value; }
         }
     }
 }

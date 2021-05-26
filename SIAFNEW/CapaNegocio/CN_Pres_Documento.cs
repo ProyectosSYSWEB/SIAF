@@ -132,12 +132,51 @@ namespace CapaNegocio
             }
         }
 
-        public void GenerarPolizaPrevia(Pres_Documento objdocumento, ref string Verificador)
+        public void GenerarPolizaPreviaHonorarios(Pres_Documento objdocumento, ref string Verificador)
         {
             try
             {
                 CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
-                CDDocumento.GenerarPolizaPrevia(objdocumento, ref Verificador);
+                CDDocumento.GenerarPolizaPreviaHonorarios(objdocumento, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void GenerarPolizaAutoPreviaCedulas(Pres_Documento objdocumento, ref string Verificador)
+        {
+            try
+            {
+                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
+                CDDocumento.GenerarPolizaAutoPreviaCedulas(objdocumento, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void GenerarPolizaFinalHonorarios(Pres_Documento objdocumento, ref string Verificador)
+        {
+            try
+            {
+                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
+                CDDocumento.GenerarPolizaFinalHonorarios(objdocumento, ref Verificador);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void GenerarPolizaFinalAutoPreviaCedulas(Pres_Documento objdocumento, ref string Verificador)
+        {
+            try
+            {
+                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
+                CDDocumento.GenerarPolizaFinalAutoPreviaCedulas(objdocumento, ref Verificador);
             }
             catch (Exception ex)
             {

@@ -431,6 +431,7 @@
                                                                                         <asp:GridView ID="grdDocumentos" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." OnPageIndexChanging="grdDocumentos_PageIndexChanging" OnRowDeleting="grdDocumentos_RowDeleting" OnSelectedIndexChanged="grdDocumentos_SelectedIndexChanged" PageSize="20" Width="100%">
                                                                                             <Columns>
                                                                                                 <asp:BoundField DataField="ID" HeaderText="ID" />
+                                                                                                <asp:BoundField DataField="Clave_Evento" HeaderText="Clave Evento" />
                                                                                                 <asp:BoundField DataField="Dependencia" HeaderText="DEPENDENCIA" />
                                                                                                 <asp:BoundField DataField="TIPO" HeaderText="TIPO" />
                                                                                                 <asp:BoundField DataField="No_Documento" HeaderText="CÉDULA" />
@@ -467,12 +468,28 @@
                                                                                                     </ItemTemplate>
                                                                                                 </asp:TemplateField>
 
+
+
+                                                                                                <%--<asp:BoundField DataField="Poliza_Alta" />
+                                                                                                <asp:TemplateField>
+                                                                                                    <ItemTemplate>
+                                                                                                        <asp:LinkButton ID="linkBttnPolizaAlta" runat="server" onclick="LinkVistaPrevia_Click" Text="Poliza Alta" Enabled='<%# Bind("Imprimir_Poliza_Alta") %>'>
+                                                                                                        </asp:LinkButton>
+                                                                                                    </ItemTemplate>
+                                                                                                    <ItemStyle HorizontalAlign="Center" Width="100px" />
+                                                                                                </asp:TemplateField>--%>
+                                                                                                
+
+
+
+
+
                                                                                                 <asp:TemplateField>
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel106" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkVistaPrevia" runat="server" CommandName="Select" OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Vista Previa Poliza</asp:LinkButton>
-                                                                                                                 <asp:Label ID="lblVistaPreviaPoliza" runat="server" ForeColor="#6B696B" Text="Vista Previa Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>                                                                                                                
+                                                                                                                 <asp:LinkButton ID="LinkVistaPrevia" runat="server" CommandName="Select" OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Vista Previa Poliza 1 </asp:LinkButton>
+                                                                                                                 <%--<asp:Label ID="lblVistaPreviaPoliza" runat="server" ForeColor="#6B696B" Text="Vista Previa Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label> --%>                                                                                                               
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
@@ -482,8 +499,8 @@
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel107" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkGenerarPoliza" runat="server" CommandName="Select" OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Generar Poliza</asp:LinkButton>
-                                                                                                                 <asp:Label ID="lblGenerarPoliza" runat="server" ForeColor="#6B696B" Text="Generar Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>                                                                                                                
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPoliza" runat="server" CommandName="Select" OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Generar Poliza2 </asp:LinkButton>
+                                                                                                                 <%--<asp:Label ID="lblGenerarPoliza" runat="server" ForeColor="#6B696B" Text="Generar Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>       --%>                                                                                                         
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
@@ -494,7 +511,6 @@
                                                                                                         <asp:UpdatePanel ID="UpdatePanel108" runat="server">
                                                                                                             <ContentTemplate>
                                                                                                                  <asp:LinkButton ID="LinkGenerarPolizaFinal" runat="server" CommandName="Select" OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Generar_Doc") %>'>Ver Poliza</asp:LinkButton>
-                                                                                                                                                                                                                              
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
