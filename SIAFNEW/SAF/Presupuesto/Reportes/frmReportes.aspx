@@ -753,7 +753,7 @@
                             <asp:DropDownList ID="DDLStatus_v8" runat="server" Width="25%">
                                 <asp:ListItem Value="A">Autorizada</asp:ListItem>
                                 <asp:ListItem Value="I">Inicial</asp:ListItem>
-                                <asp:ListItem Value="DF">Con Diferencia</asp:ListItem>
+                                <%--<asp:ListItem Value="DF">Con Diferencia</asp:ListItem>--%>
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -858,6 +858,7 @@
                                             <asp:DropDownList ID="DDLPeriodo_v9" runat="server" Width="85%">
                                                 <asp:ListItem Value="M">Mensual</asp:ListItem>
                                                 <asp:ListItem Value="A">Acumulado</asp:ListItem>
+                                                <asp:ListItem Value="T">Trimestral</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                         <td style="width:20%">

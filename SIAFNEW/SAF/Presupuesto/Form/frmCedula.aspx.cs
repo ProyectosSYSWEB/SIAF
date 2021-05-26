@@ -1097,6 +1097,7 @@ namespace SAF.Presupuesto
                         txtImporteCheque.Text = Convert.ToString(Encabezado.Importe_Cheque);
                         txtImporte_Operacion.Text = Convert.ToString(Encabezado.Importe_Operacion);
                         txtImporteISR.Text = Convert.ToString(Encabezado.ISR);
+                        CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "p_literal", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Encabezado.PolizaComprometida.Substring(2, 1));
                         DDLCuenta_Banco.SelectedValue = Encabezado.Cuenta;
                         lblMesPol.Text = Encabezado.PolizaComprometida.Substring(0, 2);
                         lblLiteralPol.Text = Encabezado.PolizaComprometida.Substring(2, 1);
