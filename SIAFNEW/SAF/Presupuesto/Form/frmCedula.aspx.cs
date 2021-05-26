@@ -262,7 +262,7 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
-                Celdas = new Int32[] { 0,9 };
+                Celdas = new Int32[] { 0,1,9 };
 
                 if (grid.Rows.Count > 0)
                 {
@@ -1137,20 +1137,79 @@ namespace SAF.Presupuesto
         {
             try
             {
+                
                 Pres_Documento objDocumento = new Pres_Documento();
                 LinkButton cbi = (LinkButton)(sender);
                 GridViewRow row = (GridViewRow)cbi.NamingContainer;
                 grdDocumentos.SelectedIndex = row.RowIndex;
                 string Verificador = string.Empty;
-                objDocumento.Id = grdDocumentos.SelectedIndex;
-                CNDocumentos.GenerarPolizaPrevia(objDocumento, ref Verificador);
-
-                if (Verificador == "0")
+                objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[1].Text);
+                string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[5].Text);
+                if (claveEvento == "01")
+                    CNDocumentos.GenerarPolizaAutoPreviaCedulas(objDocumento, ref Verificador);
+                else if (claveEvento == "06")
+                    CNDocumentos.GenerarPolizaPreviaHonorarios(objDocumento, ref Verificador);
+                else                
+                    Verificador = "1";
+                if (Verificador != "1")
                 {
-                    //string ruta1 = string.Empty;
-                    //ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-002&id=" + grdDocumentos.SelectedRow.Cells[0].Text;
-                    //string _open1 = "window.open('" + ruta1 + "', '_newtab');";
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+                    bool generarPolizaPrevia = true;
+                    Session["DocDet"] = generarPolizaPrevia;
+                    string urlReporte = string.Empty;
+                    urlReporte = "../../Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + Verificador;
+                    string _open = "window.open('" + urlReporte + "', '_newtab');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
+                }
+                else if (Verificador == "1")
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No se puede generar una poliza de la cedula tipo: ' '" + Clave_Evento + "');", true); //lblMsj.Text = ex.Message;
+                }
+                else
+                {
+                    CNComun.VerificaTextoMensajeError(ref Verificador);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "');", true); //lblMsj.Text = ex.Message;
+                }
+            }
+            catch (Exception ex)
+            {
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true); //lblMsj.Text = ex.Message;
+            }
+        }
+
+        protected void LinkGenerarPoliza_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Pres_Documento objDocumento = new Pres_Documento();
+                LinkButton cbi = (LinkButton)(sender);
+                GridViewRow row = (GridViewRow)cbi.NamingContainer;
+                grdDocumentos.SelectedIndex = row.RowIndex;
+                string Verificador = string.Empty;
+                objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[1].Text);
+                string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[5].Text);
+                if (claveEvento == "01")
+                    CNDocumentos.GenerarPolizaFinalAutoPreviaCedulas(objDocumento, ref Verificador);
+                else if (claveEvento == "06")
+                    CNDocumentos.GenerarPolizaFinalHonorarios(objDocumento, ref Verificador);
+                else
+                    Verificador = "1";
+                if (Verificador != "1")
+                {
+                    bool generarPolizaPrevia = true;
+                    Session["DocDet"] = generarPolizaPrevia;
+                    string urlReporte = string.Empty;
+                    urlReporte = "../../Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + Verificador;
+                    string _open = "window.open('" + urlReporte + "', '_newtab');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
+                }
+                else if (Verificador == "1")
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No se puede generar una poliza de la cedula tipo: ' '" + Clave_Evento + "');", true); //lblMsj.Text = ex.Message;
                 }
                 else
                 {
