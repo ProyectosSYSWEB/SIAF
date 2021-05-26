@@ -141,8 +141,8 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { "p_ejercicio","p_dependencia", "p_dependencia_f" };
-                String[] Valores = { objReportes.Ejercicio,objReportes.Dependencia, objReportes.DependenciaF };
+                String[] Parametros = { "p_ejercicio","p_dependencia", "p_dependencia_f","p_fuente" };
+                String[] Valores = { objReportes.Ejercicio,objReportes.Dependencia, objReportes.DependenciaF,objReportes.Fuente };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("pkg_Presupuesto.Obt_Grid_Capitulo", ref dr, Parametros, Valores);
 

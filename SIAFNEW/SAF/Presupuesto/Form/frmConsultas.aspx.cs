@@ -34,13 +34,26 @@ namespace SAF.Presupuesto.Form
         private void Inicializar()
         {
             CargarCombos();
-            CargarCapitulos();
+            
         }
         private void CargarCombos()
         {
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Dependencias", ref DDLDependencia, "p_usuario", "p_ejercicio", "p_supertipo",SesionUsu.Usu_Nombre ,SesionUsu.Usu_Ejercicio, "CAT");
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuente_F", ref DDLFuente, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        protected void DDLDependencia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuente_F", ref DDLFuente, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue);
+                CargarCapitulos();
             }
             catch (Exception ex)
             {
@@ -51,7 +64,7 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fuente_F", ref DDLFuente, "p_ejercicio", "p_dependencia", SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue);
+                CargarCapitulos();
             }
             catch(Exception ex)
             {
@@ -106,48 +119,39 @@ namespace SAF.Presupuesto.Form
             {
                 List<Pres_Reportes> List = new List<Pres_Reportes>();
                 objReportes.Ejercicio = SesionUsu.Usu_Ejercicio;
-                objReportes.Dependencia = "00000";
-                objReportes.DependenciaF = "00000";
+                objReportes.Dependencia = DDLDependencia.SelectedValue;
+                objReportes.DependenciaF = DDLDependencia.SelectedValue;
+                objReportes.Fuente = DDLFuente.SelectedValue;
                 CNReportes.ConsultaGrid_Capitulo(ref objReportes, ref List);
                 grdCapitulo.DataSource = List;
                 grdCapitulo.DataBind();
+                Int32[] Celdas = new Int32[] { 1 };
+                if (grdCapitulo.Rows.Count > 0)
+                {
+                    CNComun.HideColumns(grdCapitulo, Celdas);
+                }
             }
             catch(Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-        //protected void btnChkCapitulos_v1_Click(object sender, EventArgs e)
-        //{
-        //    bool check;
-        //    if (btnChkCapitulos_v1.Text == "Marcar todos")
-        //    {
-        //        btnChkCapitulos_v1.Text = "Quitar todos";
-        //        check = true;
-        //    }
-        //    else
-        //    {
-        //        btnChkCapitulos_v1.Text = "Marcar todos";
-        //        check = false;
-        //    }
-        //    foreach (GridViewRow row in grdCapitulo.Rows)
-        //    {
-        //        CheckBox check_box = row.FindControl("chkcapitulo") as CheckBox;
-        //        check_box.Checked = check;
-        //    }
-        //}
+        
         protected void rowCapitulo(GridView Nombre_Grid, string Nombre_Checkbox)
         {
             try
             {
-                objReportes.Capitulo = "0";
+                objReportes.Capitulo = string.Empty;
                 foreach (GridViewRow row in Nombre_Grid.Rows)
                 {
                     CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl(Nombre_Checkbox);
                     if (chkUrs_Disponibles.Checked == true)
                     {
-                        //objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
-                        objReportes.Capitulo = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        if(objReportes.Capitulo ==string.Empty)
+                            objReportes.Capitulo =  Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        else
+                            objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        
                     }
                 }
             }
@@ -162,27 +166,27 @@ namespace SAF.Presupuesto.Form
             {
                 rowCapitulo(grdCapitulo, "chkcapitulo");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Saf_Presup_Cod_Prog", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_fuente", "p_capitulos",  SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, DDLFuente.SelectedValue, objReportes.Capitulo);
-                if (DDLCodProg.Items.Count > 1)
+                if (DDLCodProg.Items.Count >1)
                 {
                     DDLCodProg.Enabled = true;
                     CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
-                    //CargarCapitulos();                    
+                                   
                     CargarGridCedulas();
                     CargarGridAumentos();
                     CargarGridMinistraciones();
                 }
 
-                else if (DDLCodProg.Items.Count == 1 && DDLCodProg.DataSource != null)
-                {
-                    DDLCodProg.Enabled = false;
-                    CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
-                    //CargarCapitulos();
-                    CargarGridCedulas();
-                    CargarGridAumentos();
-                    CargarGridMinistraciones();
-                }
+                //else if (DDLCodProg.Items.Count == 1 && DDLCodProg.DataSource != null)
+                //{
+                //    DDLCodProg.Enabled = false;
+                //    CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                //    //CargarCapitulos();
+                //    CargarGridCedulas();
+                //    CargarGridAumentos();
+                //    CargarGridMinistraciones();
+                //}
                 else
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Sin códigos programaticos.')", true);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Sin códigos programaticos.')", true);
             }
             catch (Exception ex)
             {
@@ -324,5 +328,6 @@ namespace SAF.Presupuesto.Form
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
 
+        
     }
 }

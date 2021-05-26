@@ -753,7 +753,7 @@
                             <asp:DropDownList ID="DDLStatus_v8" runat="server" Width="25%">
                                 <asp:ListItem Value="A">Autorizada</asp:ListItem>
                                 <asp:ListItem Value="I">Inicial</asp:ListItem>
-                                <asp:ListItem Value="DF">Con Diferencia</asp:ListItem>
+                                <%--<asp:ListItem Value="DF">Con Diferencia</asp:ListItem>--%>
                             </asp:DropDownList>
                         </td>
                     </tr>
