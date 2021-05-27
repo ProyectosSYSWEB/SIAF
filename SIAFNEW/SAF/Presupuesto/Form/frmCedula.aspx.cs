@@ -1101,7 +1101,8 @@ namespace SAF.Presupuesto
                         DDLCuenta_Banco.SelectedValue = Encabezado.Cuenta;
                         lblMesPol.Text = Encabezado.PolizaComprometida.Substring(0, 2);
                         lblLiteralPol.Text = Encabezado.PolizaComprometida.Substring(2, 1);
-                        txtPoliza.Text = Encabezado.PolizaComprometida.Substring(3, 5);
+                        //txtPoliza.Text = Encabezado.PolizaComprometida.Substring(3, 5);
+                        txtPoliza.Text = string.Empty;
                         txtNumero_Cheque.Text = Encabezado.NumeroCheque;
 
                         Detalle.Id_Documento = Convert.ToInt32(ddlCedulaOrigen.SelectedValue);

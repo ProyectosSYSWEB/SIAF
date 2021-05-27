@@ -139,15 +139,15 @@
                                             <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="MES" HeaderText="MES" ItemStyle-HorizontalAlign="Right"/>
-                                                    <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" ItemStyle-HorizontalAlign="Right"/>
-                                                    <asp:BoundField DataField="Modificado" HeaderText="Modificado" ItemStyle-HorizontalAlign="Right"/>
-                                                    <asp:BoundField DataField="Ministrado" HeaderText="Ministrado" ItemStyle-HorizontalAlign="Right"/>
-                                                    <asp:BoundField DataField="Comprometido" HeaderText="Comprometido" ItemStyle-HorizontalAlign="Right"/>
-                                                    <asp:BoundField DataField="Devengado" HeaderText="Devengado" ItemStyle-HorizontalAlign="Right"/>
-                                                    <asp:BoundField DataField="Ejercicio" HeaderText="Ejercicio" ItemStyle-HorizontalAlign="Right"/>
-                                                    <asp:BoundField DataField="Pagado" HeaderText="Pagado" ItemStyle-HorizontalAlign="Right"/>
-                                                    <asp:BoundField DataField="Disminucion" HeaderText="Min - Comprometido"  ItemStyle-HorizontalAlign="Right"/>
-                                                    <%--DataFormatString="{0:c}"--%>
+                                                    <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Modificado" HeaderText="Modificado" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Ministrado" HeaderText="Ministrado" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Comprometido" HeaderText="Comprometido" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Devengado" HeaderText="Devengado" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Ejercido" HeaderText="Ejercido" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Pagado" HeaderText="Pagado" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>
+                                                    <asp:BoundField DataField="Disminucion" HeaderText="Min - Comprometido"  DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>
+                                                    
                                                 </Columns>
                                                 <PagerStyle HorizontalAlign="Left" />
                                                 <FooterStyle CssClass="enc" />

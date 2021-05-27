@@ -30,7 +30,7 @@ namespace CapaDatos
                     objConsultas.Ministrado = Convert.ToString(dr.GetValue(3));
                     objConsultas.Comprometido = Convert.ToString(dr.GetValue(4));
                     objConsultas.Devengado = Convert.ToString(dr.GetValue(5));
-                    objConsultas.Ejercicio = Convert.ToString(dr.GetValue(6));
+                    objConsultas.Ejercido = Convert.ToString(dr.GetValue(6));
                     objConsultas.Pagado = Convert.ToString(dr.GetValue(7));
                     objConsultas.Disminucion = Convert.ToString(dr.GetValue(8));
 
