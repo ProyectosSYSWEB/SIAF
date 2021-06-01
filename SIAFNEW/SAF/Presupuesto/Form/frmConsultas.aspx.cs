@@ -166,15 +166,15 @@ namespace SAF.Presupuesto.Form
             {
                 rowCapitulo(grdCapitulo, "chkcapitulo");
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Saf_Presup_Cod_Prog", ref DDLCodProg, "p_ejercicio", "p_dependencia", "p_fuente", "p_capitulos",  SesionUsu.Usu_Ejercicio, DDLDependencia.SelectedValue, DDLFuente.SelectedValue, objReportes.Capitulo);
-                if (DDLCodProg.Items.Count >1)
-                {
-                    DDLCodProg.Enabled = true;
-                    CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                //if (DDLCodProg.Items.Count >1)
+                //{
+                //    DDLCodProg.Enabled = true;
+                //    CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
                                    
-                    CargarGridCedulas();
-                    CargarGridAumentos();
-                    CargarGridMinistraciones();
-                }
+                //    CargarGridCedulas();
+                //    CargarGridAumentos();
+                //    CargarGridMinistraciones();
+                //}
 
                 //else if (DDLCodProg.Items.Count == 1 && DDLCodProg.DataSource != null)
                 //{
@@ -185,8 +185,8 @@ namespace SAF.Presupuesto.Form
                 //    CargarGridAumentos();
                 //    CargarGridMinistraciones();
                 //}
-                else
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Sin códigos programaticos.')", true);
+                //else
+                //    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Sin códigos programaticos.')", true);
             }
             catch (Exception ex)
             {
