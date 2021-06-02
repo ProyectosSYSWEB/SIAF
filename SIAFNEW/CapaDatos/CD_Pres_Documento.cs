@@ -17,15 +17,15 @@ namespace CapaDatos
             try
             {
                 OracleDataReader dr = null;
-                String[] Parametros = { "p_ejercicio","p_dependencia","p_fecha_inicial","p_fecha_final","p_tipo", "p_supertipo", "p_status","p_buscar","p_editor", "p_tipo2" };
+                    String[] Parametros = { "p_ejercicio","p_dependencia","p_fecha_inicial","p_fecha_final","p_tipo", "p_supertipo", "p_status","p_buscar","p_editor", "p_tipo2" };
                 String[] Valores = { objDocumento.Ejercicios, objDocumento.Dependencia, objDocumento.Fecha_Inicial, objDocumento.Fecha_Final, objDocumento.ClaveEvento, objDocumento.SuperTipo, objDocumento.Status, objDocumento.P_Buscar, objDocumento.Editor, objDocumento.Tipo };
 
                 cmm = CDDatos.GenerarOracleCommandCursor("pkg_Presupuesto.Obt_Grid_Documentos", ref dr, Parametros, Valores);
 
                 while (dr.Read())
                 {
-                    objDocumento= new Pres_Documento();                    
-                    objDocumento.Id= Convert.ToInt32(dr.GetValue(0));
+                    objDocumento = new Pres_Documento();
+                    objDocumento.Id = Convert.ToInt32(dr.GetValue(0));
                     objDocumento.Dependencia = Convert.ToString(dr.GetValue(1));
                     objDocumento.Clave_Evento = Convert.ToString(dr.GetValue(2)); // Obtenemos la el número de la clave del evento
                     objDocumento.SuperTipo = Convert.ToString(dr.GetValue(3));
@@ -39,7 +39,7 @@ namespace CapaDatos
                     objDocumento.Opcion_Modificar = Convert.ToString(dr.GetValue(11)) == "S" ? false : true;
                     objDocumento.Opcion_Generar_Doc = Convert.ToString(dr.GetValue(11)) == "S" ? true : false;
                     objDocumento.Opcion_Modificar_Str = Convert.ToString(dr.GetValue(7)) == "Autorizado" ? "Ver" : "Editar";
-                    if(objDocumento.SuperTipo=="Ministración")
+                    if (objDocumento.SuperTipo == "Ministración")
                         objDocumento.Opcion_Modificar2 = true;// Convert.ToString(dr.GetValue(10)) == "RECIBIDA" ? false : true;
                     else
                         objDocumento.Opcion_Modificar2 = Convert.ToString(dr.GetValue(11)) == "S" ? true : false;
@@ -48,8 +48,35 @@ namespace CapaDatos
 
                     objDocumento.ClaveEvento = Convert.ToString(dr.GetValue(16));
                     objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(4));
-                    
-                    
+
+
+
+                    //objDocumento= new Pres_Documento();                    
+                    //objDocumento.Id= Convert.ToInt32(dr.GetValue(0));
+                    //objDocumento.Dependencia = Convert.ToString(dr.GetValue(1));
+                    //objDocumento.Clave_Evento = Convert.ToString(dr.GetValue(2)); // Obtenemos la el número de la clave del evento
+                    //objDocumento.SuperTipo = Convert.ToString(dr.GetValue(2));
+                    //objDocumento.Tipo = Convert.ToString(dr.GetValue(3));
+                    //objDocumento.No_documento = Convert.ToString(dr.GetValue(4));
+                    //objDocumento.Fecha = Convert.ToString(dr.GetValue(5));
+                    //objDocumento.Status = Convert.ToString(dr.GetValue(6));
+                    //objDocumento.Concepto = Convert.ToString(dr.GetValue(7));
+                    //objDocumento.Origen = Convert.ToDouble(dr.GetValue(8));
+                    //objDocumento.Destino = Convert.ToDouble(dr.GetValue(9));
+                    //objDocumento.Opcion_Modificar = Convert.ToString(dr.GetValue(10)) == "S" ? false : true;
+                    //objDocumento.Opcion_Generar_Doc = Convert.ToString(dr.GetValue(10)) == "S" ? true : false;
+                    //objDocumento.Opcion_Modificar_Str = Convert.ToString(dr.GetValue(6)) == "Autorizado" ? "Ver" : "Editar";
+                    //if(objDocumento.SuperTipo=="Ministración")
+                    //    objDocumento.Opcion_Modificar2 = true;// Convert.ToString(dr.GetValue(10)) == "RECIBIDA" ? false : true;
+                    //else
+                    //    objDocumento.Opcion_Modificar2 = Convert.ToString(dr.GetValue(10)) == "S" ? true : false;
+                    //objDocumento.Opcion_Eliminar = Convert.ToString(dr.GetValue(14)) == "S" ? false : true;
+                    //objDocumento.Opcion_Eliminar2 = Convert.ToString(dr.GetValue(14)) == "S" ? true : false;
+
+                    //objDocumento.ClaveEvento = Convert.ToString(dr.GetValue(15));
+                    //objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(3));
+
+
                     List.Add(objDocumento);
                 }
                 dr.Close();
@@ -528,7 +555,7 @@ namespace CapaDatos
             try
             {
                 string[] ParametrosIn = { "P_ID"};
-                object[] Valores = { objDocumento.Id_Funcion };
+                object[] Valores = { objDocumento.Id };
                 string[] ParametrosOut = {"P_BANDERA" };
                 Cmd = CDDatos.GenerarOracleCommand("gnr_poliza_auto_hono", ref Verificador, ParametrosIn, Valores, ParametrosOut);
             }
@@ -541,16 +568,16 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
-        public void GenerarPolizaAutoPreviaCedulas(Pres_Documento objDocumento, ref string Verificador)
+        public void GenerarPolizaAutoPreviaCedulas(Pres_Documento objDocumento, ref string Verificador, ref string IdPoliza)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
             try
             {
-                string[] ParametrosIn = { "P_ID" };
-                object[] Valores = { objDocumento.Id_Funcion };
-                string[] ParametrosOut = { "P_BANDERA" };
-                Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZAS_AUTO_CEDULAS", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                string[] ParametrosIn = { "P_ID_DOC" };
+                object[] Valores = { objDocumento.Id };
+                string[] ParametrosOut = { "P_EXTRA", "P_BANDERA" };
+                Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZAS_AUTO_CEDULAS", ref Verificador, ref IdPoliza, ParametrosIn, Valores, ParametrosOut);
             }
             catch (Exception ex)
             {
@@ -568,7 +595,7 @@ namespace CapaDatos
             try
             {
                 string[] ParametrosIn = { "P_ID_DOC" };
-                object[] Valores = { objDocumento.Id_Funcion }; // pasar id documento
+                object[] Valores = { objDocumento.Id }; // pasar id documento
                 string[] ParametrosOut = { "P_BANDERA" };
                 Cmd = CDDatos.GenerarOracleCommand("gnr_poliza_auto_hono_apli", ref Verificador, ParametrosIn, Valores, ParametrosOut);
             }
@@ -582,16 +609,16 @@ namespace CapaDatos
             }
         }
 
-        public void GenerarPolizaFinalAutoPreviaCedulas(Pres_Documento objDocumento, ref string Verificador)
+        public void GenerarPolizaFinalAutoCedulas(Pres_Documento objDocumento, ref string Verificador, ref string IdPoliza)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
             try
             {
                 string[] ParametrosIn = { "P_ID_DOC" };
-                object[] Valores = { objDocumento.Id_Funcion }; // pasar id documento
+                object[] Valores = { objDocumento.Id }; // pasar id documento
                 string[] ParametrosOut = { "P_BANDERA" };
-                Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_CEDULA_APLI", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_CEDULA_APLI", ref Verificador, ref IdPoliza, ParametrosIn, Valores, ParametrosOut);
             }
             catch (Exception ex)
             {
