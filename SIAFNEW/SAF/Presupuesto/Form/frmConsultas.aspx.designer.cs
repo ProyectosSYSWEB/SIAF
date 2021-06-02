@@ -85,13 +85,13 @@ namespace SAF.Presupuesto.Form {
         protected global::System.Web.UI.UpdatePanel updPnlBuscar;
         
         /// <summary>
-        /// Control BTNBuscar.
+        /// Control btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTNBuscar;
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
         /// Control Label3.
@@ -130,13 +130,13 @@ namespace SAF.Presupuesto.Form {
         protected global::System.Web.UI.UpdatePanel UpdatePanel11;
         
         /// <summary>
-        /// Control GRDCodProg.
+        /// Control grdCodProg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GRDCodProg;
+        protected global::System.Web.UI.WebControls.GridView grdCodProg;
         
         /// <summary>
         /// Control UpdatePanel2.

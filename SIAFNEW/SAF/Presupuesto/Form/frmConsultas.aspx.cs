@@ -74,8 +74,24 @@ namespace SAF.Presupuesto.Form
         protected void GRDCargarDatosCodProg(object sender, EventArgs e)
         {
             try
-            {                
-                CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+            {
+                //CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                CargarGridConsultas();
+                //CargarGridAumentos();
+                //CargarGridCedulas();
+                //CargarGridMinistraciones();
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        protected void DDLCodProg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+                CargarGridConsultas();
                 CargarGridAumentos();
                 CargarGridCedulas();
                 CargarGridMinistraciones();
@@ -89,28 +105,66 @@ namespace SAF.Presupuesto.Form
         {
             try
             {
-                GRDCodProg.Enabled = false;
-                Consultas objConsultas = new Consultas();
-                List<Consultas> listConsultas = new List<Consultas>();
-                objConsultas.Codigo_Programatico = CodigoProgramatico;
-                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
-                CNConsultas.PolizaConsultaGrid(ref objConsultas, ref listConsultas);                
-                if(listConsultas.Count > 0)
-                {
-                    GRDCodProg.Enabled = true;
-                    GRDCodProg.DataSource = listConsultas;
-                    GRDCodProg.DataBind();
-                }
-                else
-                {
-                    GRDCodProg.Enabled = false;
-                    GRDCodProg.DataSource = null;
-                    GRDCodProg.DataBind();
-                }
+                //GRDCodProg.Enabled = false;
+                //Consultas objConsultas = new Consultas();
+                //List<Consultas> listConsultas = new List<Consultas>();
+                //objConsultas.Codigo_Programatico = CodigoProgramatico;
+                //objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                //CNConsultas.PolizaConsultaGrid(ref objConsultas, ref listConsultas);                
+                //if(listConsultas.Count > 0)
+                //{
+                //    GRDCodProg.Enabled = true;
+                //    GRDCodProg.DataSource = listConsultas;
+                //    GRDCodProg.DataBind();
+                //}
+                //else
+                //{
+                //    GRDCodProg.Enabled = false;
+                //    GRDCodProg.DataSource = null;
+                //    GRDCodProg.DataBind();
+                //}
             }
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+        private void CargarGridConsultas()
+        {
+           
+            grdCodProg.DataSource = null;
+            grdCodProg.DataBind();
+            try
+            {
+                DataTable dt = new DataTable();
+                grdCodProg.DataSource = dt;
+                grdCodProg.DataSource = GetList();
+                grdCodProg.DataBind();
+               
+
+            }
+            catch (Exception ex)
+            {
+               
+            }
+        }
+        private List<Consultas> GetList()
+        {
+            try
+            {
+                Pres_Documento objDocumento = new Pres_Documento();
+                Consultas objConsultas = new Consultas();
+                List<Consultas> listConsultas = new List<Consultas>();
+                objConsultas.Codigo_Programatico = DDLCodProg.SelectedValue;
+                objConsultas.Ejercicio = SesionUsu.Usu_Ejercicio;
+                CNConsultas.PolizaConsultaGrid( objConsultas, ref listConsultas);
+
+
+                return listConsultas;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
         protected void CargarCapitulos()
@@ -160,7 +214,7 @@ namespace SAF.Presupuesto.Form
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
-        protected void BTNBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -169,8 +223,8 @@ namespace SAF.Presupuesto.Form
                 //if (DDLCodProg.Items.Count >1)
                 //{
                 //    DDLCodProg.Enabled = true;
-                //    CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
-                                   
+                //CargarPolizaConsultaGrid(DDLCodProg.SelectedValue);
+
                 //    CargarGridCedulas();
                 //    CargarGridAumentos();
                 //    CargarGridMinistraciones();
@@ -328,6 +382,6 @@ namespace SAF.Presupuesto.Form
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
 
-        
+       
     }
 }

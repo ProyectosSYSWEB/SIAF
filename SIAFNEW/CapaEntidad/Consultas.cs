@@ -16,11 +16,24 @@ namespace CapaEntidad
         private string _Capitulo;
         private string _Subcapitulo;
         private string _Mes;
-        private string _Autorizado;
-        private string _Aumento;
-        private string _Disminucion;
-        private string _Ejercido;
-        private string _Modificado;
+        //private string _Autorizado;
+        //private string _Aumento;
+        //private string _Disminucion;
+        //private string _Ejercido;
+        //private string _Modificado;
+        //private string _Comprometido;
+        //private string _Ministrado;
+        //private string _Devengado;
+        //private string _Pagado;
+        private double _Autorizado;
+        private double _Aumento;
+        private double _Disminucion;
+        private double _Ejercido;
+        private double _Modificado;
+        private double _Comprometido;
+        private double _Ministrado;
+        private double _Devengado;
+        private double _Pagado;
         private string _Supertipo;
         private string _Id;
         private string _Folio;
@@ -93,32 +106,104 @@ namespace CapaEntidad
         {
             get { return _Mes; }
             set { _Mes = value; }
-        }      
-        public string Autorizado
+        }
+        public double Autorizado
         {
             get { return _Autorizado; }
             set { _Autorizado = value; }
         }
-        public string Aumento
+        public double Aumento
         {
             get { return _Aumento; }
             set { _Aumento = value; }
         }
-        public string Disminucion
+        public double Disminucion
         {
             get { return _Disminucion; }
             set { _Disminucion = value; }
         }
-        public string Ejercido
+        public double Ejercido
         {
             get { return _Ejercido; }
             set { _Ejercido = value; }
         }
-        public string Modificado
+        public double Modificado
         {
             get { return _Modificado; }
             set { _Modificado = value; }
         }
+        public double Ministrado
+        {
+            get { return _Ministrado; }
+            set { _Ministrado = value; }
+        }
+
+        public double Comprometido
+        {
+            get { return _Comprometido; }
+            set { _Comprometido = value; }
+        }
+
+        public double Devengado
+        {
+            get { return _Devengado; }
+            set { _Devengado = value; }
+        }
+
+        public double Pagado
+        {
+            get { return _Pagado; }
+            set { _Pagado = value; }
+        }
+
+        //public string Autorizado
+        //{
+        //    get { return _Autorizado; }
+        //    set { _Autorizado = value; }
+        //}
+        //public string Aumento
+        //{
+        //    get { return _Aumento; }
+        //    set { _Aumento = value; }
+        //}
+        //public string Disminucion
+        //{
+        //    get { return _Disminucion; }
+        //    set { _Disminucion = value; }
+        //}
+        //public string Ejercido
+        //{
+        //    get { return _Ejercido; }
+        //    set { _Ejercido = value; }
+        //}
+        //public string Modificado
+        //{
+        //    get { return _Modificado; }
+        //    set { _Modificado = value; }
+        //}
+        //public string Ministrado
+        //{
+        //    get { return _Ministrado; }
+        //    set { _Ministrado = value; }
+        //}
+
+        //public string Comprometido
+        //{
+        //    get { return _Comprometido; }
+        //    set { _Comprometido = value; }
+        //}
+
+        //public string Devengado
+        //{
+        //    get { return _Devengado; }
+        //    set { _Devengado = value; }
+        //}
+
+        //public string Pagado
+        //{
+        //    get { return _Pagado; }
+        //    set { _Pagado = value; }
+        //}
 
         private string _Ejercicio;
 
@@ -128,37 +213,9 @@ namespace CapaEntidad
             set { _Ejercicio = value; }
         }
 
-        private string _Ministrado;
+       
 
-        public string Ministrado
-        {
-            get { return _Ministrado; }
-            set { _Ministrado = value; }
-        }
-
-        private string _Comprometido;
-
-        public string Comprometido
-        {
-            get { return _Comprometido; }
-            set { _Comprometido = value; }
-        }
-
-        private string _Devengado;
-
-        public string Devengado
-        {
-            get { return _Devengado; }
-            set { _Devengado = value; }
-        }
-
-        private string _Pagado;
-
-        public string Pagado
-        {
-            get { return _Pagado; }
-            set { _Pagado = value; }
-        }        
+        
         public string Supertipo
         {
             get { return _Supertipo; }

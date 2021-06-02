@@ -9,12 +9,12 @@ namespace CapaNegocio
 {
     public class CN_Consultas
     {
-        public void PolizaConsultaGrid(ref Consultas objConsultas, ref List<Consultas> List)
+        public void PolizaConsultaGrid( Consultas objConsultas, ref List<Consultas> List)
         {
             try
             {
                 CD_Consultas CD_Consultas = new CD_Consultas();
-                CD_Consultas.ConsultaCodProgGrid(ref objConsultas, ref List);
+                CD_Consultas.ConsultaCodProgGrid( objConsultas, ref List);
 
             }
             catch (Exception ex)

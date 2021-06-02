@@ -106,7 +106,7 @@
                                 <td colspan="2">
                                     <asp:UpdatePanel ID="updPnlBuscar" runat="server">
                                         <ContentTemplate>
-                                    <asp:Button runat="server" ID="BTNBuscar" Text="Buscar" CssClass="btn" OnClick="BTNBuscar_Click" />
+                                    <asp:Button runat="server" ID="btnBuscar" Text="Buscar" CssClass="btn" OnClick="btnBuscar_Click" />
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                 </td>
@@ -119,7 +119,7 @@
                                  <td colspan="2">
                                     <asp:UpdatePanel ID="updPnlCodProg" runat="server">
                                         <ContentTemplate>
-                                            <asp:DropDownList ID="DDLCodProg" runat="server" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="GRDCargarDatosCodProg">
+                                            <asp:DropDownList ID="DDLCodProg" runat="server" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_SelectedIndexChanged" >
                                             </asp:DropDownList>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
@@ -136,7 +136,7 @@
                                     <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                         <ContentTemplate> 
                                             <h6>Movimientos</h6>
-                                            <asp:GridView ID="GRDCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
+                                            <asp:GridView ID="grdCodProg" runat="server" AutoGenerateColumns="False" CssClass="mGrid" Width="100%" EmptyDataText="No se encontró ningún registro.">
                                                 <Columns>
                                                     <asp:BoundField DataField="MES" HeaderText="MES" ItemStyle-HorizontalAlign="Right"/>
                                                     <asp:BoundField DataField="AUTORIZADO" HeaderText="Autorizado" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Right"/>

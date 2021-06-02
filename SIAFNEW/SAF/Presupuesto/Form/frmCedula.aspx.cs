@@ -497,16 +497,26 @@ namespace SAF.Presupuesto
             }
         }
 
-        private void ConsultarLiteralFuncion(ref string Parametro)
+        private void ConsultarLiteralFuncion()
         {
             try
             {
+                string Literal = string.Empty;
                 Pres_Documento objDocumento = new Pres_Documento();
                 string Verificador = string.Empty;
                 objDocumento.Id_Funcion = ddlFuente_F.SelectedValue;
                 objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
                 CNDocumentos.ConsultarLiteralFuncion(ref objDocumento, ref Verificador);
-                Parametro = objDocumento.Literal;
+                Literal = objDocumento.Literal;
+                CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "p_literal", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Literal);
+                //txtPoliza.Text = txtfechaDocumento.Text.Substring(3, 2) + Literal;
+                if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
+                    Literal = "C";
+                else if (ddlevento.SelectedValue == "97")
+                    Literal = "P";
+
+
+                lblLiteralPol.Text = Literal;
 
             }
             catch(Exception ex)
@@ -967,13 +977,7 @@ namespace SAF.Presupuesto
 
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", "p_clave_evento", "p_grupo", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ddlevento.SelectedValue, ddlGrupoCodigoProgramatico.SelectedValue, ref ListPartida);
             disponible();
-
-            string Literal=string.Empty;
-            ConsultarLiteralFuncion(ref Literal);
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "p_literal", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Literal);
-            //txtPoliza.Text = txtfechaDocumento.Text.Substring(3, 2) + Literal;
-            lblLiteralPol.Text =  Literal;
-
+                ConsultarLiteralFuncion();
         }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
         {
@@ -1017,7 +1021,7 @@ namespace SAF.Presupuesto
                     ddlMesCedulaOrigen.Visible = true;
                     lblCedulaOrigen.Visible = true;
                     ddlCedulaOrigen.Visible = true;
-
+                    lblLiteralPol.Text = "C";
 
                     //DDLCuenta_Banco.Enabled = false;
                     //txtPoliza.Enabled = false;
@@ -1027,19 +1031,24 @@ namespace SAF.Presupuesto
                 }
                 else
                 {
-                    btnAgregarDet.Visible = true;
-                    lblMesCedulaOrigen.Visible = false;
-                    ddlMesCedulaOrigen.Visible = false;
-                    lblCedulaOrigen.Visible = false;
-                    ddlCedulaOrigen.Visible = false;
+                    if (ddlevento.SelectedValue == "97")
+                        lblLiteralPol.Text = "P";
+                   
+                        btnAgregarDet.Visible = true;
+                        lblMesCedulaOrigen.Visible = false;
+                        ddlMesCedulaOrigen.Visible = false;
+                        lblCedulaOrigen.Visible = false;
+                        ddlCedulaOrigen.Visible = false;
 
-                    DDLCuenta_Banco.Enabled = true;
-                    txtPoliza.Enabled = true;
-                    txtNumero_Cheque.Enabled = true;
-
+                        DDLCuenta_Banco.Enabled = true;
+                        txtPoliza.Enabled = true;
+                        txtNumero_Cheque.Enabled = true;
+                    
                 }
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Capitulo", ref ddlCapitulo, "p_nivel", "p_clave_evento", "1", ddlevento.SelectedValue);
                 DDLCapitulo_SelectedIndexChanged(null, null);
+                if (ddlevento.SelectedValue != "10" && ddlevento.SelectedValue != "98" && ddlevento.SelectedValue != "97")
+                    ConsultarLiteralFuncion();
             }
             catch (Exception ex)
             {
@@ -1100,9 +1109,10 @@ namespace SAF.Presupuesto
                         CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "p_literal", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Encabezado.PolizaComprometida.Substring(2, 1));
                         DDLCuenta_Banco.SelectedValue = Encabezado.Cuenta;
                         lblMesPol.Text = Encabezado.PolizaComprometida.Substring(0, 2);
-                        lblLiteralPol.Text = Encabezado.PolizaComprometida.Substring(2, 1);
-                        //txtPoliza.Text = Encabezado.PolizaComprometida.Substring(3, 5);
-                        txtPoliza.Text = string.Empty;
+                        lblLiteralPol.Text = "C";
+                        txtPoliza.Text = Encabezado.PolizaComprometida.Substring(3, 4)+"D";
+                        txtPoliza.Enabled = false;
+                        //txtPoliza.Text = string.Empty;
                         txtNumero_Cheque.Text = Encabezado.NumeroCheque;
 
                         Detalle.Id_Documento = Convert.ToInt32(ddlCedulaOrigen.SelectedValue);
@@ -1278,5 +1288,7 @@ namespace SAF.Presupuesto
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true); //lblMsj.Text = ex.Message;
             }
         }
+
+       
     }
 }
