@@ -213,7 +213,7 @@
                                                                             <asp:Label ID="lblEventos" runat="server" Text="Evento"></asp:Label>
                                                                         </td>
                                                                         <td class="col1" colspan="5">
-                                                                            <asp:DropDownList ID="ddlEventos" runat="server"  Width="100%">
+                                                                            <asp:DropDownList ID="ddlEventos" runat="server"  Width="100%" >
                                                                             </asp:DropDownList>
                                                                         </td>
 
@@ -663,7 +663,7 @@
                                                                                                                         <td colspan="4" valign="top">
                                                                                                                             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                                                                                                                 <ContentTemplate>
-                                                                                                                                    <asp:DropDownList ID="DDLCuenta_Banco" runat="server" Width="100%" Visible="False">
+                                                                                                                                    <asp:DropDownList ID="DDLCuenta_Banco" runat="server" Width="100%" Visible="False" >
                                                                                                                                     </asp:DropDownList>
                                                                                                                                     <br />
                                                                                                                                 </ContentTemplate>
@@ -677,8 +677,8 @@
                                                                                                                             <asp:Label ID="lblPoliza" runat="server" Text="No. de póliza"></asp:Label>
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <asp:Label ID="lblMesPol" runat="server" Width="25px"></asp:Label>
-                                                                                                                            <asp:Label ID="lblLiteralPol" runat="server" Width="5px"></asp:Label>
+                                                                                                                            <asp:Label ID="lblMesPol" runat="server" Width="15px"></asp:Label>
+                                                                                                                            <asp:Label ID="lblLiteralPol" runat="server" Width="10px"></asp:Label>
                                                                                                                             <asp:TextBox ID="txtPoliza" runat="server" Width="65px" onkeyup="MascaraNumPoliza(this);"></asp:TextBox>
                                                                                                                             <asp:RequiredFieldValidator ID="RFVPoliza" runat="server" ControlToValidate="txtPoliza" ErrorMessage="*" ValidationGroup="Guardar"></asp:RequiredFieldValidator>
                                                                                                                             <asp:RegularExpressionValidator ID="REVPoliza" runat="server" ControlToValidate="txtPoliza" SetFocusOnError="True" ValidationExpression="^[0-9][0-9][0-9][0-9][A-Z a-z]$" ValidationGroup="Guardar">*Ej.:0001D</asp:RegularExpressionValidator>

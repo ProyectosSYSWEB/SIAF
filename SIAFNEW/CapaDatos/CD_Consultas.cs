@@ -9,7 +9,7 @@ namespace CapaDatos
 {
     public class CD_Consultas
     {
-        public void ConsultaCodProgGrid(ref Consultas objConsultas, ref List<Consultas> List)
+        public void ConsultaCodProgGrid( Consultas objConsultas, ref List<Consultas> List)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand cmm = null;
@@ -23,18 +23,26 @@ namespace CapaDatos
 
                 while (dr.Read())
                 {
-                    objConsultas = new Consultas();
-                    objConsultas.Mes = Convert.ToString(dr.GetValue(0));
-                    objConsultas.Autorizado = Convert.ToString(dr.GetValue(1));
-                    objConsultas.Modificado = Convert.ToString(dr.GetValue(2));
-                    objConsultas.Ministrado = Convert.ToString(dr.GetValue(3));
-                    objConsultas.Comprometido = Convert.ToString(dr.GetValue(4));
-                    objConsultas.Devengado = Convert.ToString(dr.GetValue(5));
-                    objConsultas.Ejercido = Convert.ToString(dr.GetValue(6));
-                    objConsultas.Pagado = Convert.ToString(dr.GetValue(7));
-                    objConsultas.Disminucion = Convert.ToString(dr.GetValue(8));
+                    Consultas objConsulta = new Consultas();
+                    objConsulta.Mes = Convert.ToString(dr.GetValue(0));
+                    //objConsultas.Autorizado = Convert.ToString(dr.GetValue(1));
+                    //objConsultas.Modificado = Convert.ToString(dr.GetValue(2));
+                    //objConsultas.Ministrado = Convert.ToString(dr.GetValue(3));
+                    //objConsultas.Comprometido = Convert.ToString(dr.GetValue(4));
+                    //objConsultas.Devengado = Convert.ToString(dr.GetValue(5));
+                    //objConsultas.Ejercido = Convert.ToString(dr.GetValue(6));
+                    //objConsultas.Pagado = Convert.ToString(dr.GetValue(7));
+                    //objConsultas.Disminucion = Convert.ToString(dr.GetValue(8));
+                    objConsulta.Autorizado = Convert.ToDouble(dr.GetValue(1));
+                    objConsulta.Modificado = Convert.ToDouble(dr.GetValue(2));
+                    objConsulta.Ministrado = Convert.ToDouble(dr.GetValue(3));
+                    objConsulta.Comprometido = Convert.ToDouble(dr.GetValue(4));
+                    objConsulta.Devengado = Convert.ToDouble(dr.GetValue(5));
+                    objConsulta.Ejercido = Convert.ToDouble(dr.GetValue(6));
+                    objConsulta.Pagado = Convert.ToDouble(dr.GetValue(7));
+                    objConsulta.Disminucion = Convert.ToDouble(dr.GetValue(8));
 
-                    List.Add(objConsultas);
+                    List.Add(objConsulta);
                 }
                 dr.Close();
             }

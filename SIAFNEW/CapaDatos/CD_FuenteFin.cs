@@ -50,7 +50,7 @@ namespace CapaDatos
                 object[] Valores = { objFuentes.Fuente, objFuentes.TipoFinan, objFuentes.TipoFondo, objFuentes.Descrip, objFuentes.Ejercicio};
                 String[] ParametrosOut = { "p_Bandera" };
 
-                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_BASICOS", ref Verificador, Parametros, Valores, ParametrosOut);
+                Cmd = CDDatos.GenerarOracleCommand("INS_SAF_FUENTES", ref Verificador, Parametros, Valores, ParametrosOut);
 
             }
             catch (Exception ex)
