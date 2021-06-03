@@ -548,7 +548,7 @@ namespace CapaDatos
             }
         }
 
-        public void GenerarPolizaPreviaHonorarios(Pres_Documento objDocumento, ref string Verificador)
+        public void GenerarPolizaPreviaHonorarios(Pres_Documento objDocumento, ref string Verificador, ref string IdPoliza)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
@@ -556,8 +556,8 @@ namespace CapaDatos
             {
                 string[] ParametrosIn = { "P_ID"};
                 object[] Valores = { objDocumento.Id };
-                string[] ParametrosOut = {"P_BANDERA" };
-                Cmd = CDDatos.GenerarOracleCommand("gnr_poliza_auto_hono", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                string[] ParametrosOut = {"P_EXTRA", "P_BANDERA" };
+                Cmd = CDDatos.GenerarOracleCommand("gnr_poliza_auto_hono", ref Verificador, ref IdPoliza, ParametrosIn, Valores, ParametrosOut);
             }
             catch (Exception ex)
             {
@@ -588,7 +588,7 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
-        public void GenerarPolizaFinalHonorarios(Pres_Documento objDocumento, ref string Verificador)
+        public void GenerarPolizaFinalHonorarios(Pres_Documento objDocumento, ref string Verificador, ref string IdPoliza)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
@@ -596,8 +596,8 @@ namespace CapaDatos
             {
                 string[] ParametrosIn = { "P_ID_DOC" };
                 object[] Valores = { objDocumento.Id }; // pasar id documento
-                string[] ParametrosOut = { "P_BANDERA" };
-                Cmd = CDDatos.GenerarOracleCommand("gnr_poliza_auto_hono_apli", ref Verificador, ParametrosIn, Valores, ParametrosOut);
+                string[] ParametrosOut = { "P_EXTRA", "P_BANDERA" };
+                Cmd = CDDatos.GenerarOracleCommand("gnr_poliza_auto_hono_apli", ref Verificador, ref IdPoliza, ParametrosIn, Valores, ParametrosOut);
             }
             catch (Exception ex)
             {
@@ -617,7 +617,7 @@ namespace CapaDatos
             {
                 string[] ParametrosIn = { "P_ID_DOC" };
                 object[] Valores = { objDocumento.Id }; // pasar id documento
-                string[] ParametrosOut = { "P_BANDERA" };
+                string[] ParametrosOut = { "P_EXTRA", "P_BANDERA" };
                 Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_CEDULA_APLI", ref Verificador, ref IdPoliza, ParametrosIn, Valores, ParametrosOut);
             }
             catch (Exception ex)

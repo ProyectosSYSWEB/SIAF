@@ -483,7 +483,7 @@
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel107" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkGenerarPoliza" runat="server" OnClick="LinkGenerarPolizaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Generar Poliza Previa </asp:LinkButton>
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaPrev" runat="server" OnClick="LinkGenerarPolizaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Generar Poliza Previa </asp:LinkButton>
                                                                                                                  <%--<asp:Label ID="lblGenerarPoliza" runat="server" ForeColor="#6B696B" Text="Generar Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>       --%>                                                                                                         
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
@@ -501,7 +501,7 @@
                                                                                                     </ItemTemplate>
                                                                                                 </asp:TemplateField>
 
-                                                                                                <asp:TemplateField>
+                                                                                                <%--<asp:TemplateField>
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel108" runat="server">
                                                                                                             <ContentTemplate>
@@ -509,7 +509,7 @@
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
-                                                                                                </asp:TemplateField>
+                                                                                                </asp:TemplateField>--%>
 
                                                                                             </Columns>
                                                                                             <FooterStyle CssClass="enc" />
