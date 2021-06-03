@@ -38,8 +38,8 @@ namespace SAF.Presupuesto.Form
             DDLTipofuente.SelectedValue = "1";            
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofondo, "p_valor", "p_clave", "2", "0");
             DDLTipofondo.SelectedValue = "1";
-            CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDDLTipoSubFondo, "p_valor", "p_clave", "3", "0");
-            DDLTipofondo.SelectedValue = "1";
+            //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDDLTipoSubFondo, "p_valor", "p_clave", "3", "0");
+            //DDLTipofondo.SelectedValue = "1";
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLFuenteFin, "p_valor", "p_clave", "3", "4");
 
         }

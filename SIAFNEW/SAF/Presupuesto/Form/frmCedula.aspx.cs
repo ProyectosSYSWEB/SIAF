@@ -1195,6 +1195,53 @@ namespace SAF.Presupuesto
             //}
         }
 
+        protected void LinkGenerarPolizaPrevia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Pres_Documento objDocumento = new Pres_Documento();
+                LinkButton cbi = (LinkButton)(sender);
+                GridViewRow row = (GridViewRow)cbi.NamingContainer;
+                grdDocumentos.SelectedIndex = row.RowIndex;
+                string Verificador = string.Empty;
+                string IdPoliza = string.Empty;
+                objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[1].Text);
+                string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[5].Text);
+                if (claveEvento == "01")
+                    CNDocumentos.GenerarPolizaAutoPreviaCedulas(objDocumento, ref Verificador, ref IdPoliza);
+                else if (claveEvento == "06")
+                    CNDocumentos.GenerarPolizaPreviaHonorarios(objDocumento, ref Verificador, ref IdPoliza);
+                else
+                    Verificador = "1";
+                if (Verificador != "1")
+                {
+                    bool generarPolizaPrevia = true;
+                    Session["DocDet"] = generarPolizaPrevia;
+                    string urlReporte = string.Empty;
+                    urlReporte = "../../Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005_P&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + IdPoliza;
+                    string _open = "window.open('" + urlReporte + "', '_newtab');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
+                }
+                else if (Verificador == "1")
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No se puede generar una poliza de la cedula tipo: ' '" + Clave_Evento + "');", true); //lblMsj.Text = ex.Message;
+                }
+                else
+                {
+                    CNComun.VerificaTextoMensajeError(ref Verificador);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "');", true); //lblMsj.Text = ex.Message;
+                }
+            }
+            catch (Exception ex)
+            {
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true); //lblMsj.Text = ex.Message;
+            }
+        }
+
         protected void LinkGenerarPoliza_Click(object sender, EventArgs e)
         {
             try
@@ -1205,13 +1252,14 @@ namespace SAF.Presupuesto
                 GridViewRow row = (GridViewRow)cbi.NamingContainer;
                 grdDocumentos.SelectedIndex = row.RowIndex;
                 string Verificador = string.Empty;
+                string IdPoliza = string.Empty;
                 objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                 string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[1].Text);
                 string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[5].Text);
                 if (claveEvento == "01")
-                    CNDocumentos.GenerarPolizaFinalAutoPreviaCedulas(objDocumento, ref Verificador);
+                    CNDocumentos.GenerarPolizaFinalAutoCedulas(objDocumento, ref Verificador, ref IdPoliza);
                 else if (claveEvento == "06")
-                    CNDocumentos.GenerarPolizaFinalHonorarios(objDocumento, ref Verificador);
+                    CNDocumentos.GenerarPolizaFinalHonorarios(objDocumento, ref Verificador, ref IdPoliza);
                 else
                     Verificador = "1";
                 if (Verificador != "1")
@@ -1219,7 +1267,7 @@ namespace SAF.Presupuesto
                     bool generarPolizaPrevia = true;
                     Session["DocDet"] = generarPolizaPrevia;
                     string urlReporte = string.Empty;
-                    urlReporte = "../../Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + Verificador;
+                    urlReporte = "../../Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005  &Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + IdPoliza;
                     string _open = "window.open('" + urlReporte + "', '_newtab');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
                 }
