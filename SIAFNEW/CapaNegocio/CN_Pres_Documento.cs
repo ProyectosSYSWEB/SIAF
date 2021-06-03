@@ -132,12 +132,12 @@ namespace CapaNegocio
             }
         }
 
-        public void GenerarPolizaPreviaHonorarios(Pres_Documento objdocumento, ref string Verificador)
+        public void GenerarPolizaPreviaHonorarios(Pres_Documento objdocumento, ref string Verificador, ref string IdPoliza)
         {
             try
             {
                 CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
-                CDDocumento.GenerarPolizaPreviaHonorarios(objdocumento, ref Verificador);
+                CDDocumento.GenerarPolizaPreviaHonorarios(objdocumento, ref Verificador, ref IdPoliza);
             }
             catch (Exception ex)
             {
@@ -158,12 +158,12 @@ namespace CapaNegocio
             }
         }
 
-        public void GenerarPolizaFinalHonorarios(Pres_Documento objdocumento, ref string Verificador)
+        public void GenerarPolizaFinalHonorarios(Pres_Documento objdocumento, ref string Verificador, ref string IdPoliza)
         {
             try
             {
                 CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
-                CDDocumento.GenerarPolizaFinalHonorarios(objdocumento, ref Verificador);
+                CDDocumento.GenerarPolizaFinalHonorarios(objdocumento, ref Verificador, ref IdPoliza);
             }
             catch (Exception ex)
             {

@@ -1212,7 +1212,7 @@ namespace SAF.Presupuesto
                 if (claveEvento == "01")
                     CNDocumentos.GenerarPolizaAutoPreviaCedulas(objDocumento, ref Verificador, ref IdPoliza);
                 else if (claveEvento == "06")
-                    CNDocumentos.GenerarPolizaPreviaHonorarios(objDocumento, ref Verificador);
+                    CNDocumentos.GenerarPolizaPreviaHonorarios(objDocumento, ref Verificador, ref IdPoliza);
                 else
                     Verificador = "1";
                 if (Verificador != "1")
@@ -1259,7 +1259,7 @@ namespace SAF.Presupuesto
                 if (claveEvento == "01")
                     CNDocumentos.GenerarPolizaFinalAutoCedulas(objDocumento, ref Verificador, ref IdPoliza);
                 else if (claveEvento == "06")
-                    CNDocumentos.GenerarPolizaFinalHonorarios(objDocumento, ref Verificador);
+                    CNDocumentos.GenerarPolizaFinalHonorarios(objDocumento, ref Verificador, ref IdPoliza);
                 else
                     Verificador = "1";
                 if (Verificador != "1")
