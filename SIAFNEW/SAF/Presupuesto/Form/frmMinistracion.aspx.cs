@@ -223,6 +223,7 @@ namespace SAF.Presupuesto
                     //if (Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Editar" || Convert.ToString(grdDocumentos.SelectedRow.Cells[8].Text) == "Ver")
                     //    ddlFuente_F.SelectedValue = ListDocDet.ElementAt(0).Desc_Codigo_Prog.Substring(25, 5);
                     lblFF.Text = grdDetalles.Rows[0].Cells[4].Text.Substring(25, 5);
+                    ddlMesInicialDet.SelectedValue= grdDetalles.Rows[0].Cells[6].Text.PadLeft(2,'0');
                 }
                 else
                 {
@@ -854,7 +855,7 @@ namespace SAF.Presupuesto
                         if (content.Count == 0)
                         {
                             objDocumentoDet.Id_Codigo_Prog = Convert.ToInt32(ddlCodigoProg.SelectedValue);
-                            objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text;
+                            objDocumentoDet.Desc_Codigo_Prog = ddlCodigoProg.SelectedItem.Text.Substring(0,34);
                             objDocumentoDet.Desc_Partida = ListPartida[ddlCodigoProg.SelectedIndex].EtiquetaCuatro;
                             objDocumentoDet.Ur_clave = ddlDepen.SelectedValue;
                             objDocumentoDet.Tipo = ("M" != "C") ? rbtOrigen_Destino.SelectedValue : ddlTipoEnc.SelectedValue.Substring(1);

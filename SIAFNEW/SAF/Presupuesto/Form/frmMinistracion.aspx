@@ -662,7 +662,11 @@
 
                                                                                                                 </td>
                                                                                                                 <td class="auto-style71" valign="top">
+                                                                                                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                                                                                                                             <ContentTemplate>
                                                                                                                     <asp:Button ID="btnAgregarDet" runat="server" CssClass="btn" OnClick="btnAgregarDet_Click" Text="AGREGAR" ValidationGroup="GpoCodProg" />
+                                                                                                                                 </ContentTemplate>
+                                                                                                                             </asp:UpdatePanel>
 
 
                                                                                                                 </td>
@@ -786,7 +790,6 @@
                                                                                                                                 <PagerStyle CssClass="enc" HorizontalAlign="Center" />
                                                                                                                                 <SelectedRowStyle CssClass="sel" />
                                                                                                                             </asp:GridView>
-                                                                                                                        
 </ContentTemplate>
 </asp:UpdatePanel>
 
