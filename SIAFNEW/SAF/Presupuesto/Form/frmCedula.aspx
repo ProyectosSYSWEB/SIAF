@@ -431,7 +431,7 @@
                                                                                         <asp:GridView ID="grdDocumentos" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." OnPageIndexChanging="grdDocumentos_PageIndexChanging" OnRowDeleting="grdDocumentos_RowDeleting" OnSelectedIndexChanged="grdDocumentos_SelectedIndexChanged" PageSize="20" Width="100%">
                                                                                             <Columns>
                                                                                                 <asp:BoundField DataField="ID" HeaderText="ID" />
-                                                                                                <asp:BoundField DataField="Clave_Evento" HeaderText="Clave Evento" />
+                                                                                                <%--<asp:BoundField DataField="Clave_Evento" HeaderText="Clave Evento" />--%>
                                                                                                 <asp:BoundField DataField="Dependencia" HeaderText="DEPENDENCIA" />
                                                                                                 <asp:BoundField DataField="TIPO" HeaderText="TIPO" />
                                                                                                 <asp:BoundField DataField="No_Documento" HeaderText="CÉDULA" />
