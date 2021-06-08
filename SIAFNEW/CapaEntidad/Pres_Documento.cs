@@ -32,6 +32,7 @@ namespace CapaEntidad
         private string _CedulaDevengado;
         private string _CedulaEjercido;
         private string _CedulaPagado;
+        private string _CedulaCancelacion;
         private string _PolizaComprometido;
         private string _PolizaEjercido;
         private string _PolizaPagado;
@@ -186,6 +187,11 @@ namespace CapaEntidad
         {
             get { return _CedulaComprometido; }
             set { _CedulaComprometido = value; }
+        }
+        public string CedulaCancelacion
+        {
+            get { return _CedulaCancelacion; }
+            set { _CedulaCancelacion = value; }
         }
         public string NumeroCheque
         {
