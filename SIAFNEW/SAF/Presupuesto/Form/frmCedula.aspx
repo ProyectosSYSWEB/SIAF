@@ -431,7 +431,7 @@
                                                                                         <asp:GridView ID="grdDocumentos" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." OnPageIndexChanging="grdDocumentos_PageIndexChanging" OnRowDeleting="grdDocumentos_RowDeleting" OnSelectedIndexChanged="grdDocumentos_SelectedIndexChanged" PageSize="20" Width="100%">
                                                                                             <Columns>
                                                                                                 <asp:BoundField DataField="ID" HeaderText="ID" />
-                                                                                                <asp:BoundField DataField="Clave_Evento" HeaderText="Clave Evento" />
+                                                                                                
                                                                                                 <asp:BoundField DataField="Dependencia" HeaderText="DEPENDENCIA" />
                                                                                                 <asp:BoundField DataField="TIPO" HeaderText="TIPO" />
                                                                                                 <asp:BoundField DataField="No_Documento" HeaderText="CÉDULA" />
@@ -441,6 +441,7 @@
                                                                                                 <asp:BoundField DataField="Concepto" HeaderText="CONCEPTO" />
                                                                                                 <asp:BoundField DataField="Origen" DataFormatString="{0:c}" HeaderText="IMPORTE" />
                                                                                                 <asp:BoundField DataField="Destino" DataFormatString="{0:c}" HeaderText="DESTINO" />
+                                                                                                <asp:BoundField DataField="Clave_Evento" HeaderText="Clave Evento" Visible="false" />
                                                                                                 <asp:TemplateField>
                                                                                                     <ItemTemplate>
                                                                                                         <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" OnClick="linkBttnEditar_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Editar</asp:LinkButton>
@@ -483,7 +484,7 @@
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel107" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaPrev" runat="server" OnClick="LinkGenerarPolizaPrevia_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Generar Poliza Previa </asp:LinkButton>
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaPrev" runat="server" OnClick="LinkGenerarPolizaPrevia_Click" Visible='<%# Bind("Generar_Poliza_Previa") %>'>Generar Poliza Previa </asp:LinkButton>
                                                                                                                  <%--<asp:Label ID="lblGenerarPoliza" runat="server" ForeColor="#6B696B" Text="Generar Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>       --%>                                                                                                         
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
@@ -494,22 +495,22 @@
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel109" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkGenerarPoliza" runat="server" OnClick="LinkGenerarPoliza_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Generar Poliza </asp:LinkButton>
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPoliza" runat="server" OnClick="LinkGenerarPoliza_Click" Visible='<%# Bind("Generar_Poliza") %>'>Generar Poliza </asp:LinkButton>
                                                                                                                  <%--<asp:Label ID="lblGenerarPoliza" runat="server" ForeColor="#6B696B" Text="Generar Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>       --%>                                                                                                         
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
                                                                                                 </asp:TemplateField>
 
-                                                                                                <%--<asp:TemplateField>
+                                                                                                <asp:TemplateField>
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel108" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaFinal" runat="server"  OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Opcion_Generar_Doc") %>'>Ver Poliza</asp:LinkButton>
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaFinal" runat="server"  OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Generar_Doc_Poliza") %>'>Ver Poliza</asp:LinkButton>
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
-                                                                                                </asp:TemplateField>--%>
+                                                                                                </asp:TemplateField>
 
                                                                                             </Columns>
                                                                                             <FooterStyle CssClass="enc" />
