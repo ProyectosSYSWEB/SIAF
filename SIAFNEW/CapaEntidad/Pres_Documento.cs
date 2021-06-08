@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CapaEntidad
 {
-   public class Pres_Documento
+    public class Pres_Documento
     {
         private int _Id;
         private string _Dependencia;
@@ -57,6 +57,7 @@ namespace CapaEntidad
         private string _Id_Funcion;
         private string _Fuente;
         private string _Clave_Evento;
+        private string _Id_Poliza;
 
         private bool _Opcion_Eliminar;
         private bool _Opcion_Eliminar2;
@@ -67,7 +68,9 @@ namespace CapaEntidad
         private bool _Opcion_Copiar;
         private bool _Opcion_Copiar2;
         private bool _Opcion_Generar_Doc;
-
+        private bool _Generar_Doc_Poliza;
+        private bool _Generar_Poliza_Previa;
+        private bool _Generar_Poliza;
         public string Seguimiento
         {
             get { return _Seguimiento; }
@@ -365,5 +368,29 @@ namespace CapaEntidad
             get { return _Clave_Evento; }
             set { _Clave_Evento = value; }
         }
+
+        public string Id_Poliza{
+            get { return _Id_Poliza; }
+            set { _Id_Poliza = value; }
+        }
+
+        public bool Generar_Doc_Poliza
+        {
+            get { return _Generar_Doc_Poliza;}
+            set { _Generar_Doc_Poliza  = value;  }
+        }
+
+        public bool Generar_Poliza_Previa
+        {
+            get { return _Generar_Poliza_Previa; }
+            set { _Generar_Poliza_Previa = value; }
+        }
+
+        public bool Generar_Poliza
+        {
+            get { return _Generar_Poliza; }
+            set { _Generar_Poliza = value; }
+        }
+
     }
 }

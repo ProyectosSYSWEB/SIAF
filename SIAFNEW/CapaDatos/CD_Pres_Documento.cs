@@ -47,6 +47,15 @@ namespace CapaDatos
                     objDocumento.Opcion_Eliminar2 = Convert.ToString(dr.GetValue(15)) == "S" ? true : false;
 
                     objDocumento.ClaveEvento = Convert.ToString(dr.GetValue(16));
+                    objDocumento.Id_Poliza = Convert.ToString(dr.GetValue(17));
+                    objDocumento.Generar_Doc_Poliza = Convert.ToString(dr.GetValue(17)) != "" ? true : false;
+                    objDocumento.Generar_Poliza_Previa = false;
+                    objDocumento.Generar_Poliza = false;
+                    if (objDocumento.Clave_Evento == "01" || objDocumento.Clave_Evento == "06")
+                    {                        
+                        objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
+                        objDocumento.Generar_Poliza = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
+                    }
                     objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(4));
 
 
