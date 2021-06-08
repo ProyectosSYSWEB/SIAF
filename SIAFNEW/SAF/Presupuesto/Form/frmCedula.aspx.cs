@@ -334,6 +334,10 @@ namespace SAF.Presupuesto
                 objDocumento.ClaveEvento = ddlevento.SelectedValue;
                 objDocumento.KeyDocumento = "";
                 objDocumento.KeyPoliza = "";
+                if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
+                    objDocumento.CedulaCancelacion = ddlCedulaOrigen.SelectedItem.Text.Substring(1,6); 
+                else
+                            objDocumento.CedulaCancelacion ="000000";
 
                 if (SesionUsu.Editar == 0)
                 {
@@ -509,12 +513,6 @@ namespace SAF.Presupuesto
                 CNDocumentos.ConsultarLiteralFuncion(ref objDocumento, ref Verificador);
                 Literal = objDocumento.Literal;
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "p_literal", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Literal);
-                //txtPoliza.Text = txtfechaDocumento.Text.Substring(3, 2) + Literal;
-                if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
-                    Literal = "C";
-                else if (ddlevento.SelectedValue == "97")
-                    Literal = "P";
-
 
                 lblLiteralPol.Text = Literal;
 
@@ -619,6 +617,13 @@ namespace SAF.Presupuesto
                     lblcuenta.Visible = true;
                     ddlevento.SelectedValue = objDocumento.ClaveEvento;
                     ddlevento_SelectedIndexChanged(null, null);
+                    if (ddlevento.SelectedValue=="10" || ddlevento.SelectedValue == "98")
+                    {
+                        lblMesCedulaOrigen.Visible = false;
+                        ddlMesCedulaOrigen.Visible = false;
+                        lblCedulaOrigen.Visible = false;
+                        ddlCedulaOrigen.Visible = false;
+                    }
                     txtImporteCheque.Text = Convert.ToString(objDocumento.Importe_Cheque);
                     txtImporte_Operacion.Text = Convert.ToString(objDocumento.Importe_Operacion);
                     txtImporteISR.Text = Convert.ToString(objDocumento.ISR);
@@ -834,9 +839,8 @@ namespace SAF.Presupuesto
         {
             string ruta1 = string.Empty;
             
-                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteC&Dependencia=" + ddlDependencia.SelectedValue + "&TipoDoc=" + "C" + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Ejercicio=" + SesionUsu.Usu_Ejercicio+"&Evento=" + ddlEventos.SelectedValue + "&TipoDocumento=" +ddlTipoCedula.SelectedValue;
-                   
-
+                    ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-LoteC&Dependencia=" + ddlDependencia.SelectedValue + "&Status=" + ddlStatus.SelectedValue + "&MesIni=" + ddlMesIni.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + ddlMesFin.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Ejercicio=" + SesionUsu.Usu_Ejercicio+"&Evento=" + ddlEventos.SelectedValue + "&SubTipoDocumento=" +ddlTipoCedula.SelectedValue;
+                  
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
@@ -1021,19 +1025,11 @@ namespace SAF.Presupuesto
                     ddlMesCedulaOrigen.Visible = true;
                     lblCedulaOrigen.Visible = true;
                     ddlCedulaOrigen.Visible = true;
-                    lblLiteralPol.Text = "C";
-
-                    //DDLCuenta_Banco.Enabled = false;
-                    //txtPoliza.Enabled = false;
-                    //txtNumero_Cheque.Enabled = false;
 
                     CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cedulas", ref ddlCedulaOrigen, "p_ejercicio", "p_dependencia", "p_mes", "p_clave_evento", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, ddlMesCedulaOrigen.SelectedValue, ddlevento.SelectedValue);
                 }
                 else
                 {
-                    if (ddlevento.SelectedValue == "97")
-                        lblLiteralPol.Text = "P";
-                   
                         btnAgregarDet.Visible = true;
                         lblMesCedulaOrigen.Visible = false;
                         ddlMesCedulaOrigen.Visible = false;
@@ -1099,6 +1095,7 @@ namespace SAF.Presupuesto
                     Pres_Documento_Detalle Detalle = new Pres_Documento_Detalle();
                     Pres_Documento Encabezado = new Pres_Documento();
                     string Resultado = "0";
+                    string Literal = string.Empty;
                     Encabezado.Id = Convert.ToInt32(ddlCedulaOrigen.SelectedValue);
                     CNDocumentos.ConsultarDocumentoSel(ref Encabezado, ref Resultado);
                     if (Resultado == "0")
@@ -1106,10 +1103,13 @@ namespace SAF.Presupuesto
                         txtImporteCheque.Text = Convert.ToString(Encabezado.Importe_Cheque);
                         txtImporte_Operacion.Text = Convert.ToString(Encabezado.Importe_Operacion);
                         txtImporteISR.Text = Convert.ToString(Encabezado.ISR);
+
                         CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Cheque_Cuenta", ref DDLCuenta_Banco, "p_ejercicio", "p_centro_contable", "p_literal", SesionUsu.Usu_Ejercicio, ddlDependencia.SelectedValue, Encabezado.PolizaComprometida.Substring(2, 1));
                         DDLCuenta_Banco.SelectedValue = Encabezado.Cuenta;
-                        lblMesPol.Text = Encabezado.PolizaComprometida.Substring(0, 2);
-                        lblLiteralPol.Text = "C";
+                        //lblMesPol.Text = Encabezado.PolizaComprometida.Substring(0, 2);
+                        lblMesPol.Text = txtfechaDocumento.Text.Substring(3, 2);
+                        //lblLiteralPol.Text = "C";
+                        lblLiteralPol.Text = Encabezado.PolizaComprometida.Substring(2, 1);
                         txtPoliza.Text = Encabezado.PolizaComprometida.Substring(3, 4)+"D";
                         txtPoliza.Enabled = false;
                         //txtPoliza.Text = string.Empty;
@@ -1117,13 +1117,19 @@ namespace SAF.Presupuesto
 
                         Detalle.Id_Documento = Convert.ToInt32(ddlCedulaOrigen.SelectedValue);
                         CNDocDet.DocumentoDetConsultaGrid(ref Detalle, ref ListDocDet);
-                        if (Resultado != "0")
+                        if (Resultado == "0")
+                        { 
+                            DataTable dt = new DataTable();
+                            Session["DocDet"] = ListDocDet;
+                            CargarGridDetalle(ListDocDet);
+                            ddlFuente_F.SelectedValue = lblFF.Text;
+                            //ConsultarLiteralFuncion();
+                        }
+                        else
                             ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al recuperar el detalle de la cédula.');", true);
                         
 
-                        DataTable dt = new DataTable();
-                        Session["DocDet"] = ListDocDet;
-                        CargarGridDetalle(ListDocDet);
+                        
                     }
                     else
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al recuperar encabezado de la cédula.');", true);

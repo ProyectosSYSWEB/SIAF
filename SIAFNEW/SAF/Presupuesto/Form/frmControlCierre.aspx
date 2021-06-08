@@ -69,7 +69,7 @@
                                                     </asp:DropDownList>
                                                 </td>
                                                 <td>
-                                                    <asp:Button ID="bttnCierreGeneral" runat="server" CssClass="btn2" Font-Size="X-Small" OnClick="bttnCierreGeneral_Click" Text="ABRIR" ValidationGroup="vMesGral" OnClientClick="return confirm('¿Desea cerrar todos los centros contables?');" />
+                                                    <asp:Button ID="bttnCierreGeneral" runat="server" CssClass="btn2" Font-Size="X-Small" OnClick="bttnCierreGeneral_Click" Text="CERRAR" ValidationGroup="vMesGral" OnClientClick="return confirm('¿Desea cerrar todos los centros contables?');" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -120,7 +120,7 @@
                                                     </asp:DropDownList>
                                                 </td>
                                                 <td>
-                                                    <asp:Button ID="bttnCierreGeneralD" runat="server" CssClass="btn2" Font-Size="X-Small" OnClick="bttnCierreGeneralD_Click" Text="ABRIR" ValidationGroup="vMesGralD" OnClientClick="return confirm('¿Desea cerrar todos los centros contables?');" />
+                                                    <asp:Button ID="bttnCierreGeneralD" runat="server" CssClass="btn2" Font-Size="X-Small" OnClick="bttnCierreGeneralD_Click" Text="CERRAR" ValidationGroup="vMesGralD" OnClientClick="return confirm('¿Desea cerrar todos los centros contables?');" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -150,7 +150,7 @@
                                         <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select">Editar</asp:LinkButton>
                                         <asp:LinkButton ID="linkBttnGuardar" runat="server" CommandName="Update" 
                                             onclick="linkBttnGuardar_Click" 
-                                            onclientclick="return confirm('¿Desea abrir el mes seleccionado?');" 
+                                            onclientclick="return confirm('¿Desea cerrar el mes seleccionado?');" 
                                             Visible="False">Guardar</asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="15%" />

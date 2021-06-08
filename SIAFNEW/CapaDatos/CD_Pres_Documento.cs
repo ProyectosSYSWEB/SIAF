@@ -316,13 +316,13 @@ namespace CapaDatos
                     
                 String[] Parametros = { "P_CENTRO_CONTABLE", "P_DEPENDENCIA", "P_SUPERTIPO", "P_TIPO", "P_FECHA", "P_MES_ANIO", "P_TIPO_CAPTURA", "P_STATUS",
                                         "P_DESCRIPCION", "P_MOTIVO_RECHAZO", "P_MOTIVO_AUTORIZACION", "P_CUENTA", "P_NUMERO_CHEQUE", "P_CEDULA_COMPROMETIDO", "P_CEDULA_DEVENGADO",
-                                        "P_CEDULA_EJERCIDO", "P_CEDULA_PAGADO", "P_POLIZA_COMPROMETIDO","P_POLIZA_DEVENGADO", "P_POLIZA_EJERCIDO", "P_POLIZA_PAGADO", "P_CLAVE_CUENTA", "P_CLAVE_EVENTO",
+                                        "P_CEDULA_EJERCIDO", "P_CEDULA_PAGADO","P_CEDULA_CANCELACION" ,"P_POLIZA_COMPROMETIDO","P_POLIZA_DEVENGADO", "P_POLIZA_EJERCIDO", "P_POLIZA_PAGADO", "P_CLAVE_CUENTA", "P_CLAVE_EVENTO",
                                         "P_KEY_DOCUMENTO", "P_KEY_POLIZA", "P_KEY_POLIZA_811", "P_EJERCICIO", "P_REGULARIZA", "P_FECHA_FINAL", "P_GENERACION_SIMULTANEA",
                                         "P_USUARIO","P_CONTABILIZAR", "P_ISR","P_IMPORTE_OPERACION","P_IMPORTE_CHEQUE","P_SEGUIMIENTO"};
                 object[] Valores =    { objdocumento.CentroContable, objdocumento.Dependencia,objdocumento.SuperTipo,objdocumento.Tipo ,objdocumento.Fecha,
                                         objdocumento.MesAnio,objdocumento.TipoCaptura,objdocumento.Status,objdocumento.Descripcion,objdocumento.MotivoRechazo,objdocumento.MotivoAutorizacion,
                                         objdocumento.Cuenta,objdocumento.NumeroCheque,objdocumento.CedulaComprometido,objdocumento.CedulaDevengado,objdocumento.CedulaEjercido,
-                                        objdocumento.CedulaPagado,objdocumento.PolizaComprometida, objdocumento.PolizaDevengado,objdocumento.PolizaEjercido,objdocumento.PolizaPagado,objdocumento.ClaveCuenta,
+                                        objdocumento.CedulaPagado,objdocumento.CedulaCancelacion,objdocumento.PolizaComprometida, objdocumento.PolizaDevengado,objdocumento.PolizaEjercido,objdocumento.PolizaPagado,objdocumento.ClaveCuenta,
                                         objdocumento.ClaveEvento,objdocumento.KeyDocumento,objdocumento.KeyPoliza, objdocumento.KeyPoliza811, objdocumento.Ejercicios , objdocumento.Regulariza,
                                         objdocumento.Fecha_Final,objdocumento.GeneracionSimultanea,objdocumento.Usuario, objdocumento.Contabilizar, objdocumento.ISR,objdocumento.Importe_Operacion,objdocumento.Importe_Cheque,objdocumento.Seguimiento+DetalleSeguimiento
                 };

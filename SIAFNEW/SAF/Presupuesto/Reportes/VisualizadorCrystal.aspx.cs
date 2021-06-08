@@ -59,7 +59,7 @@ namespace SAF.Presupuesto.Reportes
                 string Subprograma = Convert.ToString(Request.QueryString["Subprograma"]);
                 string Partida = Convert.ToString(Request.QueryString["Partida"]);
                 string Evento = Convert.ToString(Request.QueryString["Evento"]);
-                string TipoDocumento = Convert.ToString(Request.QueryString["TipoDocumento"]);
+                string SubTipoDocumento = Convert.ToString(Request.QueryString["SubTipoDocumento"]);
 
                 Tipo = Convert.ToString(Request.QueryString["Tipo"]);
                 string caseSwitch = Tipo;
@@ -97,8 +97,8 @@ namespace SAF.Presupuesto.Reportes
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_LOTEC.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, MesIni); report.SetParameterValue(2, MesFin);
-                        report.SetParameterValue(3, TipoDoc); report.SetParameterValue(4, Status); report.SetParameterValue(5, Ejercicio); report.SetParameterValue(6, Evento);
-                        report.SetParameterValue(7, TipoDocumento);
+                        report.SetParameterValue(3, Status); report.SetParameterValue(4, Ejercicio); report.SetParameterValue(5, Evento);
+                        report.SetParameterValue(6, SubTipoDocumento);
                         reporte_PDF();
                         break;
                     case "RP-LoteA":

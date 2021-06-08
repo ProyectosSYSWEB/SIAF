@@ -214,6 +214,7 @@
     <Content Include="Presupuesto\Form\frmCentrosContab.aspx" />
     <Content Include="Presupuesto\Form\FRMCierre_Dependencia.aspx" />
     <Content Include="Presupuesto\Form\frmConsultas.aspx" />
+    <Content Include="Presupuesto\Form\frmControlCierre.aspx" />
     <Content Include="Presupuesto\Form\frmControlPresupSaf.aspx" />
     <Content Include="Presupuesto\Form\frmControlPresupuestal.aspx" />
     <Content Include="Presupuesto\Form\FRMCosteo.aspx" />
@@ -494,6 +495,13 @@
     <Compile Include="Presupuesto\Form\frmConsultas.aspx.designer.cs">
       <DependentUpon>frmConsultas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Form\frmControlCierre.aspx.cs">
+      <DependentUpon>frmControlCierre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Form\frmControlCierre.aspx.designer.cs">
+      <DependentUpon>frmControlCierre.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presupuesto\Form\frmControlPresupSaf.aspx.cs">
       <DependentUpon>frmControlPresupSaf.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -724,6 +732,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RPT-PRESUP_FUENTE_FIN.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_LOTEC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_LOTEC.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_MIN_DET.cs">
@@ -962,6 +976,10 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_FUENTE_FIN.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_FUENTE_FIN.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_LOTEC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_LOTEC.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_MIN_DET.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
