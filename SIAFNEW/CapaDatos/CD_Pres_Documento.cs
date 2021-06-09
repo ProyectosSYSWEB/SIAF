@@ -602,46 +602,6 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
-        public void GenerarPolizaFinalHonorarios(Pres_Documento objDocumento, ref string Verificador, ref string IdPoliza)
-        {
-            CD_Datos CDDatos = new CD_Datos();
-            OracleCommand Cmd = null;
-            try
-            {
-                string[] ParametrosIn = { "P_ID_DOC" };
-                object[] Valores = { objDocumento.Id }; // pasar id documento
-                string[] ParametrosOut = { "P_EXTRA", "P_BANDERA" };
-                Cmd = CDDatos.GenerarOracleCommand("gnr_poliza_auto_hono_apli", ref Verificador, ref IdPoliza, ParametrosIn, Valores, ParametrosOut);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                CDDatos.LimpiarOracleCommand(ref Cmd);
-            }
-        }
-
-        public void GenerarPolizaFinalAutoCedulas(Pres_Documento objDocumento, ref string Verificador, ref string IdPoliza)
-        {
-            CD_Datos CDDatos = new CD_Datos();
-            OracleCommand Cmd = null;
-            try
-            {
-                string[] ParametrosIn = { "P_ID_DOC" };
-                object[] Valores = { objDocumento.Id }; // pasar id documento
-                string[] ParametrosOut = { "P_EXTRA", "P_BANDERA" };
-                Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_CEDULA_APLI", ref Verificador, ref IdPoliza, ParametrosIn, Valores, ParametrosOut);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                CDDatos.LimpiarOracleCommand(ref Cmd);
-            }
-        }
+        
     }
 }
