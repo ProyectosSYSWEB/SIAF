@@ -58,6 +58,7 @@ namespace CapaEntidad
         private string _Fuente;
         private string _Clave_Evento;
         private string _Id_Poliza;
+        private string _Status_Cedula;
         
 
         private bool _Opcion_Eliminar;
@@ -391,6 +392,12 @@ namespace CapaEntidad
         {
             get { return _Generar_Poliza; }
             set { _Generar_Poliza = value; }
+        }
+
+        public string Status_Cedula
+        {
+            get { return _Status_Cedula; }
+            set { _Status_Cedula = value; }
         }
 
     }
