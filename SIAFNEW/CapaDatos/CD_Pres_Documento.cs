@@ -294,6 +294,7 @@ namespace CapaDatos
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
+            
             try
             {
                 string DetalleSeguimiento = string.Empty;
@@ -337,10 +338,13 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
+                Verificador = "CD_Pres_Documento - (InsertaDocumentoEncabezado) " + ex.Message;
                 throw new Exception(ex.Message);
+               
             }
             finally
             {
+                
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }

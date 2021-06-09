@@ -335,7 +335,7 @@ namespace SAF.Presupuesto
                 objDocumento.KeyDocumento = "";
                 objDocumento.KeyPoliza = "";
                 if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
-                    objDocumento.CedulaCancelacion = ddlCedulaOrigen.SelectedItem.Text.Substring(1,6); 
+                    objDocumento.CedulaCancelacion = ddlCedulaOrigen.SelectedItem.Text.Substring(0,6); 
                 else
                             objDocumento.CedulaCancelacion ="000000";
 
