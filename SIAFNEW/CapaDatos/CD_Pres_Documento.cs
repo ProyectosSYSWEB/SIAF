@@ -51,9 +51,9 @@ namespace CapaDatos
                     objDocumento.Generar_Poliza_Previa = false;
                     objDocumento.Generar_Poliza = false;                    
                     objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(3));
-                    objDocumento.Status = Convert.ToString(dr.GetValue(17));
+                    objDocumento.Status_Cedula = Convert.ToString(dr.GetValue(17));
                     objDocumento.Clave_Evento = Convert.ToString(dr.GetValue(18)); // Obtenemos la el número de la clave del evento
-                    if (objDocumento.Status == "A")
+                    if (objDocumento.Status_Cedula == "A")
                     {
                         if (objDocumento.Clave_Evento == "01" || objDocumento.Clave_Evento == "06")
                         {
@@ -69,7 +69,7 @@ namespace CapaDatos
                             }
                         }
                     }
-                    else if (objDocumento.Status == "I")
+                    else if (objDocumento.Status_Cedula == "I")
                     {
                         objDocumento.Generar_Poliza_Previa = false;
                         objDocumento.Generar_Poliza = false;
