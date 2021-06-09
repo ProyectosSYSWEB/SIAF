@@ -1288,8 +1288,10 @@ namespace SAF.Presupuesto
                         if (VerificadorCedulasAdicionales == "0")
                         {
                             CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                            CedulasAdicionales.ClaveEvento = claveEvento;
+                            CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
                             if (claveEvento == "01" || claveEvento == "06")
-                                CNDocumentos.GenerarPoliza(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
+                                CNDocumentos.GenerarPoliza(ref CedulasAdicionales, ref VerificadorCedulasAdicionales, ref IdPoliza);
 
                             if (VerificadorCedulasAdicionales != "0")
                                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al generar la póliza automática: " + VerificadorCedulasAdicionales + "');", true);
