@@ -58,6 +58,7 @@ namespace CapaEntidad
         private string _Fuente;
         private string _Clave_Evento;
         private string _Id_Poliza;
+        
 
         private bool _Opcion_Eliminar;
         private bool _Opcion_Eliminar2;
