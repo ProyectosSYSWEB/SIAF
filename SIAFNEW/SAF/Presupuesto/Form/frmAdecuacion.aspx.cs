@@ -12,6 +12,7 @@ namespace SAF.Presupuesto
     public partial class frmAdecuacion : System.Web.UI.Page
     {
 
+
         #region <Variables>
         Int32[] Celdas = new Int32[] { 0 };
         string Verificador = string.Empty;
