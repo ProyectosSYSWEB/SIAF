@@ -50,15 +50,30 @@ namespace CapaDatos
                     objDocumento.Id_Poliza = Convert.ToString(dr.GetValue(17));
                     objDocumento.Generar_Doc_Poliza = Convert.ToString(dr.GetValue(17)) != "" ? true : false;
                     objDocumento.Generar_Poliza_Previa = false;
-                    objDocumento.Generar_Poliza = false;
-                    if (objDocumento.Clave_Evento == "01" || objDocumento.Clave_Evento == "06")
-                    {                        
-                        objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
-                        objDocumento.Generar_Poliza = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
-                    }
+                    objDocumento.Generar_Poliza = false;                    
                     objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(4));
                     objDocumento.Status = Convert.ToString(dr.GetValue(18));
-
+                    if (objDocumento.Status == "A")
+                    {
+                        if (objDocumento.Clave_Evento == "01" || objDocumento.Clave_Evento == "06")
+                        {
+                            if (objDocumento.Tipo == "Comprometido")
+                            {
+                                objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
+                                objDocumento.Generar_Poliza = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
+                            }
+                            else
+                            {
+                                objDocumento.Generar_Poliza_Previa = false;
+                                objDocumento.Generar_Poliza = false;
+                            }
+                        }
+                    }
+                    else if (objDocumento.Status == "I")
+                    {
+                        objDocumento.Generar_Poliza_Previa = false;
+                        objDocumento.Generar_Poliza = false;
+                    }
 
 
                     //objDocumento= new Pres_Documento();                    
