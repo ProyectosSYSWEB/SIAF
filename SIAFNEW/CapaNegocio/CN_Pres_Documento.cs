@@ -158,30 +158,6 @@ namespace CapaNegocio
             }
         }
 
-        public void GenerarPolizaFinalHonorarios(Pres_Documento objdocumento, ref string Verificador, ref string IdPoliza)
-        {
-            try
-            {
-                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
-                CDDocumento.GenerarPolizaFinalHonorarios(objdocumento, ref Verificador, ref IdPoliza);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public void GenerarPolizaFinalAutoCedulas(Pres_Documento objdocumento, ref string Verificador, ref string IdPoliza)
-        {
-            try
-            {
-                CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
-                CDDocumento.GenerarPolizaFinalAutoCedulas(objdocumento, ref Verificador, ref IdPoliza);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        
     }
 }
