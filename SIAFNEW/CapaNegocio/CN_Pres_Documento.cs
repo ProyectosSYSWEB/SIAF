@@ -47,12 +47,12 @@ namespace CapaNegocio
                 throw new Exception(ex.Message);
             }
         }
-        public void GenerarPoliza(ref Pres_Documento objDocumento, ref string Verificador)
+        public void GenerarPoliza(ref Pres_Documento objDocumento, ref string Verificador, ref string IdPoliza)
         {
             try
             {
                 CD_Pres_Documento CDDocumento = new CD_Pres_Documento();
-                CDDocumento.GenerarPoliza(ref objDocumento, ref Verificador);
+                CDDocumento.GenerarPoliza(ref objDocumento, ref Verificador, ref IdPoliza);
             }
             catch (Exception ex)
             {

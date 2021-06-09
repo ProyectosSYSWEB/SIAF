@@ -263,7 +263,7 @@ namespace CapaDatos
                 CDDatos.LimpiarOracleCommand(ref Cmd);
             }
         }
-        public void GenerarPoliza(ref Pres_Documento objdocumento, ref string Verificador)
+        public void GenerarPoliza(ref Pres_Documento objdocumento, ref string Verificador, ref string IdPoliza)
         {
             CD_Datos CDDatos = new CD_Datos();
             OracleCommand Cmd = null;
@@ -271,14 +271,14 @@ namespace CapaDatos
             {
                 String[] Parametros = { "P_ID_DOC" };
                 object[] Valores =    { objdocumento.Id};
-                String[] ParametrosOut = { "p_Bandera" };
+                String[] ParametrosOut = { "P_EXTRA", "p_Bandera" };
 
                 if (objdocumento.ClaveEvento == "01")
-                    Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_CEDULA_APLI", ref Verificador, Parametros, Valores, ParametrosOut);
+                    Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_CEDULA_APLI", ref Verificador, ref IdPoliza, Parametros, Valores, ParametrosOut);
                 else
                 {
                     if (objdocumento.ClaveEvento == "06")
-                        Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_HONO_APLI", ref Verificador, Parametros, Valores, ParametrosOut);
+                        Cmd = CDDatos.GenerarOracleCommand("GNR_POLIZA_AUTO_HONO_APLI", ref Verificador, ref IdPoliza, Parametros, Valores, ParametrosOut);
                 }
 
             }
