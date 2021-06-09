@@ -640,7 +640,7 @@ namespace SAF.Presupuesto
                         txtCancelacion.Text = objDocumento.MotivoRechazo;
                         txtAutorizacion.Text = objDocumento.MotivoAutorizacion;
                         txtSeguimiento.Text = objDocumento.Seguimiento;
-                        DDLCta_Banco.SelectedValue = objDocumento.Cuenta;
+                        
                         /*Llena Grid Detalle*/
                         ddlMesInicialDet.SelectedValue = "01";
                         txtImporteOrigen.Text = "0";
@@ -654,8 +654,10 @@ namespace SAF.Presupuesto
                         MultiView1.ActiveViewIndex = 1;
                         TabContainer1.ActiveTabIndex = 0;
                         ddlFuente_F.SelectedValue = lblFF.Text;
-                        LstCodigoProg_SelectedIndexChanged(null, null);
-                    }
+                         DDLFuente_F_SelectedIndexChanged(null, null);
+                    //LstCodigoProg_SelectedIndexChanged(null, null);
+                    DDLCta_Banco.SelectedValue = objDocumento.Cuenta;
+                }
                 }
                 catch (Exception ex)
             {
