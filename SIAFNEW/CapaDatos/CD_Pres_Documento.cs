@@ -57,6 +57,7 @@ namespace CapaDatos
                         objDocumento.Generar_Poliza = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
                     }
                     objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(4));
+                    objDocumento.Status = Convert.ToString(dr.GetValue(18));
 
 
 

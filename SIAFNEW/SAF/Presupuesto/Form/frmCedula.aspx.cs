@@ -262,7 +262,7 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
-                Celdas = new Int32[] { 0,1,9 };
+                Celdas = new Int32[] { 0,1,10, 11 };
 
                 if (grid.Rows.Count > 0)
                 {
@@ -1213,8 +1213,8 @@ namespace SAF.Presupuesto
                 string Verificador = string.Empty;
                 string IdPoliza = string.Empty;
                 objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
-                string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[1].Text);
-                string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[5].Text);                
+                string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[10].Text);
+                string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[2].Text);                
                 
                 if (claveEvento == "01")
                     CNDocumentos.GenerarPolizaAutoPreviaCedulas(objDocumento, ref Verificador, ref IdPoliza);
@@ -1255,51 +1255,60 @@ namespace SAF.Presupuesto
             {
 
                 Pres_Documento objDocumento = new Pres_Documento();
+                Pres_Documento CedulasAdicionales = new Pres_Documento();
                 LinkButton cbi = (LinkButton)(sender);
                 GridViewRow row = (GridViewRow)cbi.NamingContainer;
-                grdDocumentos.SelectedIndex = row.RowIndex;
+                string VerificadorCedulasAdicionales = string.Empty;                
                 string Verificador = string.Empty;
                 string IdPoliza = string.Empty;
+                grdDocumentos.SelectedIndex = row.RowIndex;
                 objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
-                string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[1].Text);
-                string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[5].Text);
-
-
-                Pres_Documento CedulasAdicionales = new Pres_Documento();
-                string VerificadorCedulasAdicionales = string.Empty;
+                string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[10].Text);
+                string statusCedula = Convert.ToString(grdDocumentos.SelectedRow.Cells[11].Text);
+                string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[2].Text);
                 CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
-                CedulasAdicionales.ClaveEvento = Clave_Evento;
-                CNDocumentos.ConsultarCedulasAdicionales(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
+                CedulasAdicionales.ClaveEvento = claveEvento;
 
-                if (VerificadorCedulasAdicionales == "0")
+                if(statusCedula == "A")
                 {
-                    GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaDevengado));
-                    GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaEjercido));
-                    GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaPagado));
+                    CNDocumentos.ConsultarCedulasAdicionales(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
+
                     if (VerificadorCedulasAdicionales == "0")
                     {
-                        CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
-                        if (CedulasAdicionales.ClaveEvento == "01" || CedulasAdicionales.ClaveEvento == "06")
-                            CNDocumentos.GenerarPoliza(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
-
-                        if (VerificadorCedulasAdicionales != "0")
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al generar la póliza automática: " + VerificadorCedulasAdicionales + "');", true);
-                        else if (VerificadorCedulasAdicionales == "0")
+                        GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaDevengado));
+                        GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaEjercido));
+                        GuardarDetalle(ref VerificadorCedulasAdicionales, Convert.ToInt32(CedulasAdicionales.CedulaPagado));
+                        if (VerificadorCedulasAdicionales == "0")
                         {
-                            bool generarPolizaPrevia = true;
-                            Session["DocDet"] = generarPolizaPrevia;
-                            string urlReporte = string.Empty;
-                            urlReporte = "https://sysweb.unach.mx/SIAF-Contabilidad/Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=2021&id=" + IdPoliza;
-                            string _open = "window.open('" + urlReporte + "', '_newtab');";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
+                            CedulasAdicionales.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
+                            if (CedulasAdicionales.ClaveEvento == "01" || CedulasAdicionales.ClaveEvento == "06")
+                                CNDocumentos.GenerarPoliza(ref CedulasAdicionales, ref VerificadorCedulasAdicionales);
+
+                            if (VerificadorCedulasAdicionales != "0")
+                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al generar la póliza automática: " + VerificadorCedulasAdicionales + "');", true);
+                            else if (VerificadorCedulasAdicionales == "0")
+                            {
+                                bool generarPolizaPrevia = true;
+                                Session["DocDet"] = generarPolizaPrevia;
+                                string urlReporte = string.Empty;
+                                urlReporte = "https://sysweb.unach.mx/SIAF-Contabilidad/Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=2021&id=" + IdPoliza;
+                                string _open = "window.open('" + urlReporte + "', '_newtab');";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
+                            }
                         }
+                        else
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar el detalle de las cédulas adicionales: " + VerificadorCedulasAdicionales + "');", true);
                     }
                     else
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al guardar el detalle de las cédulas adicionales: " + VerificadorCedulasAdicionales + "');", true);
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al consultar  las cédulas adicionales: " + VerificadorCedulasAdicionales + "');", true);
+                    }
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al consultar  las cédulas adicionales: " + VerificadorCedulasAdicionales + "');", true);
+                    string Msj = "Solo se puede generar polizas a cédulas en estatus aplicado";
+                    CNComun.VerificaTextoMensajeError(ref Msj);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true); //lblMsj.Text = ex.Message;
                 }
             }
             catch (Exception ex)
