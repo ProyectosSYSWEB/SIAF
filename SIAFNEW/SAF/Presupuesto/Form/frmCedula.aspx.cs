@@ -13,6 +13,7 @@ namespace SAF.Presupuesto
     public partial class frmCedula : System.Web.UI.Page
     {
 
+
         #region <Variables>
         bool Adicional = false;
         Int32[] Celdas = new Int32[] { 0 };
@@ -335,7 +336,7 @@ namespace SAF.Presupuesto
                 objDocumento.KeyDocumento = "";
                 objDocumento.KeyPoliza = "";
                 if (ddlevento.SelectedValue == "10" || ddlevento.SelectedValue == "98")
-                    objDocumento.CedulaCancelacion = ddlCedulaOrigen.SelectedItem.Text.Substring(1, 6);
+                    objDocumento.CedulaCancelacion = ddlCedulaOrigen.SelectedItem.Text.Substring(0,6); 
                 else
                     objDocumento.CedulaCancelacion = "000000";
 

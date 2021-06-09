@@ -12,6 +12,7 @@ namespace SAF.Presupuesto
     public partial class frmAdecuacion : System.Web.UI.Page
     {
 
+
         #region <Variables>
         Int32[] Celdas = new Int32[] { 0 };
         string Verificador = string.Empty;
@@ -402,7 +403,8 @@ namespace SAF.Presupuesto
                 objDocumento.CedulaDevengado = "";
                 objDocumento.CedulaEjercido = "";
                 objDocumento.CedulaPagado = "";
-                objDocumento.CedulaComprometido = txtfolio.Text;// si es simultaneo folio y si no segun el tipo y los demas null
+            objDocumento.CedulaCancelacion = "000000";
+            objDocumento.CedulaComprometido = txtfolio.Text;// si es simultaneo folio y si no segun el tipo y los demas null
             
             objDocumento.KeyPoliza811 = "";
             objDocumento.Ejercicios = SesionUsu.Usu_Ejercicio;
