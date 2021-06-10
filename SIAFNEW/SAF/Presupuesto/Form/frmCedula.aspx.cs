@@ -263,7 +263,7 @@ namespace SAF.Presupuesto
                 grid.DataSource = dt;
                 grid.DataSource = GetList(idGrid);
                 grid.DataBind();
-                Celdas = new Int32[] { 0, 1, 10, 11 };
+                Celdas = new Int32[] { 0, 1, 9, 10, 11, 12 };
 
                 if (grid.Rows.Count > 0)
                 {
@@ -1150,52 +1150,40 @@ namespace SAF.Presupuesto
 
         protected void LinkVistaPrevia_Click(object sender, EventArgs e)
         {
-            string urlReporte = string.Empty;
-            urlReporte = "../../Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + "442";
-            string _open = "window.open('" + urlReporte + "', '_newtab');";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
-            //try
-            //{
+            try
+            {
+                string urlReporte = string.Empty;
+                urlReporte = "../../Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + "442";
+                string _open = "window.open('" + urlReporte + "', '_newtab');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
+            }
+            catch(Exception ex)
+            {
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true);
+            }            
+        }
 
-            //    Pres_Documento objDocumento = new Pres_Documento();
-            //    LinkButton cbi = (LinkButton)(sender);
-            //    GridViewRow row = (GridViewRow)cbi.NamingContainer;
-            //    grdDocumentos.SelectedIndex = row.RowIndex;
-            //    string Verificador = string.Empty;
-            //    objDocumento.Id = Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text);
-            //    string claveEvento = Convert.ToString(grdDocumentos.SelectedRow.Cells[1].Text);
-            //    string Clave_Evento = Convert.ToString(grdDocumentos.SelectedRow.Cells[5].Text);
-            //    if (claveEvento == "01")
-            //        CNDocumentos.GenerarPolizaAutoPreviaCedulas(objDocumento, ref Verificador);
-            //    else if (claveEvento == "06")
-            //        CNDocumentos.GenerarPolizaPreviaHonorarios(objDocumento, ref Verificador);
-            //    else                
-            //        Verificador = "1";
-            //    if (Verificador != "1")
-            //    {
-            //        bool generarPolizaPrevia = true;
-            //        Session["DocDet"] = generarPolizaPrevia;
-            //        string urlReporte = string.Empty;
-            //        urlReporte = "../../Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Id=" + "442";
-            //        string _open = "window.open('" + urlReporte + "', '_newtab');";
-            //        ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
-            //    }
-            //    else if (Verificador == "1")
-            //    {
-            //        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No se puede generar una poliza de la cedula tipo: ' '" + Clave_Evento + "');", true); //lblMsj.Text = ex.Message;
-            //    }
-            //    else
-            //    {
-            //        CNComun.VerificaTextoMensajeError(ref Verificador);
-            //        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + "');", true); //lblMsj.Text = ex.Message;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    string Msj = ex.Message;
-            //    CNComun.VerificaTextoMensajeError(ref Msj);
-            //    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true); //lblMsj.Text = ex.Message;
-            //}
+        protected void LinkPolizaPdf_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton cbi = (LinkButton)(sender);
+                GridViewRow row = (GridViewRow)cbi.NamingContainer;
+                grdDocumentos.SelectedIndex = row.RowIndex;
+                string IdPoliza = Convert.ToString(grdDocumentos.SelectedRow.Cells[12].Text);
+                string urlReporte = string.Empty;
+                urlReporte = "https://sysweb.unach.mx/SIAF-Contabilidad/Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=2021&id=" + IdPoliza;
+                string _open = "window.open('" + urlReporte + "', '_newtab');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
+            }
+            catch (Exception ex)
+            {
+                string Msj = ex.Message;
+                CNComun.VerificaTextoMensajeError(ref Msj);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Msj + "');", true);
+            }
         }
 
         protected void LinkGenerarPolizaPrevia_Click(object sender, EventArgs e)
@@ -1291,6 +1279,9 @@ namespace SAF.Presupuesto
                             urlReporte = "https://sysweb.unach.mx/SIAF-Contabilidad/Contabilidad/Reportes/VisualizadorCrystal.aspx?Tipo=RP-005&Ejercicio=2021&id=" + IdPoliza;
                             string _open = "window.open('" + urlReporte + "', '_newtab');";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open, true);
+                            CargarGrid(ref grdDocumentos, 0);
+                            string MiMensaje =  "La poliza se ha generado correctamente";
+                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, '" + MiMensaje + "');", true);
                         }
                     }
                     else

@@ -441,7 +441,8 @@
                                                                                                 <asp:BoundField DataField="Origen" DataFormatString="{0:c}" HeaderText="IMPORTE" />
                                                                                                 <asp:BoundField DataField="Destino" DataFormatString="{0:c}" HeaderText="DESTINO" />
                                                                                                 <asp:BoundField DataField="Clave_Evento" HeaderText="Clave Evento"  />
-                                                                                                <asp:BoundField DataField="Status" HeaderText="Estatus Cedula"  />
+                                                                                                <asp:BoundField DataField="Status_Cedula" HeaderText="Estatus Cedula"  />
+                                                                                                <asp:BoundField DataField="Id_Poliza" HeaderText="Id Poliza"  />
                                                                                                 <asp:TemplateField>
                                                                                                     <ItemTemplate>
                                                                                                         <asp:LinkButton ID="linkBttnEditar" runat="server" CommandName="Select" OnClick="linkBttnEditar_Click" Visible='<%# Bind("Opcion_Modificar") %>'>Editar</asp:LinkButton>
@@ -506,7 +507,7 @@
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel108" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaFinal" runat="server"  OnClick="LinkVistaPrevia_Click" Visible='<%# Bind("Generar_Doc_Poliza") %>'>Ver Poliza</asp:LinkButton>
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaFinal" runat="server"  OnClick="LinkPolizaPdf_Click" Visible='<%# Bind("Generar_Doc_Poliza") %>'>Ver Poliza</asp:LinkButton>
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
