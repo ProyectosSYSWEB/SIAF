@@ -820,6 +820,18 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(3, Ejercicio); report.SetParameterValue(4, TipoDoc); report.SetParameterValue(5, Ministrable);
                         reporte_XLS();
                         break;
+                    case "RP-PRESUP_DP01_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_DP01.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); 
+                        reporte_XLS();
+                        break;
+                    case "RP-PRESUP_DET_CED_DERIVADA_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_DET_CED_DERIVADA.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); 
+                        reporte_XLS();
+                        break;
                     case "RPT-UsuariosAdminUr":
                         Reporte = "Presupuesto\\Reportes\\RPT-UsuariosAdminUr.rpt";
                         reportes_dir();
