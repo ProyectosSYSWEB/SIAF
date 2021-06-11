@@ -683,6 +683,12 @@
                                                                                                                             </asp:UpdatePanel>
                                                                                                                         </td>
                                                                                                                     </tr>
+
+                                                                                                                    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel5">
+                                                                                        <progresstemplate>
+                                                                                            <asp:Image ID="imgDocumentos" runat="server" AlternateText="Espere un momento, por favor.." Height="50px" ImageUrl="http://sysweb.unach.mx/resources/imagenes/ajax_loader_gray_512.gif" style="text-align: center" ToolTip="Espere un momento, por favor.." Width="50px" />
+                                                                                        </progresstemplate>
+                                                                                    </asp:UpdateProgress>
                                                                                                                     
                                                                                                                     
                                                                                                                     <tr>
