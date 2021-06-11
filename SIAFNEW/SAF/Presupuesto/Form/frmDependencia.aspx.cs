@@ -89,12 +89,16 @@ namespace SAF.Presupuesto.Form
                 Dependencias objDependencias = new Dependencias();
                 string Verificador = string.Empty;
                 int fila = e.RowIndex;
-                objDependencias.C_Contab = Convert.ToString(GDRDependencias.Rows[fila].Cells[6].Text);
+                objDependencias.Ejercicio = Convert.ToInt32(SesionUsu.Usu_Ejercicio);
+                objDependencias.Id = Convert.ToString(GDRDependencias.Rows[fila].Cells[6].Text);
                 if (SesionUsu.Usu_TipoUsu == "SA")
                 {
                     CN_Dependencias.EliminarDependencia(ref objDependencias, ref Verificador);
-                    if(Verificador == "0")
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente.')", true);                    
+                    if (Verificador == "0")
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha eliminado correctamente.')", true);
+                        GRDCargarDatosDepend();
+                    }
                     else
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);
                 }
