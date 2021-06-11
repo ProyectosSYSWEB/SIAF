@@ -13,7 +13,7 @@
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-            </div>--%>
+            </div> --%>
             <table class="tabla_contenido">
                 <tr>
                     <td class="auto-style1">
@@ -47,7 +47,7 @@
                                 </td>
                                 <td>
                                     <asp:DropDownList ID="DDDLTipoSubFondo" runat="server" Width="500px" AutoPostBack="True"></asp:DropDownList>
-                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>--%>
+                                    <%--<asp:DropDownList ID="DDLCodProg" runat="server" Width="500px" AutoPostBack="True" OnSelectedIndexChanged="DDLCodProg_OnSelectedIndexChanged"></asp:DropDownList>
                                 </td>
                             </tr>--%>
 
