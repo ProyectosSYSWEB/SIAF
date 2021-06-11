@@ -1893,11 +1893,43 @@
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td colspan="3">&nbsp;</td>
-                                        <td>&nbsp;</td>
+                                        
                                     </tr>
                                 </table>
                             </ContentTemplate>
                         </asp:UpdatePanel>
+                    </asp:View>
+                      <asp:View ID="View16" runat="server">
+                           <table style="width: 100%;">
+                                    <tr>
+                                        <td style="width:20%">
+                                            <asp:Label ID="Label58" runat="server" Text="Reporte"></asp:Label>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:DropDownList ID="ddlBD_v16" runat="server" Width="100%" >
+                                                 <asp:ListItem Value="GENERAL">Base de datos - DP01</asp:ListItem>
+                                                <asp:ListItem Value="DETALLE">Detalle de cédulas</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                               <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                             
+                                    <tr>
+                                        <td class="cuadro_botones" colspan="4">
+                                            <asp:UpdatePanel ID="UpdatePanel20" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:ImageButton ID="imgBttnExcel_v16" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/excel.png" onclick="imgBttnExcel_v16_click" title="Reporte Excel" />
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td colspan="3">&nbsp;</td>
+                                    </tr>
+                            </table>
                     </asp:View>
                 </asp:MultiView>                
             </td>

@@ -213,7 +213,10 @@ namespace SAF.Presupuesto.Reportes
                         btnChkFuentes_v13.Visible = false;
                         txtFechaEntrega.Text = System.DateTime.Now.ToString("dd/MMMM/yyyy");
                         break;
-                   
+                    case "RP-PRESUP_DP01":
+                        MultiView1.ActiveViewIndex = 15;
+                        break;
+
                 }
                         if (Request.QueryString["P_REP"]== "RP-TEMPORAL")
                     {
@@ -1667,6 +1670,18 @@ namespace SAF.Presupuesto.Reportes
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
+
+        protected void imgBttnExcel_v16_click(object sender, ImageClickEventArgs e)
+        {
+            string ruta = string.Empty;
+            if(ddlBD_v16.SelectedValue=="GENERAL")
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_DP01_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio ;
+            else
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_DET_CED_DERIVADA_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio;
+
+            string _open1 = "window.open('" + ruta + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+        }
         protected void btnChkCapitulos_Click(object sender, EventArgs e)
         {
             bool check;
@@ -2035,5 +2050,6 @@ namespace SAF.Presupuesto.Reportes
             }
         }
 
+        
     }
 }
