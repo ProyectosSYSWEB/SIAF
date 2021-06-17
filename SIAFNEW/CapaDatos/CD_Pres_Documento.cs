@@ -59,7 +59,7 @@ namespace CapaDatos
                         {
                             if (objDocumento.Tipo == "Comprometido")
                             {
-                                objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
+                                //objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
                                 objDocumento.Generar_Poliza = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
                             }
                             else
