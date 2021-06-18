@@ -161,7 +161,7 @@
     </script>  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
-    <div class="mensaje"> 
+    <div class="mensaje" visible="false"> 
                                            <asp:UpdatePanel ID="UpdatePanel100" runat="server">
                                                <ContentTemplate>
                                                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
@@ -171,11 +171,11 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">          
         <ContentTemplate>
             <table class="tabla_contenido">
-                <tr>
+                <%--<tr>
                     <td valign="top">
                         <asp:Label ID="lblDocumento" runat="server" Font-Bold="True" Font-Size="15pt" Text="Cédula"></asp:Label>                        
                     </td>
-                </tr>
+                </tr>--%>
                 <tr>
                     <td valign="top">
                         <table style="width:100%;">
@@ -469,17 +469,6 @@
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
                                                                                                 </asp:TemplateField>
-
-
-
-                                                                                                <%--<asp:BoundField DataField="Poliza_Alta" />
-                                                                                                <asp:TemplateField>
-                                                                                                    <ItemTemplate>
-                                                                                                        <asp:LinkButton ID="linkBttnPolizaAlta" runat="server" onclick="LinkVistaPrevia_Click" Text="Poliza Alta" Enabled='<%# Bind("Imprimir_Poliza_Alta") %>'>
-                                                                                                        </asp:LinkButton>
-                                                                                                    </ItemTemplate>
-                                                                                                    <ItemStyle HorizontalAlign="Center" Width="100px" />
-                                                                                                </asp:TemplateField>--%>
                                                                                                 
                                                                                                 <asp:TemplateField>
                                                                                                     <ItemTemplate>
@@ -496,8 +485,8 @@
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel109" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkGenerarPoliza" runat="server" OnClick="LinkGenerarPoliza_Click" Visible='<%# Bind("Generar_Poliza") %>'>Generar Poliza </asp:LinkButton>
-                                                                                                                 <%--<asp:Label ID="lblGenerarPoliza" runat="server" ForeColor="#6B696B" Text="Generar Poliza" Visible='<%# Bind("Opcion_Modificar2") %>'></asp:Label>       --%>                                                                                                         
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPoliza" class="btn btn-warning" runat="server" OnClick="LinkGenerarPoliza_Click" Visible='<%# Bind("Generar_Poliza") %>'>Generar Poliza </asp:LinkButton>
+                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaFinal" class="btn btn-success" runat="server"  OnClick="LinkPolizaPdf_Click" Visible='<%# Bind("Generar_Doc_Poliza") %>'>Ver Poliza</asp:LinkButton>
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
@@ -507,7 +496,7 @@
                                                                                                     <ItemTemplate>
                                                                                                         <asp:UpdatePanel ID="UpdatePanel108" runat="server">
                                                                                                             <ContentTemplate>
-                                                                                                                 <asp:LinkButton ID="LinkGenerarPolizaFinal" runat="server"  OnClick="LinkPolizaPdf_Click" Visible='<%# Bind("Generar_Doc_Poliza") %>'>Ver Poliza</asp:LinkButton>
+                                                                                                                 
                                                                                                             </ContentTemplate>
                                                                                                         </asp:UpdatePanel>
                                                                                                     </ItemTemplate>
