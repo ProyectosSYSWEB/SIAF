@@ -96,24 +96,6 @@ namespace SAF.Presupuesto
         protected global::System.Web.UI.WebControls.View View1;
 
         /// <summary>
-        /// Control lblEventos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEventos;
-
-        /// <summary>
-        /// Control ddlEventos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEventos;
-
-        /// <summary>
         /// Control lblTipoCedula.
         /// </summary>
         /// <remarks>
@@ -184,6 +166,24 @@ namespace SAF.Presupuesto
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMesFin;
+
+        /// <summary>
+        /// Control lblEventos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEventos;
+
+        /// <summary>
+        /// Control ddlEventos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEventos;
 
         /// <summary>
         /// Control lblbuscar0.

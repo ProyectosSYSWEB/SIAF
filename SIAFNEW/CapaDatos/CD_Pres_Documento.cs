@@ -46,10 +46,7 @@ namespace CapaDatos
                     objDocumento.Opcion_Eliminar2 = Convert.ToString(dr.GetValue(14)) == "S" ? true : false;
 
                     objDocumento.ClaveEvento = Convert.ToString(dr.GetValue(15));
-                    objDocumento.Id_Poliza = Convert.ToString(dr.GetValue(16));
-                    objDocumento.Generar_Doc_Poliza = Convert.ToString(dr.GetValue(16)) != "" ? true : false;
-                    objDocumento.Generar_Poliza_Previa = false;
-                    objDocumento.Generar_Poliza = false;                    
+                    objDocumento.Id_Poliza = Convert.ToString(dr.GetValue(16));                                      
                     objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(3));
                     objDocumento.Status_Cedula = Convert.ToString(dr.GetValue(17));
                     objDocumento.Clave_Evento = Convert.ToString(dr.GetValue(18)); // Obtenemos la el número de la clave del evento
@@ -59,7 +56,7 @@ namespace CapaDatos
                         {
                             if (objDocumento.Tipo == "Comprometido")
                             {
-                                //objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
+                                objDocumento.Generar_Doc_Poliza = Convert.ToString(dr.GetValue(16)) != "" ? true : false;
                                 objDocumento.Generar_Poliza = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
                             }
                             else
@@ -71,7 +68,8 @@ namespace CapaDatos
                     }
                     else if (objDocumento.Status_Cedula == "I")
                     {
-                        objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
+                        //objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
+                        objDocumento.Generar_Poliza_Previa = true;
                     }
                     List.Add(objDocumento);
                 }
