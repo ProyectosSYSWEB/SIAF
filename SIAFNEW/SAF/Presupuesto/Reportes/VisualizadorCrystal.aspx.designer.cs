@@ -7,13 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAF.Presupuesto.Reportes
-{
-
-
-    public partial class VisualizadorCrystal
-    {
-
+namespace SAF.Presupuesto.Reportes {
+    
+    
+    public partial class VisualizadorCrystal {
+        
         /// <summary>
         /// Control form1.
         /// </summary>
@@ -22,7 +20,7 @@ namespace SAF.Presupuesto.Reportes
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// Control ScriptManager1.
         /// </summary>
@@ -31,7 +29,7 @@ namespace SAF.Presupuesto.Reportes
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-
+        
         /// <summary>
         /// Control CR_Reportes.
         /// </summary>
