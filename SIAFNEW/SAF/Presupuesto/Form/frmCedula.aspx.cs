@@ -1107,8 +1107,8 @@ namespace SAF.Presupuesto
                         lblMesPol.Text = txtfechaDocumento.Text.Substring(3, 2);
                         //lblLiteralPol.Text = "C";
                         lblLiteralPol.Text = Encabezado.PolizaComprometida.Substring(2, 1);
-                        txtPoliza.Text = Encabezado.PolizaComprometida.Substring(3, 4) + "D";
-                        txtPoliza.Enabled = false;
+                        //txtPoliza.Text = Encabezado.PolizaComprometida.Substring(3, 4) + "D";
+                        //txtPoliza.Enabled = false;
                         //txtPoliza.Text = string.Empty;
                         txtNumero_Cheque.Text = Encabezado.NumeroCheque;
 
