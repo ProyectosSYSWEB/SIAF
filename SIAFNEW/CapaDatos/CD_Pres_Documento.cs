@@ -26,67 +26,51 @@ namespace CapaDatos
                 {
                     objDocumento = new Pres_Documento();
                     objDocumento.Id = Convert.ToInt32(dr.GetValue(0));
-                    objDocumento.Dependencia = Convert.ToString(dr.GetValue(1));
-                    objDocumento.Clave_Evento = Convert.ToString(dr.GetValue(2)); // Obtenemos la el número de la clave del evento
-                    objDocumento.SuperTipo = Convert.ToString(dr.GetValue(3));
-                    objDocumento.Tipo = Convert.ToString(dr.GetValue(4));
-                    objDocumento.No_documento = Convert.ToString(dr.GetValue(5));
-                    objDocumento.Fecha = Convert.ToString(dr.GetValue(6));
-                    objDocumento.Status = Convert.ToString(dr.GetValue(7));
-                    objDocumento.Concepto = Convert.ToString(dr.GetValue(8));
-                    objDocumento.Origen = Convert.ToDouble(dr.GetValue(9));
-                    objDocumento.Destino = Convert.ToDouble(dr.GetValue(10));
-                    objDocumento.Opcion_Modificar = Convert.ToString(dr.GetValue(11)) == "S" ? false : true;
-                    objDocumento.Opcion_Generar_Doc = Convert.ToString(dr.GetValue(11)) == "S" ? true : false;
-                    objDocumento.Opcion_Modificar_Str = Convert.ToString(dr.GetValue(7)) == "Autorizado" ? "Ver" : "Editar";
+                    objDocumento.Dependencia = Convert.ToString(dr.GetValue(1));                    
+                    objDocumento.SuperTipo = Convert.ToString(dr.GetValue(2));
+                    objDocumento.Tipo = Convert.ToString(dr.GetValue(3));
+                    objDocumento.No_documento = Convert.ToString(dr.GetValue(4));
+                    objDocumento.Fecha = Convert.ToString(dr.GetValue(5));
+                    objDocumento.Status = Convert.ToString(dr.GetValue(6));
+                    objDocumento.Concepto = Convert.ToString(dr.GetValue(7));
+                    objDocumento.Origen = Convert.ToDouble(dr.GetValue(8));
+                    objDocumento.Destino = Convert.ToDouble(dr.GetValue(9));
+                    objDocumento.Opcion_Modificar = Convert.ToString(dr.GetValue(10)) == "S" ? false : true;
+                    objDocumento.Opcion_Generar_Doc = Convert.ToString(dr.GetValue(10)) == "S" ? true : false;
+                    objDocumento.Opcion_Modificar_Str = Convert.ToString(dr.GetValue(6)) == "Autorizado" ? "Ver" : "Editar";
                     if (objDocumento.SuperTipo == "Ministración")
                         objDocumento.Opcion_Modificar2 = true;// Convert.ToString(dr.GetValue(10)) == "RECIBIDA" ? false : true;
                     else
-                        objDocumento.Opcion_Modificar2 = Convert.ToString(dr.GetValue(11)) == "S" ? true : false;
-                    objDocumento.Opcion_Eliminar = Convert.ToString(dr.GetValue(15)) == "S" ? false : true;
-                    objDocumento.Opcion_Eliminar2 = Convert.ToString(dr.GetValue(15)) == "S" ? true : false;
+                        objDocumento.Opcion_Modificar2 = Convert.ToString(dr.GetValue(10)) == "S" ? true : false;
+                    objDocumento.Opcion_Eliminar = Convert.ToString(dr.GetValue(14)) == "S" ? false : true;
+                    objDocumento.Opcion_Eliminar2 = Convert.ToString(dr.GetValue(14)) == "S" ? true : false;
 
-                    objDocumento.ClaveEvento = Convert.ToString(dr.GetValue(16));
-                    objDocumento.Id_Poliza = Convert.ToString(dr.GetValue(17));
-                    objDocumento.Generar_Doc_Poliza = Convert.ToString(dr.GetValue(17)) != "" ? true : false;
-                    objDocumento.Generar_Poliza_Previa = false;
-                    objDocumento.Generar_Poliza = false;
-                    if (objDocumento.Clave_Evento == "01" || objDocumento.Clave_Evento == "06")
-                    {                        
-                        objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
-                        objDocumento.Generar_Poliza = Convert.ToString(dr.GetValue(17)) == "" ? true : false;
+                    objDocumento.ClaveEvento = Convert.ToString(dr.GetValue(15));
+                    objDocumento.Id_Poliza = Convert.ToString(dr.GetValue(16));                                      
+                    objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(3));
+                    objDocumento.Status_Cedula = Convert.ToString(dr.GetValue(17));
+                    objDocumento.Clave_Evento = Convert.ToString(dr.GetValue(18)); // Obtenemos la el número de la clave del evento
+                    if (objDocumento.Status_Cedula == "A")
+                    {
+                        if (objDocumento.Clave_Evento == "01" || objDocumento.Clave_Evento == "06")
+                        {
+                            if (objDocumento.Tipo == "Comprometido")
+                            {
+                                objDocumento.Generar_Doc_Poliza = Convert.ToString(dr.GetValue(16)) != "" ? true : false;
+                                objDocumento.Generar_Poliza = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
+                            }
+                            else
+                            {
+                                objDocumento.Generar_Poliza_Previa = false;
+                                objDocumento.Generar_Poliza = false;
+                            }
+                        }
                     }
-                    objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(4));
-                    objDocumento.Status = Convert.ToString(dr.GetValue(18));
-
-
-
-                    //objDocumento= new Pres_Documento();                    
-                    //objDocumento.Id= Convert.ToInt32(dr.GetValue(0));
-                    //objDocumento.Dependencia = Convert.ToString(dr.GetValue(1));
-                    //objDocumento.Clave_Evento = Convert.ToString(dr.GetValue(2)); // Obtenemos la el número de la clave del evento
-                    //objDocumento.SuperTipo = Convert.ToString(dr.GetValue(2));
-                    //objDocumento.Tipo = Convert.ToString(dr.GetValue(3));
-                    //objDocumento.No_documento = Convert.ToString(dr.GetValue(4));
-                    //objDocumento.Fecha = Convert.ToString(dr.GetValue(5));
-                    //objDocumento.Status = Convert.ToString(dr.GetValue(6));
-                    //objDocumento.Concepto = Convert.ToString(dr.GetValue(7));
-                    //objDocumento.Origen = Convert.ToDouble(dr.GetValue(8));
-                    //objDocumento.Destino = Convert.ToDouble(dr.GetValue(9));
-                    //objDocumento.Opcion_Modificar = Convert.ToString(dr.GetValue(10)) == "S" ? false : true;
-                    //objDocumento.Opcion_Generar_Doc = Convert.ToString(dr.GetValue(10)) == "S" ? true : false;
-                    //objDocumento.Opcion_Modificar_Str = Convert.ToString(dr.GetValue(6)) == "Autorizado" ? "Ver" : "Editar";
-                    //if(objDocumento.SuperTipo=="Ministración")
-                    //    objDocumento.Opcion_Modificar2 = true;// Convert.ToString(dr.GetValue(10)) == "RECIBIDA" ? false : true;
-                    //else
-                    //    objDocumento.Opcion_Modificar2 = Convert.ToString(dr.GetValue(10)) == "S" ? true : false;
-                    //objDocumento.Opcion_Eliminar = Convert.ToString(dr.GetValue(14)) == "S" ? false : true;
-                    //objDocumento.Opcion_Eliminar2 = Convert.ToString(dr.GetValue(14)) == "S" ? true : false;
-
-                    //objDocumento.ClaveEvento = Convert.ToString(dr.GetValue(15));
-                    //objDocumento.KeyPoliza = Convert.ToString(dr.GetValue(3));
-
-
+                    else if (objDocumento.Status_Cedula == "I")
+                    {
+                        //objDocumento.Generar_Poliza_Previa = Convert.ToString(dr.GetValue(16)) == "" ? true : false;
+                        objDocumento.Generar_Poliza_Previa = true;
+                    }
                     List.Add(objDocumento);
                 }
                 dr.Close();

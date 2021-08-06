@@ -163,7 +163,8 @@ namespace SAF.Presupuesto.Form
                         txtConcepto.Text = "";
                         txtImporte.Text = "";
                         txtConsecutivoOpe.Text = "";
-                        txtImporte.Text = "";                        
+                        txtImporte.Text = "";
+                        ObtenerConsecutivoTipoOperacion("A");
                     }
                     else if (Verificador == "1")
                         lblError.Text = "Este código ya existe";
