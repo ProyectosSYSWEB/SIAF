@@ -171,6 +171,7 @@ namespace SAF.Presupuesto.Reportes
                         btnchkCapitulos.Visible = false;
                         btnchkProyectos.Visible = false;
                         btnchkFuentes.Visible = false;
+                        DDLPeriodo_v9.Items.RemoveAt(2);
                         DDLDependencia_v9_SelectedIndexChanged(null, null);
                         break;
                     case "RP-PRESUP_RP009":
