@@ -263,6 +263,7 @@ namespace SAF.Presupuesto
                     lblMesInicialDet.Text = "Mes";
                     lblMesFinalDet.Visible = false;
                     ddlMesFinalDet.Visible = false;
+                    ddlMesInicialDet.Enabled = true;
 
                     rbtOrigen_Destino.Enabled = true;
                     rbtOrigen_Destino.SelectedValue = "O";
@@ -466,15 +467,15 @@ namespace SAF.Presupuesto
                     {
                         VerificadorDet = string.Empty;
                         GuardarDetalle(ref VerificadorDet, Convert.ToInt32(grdDocumentos.SelectedRow.Cells[0].Text));
-                        if (VerificadorDet == "0")
-                        {
-                            VerificadorInserta = "0";
-                            //lblError.Text = "Los datos han sido actualizados correctamente";
-                            //SesionUsu.Editar = -1;
-                            //MultiView1.ActiveViewIndex = 0;
-                            //CargarGrid(ref grdDocumentos, 0);
-                        }
-                        else
+                        //if (VerificadorDet == "0")
+                        //{
+                        //    VerificadorInserta = "0";
+                        //    //lblError.Text = "Los datos han sido actualizados correctamente";
+                        //    //SesionUsu.Editar = -1;
+                        //    //MultiView1.ActiveViewIndex = 0;
+                        //    //CargarGrid(ref grdDocumentos, 0);
+                        //}
+                        //else
                             VerificadorInserta = VerificadorDet;
                     }
                     else

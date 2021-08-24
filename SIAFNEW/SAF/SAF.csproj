@@ -817,12 +817,6 @@
       <DependentUpon>RPT-PRESUP_RP005TR.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008AD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP008AD.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP008AR.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -851,6 +845,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RPT-PRESUP_RP021A_PROYECTO.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP030A.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP030A.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP030M.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_RP030M.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_UNV.cs">
@@ -900,12 +906,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RPT-PRESUP_RP004.rpt</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP005MD.cs">
-      <DependentUpon>RPT-PRESUP_RP005MD.rpt</DependentUpon>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP009A.cs">
       <AutoGen>True</AutoGen>
@@ -1110,10 +1110,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_RP005TR.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008AD.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP008AD.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP008AR.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_RP008AR.cs</LastGenOutput>
@@ -1133,6 +1129,14 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP021A_PROYECTO.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_RP021A_PROYECTO.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP030A.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP030A.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP030M.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_RP030M.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_UNV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1165,10 +1169,6 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP004.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_RP004.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP005MD.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP005MD.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP009A.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

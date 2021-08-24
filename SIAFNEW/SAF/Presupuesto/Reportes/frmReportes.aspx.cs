@@ -171,6 +171,7 @@ namespace SAF.Presupuesto.Reportes
                         btnchkCapitulos.Visible = false;
                         btnchkProyectos.Visible = false;
                         btnchkFuentes.Visible = false;
+                        DDLPeriodo_v9.Items.RemoveAt(2);
                         DDLDependencia_v9_SelectedIndexChanged(null, null);
                         break;
                     case "RP-PRESUP_RP009":
@@ -215,6 +216,14 @@ namespace SAF.Presupuesto.Reportes
                         break;
                     case "RP-PRESUP_DP01":
                         MultiView1.ActiveViewIndex = 15;
+                        break;
+                    case "RP-PRESUP_RP030":
+                        MultiView1.ActiveViewIndex = 16;
+                        CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Dependencias", ref DDLDependencia_v17, "p_usuario", "p_ejercicio", "p_supertipo", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio, "REPORTES");
+                        DDLMes_v17.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
+                        btnChkCapitulos_v17.Visible = false;
+                        btnChkSubprogramas_v17.Visible = false;
+                        DDLDependencia_v17_SelectedIndexChanged(null, null);
                         break;
 
                 }
@@ -533,12 +542,15 @@ namespace SAF.Presupuesto.Reportes
         {
             try
             {
-                objReportes.Fuente = "0";
+                objReportes.Fuente = string.Empty;
             foreach (GridViewRow row in grdFuente.Rows)
             {
                 CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl("chkfuente");
                 if (chkUrs_Disponibles.Checked == true)
                 {
+                        if (objReportes.Fuente == string.Empty)
+                            objReportes.Fuente = Convert.ToString(grdFuente.Rows[row.RowIndex].Cells[1].Text);
+                        else
                         objReportes.Fuente  = objReportes.Fuente +","+ Convert.ToString(grdFuente.Rows[row.RowIndex].Cells[1].Text);
 
                     }
@@ -554,12 +566,15 @@ namespace SAF.Presupuesto.Reportes
         {
             try
             {
-                objReportes.Capitulo = "0";
+                objReportes.Capitulo = string.Empty;
                 foreach (GridViewRow row in grdCapitulo .Rows)
                 {
                     CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl("chkcapitulo");
                     if (chkUrs_Disponibles.Checked == true)
                     {
+                        if(objReportes.Capitulo == string.Empty)
+                            objReportes.Capitulo = Convert.ToString(grdCapitulo.Rows[row.RowIndex].Cells[1].Text);
+                        else
                         objReportes.Capitulo  = objReportes.Capitulo + "," + Convert.ToString(grdCapitulo.Rows[row.RowIndex].Cells[1].Text);
                     }
                 }
@@ -575,12 +590,15 @@ namespace SAF.Presupuesto.Reportes
             try
             {
                 
-                objReportes.Capitulo = "0";
+                objReportes.Capitulo = string.Empty;
                 foreach (GridViewRow row in Nombre_Grid.Rows)
                 {
                     CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl(Nombre_Checkbox);
                     if (chkUrs_Disponibles.Checked == true)
                     {
+                        if(objReportes.Capitulo== string.Empty)
+                            objReportes.Capitulo = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        else
                         objReportes.Capitulo = objReportes.Capitulo + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
                     }
                 }
@@ -644,13 +662,16 @@ namespace SAF.Presupuesto.Reportes
             try
             {
 
-                objReportes.SubPrograma = "0";
+                objReportes.SubPrograma = string.Empty;
                 foreach (GridViewRow row in Nombre_Grid.Rows)
                 {
                     CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl(Nombre_Checkbox);
                     if (chkUrs_Disponibles.Checked == true)
                     {
-                        objReportes.SubPrograma = objReportes.SubPrograma + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        if (objReportes.SubPrograma == string.Empty)
+                            objReportes.SubPrograma = Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
+                        else
+                            objReportes.SubPrograma = objReportes.SubPrograma + "," + Convert.ToString(Nombre_Grid.Rows[row.RowIndex].Cells[1].Text);
                     }
                 }
 
@@ -664,12 +685,15 @@ namespace SAF.Presupuesto.Reportes
         {
             try
             {
-                objReportes.Proyecto = "0";
+                objReportes.Proyecto = string.Empty;
                 foreach (GridViewRow row in grdProyectos_v1.Rows)
                 {
                     CheckBox chkUrs_Disponibles = (CheckBox)row.FindControl("chkproyecto");
                     if (chkUrs_Disponibles.Checked == true)
                     {
+                        if(objReportes.Proyecto == string.Empty)
+                            objReportes.Proyecto = Convert.ToString(grdProyectos_v1.Rows[row.RowIndex].Cells[1].Text);
+                        else
                         objReportes.Proyecto = objReportes.Proyecto + "," + Convert.ToString(grdProyectos_v1.Rows[row.RowIndex].Cells[1].Text);
                     }
                 }
@@ -869,6 +893,18 @@ namespace SAF.Presupuesto.Reportes
                     objReportes.Mes_anio = DDLMes_v8.SelectedValue + objReportes.Ejercicio.Substring(2, 2);
                     objReportes.Estatus = DDLStatus_v8.SelectedValue;
                     CNReportes.ConsultaGrid_Proyecto(ref objReportes, ref List);
+                }
+                else if (IdGrid == 24)
+                {
+                    objReportes.Dependencia = DDLDependencia_v17.SelectedValue;
+                    objReportes.DependenciaF = DDLDependencia_v17.SelectedValue;
+                    CNReportes.ConsultaGrid_Capitulo(ref objReportes, ref List);
+                }
+                else if (IdGrid == 25)
+                {
+                    objReportes.Dependencia = DDLDependencia_v17.SelectedValue;
+                    objReportes.DependenciaF = DDLDependencia_v17.SelectedValue;
+                    CNReportes.ConsultaGrid_Subprograma(ref objReportes, ref List);
                 }
                 else
                 {
@@ -1682,6 +1718,34 @@ namespace SAF.Presupuesto.Reportes
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
+
+        protected void imgBttnPdf_v17_Click(object sender, ImageClickEventArgs e)
+        {
+            rowCapitulo(grdCapitulo_v17, "chkCapitulo_v17");
+            rowSubprograma(grdSubprogramas_v17, "chkSubprograma_v17");
+            string ruta = string.Empty;
+            if(DDLPeriodo_v17.SelectedValue=="M")
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP030M&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v17.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&Ministrable=" + DDLMinistrable_v17.SelectedValue + "&MesIni=" + DDLMes_v17.SelectedValue;
+            else 
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP030A&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v17.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma +  "&Ministrable=" + DDLMinistrable_v17.SelectedValue + "&MesIni=" + DDLMes_v17.SelectedValue;
+
+            string _open1 = "window.open('" + ruta + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+        }
+
+        protected void imgBttnExcel_v17_Click(object sender, ImageClickEventArgs e)
+        {
+            rowCapitulo(grdCapitulo_v17, "chkCapitulo_v17");
+            rowSubprograma(grdSubprogramas_v17, "chkSubprograma_v17");
+            string ruta = string.Empty;
+
+            if (DDLPeriodo_v17.SelectedValue == "M")
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP030M_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v17.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&Ministrable=" + DDLMinistrable_v17.SelectedValue + "&MesIni=" + DDLMes_v17.SelectedValue;
+            else
+                ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP030A_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v17.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&Ministrable=" + DDLMinistrable_v17.SelectedValue + "&MesIni=" + DDLMes_v17.SelectedValue;
+            string _open1 = "window.open('" + ruta + "', '_newtab');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+        }
         protected void btnChkCapitulos_Click(object sender, EventArgs e)
         {
             bool check;
@@ -1887,6 +1951,29 @@ namespace SAF.Presupuesto.Reportes
             else
                 btnChkFuentes_v15.Visible = false;
         }
+        protected void DDLDependencia_v17_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarGrid(ref grdCapitulo_v17, 24);
+            CargarGrid(ref grdSubprogramas_v17, 25);
+            grdCapitulo_v17.Visible = true;
+            grdSubprogramas_v17.Visible = true;
+
+            if (grdCapitulo_v17.Rows.Count > 0)
+            {
+                btnChkCapitulos_v17.Text = "Marcar todos";
+                btnChkCapitulos_v17.Visible = true;
+            }
+            else
+                btnChkCapitulos_v17.Visible = false;
+
+            if (grdSubprogramas_v17.Rows.Count > 0)
+            {
+                btnChkSubprogramas_v17.Text = "Marcar todos";
+                btnChkSubprogramas_v17.Visible = true;
+            }
+            else
+                btnChkSubprogramas_v17.Visible = false;
+        }
         protected void DDLReporte_v15_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarGrid(ref grdCapitulo_v15, 21);
@@ -2029,6 +2116,25 @@ namespace SAF.Presupuesto.Reportes
                 check_box.Checked = check;
             }
         }
+        protected void btnChkCapitulos_v17_Click(object sender, EventArgs e)
+        {
+            bool check;
+            if (btnChkCapitulos_v17.Text == "Marcar todos")
+            {
+                btnChkCapitulos_v17.Text = "Quitar todos";
+                check = true;
+            }
+            else
+            {
+                btnChkCapitulos_v17.Text = "Marcar todos";
+                check = false;
+            }
+            foreach (GridViewRow row in grdCapitulo_v17.Rows)
+            {
+                CheckBox check_box = row.FindControl("chkCapitulo_v17") as CheckBox;
+                check_box.Checked = check;
+            }
+        }
 
         protected void btnChkSubprogramas_v14_Click(object sender, EventArgs e)
         {
@@ -2049,7 +2155,26 @@ namespace SAF.Presupuesto.Reportes
                 check_box.Checked = check;
             }
         }
+        protected void btnChkSubprogramas_v17_Click(object sender, EventArgs e)
+        {
+            bool check;
+            if (btnChkSubprogramas_v17.Text == "Marcar todos")
+            {
+                btnChkSubprogramas_v17.Text = "Quitar todos";
+                check = true;
+            }
+            else
+            {
+                btnChkSubprogramas_v17.Text = "Marcar todos";
+                check = false;
+            }
+            foreach (GridViewRow row in grdSubprogramas_v17.Rows)
+            {
+                CheckBox check_box = row.FindControl("chkSubprograma_v17") as CheckBox;
+                check_box.Checked = check;
+            }
+        }
 
-        
+
     }
 }
