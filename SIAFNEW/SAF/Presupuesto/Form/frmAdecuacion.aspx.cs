@@ -263,6 +263,7 @@ namespace SAF.Presupuesto
                     lblMesInicialDet.Text = "Mes";
                     lblMesFinalDet.Visible = false;
                     ddlMesFinalDet.Visible = false;
+                    ddlMesInicialDet.Enabled = true;
 
                     rbtOrigen_Destino.Enabled = true;
                     rbtOrigen_Destino.SelectedValue = "O";
