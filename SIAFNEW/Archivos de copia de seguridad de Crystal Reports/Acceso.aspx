@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Acceso.aspx.cs" Inherits="SAF.Contabilidad.Acceso" %>
+﻿        <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Acceso.aspx.cs" Inherits="SAF.Contabilidad.Acceso" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%--MODIF RUBICEL 111120--%>
@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link type="image/x-icon" href="https://sysweb.unach.mx/resources/imagenes/favicon.ico" rel="shortcut icon" />
-    <link rel="stylesheet" href="https://sysweb.unach.mx/resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://sysweb.unach.mx/resources/bootstrap/css/bootstrap.min.css">    
     <link rel="stylesheet" type="text/css" href="https://sysweb.unach.mx/resources/bootstrap/css/mdb.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
     <script>
 
-    //pruebas
+
 </script>
     <title>Sistema | Sysweb</title>
 
@@ -83,13 +83,9 @@
                                 <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                             </div>
                             <asp:DropDownList ID="ddlEjercicio" runat="server" CssClass="form-control">
+                                <asp:ListItem>2021</asp:ListItem>
                                 <asp:ListItem>2020</asp:ListItem>
-                                <asp:ListItem>2019</asp:ListItem>
-                                <asp:ListItem>2018</asp:ListItem>
-                                <asp:ListItem>2017</asp:ListItem>
-                                <asp:ListItem>2016</asp:ListItem>
-                                <asp:ListItem>2015</asp:ListItem>
-                                <asp:ListItem>2014</asp:ListItem>
+                                
                             </asp:DropDownList>
                         </div>
                         <div class="row">
