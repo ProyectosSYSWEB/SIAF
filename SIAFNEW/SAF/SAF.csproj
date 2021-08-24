@@ -655,6 +655,18 @@
     <Compile Include="Presupuesto\Reportes\frmReportes.aspx.designer.cs">
       <DependentUpon>frmReportes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-CP09nv5_ADMIN.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-CP09nv5_ADMIN.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-ENTREGA-RECEPCION.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-ENTREGA-RECEPCION.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_DET_CED_DERIVADA.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -841,12 +853,6 @@
       <DependentUpon>RPT-PRESUP_RP008MR.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP012M1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPT-PRESUP_RP012M.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP021A_PARTIDA.cs">
       <DependentUpon>RPT-PRESUP_RP021A_PARTIDA.rpt</DependentUpon>
       <SubType>Component</SubType>
@@ -931,12 +937,6 @@
       <DependentUpon>RPT-PRESUP_RP012A.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_RP012M.cs">
-      <DependentUpon>RPT-PRESUP_RP012M.rpt</DependentUpon>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-Xejercer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1008,6 +1008,14 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-CP09nv5_ADMIN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-CP09nv5_ADMIN.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-ENTREGA-RECEPCION.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-ENTREGA-RECEPCION.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_DET_CED_DERIVADA.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_DET_CED_DERIVADA.cs</LastGenOutput>
@@ -1187,10 +1195,6 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP012A.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_RP012A.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_RP012M.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPT-PRESUP_RP012M1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-Xejercer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
