@@ -78,17 +78,17 @@ namespace SAF.Presupuesto.Form
                     objEstrucProg.Ejercicio = Convert.ToInt32(SesionUsu.Usu_Ejercicio);
                     CN_Presupuesto.InsertarEstructuraProg(objEstrucProg, ref Verificador);
                     if (Verificador == "0")
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctamente.')", true);
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);
                     else                                            
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador + ".')", true);                    
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ Verificador + ".')", true);                    
                }
                else
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'No tiene los privilegios necesarios para realizar esta acción.')", true);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios necesarios para realizar esta acción.')", true);
                 
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ ex.Message + ".')", true);                
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ ex.Message + ".')", true);                
             }
         }
         protected void DDLPrograma_SelectedIndexChanged(object sender, EventArgs e)
