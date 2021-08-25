@@ -1,8 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VisualizadorCrystal.aspx.cs" Inherits="SAF.Presupuesto.Reportes.VisualizadorCrystal" %>
 
-<%--<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>--%>
-
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+
 
 
 
@@ -23,8 +22,7 @@
     
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-        <%--<CR:CrystalReportViewer ID="CR_Reportes" runat="server" AutoDataBind="true" />--%>
-        <CR:CrystalReportViewer ID="CR_Reportes" runat="server" AutoDataBind="true"></CR:CrystalReportViewer>
+        <CR:CrystalReportViewer ID="CR_Reportes" runat="server" AutoDataBind="true" />
         
     </div>
     </form>

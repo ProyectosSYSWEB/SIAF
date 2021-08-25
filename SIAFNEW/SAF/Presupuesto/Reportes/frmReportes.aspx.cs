@@ -213,6 +213,7 @@ namespace SAF.Presupuesto.Reportes
                         grdFuentes_v13.Visible = false;
                         btnChkFuentes_v13.Visible = false;
                         txtFechaEntrega.Text = System.DateTime.Now.ToString("dd/MMMM/yyyy");
+                        DDLDependencia_v13_SelectedIndexChanged(null, null);
                         break;
                     case "RP-PRESUP_DP01":
                         MultiView1.ActiveViewIndex = 15;
