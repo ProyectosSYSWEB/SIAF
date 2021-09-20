@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAF.Presupuesto.Form {
-    
-    
-    public partial class frmConsultas {
-        
+namespace SAF.Presupuesto.Form
+{
+
+
+    public partial class frmConsultas
+    {
+
         /// <summary>
         /// Control UpdateProgress1.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress UpdateProgress1;
-        
+
         /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// Control Label4.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-        
+
         /// <summary>
         /// Control DDLDependencia.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLDependencia;
-        
+
         /// <summary>
         /// Control Label1.
         /// </summary>
@@ -56,7 +58,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// Control DDLFuente.
         /// </summary>
@@ -65,7 +67,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLFuente;
-        
+
         /// <summary>
         /// Control grdCapitulo.
         /// </summary>
@@ -74,7 +76,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdCapitulo;
-        
+
         /// <summary>
         /// Control updPnlBuscar.
         /// </summary>
@@ -83,7 +85,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlBuscar;
-        
+
         /// <summary>
         /// Control btnBuscar.
         /// </summary>
@@ -92,7 +94,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscar;
-        
+
         /// <summary>
         /// Control Label3.
         /// </summary>
@@ -101,7 +103,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-        
+
         /// <summary>
         /// Control updPnlCodProg.
         /// </summary>
@@ -110,7 +112,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updPnlCodProg;
-        
+
         /// <summary>
         /// Control DDLCodProg.
         /// </summary>
@@ -119,7 +121,16 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLCodProg;
-        
+
+        /// <summary>
+        /// Control imgBttnPDF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBttnPDF;
+
         /// <summary>
         /// Control UpdatePanel11.
         /// </summary>
@@ -128,7 +139,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel11;
-        
+
         /// <summary>
         /// Control grdCodProg.
         /// </summary>
@@ -137,7 +148,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdCodProg;
-        
+
         /// <summary>
         /// Control UpdatePanel2.
         /// </summary>
@@ -146,7 +157,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
+
         /// <summary>
         /// Control GRDCedulas.
         /// </summary>
@@ -155,7 +166,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GRDCedulas;
-        
+
         /// <summary>
         /// Control UpdatePanel3.
         /// </summary>
@@ -164,7 +175,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
+
         /// <summary>
         /// Control GRDAumentos.
         /// </summary>
@@ -173,7 +184,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GRDAumentos;
-        
+
         /// <summary>
         /// Control UpdatePanel4.
         /// </summary>
@@ -182,7 +193,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel4;
-        
+
         /// <summary>
         /// Control GRDMinistraciones.
         /// </summary>
@@ -191,7 +202,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GRDMinistraciones;
-        
+
         /// <summary>
         /// Control updProCodProg.
         /// </summary>
@@ -200,7 +211,7 @@ namespace SAF.Presupuesto.Form {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress updProCodProg;
-        
+
         /// <summary>
         /// Control updProBtnBuscar.
         /// </summary>

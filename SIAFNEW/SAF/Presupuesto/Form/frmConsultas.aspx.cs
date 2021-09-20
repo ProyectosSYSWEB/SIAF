@@ -382,6 +382,20 @@ namespace SAF.Presupuesto.Form
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
 
-       
+        protected void imgBttnPDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string ruta1 = "";
+                ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RPT-Generales_Cedulas&P_Depend="+ DDLDependencia.SelectedValue + "&P_Ejercicio=" + SesionUsu.Usu_Ejercicio+ "&P_ID_COD_PROG=" + DDLCodProg.SelectedValue;
+                string _open1 = "window.open('" + ruta1 + "', '_newtab');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
+            }
+        }
+
     }
 }
