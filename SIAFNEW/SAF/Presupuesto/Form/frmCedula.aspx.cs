@@ -1134,6 +1134,9 @@ namespace SAF.Presupuesto
                 }
                 catch (Exception ex)
                 {
+                    string Msj = ex.Message;
+                    CNComun.VerificaTextoMensajeError(ref Msj);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'Error al obtener el detalle de la cédula: "+Msj+"');", true);
                 }
             }
         }

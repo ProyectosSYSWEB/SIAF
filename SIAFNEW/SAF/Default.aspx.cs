@@ -54,7 +54,7 @@ namespace SAF
                     {
                         divEspecificaciones.Visible = true;
                         lblEncEspecificaciones.Text = "Movimientos";
-                        lblEspecificaciones.Text = "Registro y seguimiento del gasto realizado de acuerdo con el presupuesto de egresos asignado, registro de la conciliación bancaria.";
+                        lblEspecificaciones.Text = "Registro y seguimiento del gasto realizado de acuerdo con el presupuesto de egresos asignado.";
                     }
                     else
                         divEspecificaciones.Visible = false;
