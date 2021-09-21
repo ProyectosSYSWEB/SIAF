@@ -20,14 +20,14 @@
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="DDLReporte" runat="server" Width="500px" AutoPostBack="True" >
-                                                <asp:ListItem Value="RPT-CP01_ADMIN.rpt">RPT CP01 ADMIN</asp:ListItem>
-                                                <asp:ListItem Value="RPT-CP07_ADMIN.rpt">RPT CP07 ADMIN</asp:ListItem>
-                                                <asp:ListItem Value="RPT-CP08_ADMIN.rpt">RPT CP08 ADMIN</asp:ListItem>
-                                                <asp:ListItem Value="RPT-CP09_ADMIN.rpt">RPT CP09 ADMIN</asp:ListItem>
-                                                <asp:ListItem Value="RPT-CP09nv2_ADMIN.rpt">RPT CP09nv2 ADMIN</asp:ListItem>
-                                                <asp:ListItem Value="RPT-CP09nv3_ADMIN.rpt">RPT CP09nv3 ADMIN</asp:ListItem>
-                                                <asp:ListItem Value="RPT-CP09nv5_ADMIN.rpt">RPT CP09nv5 ADMIN</asp:ListItem>
-                                                <asp:ListItem Value="RPT-CPO2_ADMIN.rpt">RPT CPO2 ADMIN</asp:ListItem>
+                                                <asp:ListItem Value="RPT-CP01_ADMIN">RPT CP01 ADMIN</asp:ListItem>
+                                                <asp:ListItem Value="RPT-CP07_ADMIN">RPT CP07 ADMIN</asp:ListItem>
+                                                <asp:ListItem Value="RPT-CP08_ADMIN">RPT CP08 ADMIN</asp:ListItem>
+                                                <asp:ListItem Value="RPT-CP09_ADMIN">RPT CP09 ADMIN</asp:ListItem>
+                                                <asp:ListItem Value="RPT-CP09nv2_ADMIN">RPT CP09nv2 ADMIN</asp:ListItem>
+                                                <asp:ListItem Value="RPT-CP09nv3_ADMIN">RPT CP09nv3 ADMIN</asp:ListItem>
+                                                <asp:ListItem Value="RPT-CP09nv5_ADMIN">RPT CP09nv5 ADMIN</asp:ListItem>
+                                                <asp:ListItem Value="RPT-CPO2_ADMIN">RPT CPO2 ADMIN</asp:ListItem>
                                             </asp:DropDownList>
                                             </td>
                                             </tr>
@@ -74,10 +74,10 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    <asp:Button runat="server" id="btnGenerarReporte" class="btn btn-success" onclick="btn_generar_reporte"  imageurl="http://sysweb.unach.mx/resources/imagenes/pdf.png" title="Reporte PDF" Text="Generar Reporte"/>
-                                                </td>
-                                            </tr>
+                                <td class="cuadro_botones" colspan="5">
+                                    <asp:ImageButton ID="imgBttnPDF" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" OnClick="btn_generar_reporte" title="Reporte PDF" />
+                                </td>
+                            </tr>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </td>

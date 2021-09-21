@@ -25,7 +25,7 @@ namespace SAF.Presupuesto.Form
                 var reporte = DDLReporte.SelectedValue;
 
                 string ruta1 = string.Empty;
-                ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo="+reporte + "&MesIni=" + mesIni + "&MesFin=" + mesFin + "&Ejercicio=" + SesionUsu.Usu_Ejercicio;
+                ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=" + reporte + "&MesIni=" + mesIni + "&MesFin=" + mesFin + "&Ejercicio=" + SesionUsu.Usu_Ejercicio;
                 string _open1 = "window.open('" + ruta1 + "', '_newtab');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
             }

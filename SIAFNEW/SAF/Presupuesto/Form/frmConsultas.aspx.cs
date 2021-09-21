@@ -387,7 +387,7 @@ namespace SAF.Presupuesto.Form
             try
             {
                 string ruta1 = "";
-                ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RPT-Generales_Cedulas&P_Depend="+ DDLDependencia.SelectedValue + "&P_Ejercicio=" + SesionUsu.Usu_Ejercicio+ "&P_ID_COD_PROG=" + DDLCodProg.SelectedValue;
+                ruta1 = "../Reportes/VisualizadorCrystal.aspx?Tipo=RPT-Generales_Cedulas&Dependencia="+ DDLDependencia.SelectedValue + "&Ejercicio=" + SesionUsu.Usu_Ejercicio+ "&ID=" + DDLCodProg.SelectedValue;
                 string _open1 = "window.open('" + ruta1 + "', '_newtab');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
             }
