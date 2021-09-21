@@ -905,6 +905,60 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(0, Ejercicio);
                         reporte_PDF();
                         break;
+                    case "RPT-Generales_Cedulas":
+                        Reporte = "Presupuesto\\Reportes\\RPT-Generales_Cedulas.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Dependencia); report.SetParameterValue(1, Ejercicio); report.SetParameterValue(2, Id);
+                        reporte_PDF();
+                        break;
+                    case "RPT-CP01_ADMIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-CP01_ADMIN.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-CP07_ADMIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-CP07_ADMIN.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-CP08_ADMIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-CP08_ADMIN.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-CP09_ADMIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-CP09_ADMIN.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-CP09nv2_ADMIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-CP09nv2_ADMIN.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-CP09nv3_ADMIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-CP09nv3_ADMIN";
+                        reportes_dir();
+                        report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-CP09nv5_ADMIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-CP09nv5_ADMIN.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
+                        reporte_PDF();
+                        break;
+                    case "RPT-CPO2_ADMIN":
+                        Reporte = "Presupuesto\\Reportes\\RPT-CPO2_ADMIN.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
+                        reporte_PDF();
+                        break;
                 }
             }
             catch (Exception ex)
