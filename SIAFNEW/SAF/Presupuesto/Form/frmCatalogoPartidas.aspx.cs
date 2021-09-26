@@ -38,7 +38,7 @@ namespace SAF.Presupuesto.Form
             DDLCapt.SelectedValue = "1";
             string Capitulo = DDLCapt.SelectedValue;
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_SubCapitulo", ref DDLSubcap, "p_capitulo", "p_nivel", Capitulo.Substring(0, 1), "2");
-            DDLSubcap.SelectedValue = "1";
+            DDLSubcap.SelectedIndex = 1;
             string SubCapitulo = DDLSubcap.SelectedValue;
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_SubSubCapitulo", ref DDLSubsubcap, "p_Subcapitulo", "p_nivel", SubCapitulo.Substring(0, 2), "3");            
         }
@@ -61,6 +61,10 @@ namespace SAF.Presupuesto.Form
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctament.')", true);                        
                         txtPartida.Text = "";
                         txtDescrip.Text = "";
+                        txtConcepto.Text = "";
+                        DDLCapt.SelectedIndex = 0;
+                        DDLSubcap.SelectedIndex = 0;
+                        DDLSubsubcap.SelectedIndex = 0;
                     }
                     else                    
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador+".')", true);                        
