@@ -179,10 +179,16 @@ namespace SAF.Presupuesto.Form
                 objCodigoProg.Ejercicio = SesionUsu.Usu_Ejercicio;
                 string Verificador = string.Empty;
                 CN_Cat_Ctrl_Presp.InsertarCodigoProg(objCodigoProg, ref Verificador);
-                if (Verificador == "0")               
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);                
+                if (Verificador == "0")
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);
+                    DDLDependencia.SelectedIndex = 1;
+                    DDLCodProg.SelectedIndex = 0;                    
+                    DDLPartida.SelectedIndex = 0;
+                    DDLFuente.SelectedIndex = 0;                    
+                }
                 else
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ Verificador + ".')", true);                
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);                
             }
             catch(Exception ex)
             {

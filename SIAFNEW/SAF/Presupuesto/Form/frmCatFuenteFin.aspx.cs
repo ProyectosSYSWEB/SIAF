@@ -35,7 +35,9 @@ namespace SAF.Presupuesto.Form
         protected void CargarCombos()
         {
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofuente, "p_valor", "p_clave", "1", "0");
-            DDLTipofuente.SelectedValue = "1";            
+            DDLTipofuente.SelectedIndex = 0;
+            string Fuente = DDLTipofuente.SelectedValue;
+            txtFuente.Text = Fuente.Substring(0, 3);
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDLTipofondo, "p_valor", "p_clave", "2", "0");
             DDLTipofondo.SelectedValue = "1";
             //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_TipoFinan", ref DDDLTipoSubFondo, "p_valor", "p_clave", "3", "0");
@@ -67,6 +69,9 @@ namespace SAF.Presupuesto.Form
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctamente.')", true);
                         txtFuente.Text = "";
                         txtDescrip.Text = "";
+                        DDLTipofuente.SelectedIndex = 0;
+                        DDLTipofondo.SelectedIndex = 0;
+                        DDLFuenteFin.SelectedIndex = 0;
                     }
                     else
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador + ".')", true);                    

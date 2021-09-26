@@ -57,6 +57,7 @@ namespace SAF.Presupuesto.Form
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 1, 'Se ha guardado correctamente.');", true);                        
                         txtPrograma.Text = "";
                         txtDescripcion.Text = "";
+                        DDLNvlacd.SelectedIndex = 0;
                     }
                     else
                     {                        

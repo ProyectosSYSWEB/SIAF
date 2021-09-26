@@ -58,8 +58,7 @@ namespace SAF.Presupuesto.Form
                     {
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctamente.')", true);                        
                         txtCap.Text = "";
-                        txtDescrip.Text = "";
-                        txtNvl.Text = "";
+                        txtDescrip.Text = "";                        
                     }
                     else                    
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador+".')", true);                        

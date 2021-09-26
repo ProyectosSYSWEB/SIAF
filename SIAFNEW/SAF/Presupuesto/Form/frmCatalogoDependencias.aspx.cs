@@ -86,6 +86,8 @@ namespace SAF.Presupuesto.Form
                         txtTelAdmin.Text = "";
                         txtCelAdmin.Text = "";
                         txtNombramiento.Text = "";
+                        DDLCentroContab.SelectedIndex = 0;
+                        DDLMunicipio.SelectedIndex = 0;
                     }
                     else
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+Verificador+".')", true);

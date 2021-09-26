@@ -35,6 +35,7 @@ namespace SAF.Presupuesto.Form
         protected void CargarCombos()
         {
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Funcion", ref DDLFuncion);
+            DDLFuncion.SelectedIndex = 1;
             //CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Fun_Fed", ref DDLFuenteFed);
         }
 
@@ -56,6 +57,7 @@ namespace SAF.Presupuesto.Form
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);                        
                         txtPrograma.Text = "";
                         txtDescripcion.Text = "";
+                        DDLFuncion.SelectedIndex = 1;
                     }
                     else
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);

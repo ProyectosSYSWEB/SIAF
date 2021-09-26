@@ -78,9 +78,16 @@ namespace SAF.Presupuesto.Form
                     objEstrucProg.Ejercicio = Convert.ToInt32(SesionUsu.Usu_Ejercicio);
                     CN_Presupuesto.InsertarEstructuraProg(objEstrucProg, ref Verificador);
                     if (Verificador == "0")
+                    {
+                        DDLCentroContab.SelectedIndex = 0;
+                        DDLPrograma.SelectedIndex = 0;
+                        DDLSubprog.SelectedIndex = 0;
+                        DDLDepend.SelectedIndex = 0;
+                        DDLProy.SelectedIndex = 0;
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);
-                    else                                            
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ Verificador + ".')", true);                    
+                    }
+                    else
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + Verificador + ".')", true);                    
                }
                else
                     ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios necesarios para realizar esta acción.')", true);
