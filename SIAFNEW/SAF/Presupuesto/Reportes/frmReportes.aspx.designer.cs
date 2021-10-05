@@ -949,6 +949,15 @@ namespace SAF.Presupuesto.Reportes {
         protected global::System.Web.UI.WebControls.DropDownList DDLCuentas_v7;
         
         /// <summary>
+        /// Control grdCapitulo_v7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdCapitulo_v7;
+        
+        /// <summary>
         /// Control UpdatePanel2.
         /// </summary>
         /// <remarks>

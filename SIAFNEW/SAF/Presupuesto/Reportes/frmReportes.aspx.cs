@@ -136,6 +136,8 @@ namespace SAF.Presupuesto.Reportes
                         MultiView1.ActiveViewIndex = 6;
                         CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Centro_Contable", ref DDLCentro_Contable_v7, "p_usuario", "p_ejercicio", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio);
                         CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Mayor_Comparativo", ref DDLCuentas_v7, "p_reporte",DDLTipoReporte_v7.SelectedValue);
+                        grdCapitulo_v7.Visible = false;
+                        //CargarGrid(ref grdCapitulo_v7, 26);
                         break;
                     case "RP-Listado_Cedulas":
                         MultiView1.ActiveViewIndex = 7;
@@ -907,6 +909,12 @@ namespace SAF.Presupuesto.Reportes
                     objReportes.DependenciaF = DDLDependencia_v17.SelectedValue;
                     CNReportes.ConsultaGrid_Subprograma(ref objReportes, ref List);
                 }
+                else if (IdGrid == 26)
+                {
+                    objReportes.Dependencia = "11101";
+                    objReportes.DependenciaF = "81101";
+                    CNReportes.ConsultaGrid_Capitulo(ref objReportes, ref List);
+                }
                 else
                 {
                     objReportes.Dependencia = DDLDependencia_v9.SelectedValue;
@@ -993,6 +1001,14 @@ namespace SAF.Presupuesto.Reportes
         protected void DDLTipoReporte_v7_SelectedIndexChanged(object sender, EventArgs e)
         {
             CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Mayor_Comparativo", ref DDLCuentas_v7, "p_reporte", DDLTipoReporte_v7.SelectedValue);
+            if (DDLTipoReporte_v7.SelectedValue == "GC")
+            {
+                CargarGrid(ref grdCapitulo_v7, 26);
+                grdCapitulo_v7.Visible = true;
+            }
+            else
+                grdCapitulo_v7.Visible = false;
+
         }
         protected void DDLFiltro_v8_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1186,14 +1202,17 @@ namespace SAF.Presupuesto.Reportes
             string ruta = string.Empty;
             switch (DDLTipoReporte_v7.SelectedValue)
             {
-                case "CC":
-                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CUENTA&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue+SesionUsu.Usu_Ejercicio.Substring(2,2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
+                case "CP": //CUENTA PRESUPUESTARIA
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CUENTA&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue+ "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2,2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
-                case "GC":
-                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CAPITULO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
+                case "GA": //GRUPO 5000 (ANALITICO)
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO_A&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
-                case "GG":
+                case "GG"://GRUPO 5000 (GENERAL)
                     ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
+                    break;
+                case "GC": //CAPITULO
+                    //ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
 
             }
@@ -1206,13 +1225,13 @@ namespace SAF.Presupuesto.Reportes
             string ruta = string.Empty;
             switch (DDLTipoReporte_v7.SelectedValue)
             {
-                case "CC":
+                case "CP": //CUENTA PRESUPUESTARIA
                     ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CUENTA_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
-                case "GC":
-                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CAPITULO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
+                case "GA": //GRUPO 5000 (ANALITICO)
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO_A_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
-                case "GG":
+                case "GG"://GRUPO 5000 (GENERAL)
                     ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
 
@@ -1746,6 +1765,40 @@ namespace SAF.Presupuesto.Reportes
                 ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_RP030A_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v17.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Subprograma=" + objReportes.SubPrograma + "&Ministrable=" + DDLMinistrable_v17.SelectedValue + "&MesIni=" + DDLMes_v17.SelectedValue;
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
+        }
+        protected void chk_Capitulos_v7_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CheckBox cbh = (CheckBox)(sender);
+                GridViewRow row = (GridViewRow)cbh.NamingContainer;
+                if (cbh.Checked)
+                {
+                    foreach (GridViewRow gvr in grdCapitulo_v7.Rows)
+                    {
+                        CheckBox chi = (CheckBox)(gvr.FindControl("chkDatos_v7"));
+                        chi.Checked = true;
+                        //ar.Add(gvr.Cells[1]);
+                        //ar.Add(grdCapitulo_v7.Rows[gvr.RowIndex].Cells[1].Text);
+                    }
+                }
+                else
+                {
+                    foreach (GridViewRow gvr in grdCapitulo_v7.Rows)
+                    {
+                        CheckBox chi = (CheckBox)(gvr.FindControl("chkDatos_v7"));
+                        chi.Checked = false;
+                        //ar.Remove(gvr.Cells[1]);
+                        //ar.Remove(grdCapitulo_v7.Rows[gvr.RowIndex].Cells[1].Text);
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //lblMensaje.Text = ex.Message;
+            }
         }
         protected void btnChkCapitulos_Click(object sender, EventArgs e)
         {

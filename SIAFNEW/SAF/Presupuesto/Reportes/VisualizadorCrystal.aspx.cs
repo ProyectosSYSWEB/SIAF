@@ -414,6 +414,20 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Mayor);
                         reporte_XLS();
                         break;
+                    case "RP-PRESUP_COMPARATIVO_GRUPO_A":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_COMPARATIVO_GRUPO_ANALITICO.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, CentroContable);
+                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Mayor);
+                        reporte_PDF();
+                        break;
+                    case "RP-PRESUP_COMPARATIVO_GRUPO_A_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_COMPARATIVO_GRUPO_ANALITICO.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, CentroContable);
+                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Mayor);
+                        reporte_XLS();
+                        break;
                     case "RP-DOCUMENTOS":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_GRID_DOCS.rpt";
                         reportes_dir();

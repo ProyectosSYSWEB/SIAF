@@ -126,7 +126,11 @@
                                 </td>
                                 
                             </tr>
-
+                            <tr>
+                                <td class="cuadro_botones" colspan="5">
+                                    <asp:ImageButton ID="imgBttnPDF" runat="server" ImageUrl="http://sysweb.unach.mx/resources/imagenes/pdf.png" OnClick="imgBttnPDF_Click" title="Reporte PDF" />
+                                </td>
+                            </tr>
 
 
                             
