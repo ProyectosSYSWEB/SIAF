@@ -685,6 +685,12 @@
       <DependentUpon>RPT-PRESUP_COMPARATIVO_CAPITULO.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CAPITULO_ANALITICO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT-PRESUP_COMPARATIVO_CAPITULO_ANALITICO.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_GRUPO.cs">
       <DependentUpon>RPT-PRESUP_COMPARATIVO_GRUPO.rpt</DependentUpon>
       <SubType>Component</SubType>
@@ -692,10 +698,10 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_GRUPO_ANALITICO.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>RPT-PRESUP_COMPARATIVO_GRUPO_ANALITICO.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Presupuesto\Reportes\RPT-PRESUP_DET_CED_DERIVADA.cs">
       <AutoGen>True</AutoGen>
@@ -1053,6 +1059,10 @@
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CAPITULO.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPT-PRESUP_COMPARATIVO_CAPITULO.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_CAPITULO_ANALITICO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT-PRESUP_COMPARATIVO_CAPITULO_ANALITICO.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presupuesto\Reportes\RPT-PRESUP_COMPARATIVO_GRUPO.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

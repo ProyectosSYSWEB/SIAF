@@ -597,7 +597,8 @@
                                 <asp:ListItem Value="CP">Cuenta presupuestaria</asp:ListItem>
                                  <asp:ListItem Value="GA">Grupo (Analítico)</asp:ListItem>
                                 <asp:ListItem Value="GG">Grupo (General)</asp:ListItem>
-                                <asp:ListItem Value="GC">Capítulo</asp:ListItem>
+                                <asp:ListItem Value="CA">Capítulo (Analítico)</asp:ListItem>
+                                <asp:ListItem Value="CG">Capítulo (General)</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>

@@ -137,7 +137,9 @@ namespace SAF.Presupuesto.Reportes
                         CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Centro_Contable", ref DDLCentro_Contable_v7, "p_usuario", "p_ejercicio", SesionUsu.Usu_Nombre, SesionUsu.Usu_Ejercicio);
                         CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Mayor_Comparativo", ref DDLCuentas_v7, "p_reporte",DDLTipoReporte_v7.SelectedValue);
                         grdCapitulo_v7.Visible = false;
-                        //CargarGrid(ref grdCapitulo_v7, 26);
+                        DDLMes_Inicial_v7.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
+                        DDLMes_Final_v7.SelectedValue = System.DateTime.Now.Month.ToString().PadLeft(2, '0');
+                        CargarGrid(ref grdCapitulo_v7, 26);
                         break;
                     case "RP-Listado_Cedulas":
                         MultiView1.ActiveViewIndex = 7;
@@ -1000,14 +1002,20 @@ namespace SAF.Presupuesto.Reportes
         }
         protected void DDLTipoReporte_v7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Mayor_Comparativo", ref DDLCuentas_v7, "p_reporte", DDLTipoReporte_v7.SelectedValue);
-            if (DDLTipoReporte_v7.SelectedValue == "GC")
+            if (DDLTipoReporte_v7.SelectedValue == "CA" || DDLTipoReporte_v7.SelectedValue == "CG")
             {
-                CargarGrid(ref grdCapitulo_v7, 26);
+                //CargarGrid(ref grdCapitulo_v7, 26);
                 grdCapitulo_v7.Visible = true;
+                lblCuentas_v7.Visible = false;
+                DDLCuentas_v7.Visible = false;
             }
             else
+            {
+                lblCuentas_v7.Visible = true;
+                DDLCuentas_v7.Visible = true;
+                CNComun.LlenaCombo("pkg_presupuesto.Obt_Combo_Mayor_Comparativo", ref DDLCuentas_v7, "p_reporte", DDLTipoReporte_v7.SelectedValue);
                 grdCapitulo_v7.Visible = false;
+            }
 
         }
         protected void DDLFiltro_v8_SelectedIndexChanged(object sender, EventArgs e)
@@ -1200,6 +1208,7 @@ namespace SAF.Presupuesto.Reportes
         protected void btnPDF_v7_Click(object sender, ImageClickEventArgs e)
         {
             string ruta = string.Empty;
+            rowCapitulo(grdCapitulo_v7,"chkDatos_v7");
             switch (DDLTipoReporte_v7.SelectedValue)
             {
                 case "CP": //CUENTA PRESUPUESTARIA
@@ -1211,8 +1220,11 @@ namespace SAF.Presupuesto.Reportes
                 case "GG"://GRUPO 5000 (GENERAL)
                     ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
                     break;
-                case "GC": //CAPITULO
-                    //ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
+                case "CG": //CAPITULO (GENERAL)
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CAP&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue + "&Capitulo=" + objReportes.Capitulo;
+                    break;
+                case "CA": //CAPITULO (ANALITICO)
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CAP_A&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue + "&Capitulo=" + objReportes.Capitulo;
                     break;
 
             }
@@ -1233,6 +1245,12 @@ namespace SAF.Presupuesto.Reportes
                     break;
                 case "GG"://GRUPO 5000 (GENERAL)
                     ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_GRUPO_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue;
+                    break;
+                case "CG": //CAPITULO (GENERAL)
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CAP_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue + "&Capitulo=" + objReportes.Capitulo;
+                    break;
+                case "CA": //CAPITULO (ANALITICO)
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_COMPARATIVO_CAP_A_XLS&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&CentroContable=" + DDLCentro_Contable_v7.SelectedValue + "&MesIni=" + DDLMes_Inicial_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&MesFin=" + DDLMes_Final_v7.SelectedValue + SesionUsu.Usu_Ejercicio.Substring(2, 2) + "&Mayor=" + DDLCuentas_v7.SelectedValue + "&Capitulo=" + objReportes.Capitulo;
                     break;
 
             }

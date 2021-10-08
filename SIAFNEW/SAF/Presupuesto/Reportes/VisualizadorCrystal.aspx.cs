@@ -386,18 +386,32 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(3, MesIni); report.SetParameterValue(4, MesFin); report.SetParameterValue(5, Mayor.Substring(4, 1));
                         reporte_XLS();
                         break;
-                    case "RP-PRESUP_COMPARATIVO_CAPITULO":
+                    case "RP-PRESUP_COMPARATIVO_CAP":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_COMPARATIVO_CAPITULO.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, CentroContable); 
-                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4,Mayor);
+                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4,Capitulo);
                         reporte_PDF();
                         break;
-                    case "RP-PRESUP_COMPARATIVO_CAPITULO_XLS":
+                    case "RP-PRESUP_COMPARATIVO_CAP_XLS":
                         Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_COMPARATIVO_CAPITULO.rpt";
                         reportes_dir();
                         report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, CentroContable);
-                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Mayor);
+                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Capitulo);
+                        reporte_XLS();
+                        break;
+                    case "RP-PRESUP_COMPARATIVO_CAP_A":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_COMPARATIVO_CAPITULO_ANALITICO.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, CentroContable);
+                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Capitulo);
+                        reporte_PDF();
+                        break;
+                    case "RP-PRESUP_COMPARATIVO_CAP_A_XLS":
+                        Reporte = "Presupuesto\\Reportes\\RPT-PRESUP_COMPARATIVO_CAPITULO_ANALITICO.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Ejercicio); report.SetParameterValue(1, CentroContable);
+                        report.SetParameterValue(2, MesIni); report.SetParameterValue(3, MesFin); report.SetParameterValue(4, Capitulo);
                         reporte_XLS();
                         break;
                     case "RP-PRESUP_COMPARATIVO_GRUPO":
