@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title">
                         <img src="images/presupuesto.png" class="auto-style2" />Movimientos</h5>
-                    <p class="card-text">Registro y seguimiento del gasto realizado de acuerdo con el presupuesto de egresos asignado, registro de la conciliación bancaria.</p>
+                    <p class="card-text"></p>
                     <a href="Default.aspx?mnu=MOV" class="btn btn-warning btn-rounded">Continuar</a>
                 </div>
             </div>
@@ -32,7 +32,7 @@
 
                     </h5>
                     <p class="card-text">
-                        Presupuestos por fuente de financiamiento, mensual, acumulado, por proyecto.
+                        <%--Presupuestos por fuente de financiamiento, mensual, acumulado, por proyecto.--%>
             <br />
                     </p>
                     <a href="Default.aspx?mnu=REP" class="btn btn-warning btn-rounded">Continuar</a>
@@ -43,11 +43,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <img src="images/pres7.png" class="auto-style2" />Dashboard</h5>
+                        <img src="images/pres7.png" class="auto-style2" /></h5>
 
-                    <p class="card-text">Avance de gastos por centro contable.</p>
+                    <p class="card-text"></p>
                     <br />
-                    <a href="Presupuesto/Form/frmDashboard.aspx" class="btn btn-warning btn-rounded">Continuar</a>
+                    <%--<a href="Presupuesto/Form/frmDashboard.aspx" class="btn btn-warning btn-rounded">Continuar</a>--%>
                 </div>
             </div>
         </div>

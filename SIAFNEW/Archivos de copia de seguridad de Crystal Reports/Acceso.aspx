@@ -85,7 +85,10 @@
                             <asp:DropDownList ID="ddlEjercicio" runat="server" CssClass="form-control">
                                 <asp:ListItem>2021</asp:ListItem>
                                 <asp:ListItem>2020</asp:ListItem>
-                                
+                                <asp:ListItem>2019</asp:ListItem>
+                                <asp:ListItem>2018</asp:ListItem>
+                                <asp:ListItem>2017</asp:ListItem>
+                                <asp:ListItem>2016</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="row">
@@ -122,8 +125,8 @@
 
                         <div class="row">
                             <div class="col">
-                                <div id="divMsjUsuDep" class="alert alert-warning" role="alert">
-                                    <strong>El acceso al sistema es con la cta. y la contraseña del correo unach.<br />
+                                <div id="divMsjUsuDep" class="alert alert-warning text-center" role="alert">
+                                    <strong>El acceso al sistema es con el correo institucional @unach.mx<br />
                                     </strong>
                                     <a href="https://ldapauthmaster.unach.mx/pssform_resetaccount.php" target="_blank">¿Olvidó  la contraseña del correo institucional?</a>
 
@@ -137,15 +140,15 @@
         </div>
         <div class="piePagina" style="width: 100%">
             <footer class="page-footer font-small pt-4" style="background-color: #d2af47; color: #7b6420">
-                <div class="container-fluid text-center text-md-left">
-                    <div class="row">
+                <div class="container-fluid text-center text-md-">
+                    <div class="row text-center">
                         <hr class="clearfix w-100 d-md-none pb-3">
-                        <div class="col-md-6 mb-md-0 mb-3">
+                        <div class="col-md-6 mb-md-0 mb-3 text-center">
                             <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
                             <p>
-                                <i class="fas fa-home mr-3"></i>2da. Poniente Sur No. 108, Edificio Maciel, 2do. Piso Tuxtla Gutiérrez, Chiapas.
+                                <i class="fas fa-home mr-3"></i>Av. 1a Norte Esquina 9a Poniente No. 1016. 2o Piso, Barrio Guadalupe. Tuxtla Gutiérrez, Chiapas. México C.P. 29000
                             </p>
-                            <p>dpp@unach.mx</p>
+                            <p>dipropre@unach.mx</p>
                             <p><i class="fas fa-phone mr-3"></i>(961) 61 7 80 00</p>
                         </div>
                         <div class="col-md-6 mb-md-0 mb-3">
