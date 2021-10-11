@@ -381,6 +381,7 @@ namespace SAF.Presupuesto.Form
             string _open1 = "window.open('" + ruta1 + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
         }
+       
 
         protected void imgBttnPDF_Click(object sender, EventArgs e)
         {
