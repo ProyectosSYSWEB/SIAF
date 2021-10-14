@@ -509,9 +509,9 @@ namespace SAF.Presupuesto
                     objDocDet.Ejercicios = SesionUsu.Usu_Ejercicio;
 
                     CNDocDet.ObtDisponibleCodigoProg(objDocDet, ref Verificador);
+                                      
                     if (Verificador == "0")
                     {
-                      
                         lblDisponible.Text = Convert.ToString(objDocDet.Importe_disponible);
                         lblFormatoDisponible.Text = string.Format("{0:c}", Convert.ToDouble(objDocDet.Importe_disponible));
                     }
@@ -840,7 +840,8 @@ namespace SAF.Presupuesto
         {
             lblFormatoDisponible.Text = string.Format("{0:c}", "0");
             lblDisponible.Text = "0"; //string.Empty;
-            disponible();
+            if (ddlTipoEnc.SelectedValue != "AR")
+                disponible();
           
         }
         protected void grdDetalles_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -911,8 +912,8 @@ namespace SAF.Presupuesto
 
                 }
                 else if (ddlTipoEnc.SelectedValue == "AR")
-                    MesPermitido = true;
-                
+                    MesPermitido = false; //Anteriormente  MesPermitido = true; Para calcular disponible 13Oct2021
+
             }
 
             if (MesPermitido)
@@ -970,10 +971,16 @@ namespace SAF.Presupuesto
 
                     if (rbtOrigen_Destino.SelectedValue == "O")
                     {
-                        if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
-                            ImportePermitido = true;
+                        if (ddlTipoEnc.SelectedValue != "AR")
+                        {
+                            if (Math.Abs(Convert.ToDouble(txtImporteOrigen.Text)) <= Convert.ToDouble(lblDisponible.Text))
+                                ImportePermitido = true;
+                            else
+                                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
+
+                        }
                         else
-                            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal( 0, 'El importe debe ser menor o igual al disponible.');", true);
+                            ImportePermitido = true;
                     }
                     else
                     {
@@ -1013,14 +1020,17 @@ namespace SAF.Presupuesto
                     }
                     else
                     {
-                        var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
-                                                  where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue
-                                                  && Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
+                        if (ddlTipoEnc.SelectedValue != "AR")
+                        {
+                            var filteredCodigosProg = from c in ListDocDetBusca //Anteriormente ListDocDet
+                                                      where c.Mes_inicial.ToString() == MesIni && c.Tipo == rbtOrigen_Destino.SelectedValue
+                                                      && Convert.ToString(c.Id_Codigo_Prog) == ddlCodigoProg.SelectedValue//txtSearch.Text
 
-                                                  select c;
+                                                      select c;
 
-                        content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
-                        Alerta = "El mes ya se encuentra asignado.";
+                            content = filteredCodigosProg.ToList<Pres_Documento_Detalle>();
+                            Alerta = "El mes ya se encuentra asignado.";
+                        }
                     }
                 }
                 if (content.Count == 0)
@@ -1114,8 +1124,8 @@ namespace SAF.Presupuesto
             try
             {
                 CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddlCapitulo.SelectedValue.Substring(0, 1), ddlFuente_F.SelectedValue, ref ListPartida);
-                
-                disponible();
+                if(ddlTipoEnc.SelectedValue!="AR")
+                    disponible();
             }
             catch (Exception ex)
             {
@@ -1126,8 +1136,9 @@ namespace SAF.Presupuesto
         {
             //ddlDepen_SelectedIndexChanged(null, null);
             CNComun.LlenaCombo("pkg_Presupuesto.Obt_Combo_Codigos_Progr", ref ddlCodigoProg, "p_ejercicio", "p_dependencia", "p_capitulo", "p_fuente", SesionUsu.Usu_Ejercicio, ddlDepen.SelectedValue, ddlCapitulo.SelectedValue.Substring(0,1), ddlFuente_F.SelectedValue, ref ListPartida);
-            
-            disponible();
+
+            if (ddlTipoEnc.SelectedValue != "AR")
+                disponible();
         }
         protected void imgBttnXLS_Click(object sender, ImageClickEventArgs e)
         {
