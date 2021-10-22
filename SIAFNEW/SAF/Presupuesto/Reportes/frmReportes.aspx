@@ -1514,12 +1514,13 @@
                                             <asp:Label ID="Label45" runat="server" Text="Reporte"></asp:Label>
                                         </td>
                                         <td colspan="3">
-                                            <asp:DropDownList ID="DDLReporte_v13" runat="server" Width="50%">
+                                            <asp:DropDownList ID="DDLReporte_v13" AutoPostBack="true" runat="server" Width="50%" OnSelectedIndexChanged="DDLReporte_v13SelectedIndex">
                                                 <asp:ListItem Value="SP01">ER01 - Por dependencia, capítulo y partida</asp:ListItem>
                                                 <asp:ListItem Value="SP02">ER02 - Por dependencia y capítulo</asp:ListItem>
                                                 <asp:ListItem Value="SP03">ER03 - Por clasificación administrativa</asp:ListItem>
                                                 <asp:ListItem Value="SP04">ER04 - Por capítulo y subcapítulo</asp:ListItem>
                                                 <asp:ListItem Value="SP05">ER05 - Por fuente de financiamiento</asp:ListItem>
+                                                <asp:ListItem Value="SP06">ER06 - Por capítulo y dependencia</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>

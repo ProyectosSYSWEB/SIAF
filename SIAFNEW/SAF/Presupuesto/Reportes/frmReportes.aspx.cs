@@ -38,6 +38,31 @@ namespace SAF.Presupuesto.Reportes
             else
                 ScriptManager.RegisterStartupScript(this, GetType(), "PRUEBA", "Autocomplete();", true);
         }
+        //Actualización 16/10/2021
+        protected void DDLReporte_v13SelectedIndex(object sender, EventArgs e)
+        {
+            try
+            {
+                if(DDLReporte_v13.SelectedValue == "SP06")
+                {
+                    grdFuentes_v13.Visible = false;
+                    btnChkFuentes_v13.Visible = false;
+                }
+                else
+                {
+                    grdFuentes_v13.Visible = true;
+                    btnChkFuentes_v13.Visible = true
+                        
+                        ;
+                }
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+
+        }
+
         private void inicializar()
         {
             lblError.Text = string.Empty;
@@ -1624,11 +1649,15 @@ namespace SAF.Presupuesto.Reportes
                     ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RP-PRESUP_SP05&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v13.SelectedValue + "&Capitulo=" + objReportes.Capitulo + "&Fuente=" + objReportes.Fuente
                        + "&MesIni=" + DDLMesIni_Modificado.SelectedValue + DDLMesIni_Ejercido.SelectedValue + "&MesFin=" + DDLMesFin_Modificado.SelectedValue + DDLMesFin_Ejercido.SelectedValue + "&Meses=" + txtFechaEntrega.Text;
                     break;
+                case "SP06":
+                    ruta = "../Reportes/VisualizadorCrystal.aspx?Tipo=RPT-ENTREGA-RECEPCION&Ejercicio=" + SesionUsu.Usu_Ejercicio + "&Dependencia=" + DDLDependencia_v13.SelectedValue + "&Capitulo=" + objReportes.Capitulo
+                        + "&MesIni=" + DDLMesIni_Ejercido.SelectedValue + "&MesFin=" + DDLMesFin_Ejercido.SelectedValue;
+                    break;
 
             }
             string _open1 = "window.open('" + ruta + "', '_newtab');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString(), _open1, true);
-        }
+            }
 
         protected void imgBttnExcel_v13(object sender, ImageClickEventArgs e)
         {

@@ -959,6 +959,12 @@ namespace SAF.Presupuesto.Reportes
                         report.SetParameterValue(0, MesIni); report.SetParameterValue(1, MesFin); report.SetParameterValue(2, Ejercicio);
                         reporte_PDF();
                         break;
+                    case "RPT-ENTRGA-RECEPCION":
+                        Reporte = "Presupuesto\\Reportes\\RPT-ENTREGA-RECEPCION.rpt";
+                        reportes_dir();
+                        report.SetParameterValue(0, Capitulo); report.SetParameterValue(1, Dependencia); report.SetParameterValue(2, Ejercicio); report.SetParameterValue(3, MesIni); report.SetParameterValue(4, MesFin); 
+                        reporte_PDF();
+                        break;
                 }
             }
             catch (Exception ex)
