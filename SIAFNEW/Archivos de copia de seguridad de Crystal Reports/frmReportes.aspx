@@ -587,15 +587,18 @@
                         </td>
                       
                     </tr>
+                    
                     <tr>
                         <td>
                             <asp:Label ID="Label27" runat="server" Text="Tipo"></asp:Label>
                         </td>
                         <td colspan="2">
                             <asp:DropDownList ID="DDLTipoReporte_v7" runat="server" Width="25%" AutoPostBack="True" OnSelectedIndexChanged="DDLTipoReporte_v7_SelectedIndexChanged">
-                                <asp:ListItem Value="CC">Por cuenta contable</asp:ListItem>
-                                 <asp:ListItem Value="GG">Por grupo</asp:ListItem>
-                                <%--<asp:ListItem Value="GC">Por capítulo</asp:ListItem>--%>
+                                <asp:ListItem Value="CP">Cuenta presupuestaria</asp:ListItem>
+                                 <asp:ListItem Value="GA">Grupo (Analítico)</asp:ListItem>
+                                <asp:ListItem Value="GG">Grupo (General)</asp:ListItem>
+                                <asp:ListItem Value="CA">Capítulo (Analítico)</asp:ListItem>
+                                <asp:ListItem Value="CG">Capítulo (General)</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -653,7 +656,46 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    
+                    <tr>
+                        <td></td>
+                        <td colspan="3">
+                                            <asp:GridView ID="grdCapitulo_v7" runat="server" AutoGenerateColumns="False" Width="50%" CssClass="mGrid" EmptyDataText="No se encontró ningún registro." >
+                                                <Columns>
+                                                    <asp:TemplateField>
+                                                    <HeaderTemplate>
+                                                                                                    <asp:CheckBox ID="chk_chex" runat="server"
+                                                                                                        OnCheckedChanged="chk_Capitulos_v7_CheckedChanged" AutoPostBack="True"  />
+                                                                                                </HeaderTemplate>
+                                                    
+                                                        <ItemTemplate>
+                                                            <asp:UpdatePanel ID="UpdatePanel23" runat="server">
+                                                                                                        <ContentTemplate>
+                                                            <asp:CheckBox ID="chkDatos_v7" runat="server" />
+                                                       
+                                                        </ContentTemplate>
+                                                        </asp:UpdatePanel>
+                                                   
+                                                        
+                                                        </ItemTemplate>
+                                                                  <ItemStyle HorizontalAlign="Center" />
+                                                                  </asp:TemplateField>                                          
+                                                    <asp:BoundField DataField="ID" HeaderText="" />
+                                                    <asp:BoundField DataField="CAPITULO" HeaderText="CAPITULO" >
+                                                        
+
+                                                       
+                                                        
+</asp:BoundField>
+                                                </Columns>
+                                                <FooterStyle CssClass="enc" />
+                                                    <PagerStyle CssClass="enc" HorizontalAlign="Center" />
+                                                    <SelectedRowStyle CssClass="sel" />
+                                                    <HeaderStyle CssClass="enc" />                                                
+                                                    <AlternatingRowStyle CssClass="alt" /> 
+                                            </asp:GridView>
+                                            
+                                        </td>
+                        </tr>
                       <tr>
                                         <td colspan="3" class="cuadro_botones">
                                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -1514,12 +1556,13 @@
                                             <asp:Label ID="Label45" runat="server" Text="Reporte"></asp:Label>
                                         </td>
                                         <td colspan="3">
-                                            <asp:DropDownList ID="DDLReporte_v13" runat="server" Width="50%">
+                                            <asp:DropDownList ID="DDLReporte_v13" AutoPostBack="true" runat="server" Width="50%" OnSelectedIndexChanged="DDLReporte_v13SelectedIndex">
                                                 <asp:ListItem Value="SP01">ER01 - Por dependencia, capítulo y partida</asp:ListItem>
                                                 <asp:ListItem Value="SP02">ER02 - Por dependencia y capítulo</asp:ListItem>
                                                 <asp:ListItem Value="SP03">ER03 - Por clasificación administrativa</asp:ListItem>
                                                 <asp:ListItem Value="SP04">ER04 - Por capítulo y subcapítulo</asp:ListItem>
                                                 <asp:ListItem Value="SP05">ER05 - Por fuente de financiamiento</asp:ListItem>
+                                                <asp:ListItem Value="SP06">ER06 - Por capítulo y dependencia</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
