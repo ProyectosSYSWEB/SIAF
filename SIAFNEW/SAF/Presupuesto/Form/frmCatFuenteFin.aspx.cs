@@ -62,11 +62,12 @@ namespace SAF.Presupuesto.Form
                     objFuentesFin.TipoFinan = DDLFuenteFin.SelectedValue;
                     objFuentesFin.TipoFondo = DDLTipofondo.SelectedValue;
                     objFuentesFin.Descrip = txtDescrip.Text;
+                    objFuentesFin.Ejercicio = SesionUsu.Usu_Ejercicio;
                     string Verificador = string.Empty;
                     CN_FuenteFin.InsertarFuente(ref objFuentesFin, ref Verificador);
                     if (Verificador == "0")
                     {
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'Se ha guardado correctamente.')", true);
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'Se ha guardado correctamente.')", true);
                         txtFuente.Text = "";
                         txtDescrip.Text = "";
                         DDLTipofuente.SelectedIndex = 0;
@@ -74,14 +75,14 @@ namespace SAF.Presupuesto.Form
                         DDLFuenteFin.SelectedIndex = 0;
                     }
                     else
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '"+ Verificador + ".')", true);                    
+                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '"+ Verificador + ".')", true);                    
                 }
                 else
-                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, 'No tiene los privilegios para realizar esta acción.')", true);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, 'No tiene los privilegios para realizar esta acción.')", true);
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(1, '" + ex.Message + ".')", true);
+                ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "modal", "mostrar_modal(0, '" + ex.Message + ".')", true);
             }
         }
     }

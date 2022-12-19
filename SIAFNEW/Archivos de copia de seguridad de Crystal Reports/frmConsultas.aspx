@@ -221,6 +221,15 @@
                                                     <asp:BoundField DataField="Mes_Final" HeaderText="F" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" />
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:UpdatePanel ID="UpdatePanel106" runat="server">
+                                                                <ContentTemplate>
+                                                                    <asp:LinkButton ID="LinkBImprimir_2" runat="server" OnClick="LinkBImprimir_Click">Imprimir</asp:LinkButton>
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <%--<asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="linkBtnMovAumentos" runat="server" CommandName="Delete" Visible="true">Movimientos</asp:LinkButton>
@@ -256,6 +265,15 @@
                                                     <asp:BoundField DataField="Mes_Inicial" HeaderText="Mes" />
                                                     <asp:BoundField DataField="Status" HeaderText="Status" />
                                                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:UpdatePanel ID="UpdatePanel107" runat="server">
+                                                                <ContentTemplate>
+                                                                    <asp:LinkButton ID="LinkBImprimir_3" runat="server" OnClick="LinkBImprimir_Click">Imprimir</asp:LinkButton>
+                                                                </ContentTemplate>
+                                                            </asp:UpdatePanel>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <%--<asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="linkBtnMovMinist" runat="server" CommandName="Delete" Visible="true">Movimientos</asp:LinkButton>
